@@ -7,18 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */; };
+		AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CDE2C232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift */; };
+		AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2D232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib */; };
+		AC8CDE31232540DD00CDFB93 /* LoginSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CDE30232540DD00CDFB93 /* LoginSignUpViewController.swift */; };
+		AC8CDE382326449200CDFB93 /* LoginViaOTPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CDE362326449200CDFB93 /* LoginViaOTPTableViewCell.swift */; };
+		AC8CDE392326449200CDFB93 /* LoginViaOTPTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE372326449200CDFB93 /* LoginViaOTPTableViewCell.xib */; };
+		AC8CDE3C23264F4500CDFB93 /* SignUpTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CDE3A23264F4500CDFB93 /* SignUpTableViewCell.swift */; };
+		AC8CDE3D23264F4500CDFB93 /* SignUpTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE3B23264F4500CDFB93 /* SignUpTableViewCell.xib */; };
 		AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9BCAC52324DF90009818C3 /* AppDelegate.swift */; };
-		AC9BCAC82324DF90009818C3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9BCAC72324DF90009818C3 /* ViewController.swift */; };
-		AC9BCACB2324DF90009818C3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9BCAC92324DF90009818C3 /* Main.storyboard */; };
 		AC9BCACD2324DF90009818C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9BCACC2324DF90009818C3 /* Assets.xcassets */; };
 		AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9BCACE2324DF90009818C3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignup.storyboard; sourceTree = "<group>"; };
+		AC8CDE2C232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPasswordTableViewCell.swift; sourceTree = "<group>"; };
+		AC8CDE2D232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginWithPasswordTableViewCell.xib; sourceTree = "<group>"; };
+		AC8CDE30232540DD00CDFB93 /* LoginSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignUpViewController.swift; sourceTree = "<group>"; };
+		AC8CDE362326449200CDFB93 /* LoginViaOTPTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViaOTPTableViewCell.swift; sourceTree = "<group>"; };
+		AC8CDE372326449200CDFB93 /* LoginViaOTPTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViaOTPTableViewCell.xib; sourceTree = "<group>"; };
+		AC8CDE3A23264F4500CDFB93 /* SignUpTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpTableViewCell.swift; sourceTree = "<group>"; };
+		AC8CDE3B23264F4500CDFB93 /* SignUpTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpTableViewCell.xib; sourceTree = "<group>"; };
 		AC9BCAC22324DF90009818C3 /* NimNim.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NimNim.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9BCAC52324DF90009818C3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC9BCAC72324DF90009818C3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		AC9BCACA2324DF90009818C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC9BCACC2324DF90009818C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC9BCACF2324DF90009818C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC9BCAD12324DF90009818C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -45,8 +57,8 @@
 		AC8CDE27232518A200CDFB93 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				AC9BCAC92324DF90009818C3 /* Main.storyboard */,
 				AC9BCACE2324DF90009818C3 /* LaunchScreen.storyboard */,
+				AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -54,9 +66,22 @@
 		AC8CDE28232518AC00CDFB93 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				AC9BCAC72324DF90009818C3 /* ViewController.swift */,
+				AC8CDE30232540DD00CDFB93 /* LoginSignUpViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		AC8CDE2B232537BC00CDFB93 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				AC8CDE2C232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift */,
+				AC8CDE2D232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib */,
+				AC8CDE362326449200CDFB93 /* LoginViaOTPTableViewCell.swift */,
+				AC8CDE372326449200CDFB93 /* LoginViaOTPTableViewCell.xib */,
+				AC8CDE3A23264F4500CDFB93 /* SignUpTableViewCell.swift */,
+				AC8CDE3B23264F4500CDFB93 /* SignUpTableViewCell.xib */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		AC9BCAB92324DF90009818C3 = {
@@ -78,6 +103,7 @@
 		AC9BCAC42324DF90009818C3 /* NimNim */ = {
 			isa = PBXGroup;
 			children = (
+				AC8CDE2B232537BC00CDFB93 /* TableViewCells */,
 				AC8CDE262325189600CDFB93 /* Model */,
 				AC8CDE27232518A200CDFB93 /* View */,
 				AC8CDE28232518AC00CDFB93 /* Controller */,
@@ -146,9 +172,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */,
+				AC8CDE3D23264F4500CDFB93 /* SignUpTableViewCell.xib in Resources */,
 				AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */,
+				AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */,
 				AC9BCACD2324DF90009818C3 /* Assets.xcassets in Resources */,
-				AC9BCACB2324DF90009818C3 /* Main.storyboard in Resources */,
+				AC8CDE392326449200CDFB93 /* LoginViaOTPTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,22 +188,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC9BCAC82324DF90009818C3 /* ViewController.swift in Sources */,
+				AC8CDE382326449200CDFB93 /* LoginViaOTPTableViewCell.swift in Sources */,
+				AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */,
+				AC8CDE31232540DD00CDFB93 /* LoginSignUpViewController.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
+				AC8CDE3C23264F4500CDFB93 /* SignUpTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		AC9BCAC92324DF90009818C3 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				AC9BCACA2324DF90009818C3 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		AC9BCACE2324DF90009818C3 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
