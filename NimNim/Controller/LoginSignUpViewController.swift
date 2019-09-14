@@ -21,7 +21,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     //MARK: Constants and Variables
-    var currentScreenState:LoginSignupStates = .loginWithPassword
+    var currentScreenState:LoginSignupStates = .signup
     
     //MARK: Lifecycle Methods
     override func viewDidLoad() {

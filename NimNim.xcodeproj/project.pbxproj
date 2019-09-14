@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		62983FD37B9651AB97044FCD /* Pods_NimNim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74D617266EB18FBEEAA0F80 /* Pods_NimNim.framework */; };
+		AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */; };
+		AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC793F16232CDBB9009E61A1 /* Preferences.storyboard */; };
 		AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */; };
 		AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CDE2C232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift */; };
 		AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2D232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib */; };
@@ -18,9 +21,16 @@
 		AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9BCAC52324DF90009818C3 /* AppDelegate.swift */; };
 		AC9BCACD2324DF90009818C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9BCACC2324DF90009818C3 /* Assets.xcassets */; };
 		AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9BCACE2324DF90009818C3 /* LaunchScreen.storyboard */; };
+		ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB8171232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift */; };
+		ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB8173232D09AD003DCF77 /* PreferencesTableViewCell.swift */; };
+		ACBB8177232D1F57003DCF77 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB8176232D1F57003DCF77 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D6B59115C1D4D6265172DCA /* Pods-NimNim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NimNim.release.xcconfig"; path = "Target Support Files/Pods-NimNim/Pods-NimNim.release.xcconfig"; sourceTree = "<group>"; };
+		8586EAD9160E1C7AF19C483B /* Pods-NimNim.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NimNim.debug.xcconfig"; path = "Target Support Files/Pods-NimNim/Pods-NimNim.debug.xcconfig"; sourceTree = "<group>"; };
+		AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
+		AC793F16232CDBB9009E61A1 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignup.storyboard; sourceTree = "<group>"; };
 		AC8CDE2C232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPasswordTableViewCell.swift; sourceTree = "<group>"; };
 		AC8CDE2D232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginWithPasswordTableViewCell.xib; sourceTree = "<group>"; };
@@ -34,6 +44,10 @@
 		AC9BCACC2324DF90009818C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC9BCACF2324DF90009818C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC9BCAD12324DF90009818C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACBB8171232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpDropOffPreferencesViewController.swift; sourceTree = "<group>"; };
+		ACBB8173232D09AD003DCF77 /* PreferencesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTableViewCell.swift; sourceTree = "<group>"; };
+		ACBB8176232D1F57003DCF77 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		C74D617266EB18FBEEAA0F80 /* Pods_NimNim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NimNim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,12 +55,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62983FD37B9651AB97044FCD /* Pods_NimNim.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A57A8E59161340A7FB2B829 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8586EAD9160E1C7AF19C483B /* Pods-NimNim.debug.xcconfig */,
+				0D6B59115C1D4D6265172DCA /* Pods-NimNim.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		AC621ECB2326BCB400AFD052 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		AC8CDE262325189600CDFB93 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,6 +91,7 @@
 			children = (
 				AC9BCACE2324DF90009818C3 /* LaunchScreen.storyboard */,
 				AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */,
+				AC793F16232CDBB9009E61A1 /* Preferences.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -67,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				AC8CDE30232540DD00CDFB93 /* LoginSignUpViewController.swift */,
+				ACBB8171232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -80,6 +114,7 @@
 				AC8CDE372326449200CDFB93 /* LoginViaOTPTableViewCell.xib */,
 				AC8CDE3A23264F4500CDFB93 /* SignUpTableViewCell.swift */,
 				AC8CDE3B23264F4500CDFB93 /* SignUpTableViewCell.xib */,
+				ACBB8173232D09AD003DCF77 /* PreferencesTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -89,6 +124,8 @@
 			children = (
 				AC9BCAC42324DF90009818C3 /* NimNim */,
 				AC9BCAC32324DF90009818C3 /* Products */,
+				6A57A8E59161340A7FB2B829 /* Pods */,
+				FA6ED03A47FAC1D8F9318AB7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +140,8 @@
 		AC9BCAC42324DF90009818C3 /* NimNim */ = {
 			isa = PBXGroup;
 			children = (
+				ACBB8175232D1F3D003DCF77 /* Utils */,
+				AC621ECB2326BCB400AFD052 /* Managers */,
 				AC8CDE2B232537BC00CDFB93 /* TableViewCells */,
 				AC8CDE262325189600CDFB93 /* Model */,
 				AC8CDE27232518A200CDFB93 /* View */,
@@ -114,6 +153,22 @@
 			path = NimNim;
 			sourceTree = "<group>";
 		};
+		ACBB8175232D1F3D003DCF77 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ACBB8176232D1F57003DCF77 /* Extensions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FA6ED03A47FAC1D8F9318AB7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C74D617266EB18FBEEAA0F80 /* Pods_NimNim.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,9 +176,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AC9BCAD42324DF90009818C3 /* Build configuration list for PBXNativeTarget "NimNim" */;
 			buildPhases = (
+				7FDF86E4C57B810CAB91A91D /* [CP] Check Pods Manifest.lock */,
 				AC9BCABE2324DF90009818C3 /* Sources */,
 				AC9BCABF2324DF90009818C3 /* Frameworks */,
 				AC9BCAC02324DF90009818C3 /* Resources */,
+				8779E3A4EF49D3A559FD5814 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -174,6 +231,7 @@
 			files = (
 				AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */,
 				AC8CDE3D23264F4500CDFB93 /* SignUpTableViewCell.xib in Resources */,
+				AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */,
 				AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */,
 				AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */,
 				AC9BCACD2324DF90009818C3 /* Assets.xcassets in Resources */,
@@ -183,15 +241,68 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7FDF86E4C57B810CAB91A91D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NimNim-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8779E3A4EF49D3A559FD5814 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AC9BCABE2324DF90009818C3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AC8CDE382326449200CDFB93 /* LoginViaOTPTableViewCell.swift in Sources */,
+				ACBB8177232D1F57003DCF77 /* Extensions.swift in Sources */,
 				AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */,
 				AC8CDE31232540DD00CDFB93 /* LoginSignUpViewController.swift in Sources */,
+				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
+				AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
+				ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */,
 				AC8CDE3C23264F4500CDFB93 /* SignUpTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,6 +439,7 @@
 		};
 		AC9BCAD52324DF90009818C3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8586EAD9160E1C7AF19C483B /* Pods-NimNim.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -346,6 +458,7 @@
 		};
 		AC9BCAD62324DF90009818C3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D6B59115C1D4D6265172DCA /* Pods-NimNim.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
