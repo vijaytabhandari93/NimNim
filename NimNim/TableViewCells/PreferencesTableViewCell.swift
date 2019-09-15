@@ -15,8 +15,8 @@ class PreferencesTableViewCell: UITableViewCell {
     @IBOutlet weak var selectedStateView: UIView!
     
     //MARK: Constants and Variables
-    let selectedStateFont = UIFont.systemFont(ofSize: 36)
-    let nonSelectedStateFont = UIFont.systemFont(ofSize: 18)
+    let selectedStateFont = Fonts.extraBold36
+    let nonSelectedStateFont = Fonts.regularFont18
     
     override func
     awakeFromNib() {
