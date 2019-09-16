@@ -8,17 +8,31 @@
 
 import UIKit
 
-class LoginViaOTPTableViewCell: UITableViewCell {
+protocol LoginViaOTPTableViewCellDelegate:class {
+    func logInViaPasswordTappedInLoginViaOTPTableViewCell()
+    func signUpTappedInLoginViaOTPTableViewCell()
+}
 
+
+class LoginViaOTPTableViewCell: UITableViewCell {
+    
+    //MARK: Constants and Variables
+    weak var delegate:LoginViaOTPTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    //MARK:IBActions
+    @IBAction func logInViaPasswordTapped(_ sender: Any) {
+        delegate?.logInViaPasswordTappedInLoginViaOTPTableViewCell()
     }
-    
+    @IBAction func signUpTapped(_ sender: Any) {
+        delegate?.signUpTappedInLoginViaOTPTableViewCell()
+    }
+    @IBAction func resendOtpTapped(_ sender: Any) {
+    }
+    @IBAction func getOtptapped(_ sender: Any) {
+    }
 }

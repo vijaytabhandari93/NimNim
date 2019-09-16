@@ -8,9 +8,7 @@
 
 import UIKit
 
-class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    
+class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginWithPasswordTableViewCellDelegate, LoginViaOTPTableViewCellDelegate, SignUpTableViewCellDelegate {
     //MARK: IBOutlets
     @IBOutlet weak var loginSignUpTableView: UITableView!
     
@@ -21,7 +19,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     //MARK: Constants and Variables
-    var currentScreenState:LoginSignupStates = .signup
+    var currentScreenState:LoginSignupStates = .loginWithPassword
     
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
@@ -42,6 +40,10 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         loginSignUpTableView.dataSource = self
     }
     
+    func refreshTable() {
+        loginSignUpTableView.reloadData()
+    }
+    
     func registerCells() {
         
         let signUpCellNib = UINib(nibName: "SignUpTableViewCell", bundle: nil)
@@ -54,6 +56,17 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         loginSignUpTableView.register(loginViaOTPCellNib, forCellReuseIdentifier: "LoginViaOTPTableViewCell")
     }
     
+    //MARK: IBActions
+    @IBAction func logInTapped(_ sender: Any) {
+        currentScreenState = .loginWithPassword
+        refreshTable()
+    }
+    
+    @IBAction func signUpTapped(_ sender: Any) {
+        currentScreenState = .signup
+        refreshTable()
+    }
+    
     //MARK: TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -63,12 +76,15 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         switch currentScreenState {
         case .loginWithPassword:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoginWithPasswordTableViewCell") as! LoginWithPasswordTableViewCell
+            cell.delegate = self
             return cell
         case .loginWithOTP:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoginViaOTPTableViewCell") as! LoginViaOTPTableViewCell
+            cell.delegate = self
             return cell
         case .signup:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SignUpTableViewCell") as! SignUpTableViewCell
+            cell.delegate = self
             return cell
         }
     }
@@ -82,5 +98,31 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         case .signup:
             return 484
         }
+    }
+    
+    //MARK: TableView Cell Delegates
+    func signUpTappedInLoginWithPasswordTableViewCell() {
+        currentScreenState = .signup
+        refreshTable()
+    }
+    
+    func logInViaOtpTappedInLoginWithPasswordTableViewCell() {
+        currentScreenState = .loginWithOTP
+        refreshTable()
+    }
+    
+    func logInViaPasswordTappedInLoginViaOTPTableViewCell() {
+        currentScreenState = .loginWithPassword
+        refreshTable()
+    }
+    
+    func signUpTappedInLoginViaOTPTableViewCell() {
+        currentScreenState = .signup
+        refreshTable()
+    }
+    
+    func loginTappedInSignUpTableViewCell() {
+        currentScreenState = .loginWithPassword
+        refreshTable()
     }
 }

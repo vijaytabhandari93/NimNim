@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		62983FD37B9651AB97044FCD /* Pods_NimNim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74D617266EB18FBEEAA0F80 /* Pods_NimNim.framework */; };
+		AC092FCA232F5AFB00FE1B77 /* NavDrawer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC092FC9232F5AFB00FE1B77 /* NavDrawer.storyboard */; };
+		AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */; };
+		AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */; };
 		AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */; };
 		AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC793F16232CDBB9009E61A1 /* Preferences.storyboard */; };
 		AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */; };
@@ -49,6 +52,9 @@
 /* Begin PBXFileReference section */
 		0D6B59115C1D4D6265172DCA /* Pods-NimNim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NimNim.release.xcconfig"; path = "Target Support Files/Pods-NimNim/Pods-NimNim.release.xcconfig"; sourceTree = "<group>"; };
 		8586EAD9160E1C7AF19C483B /* Pods-NimNim.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NimNim.debug.xcconfig"; path = "Target Support Files/Pods-NimNim/Pods-NimNim.debug.xcconfig"; sourceTree = "<group>"; };
+		AC092FC9232F5AFB00FE1B77 /* NavDrawer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavDrawer.storyboard; sourceTree = "<group>"; };
+		AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDrawerViewController.swift; sourceTree = "<group>"; };
+		AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDrawerTableViewCell.swift; sourceTree = "<group>"; };
 		AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		AC793F16232CDBB9009E61A1 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignup.storyboard; sourceTree = "<group>"; };
@@ -132,6 +138,7 @@
 				AC9BCACE2324DF90009818C3 /* LaunchScreen.storyboard */,
 				AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */,
 				AC793F16232CDBB9009E61A1 /* Preferences.storyboard */,
+				AC092FC9232F5AFB00FE1B77 /* NavDrawer.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -141,6 +148,7 @@
 			children = (
 				AC8CDE30232540DD00CDFB93 /* LoginSignUpViewController.swift */,
 				ACBB8171232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift */,
+				AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -155,6 +163,7 @@
 				AC8CDE3A23264F4500CDFB93 /* SignUpTableViewCell.swift */,
 				AC8CDE3B23264F4500CDFB93 /* SignUpTableViewCell.xib */,
 				ACBB8173232D09AD003DCF77 /* PreferencesTableViewCell.swift */,
+				AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -300,6 +309,7 @@
 				ACBB8193232E3FAC003DCF77 /* Montserrat-Light.ttf in Resources */,
 				ACBB8195232E3FAC003DCF77 /* Montserrat-ExtraLight.ttf in Resources */,
 				AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */,
+				AC092FCA232F5AFB00FE1B77 /* NavDrawer.storyboard in Resources */,
 				ACBB819A232E3FAC003DCF77 /* Montserrat-BlackItalic.ttf in Resources */,
 				ACBB8197232E3FAC003DCF77 /* Montserrat-RegularItalic.ttf in Resources */,
 				AC8CDE3D23264F4500CDFB93 /* SignUpTableViewCell.xib in Resources */,
@@ -384,7 +394,9 @@
 			files = (
 				AC8CDE382326449200CDFB93 /* LoginViaOTPTableViewCell.swift in Sources */,
 				ACBB8177232D1F57003DCF77 /* Extensions.swift in Sources */,
+				AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */,
 				AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */,
+				AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */,
 				AC8CDE31232540DD00CDFB93 /* LoginSignUpViewController.swift in Sources */,
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
 				AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */,

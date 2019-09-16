@@ -8,17 +8,26 @@
 
 import UIKit
 
+protocol SignUpTableViewCellDelegate:class {
+    func loginTappedInSignUpTableViewCell()
+}
+
 class SignUpTableViewCell: UITableViewCell {
 
+    //MARK: Constants and Variables
+    weak var delegate:SignUpTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    //MARK:IBActions
+    @IBAction func showTapped(_ sender: Any) {
     }
-    
+    @IBAction func signUpTapped(_ sender: Any) {
+    }
+    @IBAction func logInTapped(_ sender: Any) {
+        delegate?.loginTappedInSignUpTableViewCell()
+    }
 }

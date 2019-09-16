@@ -8,17 +8,30 @@
 
 import UIKit
 
+protocol LoginWithPasswordTableViewCellDelegate:class {
+    func signUpTappedInLoginWithPasswordTableViewCell()
+    func logInViaOtpTappedInLoginWithPasswordTableViewCell()
+}
+
 class LoginWithPasswordTableViewCell: UITableViewCell {
 
+    //MARK: Constants and Variables
+    weak var delegate :LoginWithPasswordTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    //MARK: IBActions
+    @IBAction func signUpTapped(_ sender: Any) {
+        delegate?.signUpTappedInLoginWithPasswordTableViewCell()
     }
-    
+    @IBAction func logInTapped(_ sender: Any) {
+        //actual login
+        
+    }
+    @IBAction func logInViaOtpTapped(_ sender: Any) {
+        delegate?.logInViaOtpTappedInLoginWithPasswordTableViewCell()
+    }
 }
