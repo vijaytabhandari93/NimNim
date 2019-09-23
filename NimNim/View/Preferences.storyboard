@@ -133,6 +133,7 @@
                     </view>
                     <connections>
                         <outlet property="preferencesTableView" destination="Bcb-GR-fPd" id="HKg-z5-0gH"/>
+                        <outlet property="titleLable" destination="i1z-Ha-s3U" id="2gn-7B-aIU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="em5-pl-cCB" userLabel="First Responder" sceneMemberID="firstResponder"/>

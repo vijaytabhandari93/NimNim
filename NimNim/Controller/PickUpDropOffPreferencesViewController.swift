@@ -12,18 +12,23 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
     
     //MARK: IBOutlets
     @IBOutlet weak var preferencesTableView: UITableView!
+    @IBOutlet weak var titleLable: UILabel!
     
     //MARK: Constants and Variables
-    let titleArray = [
-        "Leave unattened in Foyer",
-        "Pick up and drop off at concierge",
-        "Pick up and Drop off in person"
-    ]
+    var titleArray:[String] = []
     
     var selectedIndexPath: IndexPath?
     
+    enum ScreenType {
+        case pickUpDropOff
+        case descriptionOfUser
+    }
+    
+    var screenTypeValue:ScreenType = .pickUpDropOff
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupScreenModel()
         setuptableview()
     }
     
@@ -34,6 +39,31 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyNimNimGradient()
+    }
+    
+    //MARK: Setup Screen
+    
+    func setupScreenModel(){
+        if screenTypeValue == .pickUpDropOff
+        {
+            titleArray = [
+                "Leave unattened in Foyer",
+                "Pick up and drop off at concierge",
+                "Pick up and Drop off in person"
+            ]
+            titleLable.text = "Please specify your pick up & drop off preferences"
+        }
+        else{
+            titleArray = [
+                "Students",
+                "Working Professional",
+                "On a short visit",
+                "Hotel Guests",
+                "Business(Spa/Salon/Gym)"
+                ]
+             titleLable.text = "Tell us which describes you the best?"
+            
+        }
     }
     
     func setuptableview(){

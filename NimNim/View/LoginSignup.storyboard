@@ -255,7 +255,9 @@
                         <viewLayoutGuide key="safeArea" id="EDA-Q2-kCX"/>
                     </view>
                     <connections>
+                        <outlet property="loginButton" destination="XlK-Bp-bsC" id="wPc-JB-kwf"/>
                         <outlet property="loginSignUpTableView" destination="ZbV-7o-M5G" id="dCU-ea-E5I"/>
+                        <outlet property="signUpButton" destination="urP-8i-77V" id="lUg-Un-XFl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vmc-ii-eKT" userLabel="First Responder" sceneMemberID="firstResponder"/>

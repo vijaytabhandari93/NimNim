@@ -9,8 +9,13 @@
 import UIKit
 
 class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginWithPasswordTableViewCellDelegate, LoginViaOTPTableViewCellDelegate, SignUpTableViewCellDelegate {
+    
+    
     //MARK: IBOutlets
+    
     @IBOutlet weak var loginSignUpTableView: UITableView!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signUpButton: UIButton!
     
     enum LoginSignupStates {
         case loginWithPassword
@@ -19,7 +24,19 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     //MARK: Constants and Variables
-    var currentScreenState:LoginSignupStates = .loginWithPassword
+    var currentScreenState:LoginSignupStates = .signup {
+        didSet {
+            resetLoginSignupButtons()
+            switch currentScreenState {
+            case .loginWithPassword:
+                activateLoginButton()
+            case .loginWithOTP:
+                activateLoginButton()
+            case .signup:
+                activateSignUpButton()
+            }
+        }
+    }
     
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
@@ -32,6 +49,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     
     //MARK: Setup UI
     func setupUI() {
+        currentScreenState = .signup
     }
     
     func setupTableView() {
@@ -54,6 +72,26 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         
         let loginViaOTPCellNib = UINib(nibName: "LoginViaOTPTableViewCell", bundle: nil)
         loginSignUpTableView.register(loginViaOTPCellNib, forCellReuseIdentifier: "LoginViaOTPTableViewCell")
+    }
+    
+    func activateLoginButton() {
+        //select login button
+        loginButton.titleLabel?.font = Fonts.semiBold16
+        loginButton.setTitleColor(Colors.nimnimGreen, for: .normal)
+    }
+    
+    func activateSignUpButton() {
+        //select signup button
+        signUpButton.titleLabel?.font = Fonts.semiBold16
+        signUpButton.setTitleColor(Colors.nimnimGreen, for: .normal)
+    }
+    
+    func resetLoginSignupButtons() {
+        //reset both buttons
+        loginButton.titleLabel?.font = Fonts.regularFont12
+        signUpButton.titleLabel?.font = Fonts.regularFont12
+        loginButton.setTitleColor(Colors.nimnimGrey, for: .normal)
+        signUpButton.setTitleColor(Colors.nimnimGrey, for: .normal)
     }
     
     //MARK: IBActions
@@ -124,5 +162,9 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     func loginTappedInSignUpTableViewCell() {
         currentScreenState = .loginWithPassword
         refreshTable()
+    }
+    
+    func signUpTappedInSignUpTableViewCell() {
+        //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
     }
 }

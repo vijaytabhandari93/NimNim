@@ -11,6 +11,7 @@
 		AC092FCA232F5AFB00FE1B77 /* NavDrawer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC092FC9232F5AFB00FE1B77 /* NavDrawer.storyboard */; };
 		AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */; };
 		AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */; };
+		AC11D1D42336314800F1DBCB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11D1D32336314800F1DBCB /* Colors.swift */; };
 		AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */; };
 		AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC793F16232CDBB9009E61A1 /* Preferences.storyboard */; };
 		AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */; };
@@ -55,6 +56,7 @@
 		AC092FC9232F5AFB00FE1B77 /* NavDrawer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavDrawer.storyboard; sourceTree = "<group>"; };
 		AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDrawerViewController.swift; sourceTree = "<group>"; };
 		AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDrawerTableViewCell.swift; sourceTree = "<group>"; };
+		AC11D1D32336314800F1DBCB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		AC793F16232CDBB9009E61A1 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignup.storyboard; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 			children = (
 				ACBB8176232D1F57003DCF77 /* Extensions.swift */,
 				ACF0205E232E425F007559E8 /* Fonts.swift */,
+				AC11D1D32336314800F1DBCB /* Colors.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -400,6 +403,7 @@
 				AC8CDE31232540DD00CDFB93 /* LoginSignUpViewController.swift in Sources */,
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
 				AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */,
+				AC11D1D42336314800F1DBCB /* Colors.swift in Sources */,
 				ACF0205F232E425F007559E8 /* Fonts.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
 				ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 
 protocol SignUpTableViewCellDelegate:class {
     func loginTappedInSignUpTableViewCell()
+    func signUpTappedInSignUpTableViewCell()
 }
 
 class SignUpTableViewCell: UITableViewCell {
@@ -26,6 +27,7 @@ class SignUpTableViewCell: UITableViewCell {
     @IBAction func showTapped(_ sender: Any) {
     }
     @IBAction func signUpTapped(_ sender: Any) {
+        delegate?.signUpTappedInSignUpTableViewCell()
     }
     @IBAction func logInTapped(_ sender: Any) {
         delegate?.loginTappedInSignUpTableViewCell()
