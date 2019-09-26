@@ -166,5 +166,15 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     
     func signUpTappedInSignUpTableViewCell() {
         //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
+        let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+         let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+           secondViewController?.screenTypeValue = .pickUpDropOff
+        self.navigationController?.pushViewController(secondViewController!, animated: true)
+        
+        
+    
     }
+    
+    
+    
 }

@@ -13,6 +13,7 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
     //MARK: IBOutlets
     @IBOutlet weak var preferencesTableView: UITableView!
     @IBOutlet weak var titleLable: UILabel!
+   
     
     //MARK: Constants and Variables
     var titleArray:[String] = []
@@ -73,14 +74,26 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
     
     //MARK: IBActions
     @IBAction func skipTapped(_ sender: Any) {
+        let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+        let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+        secondViewController?.screenTypeValue = .descriptionOfUser
+        self.navigationController?.pushViewController(secondViewController!, animated: true)
+        
     }
     
     @IBAction func nextTapped(_ sender: Any) {
+        let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+        let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+        secondViewController?.screenTypeValue = .descriptionOfUser
+        self.navigationController?.pushViewController(secondViewController!, animated: true)
+        
     }
     
     //MARK: Tableview delegate and datasource methods
+ 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+    if screenTypeValue == .pickUpDropOff { return 3}
+    else {return 5}
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
