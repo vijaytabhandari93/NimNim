@@ -24,7 +24,8 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocationList()
-        
+        topShadowView.addBottomShadowToView()
+        bottomShadowView.addAllCornersShadowToView()
     }
     
     func setupLocationList()

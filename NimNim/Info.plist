@@ -42,6 +42,15 @@
 		<string>Montserrat-SemiBoldItalic.ttf</string>
 		<string>Montserrat-Thin.ttf</string>
 		<string>Montserrat-ThinItalic.ttf</string>
+		<string>Proxima Nova Alt Bold.otf</string>
+		<string>Proxima Nova Alt Light.otf</string>
+        <string>Proxima Nova Alt Thin.otf</string>
+        <string>Proxima Nova Alt Black.otf</string>
+        <string>Proxima Nova Bold.otf</string>
+        <string>Proxima Nova Extrabold.otf</string>
+        <string>Proxima Nova Thin.otf</string>
+        <string>Proxima Nova Regular.otf</string>
+		<string></string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>

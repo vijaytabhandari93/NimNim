@@ -11,32 +11,75 @@ import UIKit
 
 extension UIViewController {
     func applyNimNimGradient() {
-        let color1 = UIColor(red: 18/255, green: 64/255, blue: 214/255, alpha: 1).cgColor
-        let color2 = UIColor(red: 92/255, green: 122/255, blue: 220/255, alpha: 1).cgColor
+        let color1 = UIColor(red: 4/255, green: 113/255, blue: 166/255, alpha: 1).cgColor
         let color3 = UIColor(red: 124/255, green: 216/255, blue: 198/255, alpha: 1).cgColor
-        let colors = [color1,color2,color3]
-        let positions:[NSNumber] = [0.0,0.3,1.0]
+        let colors = [color1,color3]
+        let positions:[NSNumber] = [0.0,1.0]
         let gradient = CAGradientLayer()
         gradient.colors = colors
         gradient.locations = positions
         gradient.frame = view.bounds
-        gradient.startPoint = CGPoint(x: 0.2, y: 0.1)
-        gradient.endPoint = CGPoint(x: 0.8, y: 0.8)
+        gradient.startPoint = CGPoint(x: 0.5, y: 0)
+        gradient.endPoint = CGPoint(x: 0.5, y: 1)
         view.layer.insertSublayer(gradient, at: 0)
     }
     
     func applyHorizontalNimNimGradient() {
-        let color1 = UIColor(red: 18/255, green: 64/255, blue: 214/255, alpha: 1).cgColor
-        let color2 = UIColor(red: 92/255, green: 122/255, blue: 220/255, alpha: 1).cgColor
+        let color1 = UIColor(red: 4/255, green: 113/255, blue: 166/255, alpha: 1).cgColor
         let color3 = UIColor(red: 124/255, green: 216/255, blue: 198/255, alpha: 1).cgColor
-        let colors = [color1,color2,color3]
-        let positions:[NSNumber] = [0.0,0.5,1.0]
+        let colors = [color1,color3]
+        let positions:[NSNumber] = [0.0,1.0]
         let gradient = CAGradientLayer()
         gradient.colors = colors
         gradient.locations = positions
         gradient.frame = view.bounds
-        gradient.startPoint = CGPoint(x: 0, y: 0)
-        gradient.endPoint = CGPoint(x: 0.8, y: 0)
+        gradient.startPoint = CGPoint(x: 0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 0.5)
         view.layer.insertSublayer(gradient, at: 0)
+    }
+}
+
+extension UIView {
+    func addBottomShadowToView() {
+        let shadowPath = UIBezierPath()
+        shadowPath.move(to: CGPoint(x: self.bounds.origin.x, y: self.frame.size.height))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.origin.x, y: self.frame.size.height + 12))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height + 12))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height))
+        shadowPath.close()
+        self.layer.shadowColor = UIColor(red: 58/255, green: 76/255, blue: 130/255, alpha: 0.24).cgColor
+        self.layer.shadowOpacity = 1
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = shadowPath.cgPath
+        self.layer.shadowRadius = 5
+    }
+
+    func addTopShadowToView() {
+        let shadowPath = UIBezierPath()
+        shadowPath.move(to: CGPoint(x: self.bounds.origin.x, y: self.frame.size.height))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.origin.x, y: -8))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: -8))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height))
+        shadowPath.close()
+        self.layer.shadowColor = UIColor(red: 58/255, green: 76/255, blue: 130/255, alpha: 0.24).cgColor
+        self.layer.shadowColor = UIColor(red: 58/255, green: 76/255, blue: 130/255, alpha: 0.24).cgColor
+        self.layer.shadowOpacity = 1
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = shadowPath.cgPath
+        self.layer.shadowRadius = 5
+    }
+    
+    func addAllCornersShadowToView() {
+        self.layer.shadowColor = UIColor(red: 58/255, green: 76/255, blue: 130/255, alpha: 0.24).cgColor
+        let shadowSize : CGFloat = 5.0
+        let shadowPath = UIBezierPath(rect: CGRect(x: -shadowSize / 2,
+                                                   y: -shadowSize / 2,
+                                                   width: self.bounds.size.width + shadowSize,
+                                                   height: self.bounds.size.height + shadowSize))
+        self.layer.shadowOpacity = 1
+        self.layer.masksToBounds = false
+        self.layer.shadowOffset = CGSize(width: 0, height: 0)
+        self.layer.shadowRadius = 5
+        self.layer.shadowPath = shadowPath.cgPath
     }
 }

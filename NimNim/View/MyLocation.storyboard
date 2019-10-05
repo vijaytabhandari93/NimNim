@@ -142,20 +142,6 @@
                                     <constraint firstItem="uVU-EL-HSr" firstAttribute="top" secondItem="aow-76-T1H" secondAttribute="top" id="qmx-2H-2gx"/>
                                     <constraint firstAttribute="bottom" secondItem="uVU-EL-HSr" secondAttribute="bottom" id="vXA-zn-duw"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                        <real key="value" value="0.80000000000000004"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                        <size key="value" width="1" height="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jvn-ZA-B4O">
                                 <rect key="frame" x="12" y="525" width="351" height="130"/>
@@ -410,7 +396,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ON-AB-cm4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2356" y="-626"/>
+            <point key="canvasLocation" x="2164" y="-645"/>
         </scene>
     </scenes>
     <resources>

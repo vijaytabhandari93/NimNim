@@ -13,6 +13,24 @@
 		AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */; };
 		AC0BD3E2233B6BC7000746D1 /* NonServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0BD3E1233B6BC7000746D1 /* NonServiceable.swift */; };
 		AC11D1D42336314800F1DBCB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11D1D32336314800F1DBCB /* Colors.swift */; };
+		AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */; };
+		AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */; };
+		AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */; };
+		AC1FFDA323465DEF00930496 /* ServicesHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA123465DEF00930496 /* ServicesHeaderCollectionReusableView.xib */; };
+		AC1FFDAC2346F1D100930496 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA42346F1D000930496 /* ProximaNova-Regular.otf */; };
+		AC1FFDAD2346F1D100930496 /* Proxima Nova Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA52346F1D100930496 /* Proxima Nova Black.otf */; };
+		AC1FFDAE2346F1D100930496 /* Proxima Nova Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA62346F1D100930496 /* Proxima Nova Bold.otf */; };
+		AC1FFDAF2346F1D100930496 /* Proxima Nova Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA72346F1D100930496 /* Proxima Nova Thin.otf */; };
+		AC1FFDB02346F1D100930496 /* Proxima Nova Alt Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA82346F1D100930496 /* Proxima Nova Alt Light.otf */; };
+		AC1FFDB12346F1D100930496 /* Proxima Nova Alt Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA92346F1D100930496 /* Proxima Nova Alt Thin.otf */; };
+		AC1FFDB22346F1D100930496 /* Proxima Nova Extrabold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDAA2346F1D100930496 /* Proxima Nova Extrabold.otf */; };
+		AC1FFDB32346F1D100930496 /* Proxima Nova Alt Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDAB2346F1D100930496 /* Proxima Nova Alt Bold.otf */; };
+		AC1FFDB523474F0700930496 /* Services.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDB423474F0700930496 /* Services.storyboard */; };
+		AC1FFDB723474FC700930496 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FFDB623474FC700930496 /* ServicesViewController.swift */; };
+		AC1FFDBE234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FFDBC234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift */; };
+		AC1FFDBF234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDBD234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.xib */; };
+		AC1FFDC22347773200930496 /* PreferencesCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FFDC02347773200930496 /* PreferencesCollectionReusableView.swift */; };
+		AC1FFDC32347773200930496 /* PreferencesCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDC12347773200930496 /* PreferencesCollectionReusableView.xib */; };
 		AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */; };
 		AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC793F16232CDBB9009E61A1 /* Preferences.storyboard */; };
 		AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */; };
@@ -26,6 +44,14 @@
 		AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9BCAC52324DF90009818C3 /* AppDelegate.swift */; };
 		AC9BCACD2324DF90009818C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9BCACC2324DF90009818C3 /* Assets.xcassets */; };
 		AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9BCACE2324DF90009818C3 /* LaunchScreen.storyboard */; };
+		ACB37263234631C900046FB3 /* ServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB37261234631C900046FB3 /* ServiceCollectionViewCell.swift */; };
+		ACB37264234631C900046FB3 /* ServiceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB37262234631C900046FB3 /* ServiceCollectionViewCell.xib */; };
+		ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB37265234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift */; };
+		ACB37268234631EC00046FB3 /* ServicesBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB37266234631EC00046FB3 /* ServicesBaseCollectionViewCell.xib */; };
+		ACBAAF61233C6D7300E1E4A6 /* BannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBAAF5F233C6D7300E1E4A6 /* BannerCollectionViewCell.swift */; };
+		ACBAAF62233C6D7300E1E4A6 /* BannerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBAAF60233C6D7300E1E4A6 /* BannerCollectionViewCell.xib */; };
+		ACBAAF68233CB07C00E1E4A6 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACBAAF67233CB07C00E1E4A6 /* Home.storyboard */; };
+		ACBAAF6A233D0CC800E1E4A6 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBAAF69233D0CC800E1E4A6 /* HomeViewController.swift */; };
 		ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB8171232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift */; };
 		ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB8173232D09AD003DCF77 /* PreferencesTableViewCell.swift */; };
 		ACBB8177232D1F57003DCF77 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBB8176232D1F57003DCF77 /* Extensions.swift */; };
@@ -62,6 +88,24 @@
 		AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDrawerTableViewCell.swift; sourceTree = "<group>"; };
 		AC0BD3E1233B6BC7000746D1 /* NonServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonServiceable.swift; sourceTree = "<group>"; };
 		AC11D1D32336314800F1DBCB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersBaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannersBaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		AC1FFDA123465DEF00930496 /* ServicesHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		AC1FFDA42346F1D000930496 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
+		AC1FFDA52346F1D100930496 /* Proxima Nova Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Black.otf"; sourceTree = "<group>"; };
+		AC1FFDA62346F1D100930496 /* Proxima Nova Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Bold.otf"; sourceTree = "<group>"; };
+		AC1FFDA72346F1D100930496 /* Proxima Nova Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Thin.otf"; sourceTree = "<group>"; };
+		AC1FFDA82346F1D100930496 /* Proxima Nova Alt Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Light.otf"; sourceTree = "<group>"; };
+		AC1FFDA92346F1D100930496 /* Proxima Nova Alt Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Thin.otf"; sourceTree = "<group>"; };
+		AC1FFDAA2346F1D100930496 /* Proxima Nova Extrabold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Extrabold.otf"; sourceTree = "<group>"; };
+		AC1FFDAB2346F1D100930496 /* Proxima Nova Alt Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Proxima Nova Alt Bold.otf"; sourceTree = "<group>"; };
+		AC1FFDB423474F0700930496 /* Services.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Services.storyboard; sourceTree = "<group>"; };
+		AC1FFDB623474FC700930496 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		AC1FFDBC234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashAndFoldPreferencesCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC1FFDBD234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WashAndFoldPreferencesCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC1FFDC02347773200930496 /* PreferencesCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesCollectionReusableView.swift; sourceTree = "<group>"; };
+		AC1FFDC12347773200930496 /* PreferencesCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesCollectionReusableView.xib; sourceTree = "<group>"; };
 		AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		AC793F16232CDBB9009E61A1 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignup.storyboard; sourceTree = "<group>"; };
@@ -77,6 +121,14 @@
 		AC9BCACC2324DF90009818C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC9BCACF2324DF90009818C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC9BCAD12324DF90009818C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACB37261234631C900046FB3 /* ServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACB37262234631C900046FB3 /* ServiceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACB37265234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesBaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACB37266234631EC00046FB3 /* ServicesBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesBaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACBAAF5F233C6D7300E1E4A6 /* BannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACBAAF60233C6D7300E1E4A6 /* BannerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACBAAF67233CB07C00E1E4A6 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		ACBAAF69233D0CC800E1E4A6 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		ACBB8171232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpDropOffPreferencesViewController.swift; sourceTree = "<group>"; };
 		ACBB8173232D09AD003DCF77 /* PreferencesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesTableViewCell.swift; sourceTree = "<group>"; };
 		ACBB8176232D1F57003DCF77 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -127,6 +179,34 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		AC1FFD9F23465DBA00930496 /* CollectionReusableView */ = {
+			isa = PBXGroup;
+			children = (
+				AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */,
+				AC1FFDA123465DEF00930496 /* ServicesHeaderCollectionReusableView.xib */,
+				AC1FFDC02347773200930496 /* PreferencesCollectionReusableView.swift */,
+				AC1FFDC12347773200930496 /* PreferencesCollectionReusableView.xib */,
+			);
+			path = CollectionReusableView;
+			sourceTree = "<group>";
+		};
+		AC5CF45C233C6D0600FF780A /* CollectionViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				AC1FFDBC234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift */,
+				AC1FFDBD234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.xib */,
+				ACBAAF5F233C6D7300E1E4A6 /* BannerCollectionViewCell.swift */,
+				ACBAAF60233C6D7300E1E4A6 /* BannerCollectionViewCell.xib */,
+				ACB37261234631C900046FB3 /* ServiceCollectionViewCell.swift */,
+				ACB37262234631C900046FB3 /* ServiceCollectionViewCell.xib */,
+				AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */,
+				AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */,
+				ACB37265234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift */,
+				ACB37266234631EC00046FB3 /* ServicesBaseCollectionViewCell.xib */,
+			);
+			path = CollectionViewCells;
+			sourceTree = "<group>";
+		};
 		AC621ECB2326BCB400AFD052 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,10 +226,12 @@
 			isa = PBXGroup;
 			children = (
 				AC9BCACE2324DF90009818C3 /* LaunchScreen.storyboard */,
+				AC1FFDB423474F0700930496 /* Services.storyboard */,
 				AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */,
 				AC793F16232CDBB9009E61A1 /* Preferences.storyboard */,
 				AC092FC9232F5AFB00FE1B77 /* NavDrawer.storyboard */,
 				ACFBA0522338E29A00950079 /* MyLocation.storyboard */,
+				ACBAAF67233CB07C00E1E4A6 /* Home.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -158,10 +240,12 @@
 			isa = PBXGroup;
 			children = (
 				AC8CDE30232540DD00CDFB93 /* LoginSignUpViewController.swift */,
+				AC1FFDB623474FC700930496 /* ServicesViewController.swift */,
 				ACBB8171232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift */,
 				ACFBA0502338E26A00950079 /* MyLocationViewController.swift */,
 				AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */,
 				AC0BD3E1233B6BC7000746D1 /* NonServiceable.swift */,
+				ACBAAF69233D0CC800E1E4A6 /* HomeViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -203,6 +287,8 @@
 		AC9BCAC42324DF90009818C3 /* NimNim */ = {
 			isa = PBXGroup;
 			children = (
+				AC1FFD9F23465DBA00930496 /* CollectionReusableView */,
+				AC5CF45C233C6D0600FF780A /* CollectionViewCells */,
 				ACBB8178232E3F86003DCF77 /* Fonts */,
 				ACBB8175232D1F3D003DCF77 /* Utils */,
 				AC621ECB2326BCB400AFD052 /* Managers */,
@@ -248,6 +334,14 @@
 				ACBB8179232E3FAB003DCF77 /* Montserrat-SemiBoldItalic.ttf */,
 				ACBB8188232E3FAB003DCF77 /* Montserrat-Thin.ttf */,
 				ACBB817D232E3FAB003DCF77 /* Montserrat-ThinItalic.ttf */,
+				AC1FFDAB2346F1D100930496 /* Proxima Nova Alt Bold.otf */,
+				AC1FFDA82346F1D100930496 /* Proxima Nova Alt Light.otf */,
+				AC1FFDA92346F1D100930496 /* Proxima Nova Alt Thin.otf */,
+				AC1FFDA52346F1D100930496 /* Proxima Nova Black.otf */,
+				AC1FFDA62346F1D100930496 /* Proxima Nova Bold.otf */,
+				AC1FFDAA2346F1D100930496 /* Proxima Nova Extrabold.otf */,
+				AC1FFDA72346F1D100930496 /* Proxima Nova Thin.otf */,
+				AC1FFDA42346F1D000930496 /* ProximaNova-Regular.otf */,
 				ACBB8189232E3FAB003DCF77 /* OFL.txt */,
 			);
 			path = Fonts;
@@ -321,31 +415,48 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC1FFDA323465DEF00930496 /* ServicesHeaderCollectionReusableView.xib in Resources */,
+				AC1FFDAC2346F1D100930496 /* ProximaNova-Regular.otf in Resources */,
 				ACBB8193232E3FAC003DCF77 /* Montserrat-Light.ttf in Resources */,
+				AC1FFDAE2346F1D100930496 /* Proxima Nova Bold.otf in Resources */,
 				ACBB8195232E3FAC003DCF77 /* Montserrat-ExtraLight.ttf in Resources */,
 				AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */,
+				ACBAAF68233CB07C00E1E4A6 /* Home.storyboard in Resources */,
 				ACFBA0532338E29A00950079 /* MyLocation.storyboard in Resources */,
+				AC1FFDB22346F1D100930496 /* Proxima Nova Extrabold.otf in Resources */,
 				AC092FCA232F5AFB00FE1B77 /* NavDrawer.storyboard in Resources */,
+				ACB37264234631C900046FB3 /* ServiceCollectionViewCell.xib in Resources */,
 				ACBB819A232E3FAC003DCF77 /* Montserrat-BlackItalic.ttf in Resources */,
+				AC1FFDB523474F0700930496 /* Services.storyboard in Resources */,
 				ACBB8197232E3FAC003DCF77 /* Montserrat-RegularItalic.ttf in Resources */,
 				AC8CDE3D23264F4500CDFB93 /* SignUpTableViewCell.xib in Resources */,
+				AC1FFDAF2346F1D100930496 /* Proxima Nova Thin.otf in Resources */,
 				ACBB819C232E3FAC003DCF77 /* OFL.txt in Resources */,
+				AC1FFDBF234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.xib in Resources */,
 				ACBB8191232E3FAC003DCF77 /* Montserrat-SemiBold.ttf in Resources */,
+				AC1FFDAD2346F1D100930496 /* Proxima Nova Black.otf in Resources */,
 				ACBB8198232E3FAC003DCF77 /* Montserrat-Medium.ttf in Resources */,
+				AC1FFDC32347773200930496 /* PreferencesCollectionReusableView.xib in Resources */,
 				ACBB8190232E3FAB003DCF77 /* Montserrat-ThinItalic.ttf in Resources */,
 				ACBB8199232E3FAC003DCF77 /* Montserrat-LightItalic.ttf in Resources */,
 				ACBB818C232E3FAB003DCF77 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				ACBAAF62233C6D7300E1E4A6 /* BannerCollectionViewCell.xib in Resources */,
 				AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */,
 				AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */,
+				AC1FFDB12346F1D100930496 /* Proxima Nova Alt Thin.otf in Resources */,
 				ACBB8194232E3FAC003DCF77 /* Montserrat-BoldItalic.ttf in Resources */,
 				ACBB819D232E3FAC003DCF77 /* Montserrat-MediumItalic.ttf in Resources */,
 				AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */,
 				ACBB819E232E3FAC003DCF77 /* Montserrat-Black.ttf in Resources */,
+				AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */,
+				AC1FFDB02346F1D100930496 /* Proxima Nova Alt Light.otf in Resources */,
 				AC9BCACD2324DF90009818C3 /* Assets.xcassets in Resources */,
 				ACBB819B232E3FAC003DCF77 /* Montserrat-Thin.ttf in Resources */,
+				ACB37268234631EC00046FB3 /* ServicesBaseCollectionViewCell.xib in Resources */,
 				AC8CDE392326449200CDFB93 /* LoginViaOTPTableViewCell.xib in Resources */,
 				ACBB818F232E3FAB003DCF77 /* Montserrat-ExtraBold.ttf in Resources */,
 				ACBB8196232E3FAC003DCF77 /* Montserrat-Bold.ttf in Resources */,
+				AC1FFDB32346F1D100930496 /* Proxima Nova Alt Bold.otf in Resources */,
 				ACBB8192232E3FAC003DCF77 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 				ACBB818E232E3FAB003DCF77 /* Montserrat-Regular.ttf in Resources */,
 				ACBB818D232E3FAB003DCF77 /* Montserrat-ExtraLightItalic.ttf in Resources */,
@@ -409,21 +520,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC8CDE382326449200CDFB93 /* LoginViaOTPTableViewCell.swift in Sources */,
+				AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */,
+				AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */,
 				ACBB8177232D1F57003DCF77 /* Extensions.swift in Sources */,
+				ACBAAF6A233D0CC800E1E4A6 /* HomeViewController.swift in Sources */,
+				AC1FFDBE234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift in Sources */,
 				AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */,
 				AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */,
 				AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */,
 				AC8CDE31232540DD00CDFB93 /* LoginSignUpViewController.swift in Sources */,
 				ACBBE49A233A0FE0003C67F7 /* LocationcCell.swift in Sources */,
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
+				AC1FFDB723474FC700930496 /* ServicesViewController.swift in Sources */,
+				ACB37263234631C900046FB3 /* ServiceCollectionViewCell.swift in Sources */,
 				AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */,
 				AC11D1D42336314800F1DBCB /* Colors.swift in Sources */,
 				ACFBA0512338E26A00950079 /* MyLocationViewController.swift in Sources */,
+				AC1FFDC22347773200930496 /* PreferencesCollectionReusableView.swift in Sources */,
 				ACF0205F232E425F007559E8 /* Fonts.swift in Sources */,
+				ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
 				ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */,
 				AC8CDE3C23264F4500CDFB93 /* SignUpTableViewCell.swift in Sources */,
 				AC0BD3E2233B6BC7000746D1 /* NonServiceable.swift in Sources */,
+				ACBAAF61233C6D7300E1E4A6 /* BannerCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

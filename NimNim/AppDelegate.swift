@@ -26,9 +26,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         let locationStoryboard = UIStoryboard(name: "MyLocation", bundle: nil)
         let myLocationViewController = locationStoryboard.instantiateViewController(withIdentifier: "MyLocationViewController")
+        
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
 
+        let servicesStoryboard = UIStoryboard(name: "Services", bundle: nil)
+        let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "ServicesViewController")
+        
         //This will be the conditional part in future...
-        navigationController.viewControllers = [myLocationViewController]
+        navigationController.viewControllers = [servicesViewController]
 
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
