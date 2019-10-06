@@ -19,6 +19,9 @@
         <array key="Montserrat-SemiBold.ttf">
             <string>Montserrat-SemiBold</string>
         </array>
+        <array key="ProximaNova-Regular.otf">
+            <string>ProximaNova-Regular</string>
+        </array>
     </customFonts>
     <scenes>
         <!--My Location View Controller-->
@@ -33,7 +36,7 @@
                                 <rect key="frame" x="0.0" y="76" width="375" height="591"/>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationcCell" rowHeight="143" id="tpI-OV-xw7" customClass="LocationcCell" customModule="NimNim" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationcCell" rowHeight="143" id="tpI-OV-xw7" customClass="LocationcCell" customModule="NimNim" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="143"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tpI-OV-xw7" id="5Ur-70-B8t">
@@ -41,7 +44,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fYA-CJ-Y6E">
-                                                    <rect key="frame" x="20" y="13" width="242" height="110"/>
+                                                    <rect key="frame" x="20" y="20" width="242" height="103"/>
                                                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -60,7 +63,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUp-V8-Nvn">
-                                                    <rect key="frame" x="275" y="20" width="80" height="103"/>
+                                                    <rect key="frame" x="275" y="60.5" width="80" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="80" id="o2J-kG-BHj"/>
                                                     </constraints>
@@ -71,14 +74,14 @@
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="fYA-CJ-Y6E" secondAttribute="bottom" constant="20" id="2Vw-xU-6fX"/>
                                                 <constraint firstItem="wfN-kf-8jE" firstAttribute="leading" secondItem="5Ur-70-B8t" secondAttribute="leading" constant="-16" id="60k-CR-2gU"/>
                                                 <constraint firstAttribute="trailing" secondItem="gUp-V8-Nvn" secondAttribute="trailing" constant="20" id="D7q-OT-GJl"/>
-                                                <constraint firstAttribute="bottom" secondItem="gUp-V8-Nvn" secondAttribute="bottom" constant="20" id="Gac-J1-wwE"/>
+                                                <constraint firstItem="gUp-V8-Nvn" firstAttribute="centerY" secondItem="5Ur-70-B8t" secondAttribute="centerY" id="Nha-Iy-o0d"/>
                                                 <constraint firstItem="gUp-V8-Nvn" firstAttribute="leading" secondItem="fYA-CJ-Y6E" secondAttribute="trailing" constant="13" id="bD5-hi-Z4t"/>
                                                 <constraint firstItem="wfN-kf-8jE" firstAttribute="centerY" secondItem="5Ur-70-B8t" secondAttribute="centerY" id="dbY-mT-SIA"/>
-                                                <constraint firstItem="gUp-V8-Nvn" firstAttribute="top" secondItem="5Ur-70-B8t" secondAttribute="top" constant="20" id="gjS-Lb-flF"/>
-                                                <constraint firstItem="fYA-CJ-Y6E" firstAttribute="top" secondItem="5Ur-70-B8t" secondAttribute="top" constant="13" id="nRl-Pk-1IR"/>
-                                                <constraint firstAttribute="bottom" secondItem="fYA-CJ-Y6E" secondAttribute="bottom" constant="20" id="pCR-lc-SSs"/>
+                                                <constraint firstItem="fYA-CJ-Y6E" firstAttribute="centerY" secondItem="5Ur-70-B8t" secondAttribute="centerY" id="dej-jj-rzN"/>
+                                                <constraint firstItem="fYA-CJ-Y6E" firstAttribute="top" secondItem="5Ur-70-B8t" secondAttribute="top" constant="20" id="ehS-hn-P3h"/>
                                                 <constraint firstItem="fYA-CJ-Y6E" firstAttribute="leading" secondItem="5Ur-70-B8t" secondAttribute="leading" constant="20" id="pdT-ld-TMa"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -258,7 +261,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Sk-fw-sqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1440.8" y="-645.42728635682158"/>
+            <point key="canvasLocation" x="2030" y="-902"/>
         </scene>
         <!--Non Serviceable-->
         <scene sceneID="IzY-4U-f2u">
@@ -304,9 +307,9 @@
                                 <rect key="frame" x="0.0" y="76" width="375" height="543"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="R4C-Z8-1ai">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad" translatesAutoresizingMaskIntoConstraints="NO" id="R4C-Z8-1ai">
                                 <rect key="frame" x="117.5" y="154" width="140" height="140"/>
-                                <color key="backgroundColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="140" id="EYp-XN-DdQ"/>
                                     <constraint firstAttribute="width" constant="140" id="Xss-Y1-a7K"/>
@@ -317,8 +320,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="gde-36-Ws1"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
+                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUj-Bu-uHd">
@@ -342,7 +345,7 @@
                                                 <color key="backgroundColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                                 <state key="normal" title="Notify Me">
-                                                    <color key="titleColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="notifyMeTapped:" destination="w5T-lL-eGy" eventType="touchUpInside" id="e2w-lf-v7t"/>
@@ -361,12 +364,12 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will soon be launching our services in your area." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMI-7C-GwF">
-                                <rect key="frame" x="40" y="399" width="295" height="65"/>
+                                <rect key="frame" x="40" y="409" width="295" height="65"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="Mdc-Vu-fp2"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
-                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="18"/>
+                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -376,7 +379,7 @@
                             <constraint firstItem="K4e-r4-Ulm" firstAttribute="top" secondItem="R4C-Z8-1ai" secondAttribute="bottom" constant="30" id="7Dw-Bl-XsY"/>
                             <constraint firstItem="GLZ-SU-jNo" firstAttribute="leading" secondItem="OGe-No-5eK" secondAttribute="leading" id="9Ni-qL-Xjx"/>
                             <constraint firstItem="kUj-Bu-uHd" firstAttribute="top" secondItem="b0I-X6-oUr" secondAttribute="bottom" id="Nhg-90-MAg"/>
-                            <constraint firstItem="LMI-7C-GwF" firstAttribute="top" secondItem="K4e-r4-Ulm" secondAttribute="bottom" constant="10" id="Nxs-2z-c9e"/>
+                            <constraint firstItem="LMI-7C-GwF" firstAttribute="top" secondItem="K4e-r4-Ulm" secondAttribute="bottom" constant="20" id="Nxs-2z-c9e"/>
                             <constraint firstItem="b0I-X6-oUr" firstAttribute="leading" secondItem="OGe-No-5eK" secondAttribute="leading" id="RcG-Su-Hj5"/>
                             <constraint firstItem="LMI-7C-GwF" firstAttribute="leading" secondItem="OGe-No-5eK" secondAttribute="leading" constant="40" id="VId-8O-kME"/>
                             <constraint firstItem="kUj-Bu-uHd" firstAttribute="leading" secondItem="OGe-No-5eK" secondAttribute="leading" id="VZk-Qh-cBn"/>
@@ -393,15 +396,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="OGe-No-5eK"/>
                     </view>
+                    <connections>
+                        <outlet property="shadowView" destination="kUj-Bu-uHd" id="LV3-D0-90f"/>
+                        <outlet property="topNavigationView" destination="GLZ-SU-jNo" id="Rff-l2-b5m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ON-AB-cm4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2164" y="-645"/>
+            <point key="canvasLocation" x="2465" y="-357"/>
         </scene>
     </scenes>
     <resources>
         <image name="gpsFixedIndicator" width="20" height="20"/>
         <image name="locationLg" width="15" height="18"/>
         <image name="previous" width="9" height="15"/>
+        <image name="sad" width="144" height="144"/>
     </resources>
 </document>

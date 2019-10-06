@@ -10,6 +10,11 @@ import UIKit
 
 class NonServiceable: UIViewController {
     
+    //MARK: IBOutlets
+    @IBOutlet weak var topNavigationView: UIView!
+    @IBOutlet weak var shadowView: UIView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -17,6 +22,16 @@ class NonServiceable: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        shadowView.addTopShadowToView()
+        topNavigationView.addBottomShadowToView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     //MARK: IBActions

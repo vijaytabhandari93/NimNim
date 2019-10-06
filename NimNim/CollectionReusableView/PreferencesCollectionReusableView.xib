@@ -21,24 +21,29 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PreferencesCollectionReusableView" id="U6b-Vx-4bR" customClass="PreferencesCollectionReusableView" customModule="NimNim" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="92"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiO-3R-6hi">
-                    <rect key="frame" x="16" y="0.0" width="85" height="18"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiO-3R-6hi">
+                    <rect key="frame" x="28" y="30" width="85" height="18"/>
                     <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                     <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You can pick your preferences from below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSJ-Fs-VRS">
-                    <rect key="frame" x="16" y="23" width="253" height="15"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You can pick your preferences from below" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSJ-Fs-VRS">
+                    <rect key="frame" x="28" y="52.5" width="264" height="15"/>
                     <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                     <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.44" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
+            <constraints>
+                <constraint firstItem="SSJ-Fs-VRS" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="28" id="0vr-uv-fWf"/>
+                <constraint firstItem="HiO-3R-6hi" firstAttribute="top" secondItem="U6b-Vx-4bR" secondAttribute="top" constant="30" id="3HL-Cg-Eqp"/>
+                <constraint firstItem="SSJ-Fs-VRS" firstAttribute="top" secondItem="HiO-3R-6hi" secondAttribute="bottom" constant="4.5" id="EJy-jv-20w"/>
+                <constraint firstItem="HiO-3R-6hi" firstAttribute="leading" secondItem="U6b-Vx-4bR" secondAttribute="leading" constant="28" id="buL-Je-XZe"/>
+                <constraint firstAttribute="trailing" secondItem="SSJ-Fs-VRS" secondAttribute="trailing" constant="28" id="plo-4m-JTh"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="VXr-Tz-HHm"/>
         </collectionReusableView>
     </objects>

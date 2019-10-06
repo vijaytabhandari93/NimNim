@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "ServicesViewController")
         
         //This will be the conditional part in future...
-        navigationController.viewControllers = [servicesViewController]
+        navigationController.viewControllers = [myLocationViewController]
 
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()

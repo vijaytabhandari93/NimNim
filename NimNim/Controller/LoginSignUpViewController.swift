@@ -45,11 +45,27 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         // Do any additional setup after loading the view.
         setupUI()
         setupTableView()
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
+    
     
     //MARK: Setup UI
     func setupUI() {
         currentScreenState = .signup
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            self.view.frame.origin.y = -keyboardSize.height
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if self.view.frame.origin.y != 0 {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func setupTableView() {
@@ -134,8 +150,16 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         case .loginWithOTP:
             return 343
         case .signup:
-            return 484
+            return 551
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        view.endEditing(true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
     
     //MARK: TableView Cell Delegates

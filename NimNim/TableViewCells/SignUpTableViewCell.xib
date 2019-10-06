@@ -20,21 +20,21 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SignUpTableViewCell" rowHeight="484" id="MUr-cb-f5T" customClass="SignUpTableViewCell" customModule="NimNim" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="484"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SignUpTableViewCell" rowHeight="551" id="MUr-cb-f5T" customClass="SignUpTableViewCell" customModule="NimNim" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="551"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MUr-cb-f5T" id="xcH-pp-j9r">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="483.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="550.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Bv-PL-fb7">
                         <rect key="frame" x="0.0" y="29" width="320" height="28"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tN8-gL-413">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tN8-gL-413">
                                 <rect key="frame" x="31" y="0.0" width="258" height="24"/>
                                 <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u3a-dJ-kMn">
                                 <rect key="frame" x="31" y="27" width="258" height="1"/>
@@ -59,11 +59,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIJ-F2-t6f">
                         <rect key="frame" x="0.0" y="96" width="320" height="28"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h8X-Ng-Z1M">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h8X-Ng-Z1M">
                                 <rect key="frame" x="31" y="0.0" width="258" height="24"/>
                                 <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.34000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dee-1R-fFb">
                                 <rect key="frame" x="31" y="27" width="258" height="1"/>
@@ -88,11 +88,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hG-fZ-XAd">
                         <rect key="frame" x="0.0" y="163" width="320" height="28"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K1v-RR-95f">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K1v-RR-95f">
                                 <rect key="frame" x="31" y="0.0" width="258" height="24"/>
                                 <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.34000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0nm-Ls-tIf">
                                 <rect key="frame" x="31" y="27" width="258" height="1"/>
@@ -117,11 +117,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zc1-Te-hFd">
                         <rect key="frame" x="0.0" y="230" width="320" height="28"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JKR-C3-O9d">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JKR-C3-O9d">
                                 <rect key="frame" x="31" y="0.0" width="258" height="24"/>
                                 <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.34000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad" textContentType="tel"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-Ko-AZ3">
                                 <rect key="frame" x="31" y="27" width="258" height="1"/>
@@ -146,11 +146,11 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A0B-bg-JO6">
                         <rect key="frame" x="0.0" y="297" width="320" height="28"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="64Y-na-l1F">
-                                <rect key="frame" x="31" y="0.0" width="214" height="25"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="64Y-na-l1F">
+                                <rect key="frame" x="31" y="0.0" width="214" height="18"/>
                                 <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.34000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6u-ad-swb">
                                 <rect key="frame" x="31" y="27" width="258" height="1"/>
@@ -160,7 +160,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sow-tN-iya">
-                                <rect key="frame" x="255" y="5" width="34" height="15"/>
+                                <rect key="frame" x="255" y="1.5" width="34" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="ga6-eL-T0a"/>
                                     <constraint firstAttribute="height" constant="15" id="sHY-FL-yDU"/>
@@ -206,8 +206,37 @@ have at least 8 characters.</string>
                             <constraint firstItem="BZb-yo-SZ4" firstAttribute="leading" secondItem="jT8-NJ-O0Y" secondAttribute="leading" id="vsV-5M-2bR"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FuR-co-dRf">
+                        <rect key="frame" x="0.0" y="407" width="320" height="28"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="D.O.B(Month &amp; Date)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VCH-wb-fPs">
+                                <rect key="frame" x="31" y="0.0" width="258" height="24"/>
+                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.34000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1s-SE-gQx">
+                                <rect key="frame" x="31" y="27" width="258" height="1"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="TYD-Ue-bMr"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VCH-wb-fPs" firstAttribute="top" secondItem="FuR-co-dRf" secondAttribute="top" id="5Fu-C6-xxm"/>
+                            <constraint firstItem="g1s-SE-gQx" firstAttribute="leading" secondItem="FuR-co-dRf" secondAttribute="leading" constant="31" id="Mfu-V6-raL"/>
+                            <constraint firstAttribute="bottom" secondItem="g1s-SE-gQx" secondAttribute="bottom" id="XZR-at-qnv"/>
+                            <constraint firstItem="VCH-wb-fPs" firstAttribute="leading" secondItem="FuR-co-dRf" secondAttribute="leading" constant="31" id="Z1I-jn-83q"/>
+                            <constraint firstAttribute="height" constant="28" id="cEx-eV-QIp"/>
+                            <constraint firstAttribute="trailing" secondItem="g1s-SE-gQx" secondAttribute="trailing" constant="31" id="dzR-uH-R4E"/>
+                            <constraint firstAttribute="bottom" secondItem="VCH-wb-fPs" secondAttribute="bottom" constant="4" id="hp9-RS-l5K"/>
+                            <constraint firstAttribute="trailing" secondItem="VCH-wb-fPs" secondAttribute="trailing" constant="31" id="s9q-hf-ZDv"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y0z-hk-nqE">
-                        <rect key="frame" x="32" y="385" width="256" height="48"/>
+                        <rect key="frame" x="32" y="452" width="256" height="48"/>
                         <subviews>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gR-sB-Op1">
                                 <rect key="frame" x="0.0" y="0.0" width="256" height="48"/>
@@ -241,7 +270,7 @@ have at least 8 characters.</string>
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M5y-Rg-k91">
-                        <rect key="frame" x="57.5" y="449" width="205" height="15"/>
+                        <rect key="frame" x="57.5" y="516" width="205" height="15"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Already have an Account?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Py-RY-l0u">
                                 <rect key="frame" x="0.0" y="0.0" width="156" height="15"/>
@@ -275,6 +304,7 @@ have at least 8 characters.</string>
                 </subviews>
                 <constraints>
                     <constraint firstItem="5Bv-PL-fb7" firstAttribute="top" secondItem="xcH-pp-j9r" secondAttribute="top" constant="29" id="02K-bN-otw"/>
+                    <constraint firstItem="FuR-co-dRf" firstAttribute="top" secondItem="jT8-NJ-O0Y" secondAttribute="bottom" constant="39" id="2ux-HK-aA9"/>
                     <constraint firstItem="9hG-fZ-XAd" firstAttribute="leading" secondItem="xcH-pp-j9r" secondAttribute="leading" id="3BZ-zA-zcy"/>
                     <constraint firstAttribute="trailing" secondItem="A0B-bg-JO6" secondAttribute="trailing" id="43j-MN-nJQ"/>
                     <constraint firstItem="5Bv-PL-fb7" firstAttribute="leading" secondItem="xcH-pp-j9r" secondAttribute="leading" id="5O8-ih-QEo"/>
@@ -288,10 +318,12 @@ have at least 8 characters.</string>
                     <constraint firstAttribute="trailing" secondItem="Y0z-hk-nqE" secondAttribute="trailing" constant="32" id="S26-lc-Gaz"/>
                     <constraint firstItem="cIJ-F2-t6f" firstAttribute="top" secondItem="5Bv-PL-fb7" secondAttribute="bottom" constant="39" id="Vuc-I1-0gb"/>
                     <constraint firstItem="zc1-Te-hFd" firstAttribute="top" secondItem="9hG-fZ-XAd" secondAttribute="bottom" constant="39" id="YXl-3s-KH2"/>
+                    <constraint firstItem="FuR-co-dRf" firstAttribute="leading" secondItem="xcH-pp-j9r" secondAttribute="leading" id="aDH-9e-6vJ"/>
                     <constraint firstItem="jT8-NJ-O0Y" firstAttribute="leading" secondItem="xcH-pp-j9r" secondAttribute="leading" constant="32" id="agG-2g-f0n"/>
                     <constraint firstAttribute="trailing" secondItem="zc1-Te-hFd" secondAttribute="trailing" id="cPN-Dh-EDa"/>
-                    <constraint firstItem="Y0z-hk-nqE" firstAttribute="top" secondItem="jT8-NJ-O0Y" secondAttribute="bottom" constant="17" id="ckn-cq-EI8"/>
                     <constraint firstItem="jT8-NJ-O0Y" firstAttribute="top" secondItem="A0B-bg-JO6" secondAttribute="bottom" constant="11" id="eUr-EE-1KN"/>
+                    <constraint firstAttribute="trailing" secondItem="FuR-co-dRf" secondAttribute="trailing" id="f0B-97-J9U"/>
+                    <constraint firstItem="Y0z-hk-nqE" firstAttribute="top" secondItem="FuR-co-dRf" secondAttribute="bottom" constant="17" id="gXl-ax-E16"/>
                     <constraint firstItem="zc1-Te-hFd" firstAttribute="leading" secondItem="xcH-pp-j9r" secondAttribute="leading" id="l9k-zc-ZBR"/>
                     <constraint firstItem="M5y-Rg-k91" firstAttribute="top" secondItem="Y0z-hk-nqE" secondAttribute="bottom" constant="16" id="mGm-4Z-Jbm"/>
                     <constraint firstItem="cIJ-F2-t6f" firstAttribute="leading" secondItem="xcH-pp-j9r" secondAttribute="leading" id="oyN-w2-hQE"/>
@@ -300,6 +332,14 @@ have at least 8 characters.</string>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="Zye-CV-yl0"/>
+            <connections>
+                <outlet property="dobTextField" destination="VCH-wb-fPs" id="VIk-5u-000"/>
+                <outlet property="emailAddressTextField" destination="tN8-gL-413" id="cQO-Vn-8cS"/>
+                <outlet property="firstNameTextField" destination="h8X-Ng-Z1M" id="1aD-bc-22e"/>
+                <outlet property="lastNameTextField" destination="K1v-RR-95f" id="3ov-Yu-gwu"/>
+                <outlet property="passwordTextField" destination="64Y-na-l1F" id="z6U-ji-C7e"/>
+                <outlet property="phoneNumberTextField" destination="JKR-C3-O9d" id="Lnb-ER-UvE"/>
+            </connections>
             <point key="canvasLocation" x="161.25" y="47.535211267605632"/>
         </tableViewCell>
     </objects>

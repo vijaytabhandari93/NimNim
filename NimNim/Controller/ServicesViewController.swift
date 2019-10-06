@@ -15,6 +15,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     @IBOutlet weak var washAndFoldLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var prefernces: UICollectionView!
+    @IBOutlet weak var priceTotalBackgroundView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
+        priceTotalBackgroundView.addTopShadowToView()
     }
     //IBActions
     @IBAction func previousTapped(_ sender: Any) {
@@ -57,7 +59,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -116,7 +118,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item <= 4 {
-            return CGSize(width: self.view.frame.width, height:150)
+            return CGSize(width: self.view.frame.width, height:104)
         }
         else
         {
@@ -125,25 +127,17 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        
-            return CGSize(width: collectionView.frame.size.width, height: 70)
-        
-      
+        return CGSize(width: collectionView.frame.size.width, height: 92)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
-            
         case UICollectionView.elementKindSectionHeader:
-            
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PreferencesCollectionReusableView", for: indexPath) as! PreferencesCollectionReusableView
             return headerView
-            
         default:
             let view = UICollectionReusableView()
             return view
         }
     }
-    
-    
 }

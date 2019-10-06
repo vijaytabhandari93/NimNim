@@ -43,12 +43,12 @@ extension UIView {
     func addBottomShadowToView() {
         let shadowPath = UIBezierPath()
         shadowPath.move(to: CGPoint(x: self.bounds.origin.x, y: self.frame.size.height))
-        shadowPath.addLine(to: CGPoint(x: self.bounds.origin.x, y: self.frame.size.height + 12))
-        shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height + 12))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.origin.x, y: self.frame.size.height + 19))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height + 19))
         shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height))
         shadowPath.close()
         self.layer.shadowColor = UIColor(red: 58/255, green: 76/255, blue: 130/255, alpha: 0.24).cgColor
-        self.layer.shadowOpacity = 1
+        self.layer.shadowOpacity = 0.38
         self.layer.masksToBounds = false
         self.layer.shadowPath = shadowPath.cgPath
         self.layer.shadowRadius = 5
@@ -57,8 +57,8 @@ extension UIView {
     func addTopShadowToView() {
         let shadowPath = UIBezierPath()
         shadowPath.move(to: CGPoint(x: self.bounds.origin.x, y: self.frame.size.height))
-        shadowPath.addLine(to: CGPoint(x: self.bounds.origin.x, y: -8))
-        shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: -8))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.origin.x, y: -2))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: -2))
         shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height))
         shadowPath.close()
         self.layer.shadowColor = UIColor(red: 58/255, green: 76/255, blue: 130/255, alpha: 0.24).cgColor

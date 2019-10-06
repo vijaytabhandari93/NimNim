@@ -24,8 +24,6 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocationList()
-        topShadowView.addBottomShadowToView()
-        bottomShadowView.addAllCornersShadowToView()
     }
     
     func setupLocationList()
@@ -38,6 +36,17 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        topShadowView.addBottomShadowToView()
+        bottomShadowView.addAllCornersShadowToView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     //MARK:IBActions
