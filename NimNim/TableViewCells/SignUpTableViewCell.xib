@@ -61,7 +61,7 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="h8X-Ng-Z1M">
                                 <rect key="frame" x="31" y="0.0" width="258" height="24"/>
-                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.34000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
@@ -90,7 +90,7 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K1v-RR-95f">
                                 <rect key="frame" x="31" y="0.0" width="258" height="24"/>
-                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.34000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                             </textField>
@@ -119,9 +119,9 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone Number*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JKR-C3-O9d">
                                 <rect key="frame" x="31" y="0.0" width="258" height="24"/>
-                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.34000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad" textContentType="tel"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-Ko-AZ3">
                                 <rect key="frame" x="31" y="27" width="258" height="1"/>
@@ -148,9 +148,9 @@
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password*" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="64Y-na-l1F">
                                 <rect key="frame" x="31" y="0.0" width="214" height="18"/>
-                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.34000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES" textContentType="password"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i6u-ad-swb">
                                 <rect key="frame" x="31" y="27" width="258" height="1"/>
@@ -211,9 +211,12 @@ have at least 8 characters.</string>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="D.O.B(Month &amp; Date)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VCH-wb-fPs">
                                 <rect key="frame" x="31" y="0.0" width="258" height="24"/>
-                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.34000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <connections>
+                                    <action selector="dobTapped:" destination="MUr-cb-f5T" eventType="editingDidEnd" id="Wxu-zd-ZRJ"/>
+                                </connections>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1s-SE-gQx">
                                 <rect key="frame" x="31" y="27" width="258" height="1"/>
@@ -339,6 +342,7 @@ have at least 8 characters.</string>
                 <outlet property="lastNameTextField" destination="K1v-RR-95f" id="3ov-Yu-gwu"/>
                 <outlet property="passwordTextField" destination="64Y-na-l1F" id="z6U-ji-C7e"/>
                 <outlet property="phoneNumberTextField" destination="JKR-C3-O9d" id="Lnb-ER-UvE"/>
+                <outlet property="showPaswordButton" destination="sow-tN-iya" id="ZBj-Sq-mVf"/>
             </connections>
             <point key="canvasLocation" x="161.25" y="47.535211267605632"/>
         </tableViewCell>

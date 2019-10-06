@@ -11,9 +11,11 @@ import UIKit
 protocol SignUpTableViewCellDelegate:class {
     func loginTappedInSignUpTableViewCell()
     func signUpTappedInSignUpTableViewCell()
+    func textFieldStartedEditingInSignUpTableViewCell(withTextField textField:UITextField)
+    func textFieldEndedEditingInSignUpTableViewCell(withTextField textField:UITextField)
 }
 
-class SignUpTableViewCell: UITableViewCell {
+class SignUpTableViewCell: UITableViewCell,UITextFieldDelegate {
 
     //MARK: IBOutlets
     @IBOutlet weak var emailAddressTextField: UITextField!
@@ -22,6 +24,7 @@ class SignUpTableViewCell: UITableViewCell {
     @IBOutlet weak var phoneNumberTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var dobTextField: UITextField!
+    @IBOutlet weak var showPaswordButton: UIButton!
     
     //MARK: Constants and Variables
     weak var delegate:SignUpTableViewCellDelegate?
@@ -45,22 +48,67 @@ class SignUpTableViewCell: UITableViewCell {
         phoneNumberTextField.inputAccessoryView = nil
         passwordTextField.inputAccessoryView = nil
         dobTextField.inputAccessoryView = nil
+        let datePickerView = UIDatePicker()
+        datePickerView.datePickerMode = .date
+        dobTextField.inputView = datePickerView
+        datePickerView.addTarget(self, action: #selector(datePickerFromValueChanged), for: .valueChanged)
     }
 
     //MARK:IBActions
     @IBAction func showTapped(_ sender: Any) {
+        passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+        if passwordTextField.isSecureTextEntry {
+           showPaswordButton.setTitle("Show", for: .normal)
+        }else {
+           showPaswordButton.setTitle("Hide", for: .normal)
+        }
     }
+    
     @IBAction func signUpTapped(_ sender: Any) {
         delegate?.signUpTappedInSignUpTableViewCell()
     }
+    
     @IBAction func logInTapped(_ sender: Any) {
         delegate?.loginTappedInSignUpTableViewCell()
     }
-}
-
-extension SignUpTableViewCell:UITextFieldDelegate {
+    
+    @IBAction func dobTapped(_ sender: Any) {
+    }
+    
+    @objc func datePickerFromValueChanged(sender:UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        dobTextField.font = Fonts.medium20
+        dobTextField.text = dateFormatter.string(from: sender.date)
+    }
+    
+    //MARK: TextField Delegates
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        delegate?.textFieldStartedEditingInSignUpTableViewCell(withTextField: textField)
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        delegate?.textFieldEndedEditingInSignUpTableViewCell(withTextField: textField)
+        return true
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if let text = textField.text,
+            let textRange = Range(range, in: text) {
+            let updatedText = text.replacingCharacters(in: textRange,
+                                                       with: string)
+            if updatedText.count > 0 {
+               textField.font = Fonts.medium20
+            }else {
+                textField.font = Fonts.regularFont14
+            }
+        }
         return true
     }
 }

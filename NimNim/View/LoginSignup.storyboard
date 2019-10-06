@@ -46,7 +46,7 @@
                                         <rect key="frame" x="0.0" y="29" width="320" height="34"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XlK-Bp-bsC">
-                                                <rect key="frame" x="36" y="0.0" width="52" height="34"/>
+                                                <rect key="frame" x="84" y="0.0" width="52" height="34"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                                 <state key="normal" title="Log In">
                                                     <color key="titleColor" red="0.34901960784313724" green="0.77254901960784317" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -56,7 +56,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="urP-8i-77V">
-                                                <rect key="frame" x="157" y="0.0" width="48" height="34"/>
+                                                <rect key="frame" x="186" y="0.0" width="48" height="34"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                                 <state key="normal" title="Sign Up">
                                                     <color key="titleColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
@@ -68,9 +68,9 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="XlK-Bp-bsC" firstAttribute="centerX" secondItem="hSN-Zy-NqY" secondAttribute="centerX" constant="-50" id="TSL-Ds-x3I"/>
                                             <constraint firstAttribute="bottom" secondItem="urP-8i-77V" secondAttribute="bottom" id="aX6-0u-XQ9"/>
-                                            <constraint firstItem="urP-8i-77V" firstAttribute="leading" secondItem="XlK-Bp-bsC" secondAttribute="trailing" constant="69" id="gZY-ew-1yE"/>
-                                            <constraint firstItem="XlK-Bp-bsC" firstAttribute="leading" secondItem="hSN-Zy-NqY" secondAttribute="leading" constant="36" id="hka-rY-U7Y"/>
+                                            <constraint firstItem="urP-8i-77V" firstAttribute="centerX" secondItem="hSN-Zy-NqY" secondAttribute="centerX" constant="50" id="eTE-V1-Abs"/>
                                             <constraint firstItem="urP-8i-77V" firstAttribute="top" secondItem="hSN-Zy-NqY" secondAttribute="top" id="klg-lG-hWL"/>
                                             <constraint firstAttribute="height" constant="34" id="pGa-Ny-MqZ"/>
                                             <constraint firstAttribute="bottom" secondItem="XlK-Bp-bsC" secondAttribute="bottom" id="zFm-3g-M1H"/>
@@ -217,17 +217,18 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCy-bj-Yki">
-                                <rect key="frame" x="0.0" y="517" width="320" height="32"/>
+                                <rect key="frame" x="0.0" y="499" width="320" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3UD-pV-Ych">
-                                        <rect key="frame" x="26" y="0.0" width="24" height="24"/>
+                                        <rect key="frame" x="26" y="20.5" width="24" height="24"/>
+                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="2yS-YC-g1p"/>
                                             <constraint firstAttribute="width" constant="24" id="QGR-Eg-spa"/>
                                         </constraints>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing in you agree to Nim Nim’s Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFY-8D-Ley">
-                                        <rect key="frame" x="66" y="0.0" width="228" height="32"/>
+                                        <rect key="frame" x="66" y="20.5" width="228" height="29.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -238,14 +239,13 @@
                                     <constraint firstItem="3UD-pV-Ych" firstAttribute="leading" secondItem="PCy-bj-Yki" secondAttribute="leading" constant="26" id="Klu-1x-3Aa"/>
                                     <constraint firstAttribute="bottom" secondItem="oFY-8D-Ley" secondAttribute="bottom" id="R5R-P5-3kC"/>
                                     <constraint firstItem="oFY-8D-Ley" firstAttribute="leading" secondItem="3UD-pV-Ych" secondAttribute="trailing" constant="16" id="VGd-9U-9AF"/>
-                                    <constraint firstAttribute="height" constant="32" id="YKt-bw-pXT"/>
+                                    <constraint firstItem="3UD-pV-Ych" firstAttribute="top" secondItem="oFY-8D-Ley" secondAttribute="top" id="VK4-TA-tcv"/>
+                                    <constraint firstAttribute="height" constant="50" id="YKt-bw-pXT"/>
                                     <constraint firstAttribute="trailing" secondItem="oFY-8D-Ley" secondAttribute="trailing" constant="26" id="ZkH-vu-73J"/>
-                                    <constraint firstItem="oFY-8D-Ley" firstAttribute="top" secondItem="PCy-bj-Yki" secondAttribute="top" id="rlW-LU-9Qh"/>
-                                    <constraint firstItem="3UD-pV-Ych" firstAttribute="top" secondItem="PCy-bj-Yki" secondAttribute="top" id="v2a-wU-0dw"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZbV-7o-M5G">
-                                <rect key="frame" x="0.0" y="248" width="320" height="269"/>
+                                <rect key="frame" x="0.0" y="248" width="320" height="251"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                         </subviews>

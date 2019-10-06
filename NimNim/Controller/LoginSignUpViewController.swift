@@ -27,6 +27,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     var currentScreenState:LoginSignupStates = .signup {
         didSet {
             resetLoginSignupButtons()
+            view.endEditing(true)
             switch currentScreenState {
             case .loginWithPassword:
                 activateLoginButton()
@@ -38,22 +39,46 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    var activeTextField:UITextField?
+    
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setupUI()
+        addTapGestureToView()
         setupTableView()
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        addObservers()
     }
     
     
     //MARK: Setup UI
     func setupUI() {
         currentScreenState = .signup
+    }
+    
+    func addTapGestureToView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backViewTapped))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    func removeTapGestures(forTextField textField:UITextField) {
+        if let activeTextField = activeTextField, activeTextField == textField {
+            for recognizer in view.gestureRecognizers ?? [] {
+                view.removeGestureRecognizer(recognizer)
+            }
+        }
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    @objc func backViewTapped() {
+        view.endEditing(true)
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -155,11 +180,11 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        view.endEditing(true)
+        //view.endEditing(true)
+        print("")
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        view.endEditing(true)
     }
     
     //MARK: TableView Cell Delegates
@@ -173,9 +198,27 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         refreshTable()
     }
     
+    func textFieldStartedEditingInLoginViaOTPTableViewCell(withTextField textField:UITextField) {
+        activeTextField = textField
+        addTapGestureToView()
+    }
+    
+    func textFieldEndedEditingInLoginViaOTPTableViewCell(withTextField textField:UITextField) {
+        removeTapGestures(forTextField: textField)
+    }
+    
     func logInViaPasswordTappedInLoginViaOTPTableViewCell() {
         currentScreenState = .loginWithPassword
         refreshTable()
+    }
+    
+    func textFieldStartedEditingInLoginViaPasswordTableViewCell(withTextField textField:UITextField) {
+        activeTextField = textField
+        addTapGestureToView()
+    }
+    
+    func textFieldEndedEditingInLoginViaPasswordTableViewCell(withTextField textField:UITextField) {
+        removeTapGestures(forTextField: textField)
     }
     
     func signUpTappedInLoginViaOTPTableViewCell() {
@@ -188,17 +231,20 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         refreshTable()
     }
     
+    func textFieldStartedEditingInSignUpTableViewCell(withTextField textField:UITextField) {
+        activeTextField = textField
+        addTapGestureToView()
+    }
+    
+    func textFieldEndedEditingInSignUpTableViewCell(withTextField textField:UITextField) {
+        removeTapGestures(forTextField: textField)
+    }
+    
     func signUpTappedInSignUpTableViewCell() {
         //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
         let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
          let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
            secondViewController?.screenTypeValue = .pickUpDropOff
         self.navigationController?.pushViewController(secondViewController!, animated: true)
-        
-        
-    
     }
-    
-    
-    
 }

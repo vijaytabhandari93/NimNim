@@ -34,7 +34,7 @@
                                 <rect key="frame" x="31" y="0.0" width="313" height="24"/>
                                 <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="phonePad"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fHf-gt-UTZ">
                                 <rect key="frame" x="31" y="27" width="313" height="1"/>
@@ -63,7 +63,7 @@
                                 <rect key="frame" x="31" y="0.0" width="313" height="24"/>
                                 <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numberPad" secureTextEntry="YES"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bKL-bI-CtJ">
                                 <rect key="frame" x="31" y="27" width="313" height="1"/>
@@ -244,6 +244,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="lbj-gG-I2Z"/>
+            <connections>
+                <outlet property="mobileNumberTextField" destination="KZW-DY-XCV" id="Cw5-gK-xce"/>
+                <outlet property="otpTextField" destination="os4-lk-OD1" id="Mcb-uO-Gs9"/>
+            </connections>
             <point key="canvasLocation" x="0.7246376811594204" y="71.316964285714278"/>
         </tableViewCell>
     </objects>
