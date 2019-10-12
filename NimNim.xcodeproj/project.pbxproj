@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AC092FCA232F5AFB00FE1B77 /* NavDrawer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC092FC9232F5AFB00FE1B77 /* NavDrawer.storyboard */; };
+		0AD370D6EA0A24D80C208255 /* Pods_NimNim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74D617266EB18FBEEAA0F80 /* Pods_NimNim.framework */; };
 		AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */; };
 		AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */; };
 		AC0BD3E2233B6BC7000746D1 /* NonServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0BD3E1233B6BC7000746D1 /* NonServiceable.swift */; };
@@ -74,6 +74,7 @@
 		ACBB819D232E3FAC003DCF77 /* Montserrat-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACBB818A232E3FAB003DCF77 /* Montserrat-MediumItalic.ttf */; };
 		ACBB819E232E3FAC003DCF77 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACBB818B232E3FAB003DCF77 /* Montserrat-Black.ttf */; };
 		ACBBE49A233A0FE0003C67F7 /* LocationcCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBE499233A0FE0003C67F7 /* LocationcCell.swift */; };
+		ACD8BA432351AB41005C1EAA /* HomeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */; };
 		ACF0205F232E425F007559E8 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF0205E232E425F007559E8 /* Fonts.swift */; };
 		ACF9CD1A234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD18234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift */; };
 		ACF9CD1B234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF9CD19234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib */; };
@@ -97,7 +98,6 @@
 /* Begin PBXFileReference section */
 		0D6B59115C1D4D6265172DCA /* Pods-NimNim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NimNim.release.xcconfig"; path = "Target Support Files/Pods-NimNim/Pods-NimNim.release.xcconfig"; sourceTree = "<group>"; };
 		8586EAD9160E1C7AF19C483B /* Pods-NimNim.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NimNim.debug.xcconfig"; path = "Target Support Files/Pods-NimNim/Pods-NimNim.debug.xcconfig"; sourceTree = "<group>"; };
-		AC092FC9232F5AFB00FE1B77 /* NavDrawer.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NavDrawer.storyboard; sourceTree = "<group>"; };
 		AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDrawerViewController.swift; sourceTree = "<group>"; };
 		AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDrawerTableViewCell.swift; sourceTree = "<group>"; };
 		AC0BD3E1233B6BC7000746D1 /* NonServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonServiceable.swift; sourceTree = "<group>"; };
@@ -166,6 +166,7 @@
 		ACBB818A232E3FAB003DCF77 /* Montserrat-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-MediumItalic.ttf"; sourceTree = "<group>"; };
 		ACBB818B232E3FAB003DCF77 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		ACBBE499233A0FE0003C67F7 /* LocationcCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationcCell.swift; sourceTree = "<group>"; };
+		ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseViewController.swift; sourceTree = "<group>"; };
 		ACF0205E232E425F007559E8 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		ACF9CD18234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedRushDeliveryCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACF9CD19234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NeedRushDeliveryCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -192,6 +193,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD370D6EA0A24D80C208255 /* Pods_NimNim.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +271,6 @@
 				AC1FFDB423474F0700930496 /* Services.storyboard */,
 				AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */,
 				AC793F16232CDBB9009E61A1 /* Preferences.storyboard */,
-				AC092FC9232F5AFB00FE1B77 /* NavDrawer.storyboard */,
 				ACFBA0522338E29A00950079 /* MyLocation.storyboard */,
 				ACBAAF67233CB07C00E1E4A6 /* Home.storyboard */,
 			);
@@ -289,6 +290,7 @@
 				ACF9CD22234F69EC00039E6C /* WashAndAirDryViewController.swift */,
 				ACF9CD3A2350F1DF00039E6C /* DryCleaningViewController.swift */,
 				ACF9CD3C2351EB9C00039E6C /* WashPressedShirtsViewController.swift */,
+				ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -467,7 +469,6 @@
 				ACBAAF68233CB07C00E1E4A6 /* Home.storyboard in Resources */,
 				ACFBA0532338E29A00950079 /* MyLocation.storyboard in Resources */,
 				AC1FFDB22346F1D100930496 /* Proxima Nova Extrabold.otf in Resources */,
-				AC092FCA232F5AFB00FE1B77 /* NavDrawer.storyboard in Resources */,
 				ACB37264234631C900046FB3 /* ServiceCollectionViewCell.xib in Resources */,
 				ACBB819A232E3FAC003DCF77 /* Montserrat-BlackItalic.ttf in Resources */,
 				AC1FFDB523474F0700930496 /* Services.storyboard in Resources */,
@@ -543,18 +544,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -587,6 +581,7 @@
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
 				AC1FFDB723474FC700930496 /* ServicesViewController.swift in Sources */,
 				ACF9CD3623504EFD00039E6C /* NoofClothesCollectionViewCell.swift in Sources */,
+				ACD8BA432351AB41005C1EAA /* HomeBaseViewController.swift in Sources */,
 				ACB37263234631C900046FB3 /* ServiceCollectionViewCell.swift in Sources */,
 				ACF9CD3B2350F1DF00039E6C /* DryCleaningViewController.swift in Sources */,
 				AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */,
