@@ -114,6 +114,8 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             }
         }else if indexPath.item == 5 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
+        cell.labelAgainsCheckbox.text = "I need Rush Delivery"
+            cell.descriptionofLabel.text = "Under rush delivery your clothes will be delivered with in 12 Hours"
             return cell
         }
         else {

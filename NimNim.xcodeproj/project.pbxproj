@@ -89,6 +89,7 @@
 		ACF9CD3623504EFD00039E6C /* NoofClothesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD3423504EFD00039E6C /* NoofClothesCollectionViewCell.swift */; };
 		ACF9CD3723504EFD00039E6C /* NoofClothesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF9CD3523504EFD00039E6C /* NoofClothesCollectionViewCell.xib */; };
 		ACF9CD3B2350F1DF00039E6C /* DryCleaningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD3A2350F1DF00039E6C /* DryCleaningViewController.swift */; };
+		ACF9CD3D2351EB9C00039E6C /* WashPressedShirtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD3C2351EB9C00039E6C /* WashPressedShirtsViewController.swift */; };
 		ACFBA0512338E26A00950079 /* MyLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBA0502338E26A00950079 /* MyLocationViewController.swift */; };
 		ACFBA0532338E29A00950079 /* MyLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFBA0522338E29A00950079 /* MyLocation.storyboard */; };
 /* End PBXBuildFile section */
@@ -180,6 +181,7 @@
 		ACF9CD3423504EFD00039E6C /* NoofClothesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoofClothesCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACF9CD3523504EFD00039E6C /* NoofClothesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoofClothesCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACF9CD3A2350F1DF00039E6C /* DryCleaningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DryCleaningViewController.swift; sourceTree = "<group>"; };
+		ACF9CD3C2351EB9C00039E6C /* WashPressedShirtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashPressedShirtsViewController.swift; sourceTree = "<group>"; };
 		ACFBA0502338E26A00950079 /* MyLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationViewController.swift; sourceTree = "<group>"; };
 		ACFBA0522338E29A00950079 /* MyLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyLocation.storyboard; sourceTree = "<group>"; };
 		C74D617266EB18FBEEAA0F80 /* Pods_NimNim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NimNim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -286,6 +288,7 @@
 				ACBAAF69233D0CC800E1E4A6 /* HomeViewController.swift */,
 				ACF9CD22234F69EC00039E6C /* WashAndAirDryViewController.swift */,
 				ACF9CD3A2350F1DF00039E6C /* DryCleaningViewController.swift */,
+				ACF9CD3C2351EB9C00039E6C /* WashPressedShirtsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				AC1FFDBE234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift in Sources */,
 				ACF9CD2A235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift in Sources */,
 				AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */,
+				ACF9CD3D2351EB9C00039E6C /* WashPressedShirtsViewController.swift in Sources */,
 				AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */,
 				AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */,
 				AC8CDE31232540DD00CDFB93 /* LoginSignUpViewController.swift in Sources */,

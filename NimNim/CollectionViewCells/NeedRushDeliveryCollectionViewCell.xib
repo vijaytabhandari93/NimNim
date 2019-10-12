@@ -79,9 +79,11 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="455" height="153"/>
             <connections>
+                <outlet property="descriptionofLabel" destination="msq-kH-zpZ" id="h33-IZ-wwM"/>
+                <outlet property="labelAgainsCheckbox" destination="PVR-dI-cwD" id="A9u-Xc-7cL"/>
                 <outlet property="needRushDeliveryTapped" destination="VhF-oq-Mu0" id="FfN-RD-mYC"/>
             </connections>
-            <point key="canvasLocation" x="117" y="32"/>
+            <point key="canvasLocation" x="293" y="32"/>
         </collectionViewCell>
     </objects>
     <resources>

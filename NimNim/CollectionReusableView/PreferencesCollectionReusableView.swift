@@ -13,7 +13,7 @@ class PreferencesCollectionReusableView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        print("vijayta")
+  
     }
     
 }

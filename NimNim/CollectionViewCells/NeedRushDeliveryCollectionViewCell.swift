@@ -10,6 +10,8 @@ import UIKit
 
 class NeedRushDeliveryCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var labelAgainsCheckbox: UILabel!
+    @IBOutlet weak var descriptionofLabel: UILabel!
     @IBOutlet weak var needRushDeliveryTapped: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()

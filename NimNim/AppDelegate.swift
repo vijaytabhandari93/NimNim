@@ -31,8 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
 
         let servicesStoryboard = UIStoryboard(name: "Services", bundle: nil)
-        let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "DryCleaningViewController")
+        let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "WashPressedShirtsViewController")
        
+        
         
         //This will be the conditional part in future...
         navigationController.viewControllers = [servicesViewController]
