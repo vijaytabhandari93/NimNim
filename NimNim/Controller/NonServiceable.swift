@@ -21,7 +21,7 @@ class NonServiceable: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        applyHorizontalNimNimGradient()
+        applyNimNimGradient()
     }
     
     override func viewDidLayoutSubviews() {

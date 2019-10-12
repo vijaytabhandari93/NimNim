@@ -30,8 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
 
-        let servicesStoryboard = UIStoryboard(name: "Services", bundle: nil)
-        let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "DryCleaningViewController")
+        let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
        
         
         //This will be the conditional part in future...

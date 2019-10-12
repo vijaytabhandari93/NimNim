@@ -26,9 +26,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         homeCollectionView.register(bannersBaseNib, forCellWithReuseIdentifier: "BannersBaseCollectionViewCell")
         let servicesBaseNib = UINib(nibName: "ServicesBaseCollectionViewCell", bundle: nil)
         homeCollectionView.register(servicesBaseNib, forCellWithReuseIdentifier: "ServicesBaseCollectionViewCell")
-     let headerNib = UINib(nibName: "ServicesHeaderCollectionReusableView", bundle: nil)
+        let headerNib = UINib(nibName: "ServicesHeaderCollectionReusableView", bundle: nil)
         homeCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ServicesHeaderCollectionReusableView")
-        
     }
     
     //MARK:Collection View Datasource Methods

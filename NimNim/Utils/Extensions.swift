@@ -62,8 +62,21 @@ extension UIView {
         shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height))
         shadowPath.close()
         self.layer.shadowColor = UIColor(red: 58/255, green: 76/255, blue: 130/255, alpha: 0.24).cgColor
-        self.layer.shadowColor = UIColor(red: 58/255, green: 76/255, blue: 130/255, alpha: 0.24).cgColor
         self.layer.shadowOpacity = 1
+        self.layer.masksToBounds = false
+        self.layer.shadowPath = shadowPath.cgPath
+        self.layer.shadowRadius = 5
+    }
+    
+    func addSpreadShadowToView() {
+        let shadowPath = UIBezierPath()
+        shadowPath.move(to: CGPoint(x: self.bounds.origin.x, y: self.frame.size.height))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.origin.x, y: -22))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: -22))
+        shadowPath.addLine(to: CGPoint(x: self.bounds.width, y: self.bounds.height))
+        shadowPath.close()
+        self.layer.shadowColor = UIColor(red: 58/255, green: 76/255, blue: 130/255, alpha: 0.13).cgColor
+        self.layer.shadowOpacity = 0.3
         self.layer.masksToBounds = false
         self.layer.shadowPath = shadowPath.cgPath
         self.layer.shadowRadius = 5
