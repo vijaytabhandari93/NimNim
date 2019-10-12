@@ -19,6 +19,7 @@ class ServicesHeaderCollectionReusableView: UICollectionReusableView {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        print("")
     }
     
     //MARK: IBActions
