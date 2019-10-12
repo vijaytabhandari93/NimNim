@@ -33,6 +33,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     //IBActions
     @IBAction func previousTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     @IBAction func basketTapped(_ sender: Any) {
     }

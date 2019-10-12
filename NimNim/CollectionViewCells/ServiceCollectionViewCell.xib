@@ -47,50 +47,48 @@
                                     <constraint firstAttribute="height" constant="30" id="IDx-ht-keB"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wash + Fold" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2S-lS-kLc">
-                                <rect key="frame" x="20" y="101" width="101" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wash + Fold" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k2S-lS-kLc">
+                                <rect key="frame" x="20" y="101" width="261" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4M-qM-uTM">
-                                <rect key="frame" x="20" y="127" width="176" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4M-qM-uTM">
+                                <rect key="frame" x="20" y="127" width="261" height="29"/>
                                 <string key="text">We only wash the clothes
 and then flod them. No ironing.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b4Z-K2-MvO">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPq-rr-4d6">
                                 <rect key="frame" x="20" y="180" width="70" height="28"/>
-                                <color key="backgroundColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.27843137254901962" green="0.74901960784313726" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="3yL-zL-ZuE"/>
-                                    <constraint firstAttribute="height" constant="28" id="ILv-EQ-6Zk"/>
+                                    <constraint firstAttribute="width" constant="70" id="fiU-vY-dXc"/>
+                                    <constraint firstAttribute="height" constant="28" id="lQE-25-qNE"/>
                                 </constraints>
-                                <state key="normal" title="Select">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="selectTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="iF2-mf-I44"/>
-                                </connections>
-                            </button>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="xrI-nt-mqB" firstAttribute="top" secondItem="9Dq-dv-NKz" secondAttribute="top" constant="32" id="6YU-1E-fe7"/>
+                            <constraint firstAttribute="bottom" secondItem="OPq-rr-4d6" secondAttribute="bottom" constant="20" id="943-Qy-GXw"/>
                             <constraint firstItem="A7A-Tu-NuS" firstAttribute="leading" secondItem="9Dq-dv-NKz" secondAttribute="leading" constant="20" id="BwK-WI-exj"/>
+                            <constraint firstAttribute="trailing" secondItem="F4M-qM-uTM" secondAttribute="trailing" constant="20" id="D8F-jU-8SE"/>
                             <constraint firstItem="k2S-lS-kLc" firstAttribute="leading" secondItem="9Dq-dv-NKz" secondAttribute="leading" constant="20" id="Dn5-SG-gNe"/>
                             <constraint firstItem="A7A-Tu-NuS" firstAttribute="top" secondItem="9Dq-dv-NKz" secondAttribute="top" constant="20" id="GKs-ew-j39"/>
-                            <constraint firstItem="b4Z-K2-MvO" firstAttribute="leading" secondItem="9Dq-dv-NKz" secondAttribute="leading" constant="20" id="IJE-CH-zGT"/>
-                            <constraint firstItem="b4Z-K2-MvO" firstAttribute="top" secondItem="F4M-qM-uTM" secondAttribute="bottom" constant="24" id="Ip6-oE-WWH"/>
                             <constraint firstItem="k2S-lS-kLc" firstAttribute="top" secondItem="A7A-Tu-NuS" secondAttribute="bottom" constant="27" id="KaF-pG-cNM"/>
-                            <constraint firstAttribute="bottom" secondItem="b4Z-K2-MvO" secondAttribute="bottom" constant="20" id="f6T-Dg-Qu0"/>
+                            <constraint firstItem="OPq-rr-4d6" firstAttribute="leading" secondItem="F4M-qM-uTM" secondAttribute="leading" id="NpY-rX-Ofg"/>
+                            <constraint firstAttribute="trailing" secondItem="k2S-lS-kLc" secondAttribute="trailing" constant="20" id="gBJ-hg-POa"/>
                             <constraint firstItem="F4M-qM-uTM" firstAttribute="leading" secondItem="9Dq-dv-NKz" secondAttribute="leading" constant="20" id="u5u-PF-iJo"/>
                             <constraint firstItem="xrI-nt-mqB" firstAttribute="leading" secondItem="9Dq-dv-NKz" secondAttribute="leading" constant="32" id="vwE-3X-rnl"/>
                             <constraint firstItem="F4M-qM-uTM" firstAttribute="top" secondItem="k2S-lS-kLc" secondAttribute="bottom" constant="6" id="wd4-5c-QZ8"/>

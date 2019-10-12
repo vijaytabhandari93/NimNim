@@ -20,6 +20,7 @@ class DryCleaningViewController: UIViewController {
     @IBAction func basketTapped(_ sender: Any) {
     }
     @IBAction func previousTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     @IBAction func justNimNimIt(_ sender: Any) {
     }

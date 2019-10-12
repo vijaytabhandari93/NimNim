@@ -26,5 +26,9 @@ class ServiceCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         self.addBottomShadowToView()
     }
+    
+    func configureCell(withTitle title:String?) {
+        serviceName.text = title
+    }
 
 }
