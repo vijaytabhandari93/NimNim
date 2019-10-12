@@ -39,7 +39,6 @@ class HomeBaseViewController: UIViewController {
         navDrawerContainerView.alpha = 0
         chatContainerView.alpha = 0
         profileContainerView.alpha = 0
-
     }
     
     //MARK: IBActions
