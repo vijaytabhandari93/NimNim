@@ -41,12 +41,14 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     //MARK:UI Methods
     func registerCells() {
-        let washAndFoldPreferencesNib = UINib(nibName: "WashAndFoldPreferencesCollectionViewCell", bundle: nil)
-        prefernces.register(washAndFoldPreferencesNib, forCellWithReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell")
+        let type1PreferencesNib = UINib(nibName: "WashAndFoldPreferencesCollectionViewCell", bundle: nil)
+        prefernces.register(type1PreferencesNib, forCellWithReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell")
         
-        //time pass
-        let washAndFold2PreferencesNib = UINib(nibName: "ServicesBaseCollectionViewCell", bundle: nil)
-        prefernces.register(washAndFold2PreferencesNib, forCellWithReuseIdentifier: "ServicesBaseCollectionViewCell")
+        let type2PreferencesNib = UINib(nibName: "NeedRushDeliveryCollectionViewCell", bundle: nil)
+        prefernces.register(type2PreferencesNib, forCellWithReuseIdentifier: "NeedRushDeliveryCollectionViewCell")
+        
+        let type3PreferencesNib = UINib(nibName: "AddMoreServicesCollectionViewCell", bundle: nil)
+        prefernces.register(type3PreferencesNib, forCellWithReuseIdentifier: "AddMoreServicesCollectionViewCell")
         
         
         let headerNib = UINib(nibName: "PreferencesCollectionReusableView", bundle: nil)
@@ -59,13 +61,13 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item <= 4 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
-            switch indexPath.item {
+            switch indexPath.row {
             case 0:
                 cell.titleLabel.text = "Detergent"
                 cell.leftImageView.image = UIImage(named: "scented")
@@ -74,32 +76,32 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                 cell.rightLabel.text = "Non - Scented"
                 return cell
             case 1:
-                cell.titleLabel.text = "Detergent"
-                cell.leftImageView.image = UIImage(named: "scented")
-                cell.leftLabel.text = "Scented"
-                cell.rightImageView.image = UIImage(named: "nonScented")
-                cell.rightLabel.text = "Non - Scented"
+                cell.titleLabel.text = "Wash"
+                cell.leftImageView.image = UIImage(named: "warmWater")
+                cell.leftLabel.text = "Warm Water"
+                cell.rightImageView.image = UIImage(named: "coldWater")
+                cell.rightLabel.text = "Cold Water"
                 return cell
             case 2:
-                cell.titleLabel.text = "Detergent"
-                cell.leftImageView.image = UIImage(named: "scented")
-                cell.leftLabel.text = "Scented"
-                cell.rightImageView.image = UIImage(named: "nonScented")
-                cell.rightLabel.text = "Non - Scented"
+                cell.titleLabel.text = "Dry"
+                cell.leftImageView.image = UIImage(named: "tshirt-1")
+                cell.leftLabel.text = "Low"
+                cell.rightImageView.image = UIImage(named: "tshirt")
+                cell.rightLabel.text = "Medium"
                 return cell
             case 3:
-                cell.titleLabel.text = "Detergent"
-                cell.leftImageView.image = UIImage(named: "scented")
-                cell.leftLabel.text = "Scented"
-                cell.rightImageView.image = UIImage(named: "nonScented")
-                cell.rightLabel.text = "Non - Scented"
+                cell.titleLabel.text = "Bleach"
+                cell.leftImageView.image = UIImage(named: "path10")
+                cell.leftLabel.text = "Yes"
+                cell.rightImageView.image = UIImage(named: "noBleach")
+                cell.rightLabel.text = "No"
                 return cell
             case 4:
-                cell.titleLabel.text = "Detergent"
-                cell.leftImageView.image = UIImage(named: "scented")
-                cell.leftLabel.text = "Scented"
-                cell.rightImageView.image = UIImage(named: "nonScented")
-                cell.rightLabel.text = "Non - Scented"
+                cell.titleLabel.text = "Softer"
+                cell.leftImageView.image = UIImage(named: "yes")
+                cell.leftLabel.text = "Yes"
+                cell.rightImageView.image = UIImage(named: "no")
+                cell.rightLabel.text = "No"
                 return cell
                 
             default:
@@ -110,19 +112,27 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                 cell.rightLabel.text = "Non - Scented"
                 return cell
             }
-        }else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServicesBaseCollectionViewCell", for: indexPath) as! ServicesBaseCollectionViewCell
+        }else if indexPath.item == 5 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
             return cell
         }
+        else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddMoreServicesCollectionViewCell", for: indexPath) as! AddMoreServicesCollectionViewCell
+            return cell
+            
+        }
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item <= 4 {
-            return CGSize(width: self.view.frame.width, height:104)
+            return CGSize(width: collectionView.frame.size.width, height:104)
         }
-        else
+        else if indexPath.item == 5
         {
-            return CGSize(width: self.view.frame.width, height:228)
+            return CGSize(width: collectionView.frame.size.width, height:95)
+        }
+        else {
+            return CGSize(width: collectionView.frame.size.width, height:48)
         }
     }
     
@@ -140,4 +150,5 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             return view
         }
     }
+
 }

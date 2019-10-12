@@ -31,10 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
 
         let servicesStoryboard = UIStoryboard(name: "Services", bundle: nil)
-        let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "ServicesViewController")
+        let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "DryCleaningViewController")
+       
         
         //This will be the conditional part in future...
-        navigationController.viewControllers = [myLocationViewController]
+        navigationController.viewControllers = [servicesViewController]
 
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()

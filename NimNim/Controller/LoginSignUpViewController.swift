@@ -59,11 +59,12 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func addTapGestureToView() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backViewTapped))
-        self.view.addGestureRecognizer(tapGesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backViewTapped)) // This line will create an object of tap gesture recognizer
+        self.view.addGestureRecognizer(tapGesture) // This line will add that created object of tap gesture recognizer to the view of this login signup view controller screen....
     }
     
     func removeTapGestures(forTextField textField:UITextField) {
+        // This function first checks if the textField that is passed is the currently active TextField or Not...if the user will tap somewhere outside then the textField passed will be equal to the activeTextField...but if the user will tap on another textField and this function gets called...then we need not remove the gesture recognizer...
         if let activeTextField = activeTextField, activeTextField == textField {
             for recognizer in view.gestureRecognizers ?? [] {
                 view.removeGestureRecognizer(recognizer)
@@ -77,8 +78,9 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
+    
     @objc func backViewTapped() {
-        view.endEditing(true)
+        view.endEditing(true) //to shutdown the keyboard. Wheneever you tap the text field on a specific screeen , then that screen becomes the first responder of the keyoard.
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -214,7 +216,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     
     func textFieldStartedEditingInLoginViaPasswordTableViewCell(withTextField textField:UITextField) {
         activeTextField = textField
-        addTapGestureToView()
+        addTapGestureToView() //once the textbox editing begins the tap gesture starts functioning
     }
     
     func textFieldEndedEditingInLoginViaPasswordTableViewCell(withTextField textField:UITextField) {

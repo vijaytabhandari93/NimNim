@@ -344,7 +344,7 @@ have at least 8 characters.</string>
                 <outlet property="phoneNumberTextField" destination="JKR-C3-O9d" id="Lnb-ER-UvE"/>
                 <outlet property="showPaswordButton" destination="sow-tN-iya" id="ZBj-Sq-mVf"/>
             </connections>
-            <point key="canvasLocation" x="161.25" y="47.535211267605632"/>
+            <point key="canvasLocation" x="-64" y="-53"/>
         </tableViewCell>
     </objects>
 </document>

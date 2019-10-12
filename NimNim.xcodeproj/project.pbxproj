@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		62983FD37B9651AB97044FCD /* Pods_NimNim.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C74D617266EB18FBEEAA0F80 /* Pods_NimNim.framework */; };
 		AC092FCA232F5AFB00FE1B77 /* NavDrawer.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC092FC9232F5AFB00FE1B77 /* NavDrawer.storyboard */; };
 		AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */; };
 		AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */; };
@@ -76,6 +75,20 @@
 		ACBB819E232E3FAC003DCF77 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACBB818B232E3FAB003DCF77 /* Montserrat-Black.ttf */; };
 		ACBBE49A233A0FE0003C67F7 /* LocationcCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBE499233A0FE0003C67F7 /* LocationcCell.swift */; };
 		ACF0205F232E425F007559E8 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF0205E232E425F007559E8 /* Fonts.swift */; };
+		ACF9CD1A234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD18234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift */; };
+		ACF9CD1B234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF9CD19234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib */; };
+		ACF9CD1E234F575900039E6C /* AddMoreServicesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD1C234F575900039E6C /* AddMoreServicesCollectionViewCell.swift */; };
+		ACF9CD1F234F575900039E6C /* AddMoreServicesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF9CD1D234F575900039E6C /* AddMoreServicesCollectionViewCell.xib */; };
+		ACF9CD23234F69EC00039E6C /* WashAndAirDryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD22234F69EC00039E6C /* WashAndAirDryViewController.swift */; };
+		ACF9CD2A235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD28235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift */; };
+		ACF9CD2B235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF9CD29235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.xib */; };
+		ACF9CD2E235043C200039E6C /* SpecialNotesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD2C235043C100039E6C /* SpecialNotesCollectionViewCell.swift */; };
+		ACF9CD2F235043C200039E6C /* SpecialNotesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF9CD2D235043C200039E6C /* SpecialNotesCollectionViewCell.xib */; };
+		ACF9CD3223504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD3023504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.swift */; };
+		ACF9CD3323504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF9CD3123504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.xib */; };
+		ACF9CD3623504EFD00039E6C /* NoofClothesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD3423504EFD00039E6C /* NoofClothesCollectionViewCell.swift */; };
+		ACF9CD3723504EFD00039E6C /* NoofClothesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF9CD3523504EFD00039E6C /* NoofClothesCollectionViewCell.xib */; };
+		ACF9CD3B2350F1DF00039E6C /* DryCleaningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD3A2350F1DF00039E6C /* DryCleaningViewController.swift */; };
 		ACFBA0512338E26A00950079 /* MyLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBA0502338E26A00950079 /* MyLocationViewController.swift */; };
 		ACFBA0532338E29A00950079 /* MyLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFBA0522338E29A00950079 /* MyLocation.storyboard */; };
 /* End PBXBuildFile section */
@@ -153,6 +166,20 @@
 		ACBB818B232E3FAB003DCF77 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		ACBBE499233A0FE0003C67F7 /* LocationcCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationcCell.swift; sourceTree = "<group>"; };
 		ACF0205E232E425F007559E8 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		ACF9CD18234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedRushDeliveryCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACF9CD19234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NeedRushDeliveryCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACF9CD1C234F575900039E6C /* AddMoreServicesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoreServicesCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACF9CD1D234F575900039E6C /* AddMoreServicesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddMoreServicesCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACF9CD22234F69EC00039E6C /* WashAndAirDryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashAndAirDryViewController.swift; sourceTree = "<group>"; };
+		ACF9CD28235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFromListOfClothesCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACF9CD29235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectFromListOfClothesCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACF9CD2C235043C100039E6C /* SpecialNotesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialNotesCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACF9CD2D235043C200039E6C /* SpecialNotesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpecialNotesCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACF9CD3023504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RushDeliveryNotAvailableCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACF9CD3123504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RushDeliveryNotAvailableCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACF9CD3423504EFD00039E6C /* NoofClothesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoofClothesCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACF9CD3523504EFD00039E6C /* NoofClothesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoofClothesCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACF9CD3A2350F1DF00039E6C /* DryCleaningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DryCleaningViewController.swift; sourceTree = "<group>"; };
 		ACFBA0502338E26A00950079 /* MyLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationViewController.swift; sourceTree = "<group>"; };
 		ACFBA0522338E29A00950079 /* MyLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyLocation.storyboard; sourceTree = "<group>"; };
 		C74D617266EB18FBEEAA0F80 /* Pods_NimNim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NimNim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,7 +190,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				62983FD37B9651AB97044FCD /* Pods_NimNim.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +229,18 @@
 				AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */,
 				ACB37265234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift */,
 				ACB37266234631EC00046FB3 /* ServicesBaseCollectionViewCell.xib */,
+				ACF9CD18234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift */,
+				ACF9CD19234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib */,
+				ACF9CD1C234F575900039E6C /* AddMoreServicesCollectionViewCell.swift */,
+				ACF9CD1D234F575900039E6C /* AddMoreServicesCollectionViewCell.xib */,
+				ACF9CD28235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift */,
+				ACF9CD29235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.xib */,
+				ACF9CD2C235043C100039E6C /* SpecialNotesCollectionViewCell.swift */,
+				ACF9CD2D235043C200039E6C /* SpecialNotesCollectionViewCell.xib */,
+				ACF9CD3023504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.swift */,
+				ACF9CD3123504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.xib */,
+				ACF9CD3423504EFD00039E6C /* NoofClothesCollectionViewCell.swift */,
+				ACF9CD3523504EFD00039E6C /* NoofClothesCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -246,6 +284,8 @@
 				AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */,
 				AC0BD3E1233B6BC7000746D1 /* NonServiceable.swift */,
 				ACBAAF69233D0CC800E1E4A6 /* HomeViewController.swift */,
+				ACF9CD22234F69EC00039E6C /* WashAndAirDryViewController.swift */,
+				ACF9CD3A2350F1DF00039E6C /* DryCleaningViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -433,6 +473,7 @@
 				AC1FFDAF2346F1D100930496 /* Proxima Nova Thin.otf in Resources */,
 				ACBB819C232E3FAC003DCF77 /* OFL.txt in Resources */,
 				AC1FFDBF234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.xib in Resources */,
+				ACF9CD3323504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.xib in Resources */,
 				ACBB8191232E3FAC003DCF77 /* Montserrat-SemiBold.ttf in Resources */,
 				AC1FFDAD2346F1D100930496 /* Proxima Nova Black.otf in Resources */,
 				ACBB8198232E3FAC003DCF77 /* Montserrat-Medium.ttf in Resources */,
@@ -440,8 +481,10 @@
 				ACBB8190232E3FAB003DCF77 /* Montserrat-ThinItalic.ttf in Resources */,
 				ACBB8199232E3FAC003DCF77 /* Montserrat-LightItalic.ttf in Resources */,
 				ACBB818C232E3FAB003DCF77 /* Montserrat-SemiBoldItalic.ttf in Resources */,
+				ACF9CD1F234F575900039E6C /* AddMoreServicesCollectionViewCell.xib in Resources */,
 				ACBAAF62233C6D7300E1E4A6 /* BannerCollectionViewCell.xib in Resources */,
 				AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */,
+				ACF9CD2B235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.xib in Resources */,
 				AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */,
 				AC1FFDB12346F1D100930496 /* Proxima Nova Alt Thin.otf in Resources */,
 				ACBB8194232E3FAC003DCF77 /* Montserrat-BoldItalic.ttf in Resources */,
@@ -454,11 +497,14 @@
 				ACBB819B232E3FAC003DCF77 /* Montserrat-Thin.ttf in Resources */,
 				ACB37268234631EC00046FB3 /* ServicesBaseCollectionViewCell.xib in Resources */,
 				AC8CDE392326449200CDFB93 /* LoginViaOTPTableViewCell.xib in Resources */,
+				ACF9CD2F235043C200039E6C /* SpecialNotesCollectionViewCell.xib in Resources */,
 				ACBB818F232E3FAB003DCF77 /* Montserrat-ExtraBold.ttf in Resources */,
 				ACBB8196232E3FAC003DCF77 /* Montserrat-Bold.ttf in Resources */,
 				AC1FFDB32346F1D100930496 /* Proxima Nova Alt Bold.otf in Resources */,
+				ACF9CD3723504EFD00039E6C /* NoofClothesCollectionViewCell.xib in Resources */,
 				ACBB8192232E3FAC003DCF77 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 				ACBB818E232E3FAB003DCF77 /* Montserrat-Regular.ttf in Resources */,
+				ACF9CD1B234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib in Resources */,
 				ACBB818D232E3FAB003DCF77 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -521,10 +567,14 @@
 			files = (
 				AC8CDE382326449200CDFB93 /* LoginViaOTPTableViewCell.swift in Sources */,
 				AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */,
+				ACF9CD3223504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.swift in Sources */,
 				AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */,
 				ACBB8177232D1F57003DCF77 /* Extensions.swift in Sources */,
+				ACF9CD23234F69EC00039E6C /* WashAndAirDryViewController.swift in Sources */,
+				ACF9CD1E234F575900039E6C /* AddMoreServicesCollectionViewCell.swift in Sources */,
 				ACBAAF6A233D0CC800E1E4A6 /* HomeViewController.swift in Sources */,
 				AC1FFDBE234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift in Sources */,
+				ACF9CD2A235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift in Sources */,
 				AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */,
 				AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */,
 				AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */,
@@ -532,13 +582,17 @@
 				ACBBE49A233A0FE0003C67F7 /* LocationcCell.swift in Sources */,
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
 				AC1FFDB723474FC700930496 /* ServicesViewController.swift in Sources */,
+				ACF9CD3623504EFD00039E6C /* NoofClothesCollectionViewCell.swift in Sources */,
 				ACB37263234631C900046FB3 /* ServiceCollectionViewCell.swift in Sources */,
+				ACF9CD3B2350F1DF00039E6C /* DryCleaningViewController.swift in Sources */,
 				AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */,
 				AC11D1D42336314800F1DBCB /* Colors.swift in Sources */,
+				ACF9CD1A234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift in Sources */,
 				ACFBA0512338E26A00950079 /* MyLocationViewController.swift in Sources */,
 				AC1FFDC22347773200930496 /* PreferencesCollectionReusableView.swift in Sources */,
 				ACF0205F232E425F007559E8 /* Fonts.swift in Sources */,
 				ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */,
+				ACF9CD2E235043C200039E6C /* SpecialNotesCollectionViewCell.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
 				ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */,
 				AC8CDE3C23264F4500CDFB93 /* SignUpTableViewCell.swift in Sources */,
@@ -690,7 +744,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.getNimNim.NimNim;
+				PRODUCT_BUNDLE_IDENTIFIER = com.getnimnim.NimNim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -710,7 +764,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.getNimNim.NimNim;
+				PRODUCT_BUNDLE_IDENTIFIER = com.getnimnim.NimNim;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

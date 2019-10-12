@@ -10,10 +10,9 @@ import UIKit
 
 class LocationcCell: UITableViewCell {
 
+    //IBOutlets
     @IBOutlet weak var locationName: UILabel!
     @IBOutlet weak var locationPincode: UILabel!
-  
-    
     @IBOutlet weak var selectedLocationView: UIView!
     
     override func awakeFromNib() {

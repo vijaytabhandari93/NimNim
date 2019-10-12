@@ -38,8 +38,10 @@ class NonServiceable: UIViewController {
     @IBAction func previosScreenTapped(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func NoIAmGoodTapped(_ sender: Any) {
     }
+    
     @IBAction func notifyMeTapped(_ sender: Any) {
     }
 }
