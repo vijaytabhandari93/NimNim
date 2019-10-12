@@ -13,34 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         //Setting up the root view controller of this project..i.e. initial view controller for project....
-        
-        let loginSignupStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
-        let navigationController = loginSignupStoryboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
-        navigationController.isNavigationBarHidden = true
-
-
-        let locationStoryboard = UIStoryboard(name: "MyLocation", bundle: nil)
-        let myLocationViewController = locationStoryboard.instantiateViewController(withIdentifier: "MyLocationViewController")
-        
-        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-
-        let servicesStoryboard = UIStoryboard(name: "Services", bundle: nil)
-        let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "WashPressedShirtsViewController")
-       
-        
-        
-        //This will be the conditional part in future...
-        navigationController.viewControllers = [servicesViewController]
-
-        self.window?.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
-        
+        NavigationManager.shared.initalizeApp()
         return true
     }
 

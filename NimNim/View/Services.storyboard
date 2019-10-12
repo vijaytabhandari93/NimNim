@@ -263,6 +263,9 @@
                                             <constraint firstAttribute="height" constant="50" id="jcS-1O-SjV"/>
                                         </constraints>
                                         <state key="normal" image="previous"/>
+                                        <connections>
+                                            <action selector="previousTapped:" destination="Ept-DF-22O" eventType="touchUpInside" id="KWp-Wh-oXQ"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jl9-e7-hqm">
                                         <rect key="frame" x="368" y="12" width="26" height="26"/>
@@ -276,6 +279,9 @@
                                             </imageView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r7v-GV-66b">
                                                 <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
+                                                <connections>
+                                                    <action selector="basketTapped:" destination="Ept-DF-22O" eventType="touchUpInside" id="bEK-7L-VUh"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ze-go-Mbo">
                                                 <rect key="frame" x="16" y="3.5" width="5" height="12"/>
@@ -335,6 +341,9 @@
                                                 <integer key="value" value="10"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="justNimNimItTapped:" destination="Ept-DF-22O" eventType="touchUpInside" id="fIP-pm-RJa"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -451,10 +460,7 @@
                     </view>
                     <connections>
                         <outlet property="basketLabel" destination="2ze-go-Mbo" id="RJ8-eq-zAR"/>
-                        <outlet property="basketTapped" destination="r7v-GV-66b" id="cb5-tu-pPV"/>
                         <outlet property="descriptionLabel" destination="5IN-C0-swE" id="lod-OA-Hc5"/>
-                        <outlet property="justNimNimIt" destination="yIE-bh-12s" id="ISP-QN-4qF"/>
-                        <outlet property="previousTapped" destination="sBe-Xl-RR5" id="W41-rR-os7"/>
                         <outlet property="priceTotalBackgroundView" destination="med-nE-hmr" id="LgA-db-PnN"/>
                         <outlet property="washAndAirDryCollectionView" destination="aK9-ES-6Wp" id="ndh-IA-JWe"/>
                         <outlet property="washAndAirDryLabel" destination="hvj-aj-kUt" id="Rav-dx-vyJ"/>

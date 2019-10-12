@@ -66,6 +66,7 @@ cell.labelAgainsCheckbox.text = "I need Rush Delivery"
     @IBAction func basketTapped(_ sender: Any) {
     }
     @IBAction func previousTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     @IBAction func justNimNimIt(_ sender: Any) {
     }

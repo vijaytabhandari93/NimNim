@@ -75,6 +75,7 @@
 		ACBB819E232E3FAC003DCF77 /* Montserrat-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACBB818B232E3FAB003DCF77 /* Montserrat-Black.ttf */; };
 		ACBBE49A233A0FE0003C67F7 /* LocationcCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBBE499233A0FE0003C67F7 /* LocationcCell.swift */; };
 		ACD8BA432351AB41005C1EAA /* HomeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */; };
+		ACD8BA452351DF87005C1EAA /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8BA442351DF87005C1EAA /* NavigationManager.swift */; };
 		ACF0205F232E425F007559E8 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF0205E232E425F007559E8 /* Fonts.swift */; };
 		ACF9CD1A234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD18234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift */; };
 		ACF9CD1B234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF9CD19234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib */; };
@@ -167,6 +168,7 @@
 		ACBB818B232E3FAB003DCF77 /* Montserrat-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Black.ttf"; sourceTree = "<group>"; };
 		ACBBE499233A0FE0003C67F7 /* LocationcCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationcCell.swift; sourceTree = "<group>"; };
 		ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseViewController.swift; sourceTree = "<group>"; };
+		ACD8BA442351DF87005C1EAA /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		ACF0205E232E425F007559E8 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		ACF9CD18234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedRushDeliveryCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACF9CD19234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NeedRushDeliveryCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */,
+				ACD8BA442351DF87005C1EAA /* NavigationManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -571,6 +574,7 @@
 				ACF9CD1E234F575900039E6C /* AddMoreServicesCollectionViewCell.swift in Sources */,
 				ACBAAF6A233D0CC800E1E4A6 /* HomeViewController.swift in Sources */,
 				AC1FFDBE234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift in Sources */,
+				ACD8BA452351DF87005C1EAA /* NavigationManager.swift in Sources */,
 				ACF9CD2A235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift in Sources */,
 				AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */,
 				ACF9CD3D2351EB9C00039E6C /* WashPressedShirtsViewController.swift in Sources */,

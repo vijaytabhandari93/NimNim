@@ -15,10 +15,6 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var basketLabel: UILabel!
     @IBOutlet weak var priceTotalBackgroundView: UIView!
-    //IBActions
-    @IBOutlet weak var previousTapped: UIButton!
-    @IBOutlet weak var basketTapped: UIButton!
-    @IBOutlet weak var justNimNimIt: UIButton!
     
     //MARK:UI Methods
     func registerCells() {
@@ -60,6 +56,18 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         priceTotalBackgroundView.addTopShadowToView()
         
     }
+    
+    //MARK: IBActions
+    @IBAction func previousTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func basketTapped(_ sender: Any) {
+    }
+    
+    @IBAction func justNimNimItTapped(_ sender: Any) {
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
             return CGSize(width: collectionView.frame.size.width, height:50)
