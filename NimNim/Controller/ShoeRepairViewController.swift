@@ -138,11 +138,10 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                 cell.actionLabel.text = (selectedState == SelectionType.men) ? "Mens Insole Full" : "Women Insole"
                 cell.priceLabel.text = "$25"
                 return cell
-            }  
+            }
             else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddMoreServicesCollectionViewCell", for: indexPath) as! AddMoreServicesCollectionViewCell
                 return cell
-                
             }
         }
     }

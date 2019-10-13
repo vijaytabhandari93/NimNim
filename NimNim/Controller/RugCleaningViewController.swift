@@ -19,6 +19,7 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     
     
     @IBAction func previousTapped(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
     }
     @IBAction func basketTapped(_ sender: Any) {
     }
