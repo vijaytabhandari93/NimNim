@@ -77,10 +77,11 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
             let washAndAirDryVC = servicesStoryboard.instantiateViewController(withIdentifier: "WashAndAirDryViewController")
             NavigationManager.shared.push(viewController: washAndAirDryVC)
         }else if indexPath.item == 2 {
+            let washPressedVC = servicesStoryboard.instantiateViewController(withIdentifier: "WashPressedShirtsViewController")
+            NavigationManager.shared.push(viewController: washPressedVC)
+        }else if indexPath.item == 3 {
             let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "DryCleaningViewController")
             NavigationManager.shared.push(viewController: dryCleaningVC)
-        }else if indexPath.item == 3 {
-            
         }else if indexPath.item == 4 {
             
         }else if indexPath.item == 5 {

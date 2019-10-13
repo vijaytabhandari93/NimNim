@@ -31,7 +31,7 @@ class NavigationManager {
         
         
         //This will be the conditional part in future...
-        baseNavigationController?.viewControllers = [servicesViewController]
+        baseNavigationController?.viewControllers = [myLocationViewController]
         
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             appDelegate.window?.rootViewController = baseNavigationController

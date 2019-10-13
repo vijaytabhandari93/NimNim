@@ -53,7 +53,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     @IBAction func useThisLocation(_ sender: Any) {
         let preferencesSB = UIStoryboard(name: "MyLocation", bundle: nil)
         let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"NonServiceable") as? NonServiceable
-        self.navigationController?.pushViewController(secondViewController!, animated: true)
+        NavigationManager.shared.push(viewController: secondViewController)
     }
     
     @IBAction func getCurrentLocation(_ sender: Any) {
@@ -69,7 +69,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     @IBAction func doneTapped(_ sender: Any) {
         let preferencesSB = UIStoryboard(name: "LoginSignup", bundle: nil)
         let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"LoginSignUpViewController") as? LoginSignUpViewController
-        self.navigationController?.pushViewController(secondViewController!, animated: true)
+        NavigationManager.shared.push(viewController: secondViewController)
         
     }
     

@@ -103,11 +103,23 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTQ-EL-wsl">
                                                         <rect key="frame" x="0.0" y="0.0" width="83" height="55"/>
                                                         <subviews>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UBW-Ko-lE0">
+                                                                <rect key="frame" x="22.5" y="8.5" width="38" height="38"/>
+                                                                <color key="backgroundColor" red="0.48627450980392156" green="0.84705882352941175" blue="0.77647058823529413" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="GOI-YY-9la"/>
+                                                                    <constraint firstAttribute="width" constant="38" id="WJI-Tl-ctQ"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="19"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fh8-aD-9im">
                                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="55"/>
-                                                                <state key="normal" title="Home">
-                                                                    <color key="titleColor" red="0.0" green="0.50196078430000002" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </state>
+                                                                <color key="tintColor" red="0.792156862745098" green="0.81176470588235294" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal" image="home"/>
                                                                 <connections>
                                                                     <action selector="homeButtonTapped:" destination="1mg-H2-MlS" eventType="touchUpInside" id="j2k-ob-ib7"/>
                                                                 </connections>
@@ -118,17 +130,31 @@
                                                             <constraint firstAttribute="trailing" secondItem="fh8-aD-9im" secondAttribute="trailing" id="7mb-js-CJz"/>
                                                             <constraint firstItem="fh8-aD-9im" firstAttribute="leading" secondItem="QTQ-EL-wsl" secondAttribute="leading" id="PhF-Gq-qNu"/>
                                                             <constraint firstAttribute="bottom" secondItem="fh8-aD-9im" secondAttribute="bottom" id="Sqh-G9-KGg"/>
+                                                            <constraint firstItem="UBW-Ko-lE0" firstAttribute="centerX" secondItem="QTQ-EL-wsl" secondAttribute="centerX" id="jZg-2M-s6z"/>
+                                                            <constraint firstItem="UBW-Ko-lE0" firstAttribute="centerY" secondItem="QTQ-EL-wsl" secondAttribute="centerY" id="t6n-lh-NzO"/>
                                                             <constraint firstItem="fh8-aD-9im" firstAttribute="top" secondItem="QTQ-EL-wsl" secondAttribute="top" id="vlu-cE-em8"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OFO-c0-H3c">
                                                         <rect key="frame" x="83" y="0.0" width="82.5" height="55"/>
                                                         <subviews>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDE-8N-Myw">
+                                                                <rect key="frame" x="22" y="8.5" width="38" height="38"/>
+                                                                <color key="backgroundColor" red="0.48627450979999998" green="0.84705882349999995" blue="0.77647058820000003" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="39P-F8-bcj"/>
+                                                                    <constraint firstAttribute="width" constant="38" id="glc-Fm-ZR5"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="19"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JKh-uM-ek0">
                                                                 <rect key="frame" x="0.0" y="0.0" width="82.5" height="55"/>
-                                                                <state key="normal" title="Menu">
-                                                                    <color key="titleColor" red="0.4823529412" green="0.4823529412" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </state>
+                                                                <color key="tintColor" red="0.79215686269999996" green="0.81176470590000005" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal" image="nav"/>
                                                                 <connections>
                                                                     <action selector="navDrawerTapped:" destination="1mg-H2-MlS" eventType="touchUpInside" id="FC4-Xd-MPG"/>
                                                                 </connections>
@@ -138,6 +164,8 @@
                                                         <constraints>
                                                             <constraint firstItem="JKh-uM-ek0" firstAttribute="top" secondItem="OFO-c0-H3c" secondAttribute="top" id="KrF-cZ-wj1"/>
                                                             <constraint firstAttribute="trailing" secondItem="JKh-uM-ek0" secondAttribute="trailing" id="NuQ-Oo-PhT"/>
+                                                            <constraint firstItem="FDE-8N-Myw" firstAttribute="centerY" secondItem="OFO-c0-H3c" secondAttribute="centerY" id="ica-2a-Evc"/>
+                                                            <constraint firstItem="FDE-8N-Myw" firstAttribute="centerX" secondItem="OFO-c0-H3c" secondAttribute="centerX" id="lXO-WF-ELt"/>
                                                             <constraint firstAttribute="bottom" secondItem="JKh-uM-ek0" secondAttribute="bottom" id="sce-CA-XGv"/>
                                                             <constraint firstItem="JKh-uM-ek0" firstAttribute="leading" secondItem="OFO-c0-H3c" secondAttribute="leading" id="ywk-Ip-TTh"/>
                                                         </constraints>
@@ -163,11 +191,23 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cWR-7z-I2D">
                                                         <rect key="frame" x="248.5" y="0.0" width="82.5" height="55"/>
                                                         <subviews>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aKb-ZH-vvy">
+                                                                <rect key="frame" x="22.5" y="8.5" width="38" height="38"/>
+                                                                <color key="backgroundColor" red="0.48627450979999998" green="0.84705882349999995" blue="0.77647058820000003" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="oRf-FC-YlC"/>
+                                                                    <constraint firstAttribute="width" constant="38" id="yHF-vS-dMd"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="19"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFP-zN-pQN">
                                                                 <rect key="frame" x="0.0" y="0.0" width="82.5" height="55"/>
-                                                                <state key="normal" title="Chat">
-                                                                    <color key="titleColor" red="0.4823529412" green="0.4823529412" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </state>
+                                                                <color key="tintColor" red="0.79215686269999996" green="0.81176470590000005" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal" image="chat"/>
                                                                 <connections>
                                                                     <action selector="chatTapped:" destination="1mg-H2-MlS" eventType="touchUpInside" id="141-3D-7XB"/>
                                                                 </connections>
@@ -176,19 +216,33 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="CFP-zN-pQN" firstAttribute="top" secondItem="cWR-7z-I2D" secondAttribute="top" id="6fH-JH-Eew"/>
+                                                            <constraint firstItem="aKb-ZH-vvy" firstAttribute="centerY" secondItem="cWR-7z-I2D" secondAttribute="centerY" id="JKz-Sr-cBl"/>
                                                             <constraint firstAttribute="bottom" secondItem="CFP-zN-pQN" secondAttribute="bottom" id="UKe-tg-U9n"/>
                                                             <constraint firstItem="CFP-zN-pQN" firstAttribute="leading" secondItem="cWR-7z-I2D" secondAttribute="leading" id="ipM-0H-sbo"/>
+                                                            <constraint firstItem="aKb-ZH-vvy" firstAttribute="centerX" secondItem="cWR-7z-I2D" secondAttribute="centerX" id="pSJ-Dy-sgN"/>
                                                             <constraint firstAttribute="trailing" secondItem="CFP-zN-pQN" secondAttribute="trailing" id="z4G-Cf-SWa"/>
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mnm-JH-mF3">
                                                         <rect key="frame" x="331" y="0.0" width="83" height="55"/>
                                                         <subviews>
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V5a-Bf-o0f">
+                                                                <rect key="frame" x="22.5" y="8.5" width="38" height="38"/>
+                                                                <color key="backgroundColor" red="0.48627450979999998" green="0.84705882349999995" blue="0.77647058820000003" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="38" id="5OP-8F-aAP"/>
+                                                                    <constraint firstAttribute="width" constant="38" id="7jc-kK-EdA"/>
+                                                                </constraints>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <integer key="value" value="19"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
+                                                            </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ezh-2Q-kdF">
                                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="55"/>
-                                                                <state key="normal" title="Profile">
-                                                                    <color key="titleColor" red="0.4823529412" green="0.4823529412" blue="0.48627450979999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </state>
+                                                                <color key="tintColor" red="0.79215686269999996" green="0.81176470590000005" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <state key="normal" image="profile"/>
                                                                 <connections>
                                                                     <action selector="profileTapped:" destination="1mg-H2-MlS" eventType="touchUpInside" id="BDK-8a-dFA"/>
                                                                 </connections>
@@ -197,6 +251,8 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="Ezh-2Q-kdF" secondAttribute="trailing" id="1lR-vg-Xcg"/>
+                                                            <constraint firstItem="V5a-Bf-o0f" firstAttribute="centerY" secondItem="Mnm-JH-mF3" secondAttribute="centerY" id="CFH-sw-77c"/>
+                                                            <constraint firstItem="V5a-Bf-o0f" firstAttribute="centerX" secondItem="Mnm-JH-mF3" secondAttribute="centerX" id="bwV-An-Wds"/>
                                                             <constraint firstItem="Ezh-2Q-kdF" firstAttribute="top" secondItem="Mnm-JH-mF3" secondAttribute="top" id="eP6-E0-RgA"/>
                                                             <constraint firstItem="Ezh-2Q-kdF" firstAttribute="leading" secondItem="Mnm-JH-mF3" secondAttribute="leading" id="pyG-PP-uw1"/>
                                                             <constraint firstAttribute="bottom" secondItem="Ezh-2Q-kdF" secondAttribute="bottom" id="shp-f0-5xO"/>
@@ -269,9 +325,17 @@
                         <viewLayoutGuide key="safeArea" id="bcm-90-cpL"/>
                     </view>
                     <connections>
+                        <outlet property="chatButton" destination="CFP-zN-pQN" id="8cz-3T-HAz"/>
+                        <outlet property="chatButtonBackView" destination="aKb-ZH-vvy" id="m9U-CX-RjN"/>
                         <outlet property="chatContainerView" destination="D4p-zQ-LM5" id="7Rh-b5-Y8v"/>
+                        <outlet property="homeButton" destination="fh8-aD-9im" id="fXx-fo-ZhX"/>
+                        <outlet property="homeButtonBackView" destination="UBW-Ko-lE0" id="DFZ-ot-QGe"/>
                         <outlet property="homeContainerView" destination="g7X-Qa-jAK" id="HBi-Nc-coy"/>
+                        <outlet property="navButton" destination="JKh-uM-ek0" id="sjW-l9-fFM"/>
+                        <outlet property="navButtonBackView" destination="FDE-8N-Myw" id="Foj-Fr-zWV"/>
                         <outlet property="navDrawerContainerView" destination="Dh6-nv-4n9" id="HXj-AU-L8M"/>
+                        <outlet property="profileButton" destination="Ezh-2Q-kdF" id="Ba8-dm-GYn"/>
+                        <outlet property="profileButtonBackView" destination="V5a-Bf-o0f" id="LhD-8L-270"/>
                         <outlet property="profileContainerView" destination="Oha-G7-Dlr" id="cFq-fh-kFC"/>
                         <outlet property="tabBarShadowView" destination="NJZ-yw-pZu" id="2nL-UF-tdg"/>
                     </connections>
@@ -528,5 +592,9 @@
     </scenes>
     <resources>
         <image name="basket" width="26" height="22"/>
+        <image name="chat" width="23" height="19"/>
+        <image name="home" width="19" height="18"/>
+        <image name="nav" width="21" height="14"/>
+        <image name="profile" width="17" height="19"/>
     </resources>
 </document>

@@ -247,6 +247,6 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
          let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
            secondViewController?.screenTypeValue = .pickUpDropOff
-        self.navigationController?.pushViewController(secondViewController!, animated: true)
+        NavigationManager.shared.push(viewController: secondViewController)
     }
 }

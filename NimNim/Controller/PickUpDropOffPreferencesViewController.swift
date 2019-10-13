@@ -78,7 +78,11 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
             let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
             secondViewController?.screenTypeValue = .descriptionOfUser
-            self.navigationController?.pushViewController(secondViewController!, animated: true)
+            NavigationManager.shared.push(viewController: secondViewController)
+        }else {
+            let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
+            let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
+            NavigationManager.shared.push(viewController: servicesViewController)
         }
     }
     
@@ -88,6 +92,10 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
             secondViewController?.screenTypeValue = .descriptionOfUser
             self.navigationController?.pushViewController(secondViewController!, animated: true)
+        }else {
+            let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
+            let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
+            NavigationManager.shared.push(viewController: servicesViewController)
         }
     }
     
