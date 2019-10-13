@@ -10,8 +10,8 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Montserrat-Regular.ttf">
-            <string>Montserrat-Regular</string>
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
         </array>
     </customFonts>
     <objects>
@@ -28,8 +28,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="273" height="56"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g4f-18-Mza">
-                                <rect key="frame" x="43" y="18" width="187" height="20"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <rect key="frame" x="41.5" y="18" width="190" height="20"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                 <state key="normal" title="Select From List of Clothes">
                                     <color key="titleColor" red="0.36862745098039218" green="0.76862745098039209" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
@@ -42,12 +42,22 @@
                             <constraint firstItem="g4f-18-Mza" firstAttribute="top" secondItem="IQa-n8-Mka" secondAttribute="top" constant="18" id="rZL-Id-Uji"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YhI-ML-atf">
+                        <rect key="frame" x="28" y="55" width="217" height="1"/>
+                        <color key="backgroundColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="lPZ-wQ-XmP"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="IQa-n8-Mka" secondAttribute="trailing" id="Gkn-R4-ZCz"/>
                 <constraint firstItem="IQa-n8-Mka" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="OC6-mg-IUi"/>
+                <constraint firstAttribute="bottom" secondItem="YhI-ML-atf" secondAttribute="bottom" id="Oko-Kr-AFD"/>
                 <constraint firstItem="IQa-n8-Mka" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Vzl-Ci-QU3"/>
+                <constraint firstItem="YhI-ML-atf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="fTb-PQ-4Mp"/>
+                <constraint firstAttribute="trailing" secondItem="YhI-ML-atf" secondAttribute="trailing" constant="28" id="fxX-WC-xtC"/>
                 <constraint firstAttribute="bottom" secondItem="IQa-n8-Mka" secondAttribute="bottom" id="xbe-eR-Pk4"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>

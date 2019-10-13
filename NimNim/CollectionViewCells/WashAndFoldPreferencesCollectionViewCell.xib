@@ -28,9 +28,9 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OlW-On-oSw">
-                        <rect key="frame" x="28" y="22" width="42" height="17"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="28" y="22" width="39" height="17"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="twT-J1-Kfw">
@@ -40,14 +40,10 @@
                                 <rect key="frame" x="0.0" y="0.0" width="200.5" height="64"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scented" translatesAutoresizingMaskIntoConstraints="NO" id="JaZ-cE-Wp3">
-                                        <rect key="frame" x="0.0" y="17" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="YmD-3h-4fh"/>
-                                            <constraint firstAttribute="width" constant="30" id="cc0-R1-vXH"/>
-                                        </constraints>
+                                        <rect key="frame" x="0.0" y="11.5" width="29" height="28"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scented" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2B3-j1-avw">
-                                        <rect key="frame" x="38" y="24.5" width="50.5" height="15"/>
+                                        <rect key="frame" x="37" y="24.5" width="50.5" height="15"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -67,8 +63,8 @@
                                     <constraint firstItem="2B3-j1-avw" firstAttribute="centerY" secondItem="kBe-Kg-03T" secondAttribute="centerY" id="hma-wG-kla"/>
                                     <constraint firstItem="JaZ-cE-Wp3" firstAttribute="leading" secondItem="kBe-Kg-03T" secondAttribute="leading" id="kT2-jw-QZf"/>
                                     <constraint firstItem="2B3-j1-avw" firstAttribute="leading" secondItem="JaZ-cE-Wp3" secondAttribute="trailing" constant="8" id="nOy-Mp-2V0"/>
-                                    <constraint firstItem="JaZ-cE-Wp3" firstAttribute="centerY" secondItem="2B3-j1-avw" secondAttribute="centerY" id="o4I-fb-ePN"/>
                                     <constraint firstItem="33I-qa-Ook" firstAttribute="top" secondItem="kBe-Kg-03T" secondAttribute="top" id="plJ-HI-czw"/>
+                                    <constraint firstItem="JaZ-cE-Wp3" firstAttribute="bottom" secondItem="2B3-j1-avw" secondAttribute="bottom" id="wDa-1D-c9e"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XyU-sK-3d9">
@@ -97,8 +93,8 @@
                                     <constraint firstItem="cCl-oi-Hih" firstAttribute="leading" secondItem="NVc-gE-ZCK" secondAttribute="trailing" constant="8" id="Lsy-Wb-6Mg"/>
                                     <constraint firstItem="cCl-oi-Hih" firstAttribute="centerY" secondItem="XyU-sK-3d9" secondAttribute="centerY" id="OKS-UR-ho6"/>
                                     <constraint firstItem="NVc-gE-ZCK" firstAttribute="leading" secondItem="XyU-sK-3d9" secondAttribute="leading" id="Spe-D5-1j3"/>
+                                    <constraint firstItem="NVc-gE-ZCK" firstAttribute="bottom" secondItem="cCl-oi-Hih" secondAttribute="bottom" id="hIm-as-2Rl"/>
                                     <constraint firstItem="SSo-CF-Ojj" firstAttribute="top" secondItem="XyU-sK-3d9" secondAttribute="top" id="r1q-Pq-S0o"/>
-                                    <constraint firstItem="NVc-gE-ZCK" firstAttribute="centerY" secondItem="cCl-oi-Hih" secondAttribute="centerY" id="skl-Q0-Cz1"/>
                                     <constraint firstAttribute="trailing" secondItem="SSo-CF-Ojj" secondAttribute="trailing" id="tBY-OW-mvA"/>
                                 </constraints>
                             </view>
