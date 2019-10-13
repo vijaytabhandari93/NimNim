@@ -84,6 +84,10 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
             NavigationManager.shared.push(viewController: dryCleaningVC)
         }else if indexPath.item == 4 {
             
+                    let rugCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")
+                    NavigationManager.shared.push(viewController: rugCleaningVC)
+            
+            
         }else if indexPath.item == 5 {
             let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController")
             NavigationManager.shared.push(viewController: dryCleaningVC)

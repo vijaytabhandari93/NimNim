@@ -79,6 +79,7 @@
 		ACE0E4E9235312F100A75D82 /* ShoeRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0E4E8235312F100A75D82 /* ShoeRepairViewController.swift */; };
 		ACE0E4EC2353164500A75D82 /* ShoeRepairCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0E4EA2353164500A75D82 /* ShoeRepairCollectionViewCell.swift */; };
 		ACE0E4ED2353164500A75D82 /* ShoeRepairCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACE0E4EB2353164500A75D82 /* ShoeRepairCollectionViewCell.xib */; };
+		ACE0E4EF2353240B00A75D82 /* RugCleaningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0E4EE2353240B00A75D82 /* RugCleaningViewController.swift */; };
 		ACF0205F232E425F007559E8 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF0205E232E425F007559E8 /* Fonts.swift */; };
 		ACF9CD1A234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD18234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift */; };
 		ACF9CD1B234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACF9CD19234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib */; };
@@ -175,6 +176,7 @@
 		ACE0E4E8235312F100A75D82 /* ShoeRepairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeRepairViewController.swift; sourceTree = "<group>"; };
 		ACE0E4EA2353164500A75D82 /* ShoeRepairCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeRepairCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACE0E4EB2353164500A75D82 /* ShoeRepairCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoeRepairCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACE0E4EE2353240B00A75D82 /* RugCleaningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RugCleaningViewController.swift; sourceTree = "<group>"; };
 		ACF0205E232E425F007559E8 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		ACF9CD18234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedRushDeliveryCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACF9CD19234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NeedRushDeliveryCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				ACF9CD3C2351EB9C00039E6C /* WashPressedShirtsViewController.swift */,
 				ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */,
 				ACE0E4E8235312F100A75D82 /* ShoeRepairViewController.swift */,
+				ACE0E4EE2353240B00A75D82 /* RugCleaningViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -608,6 +611,7 @@
 				ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */,
 				ACF9CD2E235043C200039E6C /* SpecialNotesCollectionViewCell.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
+				ACE0E4EF2353240B00A75D82 /* RugCleaningViewController.swift in Sources */,
 				ACE0E4E9235312F100A75D82 /* ShoeRepairViewController.swift in Sources */,
 				ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */,
 				AC8CDE3C23264F4500CDFB93 /* SignUpTableViewCell.swift in Sources */,
