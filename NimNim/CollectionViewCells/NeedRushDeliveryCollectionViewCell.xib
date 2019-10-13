@@ -83,7 +83,7 @@
                 <outlet property="labelAgainsCheckbox" destination="PVR-dI-cwD" id="A9u-Xc-7cL"/>
                 <outlet property="needRushDeliveryTapped" destination="VhF-oq-Mu0" id="FfN-RD-mYC"/>
             </connections>
-            <point key="canvasLocation" x="293" y="32"/>
+            <point key="canvasLocation" x="67" y="41"/>
         </collectionViewCell>
     </objects>
     <resources>

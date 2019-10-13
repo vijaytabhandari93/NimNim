@@ -42,7 +42,7 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
         if indexPath.item == 0 {
             cell.backgroundCurvedView.backgroundColor = UIColor.white
-            cell.configureCell(withTitle: "Wash + Fold")
+            cell.configureCell(withTitle: "Wash + Fold") //This will set the title label/service name label inside the ServiceCollectionViewCell dequed above in this function...we will setup the value of that label on the basis of the indexPath...
         }else if indexPath.item == 1 {
             cell.backgroundCurvedView.backgroundColor = Colors.nimnimServicesGreen
             cell.configureCell(withTitle: "Wash + Air Dry")
@@ -85,7 +85,8 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
         }else if indexPath.item == 4 {
             
         }else if indexPath.item == 5 {
-            
+            let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController")
+            NavigationManager.shared.push(viewController: dryCleaningVC)
         }else if indexPath.item == 6 {
             
         }else if indexPath.item == 7 {

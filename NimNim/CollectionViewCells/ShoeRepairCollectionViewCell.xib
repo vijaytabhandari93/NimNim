@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ShoeRepairCollectionViewCell" id="gTV-IL-0wX" customClass="ShoeRepairCollectionViewCell" customModule="NimNim" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="358" height="73"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="358" height="73"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1nD-8F-ZQu">
+                        <rect key="frame" x="0.0" y="0.0" width="358" height="73"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Replace Small Heel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="enK-Wl-27w">
+                                <rect key="frame" x="68" y="28" width="137" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="1oE-YD-vDb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Ks-5M-Y9f">
+                                <rect key="frame" x="307" y="27" width="23" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="ICG-50-KNE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Acb-iD-LSp">
+                                <rect key="frame" x="28" y="72" width="302" height="1"/>
+                                <color key="backgroundColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="5tE-Ej-Qjv"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="0Ks-5M-Y9f" secondAttribute="trailing" constant="28" id="ItP-G8-5ym"/>
+                            <constraint firstAttribute="bottom" secondItem="Acb-iD-LSp" secondAttribute="bottom" id="J1V-g1-CJk"/>
+                            <constraint firstAttribute="trailing" secondItem="Acb-iD-LSp" secondAttribute="trailing" constant="28" id="gyj-Uw-tDr"/>
+                            <constraint firstItem="0Ks-5M-Y9f" firstAttribute="centerY" secondItem="enK-Wl-27w" secondAttribute="centerY" id="lt2-0P-XWT"/>
+                            <constraint firstItem="Acb-iD-LSp" firstAttribute="leading" secondItem="1nD-8F-ZQu" secondAttribute="leading" constant="28" id="lwi-e6-01u"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d6K-wA-8dE">
+                        <rect key="frame" x="28" y="24" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="BYy-Kh-Tiv"/>
+                            <constraint firstAttribute="width" constant="24" id="Zg5-se-WMA"/>
+                        </constraints>
+                        <state key="normal" title="Button" image="tick"/>
+                        <connections>
+                            <action selector="tickbuttonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="6ac-60-tei"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="enK-Wl-27w" firstAttribute="leading" secondItem="d6K-wA-8dE" secondAttribute="trailing" constant="16" id="O1S-0E-bL2"/>
+                <constraint firstItem="enK-Wl-27w" firstAttribute="centerY" secondItem="d6K-wA-8dE" secondAttribute="centerY" id="Pr1-Pc-K6W"/>
+                <constraint firstAttribute="bottom" secondItem="1nD-8F-ZQu" secondAttribute="bottom" id="Ud9-hb-ILE"/>
+                <constraint firstItem="d6K-wA-8dE" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="XzV-dI-Wr3"/>
+                <constraint firstItem="1nD-8F-ZQu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="aAN-PK-hYs"/>
+                <constraint firstItem="1nD-8F-ZQu" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="f06-qd-rBd"/>
+                <constraint firstItem="d6K-wA-8dE" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="24" id="qeR-3Z-uxj"/>
+                <constraint firstAttribute="trailing" secondItem="1nD-8F-ZQu" secondAttribute="trailing" id="tGV-3n-6ER"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="358" height="74"/>
+            <connections>
+                <outlet property="actionLabel" destination="enK-Wl-27w" id="4wJ-9r-PK5"/>
+                <outlet property="priceLabel" destination="0Ks-5M-Y9f" id="ztf-cs-SPS"/>
+            </connections>
+            <point key="canvasLocation" x="553.62318840579712" y="-38.504464285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="tick" width="24" height="24"/>
+    </resources>
+</document>
