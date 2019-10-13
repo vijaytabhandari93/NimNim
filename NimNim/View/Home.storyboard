@@ -280,9 +280,26 @@
                                         <subviews>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EWv-uA-Waz">
                                                 <rect key="frame" x="10.5" y="0.0" width="62" height="62"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tO7-Mv-gih">
+                                                        <rect key="frame" x="5" y="5" width="52" height="52"/>
+                                                        <color key="backgroundColor" red="0.79215686269999996" green="0.81176470590000005" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <state key="normal" image="NIMNIM_logo_whi"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="26"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </button>
+                                                </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstItem="tO7-Mv-gih" firstAttribute="top" secondItem="EWv-uA-Waz" secondAttribute="top" constant="5" id="DuP-kl-VGm"/>
+                                                    <constraint firstAttribute="bottom" secondItem="tO7-Mv-gih" secondAttribute="bottom" constant="5" id="H5h-3n-I1j"/>
                                                     <constraint firstAttribute="width" constant="62" id="J6n-E0-HTt"/>
+                                                    <constraint firstAttribute="trailing" secondItem="tO7-Mv-gih" secondAttribute="trailing" constant="5" id="K29-5p-RUL"/>
+                                                    <constraint firstItem="tO7-Mv-gih" firstAttribute="leading" secondItem="EWv-uA-Waz" secondAttribute="leading" constant="5" id="LZf-PF-sED"/>
                                                     <constraint firstAttribute="height" constant="62" id="bTW-74-LVh"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
@@ -591,6 +608,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="NIMNIM_logo_whi" width="4000" height="4000"/>
         <image name="basket" width="26" height="22"/>
         <image name="chat" width="23" height="19"/>
         <image name="home" width="19" height="18"/>
