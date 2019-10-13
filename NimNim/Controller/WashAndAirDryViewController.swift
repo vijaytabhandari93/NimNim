@@ -70,12 +70,11 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
-            return CGSize(width: collectionView.frame.size.width, height:50)
+            return CGSize(width: collectionView.frame.size.width, height:82)
         }
         else if indexPath.item == 1 {
-             return CGSize(width: collectionView.frame.size.width, height:56)
+            return CGSize(width: collectionView.frame.size.width, height:56)
         }
-            
         else if indexPath.item == 2 {
             return CGSize(width: collectionView.frame.size.width, height:104)
             
@@ -84,18 +83,18 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             return CGSize(width: collectionView.frame.size.width, height:104)
         }
         else if indexPath.item == 4 {
-             return CGSize(width: collectionView.frame.size.width, height:104)
+            return CGSize(width: collectionView.frame.size.width, height:104)
         }
             
         else if indexPath.item == 5 {
-             return CGSize(width: collectionView.frame.size.width, height:134)
+            return CGSize(width: collectionView.frame.size.width, height:134)
         }
         else if indexPath.item == 6 {
             return CGSize(width: collectionView.frame.size.width, height:60)
         }
         else {
-           return CGSize(width: collectionView.frame.size.width, height:48)
-            }
+            return CGSize(width: collectionView.frame.size.width, height:48)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -126,13 +125,16 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
-            return cell }
-            
+            cell.separatorView.alpha = 0
+            cell.titleLabel.text = "Number of Clothes"
+            cell.counterType = "Clothes"
+            cell.configureCounterLabel()
+            return cell
+        }
         else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectFromListOfClothesCollectionViewCell", for: indexPath) as! SelectFromListOfClothesCollectionViewCell
             return cell
-            }
-            
+        }
         else if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
             cell.titleLabel.text = "Wash"

@@ -9,14 +9,14 @@
 import UIKit
 
 class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
-
-        //IBOutlets
+    
+    //IBOutlets
     @IBOutlet weak var basketLabel: UILabel!
     @IBOutlet weak var WashAndPressedShirtLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var WashPressedShirtCollectionView: UICollectionView!
     @IBOutlet weak var PriceTotalBackgroundView: UIView!
-        //IBActions
+    //IBActions
     @IBAction func previousTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
@@ -35,14 +35,14 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         
         let type3PreferencesNib = UINib(nibName: "SpecialNotesCollectionViewCell", bundle: nil)
         WashPressedShirtCollectionView.register(type3PreferencesNib, forCellWithReuseIdentifier: "SpecialNotesCollectionViewCell")
-
-       let type4PreferencesNib = UINib(nibName: "AddMoreServicesCollectionViewCell", bundle: nil)
+        
+        let type4PreferencesNib = UINib(nibName: "AddMoreServicesCollectionViewCell", bundle: nil)
         WashPressedShirtCollectionView.register(type4PreferencesNib, forCellWithReuseIdentifier: "AddMoreServicesCollectionViewCell")
         
         let type5PreferencesNib = UINib(nibName: "NeedRushDeliveryCollectionViewCell", bundle: nil)
         WashPressedShirtCollectionView.register(type5PreferencesNib, forCellWithReuseIdentifier: "NeedRushDeliveryCollectionViewCell")
         
-      
+        
         let headerNib = UINib(nibName: "PreferencesCollectionReusableView", bundle: nil)
         WashPressedShirtCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "PreferencesCollectionReusableView")
         
@@ -90,20 +90,22 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         return 5
     }
     
-  
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
-            return cell }
-            
-        
+            cell.separatorView.alpha = 1
+            cell.titleLabel.text = "Number of Shirts"
+            cell.counterType = "Shirts"
+            cell.configureCounterLabel()
+            return cell
+        }
         else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
             cell.titleLabel.text = "Starch"
-            cell.leftImageView.image = UIImage(named: "starchLight")
+            cell.leftImageView.image = UIImage(named: "scented")
             cell.leftLabel.text = "Light"
-            cell.rightImageView.image = UIImage(named: "starchHeavy")
+            cell.rightImageView.image = UIImage(named: "nonScented")
             cell.rightLabel.text = "Heavy"
             return cell
             
@@ -111,14 +113,12 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         else if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
             cell.titleLabel.text = "Boxed"
-            cell.leftImageView.image = UIImage(named: "packing")
+            cell.leftImageView.image = UIImage(named: "boxed")
             cell.leftLabel.text = "Boxed"
-            cell.rightImageView.image = UIImage(named: "shirt")
+            cell.rightImageView.image = UIImage(named: "unboxed")
             cell.rightLabel.text = "Unboxed"
             return cell
         }
-       
-            
         else if indexPath.item == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
             return cell
@@ -136,7 +136,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
-            return CGSize(width: collectionView.frame.size.width, height:50)
+            return CGSize(width: collectionView.frame.size.width, height:96)
         }
         else if indexPath.item == 1 {
             return CGSize(width: collectionView.frame.size.width, height:104)
@@ -152,8 +152,6 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         else if indexPath.item == 4 {
             return CGSize(width: collectionView.frame.size.width, height:95)
         }
-            
-    
         else {
             return CGSize(width: collectionView.frame.size.width, height:48)
         }
