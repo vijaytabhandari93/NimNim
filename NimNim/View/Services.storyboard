@@ -1000,7 +1000,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmP-09-S6D">
-                                        <rect key="frame" x="117" y="144" width="180" height="40"/>
+                                        <rect key="frame" x="117" y="120" width="180" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="6gu-Lo-YNU"/>
@@ -1019,11 +1019,42 @@
                                             <action selector="justNimNimIt:" destination="FxO-gM-fpC" eventType="touchUpInside" id="Fsq-4t-1gX"/>
                                         </connections>
                                     </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="miQ-W1-e1t">
+                                        <rect key="frame" x="0.0" y="177" width="414" height="43"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SvP-Z9-RuN">
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="43"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Women">
+                                                    <color key="titleColor" white="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="womenTapped:" destination="FxO-gM-fpC" eventType="touchUpInside" id="83h-mp-5oe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rrl-vF-Gyn">
+                                                <rect key="frame" x="207" y="0.0" width="207" height="43"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                                <state key="normal" title="Men">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <state key="selected" title="Men"/>
+                                                <connections>
+                                                    <action selector="menTapped:" destination="FxO-gM-fpC" eventType="touchUpInside" id="CNE-mM-yLT"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="43" id="MlD-XE-h8T"/>
+                                        </constraints>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="bfu-uP-xxM" firstAttribute="top" secondItem="gqc-y9-Dh3" secondAttribute="top" id="0eb-Uq-bTn"/>
-                                    <constraint firstAttribute="bottom" secondItem="QmP-09-S6D" secondAttribute="bottom" constant="36" id="2xH-fd-HME"/>
+                                    <constraint firstAttribute="bottom" secondItem="QmP-09-S6D" secondAttribute="bottom" constant="60" id="2xH-fd-HME"/>
                                     <constraint firstItem="bjH-Dv-8LT" firstAttribute="centerX" secondItem="gqc-y9-Dh3" secondAttribute="centerX" id="6F9-ld-9r7"/>
                                     <constraint firstAttribute="trailing" secondItem="uhr-w7-A2B" secondAttribute="trailing" constant="32" id="F0h-T8-K3m"/>
                                     <constraint firstItem="bjH-Dv-8LT" firstAttribute="centerY" secondItem="bfu-uP-xxM" secondAttribute="centerY" id="FG5-wF-huq"/>
@@ -1031,6 +1062,9 @@
                                     <constraint firstItem="3Bn-s3-4m4" firstAttribute="centerY" secondItem="bfu-uP-xxM" secondAttribute="centerY" id="Omb-Pe-1B4"/>
                                     <constraint firstItem="bfu-uP-xxM" firstAttribute="leading" secondItem="gqc-y9-Dh3" secondAttribute="leading" id="RlS-z7-gLX"/>
                                     <constraint firstItem="uhr-w7-A2B" firstAttribute="leading" secondItem="gqc-y9-Dh3" secondAttribute="leading" constant="32" id="SNC-U9-buf"/>
+                                    <constraint firstAttribute="bottom" secondItem="miQ-W1-e1t" secondAttribute="bottom" id="TA3-pr-qb1"/>
+                                    <constraint firstAttribute="trailing" secondItem="miQ-W1-e1t" secondAttribute="trailing" id="fHP-Xj-b1F"/>
+                                    <constraint firstItem="miQ-W1-e1t" firstAttribute="leading" secondItem="gqc-y9-Dh3" secondAttribute="leading" id="ge8-SN-2V5"/>
                                     <constraint firstAttribute="trailing" secondItem="3Bn-s3-4m4" secondAttribute="trailing" constant="20" id="tW7-Jv-9Xq"/>
                                     <constraint firstAttribute="height" constant="220" id="xQS-dO-RUP"/>
                                     <constraint firstItem="uhr-w7-A2B" firstAttribute="top" secondItem="bjH-Dv-8LT" secondAttribute="bottom" constant="20" id="yTZ-Zf-4SI"/>
@@ -1135,9 +1169,11 @@
                     <connections>
                         <outlet property="basketLabel" destination="lLX-Le-QWY" id="DaY-qR-giO"/>
                         <outlet property="descriptionLabel" destination="uhr-w7-A2B" id="4gF-1M-LJ1"/>
+                        <outlet property="menButton" destination="rrl-vF-Gyn" id="Pht-Hl-tLq"/>
                         <outlet property="priceTotalBackgroundView" destination="5X4-Yp-9C1" id="H4c-xZ-irs"/>
                         <outlet property="shoeRepairCollectionView" destination="OI5-de-dVZ" id="2az-TK-fyS"/>
                         <outlet property="shoeRepairLabel" destination="bjH-Dv-8LT" id="dqN-so-XJm"/>
+                        <outlet property="womenButton" destination="SvP-Z9-RuN" id="aNU-qg-d1p"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Icp-wM-TlZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -17,4 +17,5 @@ struct Colors{
     static let nimnimHomeTabsGrey = UIColor(red: 202/255, green: 207/255, blue: 217/255, alpha: 1)
     static let nimnimHomeTabsGreen = UIColor(red: 71/255, green: 191/255, blue: 167/255, alpha: 1)
     static let nimnimServicesGreen = UIColor(red: 124/255, green: 216/255, blue: 198/255, alpha: 1)
+    static let nimnimGenderWhite = UIColor(red: 255/255, green: 255/255, blue: 255/255, alpha: 0.7)
 }

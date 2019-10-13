@@ -16,6 +16,7 @@ class SpecialNotesCollectionViewCell: UICollectionViewCell {
         //border addition to be done
         super.awakeFromNib()
         // Initialization code
+        notesTextBox.textContainerInset = UIEdgeInsets(top: 18, left: 20, bottom: 18, right: 20)
     }
 
 }

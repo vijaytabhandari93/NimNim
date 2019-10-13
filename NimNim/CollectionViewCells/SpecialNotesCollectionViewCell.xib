@@ -27,8 +27,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="429" height="134"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="frh-3l-3hV">
-                        <rect key="frame" x="0.0" y="0.0" width="429" height="151"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="frh-3l-3hV">
+                        <rect key="frame" x="0.0" y="0.0" width="429" height="134"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Special Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53N-Ex-tMh">
                                 <rect key="frame" x="29" y="18" width="98" height="17.5"/>
@@ -37,9 +37,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3db-c0-yCl">
-                                <rect key="frame" x="29" y="55.5" width="52" height="52"/>
+                                <rect key="frame" x="28" y="55.5" width="52" height="52"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ypi-ql-FTY">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="upload" translatesAutoresizingMaskIntoConstraints="NO" id="Ypi-ql-FTY">
                                         <rect key="frame" x="16" y="16" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="QO3-BV-fFM"/>
@@ -61,7 +61,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xfM-vw-pgb">
-                                <rect key="frame" x="89" y="55.5" width="260" height="52"/>
+                                <rect key="frame" x="88" y="55.5" width="260" height="52"/>
                                 <color key="backgroundColor" red="0.792156862745098" green="0.81176470588235294" blue="0.85098039215686272" alpha="0.16" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="Q2a-AV-YGB"/>
@@ -74,7 +74,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="any special notes..." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="7IX-7b-UrN">
-                                <rect key="frame" x="89" y="55.5" width="260" height="52"/>
+                                <rect key="frame" x="88" y="55.5" width="260" height="52"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
@@ -87,7 +87,7 @@
                             <constraint firstItem="7IX-7b-UrN" firstAttribute="centerY" secondItem="xfM-vw-pgb" secondAttribute="centerY" id="HNp-Ka-L94"/>
                             <constraint firstItem="7IX-7b-UrN" firstAttribute="bottom" secondItem="xfM-vw-pgb" secondAttribute="bottom" id="LhA-yN-91n"/>
                             <constraint firstItem="7IX-7b-UrN" firstAttribute="centerX" secondItem="xfM-vw-pgb" secondAttribute="centerX" id="Mnx-z7-8Nw"/>
-                            <constraint firstItem="3db-c0-yCl" firstAttribute="leading" secondItem="frh-3l-3hV" secondAttribute="leading" constant="29" id="SRJ-XK-DMm"/>
+                            <constraint firstItem="3db-c0-yCl" firstAttribute="leading" secondItem="frh-3l-3hV" secondAttribute="leading" constant="28" id="SRJ-XK-DMm"/>
                             <constraint firstItem="7IX-7b-UrN" firstAttribute="top" secondItem="xfM-vw-pgb" secondAttribute="top" id="UCk-KP-YJj"/>
                             <constraint firstItem="53N-Ex-tMh" firstAttribute="top" secondItem="frh-3l-3hV" secondAttribute="top" constant="18" id="WIg-w0-Kuf"/>
                             <constraint firstItem="xfM-vw-pgb" firstAttribute="leading" secondItem="3db-c0-yCl" secondAttribute="trailing" constant="8" id="e9u-3n-yMS"/>
@@ -123,4 +123,7 @@
             <point key="canvasLocation" x="421" y="48"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="upload" width="19" height="22"/>
+    </resources>
 </document>
