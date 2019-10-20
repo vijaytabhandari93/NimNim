@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SavedAddressCollectionViewCell" id="gTV-IL-0wX" customClass="SavedAddressCollectionViewCell" customModule="NimNim" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="253"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have 1 saved cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpc-UH-wWO">
+                        <rect key="frame" x="28" y="0.0" width="192.5" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="rkw-bf-8e6"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.44" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Akshay Sahani" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yec-HT-62a">
+                        <rect key="frame" x="28" y="45" width="118.5" height="19"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="19" id="67s-UO-HmS"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwI-uN-RoW">
+                        <rect key="frame" x="28" y="71" width="319" height="51.5"/>
+                        <string key="text">30 Germania St, Boston, MA 02130, USA
+8V7W+VR Boston, Massachusetts, USA
++1 617-368-5080</string>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="IBB-A6-sCM">
+                        <rect key="frame" x="18.5" y="152.5" width="338" height="40"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ass-1c-7r4">
+                                <rect key="frame" x="0.0" y="0.0" width="160" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="IzE-aE-GdV"/>
+                                    <constraint firstAttribute="height" constant="40" id="Qu4-0h-tBL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="Edit Address">
+                                    <color key="titleColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="editAddressTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="zhr-zw-GYw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRH-sL-fix">
+                                <rect key="frame" x="178" y="0.0" width="160" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="cHy-Md-fmu"/>
+                                    <constraint firstAttribute="width" constant="160" id="kQq-tI-WId"/>
+                                </constraints>
+                                <state key="normal" title="+ Add New Card">
+                                    <color key="titleColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="addNewCardTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="kEE-Nj-nFm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Yec-HT-62a" firstAttribute="top" secondItem="wpc-UH-wWO" secondAttribute="bottom" constant="21" id="174-Su-I6t"/>
+                <constraint firstItem="wpc-UH-wWO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="6Ha-kA-GVh"/>
+                <constraint firstItem="IBB-A6-sCM" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="EeQ-cl-kgL"/>
+                <constraint firstItem="Yec-HT-62a" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="HPU-UG-r6p"/>
+                <constraint firstAttribute="trailing" secondItem="qwI-uN-RoW" secondAttribute="trailing" constant="28" id="MVX-1U-L6Z"/>
+                <constraint firstItem="IBB-A6-sCM" firstAttribute="top" secondItem="qwI-uN-RoW" secondAttribute="bottom" constant="30" id="OWE-4e-jcm"/>
+                <constraint firstItem="wpc-UH-wWO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="mD3-9V-Nly"/>
+                <constraint firstItem="qwI-uN-RoW" firstAttribute="top" secondItem="Yec-HT-62a" secondAttribute="bottom" constant="7" id="pTM-Bd-8zE"/>
+                <constraint firstItem="qwI-uN-RoW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="x24-5K-JHy"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="addressLabel" destination="qwI-uN-RoW" id="JPq-8I-fiF"/>
+                <outlet property="titleLabel" destination="wpc-UH-wWO" id="PHo-mm-gcH"/>
+                <outlet property="userName" destination="Yec-HT-62a" id="0VG-zi-r2o"/>
+            </connections>
+            <point key="canvasLocation" x="217" y="99"/>
+        </collectionViewCell>
+    </objects>
+</document>

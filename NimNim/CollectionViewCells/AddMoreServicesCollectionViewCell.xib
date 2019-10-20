@@ -33,6 +33,9 @@
                                 <state key="normal" title="+ Add More Services">
                                     <color key="titleColor" red="0.36862745098039218" green="0.76862745098039209" blue="0.69019607843137254" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="addMoreServicesTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="DnW-Xb-4LL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -51,9 +54,6 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="372" height="177"/>
-            <connections>
-                <outlet property="addMoreServicesTapped" destination="FuI-Ok-eND" id="mok-tw-4Ch"/>
-            </connections>
             <point key="canvasLocation" x="-37.681159420289859" y="77.008928571428569"/>
         </collectionViewCell>
     </objects>

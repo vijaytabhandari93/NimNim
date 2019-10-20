@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Add Address View Controller-->
+        <scene sceneID="fR3-5X-zPU">
+            <objects>
+                <viewController storyboardIdentifier="AddAddressViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="I80-bZ-Onu" customClass="AddAddressViewController" customModule="NimNim" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ebK-Eu-kaY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1m-WF-fFN">
+                                <rect key="frame" x="0.0" y="44" width="414" height="98"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaP-6x-Dy0">
+                                        <rect key="frame" x="116.5" y="7" width="181" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Ac-gn-j4p">
+                                        <rect key="frame" x="0.0" y="-5.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="MfS-WZ-4qy"/>
+                                            <constraint firstAttribute="height" constant="50" id="QgL-cd-Rdq"/>
+                                        </constraints>
+                                        <state key="normal" image="previous-1"/>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="I80-bZ-Onu" eventType="touchUpInside" id="SkP-qD-mG9"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="hY2-mo-K1r">
+                                        <rect key="frame" x="0.0" y="66" width="414" height="32"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsS-zt-MCq">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="32"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                                                <state key="normal" title="Home">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="homeTapped:" destination="I80-bZ-Onu" eventType="touchUpInside" id="AgP-2b-DjA"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lb8-8K-TCj">
+                                                <rect key="frame" x="232" y="0.0" width="182" height="32"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                                                <state key="normal" title="Office">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="officeTapped:" destination="I80-bZ-Onu" eventType="touchUpInside" id="DVJ-6d-C3G"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="IaP-6x-Dy0" firstAttribute="top" secondItem="z1m-WF-fFN" secondAttribute="top" constant="7" id="5ON-zr-Y8m"/>
+                                    <constraint firstItem="6Ac-gn-j4p" firstAttribute="leading" secondItem="z1m-WF-fFN" secondAttribute="leading" id="7A4-3L-tJI"/>
+                                    <constraint firstAttribute="bottom" secondItem="hY2-mo-K1r" secondAttribute="bottom" id="DbW-BV-TZL"/>
+                                    <constraint firstItem="6Ac-gn-j4p" firstAttribute="centerY" secondItem="IaP-6x-Dy0" secondAttribute="centerY" id="Isw-1Z-KSu"/>
+                                    <constraint firstAttribute="trailing" secondItem="hY2-mo-K1r" secondAttribute="trailing" id="Nyo-tp-OnG"/>
+                                    <constraint firstItem="hY2-mo-K1r" firstAttribute="leading" secondItem="z1m-WF-fFN" secondAttribute="leading" id="bOi-mu-D97"/>
+                                    <constraint firstItem="IaP-6x-Dy0" firstAttribute="centerX" secondItem="z1m-WF-fFN" secondAttribute="centerX" id="gOz-zj-TBi"/>
+                                    <constraint firstAttribute="height" constant="98" id="iL0-WF-jZf"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8fw-Wt-7z6">
+                                <rect key="frame" x="0.0" y="142" width="414" height="672"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ib1-YA-nkw">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5xg-uO-oW7">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXM-yP-pyC">
+                                <rect key="frame" x="0.0" y="814" width="414" height="82"/>
+                                <color key="backgroundColor" red="0.48627450979999998" green="0.84705882349999995" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                <state key="normal" title="Add Address">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addAddressTapped:" destination="I80-bZ-Onu" eventType="touchUpInside" id="j4r-j9-kyH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="iXM-yP-pyC" firstAttribute="top" secondItem="8fw-Wt-7z6" secondAttribute="bottom" id="2aA-WD-ORx"/>
+                            <constraint firstAttribute="trailing" secondItem="iXM-yP-pyC" secondAttribute="trailing" id="8la-CL-goV"/>
+                            <constraint firstItem="rf8-vs-2fw" firstAttribute="trailing" secondItem="8fw-Wt-7z6" secondAttribute="trailing" id="CSu-kd-fGe"/>
+                            <constraint firstItem="z1m-WF-fFN" firstAttribute="leading" secondItem="rf8-vs-2fw" secondAttribute="leading" id="Ell-1R-ZiX"/>
+                            <constraint firstItem="iXM-yP-pyC" firstAttribute="leading" secondItem="ebK-Eu-kaY" secondAttribute="leading" id="LEK-aM-MgE"/>
+                            <constraint firstItem="8fw-Wt-7z6" firstAttribute="top" secondItem="z1m-WF-fFN" secondAttribute="bottom" id="Tua-bG-hQO"/>
+                            <constraint firstAttribute="bottom" secondItem="iXM-yP-pyC" secondAttribute="bottom" id="c2v-dV-6SG"/>
+                            <constraint firstItem="8fw-Wt-7z6" firstAttribute="leading" secondItem="rf8-vs-2fw" secondAttribute="leading" id="cIg-KG-KWJ"/>
+                            <constraint firstItem="rf8-vs-2fw" firstAttribute="bottom" secondItem="8fw-Wt-7z6" secondAttribute="bottom" constant="48" id="gEr-mq-GZh"/>
+                            <constraint firstItem="rf8-vs-2fw" firstAttribute="trailing" secondItem="z1m-WF-fFN" secondAttribute="trailing" id="gFC-k9-QUV"/>
+                            <constraint firstItem="z1m-WF-fFN" firstAttribute="top" secondItem="rf8-vs-2fw" secondAttribute="top" id="wdf-d8-kcx"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rf8-vs-2fw"/>
+                    </view>
+                    <connections>
+                        <outlet property="addAddressCollectionView" destination="8fw-Wt-7z6" id="MV4-5H-Mfd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nIZ-be-i3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-632" y="176"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="previous-1" width="8" height="12"/>
+    </resources>
+</document>

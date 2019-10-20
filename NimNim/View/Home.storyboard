@@ -591,20 +591,84 @@
             </objects>
             <point key="canvasLocation" x="-1838" y="266"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile View Controller-->
         <scene sceneID="Avo-xv-KJK">
             <objects>
-                <viewController id="qqQ-bS-oNa" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfileViewController" id="qqQ-bS-oNa" customClass="ProfileViewController" customModule="NimNim" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ham-W5-gxF">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="0.50196078430000002" blue="0.51764705879999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bX5-ra-hcK">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="113"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlg-lG-rWH">
+                                        <rect key="frame" x="173.5" y="52" width="67" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfK-sa-SWF">
+                                        <rect key="frame" x="382" y="56.5" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="16" id="2XN-0l-cAK"/>
+                                            <constraint firstAttribute="width" constant="16" id="YiL-hN-yg1"/>
+                                        </constraints>
+                                        <state key="normal" title="Button" image="pencilEditButton"/>
+                                        <connections>
+                                            <action selector="editTapped:" destination="qqQ-bS-oNa" eventType="touchUpInside" id="g6R-6w-oNT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Zlg-lG-rWH" firstAttribute="centerX" secondItem="bX5-ra-hcK" secondAttribute="centerX" id="Uw2-Ar-nde"/>
+                                    <constraint firstItem="Zlg-lG-rWH" firstAttribute="top" secondItem="bX5-ra-hcK" secondAttribute="top" constant="52" id="d30-a3-oBh"/>
+                                    <constraint firstAttribute="trailing" secondItem="tfK-sa-SWF" secondAttribute="trailing" constant="16" id="laT-MT-fV1"/>
+                                    <constraint firstItem="tfK-sa-SWF" firstAttribute="centerY" secondItem="Zlg-lG-rWH" secondAttribute="centerY" id="n81-Jx-bhB"/>
+                                    <constraint firstAttribute="height" constant="113" id="x0b-4o-R4p"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="94U-HZ-duA">
+                                <rect key="frame" x="0.0" y="121" width="414" height="707"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="weZ-Ta-waF">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="zGQ-Xh-zJ8">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="94U-HZ-duA" firstAttribute="leading" secondItem="qkS-Ua-h0H" secondAttribute="leading" id="Llh-MS-iCP"/>
+                            <constraint firstItem="94U-HZ-duA" firstAttribute="top" secondItem="bX5-ra-hcK" secondAttribute="bottom" constant="8" id="Mb0-qZ-6bG"/>
+                            <constraint firstItem="bX5-ra-hcK" firstAttribute="top" secondItem="ham-W5-gxF" secondAttribute="top" id="eSl-Dr-yQU"/>
+                            <constraint firstItem="qkS-Ua-h0H" firstAttribute="trailing" secondItem="94U-HZ-duA" secondAttribute="trailing" id="f2C-3o-S5T"/>
+                            <constraint firstItem="bX5-ra-hcK" firstAttribute="leading" secondItem="qkS-Ua-h0H" secondAttribute="leading" id="fMi-lt-Kfm"/>
+                            <constraint firstItem="qkS-Ua-h0H" firstAttribute="bottom" secondItem="94U-HZ-duA" secondAttribute="bottom" id="iTj-yh-bll"/>
+                            <constraint firstItem="qkS-Ua-h0H" firstAttribute="trailing" secondItem="bX5-ra-hcK" secondAttribute="trailing" id="wAr-8K-9ba"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="qkS-Ua-h0H"/>
                     </view>
+                    <connections>
+                        <outlet property="profileCollectionView" destination="94U-HZ-duA" id="uFd-ht-c97"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWF-Gm-ap9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-980" y="266"/>
+            <point key="canvasLocation" x="-764" y="170"/>
         </scene>
     </scenes>
     <resources>
@@ -613,6 +677,7 @@
         <image name="chat" width="23" height="19"/>
         <image name="home" width="19" height="18"/>
         <image name="nav" width="21" height="14"/>
+        <image name="pencilEditButton" width="16" height="16"/>
         <image name="profile" width="17" height="19"/>
     </resources>
 </document>

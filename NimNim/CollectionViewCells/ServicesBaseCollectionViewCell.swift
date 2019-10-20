@@ -93,7 +93,8 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
             NavigationManager.shared.push(viewController: dryCleaningVC)
         }else if indexPath.item == 6 {
             
-        }else if indexPath.item == 7 {
+        }else if indexPath.item == 7 {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
+            NavigationManager.shared.push(viewController: householdVC)
             
         }
     }

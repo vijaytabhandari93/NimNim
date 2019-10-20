@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //Setting up the root view controller of this project..i.e. initial view controller for project....
-        NavigationManager.shared.initalizeApp()
+        NavigationManager.shared.initializeApp()
         return true
     }
 

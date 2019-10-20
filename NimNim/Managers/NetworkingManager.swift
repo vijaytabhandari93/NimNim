@@ -17,7 +17,7 @@ class NetworkingManager {
     private init() {
     }
 }
-
+//please explain the use
 
 
 

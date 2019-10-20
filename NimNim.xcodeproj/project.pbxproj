@@ -11,6 +11,8 @@
 		AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */; };
 		AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */; };
 		AC0BD3E2233B6BC7000746D1 /* NonServiceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0BD3E1233B6BC7000746D1 /* NonServiceable.swift */; };
+		AC0E2040235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E203E235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift */; };
+		AC0E2041235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0E203F235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib */; };
 		AC11D1D42336314800F1DBCB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11D1D32336314800F1DBCB /* Colors.swift */; };
 		AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */; };
 		AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */; };
@@ -98,6 +100,31 @@
 		ACF9CD3D2351EB9C00039E6C /* WashPressedShirtsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACF9CD3C2351EB9C00039E6C /* WashPressedShirtsViewController.swift */; };
 		ACFBA0512338E26A00950079 /* MyLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFBA0502338E26A00950079 /* MyLocationViewController.swift */; };
 		ACFBA0532338E29A00950079 /* MyLocation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFBA0522338E29A00950079 /* MyLocation.storyboard */; };
+		ACFD928F2355C9E80009FB03 /* BoxedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD928D2355C9E80009FB03 /* BoxedCollectionViewCell.swift */; };
+		ACFD92902355C9E80009FB03 /* BoxedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD928E2355C9E80009FB03 /* BoxedCollectionViewCell.xib */; };
+		ACFD92922355D41F0009FB03 /* HouseHoldItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92912355D41F0009FB03 /* HouseHoldItemsViewController.swift */; };
+		ACFD92952355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92932355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.swift */; };
+		ACFD92962355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92942355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.xib */; };
+		ACFD92992355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92972355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.swift */; };
+		ACFD929A2355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92982355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.xib */; };
+		ACFD929C23560C0D0009FB03 /* AllServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD929B23560C0D0009FB03 /* AllServicesViewController.swift */; };
+		ACFD929E23582D900009FB03 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD929D23582D900009FB03 /* ProfileViewController.swift */; };
+		ACFD92A1235830AC0009FB03 /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD929F235830AC0009FB03 /* ProfileCollectionViewCell.swift */; };
+		ACFD92A2235830AC0009FB03 /* ProfileCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92A0235830AC0009FB03 /* ProfileCollectionViewCell.xib */; };
+		ACFD92A5235838280009FB03 /* SavedCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92A3235838280009FB03 /* SavedCardCollectionViewCell.swift */; };
+		ACFD92A6235838280009FB03 /* SavedCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92A4235838280009FB03 /* SavedCardCollectionViewCell.xib */; };
+		ACFD92AD235846D10009FB03 /* ReferAFriendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92AB235846D10009FB03 /* ReferAFriendCollectionViewCell.swift */; };
+		ACFD92AE235846D10009FB03 /* ReferAFriendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92AC235846D10009FB03 /* ReferAFriendCollectionViewCell.xib */; };
+		ACFD92B1235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92AF235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.swift */; };
+		ACFD92B2235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92B0235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.xib */; };
+		ACFD92B5235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92B3235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.swift */; };
+		ACFD92B6235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92B4235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.xib */; };
+		ACFD92B9235ACC460009FB03 /* CardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92B7235ACC460009FB03 /* CardsCollectionViewCell.swift */; };
+		ACFD92BA235ACC460009FB03 /* CardsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92B8235ACC460009FB03 /* CardsCollectionViewCell.xib */; };
+		ACFD92BD235ACF060009FB03 /* SavedAddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92BB235ACF060009FB03 /* SavedAddressCollectionViewCell.swift */; };
+		ACFD92BE235ACF060009FB03 /* SavedAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92BC235ACF060009FB03 /* SavedAddressCollectionViewCell.xib */; };
+		ACFD92C4235B17AF0009FB03 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92C3235B17AF0009FB03 /* Profile.storyboard */; };
+		ACFD92C6235B17E20009FB03 /* AddAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92C5235B17E20009FB03 /* AddAddressViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -106,6 +133,8 @@
 		AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDrawerViewController.swift; sourceTree = "<group>"; };
 		AC092FCD232F606F00FE1B77 /* NavDrawerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavDrawerTableViewCell.swift; sourceTree = "<group>"; };
 		AC0BD3E1233B6BC7000746D1 /* NonServiceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonServiceable.swift; sourceTree = "<group>"; };
+		AC0E203E235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC0E203F235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAddressCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC11D1D32336314800F1DBCB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannersBaseCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -195,6 +224,31 @@
 		ACF9CD3C2351EB9C00039E6C /* WashPressedShirtsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WashPressedShirtsViewController.swift; sourceTree = "<group>"; };
 		ACFBA0502338E26A00950079 /* MyLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationViewController.swift; sourceTree = "<group>"; };
 		ACFBA0522338E29A00950079 /* MyLocation.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MyLocation.storyboard; sourceTree = "<group>"; };
+		ACFD928D2355C9E80009FB03 /* BoxedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxedCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACFD928E2355C9E80009FB03 /* BoxedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoxedCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACFD92912355D41F0009FB03 /* HouseHoldItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseHoldItemsViewController.swift; sourceTree = "<group>"; };
+		ACFD92932355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseHoldItemCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACFD92942355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseHoldItemCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACFD92972355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseHoldDescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACFD92982355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseHoldDescriptionCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACFD929B23560C0D0009FB03 /* AllServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllServicesViewController.swift; sourceTree = "<group>"; };
+		ACFD929D23582D900009FB03 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		ACFD929F235830AC0009FB03 /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACFD92A0235830AC0009FB03 /* ProfileCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACFD92A3235838280009FB03 /* SavedCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACFD92A4235838280009FB03 /* SavedCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedCardCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACFD92AB235846D10009FB03 /* ReferAFriendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferAFriendCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACFD92AC235846D10009FB03 /* ReferAFriendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReferAFriendCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACFD92AF235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardExpandedStateCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACFD92B0235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedCardExpandedStateCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACFD92B3235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardExpandedStateTwoCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACFD92B4235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedCardExpandedStateTwoCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACFD92B7235ACC460009FB03 /* CardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACFD92B8235ACC460009FB03 /* CardsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardsCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACFD92BB235ACF060009FB03 /* SavedAddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAddressCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACFD92BC235ACF060009FB03 /* SavedAddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedAddressCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACFD92C3235B17AF0009FB03 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		ACFD92C5235B17E20009FB03 /* AddAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressViewController.swift; sourceTree = "<group>"; };
 		C74D617266EB18FBEEAA0F80 /* Pods_NimNim.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NimNim.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -257,6 +311,28 @@
 				ACF9CD3523504EFD00039E6C /* NoofClothesCollectionViewCell.xib */,
 				ACE0E4EA2353164500A75D82 /* ShoeRepairCollectionViewCell.swift */,
 				ACE0E4EB2353164500A75D82 /* ShoeRepairCollectionViewCell.xib */,
+				ACFD928D2355C9E80009FB03 /* BoxedCollectionViewCell.swift */,
+				ACFD928E2355C9E80009FB03 /* BoxedCollectionViewCell.xib */,
+				ACFD92932355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.swift */,
+				ACFD92942355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.xib */,
+				ACFD92972355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.swift */,
+				ACFD92982355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.xib */,
+				ACFD929F235830AC0009FB03 /* ProfileCollectionViewCell.swift */,
+				ACFD92A0235830AC0009FB03 /* ProfileCollectionViewCell.xib */,
+				ACFD92A3235838280009FB03 /* SavedCardCollectionViewCell.swift */,
+				ACFD92A4235838280009FB03 /* SavedCardCollectionViewCell.xib */,
+				ACFD92AB235846D10009FB03 /* ReferAFriendCollectionViewCell.swift */,
+				ACFD92AC235846D10009FB03 /* ReferAFriendCollectionViewCell.xib */,
+				ACFD92AF235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.swift */,
+				ACFD92B0235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.xib */,
+				ACFD92B3235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.swift */,
+				ACFD92B4235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.xib */,
+				ACFD92B7235ACC460009FB03 /* CardsCollectionViewCell.swift */,
+				ACFD92B8235ACC460009FB03 /* CardsCollectionViewCell.xib */,
+				ACFD92BB235ACF060009FB03 /* SavedAddressCollectionViewCell.swift */,
+				ACFD92BC235ACF060009FB03 /* SavedAddressCollectionViewCell.xib */,
+				AC0E203E235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift */,
+				AC0E203F235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -286,6 +362,7 @@
 				AC793F16232CDBB9009E61A1 /* Preferences.storyboard */,
 				ACFBA0522338E29A00950079 /* MyLocation.storyboard */,
 				ACBAAF67233CB07C00E1E4A6 /* Home.storyboard */,
+				ACFD92C3235B17AF0009FB03 /* Profile.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,6 +383,10 @@
 				ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */,
 				ACE0E4E8235312F100A75D82 /* ShoeRepairViewController.swift */,
 				ACE0E4EE2353240B00A75D82 /* RugCleaningViewController.swift */,
+				ACFD92912355D41F0009FB03 /* HouseHoldItemsViewController.swift */,
+				ACFD929B23560C0D0009FB03 /* AllServicesViewController.swift */,
+				ACFD929D23582D900009FB03 /* ProfileViewController.swift */,
+				ACFD92C5235B17E20009FB03 /* AddAddressViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -479,9 +560,11 @@
 				AC1FFDAC2346F1D100930496 /* ProximaNova-Regular.otf in Resources */,
 				ACBB8193232E3FAC003DCF77 /* Montserrat-Light.ttf in Resources */,
 				AC1FFDAE2346F1D100930496 /* Proxima Nova Bold.otf in Resources */,
+				ACFD92A6235838280009FB03 /* SavedCardCollectionViewCell.xib in Resources */,
 				ACBB8195232E3FAC003DCF77 /* Montserrat-ExtraLight.ttf in Resources */,
 				AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */,
 				ACBAAF68233CB07C00E1E4A6 /* Home.storyboard in Resources */,
+				ACFD92B6235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.xib in Resources */,
 				ACFBA0532338E29A00950079 /* MyLocation.storyboard in Resources */,
 				AC1FFDB22346F1D100930496 /* Proxima Nova Extrabold.otf in Resources */,
 				ACB37264234631C900046FB3 /* ServiceCollectionViewCell.xib in Resources */,
@@ -497,6 +580,7 @@
 				ACE0E4ED2353164500A75D82 /* ShoeRepairCollectionViewCell.xib in Resources */,
 				AC1FFDAD2346F1D100930496 /* Proxima Nova Black.otf in Resources */,
 				ACBB8198232E3FAC003DCF77 /* Montserrat-Medium.ttf in Resources */,
+				ACFD92AE235846D10009FB03 /* ReferAFriendCollectionViewCell.xib in Resources */,
 				AC1FFDC32347773200930496 /* PreferencesCollectionReusableView.xib in Resources */,
 				ACBB8190232E3FAB003DCF77 /* Montserrat-ThinItalic.ttf in Resources */,
 				ACBB8199232E3FAC003DCF77 /* Montserrat-LightItalic.ttf in Resources */,
@@ -505,24 +589,33 @@
 				ACBAAF62233C6D7300E1E4A6 /* BannerCollectionViewCell.xib in Resources */,
 				AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */,
 				ACF9CD2B235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.xib in Resources */,
+				ACFD92C4235B17AF0009FB03 /* Profile.storyboard in Resources */,
 				AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */,
+				ACFD92BE235ACF060009FB03 /* SavedAddressCollectionViewCell.xib in Resources */,
 				AC1FFDB12346F1D100930496 /* Proxima Nova Alt Thin.otf in Resources */,
 				ACBB8194232E3FAC003DCF77 /* Montserrat-BoldItalic.ttf in Resources */,
+				ACFD92B2235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.xib in Resources */,
 				ACBB819D232E3FAC003DCF77 /* Montserrat-MediumItalic.ttf in Resources */,
+				ACFD92A2235830AC0009FB03 /* ProfileCollectionViewCell.xib in Resources */,
 				AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */,
+				ACFD929A2355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.xib in Resources */,
 				ACBB819E232E3FAC003DCF77 /* Montserrat-Black.ttf in Resources */,
 				AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */,
 				AC1FFDB02346F1D100930496 /* Proxima Nova Alt Light.otf in Resources */,
 				AC9BCACD2324DF90009818C3 /* Assets.xcassets in Resources */,
 				ACBB819B232E3FAC003DCF77 /* Montserrat-Thin.ttf in Resources */,
 				ACB37268234631EC00046FB3 /* ServicesBaseCollectionViewCell.xib in Resources */,
+				ACFD92902355C9E80009FB03 /* BoxedCollectionViewCell.xib in Resources */,
 				AC8CDE392326449200CDFB93 /* LoginViaOTPTableViewCell.xib in Resources */,
+				AC0E2041235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib in Resources */,
+				ACFD92962355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.xib in Resources */,
 				ACF9CD2F235043C200039E6C /* SpecialNotesCollectionViewCell.xib in Resources */,
 				ACBB818F232E3FAB003DCF77 /* Montserrat-ExtraBold.ttf in Resources */,
 				ACBB8196232E3FAC003DCF77 /* Montserrat-Bold.ttf in Resources */,
 				AC1FFDB32346F1D100930496 /* Proxima Nova Alt Bold.otf in Resources */,
 				ACF9CD3723504EFD00039E6C /* NoofClothesCollectionViewCell.xib in Resources */,
 				ACBB8192232E3FAC003DCF77 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
+				ACFD92BA235ACC460009FB03 /* CardsCollectionViewCell.xib in Resources */,
 				ACBB818E232E3FAB003DCF77 /* Montserrat-Regular.ttf in Resources */,
 				ACF9CD1B234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib in Resources */,
 				ACBB818D232E3FAB003DCF77 /* Montserrat-ExtraLightItalic.ttf in Resources */,
@@ -581,19 +674,25 @@
 				AC8CDE382326449200CDFB93 /* LoginViaOTPTableViewCell.swift in Sources */,
 				AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */,
 				ACF9CD3223504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.swift in Sources */,
+				ACFD92AD235846D10009FB03 /* ReferAFriendCollectionViewCell.swift in Sources */,
 				AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */,
 				ACBB8177232D1F57003DCF77 /* Extensions.swift in Sources */,
+				ACFD92992355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.swift in Sources */,
 				ACF9CD23234F69EC00039E6C /* WashAndAirDryViewController.swift in Sources */,
 				ACF9CD1E234F575900039E6C /* AddMoreServicesCollectionViewCell.swift in Sources */,
+				AC0E2040235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift in Sources */,
 				ACBAAF6A233D0CC800E1E4A6 /* HomeViewController.swift in Sources */,
 				AC1FFDBE234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift in Sources */,
 				ACD8BA452351DF87005C1EAA /* NavigationManager.swift in Sources */,
 				ACF9CD2A235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift in Sources */,
 				AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */,
 				ACF9CD3D2351EB9C00039E6C /* WashPressedShirtsViewController.swift in Sources */,
+				ACFD929C23560C0D0009FB03 /* AllServicesViewController.swift in Sources */,
 				AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */,
 				AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */,
 				AC8CDE31232540DD00CDFB93 /* LoginSignUpViewController.swift in Sources */,
+				ACFD92A5235838280009FB03 /* SavedCardCollectionViewCell.swift in Sources */,
+				ACFD92B9235ACC460009FB03 /* CardsCollectionViewCell.swift in Sources */,
 				ACBBE49A233A0FE0003C67F7 /* LocationcCell.swift in Sources */,
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
 				AC1FFDB723474FC700930496 /* ServicesViewController.swift in Sources */,
@@ -603,18 +702,27 @@
 				ACF9CD3B2350F1DF00039E6C /* DryCleaningViewController.swift in Sources */,
 				AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */,
 				ACE0E4EC2353164500A75D82 /* ShoeRepairCollectionViewCell.swift in Sources */,
+				ACFD92952355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.swift in Sources */,
 				AC11D1D42336314800F1DBCB /* Colors.swift in Sources */,
 				ACF9CD1A234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift in Sources */,
 				ACFBA0512338E26A00950079 /* MyLocationViewController.swift in Sources */,
 				AC1FFDC22347773200930496 /* PreferencesCollectionReusableView.swift in Sources */,
+				ACFD92A1235830AC0009FB03 /* ProfileCollectionViewCell.swift in Sources */,
 				ACF0205F232E425F007559E8 /* Fonts.swift in Sources */,
 				ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */,
 				ACF9CD2E235043C200039E6C /* SpecialNotesCollectionViewCell.swift in Sources */,
+				ACFD92B5235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
+				ACFD92B1235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.swift in Sources */,
+				ACFD928F2355C9E80009FB03 /* BoxedCollectionViewCell.swift in Sources */,
+				ACFD92922355D41F0009FB03 /* HouseHoldItemsViewController.swift in Sources */,
 				ACE0E4EF2353240B00A75D82 /* RugCleaningViewController.swift in Sources */,
 				ACE0E4E9235312F100A75D82 /* ShoeRepairViewController.swift in Sources */,
+				ACFD92C6235B17E20009FB03 /* AddAddressViewController.swift in Sources */,
 				ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */,
+				ACFD92BD235ACF060009FB03 /* SavedAddressCollectionViewCell.swift in Sources */,
 				AC8CDE3C23264F4500CDFB93 /* SignUpTableViewCell.swift in Sources */,
+				ACFD929E23582D900009FB03 /* ProfileViewController.swift in Sources */,
 				AC0BD3E2233B6BC7000746D1 /* NonServiceable.swift in Sources */,
 				ACBAAF61233C6D7300E1E4A6 /* BannerCollectionViewCell.swift in Sources */,
 			);

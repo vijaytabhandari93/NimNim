@@ -25,6 +25,7 @@ class ServiceCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         self.addBottomShadowToView()
+        self.addSpreadShadowToView()
     }
     
     func configureCell(withTitle title:String?) {

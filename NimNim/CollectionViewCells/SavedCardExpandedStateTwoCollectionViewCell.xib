@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SavedCardExpandedStateTwoCollectionViewCell" id="gTV-IL-0wX" customClass="SavedCardExpandedStateTwoCollectionViewCell" customModule="NimNim" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have 2 saved cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jCS-EO-zTB">
+                        <rect key="frame" x="28" y="0.0" width="195" height="28"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="28" id="1Fp-Xe-V19"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="ux4-8i-b31">
+                        <rect key="frame" x="28" y="40" width="319" height="100"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="Tbc-CR-YFu"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="W9l-MK-9hA">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YMz-ev-OVg">
+                        <rect key="frame" x="107.5" y="181" width="160" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="OuI-Dj-ZEA"/>
+                            <constraint firstAttribute="width" constant="160" id="rse-is-zSa"/>
+                        </constraints>
+                        <state key="normal" title="+ Add New Card">
+                            <color key="titleColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="addTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="ZK0-cH-yif"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="YMz-ev-OVg" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="30A-dq-Bh7"/>
+                <constraint firstItem="jCS-EO-zTB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="C0v-L5-Xb2"/>
+                <constraint firstAttribute="trailing" secondItem="ux4-8i-b31" secondAttribute="trailing" constant="28" id="Fx3-d9-aB0"/>
+                <constraint firstItem="ux4-8i-b31" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="KdG-tM-6sv"/>
+                <constraint firstItem="jCS-EO-zTB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XnO-bX-YsX"/>
+                <constraint firstItem="YMz-ev-OVg" firstAttribute="top" secondItem="ux4-8i-b31" secondAttribute="bottom" constant="41" id="dwP-Z1-Zan"/>
+                <constraint firstItem="ux4-8i-b31" firstAttribute="top" secondItem="jCS-EO-zTB" secondAttribute="bottom" constant="12" id="qql-ag-NuU"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="cardsCollectionView" destination="ux4-8i-b31" id="eU5-gQ-ige"/>
+                <outlet property="titleLable" destination="jCS-EO-zTB" id="moN-Td-aY1"/>
+            </connections>
+            <point key="canvasLocation" x="-293" y="-22"/>
+        </collectionViewCell>
+    </objects>
+</document>

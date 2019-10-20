@@ -42,6 +42,8 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         let type5PreferencesNib = UINib(nibName: "NeedRushDeliveryCollectionViewCell", bundle: nil)
         WashPressedShirtCollectionView.register(type5PreferencesNib, forCellWithReuseIdentifier: "NeedRushDeliveryCollectionViewCell")
         
+        let type6PreferencesNib = UINib(nibName: "BoxedCollectionViewCell", bundle: nil)
+        WashPressedShirtCollectionView.register(type6PreferencesNib, forCellWithReuseIdentifier: "BoxedCollectionViewCell")
         
         let headerNib = UINib(nibName: "PreferencesCollectionReusableView", bundle: nil)
         WashPressedShirtCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "PreferencesCollectionReusableView")
@@ -111,12 +113,13 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
             
         }
         else if indexPath.item == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BoxedCollectionViewCell", for: indexPath) as! BoxedCollectionViewCell
             cell.titleLabel.text = "Boxed"
-            cell.leftImageView.image = UIImage(named: "boxed")
+            cell.leftImage.image = UIImage(named: "boxed")
             cell.leftLabel.text = "Boxed"
-            cell.rightImageView.image = UIImage(named: "unboxed")
+            cell.rightImage.image = UIImage(named: "unboxed")
             cell.rightLabel.text = "Unboxed"
+            cell.subLabel.text = "50 cents extra per shirt"
             return cell
         }
         else if indexPath.item == 3 {
@@ -143,7 +146,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         }
             
         else if indexPath.item == 2 {
-            return CGSize(width: collectionView.frame.size.width, height:104)
+            return CGSize(width: collectionView.frame.size.width, height:128)
             
         }
         else if indexPath.item == 3 {
