@@ -32,6 +32,9 @@
 		AC1FFDBF234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDBD234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.xib */; };
 		AC1FFDC22347773200930496 /* PreferencesCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FFDC02347773200930496 /* PreferencesCollectionReusableView.swift */; };
 		AC1FFDC32347773200930496 /* PreferencesCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDC12347773200930496 /* PreferencesCollectionReusableView.xib */; };
+		AC202CDD2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC202CDA2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift */; };
+		AC202CDE2366A8C200C87CA1 /* SavedCardExpandedStateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC202CDB2366A8C200C87CA1 /* SavedCardExpandedStateCollectionViewCell.xib */; };
+		AC202CE42366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC202CE12366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift */; };
 		AC41CE6E235C7258001AC676 /* AddNewCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41CE6D235C7258001AC676 /* AddNewCardViewController.swift */; };
 		AC41CE71235C81EF001AC676 /* CardTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41CE6F235C81EE001AC676 /* CardTypeCollectionViewCell.swift */; };
 		AC41CE72235C81EF001AC676 /* CardTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC41CE70235C81EE001AC676 /* CardTypeCollectionViewCell.xib */; };
@@ -148,9 +151,6 @@
 		ACFD92A6235838280009FB03 /* SavedCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92A4235838280009FB03 /* SavedCardCollectionViewCell.xib */; };
 		ACFD92AD235846D10009FB03 /* ReferAFriendCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92AB235846D10009FB03 /* ReferAFriendCollectionViewCell.swift */; };
 		ACFD92AE235846D10009FB03 /* ReferAFriendCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92AC235846D10009FB03 /* ReferAFriendCollectionViewCell.xib */; };
-		ACFD92B1235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92AF235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.swift */; };
-		ACFD92B2235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92B0235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.xib */; };
-		ACFD92B5235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92B3235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.swift */; };
 		ACFD92B6235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92B4235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.xib */; };
 		ACFD92B9235ACC460009FB03 /* CardsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACFD92B7235ACC460009FB03 /* CardsCollectionViewCell.swift */; };
 		ACFD92BA235ACC460009FB03 /* CardsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACFD92B8235ACC460009FB03 /* CardsCollectionViewCell.xib */; };
@@ -187,6 +187,9 @@
 		AC1FFDBD234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WashAndFoldPreferencesCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC1FFDC02347773200930496 /* PreferencesCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesCollectionReusableView.swift; sourceTree = "<group>"; };
 		AC1FFDC12347773200930496 /* PreferencesCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesCollectionReusableView.xib; sourceTree = "<group>"; };
+		AC202CDA2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedCardExpandedStateTwoCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC202CDB2366A8C200C87CA1 /* SavedCardExpandedStateCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedCardExpandedStateCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC202CE12366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedCardExpandedStateCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC41CE6D235C7258001AC676 /* AddNewCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardViewController.swift; sourceTree = "<group>"; };
 		AC41CE6F235C81EE001AC676 /* CardTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC41CE70235C81EE001AC676 /* CardTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTypeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -305,9 +308,6 @@
 		ACFD92A4235838280009FB03 /* SavedCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACFD92AB235846D10009FB03 /* ReferAFriendCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferAFriendCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACFD92AC235846D10009FB03 /* ReferAFriendCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReferAFriendCollectionViewCell.xib; sourceTree = "<group>"; };
-		ACFD92AF235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardExpandedStateCollectionViewCell.swift; sourceTree = "<group>"; };
-		ACFD92B0235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedCardExpandedStateCollectionViewCell.xib; sourceTree = "<group>"; };
-		ACFD92B3235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCardExpandedStateTwoCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACFD92B4235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SavedCardExpandedStateTwoCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACFD92B7235ACC460009FB03 /* CardsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACFD92B8235ACC460009FB03 /* CardsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardsCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -391,9 +391,9 @@
 				ACFD92A4235838280009FB03 /* SavedCardCollectionViewCell.xib */,
 				ACFD92AB235846D10009FB03 /* ReferAFriendCollectionViewCell.swift */,
 				ACFD92AC235846D10009FB03 /* ReferAFriendCollectionViewCell.xib */,
-				ACFD92AF235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.swift */,
-				ACFD92B0235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.xib */,
-				ACFD92B3235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.swift */,
+				AC202CE12366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift */,
+				AC202CDB2366A8C200C87CA1 /* SavedCardExpandedStateCollectionViewCell.xib */,
+				AC202CDA2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift */,
 				ACFD92B4235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.xib */,
 				ACFD92B7235ACC460009FB03 /* CardsCollectionViewCell.swift */,
 				ACFD92B8235ACC460009FB03 /* CardsCollectionViewCell.xib */,
@@ -700,7 +700,6 @@
 				ACFD92BE235ACF060009FB03 /* SavedAddressCollectionViewCell.xib in Resources */,
 				AC1FFDB12346F1D100930496 /* Proxima Nova Alt Thin.otf in Resources */,
 				ACBB8194232E3FAC003DCF77 /* Montserrat-BoldItalic.ttf in Resources */,
-				ACFD92B2235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.xib in Resources */,
 				ACBB819D232E3FAC003DCF77 /* Montserrat-MediumItalic.ttf in Resources */,
 				ACFD92A2235830AC0009FB03 /* ProfileCollectionViewCell.xib in Resources */,
 				AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */,
@@ -726,6 +725,7 @@
 				ACF9CD3723504EFD00039E6C /* NoofClothesCollectionViewCell.xib in Resources */,
 				ACBB8192232E3FAC003DCF77 /* Montserrat-ExtraBoldItalic.ttf in Resources */,
 				AC496134235C68C100AA7196 /* AddressCollectionViewCell.xib in Resources */,
+				AC202CDE2366A8C200C87CA1 /* SavedCardExpandedStateCollectionViewCell.xib in Resources */,
 				ACFD92BA235ACC460009FB03 /* CardsCollectionViewCell.xib in Resources */,
 				ACBB818E232E3FAB003DCF77 /* Montserrat-Regular.ttf in Resources */,
 				ACF9CD1B234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib in Resources */,
@@ -839,10 +839,9 @@
 				ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */,
 				AC41CE75235C822F001AC676 /* AddCardCollectionViewCell.swift in Sources */,
 				ACF9CD2E235043C200039E6C /* SpecialNotesCollectionViewCell.swift in Sources */,
-				ACFD92B5235AC02C0009FB03 /* SavedCardExpandedStateTwoCollectionViewCell.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
-				ACFD92B1235ABBB70009FB03 /* SavedCardExpandedStateCollectionViewCell.swift in Sources */,
 				ACFD928F2355C9E80009FB03 /* BoxedCollectionViewCell.swift in Sources */,
+				AC202CE42366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift in Sources */,
 				AC5ADD912361D99F00204E9E /* ApplyWalletPointsCollectionViewCell.swift in Sources */,
 				AC5ADD8D2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift in Sources */,
 				ACFD92922355D41F0009FB03 /* HouseHoldItemsViewController.swift in Sources */,
@@ -853,6 +852,7 @@
 				ACBC96F82361AEE7006AC5B6 /* OrderStatusViewController.swift in Sources */,
 				ACFD92BD235ACF060009FB03 /* SavedAddressCollectionViewCell.swift in Sources */,
 				AC8CDE3C23264F4500CDFB93 /* SignUpTableViewCell.swift in Sources */,
+				AC202CDD2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift in Sources */,
 				ACFD929E23582D900009FB03 /* ProfileViewController.swift in Sources */,
 				ACBC96F123606619006AC5B6 /* CouponCollectionViewCell.swift in Sources */,
 				AC0BD3E2233B6BC7000746D1 /* NonServiceable.swift in Sources */,
