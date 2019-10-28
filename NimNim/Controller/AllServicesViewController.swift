@@ -27,6 +27,12 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
         collectionView.delegate = self
         collectionView.dataSource = self
     }
+    @IBAction func basketTapped(_ sender: Any) {
+        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+        NavigationManager.shared.push(viewController: orderReviewVC)
+        
+    }
     
     func registerCells() {
         let type1PreferencesNib = UINib(nibName: "ServiceCollectionViewCell", bundle: nil)

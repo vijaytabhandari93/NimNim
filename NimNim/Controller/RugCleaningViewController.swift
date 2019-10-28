@@ -22,6 +22,9 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         navigationController?.popViewController(animated: true)
     }
     @IBAction func basketTapped(_ sender: Any) {
+        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+        NavigationManager.shared.push(viewController: orderReviewVC)
     }
     @IBAction func justNimNimIt(_ sender: Any) {
     }

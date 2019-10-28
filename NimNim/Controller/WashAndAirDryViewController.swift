@@ -63,6 +63,9 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     
     @IBAction func basketTapped(_ sender: Any) {
+        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+        NavigationManager.shared.push(viewController: orderReviewVC)
     }
     
     @IBAction func justNimNimItTapped(_ sender: Any) {

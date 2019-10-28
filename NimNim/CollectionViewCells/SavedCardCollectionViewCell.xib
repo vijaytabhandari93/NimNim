@@ -13,6 +13,9 @@
         <array key="Montserrat-Medium.ttf">
             <string>Montserrat-Medium</string>
         </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -33,11 +36,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previous" translatesAutoresizingMaskIntoConstraints="NO" id="POD-gw-g8E">
-                        <rect key="frame" x="340" y="26" width="7" height="12"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="downArrow" translatesAutoresizingMaskIntoConstraints="NO" id="POD-gw-g8E">
+                        <rect key="frame" x="332" y="24.5" width="15" height="15"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="7.2000000000000002" id="7lG-Rj-Jyl"/>
-                            <constraint firstAttribute="height" constant="12" id="ggC-AD-A9V"/>
+                            <constraint firstAttribute="width" constant="15" id="7lG-Rj-Jyl"/>
+                            <constraint firstAttribute="height" constant="15" id="ggC-AD-A9V"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M62-mw-RLw">
@@ -47,6 +50,12 @@
                             <constraint firstAttribute="height" constant="1" id="H5F-D9-GsE"/>
                         </constraints>
                     </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You currently have 2 saved cards" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rG6-PN-bYl">
+                        <rect key="frame" x="28" y="43" width="319" height="15"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.44" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <constraints>
@@ -54,19 +63,25 @@
                 <constraint firstItem="POD-gw-g8E" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="3tm-tx-7Ls"/>
                 <constraint firstAttribute="trailing" secondItem="M62-mw-RLw" secondAttribute="trailing" constant="28" id="8s5-Jr-70U"/>
                 <constraint firstAttribute="trailing" secondItem="POD-gw-g8E" secondAttribute="trailing" constant="28" id="BWE-l4-npW"/>
+                <constraint firstAttribute="trailing" secondItem="rG6-PN-bYl" secondAttribute="trailing" constant="28" id="Bpa-ZZ-DKl"/>
                 <constraint firstItem="oGv-ok-zRh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="NXd-E5-HM7"/>
+                <constraint firstItem="rG6-PN-bYl" firstAttribute="leading" secondItem="oGv-ok-zRh" secondAttribute="leading" id="Rfn-eD-E5P"/>
                 <constraint firstItem="oGv-ok-zRh" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Xcx-WQ-OdR"/>
+                <constraint firstItem="rG6-PN-bYl" firstAttribute="top" secondItem="oGv-ok-zRh" secondAttribute="bottom" constant="2" id="aSI-8U-3zm"/>
                 <constraint firstItem="M62-mw-RLw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="tFp-ck-zBq"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="283" height="45"/>
             <connections>
+                <outlet property="arrowImageView" destination="POD-gw-g8E" id="tdQ-M4-raX"/>
+                <outlet property="bottomSeparator" destination="M62-mw-RLw" id="DsU-NO-vAX"/>
                 <outlet property="savedLabel" destination="oGv-ok-zRh" id="E1y-8J-4BD"/>
+                <outlet property="subTitleLabel" destination="rG6-PN-bYl" id="S6C-eT-cwr"/>
             </connections>
             <point key="canvasLocation" x="158.69565217391306" y="136.60714285714286"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="previous" width="8" height="12"/>
+        <image name="downArrow" width="13" height="8"/>
     </resources>
 </document>

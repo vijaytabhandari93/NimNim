@@ -74,6 +74,9 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     
     @IBAction func basketTapped(_ sender: Any) {
+        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+        NavigationManager.shared.push(viewController: orderReviewVC)
     }
     
     @IBAction func womenTapped(_ sender: Any) {

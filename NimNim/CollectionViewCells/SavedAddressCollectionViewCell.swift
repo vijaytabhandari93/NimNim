@@ -9,24 +9,27 @@
 import UIKit
 
 class SavedAddressCollectionViewCell: UICollectionViewCell {
-
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    @IBAction func editAddressTapped(_ sender: Any) {
-    }
-    
+    @IBOutlet weak var addAddressButton:UIButton!
+    @IBOutlet weak var bottomSeparator:UIView!
     @IBAction func addNewCardTapped(_ sender: Any) {
         
         let profileStoryBoard = UIStoryboard(name: "Profile", bundle: nil)
-       let addAddressVC = profileStoryBoard.instantiateViewController(withIdentifier: "AddAddressViewController")
+        let addAddressVC = profileStoryBoard.instantiateViewController(withIdentifier: "AddAddressViewController")
         NavigationManager.shared.push(viewController: addAddressVC)
     }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        setupAddNewAddressButton()
+    }
+
+    func setupAddNewAddressButton() {
+        addAddressButton.layer.cornerRadius = 10
+        addAddressButton.layer.borderWidth = 1.5
+        addAddressButton.layer.borderColor = Colors.nimnimButtonBorderGreen.cgColor
+    }
+    
+  
     
 }
 

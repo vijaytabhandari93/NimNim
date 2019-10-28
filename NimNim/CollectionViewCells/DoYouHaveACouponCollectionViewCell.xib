@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DoYouHaveACouponCollectionViewCell" id="gTV-IL-0wX" customClass="DoYouHaveACouponCollectionViewCell" customModule="NimNim" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="96"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Do you have a Coupon?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Y1-GB-3tp">
+                        <rect key="frame" x="79" y="29" width="167.5" height="17.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a coupon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nb4-LK-edC">
+                        <rect key="frame" x="79" y="51.5" width="105" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="X1R-Se-u7y"/>
+                            <constraint firstAttribute="width" constant="105" id="Y87-D3-Jc0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coupon" translatesAutoresizingMaskIntoConstraints="NO" id="Gsp-UG-CAr">
+                        <rect key="frame" x="28" y="29" width="41" height="46.5"/>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previous" translatesAutoresizingMaskIntoConstraints="NO" id="ZbF-j1-Uv8">
+                        <rect key="frame" x="337" y="40.5" width="10" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="G8K-Zf-p69"/>
+                            <constraint firstAttribute="width" constant="10" id="n8f-yj-Liz"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Nb4-LK-edC" firstAttribute="top" secondItem="9Y1-GB-3tp" secondAttribute="bottom" constant="5" id="6IK-dy-7FT"/>
+                <constraint firstItem="Gsp-UG-CAr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="SPJ-Lu-7u0"/>
+                <constraint firstItem="9Y1-GB-3tp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="79" id="TZO-Rg-4Qw"/>
+                <constraint firstItem="ZbF-j1-Uv8" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="WFz-uR-AmB"/>
+                <constraint firstItem="Nb4-LK-edC" firstAttribute="leading" secondItem="9Y1-GB-3tp" secondAttribute="leading" id="bdF-O4-5C6"/>
+                <constraint firstItem="9Y1-GB-3tp" firstAttribute="leading" secondItem="Gsp-UG-CAr" secondAttribute="trailing" constant="10" id="ctE-ST-X9Q"/>
+                <constraint firstAttribute="trailing" secondItem="ZbF-j1-Uv8" secondAttribute="trailing" constant="28" id="h5I-4N-Hnp"/>
+                <constraint firstItem="Gsp-UG-CAr" firstAttribute="top" secondItem="9Y1-GB-3tp" secondAttribute="top" id="o7H-mf-qwA"/>
+                <constraint firstItem="9Y1-GB-3tp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="29" id="vwT-3T-Eq7"/>
+                <constraint firstItem="Gsp-UG-CAr" firstAttribute="bottom" secondItem="Nb4-LK-edC" secondAttribute="bottom" id="xnR-di-tjD"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="295" height="43"/>
+            <point key="canvasLocation" x="-37" y="141"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="coupon" width="37" height="36"/>
+        <image name="previous" width="8" height="12"/>
+    </resources>
+</document>

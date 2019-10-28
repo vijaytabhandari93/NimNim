@@ -11,6 +11,14 @@ import UIKit
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     //MARK:IBOutlets
     @IBOutlet weak var homeCollectionView: UICollectionView!
+    @IBAction func basketTapped(_UI sender: Any) {
+        
+        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+        NavigationManager.shared.push(viewController: orderReviewVC)
+        
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

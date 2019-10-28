@@ -13,9 +13,6 @@
         <array key="Montserrat-Medium.ttf">
             <string>Montserrat-Medium</string>
         </array>
-        <array key="Montserrat-SemiBold.ttf">
-            <string>Montserrat-SemiBold</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Add Address View Controller-->
@@ -47,11 +44,10 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="hY2-mo-K1r">
-                                        <rect key="frame" x="0.0" y="66" width="414" height="32"/>
+                                        <rect key="frame" x="0.0" y="45" width="414" height="53"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsS-zt-MCq">
-                                                <rect key="frame" x="0.0" y="0.0" width="182" height="32"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsS-zt-MCq">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="53"/>
                                                 <state key="normal" title="Home">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -59,9 +55,8 @@
                                                     <action selector="homeTapped:" destination="I80-bZ-Onu" eventType="touchUpInside" id="AgP-2b-DjA"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lb8-8K-TCj">
-                                                <rect key="frame" x="232" y="0.0" width="182" height="32"/>
-                                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lb8-8K-TCj">
+                                                <rect key="frame" x="232" y="0.0" width="182" height="53"/>
                                                 <state key="normal" title="Office">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -70,6 +65,9 @@
                                                 </connections>
                                             </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="53" id="Zsg-AQ-aEZ"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -105,7 +103,7 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXM-yP-pyC">
-                                <rect key="frame" x="0.0" y="814" width="414" height="82"/>
+                                <rect key="frame" x="0.0" y="814" width="414" height="48"/>
                                 <color key="backgroundColor" red="0.48627450979999998" green="0.84705882349999995" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                 <state key="normal" title="Add Address">
@@ -124,24 +122,156 @@
                             <constraint firstItem="z1m-WF-fFN" firstAttribute="leading" secondItem="rf8-vs-2fw" secondAttribute="leading" id="Ell-1R-ZiX"/>
                             <constraint firstItem="iXM-yP-pyC" firstAttribute="leading" secondItem="ebK-Eu-kaY" secondAttribute="leading" id="LEK-aM-MgE"/>
                             <constraint firstItem="8fw-Wt-7z6" firstAttribute="top" secondItem="z1m-WF-fFN" secondAttribute="bottom" id="Tua-bG-hQO"/>
-                            <constraint firstAttribute="bottom" secondItem="iXM-yP-pyC" secondAttribute="bottom" id="c2v-dV-6SG"/>
                             <constraint firstItem="8fw-Wt-7z6" firstAttribute="leading" secondItem="rf8-vs-2fw" secondAttribute="leading" id="cIg-KG-KWJ"/>
                             <constraint firstItem="rf8-vs-2fw" firstAttribute="bottom" secondItem="8fw-Wt-7z6" secondAttribute="bottom" constant="48" id="gEr-mq-GZh"/>
                             <constraint firstItem="rf8-vs-2fw" firstAttribute="trailing" secondItem="z1m-WF-fFN" secondAttribute="trailing" id="gFC-k9-QUV"/>
+                            <constraint firstItem="rf8-vs-2fw" firstAttribute="bottom" secondItem="iXM-yP-pyC" secondAttribute="bottom" id="tsr-t0-NRn"/>
                             <constraint firstItem="z1m-WF-fFN" firstAttribute="top" secondItem="rf8-vs-2fw" secondAttribute="top" id="wdf-d8-kcx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rf8-vs-2fw"/>
                     </view>
                     <connections>
                         <outlet property="addAddressCollectionView" destination="8fw-Wt-7z6" id="MV4-5H-Mfd"/>
+                        <outlet property="home" destination="rsS-zt-MCq" id="b8Z-PE-Jrd"/>
+                        <outlet property="office" destination="Lb8-8K-TCj" id="sUY-Fp-0lR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIZ-be-i3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-632" y="176"/>
+            <point key="canvasLocation" x="-646" y="113"/>
+        </scene>
+        <!--Add New Card View Controller-->
+        <scene sceneID="hna-69-PgM">
+            <objects>
+                <viewController storyboardIdentifier="AddNewCardViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Z6F-bD-de6" customClass="AddNewCardViewController" customModule="NimNim" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hq0-19-cq0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLx-Mr-XP4">
+                                <rect key="frame" x="0.0" y="44" width="414" height="98"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jk-Hs-Y5K">
+                                        <rect key="frame" x="133.5" y="7" width="147" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EAt-ak-r6M">
+                                        <rect key="frame" x="0.0" y="-5.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="35K-yZ-zYH"/>
+                                            <constraint firstAttribute="height" constant="50" id="cxB-dF-hQF"/>
+                                        </constraints>
+                                        <state key="normal" image="previous"/>
+                                        <connections>
+                                            <action selector="previousTapped:" destination="Z6F-bD-de6" eventType="touchUpInside" id="eqe-ze-vWQ"/>
+                                        </connections>
+                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="klz-mV-Zu7">
+                                        <rect key="frame" x="0.0" y="45" width="414" height="53"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbD-7O-NMn">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="53"/>
+                                                <state key="normal" title="Credit">
+                                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="creditTapped:" destination="Z6F-bD-de6" eventType="touchUpInside" id="lbc-qm-cAc"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8V-lZ-5ob">
+                                                <rect key="frame" x="232" y="0.0" width="182" height="53"/>
+                                                <state key="normal" title="Debit">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="debitTapped:" destination="Z6F-bD-de6" eventType="touchUpInside" id="I4V-TR-xDR"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="53" id="nch-Cm-RRn"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="klz-mV-Zu7" secondAttribute="trailing" id="2Bh-T6-gdX"/>
+                                    <constraint firstAttribute="height" constant="98" id="4UH-2x-6qn"/>
+                                    <constraint firstItem="9Jk-Hs-Y5K" firstAttribute="top" secondItem="pLx-Mr-XP4" secondAttribute="top" constant="7" id="8eP-ih-Ap8"/>
+                                    <constraint firstItem="EAt-ak-r6M" firstAttribute="centerY" secondItem="9Jk-Hs-Y5K" secondAttribute="centerY" id="ELe-8v-Pbf"/>
+                                    <constraint firstItem="9Jk-Hs-Y5K" firstAttribute="centerX" secondItem="pLx-Mr-XP4" secondAttribute="centerX" id="Jaa-tH-D1H"/>
+                                    <constraint firstItem="klz-mV-Zu7" firstAttribute="leading" secondItem="pLx-Mr-XP4" secondAttribute="leading" id="dJv-qv-neX"/>
+                                    <constraint firstAttribute="bottom" secondItem="klz-mV-Zu7" secondAttribute="bottom" id="fRh-Gy-48M"/>
+                                    <constraint firstItem="EAt-ak-r6M" firstAttribute="leading" secondItem="pLx-Mr-XP4" secondAttribute="leading" id="gml-So-M7b"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="98" id="p2c-cj-555"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VO7-8x-nqt">
+                                <rect key="frame" x="0.0" y="814" width="414" height="48"/>
+                                <color key="backgroundColor" red="0.48627450979999998" green="0.84705882349999995" blue="0.77647058820000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="tX4-t1-Wkr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                <state key="normal" title="Add Card">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addAddressTapped:" destination="I80-bZ-Onu" eventType="touchUpInside" id="RUR-Za-Hd1"/>
+                                    <action selector="addCardTapped:" destination="Z6F-bD-de6" eventType="touchUpInside" id="CnY-Du-ryE"/>
+                                </connections>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G1W-dk-Qnr">
+                                <rect key="frame" x="0.0" y="142" width="414" height="672"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uDG-Ui-fZR">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="0oR-Sm-HZ9">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="pLx-Mr-XP4" firstAttribute="trailing" secondItem="wjw-wc-CiD" secondAttribute="trailing" id="CVZ-xX-5OS"/>
+                            <constraint firstItem="pLx-Mr-XP4" firstAttribute="top" secondItem="wjw-wc-CiD" secondAttribute="top" id="HfT-6Q-Omg"/>
+                            <constraint firstItem="G1W-dk-Qnr" firstAttribute="top" secondItem="pLx-Mr-XP4" secondAttribute="bottom" id="QfE-P9-kYJ"/>
+                            <constraint firstItem="G1W-dk-Qnr" firstAttribute="leading" secondItem="wjw-wc-CiD" secondAttribute="leading" id="VO7-OG-AuE"/>
+                            <constraint firstItem="wjw-wc-CiD" firstAttribute="bottom" secondItem="VO7-8x-nqt" secondAttribute="bottom" id="Wex-CQ-Vyg"/>
+                            <constraint firstItem="pLx-Mr-XP4" firstAttribute="leading" secondItem="wjw-wc-CiD" secondAttribute="leading" id="Xjk-nm-RDQ"/>
+                            <constraint firstItem="VO7-8x-nqt" firstAttribute="top" secondItem="G1W-dk-Qnr" secondAttribute="bottom" id="bY6-x9-poG"/>
+                            <constraint firstItem="VO7-8x-nqt" firstAttribute="leading" secondItem="wjw-wc-CiD" secondAttribute="leading" id="mZM-Mo-jCO"/>
+                            <constraint firstItem="VO7-8x-nqt" firstAttribute="trailing" secondItem="wjw-wc-CiD" secondAttribute="trailing" id="nM6-mL-R4a"/>
+                            <constraint firstItem="wjw-wc-CiD" firstAttribute="trailing" secondItem="G1W-dk-Qnr" secondAttribute="trailing" id="q53-vi-bET"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wjw-wc-CiD"/>
+                    </view>
+                    <connections>
+                        <outlet property="cardCollectionView" destination="G1W-dk-Qnr" id="iK2-Ph-ADI"/>
+                        <outlet property="credit" destination="nbD-7O-NMn" id="eDP-BC-NmN"/>
+                        <outlet property="debit" destination="g8V-lZ-5ob" id="2xi-re-0b1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GUD-L3-5Xc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="616" y="194"/>
         </scene>
     </scenes>
     <resources>
+        <image name="previous" width="9" height="15"/>
         <image name="previous-1" width="8" height="12"/>
     </resources>
 </document>

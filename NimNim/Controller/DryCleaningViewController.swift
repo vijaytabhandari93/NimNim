@@ -64,6 +64,9 @@ cell.labelAgainsCheckbox.text = "I need Rush Delivery"
     
     
     @IBAction func basketTapped(_ sender: Any) {
+        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+        NavigationManager.shared.push(viewController: orderReviewVC)
     }
     @IBAction func previousTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)

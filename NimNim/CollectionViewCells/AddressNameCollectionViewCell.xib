@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="AddressNameCollectionViewCell" customModule="NimNim" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tH8-Mt-PY3">
+                        <rect key="frame" x="28" y="0.0" width="50" height="20"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pg-ig-fRt">
+                        <rect key="frame" x="28" y="27" width="274.5" height="51.5"/>
+                        <string key="text">30 Germania St, Boston, MA 02130, USA
+8V7W+VR Boston, Massachusetts, USA
++1 617-368-5080</string>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use this Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8k-sg-ARy">
+                        <rect key="frame" x="28" y="107.5" width="116.5" height="17.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeS-Wm-YOE">
+                        <rect key="frame" x="174.5" y="106.5" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="8Zx-CV-qo4"/>
+                            <constraint firstAttribute="height" constant="20" id="KKz-ON-5vL"/>
+                        </constraints>
+                        <state key="normal" title="tick" image="tick"/>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="tH8-Mt-PY3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0er-x8-zri"/>
+                <constraint firstItem="UeS-Wm-YOE" firstAttribute="leading" secondItem="Z8k-sg-ARy" secondAttribute="trailing" constant="30" id="5px-Gr-ipg"/>
+                <constraint firstItem="6pg-ig-fRt" firstAttribute="top" secondItem="tH8-Mt-PY3" secondAttribute="bottom" constant="7" id="5uu-vE-DKv"/>
+                <constraint firstItem="6pg-ig-fRt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="8zw-hR-9is"/>
+                <constraint firstItem="UeS-Wm-YOE" firstAttribute="centerY" secondItem="Z8k-sg-ARy" secondAttribute="centerY" id="LMY-bt-a1p"/>
+                <constraint firstItem="Z8k-sg-ARy" firstAttribute="top" secondItem="6pg-ig-fRt" secondAttribute="bottom" constant="29" id="Wnf-5j-Ih4"/>
+                <constraint firstItem="Z8k-sg-ARy" firstAttribute="leading" secondItem="6pg-ig-fRt" secondAttribute="leading" id="Ye0-V8-d3L"/>
+                <constraint firstItem="tH8-Mt-PY3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="zwu-4y-ez6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="tick" width="24" height="24"/>
+    </resources>
+</document>

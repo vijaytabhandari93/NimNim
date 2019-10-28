@@ -11,8 +11,12 @@ import UIKit
 class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     //IBActions
     @IBAction func previousTapped(_ sender: Any) {
+         navigationController?.popViewController(animated: true)
     }
     @IBAction func basketTapped(_ sender: Any) {
+        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+        NavigationManager.shared.push(viewController: orderReviewVC)
     }
     @IBAction func justNimNimIt(_ sender: Any) {
     }

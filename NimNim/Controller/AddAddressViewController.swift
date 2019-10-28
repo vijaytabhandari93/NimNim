@@ -12,10 +12,49 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
     
     @IBOutlet weak var addAddressCollectionView: UICollectionView!
     
+    @IBOutlet weak var home: UIButton!
+    @IBOutlet weak var office: UIButton!
+    
+
+        
+    enum SelectionType: Int {
+        case house
+        case office
+    }
+    var selectedState:SelectionType! {
+        didSet {
+            if selectedState == .house {
+                resetButtons()
+                home.isSelected = true
+                home.titleLabel?.font = Fonts.semiBold16
+                home.setTitleColor(UIColor.white, for: .normal)
+                addAddressCollectionView.reloadData()
+            }else {
+                resetButtons()
+                office.isSelected = true
+                office.titleLabel?.font = Fonts.semiBold16
+                office.setTitleColor(UIColor.white, for: .normal)
+                addAddressCollectionView.reloadData()
+            }
+        }
+    }
+    
+    func resetButtons() {
+        home.isSelected = false
+        office.isSelected = false
+        home.setTitleColor(Colors.nimnimGenderWhite, for: .normal)
+        office.titleLabel?.font = Fonts.regularFont12
+        home.setTitleColor(Colors.nimnimGenderWhite, for: .normal)
+        office.titleLabel?.font = Fonts.regularFont12
+    }
+    
     @IBAction func homeTapped(_ sender: Any) {
+        selectedState = .house
     }
     @IBAction func officeTapped(_ sender: Any) {
+        selectedState = .office
     }
+    
     @IBAction func addAddressTapped(_ sender: Any) {
     }
     

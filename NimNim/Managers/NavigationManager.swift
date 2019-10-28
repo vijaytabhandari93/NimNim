@@ -32,6 +32,10 @@ class NavigationManager {
         let profileStoryboard = UIStoryboard(name: "Home", bundle: nil)
         let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileViewController")
         
+        let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+        let orderViewController = orderStoryboard.instantiateViewController(withIdentifier: "SelectAddressViewController")
+        
+        
         
         //This will be the conditional part in future...
         baseNavigationController?.viewControllers = [myLocationViewController]

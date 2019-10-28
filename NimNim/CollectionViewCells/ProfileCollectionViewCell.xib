@@ -34,6 +34,11 @@
                             <constraint firstAttribute="height" constant="110" id="jAn-hC-GPe"/>
                             <constraint firstAttribute="width" constant="110" id="kVs-to-xpF"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="55"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Akshay Sahani" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqM-Yo-fh9">
                         <rect key="frame" x="120" y="169" width="135.5" height="22"/>

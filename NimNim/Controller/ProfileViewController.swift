@@ -9,11 +9,12 @@
 import UIKit
 
 class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    
     //IBOutlets
     @IBOutlet weak var profileCollectionView: UICollectionView!
     
-    var noOfSavedCards : Int = 5
-    var noOfSavedAdderess : Int = 4
+    var noOfSavedCards : Int = 2
+    var noOfSavedAdderess : Int = 2
     var selectedCard : Bool = false
     var selectedAddress : Bool = false
     
@@ -57,6 +58,9 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         let type6PreferencesNib = UINib(nibName: "SavedAddressCollectionViewCell", bundle: nil)
         profileCollectionView.register(type6PreferencesNib, forCellWithReuseIdentifier: "SavedAddressCollectionViewCell")
         
+        let type7PreferencesNib = UINib(nibName: "AddressCollectionViewCell", bundle: nil)
+        profileCollectionView.register(type7PreferencesNib, forCellWithReuseIdentifier: "AddressCollectionViewCell")
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -78,18 +82,19 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
             
         }
         else if indexPath.section == 2 {
-            if indexPath.item == 0 {
+            let numberOfItems = collectionView.numberOfItems(inSection: indexPath.section)
+            if indexPath.item == 0
+            {
                 return CGSize(width: collectionView.frame.size.width, height:64)
-            }
-            else {
-                if noOfSavedCards != 0 {
-                    return CGSize(width: collectionView.frame.size.width, height:257)
+            }else if indexPath.section == (numberOfItems - 1) {
+                if noOfSavedAdderess > 0 {
+                    return CGSize(width: collectionView.frame.size.width, height:130)
+                }else {
+                    return CGSize(width: collectionView.frame.size.width, height:130)
                 }
-                else{
-                    return CGSize(width: collectionView.frame.size.width, height:320)
-                }
+            }else {
+                return CGSize(width: collectionView.frame.size.width, height:81)
             }
-            
         }
         else  {
             return CGSize(width: collectionView.frame.size.width, height:64)
@@ -105,31 +110,33 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
             return 1
         }
         else if section == 1 {
-            if selectedCard == true
-            {
+            if selectedCard == true{
                 return 2
             }
-            else
-            { return 1
+            else{
+                return 1
             }
         }
         else if section == 2 {
-            if selectedAddress == true
-            {
-                return 2
+            if selectedAddress == true{
+                if noOfSavedAdderess > 0 {
+                    return 1 + noOfSavedAdderess + 1 // no of saved addresses + add address label
+                }else {
+                    return 2
+                }
             }
-            else
-            {return 1
+            else{
+                return 1
             }
         }
         else
-        { return 1
+        {
+            return 1
         }
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCollectionViewCell", for: indexPath) as! ProfileCollectionViewCell
             return cell
@@ -139,18 +146,20 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
             {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardCollectionViewCell", for: indexPath) as! SavedCardCollectionViewCell
                 cell.savedLabel.text = "Saved Cards"
+                if selectedCard == true {
+                    cell.configureCell(withExpandedState: true)
+                }else {
+                    cell.configureCell(withExpandedState: false)
+                }
                 return cell
-                
             }
             else  {
-                if noOfSavedCards > 0
-                {
+                if noOfSavedCards > 0{
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardExpandedStateTwoCollectionViewCell", for: indexPath) as! SavedCardExpandedStateTwoCollectionViewCell
-                    cell.titleLable.text = "You have \(noOfSavedCards) saved cards"
+
                     cell.noOfCards = noOfSavedCards
                     cell.cardsCollectionView.reloadData()
                     return cell
-                    
                 }
                 else
                 {
@@ -159,36 +168,39 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                     return cell
                     
                 }
-                
             }
-            
-            
         }
         else if indexPath.section == 2 {
+            let numberOfItems = collectionView.numberOfItems(inSection: indexPath.section)
             if indexPath.item == 0
-            { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardCollectionViewCell", for: indexPath) as! SavedCardCollectionViewCell
-                       cell.savedLabel.text = "Saved Address"
+            {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardCollectionViewCell", for: indexPath) as! SavedCardCollectionViewCell
+                cell.savedLabel.text = "Saved Address"
+                if selectedAddress == true {
+                    cell.configureCell(withExpandedState: true)
+                }else {
+                    cell.configureCell(withExpandedState: false)
+                }
                 return cell
                 
-            }
-            else  {
-                if noOfSavedAdderess > 0
-                {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedAddressCollectionViewCell", for: indexPath) as! SavedAddressCollectionViewCell
-                    cell.addressLabel.text = "You have \(noOfSavedAdderess) saved address"
+            }else if indexPath.item == (numberOfItems - 1) {
+                let savedAddressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedAddressCollectionViewCell", for: indexPath) as! SavedAddressCollectionViewCell
+                return savedAddressCell
+            }else {
+                if noOfSavedAdderess > 0 {
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressCollectionViewCell", for: indexPath) as! AddressCollectionViewCell
+                    if indexPath.item == 1 {
+                        cell.titleLabel.text = "Home"
+                    } else{
+                        cell.titleLabel.text = "Office"
+                    }
                     return cell
-                    
-                }
-                else
-                {
-                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardExpandedStateCollectionViewCell", for: indexPath) as! SavedCardExpandedStateCollectionViewCell
-                                cell.missingLabel.text = "No addresses"
-                    return cell
+                }else {
+                    let noAdresssCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardExpandedStateTwoCollectionViewCell", for: indexPath) as! SavedCardExpandedStateTwoCollectionViewCell
+                    return noAdresssCell
                 }
             }
-            
         }
-            
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReferAFriendCollectionViewCell", for: indexPath) as! ReferAFriendCollectionViewCell
             return cell
