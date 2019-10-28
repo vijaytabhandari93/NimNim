@@ -24,6 +24,7 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
         // Do any additional setup after loading the view.
         
         registerCells()
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 12, bottom: 20, right: 12)
         collectionView.delegate = self
         collectionView.dataSource = self
     }

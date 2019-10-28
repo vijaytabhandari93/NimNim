@@ -10,18 +10,16 @@ import UIKit
 
 class AllItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-   
+    
     //IBOutlets
     @IBOutlet weak var basketLabel:UILabel!
-        @IBOutlet weak var women:UIButton!
-        @IBOutlet weak var men:UIButton!
-        @IBOutlet weak var household:UIButton!
-    
-    
+    @IBOutlet weak var women:UIButton!
+    @IBOutlet weak var men:UIButton!
+    @IBOutlet weak var household:UIButton!
     @IBOutlet weak var orderTotalLabel:UILabel!
     @IBOutlet weak var AllItemsCollectionView: UICollectionView!
     @IBOutlet weak var priceTotalBackgroundView: UIView!
- 
+    
     //IBActions
     @IBAction func previousTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -30,7 +28,8 @@ class AllItemsViewController: UIViewController,UICollectionViewDelegate,UICollec
         case women
         case men
         case household
-        }
+    }
+    
     var selectedState:SelectionType! {
         didSet {
             if selectedState == .women {
@@ -57,26 +56,26 @@ class AllItemsViewController: UIViewController,UICollectionViewDelegate,UICollec
             
         }
     }
+    
+    func resetButtons() {
+        men.isSelected = false
+        women.isSelected = false
+        household.isSelected = false
+        men.setTitleColor(Colors.nimnimGenderWhite, for: .normal)
+        men.titleLabel?.font = Fonts.regularFont12
+        women.setTitleColor(Colors.nimnimGenderWhite, for: .normal)
+        women.titleLabel?.font = Fonts.regularFont12
+        household.setTitleColor(Colors.nimnimGenderWhite, for: .normal)
+        household.titleLabel?.font = Fonts.regularFont12
         
-        func resetButtons() {
-            men.isSelected = false
-            women.isSelected = false
-            household.isSelected = false
-            men.setTitleColor(Colors.nimnimGenderWhite, for: .normal)
-            men.titleLabel?.font = Fonts.regularFont12
-            women.setTitleColor(Colors.nimnimGenderWhite, for: .normal)
-            women.titleLabel?.font = Fonts.regularFont12
-            household.setTitleColor(Colors.nimnimGenderWhite, for: .normal)
-            household.titleLabel?.font = Fonts.regularFont12
-            
-        }
-        
+    }
+    
     @IBAction func basketTapped(_UI sender: Any) {
         
-            let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
-            let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
-            NavigationManager.shared.push(viewController: orderReviewVC)
-            
+        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+        NavigationManager.shared.push(viewController: orderReviewVC)
+        
         
     }
     @IBAction func womenTapped(_ sender: Any) { selectedState = .women}
@@ -86,14 +85,14 @@ class AllItemsViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
         AllItemsCollectionView.delegate = self
         AllItemsCollectionView.dataSource = self
-
-     
+        
+        
     }
     
     //MARK:UI Methods
@@ -106,18 +105,15 @@ class AllItemsViewController: UIViewController,UICollectionViewDelegate,UICollec
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
-priceTotalBackgroundView.addTopShadowToView()
+        priceTotalBackgroundView.addTopShadowToView()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.size.width/2 - 0.5, height:219)
     }
-    
-    
-    
+
     //MARK:Collection View Datasource Methods
-  
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 16
     }
@@ -128,8 +124,8 @@ priceTotalBackgroundView.addTopShadowToView()
         cell.numberLabel.text = String(0)
         cell.selectedLabel.text = "polo"
         
-            return cell
-        }
+        return cell
+    }
     
     
 }

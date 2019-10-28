@@ -82,6 +82,13 @@
                             <color key="titleColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fcy-iW-Ztw">
+                        <rect key="frame" x="28" y="119" width="319" height="1"/>
+                        <color key="backgroundColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="kn5-9D-Wms"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -90,9 +97,11 @@
                 <constraint firstItem="oW6-bS-Rxy" firstAttribute="leading" secondItem="7bJ-1O-xgp" secondAttribute="leading" id="2jY-xK-AgM"/>
                 <constraint firstItem="tM8-ow-4QL" firstAttribute="centerY" secondItem="oS5-v1-RBr" secondAttribute="centerY" id="3Xc-69-Smf"/>
                 <constraint firstItem="dcS-tE-2vv" firstAttribute="top" secondItem="tM8-ow-4QL" secondAttribute="bottom" constant="2" id="ARH-YU-eTd"/>
+                <constraint firstAttribute="bottom" secondItem="fcy-iW-Ztw" secondAttribute="bottom" id="LgO-hn-gVL"/>
                 <constraint firstItem="ud6-CK-RR9" firstAttribute="centerY" secondItem="oS5-v1-RBr" secondAttribute="centerY" id="P6N-Bu-vZ7"/>
                 <constraint firstItem="oS5-v1-RBr" firstAttribute="leading" secondItem="ud6-CK-RR9" secondAttribute="trailing" constant="20" id="QK2-06-pe7"/>
                 <constraint firstItem="7bJ-1O-xgp" firstAttribute="top" secondItem="oS5-v1-RBr" secondAttribute="bottom" constant="2" id="Sme-sr-nGA"/>
+                <constraint firstAttribute="trailing" secondItem="fcy-iW-Ztw" secondAttribute="trailing" constant="28" id="axQ-LS-WtE"/>
                 <constraint firstItem="oS5-v1-RBr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="57" id="eu1-2R-aNT"/>
                 <constraint firstAttribute="trailing" secondItem="tM8-ow-4QL" secondAttribute="trailing" constant="28" id="fvi-P5-ke4"/>
                 <constraint firstItem="dcS-tE-2vv" firstAttribute="trailing" secondItem="tM8-ow-4QL" secondAttribute="trailing" id="ikG-jg-UQU"/>
@@ -100,10 +109,11 @@
                 <constraint firstItem="ypO-ka-uJa" firstAttribute="trailing" secondItem="dcS-tE-2vv" secondAttribute="trailing" id="s3Q-LT-kzg"/>
                 <constraint firstItem="7bJ-1O-xgp" firstAttribute="leading" secondItem="oS5-v1-RBr" secondAttribute="leading" id="uEb-eO-45H"/>
                 <constraint firstItem="ypO-ka-uJa" firstAttribute="top" secondItem="dcS-tE-2vv" secondAttribute="bottom" constant="15" id="wlE-EI-ql2"/>
+                <constraint firstItem="fcy-iW-Ztw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="xoX-tq-Bt0"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="238" height="74"/>
-            <point key="canvasLocation" x="79" y="-135"/>
+            <point key="canvasLocation" x="78.985507246376812" y="-135.26785714285714"/>
         </collectionViewCell>
     </objects>
 </document>

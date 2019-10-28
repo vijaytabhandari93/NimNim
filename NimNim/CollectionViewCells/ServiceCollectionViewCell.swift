@@ -24,8 +24,7 @@ class ServiceCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.addBottomShadowToView()
-        self.addSpreadShadowToView()
+        self.layer.applySketchShadow(color: Colors.nimnimServicesShadowColor, alpha: 1, x: 12, y: 12, blur: 14, spread: 0)
     }
     
     func configureCell(withTitle title:String?) {

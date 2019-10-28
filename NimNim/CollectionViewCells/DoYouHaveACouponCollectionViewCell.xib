@@ -53,28 +53,49 @@
                             <constraint firstAttribute="width" constant="10" id="n8f-yj-Liz"/>
                         </constraints>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KMy-CI-Pqf">
+                        <rect key="frame" x="0.0" y="88" width="375" height="8"/>
+                        <color key="backgroundColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="f6f-wl-f8a"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRO-Yb-h5o">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="8"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97647058819999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="8" id="esK-K7-3kd"/>
+                            <constraint firstAttribute="height" constant="8" id="fKA-fG-EBj"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="cRO-Yb-h5o" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3aq-wK-ENR"/>
+                <constraint firstAttribute="trailing" secondItem="cRO-Yb-h5o" secondAttribute="trailing" id="3m1-H4-Dy4"/>
                 <constraint firstItem="Nb4-LK-edC" firstAttribute="top" secondItem="9Y1-GB-3tp" secondAttribute="bottom" constant="5" id="6IK-dy-7FT"/>
                 <constraint firstItem="Gsp-UG-CAr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="SPJ-Lu-7u0"/>
+                <constraint firstItem="cRO-Yb-h5o" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="STJ-zk-JaZ"/>
                 <constraint firstItem="9Y1-GB-3tp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="79" id="TZO-Rg-4Qw"/>
                 <constraint firstItem="ZbF-j1-Uv8" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="WFz-uR-AmB"/>
+                <constraint firstAttribute="bottom" secondItem="KMy-CI-Pqf" secondAttribute="bottom" id="WXT-L1-app"/>
+                <constraint firstAttribute="trailing" secondItem="KMy-CI-Pqf" secondAttribute="trailing" id="YgG-IO-O5z"/>
                 <constraint firstItem="Nb4-LK-edC" firstAttribute="leading" secondItem="9Y1-GB-3tp" secondAttribute="leading" id="bdF-O4-5C6"/>
                 <constraint firstItem="9Y1-GB-3tp" firstAttribute="leading" secondItem="Gsp-UG-CAr" secondAttribute="trailing" constant="10" id="ctE-ST-X9Q"/>
                 <constraint firstAttribute="trailing" secondItem="ZbF-j1-Uv8" secondAttribute="trailing" constant="28" id="h5I-4N-Hnp"/>
+                <constraint firstItem="KMy-CI-Pqf" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="iwg-ng-qOF"/>
                 <constraint firstItem="Gsp-UG-CAr" firstAttribute="top" secondItem="9Y1-GB-3tp" secondAttribute="top" id="o7H-mf-qwA"/>
                 <constraint firstItem="9Y1-GB-3tp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="29" id="vwT-3T-Eq7"/>
                 <constraint firstItem="Gsp-UG-CAr" firstAttribute="bottom" secondItem="Nb4-LK-edC" secondAttribute="bottom" id="xnR-di-tjD"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="295" height="43"/>
-            <point key="canvasLocation" x="-37" y="141"/>
+            <point key="canvasLocation" x="-38.405797101449281" y="140.625"/>
         </collectionViewCell>
     </objects>
     <resources>
         <image name="coupon" width="37" height="36"/>
-        <image name="previous" width="8" height="12"/>
+        <image name="previous" width="9" height="15"/>
     </resources>
 </document>

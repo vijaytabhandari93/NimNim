@@ -71,8 +71,6 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
     
     @IBAction func addCardTapped(_ sender:Any?) {
         navigationController?.popViewController(animated: true)
-
-        
     }
     @IBAction func creditTapped(_ sender:Any?) {
         selectedCardState = .credit
