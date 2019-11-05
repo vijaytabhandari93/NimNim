@@ -7,6 +7,5 @@ target 'NimNim' do
 
   # Pods for NimNim
 	pod 'Alamofire'
-  pod 'SwiftyJSON'
-
+  pod 'ObjectMapper'
 end
