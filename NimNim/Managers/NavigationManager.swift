@@ -19,31 +19,28 @@ class NavigationManager {
         baseNavigationController = loginSignupStoryboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
         baseNavigationController?.isNavigationBarHidden = true
         
-        
-        let locationStoryboard = UIStoryboard(name: "MyLocation", bundle: nil)
-        let myLocationViewController = locationStoryboard.instantiateViewController(withIdentifier: "MyLocationViewController")
-        
-        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeViewController = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-        
-        let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
-        
-        let profileStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let profileViewController = profileStoryboard.instantiateViewController(withIdentifier: "ProfileViewController")
-        
-        let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-        let orderViewController = orderStoryboard.instantiateViewController(withIdentifier: "SelectAddressViewController")
-        
-        
-        
         //This will be the conditional part in future...
-        baseNavigationController?.viewControllers = [myLocationViewController]
-        
+        if let vc = fetchInitialVC(){
+            baseNavigationController?.viewControllers = [vc] // This is to setup the root view controller of baseNavigation
+        }
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             appDelegate.window?.rootViewController = baseNavigationController
             appDelegate.window?.makeKeyAndVisible() // these three lines of code are used to initialize the first screen.
         }
+    }
+    
+    func fetchInitialVC() -> UIViewController? {
+        if let locationModel = LocationModel.fetchFromUserDefaults(){
+            let preferencesSB = UIStoryboard(name: "LoginSignup", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"LoginSignUpViewController") as? LoginSignUpViewController
+            return secondViewController
+        } else{
+            let locationStoryboard = UIStoryboard(name: "MyLocation", bundle: nil)
+            let myLocationViewController = locationStoryboard.instantiateViewController(withIdentifier: "MyLocationViewController")
+            return myLocationViewController
+            
+        }
+        
     }
     
     func push(viewController vc:UIViewController?) {

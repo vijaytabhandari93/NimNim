@@ -7,30 +7,39 @@
 //
 
 import UIKit
+import ObjectMapper
+import CoreLocation
 
-class MyLocationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class MyLocationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate {
     
     //MARK:IBOutlets
+    
+    @IBOutlet weak var pin: UIImageView!
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var currentLocationSelected: UILabel!
     @IBOutlet weak var bottomShadowView: UIView!
     @IBOutlet weak var topShadowView: UIView!
+    @IBOutlet weak var useThisLocationButton: UIButton!
     
-    //MARK: Variables
-    var selectedIndexPath: IndexPath?
-    var tupleArray: [(lable1: String, lable2: String)] = [("Norfolk County","02101"),("Plymouth County","02111"),("Essex County","02115"),("Cedar St.","02119"),("Faneuil St.","02123")
-    ]
+    //MARK: Variables and Constants
+    let locationManager = CLLocationManager()
+    var long : Double?
+    var lat : Double?
     
+    var selectedIndexPath: IndexPath? {
+        didSet {
+            setupUseThisLocationButton()
+        }
+    }
+    var serviceableLocationModel:ServiceableLocationModel?
+    var locationModel:LocationModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocationList()
+        fetchServiceableLocations()
+        setupUseThisLocationButton()
     }
     
-    func setupLocationList()
-    {
-        locationTableView.delegate = self
-        locationTableView.dataSource = self
-    }
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
@@ -49,15 +58,112 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
         super.viewDidAppear(animated)
     }
     
+    func setupUseThisLocationButton() {
+        if let selectedPath = selectedIndexPath {
+            useThisLocationButton.backgroundColor = Colors.nimnimButtonBorderGreen
+            useThisLocationButton.isUserInteractionEnabled = true
+        }else {
+            useThisLocationButton.backgroundColor = UIColor.lightGray
+            useThisLocationButton.isUserInteractionEnabled = false
+        }
+    }
+    
+    //MARK: - Location Manager Delegate Methods
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[locations.count - 1]
+        if location.horizontalAccuracy > 0 {
+            self.locationManager.stopUpdatingLocation()
+            long = location.coordinate.longitude
+            lat = location.coordinate.latitude
+            checkForServiceableLocation()
+            print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
+        switch status {
+        case .authorizedWhenInUse:
+            locationManager.startUpdatingLocation()
+        default:
+            print("hello")
+        }
+    }
+    
+    func checkForServiceableLocation() {
+        if let locations = serviceableLocationModel?.data, locations.count > 0 {
+            var fallsUnderSomeLocation = false
+            for i in 0..<locations.count {
+                let location = locations[i]
+                if let latitude = location.lat, let longitude = location.long, let radius = location.radius {
+                    if let doubleLat = Double(latitude), let doubleLong = Double(longitude) , let doubleRadius = Double(radius) {
+                        let circularRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: doubleLat, longitude: doubleLong), radius:  doubleRadius, identifier: "")
+                        if let lat = lat, let long = long { //our location
+                            if circularRegion.contains(CLLocationCoordinate2D(latitude: lat, longitude: long)) {
+                                // This means that the user's location lies under this location model...
+                                locationModel = location //This is used to globally save this location...when user taps on detect my location...for further local storage...
+                                selectedIndexPath = IndexPath(row: i, section: 0)
+                                currentLocationSelected.text = location.title
+                                fallsUnderSomeLocation = true
+                                locationTableView.reloadData()
+                            }
+                        }
+                    }
+                }
+            }
+            if !fallsUnderSomeLocation {
+                let preferencesSB = UIStoryboard(name: "MyLocation", bundle: nil)
+                let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"NonServiceable") as? NonServiceable
+                NavigationManager.shared.push(viewController: secondViewController)
+            }
+        }
+    }
+    
+    func setupLocationList()
+    {
+        locationTableView.delegate = self
+        locationTableView.dataSource = self
+    }
+    
+    func reloadTable() {
+        locationTableView.reloadData()
+    }
+    
+    func fetchServiceableLocations() {
+        
+        NetworkingManager.shared.get(withEndpoint: Endpoints.serviceableLocations, withParams: nil, withSuccess: {[weak self] (response) in
+            if let responseDict = response as? [String:Any] {
+                let serviceableLocationModel = Mapper<ServiceableLocationModel>().map(JSON: responseDict)
+                self?.serviceableLocationModel = serviceableLocationModel
+                self?.reloadTable()
+            } //definition of success closure
+        }) { (error) in
+            
+        } // definition of error closure
+    } //calling of get
+    
+    
     //MARK:IBActions
     @IBAction func useThisLocation(_ sender: Any) {
-        let preferencesSB = UIStoryboard(name: "MyLocation", bundle: nil)
-        let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"NonServiceable") as? NonServiceable
-        NavigationManager.shared.push(viewController: secondViewController)
+        if let locationModel = locationModel {
+            locationModel.saveInUserDefaults()
+            let preferencesSB = UIStoryboard(name: "LoginSignup", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"LoginSignUpViewController") as? LoginSignUpViewController
+            NavigationManager.shared.push(viewController: secondViewController)
+        }else {
+            let preferencesSB = UIStoryboard(name: "MyLocation", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"NonServiceable") as? NonServiceable
+            NavigationManager.shared.push(viewController: secondViewController)
+        }
     }
     
     @IBAction func getCurrentLocation(_ sender: Any) {
-        currentLocationSelected.text = "abcd"
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }else {
+            locationManager.requestWhenInUseAuthorization()
+        }
         selectedIndexPath = nil
         locationTableView.reloadData()
     }
@@ -75,13 +181,19 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     
     //MARK: TableView DataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tupleArray.count
+        if let locationArray = serviceableLocationModel?.data {
+            return locationArray.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationcCell", for: indexPath) as! LocationcCell
-        cell.locationName.text = String(tupleArray[indexPath.row].lable1)
-        cell.locationPincode.text = String(tupleArray[indexPath.row].lable2)
+        if let locationArray = serviceableLocationModel?.data {
+            let location = locationArray[indexPath.row]
+            cell.locationName.text = location.title
+            cell.locationPincode.text = location.pincode
+        }
         if let selected = selectedIndexPath {
             if selected == indexPath
             {
@@ -101,9 +213,16 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
         locationTableView.reloadData()
-        currentLocationSelected.text = String(tupleArray[indexPath.row].lable1)
+        if let locationArray = serviceableLocationModel?.data {
+            let location = locationArray[indexPath.row]
+            locationModel = location //This is used to globally save this location...when user taps on it...for further local storage...
+            currentLocationSelected.text = location.title
+        }
     }
-    
 }
+
+
+
+
 
 

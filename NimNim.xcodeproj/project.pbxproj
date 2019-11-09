@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		AC0E2040235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E203E235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift */; };
 		AC0E2041235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0E203F235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib */; };
 		AC11D1D42336314800F1DBCB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11D1D32336314800F1DBCB /* Colors.swift */; };
+		AC1789142376A19B00B20D32 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */; };
 		AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */; };
 		AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */; };
 		AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */; };
@@ -34,6 +35,8 @@
 		AC202CDD2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC202CDA2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift */; };
 		AC202CDE2366A8C200C87CA1 /* SavedCardExpandedStateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC202CDB2366A8C200C87CA1 /* SavedCardExpandedStateCollectionViewCell.xib */; };
 		AC202CE42366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC202CE12366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift */; };
+		AC25BFB12371EB8000C79692 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25BFB02371EB8000C79692 /* Endpoints.swift */; };
+		AC25BFB32371EF2D00C79692 /* ServiceableLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */; };
 		AC41CE6E235C7258001AC676 /* AddNewCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41CE6D235C7258001AC676 /* AddNewCardViewController.swift */; };
 		AC41CE71235C81EF001AC676 /* CardTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41CE6F235C81EE001AC676 /* CardTypeCollectionViewCell.swift */; };
 		AC41CE72235C81EF001AC676 /* CardTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC41CE70235C81EE001AC676 /* CardTypeCollectionViewCell.xib */; };
@@ -170,6 +173,7 @@
 		AC0E203E235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC0E203F235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAddressCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC11D1D32336314800F1DBCB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannersBaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -191,6 +195,8 @@
 		AC202CDA2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedCardExpandedStateTwoCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC202CDB2366A8C200C87CA1 /* SavedCardExpandedStateCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedCardExpandedStateCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC202CE12366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedCardExpandedStateCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC25BFB02371EB8000C79692 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServiceableLocationModel.swift; path = NimNim/Utils/ServiceableLocationModel.swift; sourceTree = SOURCE_ROOT; };
 		AC41CE6D235C7258001AC676 /* AddNewCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardViewController.swift; sourceTree = "<group>"; };
 		AC41CE6F235C81EE001AC676 /* CardTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC41CE70235C81EE001AC676 /* CardTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTypeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -437,6 +443,7 @@
 		AC8CDE262325189600CDFB93 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -549,6 +556,8 @@
 				ACBB8176232D1F57003DCF77 /* Extensions.swift */,
 				ACF0205E232E425F007559E8 /* Fonts.swift */,
 				AC11D1D32336314800F1DBCB /* Colors.swift */,
+				AC25BFB02371EB8000C79692 /* Endpoints.swift */,
+				AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -803,6 +812,7 @@
 				AC5ADDA223630CC700204E9E /* SelectPaymentViewController.swift in Sources */,
 				ACF9CD1E234F575900039E6C /* AddMoreServicesCollectionViewCell.swift in Sources */,
 				AC0E2040235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift in Sources */,
+				AC25BFB12371EB8000C79692 /* Endpoints.swift in Sources */,
 				ACBAAF6A233D0CC800E1E4A6 /* HomeViewController.swift in Sources */,
 				ACBC96FD2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.swift in Sources */,
 				AC1FFDBE234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift in Sources */,
@@ -835,6 +845,7 @@
 				ACFD92952355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.swift in Sources */,
 				AC11D1D42336314800F1DBCB /* Colors.swift in Sources */,
 				ACBC96F423606A06006AC5B6 /* CouponsViewController.swift in Sources */,
+				AC25BFB32371EF2D00C79692 /* ServiceableLocationModel.swift in Sources */,
 				AC41CE71235C81EF001AC676 /* CardTypeCollectionViewCell.swift in Sources */,
 				ACF9CD1A234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift in Sources */,
 				ACFBA0512338E26A00950079 /* MyLocationViewController.swift in Sources */,
@@ -855,6 +866,7 @@
 				ACE0E4EF2353240B00A75D82 /* RugCleaningViewController.swift in Sources */,
 				ACE0E4E9235312F100A75D82 /* ShoeRepairViewController.swift in Sources */,
 				ACFD92C6235B17E20009FB03 /* AddAddressViewController.swift in Sources */,
+				AC1789142376A19B00B20D32 /* UserDefaultKeys.swift in Sources */,
 				ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */,
 				ACBC96F82361AEE7006AC5B6 /* OrderStatusViewController.swift in Sources */,
 				ACFD92BD235ACF060009FB03 /* SavedAddressCollectionViewCell.swift in Sources */,
