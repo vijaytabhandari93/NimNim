@@ -14,6 +14,8 @@
 		AC0E2041235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0E203F235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib */; };
 		AC11D1D42336314800F1DBCB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11D1D32336314800F1DBCB /* Colors.swift */; };
 		AC1789142376A19B00B20D32 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */; };
+		AC1789162377D03D00B20D32 /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1789152377D03D00B20D32 /* Params.swift */; };
+		AC17891823785F1800B20D32 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17891723785F1800B20D32 /* UserModel.swift */; };
 		AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */; };
 		AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */; };
 		AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */; };
@@ -174,6 +176,8 @@
 		AC0E203F235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAddressCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC11D1D32336314800F1DBCB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
+		AC1789152377D03D00B20D32 /* Params.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Params.swift; sourceTree = "<group>"; };
+		AC17891723785F1800B20D32 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = NimNim/Utils/UserModel.swift; sourceTree = SOURCE_ROOT; };
 		AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannersBaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -444,6 +448,7 @@
 			isa = PBXGroup;
 			children = (
 				AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */,
+				AC17891723785F1800B20D32 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -558,6 +563,7 @@
 				AC11D1D32336314800F1DBCB /* Colors.swift */,
 				AC25BFB02371EB8000C79692 /* Endpoints.swift */,
 				AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */,
+				AC1789152377D03D00B20D32 /* Params.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -828,6 +834,7 @@
 				AC8CDE31232540DD00CDFB93 /* LoginSignUpViewController.swift in Sources */,
 				ACFD92A5235838280009FB03 /* SavedCardCollectionViewCell.swift in Sources */,
 				AC496133235C68C100AA7196 /* AddressCollectionViewCell.swift in Sources */,
+				AC1789162377D03D00B20D32 /* Params.swift in Sources */,
 				ACFD92B9235ACC460009FB03 /* CardsCollectionViewCell.swift in Sources */,
 				ACBBE49A233A0FE0003C67F7 /* LocationcCell.swift in Sources */,
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
@@ -855,6 +862,7 @@
 				ACF0205F232E425F007559E8 /* Fonts.swift in Sources */,
 				ACBC96FA2361B1C0006AC5B6 /* OrderReviewViewController.swift in Sources */,
 				ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */,
+				AC17891823785F1800B20D32 /* UserModel.swift in Sources */,
 				AC41CE75235C822F001AC676 /* AddCardCollectionViewCell.swift in Sources */,
 				ACF9CD2E235043C200039E6C /* SpecialNotesCollectionViewCell.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,

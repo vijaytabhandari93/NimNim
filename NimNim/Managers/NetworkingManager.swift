@@ -52,10 +52,10 @@ class NetworkingManager {
             if response.result.isSuccess {
                 print("Request:\(String(describing: response.request ?? nil))")
                 print("Response:\(String(describing: response.result.value ?? nil))")
-                success?(response.result.value)
+                success?(response.result.value) // call of closure
             }
             else {
-                failure?(response.result.error)
+                failure?(response.result.error) // call of closure
             }
         }
     }

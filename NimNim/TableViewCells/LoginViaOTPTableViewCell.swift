@@ -11,18 +11,31 @@ import UIKit
 protocol LoginViaOTPTableViewCellDelegate:class {
     func logInViaPasswordTappedInLoginViaOTPTableViewCell()
     func signUpTappedInLoginViaOTPTableViewCell()
+    func getOtpTapped(withPhone phoneNumber:String?)
+    func resendOtpTapped(withPhone phoneNumber:String?)
+    func verifyOtpTapped(withPhone phoneNumber:String?,withOTP otp:String?)
     func textFieldStartedEditingInLoginViaOTPTableViewCell(withTextField textField:UITextField)
     func textFieldEndedEditingInLoginViaOTPTableViewCell(withTextField textField:UITextField)
 }
 
+enum OTPState {
+    case getOtp
+    case verifyOtp
+}
 
 class LoginViaOTPTableViewCell: UITableViewCell, UITextFieldDelegate {
     //MARK: IBOutlets
     @IBOutlet weak var mobileNumberTextField: UITextField!
     @IBOutlet weak var otpTextField: UITextField!
+    @IBOutlet weak var otpView: UIView! //to be optionally hidden
+    @IBOutlet weak var resendOtpView: UIView!
+    @IBOutlet weak var otpViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var otpButton: UIButton!
+    @IBOutlet weak var otpViewHeightConstraint: NSLayoutConstraint!
+    
     //MARK: Constants and Variables
     weak var delegate:LoginViaOTPTableViewCellDelegate?
-    
+    var currentState:OTPState = .getOtp
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,6 +48,23 @@ class LoginViaOTPTableViewCell: UITableViewCell, UITextFieldDelegate {
         mobileNumberTextField.inputAccessoryView = nil
         otpTextField.inputAccessoryView = nil
     }
+    
+    func configureView(withOtpState otpState:OTPState) {
+        currentState = otpState
+        if otpState == .getOtp {
+            otpView.isHidden = true
+            otpViewTopConstraint.constant = 0
+            otpViewHeightConstraint.constant = 0
+            otpButton.setTitle("Get OTP", for: .normal)
+            resendOtpView.isHidden = true
+        }else {
+            otpView.isHidden = false
+            otpViewTopConstraint.constant = 39
+            otpViewHeightConstraint.constant = 28
+            otpButton.setTitle("Verify OTP", for: .normal)
+            resendOtpView.isHidden = false
+        }
+    }
 
     //MARK:IBActions
     @IBAction func logInViaPasswordTapped(_ sender: Any) {
@@ -44,8 +74,15 @@ class LoginViaOTPTableViewCell: UITableViewCell, UITextFieldDelegate {
         delegate?.signUpTappedInLoginViaOTPTableViewCell()
     }
     @IBAction func resendOtpTapped(_ sender: Any) {
+        delegate?.resendOtpTapped(withPhone: mobileNumberTextField.text)
     }
     @IBAction func getOtptapped(_ sender: Any) {
+        //if current state is .getOtp then we need to call getOtpTapped in the delegate of this cell...else we need to call verifyOtpTapped in the delegate of this cell...
+        if currentState == .getOtp {
+            delegate?.getOtpTapped(withPhone: mobileNumberTextField.text)
+        }else {
+            delegate?.verifyOtpTapped(withPhone: mobileNumberTextField.text, withOTP: otpTextField.text)
+        }
     }
     
     //MARK: UITextField Delegates

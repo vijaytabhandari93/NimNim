@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginWithPasswordTableViewCellDelegate, LoginViaOTPTableViewCellDelegate, SignUpTableViewCellDelegate {
     
@@ -40,7 +41,11 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     var activeTextField:UITextField?
-    
+    var otpState:OTPState = .getOtp {
+        didSet {
+            refreshTable()
+        }
+    }
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,10 +136,10 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     
     func resetLoginSignupButtons() {
         //reset both buttons
-        loginButton.titleLabel?.font = Fonts.regularFont12
-        signUpButton.titleLabel?.font = Fonts.regularFont12
-        loginButton.setTitleColor(Colors.nimnimGrey, for: .normal)
-        signUpButton.setTitleColor(Colors.nimnimGrey, for: .normal)
+        loginButton?.titleLabel?.font = Fonts.regularFont12
+        signUpButton?.titleLabel?.font = Fonts.regularFont12
+        loginButton?.setTitleColor(Colors.nimnimGrey, for: .normal)
+        signUpButton?.setTitleColor(Colors.nimnimGrey, for: .normal)
     }
     
     //MARK: IBActions
@@ -162,10 +167,11 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         case .loginWithOTP:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoginViaOTPTableViewCell") as! LoginViaOTPTableViewCell
             cell.delegate = self
+            cell.configureView(withOtpState: otpState)
             return cell
         case .signup:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SignUpTableViewCell") as! SignUpTableViewCell
-            cell.delegate = self
+            cell.delegate = self //Through this statement the viewcontroller is giving its reference to the cell...
             return cell
         }
     }
@@ -200,6 +206,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         refreshTable()
     }
     
+    
+    
     func textFieldStartedEditingInLoginViaOTPTableViewCell(withTextField textField:UITextField) {
         activeTextField = textField
         addTapGestureToView()
@@ -220,7 +228,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func textFieldEndedEditingInLoginViaPasswordTableViewCell(withTextField textField:UITextField) {
-        removeTapGestures(forTextField: textField)
+        removeTapGestures(forTextField: textField) // to enable interaction again with the screen. We want the tap gesture to be implemeented only when the kyboard is there.
     }
     
     func signUpTappedInLoginViaOTPTableViewCell() {
@@ -242,11 +250,124 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         removeTapGestures(forTextField: textField)
     }
     
-    func signUpTappedInSignUpTableViewCell() {
-        //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
-        let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
-         let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
-           secondViewController?.screenTypeValue = .pickUpDropOff
-        NavigationManager.shared.push(viewController: secondViewController)
+    func getOtpTapped(withPhone phoneNumber : String?) {
+        guard let phoneNumber = phoneNumber else {
+            return
+        }
+        let params:[String:Any] = [
+            LogInViaOTP.mobile:phoneNumber,
+        ]
+        NetworkingManager.shared.post(withEndpoint: Endpoints.customersLoginWithOTP, withParams: params, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+                if let msg = responseDict["msg"] as? String {
+                    //we can assume here that otp was sent successfully...
+                    self.otpState = .verifyOtp
+                }
+            }
+        }) { (error) in
+            
+        }
+    }
+    
+    func resendOtpTapped(withPhone phoneNumber: String?) {
+        guard let phoneNumber = phoneNumber else {
+            return
+        }
+        let params:[String:Any] = [
+            LogInViaOTP.mobile:phoneNumber,
+        ]
+        NetworkingManager.shared.post(withEndpoint: Endpoints.resendOTP, withParams: params, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+                if let msg = responseDict["msg"] as? String {
+                    //we can assume here that otp was sent successfully...
+                    self.otpState = .verifyOtp
+                }
+            }
+        }) { (error) in
+            
+        }
+    }
+    
+    func verifyOtpTapped(withPhone phoneNumber : String?, withOTP otp: String?) {
+        guard let phoneNumber = phoneNumber, let otp = otp else {
+            return
+        }
+        let params:[String:Any] = [
+            VerifyOTP.mobile:phoneNumber,
+            VerifyOTP.otp:otp
+            
+        ]
+        NetworkingManager.shared.post(withEndpoint: Endpoints.verifyOTP, withParams: params, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+                if let token = responseDict["token"] as? String {
+                    UserDefaults.standard.set(token, forKey: UserDefaultKeys.authToken)
+                    let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+                    let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+                    secondViewController?.screenTypeValue = .pickUpDropOff
+                    NavigationManager.shared.push(viewController: secondViewController)
+                }
+            }
+            
+        }) { (error) in
+            
+        }
+        
+    }
+    
+    func logInTappedInLoginWithPasswordTableViewCell(withEmail email:String?,withPassword password:String?)
+    {
+        guard let email = email, let password = password else {
+            return
+        }
+        let params:[String:Any] = [
+            LogInViaFormParams.password:password,
+            LogInViaFormParams.email:email
+        ]
+        NetworkingManager.shared.post(withEndpoint: Endpoints.customersLoginWithPassword, withParams: params, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+                if let token = responseDict["token"] as? String {
+                    UserDefaults.standard.set(token, forKey: UserDefaultKeys.authToken)
+                    let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+                    let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+                    secondViewController?.screenTypeValue = .pickUpDropOff
+                    NavigationManager.shared.push(viewController: secondViewController)
+                }
+                
+            }
+            
+            
+        }) { (error) in
+            
+        }
+        
+        
+        
+    }
+    func signUpTappedInSignUpTableViewCell(withEmail email:String?, withFirstName firstName:String?, withLastName lastName:String?, withPhoneNumber phoneNumber:String?, withPassword password:String?, withDob dob:String?) {
+        guard let email = email, let firstName = firstName, let lastName = lastName, let phoneNumber = phoneNumber, let password = password, let dob = dob else {
+            return
+        }
+        let params:[String:Any] = [
+            SignUpViaFormParams.firstName:firstName,
+            SignUpViaFormParams.lastName:lastName,
+            SignUpViaFormParams.phone:phoneNumber,
+            SignUpViaFormParams.password:password,
+            SignUpViaFormParams.dob:dob,
+            SignUpViaFormParams.email:email
+        ]
+        NetworkingManager.shared.post(withEndpoint: Endpoints.customers, withParams: params, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+                let userModel = Mapper<UserModel>().map(JSON: responseDict)
+                userModel?.saveInUserDefaults()
+                
+            }
+            //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
+            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+            secondViewController?.screenTypeValue = .pickUpDropOff
+            NavigationManager.shared.push(viewController: secondViewController)
+        }) { (error) in
+            
+        }
     }
 }

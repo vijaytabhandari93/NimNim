@@ -8,4 +8,5 @@ target 'NimNim' do
   # Pods for NimNim
 	pod 'Alamofire'
   pod 'ObjectMapper'
+  pod 'NVActivityIndicatorView'
 end

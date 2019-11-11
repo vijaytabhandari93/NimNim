@@ -10,4 +10,9 @@ import Foundation
 
 struct Endpoints {
     static let serviceableLocations = "admin/serviceable_regions"
+    static let customers = "customer/customers"
+    static let customersLoginWithPassword = "customer/login"
+    static let customersLoginWithOTP = "sendotp"
+    static let verifyOTP = "verfiyotp"
+    static let resendOTP = "resendotp"
 }

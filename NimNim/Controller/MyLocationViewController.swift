@@ -135,8 +135,9 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
                 let serviceableLocationModel = Mapper<ServiceableLocationModel>().map(JSON: responseDict)
                 self?.serviceableLocationModel = serviceableLocationModel
                 self?.reloadTable()
-            } //definition of success closure
-        }) { (error) in
+            }
+        }) //definition of success closure
+        { (error) in
             
         } // definition of error closure
     } //calling of get
@@ -145,7 +146,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     //MARK:IBActions
     @IBAction func useThisLocation(_ sender: Any) {
         if let locationModel = locationModel {
-            locationModel.saveInUserDefaults()
+            locationModel.saveInUserDefaults()//time of actual saving of loccation model
             let preferencesSB = UIStoryboard(name: "LoginSignup", bundle: nil)
             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"LoginSignUpViewController") as? LoginSignUpViewController
             NavigationManager.shared.push(viewController: secondViewController)

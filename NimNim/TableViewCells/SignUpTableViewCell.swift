@@ -9,10 +9,10 @@
 import UIKit
 
 protocol SignUpTableViewCellDelegate:class {
-    func loginTappedInSignUpTableViewCell()
-    func signUpTappedInSignUpTableViewCell()
-    func textFieldStartedEditingInSignUpTableViewCell(withTextField textField:UITextField)
-    func textFieldEndedEditingInSignUpTableViewCell(withTextField textField:UITextField)
+    func loginTappedInSignUpTableViewCell() //already have an account wala...
+    func signUpTappedInSignUpTableViewCell(withEmail email:String?, withFirstName firstName:String?,  withLastName lastName:String?, withPhoneNumber phoneNumber:String?, withPassword password:String?, withDob dob:String?) // main sign up tapped
+    func textFieldStartedEditingInSignUpTableViewCell(withTextField textField:UITextField) // to give keeeboard space
+    func textFieldEndedEditingInSignUpTableViewCell(withTextField textField:UITextField) // to give keyboard space
 }
 
 class SignUpTableViewCell: UITableViewCell,UITextFieldDelegate {
@@ -28,7 +28,7 @@ class SignUpTableViewCell: UITableViewCell,UITextFieldDelegate {
     
     //MARK: Constants and Variables
     weak var delegate:SignUpTableViewCellDelegate?
-    
+    var indexPath1:IndexPath?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -65,7 +65,7 @@ class SignUpTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     
     @IBAction func signUpTapped(_ sender: Any) {
-        delegate?.signUpTappedInSignUpTableViewCell()
+        delegate?.signUpTappedInSignUpTableViewCell(withEmail: emailAddressTextField.text, withFirstName: firstNameTextField.text, withLastName: lastNameTextField.text, withPhoneNumber: phoneNumberTextField.text, withPassword: passwordTextField.text, withDob: dobTextField.text)
     }
     
     @IBAction func logInTapped(_ sender: Any) {

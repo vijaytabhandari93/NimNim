@@ -246,7 +246,12 @@
             <viewLayoutGuide key="safeArea" id="lbj-gG-I2Z"/>
             <connections>
                 <outlet property="mobileNumberTextField" destination="KZW-DY-XCV" id="Cw5-gK-xce"/>
+                <outlet property="otpButton" destination="yl0-cA-2ku" id="oeC-Rh-CK5"/>
                 <outlet property="otpTextField" destination="os4-lk-OD1" id="Mcb-uO-Gs9"/>
+                <outlet property="otpView" destination="es4-Pb-QSH" id="pF7-Rq-fxk"/>
+                <outlet property="otpViewHeightConstraint" destination="CZU-PA-JL2" id="cap-r9-XZS"/>
+                <outlet property="otpViewTopConstraint" destination="64r-Lc-yI5" id="Ofj-CG-xaT"/>
+                <outlet property="resendOtpView" destination="Gcb-en-i3x" id="Cc2-WM-psI"/>
             </connections>
             <point key="canvasLocation" x="0.7246376811594204" y="71.316964285714278"/>
         </tableViewCell>

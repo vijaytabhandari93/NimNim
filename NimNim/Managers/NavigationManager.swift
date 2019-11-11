@@ -30,17 +30,40 @@ class NavigationManager {
     }
     
     func fetchInitialVC() -> UIViewController? {
-        if let locationModel = LocationModel.fetchFromUserDefaults(){
-            let preferencesSB = UIStoryboard(name: "LoginSignup", bundle: nil)
-            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"LoginSignUpViewController") as? LoginSignUpViewController
-            return secondViewController
-        } else{
-            let locationStoryboard = UIStoryboard(name: "MyLocation", bundle: nil)
-            let myLocationViewController = locationStoryboard.instantiateViewController(withIdentifier: "MyLocationViewController")
-            return myLocationViewController
-            
-        }
+
+//        if let userModel = UserModel.fetchFromUserDefaults()
+//        {
+//            print(UserDefaults.standard.value(forKey: UserDefaultKeys.authToken))
+//            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+//            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+//            secondViewController?.screenTypeValue = .pickUpDropOff
+//            return secondViewController
+//        }
+//        if let userModel = UserDefaults.standard.value(forKey: UserDefaultKeys.authToken)
+//        {
+//            print(UserDefaults.standard.value(forKey: UserDefaultKeys.authToken))
+//            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+//            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+//            secondViewController?.screenTypeValue = .pickUpDropOff
+//            return secondViewController
+//        }
+//        if let locationModel = LocationModel.fetchFromUserDefaults(){//if you have a saved location fetch it and open the signup screen.
+//
+//            let preferencesSB = UIStoryboard(name: "LoginSignup", bundle: nil)
+//            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"LoginSignUpViewController") as? LoginSignUpViewController
+//            return secondViewController
+//        } else{
+//            let locationStoryboard = UIStoryboard(name: "MyLocation", bundle: nil)
+//            let myLocationViewController = locationStoryboard.instantiateViewController(withIdentifier: "MyLocationViewController") as? MyLocationViewController
+//            return myLocationViewController
+//
+//        }
         
+        
+        //////////////////////////
+        let preferencesSB = UIStoryboard(name: "LoginSignup", bundle: nil)
+        let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"LoginSignUpViewController") as? LoginSignUpViewController
+        return secondViewController
     }
     
     func push(viewController vc:UIViewController?) {

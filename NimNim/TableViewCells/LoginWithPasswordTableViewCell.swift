@@ -13,6 +13,7 @@ protocol LoginWithPasswordTableViewCellDelegate:class {
     func logInViaOtpTappedInLoginWithPasswordTableViewCell() // To tell the loginSignUpVC to do changes in the currentScreenState variable
     func textFieldStartedEditingInLoginViaPasswordTableViewCell(withTextField textField:UITextField) // To tell the loginSignUpVC to add tap geture to the view and to pass the text field selected
     func textFieldEndedEditingInLoginViaPasswordTableViewCell(withTextField textField:UITextField) // To tell the loginSignUpVC to remove the tap gesture from the view and to pass the textfield upon which end editing has been called
+     func logInTappedInLoginWithPasswordTableViewCell(withEmail email:String?,withPassword password:String?) // main login tapped
 }
 
 class LoginWithPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
@@ -33,8 +34,8 @@ class LoginWithPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     func setupTextFieldDelegates() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        emailTextField.inputAccessoryView = nil
-        passwordTextField.inputAccessoryView = nil
+        emailTextField.inputAccessoryView = nil //keyboard corrections option are set to nil
+        passwordTextField.inputAccessoryView = nil //keyboard corrections option are set to nil
     }
 
     //MARK: IBActions
@@ -42,8 +43,7 @@ class LoginWithPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
         delegate?.signUpTappedInLoginWithPasswordTableViewCell()
     }
     @IBAction func logInTapped(_ sender: Any) {
-        //actual login
-        
+        delegate?.logInTappedInLoginWithPasswordTableViewCell(withEmail: emailTextField.text, withPassword: passwordTextField.text)
     }
     @IBAction func logInViaOtpTapped(_ sender: Any) {
         delegate?.logInViaOtpTappedInLoginWithPasswordTableViewCell()
@@ -51,7 +51,7 @@ class LoginWithPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     //MARK: TextField Delegates
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true) //To shut the keyboard
+        textField.endEditing(true) //To shut the keyboard// this function is called when the user is pressing the return button
         return true
     }
     
