@@ -8,6 +8,7 @@
 
 import UIKit
 import ObjectMapper
+import NVActivityIndicatorView
 
 class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginWithPasswordTableViewCellDelegate, LoginViaOTPTableViewCellDelegate, SignUpTableViewCellDelegate {
     
@@ -17,6 +18,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var loginSignUpTableView: UITableView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
     
     enum LoginSignupStates {
         case loginWithPassword
@@ -257,6 +259,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         let params:[String:Any] = [
             LogInViaOTP.mobile:phoneNumber,
         ]
+        activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.customersLoginWithOTP, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 if let msg = responseDict["msg"] as? String {
@@ -264,8 +267,9 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                     self.otpState = .verifyOtp
                 }
             }
+            self.activityIndicatorView.stopAnimating()
         }) { (error) in
-            
+            self.activityIndicatorView.stopAnimating()
         }
     }
     
@@ -276,6 +280,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         let params:[String:Any] = [
             LogInViaOTP.mobile:phoneNumber,
         ]
+        activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.resendOTP, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 if let msg = responseDict["msg"] as? String {
@@ -283,8 +288,9 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                     self.otpState = .verifyOtp
                 }
             }
+            self.activityIndicatorView.stopAnimating()
         }) { (error) in
-            
+            self.activityIndicatorView.stopAnimating()
         }
     }
     
@@ -297,6 +303,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             VerifyOTP.otp:otp
             
         ]
+        activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.verifyOTP, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 if let token = responseDict["token"] as? String {
@@ -307,9 +314,10 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                     NavigationManager.shared.push(viewController: secondViewController)
                 }
             }
+            self.activityIndicatorView.stopAnimating()
             
         }) { (error) in
-            
+            self.activityIndicatorView.stopAnimating()
         }
         
     }
@@ -323,6 +331,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             LogInViaFormParams.password:password,
             LogInViaFormParams.email:email
         ]
+        activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.customersLoginWithPassword, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 if let token = responseDict["token"] as? String {
@@ -334,10 +343,11 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 }
                 
             }
+            self.activityIndicatorView.stopAnimating()
             
             
         }) { (error) in
-            
+            self.activityIndicatorView.stopAnimating()
         }
         
         
@@ -355,6 +365,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             SignUpViaFormParams.dob:dob,
             SignUpViaFormParams.email:email
         ]
+        activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.customers, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 let userModel = Mapper<UserModel>().map(JSON: responseDict)
@@ -366,8 +377,9 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
             secondViewController?.screenTypeValue = .pickUpDropOff
             NavigationManager.shared.push(viewController: secondViewController)
+            self.activityIndicatorView.stopAnimating()
         }) { (error) in
-            
+            self.activityIndicatorView.stopAnimating()
         }
     }
 }

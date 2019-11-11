@@ -1,20 +1,26 @@
 PODS:
   - Alamofire (4.9.1)
+  - NVActivityIndicatorView (4.8.0):
+    - NVActivityIndicatorView/Presenter (= 4.8.0)
+  - NVActivityIndicatorView/Presenter (4.8.0)
   - ObjectMapper (3.5.1)
 
 DEPENDENCIES:
   - Alamofire
+  - NVActivityIndicatorView
   - ObjectMapper
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - NVActivityIndicatorView
     - ObjectMapper
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
 
-PODFILE CHECKSUM: 281a69d900b743b5cbf62047487d01e5e58c8e27
+PODFILE CHECKSUM: 7b4fa6f89cfcf7afef4286f0e1709f143a27d9fc
 
 COCOAPODS: 1.6.2

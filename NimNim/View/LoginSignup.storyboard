@@ -248,6 +248,24 @@
                                 <rect key="frame" x="0.0" y="248" width="320" height="251"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KVn-sw-kRh" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="135" y="429" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="4X1-ju-Ckd"/>
+                                    <constraint firstAttribute="width" constant="50" id="zqB-TM-QLj"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballGridPulse"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -256,9 +274,11 @@
                             <constraint firstItem="EDA-Q2-kCX" firstAttribute="trailing" secondItem="NfU-Cq-FmJ" secondAttribute="trailing" id="Dvb-rE-Ukb"/>
                             <constraint firstItem="EDA-Q2-kCX" firstAttribute="bottom" secondItem="PCy-bj-Yki" secondAttribute="bottom" constant="19" id="Erg-Kc-3g4"/>
                             <constraint firstItem="PCy-bj-Yki" firstAttribute="leading" secondItem="EDA-Q2-kCX" secondAttribute="leading" id="Iis-iT-UE0"/>
+                            <constraint firstItem="KVn-sw-kRh" firstAttribute="centerX" secondItem="EDA-Q2-kCX" secondAttribute="centerX" id="MIr-FO-AVs"/>
                             <constraint firstItem="EDA-Q2-kCX" firstAttribute="trailing" secondItem="PCy-bj-Yki" secondAttribute="trailing" id="RlP-Ni-X43"/>
                             <constraint firstItem="NfU-Cq-FmJ" firstAttribute="top" secondItem="EDA-Q2-kCX" secondAttribute="top" id="d4r-vc-yRV"/>
                             <constraint firstItem="ZbV-7o-M5G" firstAttribute="top" secondItem="NfU-Cq-FmJ" secondAttribute="bottom" id="hWd-fS-Buf"/>
+                            <constraint firstItem="PCy-bj-Yki" firstAttribute="top" secondItem="KVn-sw-kRh" secondAttribute="bottom" constant="20" id="kwI-dq-JU7"/>
                             <constraint firstItem="ZbV-7o-M5G" firstAttribute="leading" secondItem="EDA-Q2-kCX" secondAttribute="leading" id="lBq-oU-5u8"/>
                             <constraint firstItem="PCy-bj-Yki" firstAttribute="top" secondItem="ZbV-7o-M5G" secondAttribute="bottom" id="yAQ-xo-1qH"/>
                         </constraints>
@@ -266,6 +286,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="RBZ-nm-cBe"/>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="KVn-sw-kRh" id="2Ji-OM-2hN"/>
                         <outlet property="loginButton" destination="XlK-Bp-bsC" id="wPc-JB-kwf"/>
                         <outlet property="loginSignUpTableView" destination="ZbV-7o-M5G" id="dCU-ea-E5I"/>
                         <outlet property="signUpButton" destination="urP-8i-77V" id="lUg-Un-XFl"/>
