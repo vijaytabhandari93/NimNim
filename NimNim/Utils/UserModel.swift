@@ -20,23 +20,26 @@ class UserModel: NSObject, Mappable, Codable {
     var salt:String?
     var id:String?
     var dob:String?
- 
+    var token:String?
+    
+    
     required convenience init?(map: Map) { self.init() }
     
     func mapping(map: Map) {
-        firstName     <- map["first_name"]
-        lastName           <- map["last_name"]
-        phone      <- map["phone"]
-        email            <- map["email"]
-        hashedPassword     <- map["hashed_password"]
-        provider           <- map["provider"]
-        salt      <- map["salt"]
-        id            <- map["_id"]
-        dob            <- map["dob"]
+        firstName     <- map["customer.first_name"]
+        lastName           <- map["customer.last_name"]
+        phone      <- map["customer.phone"]
+        email            <- map["customer.email"]
+        hashedPassword     <- map["customer.hashed_password"]
+        provider           <- map["customer.provider"]
+        salt      <- map["customer.salt"]
+        id            <- map["customer._id"]
+        dob            <- map["customer.dob"]
+        token       <- map["token"]
       }
     func saveInUserDefaults() {
-        UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: UserDefaultKeys.User)
-        _ = UserDefaults.standard.synchronize() // This is a recommendation to do every time when we save anything in userdefaults...
+            UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: UserDefaultKeys.User)
+    UserDefaults.standard.synchronize() // This is a recommendation to do every time when we save anything in userdefaults...try? PropertyListEncoder().encode(self) is used to encode
     }
     
     static func fetchFromUserDefaults() -> UserModel? {

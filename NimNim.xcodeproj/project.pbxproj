@@ -18,6 +18,7 @@
 		AC17891823785F1800B20D32 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17891723785F1800B20D32 /* UserModel.swift */; };
 		AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */; };
 		AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */; };
+		AC1EDC60237C71FC00D36C89 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */; };
 		AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */; };
 		AC1FFDA323465DEF00930496 /* ServicesHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA123465DEF00930496 /* ServicesHeaderCollectionReusableView.xib */; };
 		AC1FFDAC2346F1D100930496 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA42346F1D000930496 /* ProximaNova-Regular.otf */; };
@@ -180,6 +181,7 @@
 		AC17891723785F1800B20D32 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = NimNim/Utils/UserModel.swift; sourceTree = SOURCE_ROOT; };
 		AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannersBaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		AC1FFDA123465DEF00930496 /* ServicesHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		AC1FFDA42346F1D000930496 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				AC8CDE28232518AC00CDFB93 /* Controller */,
 				AC9BCAC52324DF90009818C3 /* AppDelegate.swift */,
 				AC9BCACC2324DF90009818C3 /* Assets.xcassets */,
+				AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */,
 				AC9BCAD12324DF90009818C3 /* Info.plist */,
 			);
 			path = NimNim;
@@ -622,6 +625,7 @@
 				AC9BCABF2324DF90009818C3 /* Frameworks */,
 				AC9BCAC02324DF90009818C3 /* Resources */,
 				D9B2177530E3C72726E3B6FC /* [CP] Embed Pods Frameworks */,
+				91BE2C17108F40B604D340DA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -719,6 +723,7 @@
 				ACFD92A2235830AC0009FB03 /* ProfileCollectionViewCell.xib in Resources */,
 				AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */,
 				ACFD929A2355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.xib in Resources */,
+				AC1EDC60237C71FC00D36C89 /* GoogleService-Info.plist in Resources */,
 				AC5ADD922361D99F00204E9E /* ApplyWalletPointsCollectionViewCell.xib in Resources */,
 				ACBB819E232E3FAC003DCF77 /* Montserrat-Black.ttf in Resources */,
 				AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */,
@@ -751,6 +756,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		91BE2C17108F40B604D340DA /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleSignIn.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		ACE5BD3CA5ED6FAAE182846E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -783,6 +810,9 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
@@ -791,6 +821,9 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);

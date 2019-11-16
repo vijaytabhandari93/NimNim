@@ -9,6 +9,7 @@
 import UIKit
 import ObjectMapper
 import CoreLocation
+import NVActivityIndicatorView
 
 class MyLocationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate {
     
@@ -21,6 +22,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     @IBOutlet weak var topShadowView: UIView!
     @IBOutlet weak var useThisLocationButton: UIButton!
     
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     //MARK: Variables and Constants
     let locationManager = CLLocationManager()
     var long : Double?
@@ -33,6 +35,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     }
     var serviceableLocationModel:ServiceableLocationModel?
     var locationModel:LocationModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupLocationList()
@@ -130,15 +133,22 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     
     func fetchServiceableLocations() {
         
-        NetworkingManager.shared.get(withEndpoint: Endpoints.serviceableLocations, withParams: nil, withSuccess: {[weak self] (response) in
-            if let responseDict = response as? [String:Any] {
-                let serviceableLocationModel = Mapper<ServiceableLocationModel>().map(JSON: responseDict)
-                self?.serviceableLocationModel = serviceableLocationModel
-                self?.reloadTable()
+        activityIndicator.startAnimating()
+       NetworkingManager.shared.get(withEndpoint: Endpoints.serviceableLocations, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
+           if let responseDict = response as? [String:Any] {
+              let serviceableLocationModel = Mapper<ServiceableLocationModel>().map(JSON: responseDict)
+               self?.serviceableLocationModel = serviceableLocationModel
+               self?.reloadTable()
             }
+             self?.activityIndicator.stopAnimating()
         }) //definition of success closure
         { (error) in
-            
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            self.activityIndicator.stopAnimating()
         } // definition of error closure
     } //calling of get
     
@@ -195,7 +205,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
             cell.locationName.text = location.title
             cell.locationPincode.text = location.pincode
         }
-        if let selected = selectedIndexPath {
+        if let selected = selectedIndexPath { //if selectedIndexPath has a value  assign that value to selected and then in the next line do comparison
             if selected == indexPath
             {
                 cell.setupcell(forState: true)

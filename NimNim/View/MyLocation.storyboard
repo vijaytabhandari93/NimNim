@@ -246,6 +246,24 @@
                                     <constraint firstAttribute="bottom" secondItem="9K6-cX-y9V" secondAttribute="bottom" id="rJW-ap-TUx"/>
                                 </constraints>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6XS-eS-poH" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="162.5" y="308.5" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="J4n-zV-Le2"/>
+                                    <constraint firstAttribute="width" constant="50" id="qqA-l3-nXf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballGridPulse"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -258,11 +276,14 @@
                             <constraint firstItem="aow-76-T1H" firstAttribute="top" secondItem="Bbx-ni-Lew" secondAttribute="top" id="LcF-Cy-Eyz"/>
                             <constraint firstItem="Bbx-ni-Lew" firstAttribute="bottom" secondItem="JtS-iD-yCV" secondAttribute="bottom" id="VSH-z2-N8g"/>
                             <constraint firstItem="JtS-iD-yCV" firstAttribute="top" secondItem="aow-76-T1H" secondAttribute="bottom" id="i1Z-ec-ZnV"/>
+                            <constraint firstItem="6XS-eS-poH" firstAttribute="centerX" secondItem="CLQ-mY-INK" secondAttribute="centerX" id="ngc-MT-KEU"/>
+                            <constraint firstItem="6XS-eS-poH" firstAttribute="centerY" secondItem="CLQ-mY-INK" secondAttribute="centerY" id="oNy-L3-QDn"/>
                             <constraint firstItem="aow-76-T1H" firstAttribute="leading" secondItem="Bbx-ni-Lew" secondAttribute="leading" id="pJJ-Qf-ICa"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Bbx-ni-Lew"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="6XS-eS-poH" id="lBB-sY-PUA"/>
                         <outlet property="bottomShadowView" destination="Jvn-ZA-B4O" id="cfb-Db-f1R"/>
                         <outlet property="currentLocationSelected" destination="1uw-dd-iqn" id="KGw-eF-CcA"/>
                         <outlet property="locationTableView" destination="JtS-iD-yCV" id="nh3-di-LA8"/>
@@ -272,7 +293,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5Sk-fw-sqH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1728.8" y="-900.00000000000011"/>
+            <point key="canvasLocation" x="2530" y="-900"/>
         </scene>
         <!--Non Serviceable-->
         <scene sceneID="IzY-4U-f2u">
@@ -414,7 +435,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ON-AB-cm4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2393" y="-900"/>
+            <point key="canvasLocation" x="3252" y="-900"/>
         </scene>
     </scenes>
     <resources>

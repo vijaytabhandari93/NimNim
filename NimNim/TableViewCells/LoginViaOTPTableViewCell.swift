@@ -23,6 +23,7 @@ enum OTPState {
     case verifyOtp
 }
 
+
 class LoginViaOTPTableViewCell: UITableViewCell, UITextFieldDelegate {
     //MARK: IBOutlets
     @IBOutlet weak var mobileNumberTextField: UITextField!

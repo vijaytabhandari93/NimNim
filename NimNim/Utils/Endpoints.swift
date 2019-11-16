@@ -15,4 +15,6 @@ struct Endpoints {
     static let customersLoginWithOTP = "sendotp"
     static let verifyOTP = "verfiyotp"
     static let resendOTP = "resendotp"
+    static let forgotPasssword = "forgotpassword"
+    static let socialSignUp = "socialsignup"
 }

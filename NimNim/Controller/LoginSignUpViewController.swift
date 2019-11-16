@@ -9,8 +9,10 @@
 import UIKit
 import ObjectMapper
 import NVActivityIndicatorView
+import GoogleSignIn
 
-class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginWithPasswordTableViewCellDelegate, LoginViaOTPTableViewCellDelegate, SignUpTableViewCellDelegate {
+class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginWithPasswordTableViewCellDelegate, LoginViaOTPTableViewCellDelegate, SignUpTableViewCellDelegate, GIDSignInDelegate {
+   
     
     
     //MARK: IBOutlets
@@ -48,6 +50,13 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             refreshTable()
         }
     }
+    
+    var passwordState:PasswordState = .logIn {
+        didSet {
+            refreshTable()
+        }
+    }
+    
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,6 +154,26 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     //MARK: IBActions
+    @IBAction func googleTapped(_ sender: Any) {
+        GIDSignIn.sharedInstance().clientID = "574591501756-6nl6ejk98mdfdqi2h26mhhq22t5o820h.apps.googleusercontent.com" //
+        GIDSignIn.sharedInstance().delegate = self //Since we have written this we need to conform to GIDSignInDelegate in this class.
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self //To tell google Sdk the presenting controller
+        
+        // Automatically sign in the user...to show
+        GIDSignIn.sharedInstance()?.signIn()
+        
+    }
+    
+    @IBAction func facebookTapped(_ sender: Any) {
+    }
+    
+    @IBAction func instaTapped(_ sender: Any) {
+    }
+    
+    @IBAction func linkedInTapped(_ sender: Any) {
+    }
+    
     @IBAction func logInTapped(_ sender: Any) {
         currentScreenState = .loginWithPassword
         refreshTable()
@@ -154,6 +183,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         currentScreenState = .signup
         refreshTable()
     }
+    
+  
     
     //MARK: TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -165,6 +196,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         case .loginWithPassword:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoginWithPasswordTableViewCell") as! LoginWithPasswordTableViewCell
             cell.delegate = self
+            cell.configureView(withState :passwordState)
             return cell
         case .loginWithOTP:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LoginViaOTPTableViewCell") as! LoginViaOTPTableViewCell
@@ -252,6 +284,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         removeTapGestures(forTextField: textField)
     }
     
+    //MARK: Network Requests
+    
     func getOtpTapped(withPhone phoneNumber : String?) {
         guard let phoneNumber = phoneNumber else {
             return
@@ -270,6 +304,12 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             self.activityIndicatorView.stopAnimating()
         }) { (error) in
             self.activityIndicatorView.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+           
         }
     }
     
@@ -291,6 +331,11 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             self.activityIndicatorView.stopAnimating()
         }) { (error) in
             self.activityIndicatorView.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -306,18 +351,23 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.verifyOTP, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
-                if let token = responseDict["token"] as? String {
-                    UserDefaults.standard.set(token, forKey: UserDefaultKeys.authToken)
-                    let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
-                    let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
-                    secondViewController?.screenTypeValue = .pickUpDropOff
-                    NavigationManager.shared.push(viewController: secondViewController)
-                }
+                let userModel = Mapper<UserModel>().map(JSON: responseDict)
+                userModel?.saveInUserDefaults()
+                
             }
+            //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
+            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+            secondViewController?.screenTypeValue = .pickUpDropOff
+            NavigationManager.shared.push(viewController: secondViewController)
             self.activityIndicatorView.stopAnimating()
-            
         }) { (error) in
             self.activityIndicatorView.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
         
     }
@@ -334,12 +384,35 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.customersLoginWithPassword, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
-                if let token = responseDict["token"] as? String {
-                    UserDefaults.standard.set(token, forKey: UserDefaultKeys.authToken)
-                    let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
-                    let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
-                    secondViewController?.screenTypeValue = .pickUpDropOff
-                    NavigationManager.shared.push(viewController: secondViewController)
+                let userModel = Mapper<UserModel>().map(JSON: responseDict)
+                userModel?.saveInUserDefaults()
+                
+            }
+            //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
+            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+            secondViewController?.screenTypeValue = .pickUpDropOff
+            NavigationManager.shared.push(viewController: secondViewController)
+            self.activityIndicatorView.stopAnimating()
+        }) { (error) in
+            self.activityIndicatorView.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func sendLinkTappedInLoginWithPasswordTableViewCell(withEmail email:String?){
+        guard let email = email else {return}
+        let params: [String:Any] =
+            [ForgotPassword.email:email]
+        activityIndicatorView.startAnimating()
+        NetworkingManager.shared.post(withEndpoint: Endpoints.forgotPasssword, withParams: params, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+                if let success = responseDict["success"] as? Bool, success == true{
+                    self.passwordState = .logIn
                 }
                 
             }
@@ -348,11 +421,16 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             
         }) { (error) in
             self.activityIndicatorView.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
-        
-        
+       
         
     }
+    
     func signUpTappedInSignUpTableViewCell(withEmail email:String?, withFirstName firstName:String?, withLastName lastName:String?, withPhoneNumber phoneNumber:String?, withPassword password:String?, withDob dob:String?) {
         guard let email = email, let firstName = firstName, let lastName = lastName, let phoneNumber = phoneNumber, let password = password, let dob = dob else {
             return
@@ -380,6 +458,73 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             self.activityIndicatorView.stopAnimating()
         }) { (error) in
             self.activityIndicatorView.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
+    }
+    //MARK: Google Sign In methods
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!)
+    {
+        if let error = error {
+            if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                print("The user has not signed in before or they have since signed out.")
+            } else {
+                print("\(error.localizedDescription)")
+            }
+            return
+        }
+        let userId = user.userID                  // For client-side use only!
+//        let idToken = user.authentication.idToken // Safe to send to the server
+//        let fullName = user.profile.name
+//        let givenName = user.profile.givenName
+//        let familyName = user.profile.familyName
+//        let email = user.profile.email
+        performSocialSignUp(userInfo: userId, type: "google")
+        
+    }
+    
+    func performSocialSignUp(userInfo userId : String? , type : String?)
+    {
+        guard let userId = userId , let type = type else{
+            return
+        }
+        let params:[String:Any] = [
+            SocialSignIn.userId:userId,
+            SocialSignIn.typeOfSignIn :type
+        ]
+        let finalParams = [
+            "socialAccount":params
+        ]
+        activityIndicatorView.startAnimating()
+        NetworkingManager.shared.post(withEndpoint: Endpoints.socialSignUp, withParams: finalParams, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+                let userModel = Mapper<UserModel>().map(JSON: responseDict)
+                userModel?.saveInUserDefaults()
+                
+            }
+            //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
+            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+            secondViewController?.screenTypeValue = .pickUpDropOff
+            NavigationManager.shared.push(viewController: secondViewController)
+            self.activityIndicatorView.stopAnimating()
+        }) { (error) in
+            self.activityIndicatorView.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+        // Perform any operations when the user disconnects from app here.
+        // ...
     }
 }

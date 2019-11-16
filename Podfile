@@ -9,4 +9,5 @@ target 'NimNim' do
 	pod 'Alamofire'
   pod 'ObjectMapper'
   pod 'NVActivityIndicatorView'
+  pod 'GoogleSignIn'
 end

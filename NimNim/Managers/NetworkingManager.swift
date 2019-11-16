@@ -19,28 +19,36 @@ class NetworkingManager {
     private init() {
         
     }
-    func get(withEndpoint endpoint:String?,withParams params:[String:Any]?, withSuccess success:((Any?)->Void)?, withFailure failure:((Error?) -> Void)?) {
+    func get(withEndpoint endpoint:String?,withParams params:[String:Any]?, withSuccess success:((Any?)->Void)?, withFailure failure:((Any?) -> Void)?) {
         guard let endpoint = endpoint else {
             return
         }
         guard let url = URL(string: baseUrl + endpoint) else {
             return
         }
-
+        
         Alamofire.request(url, method: .get, parameters: params).responseJSON {
             response in
-            if response.result.isSuccess {
-                print("Request:\(String(describing: response.request ?? nil))")
-                print("Response:\(String(describing: response.result.value ?? nil))")
+            guard let statusCode = response.response?.statusCode else {
+                failure?(nil)
+                return
+            }
+            print("Request:\(String(describing: response.request ?? nil))")
+            print("Response:\(String(describing: response.result.value ?? nil))")
+            
+            if statusCode >= 200 && statusCode < 400 {
                 success?(response.result.value) // call of closure
-            }//kab hoga
-            else {
-                failure?(response.result.error) // call of closure
+            }else {
+                if let responseValue = response.result.value as? [String:Any] {
+                    if let error = responseValue["error"] as? String {
+                        failure?(error) // call of closure
+                    }
+                }
             }
         }
     }// definition of get
     
-    func post(withEndpoint endpoint:String?,withParams params:[String:Any]?, withSuccess success:((Any?)->Void)?, withFailure failure:((Error?) -> Void)?) {
+    func post(withEndpoint endpoint:String?,withParams params:[String:Any]?, withSuccess success:((Any?)->Void)?, withFailure failure:((Any?) -> Void)?) {
         guard let endpoint = endpoint else {
             return
         }
@@ -49,17 +57,26 @@ class NetworkingManager {
         }
         Alamofire.request(url, method: .post, parameters: params).responseJSON {
             response in
-            if response.result.isSuccess {
-                print("Request:\(String(describing: response.request ?? nil))")
-                print("Response:\(String(describing: response.result.value ?? nil))")
-                success?(response.result.value) // call of closure
+            guard let statusCode = response.response?.statusCode else {
+                failure?(nil)
+                return
             }
-            else {
-                failure?(response.result.error) // call of closure
+            print("Request:\(String(describing: response.request ?? nil))")
+            print("Response:\(String(describing: response.result.value ?? nil))")
+            
+            if statusCode >= 200 && statusCode < 400 {
+                success?(response.result.value) // call of closure
+            }else {
+                if let responseValue = response.result.value as? [String:Any] {
+                    if let error = responseValue["error"] as? String {
+                        failure?(error) // call of closure
+                    }
+                }
             }
         }
     }
 }
+
 
 //please explain the use
 

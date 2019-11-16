@@ -29,7 +29,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3gl-8W-Fu6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1796" y="147"/>
+            <point key="canvasLocation" x="2199" y="133"/>
         </scene>
         <!--Login Sign Up View Controller-->
         <scene sceneID="fdq-pV-0Xe">
@@ -105,9 +105,12 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7JE-Oe-x5q">
                                                         <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJx-WF-hzt">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zJx-WF-hzt">
                                                                 <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                                <state key="normal" title="Button"/>
+                                                                <state key="normal" title="Button" image="google"/>
+                                                                <connections>
+                                                                    <action selector="googleTapped:" destination="85c-On-1DI" eventType="touchUpInside" id="3dw-rI-KVo"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -121,9 +124,12 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPw-Lx-gqk">
                                                         <rect key="frame" x="76" y="0.0" width="48" height="48"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qM-lR-9oP">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7qM-lR-9oP">
                                                                 <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                                <state key="normal" title="Button"/>
+                                                                <state key="normal" title="Button" image="fb"/>
+                                                                <connections>
+                                                                    <action selector="facebookTapped:" destination="85c-On-1DI" eventType="touchUpInside" id="7KP-bT-POa"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,9 +143,12 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OQI-2n-oFF">
                                                         <rect key="frame" x="152" y="0.0" width="48" height="48"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbT-lu-3eo">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbT-lu-3eo">
                                                                 <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                                <state key="normal" title="Button"/>
+                                                                <state key="normal" title="Button" image="insta"/>
+                                                                <connections>
+                                                                    <action selector="instaTapped:" destination="85c-On-1DI" eventType="touchUpInside" id="PrP-zz-pLa"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -153,9 +162,12 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8Y-nj-fc0">
                                                         <rect key="frame" x="228" y="0.0" width="48" height="48"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boB-43-ooO">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="boB-43-ooO">
                                                                 <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                                                                <state key="normal" title="Button"/>
+                                                                <state key="normal" title="Button" image="linkedin"/>
+                                                                <connections>
+                                                                    <action selector="linkedInTapped:" destination="85c-On-1DI" eventType="touchUpInside" id="A4f-Ic-yIx"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -219,13 +231,19 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PCy-bj-Yki">
                                 <rect key="frame" x="0.0" y="499" width="320" height="50"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3UD-pV-Ych">
+                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3UD-pV-Ych">
                                         <rect key="frame" x="26" y="20.5" width="24" height="24"/>
-                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="2yS-YC-g1p"/>
                                             <constraint firstAttribute="width" constant="24" id="QGR-Eg-spa"/>
                                         </constraints>
+                                        <state key="normal" image="path2"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing in you agree to Nim Nim’s Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFY-8D-Ley">
                                         <rect key="frame" x="66" y="20.5" width="228" height="29.5"/>
@@ -294,7 +312,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vmc-ii-eKT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2522" y="136"/>
+            <point key="canvasLocation" x="3188" y="-257"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="fb" width="56" height="56"/>
+        <image name="google" width="56" height="56"/>
+        <image name="insta" width="56" height="56"/>
+        <image name="linkedin" width="56" height="56"/>
+        <image name="path2" width="16" height="12"/>
+    </resources>
 </document>

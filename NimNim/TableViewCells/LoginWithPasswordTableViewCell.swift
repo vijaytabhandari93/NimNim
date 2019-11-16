@@ -13,7 +13,12 @@ protocol LoginWithPasswordTableViewCellDelegate:class {
     func logInViaOtpTappedInLoginWithPasswordTableViewCell() // To tell the loginSignUpVC to do changes in the currentScreenState variable
     func textFieldStartedEditingInLoginViaPasswordTableViewCell(withTextField textField:UITextField) // To tell the loginSignUpVC to add tap geture to the view and to pass the text field selected
     func textFieldEndedEditingInLoginViaPasswordTableViewCell(withTextField textField:UITextField) // To tell the loginSignUpVC to remove the tap gesture from the view and to pass the textfield upon which end editing has been called
-     func logInTappedInLoginWithPasswordTableViewCell(withEmail email:String?,withPassword password:String?) // main login tapped
+    func logInTappedInLoginWithPasswordTableViewCell(withEmail email:String?,withPassword password:String?) // main login tapped
+    func sendLinkTappedInLoginWithPasswordTableViewCell(withEmail email:String?)
+}
+enum PasswordState {
+    case forgotPassword
+    case logIn
 }
 
 class LoginWithPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
@@ -22,13 +27,48 @@ class LoginWithPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var passwordView: UIView!
+    @IBOutlet weak var otpAndForgotPasswordView: UIView!
+    @IBOutlet weak var dontHaveAccountView: UIView!
+    @IBOutlet weak var PasswordViewTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var passwordViewHeightConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var logInButton: UIButton!
+    
     //MARK: Constants and Variables
     weak var delegate :LoginWithPasswordTableViewCellDelegate?
+    var currentState:PasswordState = .logIn {
+        didSet {
+            setupView()
+        }
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         setupTextFieldDelegates()
+    }
+    
+    func configureView(withState State:PasswordState) {
+        currentState = State // We are saving the current state so that we can use it later to determine what has to be done when the user taps on the login button later on...
+    }
+    
+    func setupView() {
+        if currentState == .forgotPassword {
+            passwordView.isHidden = true
+            PasswordViewTopConstraint.constant = 0
+            logInButton.setTitle("Send Link", for: .normal)
+            passwordViewHeightConstraint.constant = 0
+            otpAndForgotPasswordView.isHidden = true
+            dontHaveAccountView.isHidden = true
+        }else {
+            passwordView.isHidden = false
+            PasswordViewTopConstraint.constant = 39
+            logInButton.setTitle("Log In", for: .normal)
+            passwordViewHeightConstraint.constant = 28
+            otpAndForgotPasswordView.isHidden = false
+            dontHaveAccountView.isHidden = false
+        }
     }
     
     func setupTextFieldDelegates() {
@@ -39,12 +79,22 @@ class LoginWithPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     }
 
     //MARK: IBActions
+    @IBAction func forgotPassword(_ sender: Any) {
+        currentState = .forgotPassword
+    }
+    
     @IBAction func signUpTapped(_ sender: Any) {
         delegate?.signUpTappedInLoginWithPasswordTableViewCell()
     }
     @IBAction func logInTapped(_ sender: Any) {
-        delegate?.logInTappedInLoginWithPasswordTableViewCell(withEmail: emailTextField.text, withPassword: passwordTextField.text)
+        //if current state is .getOtp then we need to call getOtpTapped in the delegate of this cell...else we need to call verifyOtpTapped in the delegate of this cell...
+        if currentState == .forgotPassword {
+            delegate?.sendLinkTappedInLoginWithPasswordTableViewCell(withEmail: emailTextField.text)
+        }else {
+            delegate?.logInTappedInLoginWithPasswordTableViewCell( withEmail:emailTextField.text, withPassword: passwordTextField.text)
+        }
     }
+    
     @IBAction func logInViaOtpTapped(_ sender: Any) {
         delegate?.logInViaOtpTappedInLoginWithPasswordTableViewCell()
     }

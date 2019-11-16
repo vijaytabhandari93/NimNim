@@ -30,3 +30,11 @@ struct VerifyOTP {
     static let otp = "otp"
     
 }
+struct ForgotPassword {
+    static let email = "email"
+    }
+struct SocialSignIn {
+    static let userId = "accountId"
+    static let typeOfSignIn = "type"
+}
+
