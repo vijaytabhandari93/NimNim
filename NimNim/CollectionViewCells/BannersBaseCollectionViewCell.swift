@@ -10,7 +10,11 @@ import UIKit
 
 class BannersBaseCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
+    
     @IBOutlet weak var bannersCollectionView: UICollectionView!
+    
+    var banners:[BannerModel] = []
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,6 +24,13 @@ class BannersBaseCollectionViewCell: UICollectionViewCell,UICollectionViewDelega
         bannersCollectionView.dataSource = self
     }
     
+    func configureCell(withModel model : BannersBaseModel? ){
+        if let bannerData = model?.data {
+            banners = bannerData
+        }
+        bannersCollectionView.reloadData()
+    }
+    
     func registerCells() {
         let bannersBaseNib = UINib(nibName: "BannerCollectionViewCell", bundle: nil)
         bannersCollectionView.register(bannersBaseNib, forCellWithReuseIdentifier: "BannerCollectionViewCell")
@@ -27,11 +38,15 @@ class BannersBaseCollectionViewCell: UICollectionViewCell,UICollectionViewDelega
     
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return banners.count
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerCollectionViewCell", for: indexPath) as! BannerCollectionViewCell
+        cell.lable1.text = banners[indexPath.row].name
+        cell.label2.text = banners[indexPath.row].banner
+        cell.label3.text = banners[indexPath.row].id
         return cell
     }
     

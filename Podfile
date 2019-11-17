@@ -10,4 +10,5 @@ target 'NimNim' do
   pod 'ObjectMapper'
   pod 'NVActivityIndicatorView'
   pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
 end

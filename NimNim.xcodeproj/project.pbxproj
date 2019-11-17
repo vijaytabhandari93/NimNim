@@ -40,6 +40,7 @@
 		AC202CE42366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC202CE12366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift */; };
 		AC25BFB12371EB8000C79692 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25BFB02371EB8000C79692 /* Endpoints.swift */; };
 		AC25BFB32371EF2D00C79692 /* ServiceableLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */; };
+		AC2BEDC62381600000152C69 /* BannersBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2BEDC52381600000152C69 /* BannersBaseModel.swift */; };
 		AC41CE6E235C7258001AC676 /* AddNewCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41CE6D235C7258001AC676 /* AddNewCardViewController.swift */; };
 		AC41CE71235C81EF001AC676 /* CardTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41CE6F235C81EE001AC676 /* CardTypeCollectionViewCell.swift */; };
 		AC41CE72235C81EF001AC676 /* CardTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC41CE70235C81EE001AC676 /* CardTypeCollectionViewCell.xib */; };
@@ -203,6 +204,7 @@
 		AC202CE12366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedCardExpandedStateCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC25BFB02371EB8000C79692 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServiceableLocationModel.swift; path = NimNim/Utils/ServiceableLocationModel.swift; sourceTree = SOURCE_ROOT; };
+		AC2BEDC52381600000152C69 /* BannersBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersBaseModel.swift; sourceTree = SOURCE_ROOT; };
 		AC41CE6D235C7258001AC676 /* AddNewCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardViewController.swift; sourceTree = "<group>"; };
 		AC41CE6F235C81EE001AC676 /* CardTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC41CE70235C81EE001AC676 /* CardTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTypeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -451,6 +453,7 @@
 			children = (
 				AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */,
 				AC17891723785F1800B20D32 /* UserModel.swift */,
+				AC2BEDC52381600000152C69 /* BannersBaseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -811,6 +814,8 @@
 				"${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
@@ -822,6 +827,8 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
@@ -870,6 +877,7 @@
 				ACFD92A5235838280009FB03 /* SavedCardCollectionViewCell.swift in Sources */,
 				AC496133235C68C100AA7196 /* AddressCollectionViewCell.swift in Sources */,
 				AC1789162377D03D00B20D32 /* Params.swift in Sources */,
+				AC2BEDC62381600000152C69 /* BannersBaseModel.swift in Sources */,
 				ACFD92B9235ACC460009FB03 /* CardsCollectionViewCell.swift in Sources */,
 				ACBBE49A233A0FE0003C67F7 /* LocationcCell.swift in Sources */,
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,

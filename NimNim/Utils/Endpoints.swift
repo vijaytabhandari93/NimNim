@@ -17,4 +17,5 @@ struct Endpoints {
     static let resendOTP = "resendotp"
     static let forgotPasssword = "forgotpassword"
     static let socialSignUp = "socialsignup"
+    static let banners = "admin/banner"
 }

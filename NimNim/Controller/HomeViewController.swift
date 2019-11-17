@@ -7,18 +7,13 @@
 //
 
 import UIKit
+import ObjectMapper
 
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     //MARK:IBOutlets
     @IBOutlet weak var homeCollectionView: UICollectionView!
-    @IBAction func basketTapped(_UI sender: Any) {
-        
-        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
-        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
-        NavigationManager.shared.push(viewController: orderReviewVC)
-        
-        
-    }
+    
+    var bannerModel : BannersBaseModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +21,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         registerCells()
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
+        fetchBanners() 
     }
     
     //MARK:UI Methods
@@ -36,6 +32,33 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         homeCollectionView.register(servicesBaseNib, forCellWithReuseIdentifier: "ServicesBaseCollectionViewCell")
         let headerNib = UINib(nibName: "ServicesHeaderCollectionReusableView", bundle: nil)
         homeCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ServicesHeaderCollectionReusableView")
+    }
+    
+    //MARK: Networking Methods
+    func fetchBanners() {
+        NetworkingManager.shared.get(withEndpoint: Endpoints.banners, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
+            if let responseDict = response as? [String:Any] {
+                let bannerModel = Mapper<BannersBaseModel>().map(JSON: responseDict)
+                self?.bannerModel = bannerModel //? is put after self as it is weak self.
+                self?.homeCollectionView.reloadData()
+            }
+  
+            }) //definition of success closure
+        { (error) in
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+    
+        } // definition of error closure
+    }
+    
+    //MARK: IBActions
+    @IBAction func basketTapped(_UI sender: Any) {
+        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+        NavigationManager.shared.push(viewController: orderReviewVC)
     }
     
     //MARK:Collection View Datasource Methods
@@ -50,6 +73,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannersBaseCollectionViewCell", for: indexPath) as! BannersBaseCollectionViewCell
+            cell.configureCell(withModel: bannerModel) //To pass the banneer model to the cell.
             return cell
         }
         else{
