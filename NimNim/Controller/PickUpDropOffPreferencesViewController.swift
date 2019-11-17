@@ -75,10 +75,16 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
     //MARK: IBActions
     @IBAction func skipTapped(_ sender: Any) {
         if screenTypeValue == .pickUpDropOff {
-            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
-            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
-            secondViewController?.screenTypeValue = .descriptionOfUser
-            NavigationManager.shared.push(viewController: secondViewController)
+            if let descriptionPreferences = UserDefaults.standard.object(forKey: UserDefaultKeys.descriptionPreferences) as? String {
+                let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
+                NavigationManager.shared.push(viewController: servicesViewController)
+            }else {
+                let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+                let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+                secondViewController?.screenTypeValue = .descriptionOfUser
+                NavigationManager.shared.push(viewController: secondViewController)
+            }
         }else {
             let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
             let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
@@ -88,14 +94,28 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
     
     @IBAction func nextTapped(_ sender: Any) {
         if screenTypeValue == .pickUpDropOff {
-            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
-            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
-            secondViewController?.screenTypeValue = .descriptionOfUser
-            self.navigationController?.pushViewController(secondViewController!, animated: true)
+            if let selectedIndexPath = selectedIndexPath {
+                UserDefaults.standard.set(titleArray[selectedIndexPath.row], forKey: UserDefaultKeys.pickUpDropOfPreferences)
+                if let descriptionPreferences = UserDefaults.standard.object(forKey: UserDefaultKeys.descriptionPreferences) as? String {
+                    let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                    let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
+                    NavigationManager.shared.push(viewController: servicesViewController)
+                }else {
+                    let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+                    let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+                    secondViewController?.screenTypeValue = .descriptionOfUser
+                    NavigationManager.shared.push(viewController: secondViewController)
+                }
+            }
         }else {
-            let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
-            let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
-            NavigationManager.shared.push(viewController: servicesViewController)
+            if let selectedIndexPath = selectedIndexPath { UserDefaults.standard.set(titleArray[selectedIndexPath.row], forKey: UserDefaultKeys.descriptionPreferences)
+                
+                let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
+                NavigationManager.shared.push(viewController: servicesViewController)
+                
+            }
+            
         }
     }
     

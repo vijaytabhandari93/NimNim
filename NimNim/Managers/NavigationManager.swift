@@ -30,6 +30,24 @@ class NavigationManager {
     }
     
     func fetchInitialVC() -> UIViewController? {
+        if let descriptionPreferences = UserDefaults.standard.object(forKey: UserDefaultKeys.descriptionPreferences) as? String , let pickUpDropOffPreferences = UserDefaults.standard.object(forKey: UserDefaultKeys.pickUpDropOfPreferences) as? String{
+            let homeSB = UIStoryboard(name: "Home", bundle: nil)
+            let secondViewController = homeSB.instantiateViewController(withIdentifier:"HomeBaseViewController") as? HomeBaseViewController
+            return secondViewController
+        }
+        if let descriptionPreferences = UserDefaults.standard.object(forKey: UserDefaultKeys.descriptionPreferences) as? String {
+            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+            secondViewController?.screenTypeValue = .pickUpDropOff
+            return secondViewController
+        }
+        if let pickUpDropOffPreferences = UserDefaults.standard.object(forKey: UserDefaultKeys.pickUpDropOfPreferences) as? String {
+            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+            secondViewController?.screenTypeValue = .descriptionOfUser
+            
+            return secondViewController
+        }
 
         if let userModel = UserModel.fetchFromUserDefaults()
         {

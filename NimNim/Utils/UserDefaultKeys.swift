@@ -12,4 +12,6 @@ struct UserDefaultKeys {
     static let location = "kLocationModel"
     static let User = "kUser"
     static let authToken = "kAuthToken"
+    static let pickUpDropOfPreferences = "kPickUpDropOfPreferences"
+    static let descriptionPreferences = "kDescriptionPreferences"
 }
