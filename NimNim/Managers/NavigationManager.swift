@@ -57,15 +57,20 @@ class NavigationManager {
             secondViewController?.screenTypeValue = .pickUpDropOff
             return secondViewController
         }
-        if let locationModel = LocationModel.fetchFromUserDefaults(){//if you have a saved location fetch it and open the signup screen.
-
+        if let LocationModel = LocationModel.fetchFromUserDefaults()
+        {
+            print(UserDefaults.standard.value(forKey: UserDefaultKeys.location))
             let preferencesSB = UIStoryboard(name: "LoginSignup", bundle: nil)
-            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"LoginSignUpViewController") as? LoginSignUpViewController
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"LoginSignUpViewController") as?
+                LoginSignUpViewController
+
             return secondViewController
-        } else{
-            let locationStoryboard = UIStoryboard(name: "MyLocation", bundle: nil)
-            let myLocationViewController = locationStoryboard.instantiateViewController(withIdentifier: "MyLocationViewController") as? MyLocationViewController
-            return myLocationViewController
+        }
+    
+            else{
+            let preferencesSB = UIStoryboard(name: "MyLocation", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"MyLocationViewController") as? MyLocationViewController
+            return secondViewController
 
         }
     }

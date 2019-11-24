@@ -17,6 +17,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     
     //MARK: IBOutlets
     
+    
     @IBOutlet weak var loginSignUpTableView: UITableView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
@@ -99,6 +100,17 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         view.endEditing(true) //to shutdown the keyboard. Wheneever you tap the text field on a specific screeen , then that screen becomes the first responder of the keyoard.
     }
     
+    @IBOutlet weak var tickButton: UIButton!
+    
+    @IBAction func tickButton(_ sender: Any) {
+        if tickButton.currentImage != nil{
+       tickButton.setImage(nil, for: .normal)
+        }
+        else{
+             let image = UIImage(named: "path2")
+            tickButton.setImage(image, for: .normal)
+        }
+    }
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             self.view.frame.origin.y = -keyboardSize.height
@@ -443,6 +455,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             SignUpViaFormParams.dob:dob,
             SignUpViaFormParams.email:email
         ]
+
+        if tickButton.currentImage != nil {
         activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.customers, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
@@ -463,6 +477,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+        }
         }
     }
     //MARK: Google Sign In methods

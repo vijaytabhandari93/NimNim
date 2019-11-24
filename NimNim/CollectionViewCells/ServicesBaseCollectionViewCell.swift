@@ -15,10 +15,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var serviceBannerCollectionView: UICollectionView!
+    
+    var services:[ServiceModel] = []
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,71 +36,74 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
         serviceBannerCollectionView.register(bannersBaseNib, forCellWithReuseIdentifier: "ServiceCollectionViewCell")
     }
     
+    func configureCell(withModel model : ServiceBaseModel? ) {
+        if let serviceData = model?.data {
+            services = serviceData
+      
+        }
+        serviceBannerCollectionView.reloadData()
+    }
+    
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return services.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-        if indexPath.item == 0 {
             cell.backgroundCurvedView.backgroundColor = UIColor.white
-            cell.configureCell(withTitle: "Wash + Fold") //This will set the title label/service name label inside the ServiceCollectionViewCell dequed above in this function...we will setup the value of that label on the basis of the indexPath...
-        }else if indexPath.item == 1 {
-            cell.backgroundCurvedView.backgroundColor = Colors.nimnimServicesGreen
-            cell.configureCell(withTitle: "Wash + Air Dry")
-        }else if indexPath.item == 2 {
-            cell.backgroundCurvedView.backgroundColor = UIColor.white
-            cell.configureCell(withTitle: "Wash + Pressed Shirts")
-        }else if indexPath.item == 3 {
-            cell.backgroundCurvedView.backgroundColor = UIColor.white
-            cell.configureCell(withTitle: "Dry Cleaning")
-        }else if indexPath.item == 4 {
-            cell.backgroundCurvedView.backgroundColor = UIColor.white
-            cell.configureCell(withTitle: "Rug Cleaning")
-        }else if indexPath.item == 5 {
-            cell.backgroundCurvedView.backgroundColor = UIColor.white
-            cell.configureCell(withTitle: "Shoe Repair")
-        }else if indexPath.item == 6 {
-            cell.backgroundCurvedView.backgroundColor = Colors.nimnimServicesGreen
-            cell.configureCell(withTitle: "Tailoring")
-        }else if indexPath.item == 7 {
-            cell.backgroundCurvedView.backgroundColor = UIColor.white
-            cell.configureCell(withTitle: "Household Items")
+            cell.serviceName.text = services[indexPath.row].name
+            cell.alias = services[indexPath.row].alias
+            cell.imageURL = services[indexPath.row].icon
+        if let url = services[indexPath.row].icon {
+            if let urlValue = URL(string: url)
+            {
+                cell.serviceImage.kf.setImage(with: urlValue)
+            }
         }
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let servicesStoryboard = UIStoryboard(name: "Services", bundle: nil)
-        if indexPath.item == 0 {
+        if services[indexPath.row].alias == "wash-and-fold" {
             let washAndFoldVC = servicesStoryboard.instantiateViewController(withIdentifier: "ServicesViewController")
             NavigationManager.shared.push(viewController: washAndFoldVC)
-        }else if indexPath.item == 1 {
+        }else if services[indexPath.row].alias == "wash-and-air-dry" {
             let washAndAirDryVC = servicesStoryboard.instantiateViewController(withIdentifier: "WashAndAirDryViewController")
             NavigationManager.shared.push(viewController: washAndAirDryVC)
-        }else if indexPath.item == 2 {
+        }else if services[indexPath.row].alias == "laundered-shirts" {
             let washPressedVC = servicesStoryboard.instantiateViewController(withIdentifier: "WashPressedShirtsViewController")
             NavigationManager.shared.push(viewController: washPressedVC)
-        }else if indexPath.item == 3 {
-            let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "DryCleaningViewController")
+        }else if services[indexPath.row].alias == "household-items" {
+            let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
             NavigationManager.shared.push(viewController: dryCleaningVC)
-        }else if indexPath.item == 4 {
+        }else if services[indexPath.row].alias == "dry-cleaning" {
             
-                    let rugCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")
+                    let rugCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "DryCleaningViewController")
                     NavigationManager.shared.push(viewController: rugCleaningVC)
             
             
-        }else if indexPath.item == 5 {
+        }else if services[indexPath.row].alias == "shoe-repair" {
             let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController")
             NavigationManager.shared.push(viewController: dryCleaningVC)
-        }else if indexPath.item == 6 {
+        }else if services[indexPath.row].alias == "tailoring" {
             
-        }else if indexPath.item == 7 {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
+        }else if services[indexPath.row].alias == "carpet-cleaning" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
             NavigationManager.shared.push(viewController: householdVC)
+            }
+        else if services[indexPath.row].alias == "leather-and-special-care-items" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
+            NavigationManager.shared.push(viewController: householdVC)
+        
+        }
+        else {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
+            NavigationManager.shared.push(viewController: householdVC)
+            
+            
             
         }
     }
+    
     
     
     

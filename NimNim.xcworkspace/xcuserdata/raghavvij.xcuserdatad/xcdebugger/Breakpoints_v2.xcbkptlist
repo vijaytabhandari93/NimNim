@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "NimNim/CollectionViewCells/ServicesBaseCollectionViewCell.swift"
-            timestampString = "593699216.587535"
+            timestampString = "595947619.219386"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "7"
@@ -22,33 +22,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NimNim/Controller/AddAddressViewController.swift"
-            timestampString = "593496281.069307"
+            filePath = "BannersBaseModel.swift"
+            timestampString = "595764468.121376"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "5"
-            endingLineNumber = "5"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NimNim/Controller/CouponsViewController.swift"
-            timestampString = "593700580.918316"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "previousTapped(_:)"
-            landmarkType = "7">
+            startingLineNumber = "52"
+            endingLineNumber = "52">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -57,14 +39,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BannersBaseModel.swift"
-            timestampString = "595689408.749666"
+            filePath = "NimNim/Managers/NetworkingManager.swift"
+            timestampString = "596291887.971671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "BannerModel"
-            landmarkType = "3">
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "post(withEndpoint:withParams:withSuccess:withFailure:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NimNim.NetworkingManager.post(withEndpoint: Swift.Optional&lt;Swift.String&gt;, withParams: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, withSuccess: Swift.Optional&lt;(Swift.Optional&lt;Any&gt;) -&gt; ()&gt;, withFailure: Swift.Optional&lt;(Swift.Optional&lt;Any&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "NimNim"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/raghavvij/Documents/Freelancing%20Vijayta/NimNim/NimNim/Managers/NetworkingManager.swift"
+                  timestampString = "596291889.112488"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "82"
+                  endingLineNumber = "82"
+                  offsetFromSymbolStart = "1529">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in NimNim.NetworkingManager.post(withEndpoint: Swift.Optional&lt;Swift.String&gt;, withParams: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, withSuccess: Swift.Optional&lt;(Swift.Optional&lt;Any&gt;) -&gt; ()&gt;, withFailure: Swift.Optional&lt;(Swift.Optional&lt;Any&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "NimNim"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/raghavvij/Documents/Freelancing%20Vijayta/NimNim/NimNim/Managers/NetworkingManager.swift"
+                  timestampString = "596291889.114589"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "267">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

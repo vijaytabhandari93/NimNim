@@ -14,4 +14,5 @@ struct UserDefaultKeys {
     static let authToken = "kAuthToken"
     static let pickUpDropOfPreferences = "kPickUpDropOfPreferences"
     static let descriptionPreferences = "kDescriptionPreferences"
+    static let services = "kservices"
 }

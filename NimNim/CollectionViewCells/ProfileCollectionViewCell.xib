@@ -40,6 +40,18 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QmZ-GY-u2f">
+                        <rect key="frame" x="132.5" y="32" width="110" height="110"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="55"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Akshay Sahani" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqM-Yo-fh9">
                         <rect key="frame" x="120" y="169" width="135.5" height="22"/>
                         <constraints>
@@ -75,10 +87,9 @@
                             <constraint firstAttribute="width" constant="40" id="k7f-Up-fmH"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4600 Points" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhs-lh-ccm">
-                        <rect key="frame" x="144" y="270" width="87" height="17.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qhs-lh-ccm">
+                        <rect key="frame" x="176.5" y="270" width="22" height="17.5"/>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
-                        <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eaf-MG-PjU">
@@ -106,18 +117,30 @@
                 <constraint firstItem="3Yy-Az-BpH" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FAn-Yk-ZL2"/>
                 <constraint firstAttribute="bottom" secondItem="3Yy-Az-BpH" secondAttribute="bottom" id="PiT-uf-7BN"/>
                 <constraint firstAttribute="trailing" secondItem="3Yy-Az-BpH" secondAttribute="trailing" id="R5I-2J-HJd"/>
+                <constraint firstItem="EFJ-r6-FJR" firstAttribute="bottom" secondItem="QmZ-GY-u2f" secondAttribute="bottom" id="TuA-tf-GEX"/>
                 <constraint firstItem="Qhs-lh-ccm" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Wj7-Xb-ZHS"/>
+                <constraint firstItem="EFJ-r6-FJR" firstAttribute="trailing" secondItem="QmZ-GY-u2f" secondAttribute="trailing" id="bfs-xO-mqY"/>
                 <constraint firstItem="RqM-Yo-fh9" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="dJZ-EJ-8ZE"/>
                 <constraint firstItem="thz-o6-QRX" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="eEz-7E-0nV"/>
+                <constraint firstItem="QmZ-GY-u2f" firstAttribute="leading" secondItem="EFJ-r6-FJR" secondAttribute="leading" id="fUA-ja-Wcy"/>
                 <constraint firstItem="EFJ-r6-FJR" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="fxJ-Qy-g4M"/>
                 <constraint firstItem="Qhs-lh-ccm" firstAttribute="top" secondItem="XHW-Yy-IKl" secondAttribute="bottom" constant="15" id="lRL-Ju-5hG"/>
                 <constraint firstItem="h3f-VH-NB8" firstAttribute="top" secondItem="RqM-Yo-fh9" secondAttribute="bottom" constant="4" id="nab-bw-uhO"/>
                 <constraint firstItem="thz-o6-QRX" firstAttribute="top" secondItem="h3f-VH-NB8" secondAttribute="bottom" constant="4" id="uXB-aS-Mcb"/>
+                <constraint firstItem="QmZ-GY-u2f" firstAttribute="top" secondItem="EFJ-r6-FJR" secondAttribute="top" id="xKo-Wm-tAa"/>
                 <constraint firstItem="RqM-Yo-fh9" firstAttribute="top" secondItem="EFJ-r6-FJR" secondAttribute="bottom" constant="27" id="xte-Jj-Xoj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="423" height="355"/>
-            <point key="canvasLocation" x="187.68115942028987" y="137.27678571428569"/>
+            <connections>
+                <outlet property="userEmailAddress" destination="h3f-VH-NB8" id="ClL-sO-hrz"/>
+                <outlet property="userImage" destination="EFJ-r6-FJR" id="j2G-MT-mWZ"/>
+                <outlet property="userLabel" destination="QmZ-GY-u2f" id="48K-Cz-nzA"/>
+                <outlet property="userName" destination="RqM-Yo-fh9" id="Xct-GJ-VAn"/>
+                <outlet property="userPhoneNumber" destination="thz-o6-QRX" id="N5S-lZ-1Tq"/>
+                <outlet property="userPoints" destination="Qhs-lh-ccm" id="9fx-MB-Vvv"/>
+            </connections>
+            <point key="canvasLocation" x="-670.28985507246387" y="14.732142857142856"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -1,0 +1,6 @@
+framework module NTMonthYearPicker {
+  umbrella header "NTMonthYearPicker-umbrella.h"
+
+  export *
+  module * { export * }
+}

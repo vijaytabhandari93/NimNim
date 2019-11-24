@@ -244,6 +244,9 @@
                                                 <integer key="value" value="6"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="tickButton:" destination="85c-On-1DI" eventType="touchUpInside" id="eiQ-Nl-688"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing in you agree to Nim Nim’s Terms &amp; Conditions" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFY-8D-Ley">
                                         <rect key="frame" x="66" y="20.5" width="228" height="29.5"/>
@@ -308,6 +311,7 @@
                         <outlet property="loginButton" destination="XlK-Bp-bsC" id="wPc-JB-kwf"/>
                         <outlet property="loginSignUpTableView" destination="ZbV-7o-M5G" id="dCU-ea-E5I"/>
                         <outlet property="signUpButton" destination="urP-8i-77V" id="lUg-Un-XFl"/>
+                        <outlet property="tickButton" destination="3UD-pV-Ych" id="QzH-d2-8Cb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vmc-ii-eKT" userLabel="First Responder" sceneMemberID="firstResponder"/>

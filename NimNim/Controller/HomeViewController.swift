@@ -13,15 +13,23 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     //MARK:IBOutlets
     @IBOutlet weak var homeCollectionView: UICollectionView!
     
+    @IBOutlet weak var userName: UILabel!
+    
     var bannerModel : BannersBaseModel?
+    var serviceModel : ServiceBaseModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         registerCells()
+        fetchBanners()
+        fetchServices()
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
-        fetchBanners() 
+        let UserObject = UserModel.fetchFromUserDefaults()
+        if let abc = UserObject?.firstName {
+        userName.text = "Hello \(abc)"
+        }
     }
     
     //MARK:UI Methods
@@ -54,6 +62,26 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         } // definition of error closure
     }
     
+    func fetchServices() {
+        NetworkingManager.shared.get(withEndpoint: Endpoints.services, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
+            if let responseDict = response as? [String:Any] {
+                let serviceModel = Mapper<ServiceBaseModel>().map(JSON: responseDict)
+                self?.serviceModel = serviceModel //? is put after self as it is weak self.
+                self?.serviceModel?.saveInUserDefaults()
+                self?.homeCollectionView.reloadData()
+            }
+            
+            }) //definition of success closure
+        { (error) in
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+        } // definition of error closure
+    }
+    
     //MARK: IBActions
     @IBAction func basketTapped(_UI sender: Any) {
         let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
@@ -78,6 +106,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         }
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServicesBaseCollectionViewCell", for: indexPath) as! ServicesBaseCollectionViewCell
+             cell.configureCell(withModel: serviceModel) //To pass the banneer model to the cell.
             return cell
         }
     }

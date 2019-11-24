@@ -21,8 +21,8 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     @IBOutlet weak var bottomShadowView: UIView!
     @IBOutlet weak var topShadowView: UIView!
     @IBOutlet weak var useThisLocationButton: UIButton!
-    
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    
     //MARK: Variables and Constants
     let locationManager = CLLocationManager()
     var long : Double?
@@ -133,7 +133,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     
     func fetchServiceableLocations() {
         
-        activityIndicator.startAnimating()
+       activityIndicator.startAnimating()
        NetworkingManager.shared.get(withEndpoint: Endpoints.serviceableLocations, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
            if let responseDict = response as? [String:Any] {
               let serviceableLocationModel = Mapper<ServiceableLocationModel>().map(JSON: responseDict)

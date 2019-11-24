@@ -17,10 +17,7 @@ class AddMoreServicesCollectionViewCell: UICollectionViewCell {
         
     }
     
-    
-    @IBOutlet weak var addMoreServicesTapped: UIButton!
-    
-    override func awakeFromNib() {
+override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }

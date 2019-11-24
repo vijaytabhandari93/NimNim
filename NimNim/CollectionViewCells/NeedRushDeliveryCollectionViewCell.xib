@@ -32,11 +32,20 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VhF-oq-Mu0">
                                 <rect key="frame" x="28" y="24" width="24" height="24"/>
+                                <color key="backgroundColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="D8H-de-RPi"/>
                                     <constraint firstAttribute="width" constant="24" id="WPA-jj-2gR"/>
                                 </constraints>
-                                <state key="normal" title="Button" image="tick"/>
+                                <state key="normal" image="path2"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="tickButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="CCM-pk-VU2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,12 +86,12 @@
             <connections>
                 <outlet property="descriptionofLabel" destination="msq-kH-zpZ" id="h33-IZ-wwM"/>
                 <outlet property="labelAgainsCheckbox" destination="PVR-dI-cwD" id="A9u-Xc-7cL"/>
-                <outlet property="needRushDeliveryTapped" destination="VhF-oq-Mu0" id="FfN-RD-mYC"/>
+                <outlet property="tickButton" destination="VhF-oq-Mu0" id="Zbl-Ot-eDH"/>
             </connections>
-            <point key="canvasLocation" x="67" y="41"/>
+            <point key="canvasLocation" x="286" y="-57"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="tick" width="24" height="24"/>
+        <image name="path2" width="16" height="12"/>
     </resources>
 </document>

@@ -398,14 +398,14 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="knh-9e-VFz">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="74"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello John" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6s-ya-HPW">
-                                                        <rect key="frame" x="30" y="24" width="109.5" height="24.5"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Hello John" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I6s-ya-HPW">
+                                                        <rect key="frame" x="30" y="24" width="272" height="25"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select a service to proceed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooZ-wg-VsX">
-                                                        <rect key="frame" x="30" y="50.5" width="240.5" height="24"/>
+                                                        <rect key="frame" x="30" y="51" width="240.5" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="q8a-bU-aaG"/>
                                                         </constraints>
@@ -500,11 +500,12 @@
                     </view>
                     <connections>
                         <outlet property="homeCollectionView" destination="OGR-Iq-8j2" id="T6S-q6-dKC"/>
+                        <outlet property="userName" destination="I6s-ya-HPW" id="4Vy-Rq-nSd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L25-Wc-eR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3555" y="266"/>
+            <point key="canvasLocation" x="-4304.347826086957" y="265.84821428571428"/>
         </scene>
         <!--Nav Drawer View Controller-->
         <scene sceneID="gFQ-Zb-a1q">

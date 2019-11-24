@@ -46,11 +46,21 @@
                                             <constraint firstAttribute="height" constant="20" id="tH5-zi-toQ"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wkf-zA-PzD">
+                                        <rect key="frame" x="0.0" y="0.0" width="52" height="52"/>
+                                        <connections>
+                                            <action selector="pinTappedToUploadImages:" destination="gTV-IL-0wX" eventType="touchUpInside" id="l5n-II-bIW"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="Wkf-zA-PzD" firstAttribute="leading" secondItem="3db-c0-yCl" secondAttribute="leading" id="2d2-Ez-mlE"/>
                                     <constraint firstAttribute="height" constant="52" id="3Ag-4p-p2s"/>
                                     <constraint firstAttribute="width" constant="52" id="FaA-A0-hyi"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wkf-zA-PzD" secondAttribute="trailing" id="H7j-An-ZK8"/>
+                                    <constraint firstAttribute="bottom" secondItem="Wkf-zA-PzD" secondAttribute="bottom" id="OT6-28-b24"/>
+                                    <constraint firstItem="Wkf-zA-PzD" firstAttribute="top" secondItem="3db-c0-yCl" secondAttribute="top" id="OfZ-2m-zAn"/>
                                     <constraint firstItem="Ypi-ql-FTY" firstAttribute="centerX" secondItem="3db-c0-yCl" secondAttribute="centerX" id="RqP-72-1fb"/>
                                     <constraint firstItem="Ypi-ql-FTY" firstAttribute="centerY" secondItem="3db-c0-yCl" secondAttribute="centerY" id="V1M-4A-LU3"/>
                                 </constraints>

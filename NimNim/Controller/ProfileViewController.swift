@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     var noOfSavedAdderess : Int = 2
     var selectedCard : Bool = false
     var selectedAddress : Bool = false
+    var walletBalance : Int?
     
     
     @IBAction func editTapped(_ sender: Any) {
@@ -27,8 +28,10 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         
         // Do any additional setup after loading the view.
         registerCells()
+        fetchWalletPoints()
         profileCollectionView.delegate = self
         profileCollectionView.dataSource = self
+
     }
     
     //MARK:Gradient Setting
@@ -100,6 +103,28 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
             return CGSize(width: collectionView.frame.size.width, height:64)
         }
     }
+    //MARK: Network Requests
+    
+    func fetchWalletPoints() {
+       
+        NetworkingManager.shared.get(withEndpoint: Endpoints.fetchwalletbalance, withParams: nil, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+                if let walletBalance = responseDict["balance"] as? Int {
+                    self.walletBalance = walletBalance
+                    self.profileCollectionView.reloadData()
+                }
+            }
+            
+        }) { (error) in
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            
+        }
+    }
+    
     
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -139,6 +164,22 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCollectionViewCell", for: indexPath) as! ProfileCollectionViewCell
+            if let userModel = UserModel.fetchFromUserDefaults() {
+                //TODO: Add last name
+                if let a = userModel.firstName , let b = userModel.lastName {
+                    cell.userName.text = "\(a) \(b)"
+                    cell.userLabel.text  = "\(a.prefix(1)) \(b.prefix(1))"
+                   
+                    
+                }
+               
+               
+                cell.userEmailAddress.text = userModel.email
+                cell.userPhoneNumber.text = userModel.phone
+            }
+            if let wallet = walletBalance {
+                cell.userPoints.text = "\(wallet)"
+            }
             return cell
         }
         else if indexPath.section == 1 {

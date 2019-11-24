@@ -18,4 +18,10 @@ struct Endpoints {
     static let forgotPasssword = "forgotpassword"
     static let socialSignUp = "socialsignup"
     static let banners = "admin/banner"
+    static let services = "admin/services"
+    static let fetchwalletbalance = "fetchwalletbalance"
+    static let promocodes = "promocodes"
+    static let addCard = "addcard"
+
+    
 }

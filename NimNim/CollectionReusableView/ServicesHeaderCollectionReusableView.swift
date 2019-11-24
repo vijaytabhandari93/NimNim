@@ -26,6 +26,10 @@ class ServicesHeaderCollectionReusableView: UICollectionReusableView {
     //MARK: IBActions
     @IBAction func viewAllTapped(_ sender: Any) {
         
+        let servicesStoryboard = UIStoryboard(name: "Services", bundle: nil)
+        let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "AllServicesViewController")
+            NavigationManager.shared.push(viewController: allServices)
+        
     }
     
 }

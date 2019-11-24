@@ -38,3 +38,20 @@ struct SocialSignIn {
     static let typeOfSignIn = "type"
 }
 
+struct AddCard {
+    static let cardNumber = "number"
+    static let year = "exp_year"
+    static let cvv = "CVC"
+    static let month = "exp_month"
+}
+
+struct AddAddress {
+    static let streetAddress = "streetAddress"
+    static let houseBlockNumber = "houseBlockNumber"
+    static let city = "city"
+    static let state = "state"
+    static let zipcode = "zipcode"
+    static let enterLandmark = "enterLandmark"
+    static let phoneNumber = "phoneNumber"
+}
+

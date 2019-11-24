@@ -15,9 +15,6 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
         registerCells()
         selectPaymentCollectionView.delegate = self
         selectPaymentCollectionView.dataSource = self

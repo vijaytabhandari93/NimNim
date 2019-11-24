@@ -152,15 +152,6 @@
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9K6-cX-y9V">
                                         <rect key="frame" x="0.0" y="0.0" width="351" height="100"/>
                                         <subviews>
-                                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LED-lQ-yYe">
-                                                <rect key="frame" x="20" y="14" width="104" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="104" id="hV2-bP-8jC"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                                <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="locationLg" translatesAutoresizingMaskIntoConstraints="NO" id="RGv-Mh-Z3e">
                                                 <rect key="frame" x="20" y="15" width="15" height="18"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -219,9 +210,7 @@
                                             <constraint firstItem="RGv-Mh-Z3e" firstAttribute="leading" secondItem="9K6-cX-y9V" secondAttribute="leading" constant="20" id="IXB-A4-Cg8"/>
                                             <constraint firstAttribute="trailing" secondItem="hCR-ks-0fg" secondAttribute="trailing" id="QjP-1U-vi1"/>
                                             <constraint firstItem="ZQP-nh-jjX" firstAttribute="leading" secondItem="9K6-cX-y9V" secondAttribute="leading" id="Qqb-15-OJG"/>
-                                            <constraint firstItem="LED-lQ-yYe" firstAttribute="leading" secondItem="9K6-cX-y9V" secondAttribute="leading" constant="20" id="Tad-6n-WDV"/>
                                             <constraint firstAttribute="trailing" secondItem="Wl4-Lq-vBN" secondAttribute="trailing" constant="19" id="VlV-BO-whm"/>
-                                            <constraint firstItem="LED-lQ-yYe" firstAttribute="top" secondItem="9K6-cX-y9V" secondAttribute="top" constant="14" id="W39-2u-Ftp"/>
                                             <constraint firstAttribute="trailing" secondItem="ZQP-nh-jjX" secondAttribute="trailing" id="Xru-Gy-15p"/>
                                             <constraint firstItem="Wl4-Lq-vBN" firstAttribute="leading" secondItem="1uw-dd-iqn" secondAttribute="trailing" constant="10" id="bw0-Te-9hd"/>
                                             <constraint firstItem="1uw-dd-iqn" firstAttribute="centerY" secondItem="RGv-Mh-Z3e" secondAttribute="centerY" id="j5x-Eh-WOC"/>

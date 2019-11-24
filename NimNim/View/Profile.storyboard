@@ -13,6 +13,9 @@
         <array key="Montserrat-Medium.ttf">
             <string>Montserrat-Medium</string>
         </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
     </customFonts>
     <scenes>
         <!--Add Address View Controller-->
@@ -27,8 +30,8 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="98"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IaP-6x-Dy0">
-                                        <rect key="frame" x="116.5" y="7" width="181" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                        <rect key="frame" x="115" y="7" width="184" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -38,7 +41,7 @@
                                             <constraint firstAttribute="width" constant="50" id="MfS-WZ-4qy"/>
                                             <constraint firstAttribute="height" constant="50" id="QgL-cd-Rdq"/>
                                         </constraints>
-                                        <state key="normal" image="previous-1"/>
+                                        <state key="normal" image="previous"/>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="I80-bZ-Onu" eventType="touchUpInside" id="SkP-qD-mG9"/>
                                         </connections>
@@ -138,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIZ-be-i3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-646" y="113"/>
+            <point key="canvasLocation" x="-180" y="153"/>
         </scene>
         <!--Add New Card View Controller-->
         <scene sceneID="hna-69-PgM">
@@ -149,11 +152,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pLx-Mr-XP4">
-                                <rect key="frame" x="0.0" y="44" width="414" height="98"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="45"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add New Card" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jk-Hs-Y5K">
-                                        <rect key="frame" x="133.5" y="7" width="147" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                        <rect key="frame" x="132.5" y="7" width="149" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -168,11 +171,11 @@
                                             <action selector="previousTapped:" destination="Z6F-bD-de6" eventType="touchUpInside" id="eqe-ze-vWQ"/>
                                         </connections>
                                     </button>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="klz-mV-Zu7">
-                                        <rect key="frame" x="0.0" y="45" width="414" height="53"/>
+                                    <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="klz-mV-Zu7">
+                                        <rect key="frame" x="0.0" y="45" width="414" height="0.0"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nbD-7O-NMn">
-                                                <rect key="frame" x="0.0" y="0.0" width="182" height="53"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="0.0"/>
                                                 <state key="normal" title="Credit">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -181,7 +184,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g8V-lZ-5ob">
-                                                <rect key="frame" x="232" y="0.0" width="182" height="53"/>
+                                                <rect key="frame" x="232" y="0.0" width="182" height="0.0"/>
                                                 <state key="normal" title="Debit">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -191,21 +194,20 @@
                                             </button>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="53" id="nch-Cm-RRn"/>
+                                            <constraint firstAttribute="height" id="nch-Cm-RRn"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="klz-mV-Zu7" secondAttribute="trailing" id="2Bh-T6-gdX"/>
-                                    <constraint firstAttribute="height" constant="98" id="4UH-2x-6qn"/>
+                                    <constraint firstAttribute="height" constant="45" id="4UH-2x-6qn"/>
                                     <constraint firstItem="9Jk-Hs-Y5K" firstAttribute="top" secondItem="pLx-Mr-XP4" secondAttribute="top" constant="7" id="8eP-ih-Ap8"/>
                                     <constraint firstItem="EAt-ak-r6M" firstAttribute="centerY" secondItem="9Jk-Hs-Y5K" secondAttribute="centerY" id="ELe-8v-Pbf"/>
                                     <constraint firstItem="9Jk-Hs-Y5K" firstAttribute="centerX" secondItem="pLx-Mr-XP4" secondAttribute="centerX" id="Jaa-tH-D1H"/>
                                     <constraint firstItem="klz-mV-Zu7" firstAttribute="leading" secondItem="pLx-Mr-XP4" secondAttribute="leading" id="dJv-qv-neX"/>
                                     <constraint firstAttribute="bottom" secondItem="klz-mV-Zu7" secondAttribute="bottom" id="fRh-Gy-48M"/>
                                     <constraint firstItem="EAt-ak-r6M" firstAttribute="leading" secondItem="pLx-Mr-XP4" secondAttribute="leading" id="gml-So-M7b"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="98" id="p2c-cj-555"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VO7-8x-nqt">
@@ -219,12 +221,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="addAddressTapped:" destination="I80-bZ-Onu" eventType="touchUpInside" id="RUR-Za-Hd1"/>
                                     <action selector="addCardTapped:" destination="Z6F-bD-de6" eventType="touchUpInside" id="CnY-Du-ryE"/>
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="G1W-dk-Qnr">
-                                <rect key="frame" x="0.0" y="142" width="414" height="672"/>
+                                <rect key="frame" x="0.0" y="89" width="414" height="725"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uDG-Ui-fZR">
                                     <size key="itemSize" width="50" height="50"/>
@@ -267,11 +268,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUD-L3-5Xc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="616" y="194"/>
+            <point key="canvasLocation" x="561" y="153"/>
         </scene>
     </scenes>
     <resources>
         <image name="previous" width="9" height="15"/>
-        <image name="previous-1" width="8" height="12"/>
     </resources>
 </document>

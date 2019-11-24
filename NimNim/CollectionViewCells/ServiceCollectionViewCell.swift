@@ -14,6 +14,9 @@ class ServiceCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var serviceName: UILabel!
     @IBOutlet weak var backgroundCurvedView: UIView!
     @IBOutlet weak var serviceDescription: UILabel!
+    var alias : String?
+    var imageURL : String?
+    
     @IBAction func selectTapped(_ sender: Any) {
     }
     
@@ -27,8 +30,5 @@ class ServiceCollectionViewCell: UICollectionViewCell {
         self.layer.applySketchShadow(color: Colors.nimnimServicesShadowColor, alpha: 1, x: 12, y: 12, blur: 14, spread: 0)
     }
     
-    func configureCell(withTitle title:String?) {
-        serviceName.text = title
-    }
-
+   
 }

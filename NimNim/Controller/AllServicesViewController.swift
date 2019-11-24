@@ -13,6 +13,9 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    //TODO: Replace this everywhere...
+    var servicesModel = ServiceBaseModel.fetchFromUserDefaults()
+    
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -51,57 +54,31 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        let servicesModel = ServiceBaseModel.fetchFromUserDefaults()
+        //TODO: Small M
+        if let Model = servicesModel?.data {
+            return Model.count
+        }
+        return 0
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-            cell.serviceName.text = "Wash + Fold"
-            cell.serviceImage.image = UIImage(named: "washFold")
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
+        if let servicesModel = ServiceBaseModel.fetchFromUserDefaults() {
+            if let services = servicesModel.data {
+                cell.serviceName.text = services[indexPath.row].name
+                if let url = services[indexPath.row].icon {
+                    if let urlValue = URL(string: url)
+                    {
+                        cell.serviceImage.kf.setImage(with: urlValue)
+                    }
+                }
+                cell.serviceDescription.text = services[indexPath.row].id
+            }
             return cell
         }
-        else if indexPath.item == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-            cell.serviceName.text = "Wash + Air Dry"
-            cell.serviceImage.image = UIImage(named: "washAirDry")
-            return cell
-        }
-        else if indexPath.item == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-            cell.serviceName.text = "Laundered Shirts"
-            cell.serviceImage.image = UIImage(named: "launderedShirts")
-            return cell
-        }
-        else if indexPath.item == 6 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-            cell.serviceName.text = "Household Items"
-            cell.serviceImage.image = UIImage(named: "livingroomCushionOfSquareShape")
-            return cell
-        }
-        else if indexPath.item == 3 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-            cell.serviceName.text = "Dry Cleaning"
-            cell.serviceImage.image = UIImage(named: "tshirt")
-            return cell
-        }
-        else if indexPath.item == 4 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-            cell.serviceName.text = "Tailoring"
-            cell.serviceImage.image = UIImage(named: "scissors")
-            return cell
-        }
-        else if indexPath.item == 5 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-            cell.serviceName.text = "Shoe Repair"
-            cell.serviceImage.image = UIImage(named: "shoeRepair")
-            return cell
-        }
-        else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-            cell.serviceName.text = "Rug Cleaning"
-            cell.serviceImage.image = UIImage(named: "vacuum")
-            return cell
-        }
+        
+        return cell
         
     }
     

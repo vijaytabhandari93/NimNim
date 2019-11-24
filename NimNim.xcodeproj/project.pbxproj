@@ -16,6 +16,7 @@
 		AC1789142376A19B00B20D32 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */; };
 		AC1789162377D03D00B20D32 /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1789152377D03D00B20D32 /* Params.swift */; };
 		AC17891823785F1800B20D32 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17891723785F1800B20D32 /* UserModel.swift */; };
+		AC19C7882383EC3B000919E0 /* CouponsUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC19C7872383EC3B000919E0 /* CouponsUserModel.swift */; };
 		AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */; };
 		AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */; };
 		AC1EDC60237C71FC00D36C89 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */; };
@@ -77,6 +78,7 @@
 		ACB37264234631C900046FB3 /* ServiceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB37262234631C900046FB3 /* ServiceCollectionViewCell.xib */; };
 		ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB37265234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift */; };
 		ACB37268234631EC00046FB3 /* ServicesBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB37266234631EC00046FB3 /* ServicesBaseCollectionViewCell.xib */; };
+		ACB4314E2382A007001E6302 /* ServiceBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB4314D2382A007001E6302 /* ServiceBaseModel.swift */; };
 		ACB89B4A235DA5E900B74109 /* AllItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB89B49235DA5E900B74109 /* AllItemsViewController.swift */; };
 		ACB89B4D235DB2F600B74109 /* SelectItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB89B4B235DB2F600B74109 /* SelectItemCollectionViewCell.swift */; };
 		ACB89B4E235DB2F600B74109 /* SelectItemCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB89B4C235DB2F600B74109 /* SelectItemCollectionViewCell.xib */; };
@@ -180,6 +182,7 @@
 		AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		AC1789152377D03D00B20D32 /* Params.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Params.swift; sourceTree = "<group>"; };
 		AC17891723785F1800B20D32 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = NimNim/Utils/UserModel.swift; sourceTree = SOURCE_ROOT; };
+		AC19C7872383EC3B000919E0 /* CouponsUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsUserModel.swift; sourceTree = "<group>"; };
 		AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannersBaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -243,6 +246,7 @@
 		ACB37262234631C900046FB3 /* ServiceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACB37265234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACB37266234631EC00046FB3 /* ServicesBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesBaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACB4314D2382A007001E6302 /* ServiceBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceBaseModel.swift; sourceTree = SOURCE_ROOT; };
 		ACB89B49235DA5E900B74109 /* AllItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllItemsViewController.swift; sourceTree = "<group>"; };
 		ACB89B4B235DB2F600B74109 /* SelectItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACB89B4C235DB2F600B74109 /* SelectItemCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectItemCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -442,6 +446,7 @@
 		AC621ECB2326BCB400AFD052 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				AC8CDE262325189600CDFB93 /* Model */,
 				AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */,
 				ACD8BA442351DF87005C1EAA /* NavigationManager.swift */,
 			);
@@ -453,9 +458,12 @@
 			children = (
 				AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */,
 				AC17891723785F1800B20D32 /* UserModel.swift */,
+				ACB4314D2382A007001E6302 /* ServiceBaseModel.swift */,
 				AC2BEDC52381600000152C69 /* BannersBaseModel.swift */,
+				AC19C7872383EC3B000919E0 /* CouponsUserModel.swift */,
 			);
-			path = Model;
+			name = Model;
+			path = ../Model;
 			sourceTree = "<group>";
 		};
 		AC8CDE27232518A200CDFB93 /* View */ = {
@@ -550,7 +558,6 @@
 				ACBB8175232D1F3D003DCF77 /* Utils */,
 				AC621ECB2326BCB400AFD052 /* Managers */,
 				AC8CDE2B232537BC00CDFB93 /* TableViewCells */,
-				AC8CDE262325189600CDFB93 /* Model */,
 				AC8CDE27232518A200CDFB93 /* View */,
 				AC8CDE28232518AC00CDFB93 /* Controller */,
 				AC9BCAC52324DF90009818C3 /* AppDelegate.swift */,
@@ -814,10 +821,10 @@
 				"${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AppAuth/AppAuth.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMAppAuth/GTMAppAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/NTMonthYearPicker/NTMonthYearPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 			);
@@ -827,10 +834,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AppAuth.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMAppAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NTMonthYearPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 			);
@@ -876,6 +883,7 @@
 				AC8CDE31232540DD00CDFB93 /* LoginSignUpViewController.swift in Sources */,
 				ACFD92A5235838280009FB03 /* SavedCardCollectionViewCell.swift in Sources */,
 				AC496133235C68C100AA7196 /* AddressCollectionViewCell.swift in Sources */,
+				ACB4314E2382A007001E6302 /* ServiceBaseModel.swift in Sources */,
 				AC1789162377D03D00B20D32 /* Params.swift in Sources */,
 				AC2BEDC62381600000152C69 /* BannersBaseModel.swift in Sources */,
 				ACFD92B9235ACC460009FB03 /* CardsCollectionViewCell.swift in Sources */,
@@ -907,6 +915,7 @@
 				ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */,
 				AC17891823785F1800B20D32 /* UserModel.swift in Sources */,
 				AC41CE75235C822F001AC676 /* AddCardCollectionViewCell.swift in Sources */,
+				AC19C7882383EC3B000919E0 /* CouponsUserModel.swift in Sources */,
 				ACF9CD2E235043C200039E6C /* SpecialNotesCollectionViewCell.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
 				ACFD928F2355C9E80009FB03 /* BoxedCollectionViewCell.swift in Sources */,
@@ -1067,8 +1076,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1087,8 +1097,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

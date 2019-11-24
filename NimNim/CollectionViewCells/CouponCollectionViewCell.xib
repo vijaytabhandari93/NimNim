@@ -27,9 +27,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mHx-oF-z7k">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bgShape" translatesAutoresizingMaskIntoConstraints="NO" id="mHx-oF-z7k">
                         <rect key="frame" x="28" y="0.0" width="319" height="100"/>
-                        <color key="backgroundColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="100" id="Rg2-mu-ciS"/>
                             <constraint firstAttribute="width" constant="319" id="e8T-K7-qZw"/>
@@ -67,7 +67,15 @@
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="432" height="96"/>
-            <point key="canvasLocation" x="79.710144927536234" y="127.90178571428571"/>
+            <connections>
+                <outlet property="code" destination="ywt-vr-CtD" id="yHR-cs-Q7k"/>
+                <outlet property="discount" destination="VN6-AN-MBH" id="cUj-hm-s7I"/>
+                <outlet property="id" destination="19N-vv-OtX" id="P07-rN-KrB"/>
+            </connections>
+            <point key="canvasLocation" x="422" y="114"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="bgShape" width="321" height="102"/>
+    </resources>
 </document>

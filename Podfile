@@ -10,5 +10,6 @@ target 'NimNim' do
   pod 'ObjectMapper'
   pod 'NVActivityIndicatorView'
   pod 'GoogleSignIn'
-  pod 'FBSDKLoginKit'
+  pod 'Kingfisher'
+  pod 'NTMonthYearPicker' #To have a datepicker with month and year input only support...
 end

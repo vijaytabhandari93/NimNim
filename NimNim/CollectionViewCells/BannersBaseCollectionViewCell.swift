@@ -24,7 +24,7 @@ class BannersBaseCollectionViewCell: UICollectionViewCell,UICollectionViewDelega
         bannersCollectionView.dataSource = self
     }
     
-    func configureCell(withModel model : BannersBaseModel? ){
+    func configureCell(withModel model : BannersBaseModel? ) {
         if let bannerData = model?.data {
             banners = bannerData
         }
