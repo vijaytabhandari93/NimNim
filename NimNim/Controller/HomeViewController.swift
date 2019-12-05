@@ -28,7 +28,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         homeCollectionView.dataSource = self
         let UserObject = UserModel.fetchFromUserDefaults()
         if let abc = UserObject?.firstName {
-        userName.text = "Hello \(abc)"
+        userName.text = "Hello \(abc.capitalized)"
         }
     }
     

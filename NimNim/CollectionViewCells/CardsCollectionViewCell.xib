@@ -68,6 +68,9 @@
                     <integer key="value" value="6"/>
                 </userDefinedRuntimeAttribute>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="cardNumber" destination="5QW-1P-jzY" id="Jul-kf-FCE"/>
+            </connections>
             <point key="canvasLocation" x="137.68115942028987" y="102.45535714285714"/>
         </collectionViewCell>
     </objects>

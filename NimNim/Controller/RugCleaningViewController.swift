@@ -10,7 +10,7 @@ import UIKit
 
 class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
-        //IBOutlets
+    //IBOutlets
     @IBOutlet weak var basketLabel: UILabel!
     @IBOutlet weak var rugCleaning: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
@@ -39,7 +39,7 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         registerCells()
         rugCleaningCollectionView.delegate = self
@@ -62,8 +62,8 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         
         let headerNib = UINib(nibName: "PreferencesCollectionReusableView", bundle: nil)
         rugCleaningCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "PreferencesCollectionReusableView")
-
-    
+        
+        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
@@ -109,29 +109,23 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
-            cell.separatorView.alpha = 0
             cell.titleLabel.text = "Number of Rugs"
-            cell.counterType = "Rugs"
-            cell.configureCounterLabel()
             return cell
         }
         else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
-            cell.separatorView.alpha = 0
             cell.titleLabel.text = "Number of Rugs"
-            cell.counterType = "Rugs"
-            cell.configureCounterLabel()
             return cell
         }
         else if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RushDeliveryNotAvailableCollectionViewCell", for: indexPath) as! RushDeliveryNotAvailableCollectionViewCell
-              return cell
-            }
+            return cell
+        }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddMoreServicesCollectionViewCell", for: indexPath) as! AddMoreServicesCollectionViewCell
             return cell
             
         }
     }
-
+    
 }

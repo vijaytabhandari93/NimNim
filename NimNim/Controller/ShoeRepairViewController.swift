@@ -104,10 +104,9 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
-            cell.separatorView.alpha = 1
+            
             cell.titleLabel.text = "Number of Shoes"
-            cell.counterType = "Shoes"
-            cell.configureCounterLabel()
+            
             return cell
         }else {
             if indexPath.item == 0 {

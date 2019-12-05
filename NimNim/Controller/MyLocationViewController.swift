@@ -116,7 +116,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
             if !fallsUnderSomeLocation {
                 let preferencesSB = UIStoryboard(name: "MyLocation", bundle: nil)
                 let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"NonServiceable") as? NonServiceable
-                NavigationManager.shared.push(viewController: secondViewController)
+                NavigationManager.shared.push(viewController: secondViewController) //if the location of user does not fall in the radius of servicable locations , the non servoable screen will be pushed.
             }
         }
     }
@@ -205,7 +205,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
             cell.locationName.text = location.title
             cell.locationPincode.text = location.pincode
         }
-        if let selected = selectedIndexPath { //if selectedIndexPath has a value  assign that value to selected and then in the next line do comparison
+        if let selected = selectedIndexPath { //if selectedIndexPath has a value  assign that value to selected and then in the next line do comparison. The selectedIndexPath can be assigned value in two cases: 1.Whenever the user taps on a cell. 2.Here where our actual location comes in the radius of the locations provided by the backend.   selectedIndexPath = IndexPath(row: i, section: 0)
             if selected == indexPath
             {
                 cell.setupcell(forState: true)
@@ -222,7 +222,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedIndexPath = indexPath
+        selectedIndexPath = indexPath // the selected index path is sent in selectedindexPath
         locationTableView.reloadData()
         if let locationArray = serviceableLocationModel?.data {
             let location = locationArray[indexPath.row]

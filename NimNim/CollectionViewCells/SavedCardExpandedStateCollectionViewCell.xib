@@ -21,10 +21,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SavedCardExpandedStateCollectionViewCell" id="gTV-IL-0wX" customClass="SavedCardExpandedStateCollectionViewCell" customModule="NimNim" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="322"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="322"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="280"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="debitCard" translatesAutoresizingMaskIntoConstraints="NO" id="rLT-p7-VY7">
@@ -40,7 +40,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrL-5s-lzU">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GrL-5s-lzU">
                         <rect key="frame" x="32" y="133.5" width="311" height="44"/>
                         <string key="text">You currently do not have any saved cards at
 the moment. Add a new card to now for
@@ -63,7 +63,7 @@ faster transaction</string>
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pQ-gS-naC">
-                        <rect key="frame" x="28" y="321" width="319" height="1"/>
+                        <rect key="frame" x="28" y="279" width="319" height="1"/>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="R0W-ry-OTT"/>
@@ -91,7 +91,7 @@ faster transaction</string>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="356" height="229"/>
             <connections>
-                <outlet property="addButtonTapped" destination="T7w-jr-udQ" id="sve-v7-7hv"/>
+                <outlet property="addButton" destination="T7w-jr-udQ" id="SVC-9g-VFe"/>
                 <outlet property="bottomSeparator" destination="9pQ-gS-naC" id="y2Z-Ih-rsh"/>
                 <outlet property="missingDescription" destination="GrL-5s-lzU" id="AUA-9k-9hj"/>
                 <outlet property="missingElement" destination="rLT-p7-VY7" id="X84-qt-8Ea"/>

@@ -11,6 +11,8 @@ import UIKit
 protocol SignUpTableViewCellDelegate:class {
     func loginTappedInSignUpTableViewCell() //already have an account wala...
     func signUpTappedInSignUpTableViewCell(withEmail email:String?, withFirstName firstName:String?,  withLastName lastName:String?, withPhoneNumber phoneNumber:String?, withPassword password:String?, withDob dob:String?) // main sign up tapped
+    
+    func verifyTappedInSignUpTableViewCell(withPhoneNumber phoneNumber:String?) // main sign up tapped
     func textFieldStartedEditingInSignUpTableViewCell(withTextField textField:UITextField) // to give keeeboard space
     func textFieldEndedEditingInSignUpTableViewCell(withTextField textField:UITextField) // to give keyboard space
 }
@@ -18,6 +20,10 @@ protocol SignUpTableViewCellDelegate:class {
 class SignUpTableViewCell: UITableViewCell,UITextFieldDelegate {
 
     //MARK: IBOutlets
+    
+    var checkedStatus : String?
+
+    @IBOutlet weak var verifyButton: UIButton!
     @IBOutlet weak var emailAddressTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
@@ -53,6 +59,28 @@ class SignUpTableViewCell: UITableViewCell,UITextFieldDelegate {
         dobTextField.inputView = datePickerView
         datePickerView.addTarget(self, action: #selector(datePickerFromValueChanged), for: .valueChanged)
     }
+    
+    func configureCell(withEmail email:String?, withFirstName firstName:String?, withLastName lastName:String?) {
+        if checkedStatus == "done" {
+            verifyButton.setTitleColor(Colors.nimnimButtonBorderGreen, for: .normal)
+            verifyButton.setTitle("Verified", for: .normal)
+        }else {
+            verifyButton.setTitleColor(Colors.nimnimBlue, for: .normal)
+            verifyButton.setTitle("Verify", for: .normal)
+        }
+        if let email = email, email.count > 0 {
+            emailAddressTextField.text = email
+            emailAddressTextField.font = Fonts.medium20
+        }
+        if let firstName = firstName, firstName.count > 0 {
+            firstNameTextField.text = firstName
+            firstNameTextField.font = Fonts.medium20
+        }
+        if let lastName = lastName, lastName.count > 0 {
+            lastNameTextField.text = lastName
+            lastNameTextField.font = Fonts.medium20
+        }
+    }
 
     //MARK:IBActions
     @IBAction func showTapped(_ sender: Any) {
@@ -64,6 +92,9 @@ class SignUpTableViewCell: UITableViewCell,UITextFieldDelegate {
         }
     }
     
+    @IBAction func verifyTapped(_ sender: Any) {
+        delegate?.verifyTappedInSignUpTableViewCell(withPhoneNumber:phoneNumberTextField.text)
+    }
     @IBAction func signUpTapped(_ sender: Any) {
         delegate?.signUpTappedInSignUpTableViewCell(withEmail: emailAddressTextField.text, withFirstName: firstNameTextField.text, withLastName: lastNameTextField.text, withPhoneNumber: phoneNumberTextField.text, withPassword: passwordTextField.text, withDob: dobTextField.text)
     }

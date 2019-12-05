@@ -13,12 +13,14 @@
 		AC0E2040235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E203E235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift */; };
 		AC0E2041235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0E203F235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib */; };
 		AC11D1D42336314800F1DBCB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11D1D32336314800F1DBCB /* Colors.swift */; };
+		AC16B9B0238FC7A300BC7CD8 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16B9AF238FC7A300BC7CD8 /* Card.swift */; };
 		AC1789142376A19B00B20D32 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */; };
 		AC1789162377D03D00B20D32 /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1789152377D03D00B20D32 /* Params.swift */; };
 		AC17891823785F1800B20D32 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC17891723785F1800B20D32 /* UserModel.swift */; };
 		AC19C7882383EC3B000919E0 /* CouponsUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC19C7872383EC3B000919E0 /* CouponsUserModel.swift */; };
 		AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */; };
 		AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */; };
+		AC1B9B862392403E00CA7434 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B9B852392403E00CA7434 /* AddressModel.swift */; };
 		AC1EDC60237C71FC00D36C89 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */; };
 		AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */; };
 		AC1FFDA323465DEF00930496 /* ServicesHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA123465DEF00930496 /* ServicesHeaderCollectionReusableView.xib */; };
@@ -179,12 +181,14 @@
 		AC0E203E235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC0E203F235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAddressCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC11D1D32336314800F1DBCB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		AC16B9AF238FC7A300BC7CD8 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		AC1789152377D03D00B20D32 /* Params.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Params.swift; sourceTree = "<group>"; };
 		AC17891723785F1800B20D32 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserModel.swift; path = NimNim/Utils/UserModel.swift; sourceTree = SOURCE_ROOT; };
 		AC19C7872383EC3B000919E0 /* CouponsUserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponsUserModel.swift; sourceTree = "<group>"; };
 		AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannersBaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC1B9B852392403E00CA7434 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		AC1FFDA123465DEF00930496 /* ServicesHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
@@ -461,6 +465,8 @@
 				ACB4314D2382A007001E6302 /* ServiceBaseModel.swift */,
 				AC2BEDC52381600000152C69 /* BannersBaseModel.swift */,
 				AC19C7872383EC3B000919E0 /* CouponsUserModel.swift */,
+				AC16B9AF238FC7A300BC7CD8 /* Card.swift */,
+				AC1B9B852392403E00CA7434 /* AddressModel.swift */,
 			);
 			name = Model;
 			path = ../Model;
@@ -557,7 +563,6 @@
 				ACBB8178232E3F86003DCF77 /* Fonts */,
 				ACBB8175232D1F3D003DCF77 /* Utils */,
 				AC621ECB2326BCB400AFD052 /* Managers */,
-				AC8CDE2B232537BC00CDFB93 /* TableViewCells */,
 				AC8CDE27232518A200CDFB93 /* View */,
 				AC8CDE28232518AC00CDFB93 /* Controller */,
 				AC9BCAC52324DF90009818C3 /* AppDelegate.swift */,
@@ -571,6 +576,7 @@
 		ACBB8175232D1F3D003DCF77 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AC8CDE2B232537BC00CDFB93 /* TableViewCells */,
 				ACBB8176232D1F57003DCF77 /* Extensions.swift */,
 				ACF0205E232E425F007559E8 /* Fonts.swift */,
 				AC11D1D32336314800F1DBCB /* Colors.swift */,
@@ -589,6 +595,7 @@
 				ACBB8183232E3FAB003DCF77 /* Montserrat-Bold.ttf */,
 				ACBB8181232E3FAB003DCF77 /* Montserrat-BoldItalic.ttf */,
 				ACBB817C232E3FAB003DCF77 /* Montserrat-ExtraBold.ttf */,
+				AC1FFDA82346F1D100930496 /* Proxima Nova Alt Light.otf */,
 				ACBB817F232E3FAB003DCF77 /* Montserrat-ExtraBoldItalic.ttf */,
 				ACBB8182232E3FAB003DCF77 /* Montserrat-ExtraLight.ttf */,
 				ACBB817A232E3FAB003DCF77 /* Montserrat-ExtraLightItalic.ttf */,
@@ -603,7 +610,6 @@
 				ACBB8188232E3FAB003DCF77 /* Montserrat-Thin.ttf */,
 				ACBB817D232E3FAB003DCF77 /* Montserrat-ThinItalic.ttf */,
 				AC1FFDAB2346F1D100930496 /* Proxima Nova Alt Bold.otf */,
-				AC1FFDA82346F1D100930496 /* Proxima Nova Alt Light.otf */,
 				AC1FFDA92346F1D100930496 /* Proxima Nova Alt Thin.otf */,
 				AC1FFDA52346F1D100930496 /* Proxima Nova Black.otf */,
 				AC1FFDA62346F1D100930496 /* Proxima Nova Bold.otf */,
@@ -867,6 +873,7 @@
 				AC5ADDA223630CC700204E9E /* SelectPaymentViewController.swift in Sources */,
 				ACF9CD1E234F575900039E6C /* AddMoreServicesCollectionViewCell.swift in Sources */,
 				AC0E2040235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift in Sources */,
+				AC1B9B862392403E00CA7434 /* AddressModel.swift in Sources */,
 				AC25BFB12371EB8000C79692 /* Endpoints.swift in Sources */,
 				ACBAAF6A233D0CC800E1E4A6 /* HomeViewController.swift in Sources */,
 				ACBC96FD2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.swift in Sources */,
@@ -932,6 +939,7 @@
 				ACFD92BD235ACF060009FB03 /* SavedAddressCollectionViewCell.swift in Sources */,
 				AC8CDE3C23264F4500CDFB93 /* SignUpTableViewCell.swift in Sources */,
 				AC202CDD2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift in Sources */,
+				AC16B9B0238FC7A300BC7CD8 /* Card.swift in Sources */,
 				ACFD929E23582D900009FB03 /* ProfileViewController.swift in Sources */,
 				ACBC96F123606619006AC5B6 /* CouponCollectionViewCell.swift in Sources */,
 				AC0BD3E2233B6BC7000746D1 /* NonServiceable.swift in Sources */,

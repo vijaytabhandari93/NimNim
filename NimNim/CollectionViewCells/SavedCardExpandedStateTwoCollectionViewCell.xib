@@ -71,7 +71,7 @@
                 <outlet property="bottomSeparator" destination="k9r-bs-zDr" id="wLy-G6-T4H"/>
                 <outlet property="cardsCollectionView" destination="ux4-8i-b31" id="eU5-gQ-ige"/>
             </connections>
-            <point key="canvasLocation" x="-293" y="-22"/>
+            <point key="canvasLocation" x="-79" y="-22"/>
         </collectionViewCell>
     </objects>
 </document>

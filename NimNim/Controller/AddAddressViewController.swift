@@ -15,7 +15,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
     @IBOutlet weak var home: UIButton!
     @IBOutlet weak var office: UIButton!
     
-
+    var label : String?
         
     enum SelectionType: Int {
         case house
@@ -29,12 +29,15 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
                 home.titleLabel?.font = Fonts.semiBold16
                 home.setTitleColor(UIColor.white, for: .normal)
                 addAddressCollectionView.reloadData()
+                label = "house"
             }else {
                 resetButtons()
                 office.isSelected = true
                 office.titleLabel?.font = Fonts.semiBold16
                 office.setTitleColor(UIColor.white, for: .normal)
                 addAddressCollectionView.reloadData()
+                label = "office"
+                
             }
         }
     }
@@ -64,13 +67,13 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         selectedState = .office
     }
     
-    func postAddress(streetAddress : String?, houseBlockNumber : String?,city : String?,state : String?,zipcode : String?,enterLandmark : String?,phoneNumber: String?){
-        guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let enterLandmark = enterLandmark, let phoneNumber = phoneNumber else {
+    func postAddress(streetAddress : String?, houseBlockNumber : String?,city : String?,state : String?,zipcode : String?,enterLandmark : String?,phoneNumber: String?,label:String?){
+        guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let enterLandmark = enterLandmark, let phoneNumber = phoneNumber , let label = label else {
             return
         }
         
         
-        let params:[String:Any] = [
+        let params:[String:Any] = [ 
             AddAddress.streetAddress:streetAddress,
             AddAddress.houseBlockNumber:houseBlockNumber,
             AddAddress.city:city,
@@ -78,9 +81,11 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             AddAddress.zipcode:zipcode,
             AddAddress.enterLandmark:enterLandmark,
             AddAddress.phoneNumber:phoneNumber,
+            AddAddress.label:label
         ]
         
-        NetworkingManager.shared.post(withEndpoint: Endpoints.addCard, withParams: params, withSuccess: { (response) in
+        
+        NetworkingManager.shared.post(withEndpoint: Endpoints.addAddress, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 print(responseDict)
                 print("hello")
@@ -103,7 +108,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
     
     @IBAction func addAddressTapped(_ sender: Any) {
         
-        postAddress(streetAddress: streetAddress, houseBlockNumber: houseBlockNumber, city: city, state: state, zipcode: zipcode, enterLandmark: enterLandmark, phoneNumber: phoneNumber)
+        postAddress(streetAddress: streetAddress, houseBlockNumber: houseBlockNumber, city: city, state: state, zipcode: zipcode, enterLandmark: enterLandmark, phoneNumber: phoneNumber,label:label)
     }
     
     func removeTapGestures(forTextField textField:UITextField) {
@@ -126,6 +131,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         registerCells()
+        selectedState = .house
         addAddressCollectionView.delegate = self
         addAddressCollectionView.dataSource = self
     }
@@ -157,18 +163,21 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
             cell.label.text = "ENTER STREET ADDRESS"
+            cell.delegate = self
             cell.indexPath = indexPath // This is used to set the var property defined in the cell defination. It is later used to give the data of the text field to the right param parameter based on the indexPath.
             return cell
         }
         else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
             cell.label.text = "ENTER HOUSE/BLOCK NUMBER"
+            cell.delegate = self
             cell.indexPath = indexPath
             return cell
         }
         else if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
             cell.label.text = "CITY"
+            cell.delegate = self
             cell.indexPath = indexPath
             return cell
             
@@ -176,12 +185,14 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         else if indexPath.item == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
             cell.label.text = "STATE"
+            cell.delegate = self
             cell.indexPath = indexPath
             return cell
         }
         else if indexPath.item == 4 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
             cell.label.text = "ZIPCODE"
+            cell.delegate = self
             cell.indexPath = indexPath
             return cell
         }
@@ -189,12 +200,14 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         else if indexPath.item == 5 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
             cell.label.text = "ENTER LANDMARK"
+            cell.delegate = self
             cell.indexPath = indexPath
             return cell
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
             cell.label.text = "PHONE NUMBER"
+            cell.delegate = self
             cell.indexPath = indexPath
             return cell
         }

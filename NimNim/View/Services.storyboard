@@ -179,8 +179,8 @@
                                         <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6x-Ip-nKX">
-                                        <rect key="frame" x="352" y="15.5" width="34" height="17.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6x-Ip-nKX">
+                                        <rect key="frame" x="386" y="24" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -205,6 +205,9 @@
                                         <state key="normal" title="Add to Cart">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addToCart:" destination="d7e-3E-JYO" eventType="touchUpInside" id="WFY-d7-v5J"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -235,9 +238,11 @@
                         <viewLayoutGuide key="safeArea" id="QDJ-TQ-dPy"/>
                     </view>
                     <connections>
+                        <outlet property="addToCart" destination="5lS-oD-Wtg" id="zic-SX-iG0"/>
                         <outlet property="basketLabel" destination="8qz-CP-bCO" id="AwT-E4-HyJ"/>
                         <outlet property="descriptionLabel" destination="v2y-DQ-ZBw" id="dhH-ii-f3A"/>
                         <outlet property="prefernces" destination="jAp-sZ-qDL" id="jkH-W9-2cX"/>
+                        <outlet property="priceLabel" destination="a6x-Ip-nKX" id="yvZ-rJ-RGy"/>
                         <outlet property="priceTotalBackgroundView" destination="JZ9-oh-8nz" id="9uG-Br-zHu"/>
                         <outlet property="washAndFoldLabel" destination="v2y-DQ-ZBw" id="Zsd-1b-wbe"/>
                     </connections>
@@ -405,8 +410,8 @@
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNo-SA-ecu">
-                                        <rect key="frame" x="352" y="15.5" width="34" height="17.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GNo-SA-ecu">
+                                        <rect key="frame" x="386" y="24" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -431,6 +436,9 @@
                                         <state key="normal" title="Add to Cart">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addToCartTapped:" destination="Ept-DF-22O" eventType="touchUpInside" id="4ZQ-U5-yYK"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -461,8 +469,10 @@
                         <viewLayoutGuide key="safeArea" id="AZ2-cK-XU5"/>
                     </view>
                     <connections>
+                        <outlet property="addToCart" destination="s5v-ND-EaO" id="SkZ-Vr-njO"/>
                         <outlet property="basketLabel" destination="2ze-go-Mbo" id="RJ8-eq-zAR"/>
                         <outlet property="descriptionLabel" destination="5IN-C0-swE" id="lod-OA-Hc5"/>
+                        <outlet property="priceLabel" destination="GNo-SA-ecu" id="w43-h4-PKA"/>
                         <outlet property="priceTotalBackgroundView" destination="med-nE-hmr" id="LgA-db-PnN"/>
                         <outlet property="washAndAirDryCollectionView" destination="aK9-ES-6Wp" id="ndh-IA-JWe"/>
                         <outlet property="washAndAirDryLabel" destination="hvj-aj-kUt" id="Rav-dx-vyJ"/>
@@ -470,7 +480,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57l-oK-JlS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1490" y="-297"/>
+            <point key="canvasLocation" x="-1613" y="-297"/>
         </scene>
         <!--Dry Cleaning View Controller-->
         <scene sceneID="gDB-kL-3Me">
@@ -630,8 +640,8 @@
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16R-ky-8mj">
-                                        <rect key="frame" x="352" y="15.5" width="34" height="17.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="16R-ky-8mj">
+                                        <rect key="frame" x="386" y="24" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -656,6 +666,9 @@
                                         <state key="normal" title="Add to Cart">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addToCartTapped:" destination="OBC-PO-Dfr" eventType="touchUpInside" id="fQh-ZA-5yY"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -686,9 +699,11 @@
                         <viewLayoutGuide key="safeArea" id="Mtu-3b-IYM"/>
                     </view>
                     <connections>
+                        <outlet property="addToCart" destination="Uy8-0r-IoK" id="AYB-hm-jc9"/>
                         <outlet property="basketLabel" destination="Iir-uE-rok" id="28B-Tm-5MZ"/>
                         <outlet property="descriptionLabel" destination="keX-Fz-pPf" id="K6t-S6-ue9"/>
                         <outlet property="dryCleaningCollectionView" destination="xU8-wK-VKV" id="O8G-u6-WMZ"/>
+                        <outlet property="priceLabel" destination="16R-ky-8mj" id="8LH-Se-4fy"/>
                         <outlet property="priceTotalBackgroundView" destination="Ut0-BJ-Sw0" id="enh-i8-Ml3"/>
                         <outlet property="washAndFoldLabel" destination="hMm-fN-ITd" id="4xo-3r-Pfo"/>
                     </connections>
@@ -855,8 +870,8 @@
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KyL-3E-B7m">
-                                        <rect key="frame" x="352" y="15.5" width="34" height="17.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KyL-3E-B7m">
+                                        <rect key="frame" x="386" y="24" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -881,6 +896,9 @@
                                         <state key="normal" title="Add to Cart">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addToCartTapped:" destination="Abk-c0-AmN" eventType="touchUpInside" id="oX4-LP-Y9X"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -914,13 +932,15 @@
                         <outlet property="PriceTotalBackgroundView" destination="aWo-ak-1pn" id="ebb-6Y-MnV"/>
                         <outlet property="WashAndPressedShirtLabel" destination="z4V-ro-0en" id="Jb1-eb-VET"/>
                         <outlet property="WashPressedShirtCollectionView" destination="ni2-Pu-De1" id="7Ys-iR-OQh"/>
+                        <outlet property="addToCart" destination="haZ-dU-ako" id="Bwr-5p-nIN"/>
                         <outlet property="basketLabel" destination="KxF-EP-UYd" id="xSQ-fG-5Ok"/>
                         <outlet property="descriptionLabel" destination="Hu0-L6-p86" id="OI3-Cw-4zl"/>
+                        <outlet property="priceLabel" destination="KyL-3E-B7m" id="Wl7-bl-DRB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0WP-2Q-Tjy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-925" y="-310"/>
+            <point key="canvasLocation" x="-855" y="-310"/>
         </scene>
         <!--Shoe Repair View Controller-->
         <scene sceneID="8UI-LS-GoS">
@@ -987,7 +1007,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shoe Repair" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bjH-Dv-8LT">
-                                        <rect key="frame" x="152" y="13" width="110" height="24"/>
+                                        <rect key="frame" x="145" y="13" width="124.5" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="77p-Oa-vuL"/>
                                         </constraints>
@@ -996,7 +1016,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Missing content for the Shoe Repair" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uhr-w7-A2B">
-                                        <rect key="frame" x="32" y="57" width="350" height="16.5"/>
+                                        <rect key="frame" x="32" y="57" width="350" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1108,13 +1128,13 @@
                                 <rect key="frame" x="0.0" y="766" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLg-UY-Xzh">
-                                        <rect key="frame" x="28" y="16" width="69" height="16.5"/>
+                                        <rect key="frame" x="28" y="15.5" width="81" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8pS-ri-K1H">
-                                        <rect key="frame" x="350.5" y="16" width="35.5" height="16.5"/>
+                                        <rect key="frame" x="352" y="15.5" width="34" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1562,8 +1582,8 @@
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31o-0c-XdO">
-                                        <rect key="frame" x="352" y="15.5" width="34" height="17.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31o-0c-XdO">
+                                        <rect key="frame" x="386" y="24" width="0.0" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1588,6 +1608,9 @@
                                         <state key="normal" title="Add to Cart">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addToCartTapped:" destination="hW5-Yy-RLK" eventType="touchUpInside" id="cMH-1C-IhD"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1618,9 +1641,11 @@
                         <viewLayoutGuide key="safeArea" id="CHt-gK-m6p"/>
                     </view>
                     <connections>
+                        <outlet property="addToCart" destination="HC5-Bo-J6R" id="aPF-UD-r4Y"/>
                         <outlet property="basketLabel" destination="Opm-bb-JG7" id="cem-gE-EA1"/>
                         <outlet property="descriptionLabel" destination="kK5-xV-Hlf" id="60a-Lc-186"/>
                         <outlet property="houseHoldCollectionView" destination="B3d-dj-RtT" id="FWw-Xj-VBd"/>
+                        <outlet property="priceLabel" destination="31o-0c-XdO" id="L0I-VS-4LR"/>
                         <outlet property="priceTotalBackgroundView" destination="FXu-5B-Aeg" id="AF4-Bg-gcu"/>
                         <outlet property="washAndFoldLabel" destination="5Tr-LB-Lck" id="u1j-Q7-LfX"/>
                     </connections>
@@ -1698,7 +1723,7 @@
                                         <rect key="frame" x="0.0" y="76" width="414" height="52"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zrk-SW-hSL">
-                                                <rect key="frame" x="0.0" y="0.0" width="138" height="52"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="52"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Women">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
@@ -1708,23 +1733,13 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iqa-rA-ob1">
-                                                <rect key="frame" x="138" y="0.0" width="138" height="52"/>
+                                                <rect key="frame" x="207" y="0.0" width="207" height="52"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Men">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="menTapped:" destination="p2g-80-hZ1" eventType="touchUpInside" id="T0T-dh-0ly"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Hi-Lj-gFQ">
-                                                <rect key="frame" x="276" y="0.0" width="138" height="52"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Household Items">
-                                                    <color key="titleColor" white="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="houseHoldItemsTapped:" destination="p2g-80-hZ1" eventType="touchUpInside" id="a4I-hs-MeA"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1747,18 +1762,18 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kXc-Jh-uUO">
-                                <rect key="frame" x="0.0" y="848" width="414" height="48"/>
+                                <rect key="frame" x="0.0" y="814" width="414" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAc-xz-e5T">
                                         <rect key="frame" x="0.0" y="-2" width="414" height="48"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.2784313725" green="0.74901960779999999" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
-                                        <state key="normal" title="Add to Cart">
+                                        <state key="normal" title="Done">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="addToCartTapped:" destination="p2g-80-hZ1" eventType="touchUpInside" id="sxs-xp-3VX"/>
+                                            <action selector="doneTapped:" destination="p2g-80-hZ1" eventType="touchUpInside" id="fAy-JO-66w"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1768,7 +1783,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9y0-LV-kUQ" userLabel="View 1">
-                                <rect key="frame" x="0.0" y="800" width="414" height="48"/>
+                                <rect key="frame" x="0.0" y="766" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" misplaced="YES" text="Order Total" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5u-Rv-nX4">
                                         <rect key="frame" x="28" y="16" width="134" height="18"/>
@@ -1799,7 +1814,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KKp-F9-v9U">
-                                <rect key="frame" x="0.0" y="172" width="414" height="628"/>
+                                <rect key="frame" x="0.0" y="172" width="414" height="594"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="iYy-Xj-BUv">
                                     <size key="itemSize" width="50" height="50"/>
@@ -1828,7 +1843,7 @@
                             <constraint firstItem="icl-JD-YQZ" firstAttribute="top" secondItem="dcX-B9-icX" secondAttribute="top" id="Fjh-jC-9oH"/>
                             <constraint firstItem="9y0-LV-kUQ" firstAttribute="trailing" secondItem="dcX-B9-icX" secondAttribute="trailing" id="JX5-4v-bA0"/>
                             <constraint firstItem="kXc-Jh-uUO" firstAttribute="trailing" secondItem="dcX-B9-icX" secondAttribute="trailing" id="Klc-yH-oV6"/>
-                            <constraint firstAttribute="bottom" secondItem="kXc-Jh-uUO" secondAttribute="bottom" id="Ot3-wr-pjS"/>
+                            <constraint firstItem="dcX-B9-icX" firstAttribute="bottom" secondItem="kXc-Jh-uUO" secondAttribute="bottom" id="Ot3-wr-pjS"/>
                             <constraint firstItem="dcX-B9-icX" firstAttribute="trailing" secondItem="KKp-F9-v9U" secondAttribute="trailing" id="U28-zC-LOM"/>
                             <constraint firstItem="9y0-LV-kUQ" firstAttribute="bottom" secondItem="kXc-Jh-uUO" secondAttribute="top" id="c8E-IR-1SM"/>
                             <constraint firstItem="9y0-LV-kUQ" firstAttribute="top" secondItem="KKp-F9-v9U" secondAttribute="bottom" id="mA8-2u-PQB"/>
@@ -1840,7 +1855,6 @@
                     <connections>
                         <outlet property="AllItemsCollectionView" destination="KKp-F9-v9U" id="XTq-NB-JNv"/>
                         <outlet property="basketLabel" destination="gsu-xp-YRx" id="Gkf-5B-c6K"/>
-                        <outlet property="household" destination="8Hi-Lj-gFQ" id="Jfc-gh-Qul"/>
                         <outlet property="men" destination="iqa-rA-ob1" id="kYZ-r5-2fv"/>
                         <outlet property="orderTotalLabel" destination="JfW-zg-7As" id="ydZ-hf-Jjl"/>
                         <outlet property="priceTotalBackgroundView" destination="9y0-LV-kUQ" id="LXD-WL-EAQ"/>

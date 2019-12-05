@@ -36,14 +36,14 @@ class NetworkingManager {
             return}
         guard let url = URL(string: baseUrl + endpoint) else {
             return}
-        var headers : [String?:String?] = [:]
+        var headers : HTTPHeaders = [:]
         if let userModel = UserModel.fetchFromUserDefaults(){
             if let token = userModel.token{
                 let finaltoken = token
                 headers = ["Authorization":"Bearer \(finaltoken)"]
             }
         }
-        Alamofire.request(url, method: .get, parameters: params, headers : headers as! HTTPHeaders).responseJSON{
+        Alamofire.request(url, method: .get, parameters: params, headers : headers).responseJSON{
             response in
             guard let statusCode = response.response?.statusCode else {
                 failure?(nil)

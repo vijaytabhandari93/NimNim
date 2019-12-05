@@ -12,12 +12,8 @@ import NVActivityIndicatorView
 import GoogleSignIn
 
 class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginWithPasswordTableViewCellDelegate, LoginViaOTPTableViewCellDelegate, SignUpTableViewCellDelegate, GIDSignInDelegate {
-   
-    
-    
+
     //MARK: IBOutlets
-    
-    
     @IBOutlet weak var loginSignUpTableView: UITableView!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
@@ -34,6 +30,11 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         didSet {
             resetLoginSignupButtons()
             view.endEditing(true)
+            email = nil
+            firstName = nil
+            lastName = nil
+            socialLoginType = nil
+            userId = nil
             switch currentScreenState {
             case .loginWithPassword:
                 activateLoginButton()
@@ -58,13 +59,24 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    var firstName:String?
+    var lastName:String?
+    var email:String?
+    var socialLoginType:String?
+    var userId:String?
+    var checked = ""
+    {
+        didSet
+        {
+            refreshTable()
+        }
+    }
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setupUI()
-        addTapGestureToView()
         setupTableView()
         addObservers()
     }
@@ -105,9 +117,11 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func tickButton(_ sender: Any) {
         if tickButton.currentImage != nil{
        tickButton.setImage(nil, for: .normal)
+            tickButton.backgroundColor = Colors.nimnimGrey
         }
         else{
              let image = UIImage(named: "path2")
+            tickButton.backgroundColor = Colors.nimnimGreen
             tickButton.setImage(image, for: .normal)
         }
     }
@@ -186,12 +200,12 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     @IBAction func linkedInTapped(_ sender: Any) {
     }
     
-    @IBAction func logInTapped(_ sender: Any) {
+    @IBAction func logInTapped(_ sender: Any) {// upper button
         currentScreenState = .loginWithPassword
         refreshTable()
     }
     
-    @IBAction func signUpTapped(_ sender: Any) {
+    @IBAction func signUpTapped(_ sender: Any) { //upper button
         currentScreenState = .signup
         refreshTable()
     }
@@ -218,6 +232,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         case .signup:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SignUpTableViewCell") as! SignUpTableViewCell
             cell.delegate = self //Through this statement the viewcontroller is giving its reference to the cell...
+            cell.checkedStatus = checked
+            cell.configureCell(withEmail: email, withFirstName: firstName, withLastName: lastName)//To ensure that the verify button ui is updated for the value of checked variable...
             return cell
         }
     }
@@ -350,7 +366,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             }
         }
     }
-    
+
     func verifyOtpTapped(withPhone phoneNumber : String?, withOTP otp: String?) {
         guard let phoneNumber = phoneNumber, let otp = otp else {
             return
@@ -390,8 +406,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         let params:[String:Any] = [
-            LogInViaFormParams.password:password,
-            LogInViaFormParams.email:email
+            LogInViaFormParams.password:password, //dic of key value pairs
+            LogInViaFormParams.email:email        //dic of key value pairs
         ]
         activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.customersLoginWithPassword, withParams: params, withSuccess: { (response) in
@@ -442,42 +458,101 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
        
         
     }
+    var OTP : String?
+    func verifyTappedInSignUpTableViewCell(withPhoneNumber phoneNumber: String?) {
+        getOtpTapped(withPhone: phoneNumber)
+        let alert = UIAlertController(title: "Alert", message: "Enter the OTP", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = ""}
+            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler:{[weak alert] (_) in
+               let otpTextField = alert?.textFields![0]
+                if let textEntered = otpTextField?.text as? String?{
+                self.OTP = textEntered
+                 self.verify(withPhone: phoneNumber,withOTP: self.OTP)
+      
+                }
+            }))
+        self.present(alert, animated: true, completion: nil)
+       
+    }
     
-    func signUpTappedInSignUpTableViewCell(withEmail email:String?, withFirstName firstName:String?, withLastName lastName:String?, withPhoneNumber phoneNumber:String?, withPassword password:String?, withDob dob:String?) {
-        guard let email = email, let firstName = firstName, let lastName = lastName, let phoneNumber = phoneNumber, let password = password, let dob = dob else {
+    func verify(withPhone phone:String?, withOTP otp:String?)
+    {
+        guard let phone = phone, let otp = otp, otp.count>0,phone.count>0 else {
             return
         }
         let params:[String:Any] = [
-            SignUpViaFormParams.firstName:firstName,
-            SignUpViaFormParams.lastName:lastName,
-            SignUpViaFormParams.phone:phoneNumber,
-            SignUpViaFormParams.password:password,
-            SignUpViaFormParams.dob:dob,
-            SignUpViaFormParams.email:email
+            VerifyOTPSignIn.phone:phone,
+            VerifyOTPSignIn.otp:otp,
         ]
-
-        if tickButton.currentImage != nil {
-        activityIndicatorView.startAnimating()
-        NetworkingManager.shared.post(withEndpoint: Endpoints.customers, withParams: params, withSuccess: { (response) in
-            if let responseDict = response as? [String:Any] {
-                let userModel = Mapper<UserModel>().map(JSON: responseDict)
-                userModel?.saveInUserDefaults()
+            activityIndicatorView.startAnimating()
+            NetworkingManager.shared.post(withEndpoint: Endpoints.checkotp, withParams: params, withSuccess: { (response) in
+                if let responseDict = response as? [String:Any] {
+                    let userModel = Mapper<UserModel>().map(JSON: responseDict)
+                    userModel?.saveInUserDefaults()
+                    self.checked = "done"
+                }
+                self.activityIndicatorView.stopAnimating()
                 
+            }) { (error) in
+                self.activityIndicatorView.stopAnimating()
+                if let error = error as? String {
+                    let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
-            //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
-            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
-            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
-            secondViewController?.screenTypeValue = .pickUpDropOff
-            NavigationManager.shared.push(viewController: secondViewController)
-            self.activityIndicatorView.stopAnimating()
-        }) { (error) in
-            self.activityIndicatorView.stopAnimating()
-            if let error = error as? String {
-                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+        
+    }
+    func signUpTappedInSignUpTableViewCell(withEmail email:String?, withFirstName firstName:String?, withLastName lastName:String?, withPhoneNumber phoneNumber:String?, withPassword password:String?, withDob dob:String?) {
+        if let socialLoginType = socialLoginType, socialLoginType.count > 0 {
+            performSocialSignUp(userInfo: userId, withType: socialLoginType, withFirstName: firstName, withLastName: lastName, withEmail: email, withPhone: phoneNumber, withPassword: password, withDob: dob)
+        }else {
+            guard let email = email, let firstName = firstName, let lastName = lastName, let phoneNumber = phoneNumber, let password = password else {
+                return
+            }
+            if checked != "done"
+            {
+                let alert = UIAlertController(title: "Alert", message: "please verify the phone no first", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
+                return
             }
-        }
+            var params:[String:Any] = [
+                SignUpViaFormParams.firstName:firstName,
+                SignUpViaFormParams.lastName:lastName,
+                SignUpViaFormParams.phone:phoneNumber,
+                SignUpViaFormParams.password:password,
+                SignUpViaFormParams.email:email
+            ]
+            
+            if let dob = dob, dob.count > 0 {
+                params[SignUpViaFormParams.dob] = dob
+            }
+            
+            if tickButton.currentImage != nil {
+                activityIndicatorView.startAnimating()
+                NetworkingManager.shared.post(withEndpoint: Endpoints.customers, withParams: params, withSuccess: { (response) in
+                    if let responseDict = response as? [String:Any] {
+                        let userModel = Mapper<UserModel>().map(JSON: responseDict)
+                        userModel?.saveInUserDefaults()
+                        
+                    }
+                    //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
+                    let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+                    let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+                    secondViewController?.screenTypeValue = .pickUpDropOff
+                    NavigationManager.shared.push(viewController: secondViewController)
+                    self.activityIndicatorView.stopAnimating()
+                }) { (error) in
+                    self.activityIndicatorView.stopAnimating()
+                    if let error = error as? String {
+                        let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            }
         }
     }
     //MARK: Google Sign In methods
@@ -492,28 +567,49 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             }
             return
         }
-        let userId = user.userID                  // For client-side use only!
-//        let idToken = user.authentication.idToken // Safe to send to the server
-//        let fullName = user.profile.name
-//        let givenName = user.profile.givenName
-//        let familyName = user.profile.familyName
-//        let email = user.profile.email
-        performSocialSignUp(userInfo: userId, type: "google")
+        self.userId = user.userID                  // For client-side use only!
+        self.firstName = user.profile.givenName
+        self.lastName = user.profile.familyName
+        self.email = user.profile.email
+        self.socialLoginType = "google"
+        self.loginSignUpTableView.reloadData()
+        //performSocialSignUp(userInfo: userId, type: "google")
         
     }
     
-    func performSocialSignUp(userInfo userId : String? , type : String?)
+    func performSocialLogin(withEmail email:String?, withType type:String?) {
+        guard let email = email, let type = type else {
+            return
+        }
+    }
+    
+    func performSocialSignUp(userInfo userId : String? , withType type: String?,withFirstName firstName:String?,withLastName lastName:String?, withEmail email:String?, withPhone phone:String?, withPassword password:String?, withDob dob:String?)
     {
-        guard let userId = userId , let type = type else{
+        guard let userId = userId , let type = type, let firstName = firstName, let lastName = lastName, let phone = phone, let password = password, let email = email else{
+            return
+        }
+        if checked != "done"
+        {
+            let alert = UIAlertController(title: "Alert", message: "please verify the phone no first", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return
         }
         let params:[String:Any] = [
             SocialSignIn.userId:userId,
             SocialSignIn.typeOfSignIn :type
         ]
-        let finalParams = [
-            "socialAccount":params
+        var finalParams:[String:Any] = [
+            "socialAccount":params,
+            SocialSignIn.firstName:firstName,
+            SocialSignIn.lastName:lastName,
+            SocialSignIn.phone:phone,
+            SocialSignIn.password:password,
+            SocialSignIn.email:email,
         ]
+        if let dob = dob, dob.count > 0 {
+            finalParams[SocialSignIn.dob] = dob
+        }
         activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.socialSignUp, withParams: finalParams, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {

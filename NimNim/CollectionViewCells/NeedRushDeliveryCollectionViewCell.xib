@@ -88,7 +88,7 @@
                 <outlet property="labelAgainsCheckbox" destination="PVR-dI-cwD" id="A9u-Xc-7cL"/>
                 <outlet property="tickButton" destination="VhF-oq-Mu0" id="Zbl-Ot-eDH"/>
             </connections>
-            <point key="canvasLocation" x="286" y="-57"/>
+            <point key="canvasLocation" x="-128" y="-105"/>
         </collectionViewCell>
     </objects>
     <resources>

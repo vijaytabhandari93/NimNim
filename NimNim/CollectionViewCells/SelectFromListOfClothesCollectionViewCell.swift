@@ -9,20 +9,25 @@
 import UIKit
 
 class SelectFromListOfClothesCollectionViewCell: UICollectionViewCell {
-
-override func awakeFromNib() {
+    
+    var serviceModel:ServiceModel?
+    
+    override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     
     @IBAction func selectTapped(_ sender: Any) {
-    
-        
-        
         let servicesSB = UIStoryboard(name:"Services", bundle: nil)
         let selectItemVC = servicesSB.instantiateViewController(withIdentifier: "AllItemsViewController") as! AllItemsViewController
+        if let serviceModel = serviceModel {
+            let maleItems = serviceModel.getMaleItems()
+            let femaleItems = serviceModel.getFemaleItems()
+            selectItemVC.maleItems = maleItems
+            selectItemVC.femaleItems = femaleItems
+        }
         NavigationManager.shared.push(viewController:selectItemVC)
         
-}
-
+    }
+    
 }

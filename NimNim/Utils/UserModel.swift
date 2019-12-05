@@ -39,12 +39,12 @@ class UserModel: NSObject, Mappable, Codable {
       }
     func saveInUserDefaults() {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: UserDefaultKeys.User)
-    UserDefaults.standard.synchronize() // This is a recommendation to do every time when we save anything in userdefaults...try? PropertyListEncoder().encode(self) is used to encode
+    UserDefaults.standard.synchronize() // This is a recommendation to do every time when we save anything in userdefaults...try? PropertyListEncoder().encode(self) is used to encode. Since user defaults.standard.set uses only standard data types we have to encode the user model geenerated.
     }
     
     static func fetchFromUserDefaults() -> UserModel? {
-        if let decoded = UserDefaults.standard.object(forKey: UserDefaultKeys.User) as? Data {
-            if let decodedModel = try? PropertyListDecoder().decode(UserModel.self, from: decoded) {
+        if let savedValue = UserDefaults.standard.object(forKey: UserDefaultKeys.User) as? Data {
+            if let decodedModel = try? PropertyListDecoder().decode(UserModel.self, from: savedValue) {
                 return decodedModel
             }
         }

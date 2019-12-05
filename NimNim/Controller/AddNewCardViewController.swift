@@ -134,7 +134,8 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
             AddCard.year:year,
             AddCard.cvv:cvv,
             AddCard.cardNumber:cardNumber,
-        ]
+            AddCard.name:name]
+            
         NetworkingManager.shared.post(withEndpoint: Endpoints.addCard, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 print(responseDict)

@@ -22,6 +22,9 @@ struct Endpoints {
     static let fetchwalletbalance = "fetchwalletbalance"
     static let promocodes = "promocodes"
     static let addCard = "addcard"
-
+    static let addAddress = "customer/address"
+    static let getallcard = "getallcard"
+    static let getallAddrress = "customer/fetchalladdress"
+    static let checkotp = "checkotp"
     
 }

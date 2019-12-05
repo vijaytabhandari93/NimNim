@@ -10,7 +10,8 @@ import UIKit
 
 class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
 
-    var noOfCards : Int = 3
+    var noOfCards : Int = 0
+    var cardModel : [CardDetailsModel] = [] // We have purposly made it non optional and assinged zero to it.
     @IBOutlet weak var cardsCollectionView: UICollectionView!
     
     @IBOutlet weak var addNewCardButton:UIButton!
@@ -46,11 +47,15 @@ class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollec
     }
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return noOfCards
+        return cardModel.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardsCollectionViewCell", for: indexPath) as! CardsCollectionViewCell
+        if let cardNumber = cardModel[indexPath.row].last4
+        {
+        cell.cardNumber.text = "**** **** **** \(cardNumber)"
+        }
         return cell
     }
     

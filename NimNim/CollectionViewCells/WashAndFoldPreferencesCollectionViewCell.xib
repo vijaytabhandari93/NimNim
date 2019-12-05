@@ -130,7 +130,7 @@
                 <outlet property="rightLabel" destination="cCl-oi-Hih" id="YiT-Ex-zUh"/>
                 <outlet property="titleLabel" destination="OlW-On-oSw" id="Ayi-wZ-hCm"/>
             </connections>
-            <point key="canvasLocation" x="1522" y="-30"/>
+            <point key="canvasLocation" x="1685" y="-24"/>
         </collectionViewCell>
     </objects>
     <resources>

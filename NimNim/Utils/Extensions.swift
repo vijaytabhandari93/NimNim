@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 extension UIViewController {
     func applyNimNimGradient() {
@@ -118,5 +119,31 @@ extension UIView {
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.layer.shadowRadius = 5
         self.layer.shadowPath = shadowPath.cgPath
+    }
+}
+
+extension UIImageView {
+    func downloadImage(withUrl urlString:String?,withCompletion completion:((UIImage?,KingfisherError?) -> Void)?) {
+        if let urlString = urlString, let url = URL(string: urlString)  {
+            self.kf.setImage(
+                with: url,
+                placeholder: nil,
+                options: [
+                ])
+            {
+                result in
+                switch result {
+                case .success(let value):
+                    print("Task done for: \(value.source.url?.absoluteString ?? "")")
+                    if let image = value.image.cgImage {
+                        let image:UIImage = UIImage.init(cgImage: image)
+                        completion?(image, nil)
+                    }
+                case .failure(let error):
+                    print("Job failed: \(error.localizedDescription)")
+                    completion?(nil, error)
+                }
+            }
+        }
     }
 }

@@ -28,7 +28,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tv-Vy-K4S">
-                        <rect key="frame" x="28" y="21" width="218" height="19"/>
+                        <rect key="frame" x="28" y="0.0" width="218" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="19" id="CV1-Q7-k2i"/>
                         </constraints>
@@ -37,7 +37,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YnU-Oy-tlM">
-                        <rect key="frame" x="28" y="47" width="290" height="51.5"/>
+                        <rect key="frame" x="28" y="26" width="290" height="51.5"/>
                         <string key="text">30 Germania St, Boston, MA 02130, USA
 8V7W+VR Boston, Massachusetts, USA
 +1 617-368-5080</string>
@@ -46,7 +46,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="719-6x-IuO">
-                        <rect key="frame" x="306" y="15.5" width="30" height="30"/>
+                        <rect key="frame" x="306" y="-5.5" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="Zw3-IG-6lK"/>
                             <constraint firstAttribute="width" constant="30" id="cGd-sy-1Y3"/>
@@ -68,7 +68,7 @@
                 <constraint firstItem="YnU-Oy-tlM" firstAttribute="top" secondItem="6tv-Vy-K4S" secondAttribute="bottom" constant="7" id="mmN-fR-OLI"/>
                 <constraint firstItem="6tv-Vy-K4S" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="oQ2-Wo-seD"/>
                 <constraint firstItem="719-6x-IuO" firstAttribute="centerY" secondItem="6tv-Vy-K4S" secondAttribute="centerY" id="une-pY-vWO"/>
-                <constraint firstItem="6tv-Vy-K4S" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="21" id="yXt-aH-jD0"/>
+                <constraint firstItem="6tv-Vy-K4S" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="yXt-aH-jD0"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="346" height="119"/>
