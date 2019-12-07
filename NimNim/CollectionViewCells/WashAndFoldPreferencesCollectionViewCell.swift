@@ -19,6 +19,7 @@ class WashAndFoldPreferencesCollectionViewCell: UICollectionViewCell {
     
     //Variables
     var preferences:[PreferenceModel]? //made a global variable
+    
     //IBActions
     @IBAction func leftButtonTapped(_ sender: Any) {
         if let preferences = preferences, preferences.count > 1 {
@@ -27,7 +28,6 @@ class WashAndFoldPreferencesCollectionViewCell: UICollectionViewCell {
             leftPreference.isSelected = true
             let rightPreference = preferences[1]
             rightPreference.isSelected = false
-            
             //Setup the ui
             setupUI()
         }
@@ -39,7 +39,6 @@ class WashAndFoldPreferencesCollectionViewCell: UICollectionViewCell {
             leftPreference.isSelected = false
             let rightPreference = preferences[1]
             rightPreference.isSelected = true
-            
             //Setup the ui
             setupUI()
         }

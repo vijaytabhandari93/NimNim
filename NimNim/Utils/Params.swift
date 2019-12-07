@@ -62,6 +62,7 @@ struct AddAddress {
     static let phoneNumber = "phone"
     static let label = "label"
     static let address = "address"
+    static let id = "_id"
 }
 struct VerifyOTPSignIn {
     static let phone = "phone"

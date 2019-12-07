@@ -8,8 +8,9 @@
 
 import UIKit
 
-class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate{
-
+class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    
     //IBOutlets
     @IBOutlet weak var basketLabel: UILabel!
     @IBOutlet weak var washAndFoldLabel: UILabel!
@@ -23,7 +24,6 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
     var activeTextField : UITextField?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,9 +37,9 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             descriptionLabel.text = "\(description)"
         }
         if let priceOfService = serviceModel?.price {
-        priceLabel.text = "\(priceOfService)"
+            priceLabel.text = "\(priceOfService)"
         }
-       
+        
     }
     
     //MARK:Gradient Setting
@@ -52,20 +52,44 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     @IBAction func previousTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
     @IBAction func basketTapped(_ sender: Any) {
         let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
         let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
         NavigationManager.shared.push(viewController: orderReviewVC)
-        
     }
+    
     @IBAction func justNimNimIt(_ sender: Any) {
-            
+        serviceModel?.setupNimNimIt()
+        prefernces.reloadData()
     }
+    
     @IBAction func addToCart(_ sender: Any) {
-    addToCart.setTitle("CheckOut", for: .normal)
-    IsAddToCartTapped = true
-    prefernces.reloadData()
+        addToCart.setTitle("CheckOut", for: .normal)
+        IsAddToCartTapped = true
+        prefernces.reloadData()
         
+    }
+    
+    func upload(image:UIImage?) {
+        guard let image = image else {
+            return
+        }
+        let uploadModel = UploadModel()
+        uploadModel.data = image.jpegData(compressionQuality: 1.0)
+        uploadModel.name = "image"
+        uploadModel.fileName = "jpg"
+        uploadModel.mimeType = .imageJpeg
+        NetworkingManager.shared.upload(withEndpoint: Endpoints.uploadImage, withModel: uploadModel, withSuccess: { (response) in
+            
+            print(response)
+        }, withProgress: { (progress) in
+            
+            print(progress?.fractionCompleted)
+        }) { (error) in
+            
+            print(error)
+        }
     }
     //MARK:UI Methods
     func registerCells() {
@@ -160,9 +184,9 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                 if let bleach = serviceModel?.bleach, bleach.count >= 2 {
                     let firstPreference = bleach[0]
                     let secondPreference = bleach[1]
-                cell.leftLabel.text = firstPreference.title
-                cell.rightLabel.text = secondPreference.title
-                cell.configureCell(withPreferenceModelArray: bleach)
+                    cell.leftLabel.text = firstPreference.title
+                    cell.rightLabel.text = secondPreference.title
+                    cell.configureCell(withPreferenceModelArray: bleach)
                 }
                 return cell
             case 4:
@@ -274,7 +298,12 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     //Delegate Function of TextView
     func sendImage() {
-          print("need Image")
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        self.present(pickerController, animated: true, completion: nil)
     }
     
     func textViewStartedEditingInCell(withTextField textView: UITextView) {
@@ -292,8 +321,21 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func textFieldEndedEditingInCell(withTextField textField: UITextField) {
-         removeTapGestures(forTextField: textField)
+        removeTapGestures(forTextField: textField)
     }
     
+
+    //MARK: UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+        upload(image: image)
+    }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

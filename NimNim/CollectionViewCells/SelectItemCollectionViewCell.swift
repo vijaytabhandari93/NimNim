@@ -18,7 +18,7 @@ class SelectItemCollectionViewCell: UICollectionViewCell {
     
     var model : ItemModel? //local
     
-    enum SelectedGender {
+    enum SelectedGender { 
         case male
         case female
     }

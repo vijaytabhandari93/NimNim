@@ -490,6 +490,7 @@
 		AC8CDE28232518AC00CDFB93 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				ACF9CD3C2351EB9C00039E6C /* WashPressedShirtsViewController.swift */,
 				AC8CDE30232540DD00CDFB93 /* LoginSignUpViewController.swift */,
 				AC1FFDB623474FC700930496 /* ServicesViewController.swift */,
 				ACBB8171232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift */,
@@ -500,7 +501,6 @@
 				ACF9CD22234F69EC00039E6C /* WashAndAirDryViewController.swift */,
 				ACBC96F92361B1C0006AC5B6 /* OrderReviewViewController.swift */,
 				ACF9CD3A2350F1DF00039E6C /* DryCleaningViewController.swift */,
-				ACF9CD3C2351EB9C00039E6C /* WashPressedShirtsViewController.swift */,
 				ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */,
 				ACE0E4E8235312F100A75D82 /* ShoeRepairViewController.swift */,
 				ACE0E4EE2353240B00A75D82 /* RugCleaningViewController.swift */,

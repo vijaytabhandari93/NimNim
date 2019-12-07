@@ -134,9 +134,13 @@
                         <viewLayoutGuide key="safeArea" id="rf8-vs-2fw"/>
                     </view>
                     <connections>
+                        <outlet property="addAddressButton" destination="iXM-yP-pyC" id="vwe-Yg-Ukn"/>
                         <outlet property="addAddressCollectionView" destination="8fw-Wt-7z6" id="MV4-5H-Mfd"/>
+                        <outlet property="addressLabel" destination="IaP-6x-Dy0" id="eRf-ZU-Btv"/>
                         <outlet property="home" destination="rsS-zt-MCq" id="b8Z-PE-Jrd"/>
                         <outlet property="office" destination="Lb8-8K-TCj" id="sUY-Fp-0lR"/>
+                        <outlet property="stackView" destination="hY2-mo-K1r" id="dB6-Cs-lJ6"/>
+                        <outlet property="topBarHeightConstraint" destination="iL0-WF-jZf" id="P3e-b0-rTr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIZ-be-i3q" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -21,13 +21,21 @@ class AddAddressCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var addressText: UITextField!
     
+    enum selectionMode {
+        case add
+        case edit
+    }
+    
+    var mode : selectionMode = .add
+    
     weak var delegate :AddAddressCollectionViewCellDelegate?
     
     var indexPath:IndexPath?
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         addressText.delegate = self
+        
     }
     
     //MARK: TextField Delegates

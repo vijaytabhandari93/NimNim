@@ -14,10 +14,10 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     //IBOutlets
     @IBOutlet weak var profileCollectionView: UICollectionView!
     
-    var noOfSavedCards : Int = 0
-    var noOfSavedAdderess : Int = 0
-    var selectedCard : Bool = false
-    var selectedAddress : Bool = false
+    var noOfSavedCards : Int = 0 // initially
+    var noOfSavedAdderess : Int = 0 //initially
+    var selectedCard : Bool = false //initially
+    var selectedAddress : Bool = false //initially
     var walletBalance : Int?
     var cardBaseModel : CardModel?
     var addressBaseModel : AddressModel?
@@ -62,7 +62,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
             [weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] {
                 let addressBaseModel = Mapper<AddressModel>().map(JSON: responseDict)
-                self?.addressBaseModel = addressBaseModel //? is put after self as it is weak self.
+              self?.addressBaseModel = addressBaseModel //? is put after self as it is weak self.
                 if let count = addressBaseModel?.data?.count {
                     self?.noOfSavedAdderess = count
                 }
@@ -199,7 +199,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 return 1   // for state where selectedAddress in not selected.
             }
         }
-        else  // for refer and earn.
+        else  // for refer and earn ie when section is 3.
         {
             return 1
         }
@@ -264,7 +264,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
         }
         else if indexPath.section == 2 {
-            let numberOfItems = collectionView.numberOfItems(inSection: indexPath.section)
+            let numberOfItems = collectionView.numberOfItems(inSection: indexPath.section) // this will be the no of items in section 2.
             if indexPath.item == 0
             {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardCollectionViewCell", for: indexPath) as! SavedCardCollectionViewCell
@@ -284,16 +284,17 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 }else {
                     cell.configureCell(withExpandedState: false)
                 }
-                return cell
+                return cell // first cell
                 
             }else if indexPath.item == (numberOfItems - 1) {
                 let savedAddressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedAddressCollectionViewCell", for: indexPath) as! SavedAddressCollectionViewCell
-                return savedAddressCell
+                return savedAddressCell // last cell
             }else {
                 if noOfSavedAdderess > 0 {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressCollectionViewCell", for: indexPath) as! AddressCollectionViewCell
                     let addressIndex = indexPath.item - 1
-                    cell.titleLabel.text = self.addressBaseModel?.data?[addressIndex].label?.capitalized
+                    cell.addressModel = self.addressBaseModel?.data?[addressIndex]  // main step where we are sending the address model to the small cell 
+                    cell.titleLabel.text = self.addressBaseModel?.data?[addressIndex].label?.capitalized // to extract label
                     var finalAddressString = ""
                     if let house = self.addressBaseModel?.data?[addressIndex].house, house.count > 0 {
                         finalAddressString = house

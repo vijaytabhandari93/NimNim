@@ -68,7 +68,7 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
         let servicesStoryboard = UIStoryboard(name: "Services", bundle: nil)
         if services[indexPath.row].alias == "wash-and-fold" {
             let washAndFoldVC = servicesStoryboard.instantiateViewController(withIdentifier: "ServicesViewController") as! ServicesViewController
-            washAndFoldVC.serviceModel = services[indexPath.row]
+            washAndFoldVC.serviceModel = services[indexPath.row] //passing of the service model to the vc.
             NavigationManager.shared.push(viewController: washAndFoldVC)
             
         }else if services[indexPath.row].alias == "wash-and-air-dry" {

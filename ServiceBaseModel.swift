@@ -113,6 +113,28 @@ class ServiceModel:NSObject, Mappable, Codable {
         }
         return femaleItems
     }
+    
+    func setupNimNimIt() {
+        selectNimNimItPreference(forPreferences: detergents)
+        selectNimNimItPreference(forPreferences: wash)
+        selectNimNimItPreference(forPreferences: drying)
+        selectNimNimItPreference(forPreferences: starch)
+        selectNimNimItPreference(forPreferences: bleach)
+        selectNimNimItPreference(forPreferences: softner)
+        selectNimNimItPreference(forPreferences: returnPreferences)
+    }
+    
+    func selectNimNimItPreference(forPreferences preferences:[PreferenceModel]?) {
+        if let preferences = preferences {
+            for preference in preferences {
+                if preference.isNimNimItValue == true {
+                    preference.isSelected = true
+                }else {
+                    preference.isSelected = false
+                }
+            }
+        }
+    }
 }
 class PreferenceModel:NSObject, Mappable, Codable {
     var id:String?
