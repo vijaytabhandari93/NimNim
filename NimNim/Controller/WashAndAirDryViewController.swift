@@ -6,8 +6,8 @@
 ////  Copyright © 2019 NimNim. All rights reserved.
 
 import UIKit
-
-class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate {
+import NVActivityIndicatorView
+class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     
     
@@ -19,6 +19,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     @IBOutlet weak var priceTotalBackgroundView: UIView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var addToCart: UIButton!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
@@ -32,8 +33,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         let type2PreferencesNib = UINib(nibName: "NoofClothesCollectionViewCell", bundle: nil)
         washAndAirDryCollectionView.register(type2PreferencesNib, forCellWithReuseIdentifier: "NoofClothesCollectionViewCell")
         
-        
-        
+    
         let type4PreferencesNib = UINib(nibName: "SpecialNotesCollectionViewCell", bundle: nil)
         washAndAirDryCollectionView.register(type4PreferencesNib, forCellWithReuseIdentifier: "SpecialNotesCollectionViewCell")
         let type5PreferencesNib = UINib(nibName: "RushDeliveryNotAvailableCollectionViewCell", bundle: nil)
@@ -69,6 +69,34 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         priceTotalBackgroundView.addTopShadowToView()
     }
     
+    
+    func upload(image:UIImage?) {
+        guard let image = image else {
+            return
+        }
+        let uploadModel = UploadModel()
+        uploadModel.data = image.jpegData(compressionQuality: 1.0)
+        uploadModel.name = "image"
+        uploadModel.fileName = "jpg"
+        uploadModel.mimeType = .imageJpeg
+        activityIndicator.startAnimating()
+        NetworkingManager.shared.upload(withEndpoint: Endpoints.uploadImage, withModel: uploadModel, withSuccess: {[weak self] (response) in
+            self?.view.showToast(message: "Image uploaded successfully")
+            self?.activityIndicator.stopAnimating()
+            if let responseDict = response as? [String:Any] {
+                if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
+                    self?.serviceModel?.uploadedImages.append(imagePath)
+                }
+            }
+            }, withProgress: { (progress) in
+                
+                print(progress?.fractionCompleted)
+        }) {[weak self] (error) in
+            self?.activityIndicator.stopAnimating()
+            print(error)
+        }
+    }
+
     //MARK: IBActions
     @IBAction func previousTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -81,7 +109,10 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     
     @IBAction func justNimNimItTapped(_ sender: Any) {
+        serviceModel?.setupNimNimItForWashAndAirDry()
+        washAndAirDryCollectionView.reloadData()
     }
+    
     
     @IBAction func addToCartTapped(_ sender: Any) {
         addToCart.setTitle("CheckOut", for: .normal)
@@ -236,7 +267,12 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     //Delegate Function of TextView
     func sendImage() {
-        print("need Image")
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        self.present(pickerController, animated: true, completion: nil)
     }
     
     func textViewStartedEditingInCell(withTextField textView: UITextView) {
@@ -246,6 +282,19 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     
     func textViewEndedEditingInCell(withTextField textView: UITextView) {
         removeTapGestures(forTextView: textView)
+    }
+    ///MARK: UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+        upload(image: image)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
 }

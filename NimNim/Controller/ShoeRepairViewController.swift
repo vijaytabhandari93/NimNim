@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
@@ -18,7 +19,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var womenButton: UIButton!
     @IBOutlet weak var menButton: UIButton!
-    
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     enum SelectionType: Int {
         case women
         case men

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate{
+class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate
+,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
@@ -24,7 +26,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var washAndFoldLabel: UILabel!
     @IBOutlet weak var basketLabel: UILabel!
-    
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +77,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         NavigationManager.shared.push(viewController: orderReviewVC)
     }
     @IBAction func justNimNimIt(_ sender: Any) {
+        
         
     }
     
@@ -190,9 +193,55 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     @objc func backViewTapped() {
         view.endEditing(true) //to shutdown the keyboard. Wheneever you tap the text field on a specific screeen , then that screen becomes the first responder of the keyoard.
     }
-    //Delegate Function of TextView
+    // Function of ImageView
+    func upload(image:UIImage?) {
+        guard let image = image else {
+            return
+        }
+        let uploadModel = UploadModel()
+        uploadModel.data = image.jpegData(compressionQuality: 1.0)
+        uploadModel.name = "image"
+        uploadModel.fileName = "jpg"
+        uploadModel.mimeType = .imageJpeg
+        activityIndicator.startAnimating()
+        NetworkingManager.shared.upload(withEndpoint: Endpoints.uploadImage, withModel: uploadModel, withSuccess: {[weak self] (response) in
+            self?.view.showToast(message: "Image uploaded successfully")
+            self?.activityIndicator.stopAnimating()
+            if let responseDict = response as? [String:Any] {
+                if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
+                    self?.serviceModel?.uploadedImages.append(imagePath)
+                }
+            }
+            }, withProgress: { (progress) in
+                
+                print(progress?.fractionCompleted)
+        }) {[weak self] (error) in
+            self?.activityIndicator.stopAnimating()
+            print(error)
+        }
+    }
     func sendImage() {
-        print("need Image")
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        self.present(pickerController, animated: true, completion: nil)
+    }
+    
+    
+    ///MARK: UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+        upload(image: image)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func textViewStartedEditingInCell(withTextField textView: UITextView) {

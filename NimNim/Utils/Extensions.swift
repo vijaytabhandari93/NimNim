@@ -147,3 +147,28 @@ extension UIImageView {
         }
     }
 }
+
+extension UIView {
+    func showToast(message : String) {
+        let toastLabel = UILabel(frame: CGRect(x: self.frame.size.width/2 - 100, y: self.frame.size.height-100, width: 200, height: 35))
+        toastLabel.backgroundColor = UIColor.black
+        toastLabel.textColor = UIColor.white
+        toastLabel.textAlignment = .center;
+        toastLabel.font = UIFont(name: "Montserrat-Bold", size: 12.0)
+        toastLabel.text = message
+        toastLabel.alpha = 0  ///Initially alpha is 0 and in the animation block to is changed to 1 .This change is happening is 5 sec after 0.1 second delay.After that animation is complete the toast label is removed.
+        toastLabel.layer.cornerRadius = 17.5
+        toastLabel.clipsToBounds  =  true
+        self.addSubview(toastLabel) // attaching toast label to view
+//        UIView.animate(withDuration: 5.0, delay: 0.1, options: .curveEaseOut, animations: {
+//            toastLabel.alpha = 1.0
+//        }, completion: {(isCompleted) in
+//            toastLabel.removeFromSuperview()
+//        })
+        UIView.animate(withDuration: 5, delay: 0.1, options: .curveEaseOut, animations: {
+       toastLabel.alpha = 1.0
+        }, completion: { (isCompleted) in
+      toastLabel.removeFromSuperview()
+        })
+    }
+}

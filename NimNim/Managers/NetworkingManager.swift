@@ -8,7 +8,7 @@
 
 import Foundation
 import Alamofire
-
+import SwiftyJSON
 enum MimeType:String { //  by default :Int . There are two values which can be associated with any case in enum that are hash and raw. In this case "image/png" and "image/jpeg" are raw values associated with case imagePng and imageJpeg respeectively . Similarly  Hash Values are 0 and 1 respectively.
     case imagePng = "image/png"
     case imageJpeg = "image/jpg"
@@ -34,19 +34,6 @@ class NetworkingManager {
     
     
     private init() {}
-    
-    struct PostEncoding:ParameterEncoding {
-        func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
-            var request = try urlRequest.asURLRequest()
-            if let parameters = parameters {
-                let parameterData = try JSONSerialization.data(withJSONObject: parameters, options: JSONSerialization.WritingOptions.prettyPrinted)
-                let jsonString = String(data: parameterData,
-                                        encoding: .utf8)
-                request.httpBody = jsonString?.data(using: .utf8, allowLossyConversion: false)
-            }
-            return request
-        }
-    }
     
     func get(withEndpoint endpoint:String?,withParams params:[String:Any]?, withSuccess success:((Any?)->Void)?, withFailure failure:((Any?) -> Void)?) {
         guard let endpoint = endpoint else {
@@ -96,6 +83,7 @@ class NetworkingManager {
                 ]
             }
         }
+        
         Alamofire.request(url, method: .post, parameters: params, encoding: JSONEncoding.default, headers : headers ).responseJSON {
             response in
             guard let statusCode = response.response?.statusCode else {
@@ -172,6 +160,9 @@ class NetworkingManager {
         guard let url = URL(string: baseUrl + endpoint) else {
             return
         }
+        
+    
+
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             self.append(fileData: model, toMultipartFormData: multipartFormData)
         }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
@@ -200,6 +191,35 @@ class NetworkingManager {
         if let fileData = data.data, let name = data.name, let fileName = data.fileName, let mimeType = data.mimeType {
             multipartFormData.append(fileData, withName: name, fileName: fileName, mimeType: mimeType.rawValue)
         }
+    }
+    
+    
+    func dictToJSON(dict:[String: Any]) -> String? {
+        if let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted) {
+            if let decoded = try? JSONSerialization.jsonObject(with: jsonData, options: []) {
+                if let text = String(data: jsonData, encoding: .utf8) {
+                    let test = String(text.filter { !" \n\t\r".contains($0) })
+                    let finalString = test.replacingOccurrences(of: "\\", with: "").replacingOccurrences(of: "\\", with: "")
+                    return finalString
+                }
+            }
+        }
+        return nil
+    }
+    
+    func arrayToJSON(array:[String]) -> String? {
+        if let jsonData = try? JSONSerialization.data(withJSONObject: array, options: .prettyPrinted) {
+            if let decoded = try? JSONSerialization.jsonObject(with: jsonData, options: []) {
+                
+                if let text = String(data: jsonData, encoding: .utf8) {
+                    let test = String(text.filter { !" \n\t\r".contains($0) })
+                    let finalString = test.replacingOccurrences(of: "\\", with: "").replacingOccurrences(of: "\\", with: "")
+                    return finalString
+                }
+                
+            }
+        }
+        return nil
     }
 }
 

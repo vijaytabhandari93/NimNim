@@ -19,7 +19,6 @@ class NoofClothesCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var noOfPieces: UITextField!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         noOfPieces.delegate = self

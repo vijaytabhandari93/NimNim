@@ -40,12 +40,12 @@ class ServiceBaseModel:NSObject, Mappable, Codable {
     
 }
 class ServiceModel:NSObject, Mappable, Codable {
-    
     var id:String?
     var name:String?
     var alias:String?
     var icon:String?
     var detergents : [PreferenceModel]?
+    var descrip:String?
     var wash : [PreferenceModel]?
     var drying : [PreferenceModel]?
     var starch : [PreferenceModel]?
@@ -62,7 +62,12 @@ class ServiceModel:NSObject, Mappable, Codable {
     var isNimNimItAvailable:Bool?
     var costPerPiece : Double?
     var costPerPieceBox : Int?
-
+    
+    //Custom Variables
+    var uploadedImages:[String] = []
+    var specialNotes:String?
+    var numberOfClothes:Int = 0
+    var isRushDeliverySelected:Bool = false
     
     required convenience init?(map: Map) { self.init() }
     
@@ -74,6 +79,7 @@ class ServiceModel:NSObject, Mappable, Codable {
         costPerPiece   <- map["cost_per_piece"]
         costPerPieceBox   <- map["cost_per_piece_box"]
         icon  <- map["icon"]
+        descrip <- map["description"]
         detergents <- map["detergents"]
         wash <- map["wash"]
         drying <- map["drying"]
@@ -114,16 +120,29 @@ class ServiceModel:NSObject, Mappable, Codable {
         return femaleItems
     }
     
-    func setupNimNimIt() {
+    // The below functions are useful to do changes in the model.
+    
+    func setupNimNimItForWashAndFold() {
         selectNimNimItPreference(forPreferences: detergents)
         selectNimNimItPreference(forPreferences: wash)
         selectNimNimItPreference(forPreferences: drying)
-        selectNimNimItPreference(forPreferences: starch)
         selectNimNimItPreference(forPreferences: bleach)
         selectNimNimItPreference(forPreferences: softner)
-        selectNimNimItPreference(forPreferences: returnPreferences)
     }
     
+    func setupNimNimItForWashAndAirDry() {
+        selectNimNimItPreference(forPreferences: wash)
+        selectNimNimItPreference(forPreferences: bleach)
+        selectNimNimItPreference(forPreferences: softner)
+    }
+    
+    func setupNimNimItForWashPressedShirts() {
+        selectNimNimItPreference(forPreferences: detergents)
+        selectNimNimItPreference(forPreferences: starch)
+        selectNimNimItPreference(forPreferences: returnPreferences)
+    }
+
+
     func selectNimNimItPreference(forPreferences preferences:[PreferenceModel]?) {
         if let preferences = preferences {
             for preference in preferences {

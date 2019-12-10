@@ -21,7 +21,7 @@ class NavigationManager {
         
         //This will be the conditional part in future...
         if let vc = fetchInitialVC(){
-            baseNavigationController?.viewControllers = [vc] // This is to setup the root view controller of baseNavigation
+            baseNavigationController?.viewControllers = [vc] // This is to setup the root view controller of baseNavigationController
         }
         if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
             appDelegate.window?.rootViewController = baseNavigationController

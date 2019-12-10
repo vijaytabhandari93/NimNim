@@ -490,21 +490,21 @@
 		AC8CDE28232518AC00CDFB93 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				ACF9CD3C2351EB9C00039E6C /* WashPressedShirtsViewController.swift */,
-				AC8CDE30232540DD00CDFB93 /* LoginSignUpViewController.swift */,
-				AC1FFDB623474FC700930496 /* ServicesViewController.swift */,
-				ACBB8171232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift */,
 				ACFBA0502338E26A00950079 /* MyLocationViewController.swift */,
-				AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */,
-				AC0BD3E1233B6BC7000746D1 /* NonServiceable.swift */,
-				ACBAAF69233D0CC800E1E4A6 /* HomeViewController.swift */,
+				AC8CDE30232540DD00CDFB93 /* LoginSignUpViewController.swift */,
+				ACBB8171232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift */,
+				AC1FFDB623474FC700930496 /* ServicesViewController.swift */,
 				ACF9CD22234F69EC00039E6C /* WashAndAirDryViewController.swift */,
-				ACBC96F92361B1C0006AC5B6 /* OrderReviewViewController.swift */,
+				ACF9CD3C2351EB9C00039E6C /* WashPressedShirtsViewController.swift */,
+				ACFD92912355D41F0009FB03 /* HouseHoldItemsViewController.swift */,
 				ACF9CD3A2350F1DF00039E6C /* DryCleaningViewController.swift */,
-				ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */,
 				ACE0E4E8235312F100A75D82 /* ShoeRepairViewController.swift */,
 				ACE0E4EE2353240B00A75D82 /* RugCleaningViewController.swift */,
-				ACFD92912355D41F0009FB03 /* HouseHoldItemsViewController.swift */,
+				AC0BD3E1233B6BC7000746D1 /* NonServiceable.swift */,
+				ACBAAF69233D0CC800E1E4A6 /* HomeViewController.swift */,
+				ACBC96F92361B1C0006AC5B6 /* OrderReviewViewController.swift */,
+				AC092FCB232F5B2500FE1B77 /* NavDrawerViewController.swift */,
+				ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */,
 				ACFD929B23560C0D0009FB03 /* AllServicesViewController.swift */,
 				ACFD929D23582D900009FB03 /* ProfileViewController.swift */,
 				ACFD92C5235B17E20009FB03 /* AddAddressViewController.swift */,
@@ -833,6 +833,7 @@
 				"${BUILT_PRODUCTS_DIR}/NTMonthYearPicker/NTMonthYearPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -846,6 +847,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NTMonthYearPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

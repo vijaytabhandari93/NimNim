@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate {
+class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     
     //MARK:Gradient Setting
@@ -24,6 +25,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -128,7 +130,56 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         
         
     }
+    // Function of ImageView
+    func upload(image:UIImage?) {
+        guard let image = image else {
+            return
+        }
+        let uploadModel = UploadModel()
+        uploadModel.data = image.jpegData(compressionQuality: 1.0)
+        uploadModel.name = "image"
+        uploadModel.fileName = "jpg"
+        uploadModel.mimeType = .imageJpeg
+        activityIndicator.startAnimating()
+        NetworkingManager.shared.upload(withEndpoint: Endpoints.uploadImage, withModel: uploadModel, withSuccess: {[weak self] (response) in
+            self?.view.showToast(message: "Image uploaded successfully")
+            self?.activityIndicator.stopAnimating()
+            if let responseDict = response as? [String:Any] {
+                if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
+                    self?.serviceModel?.uploadedImages.append(imagePath)
+                }
+            }
+            }, withProgress: { (progress) in
+                
+                print(progress?.fractionCompleted)
+        }) {[weak self] (error) in
+            self?.activityIndicator.stopAnimating()
+            print(error)
+        }
+    }
+    func sendImage() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        self.present(pickerController, animated: true, completion: nil)
+    }
     
+    
+    ///MARK: UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+        upload(image: image)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
     @IBAction func basketTapped(_ sender: Any) {
         let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
         let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
@@ -138,6 +189,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         navigationController?.popViewController(animated: true)
     }
     @IBAction func justNimNimIt(_ sender: Any) {
+        
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
@@ -180,9 +232,6 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         view.endEditing(true) //to shutdown the keyboard. Wheneever you tap the text field on a specific screeen , then that screen becomes the first responder of the keyoard.
     }
     //Delegate Function of TextView
-    func sendImage() {
-          print("need Image")
-    }
     
     func textViewStartedEditingInCell(withTextField textView: UITextView) {
         activeTextView = textView

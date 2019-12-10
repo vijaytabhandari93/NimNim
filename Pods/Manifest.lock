@@ -25,6 +25,7 @@ PODS:
     - NVActivityIndicatorView/Presenter (= 4.8.0)
   - NVActivityIndicatorView/Presenter (4.8.0)
   - ObjectMapper (3.5.1)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -33,6 +34,7 @@ DEPENDENCIES:
   - NTMonthYearPicker
   - NVActivityIndicatorView
   - ObjectMapper
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -45,6 +47,7 @@ SPEC REPOS:
     - NTMonthYearPicker
     - NVActivityIndicatorView
     - ObjectMapper
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
@@ -56,7 +59,8 @@ SPEC CHECKSUMS:
   NTMonthYearPicker: 27e1739d6e29428628c8275a7c1a9e4835c352f4
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 2bd11292148ab34805bfb1c6c75f0a3887e9e6e0
+PODFILE CHECKSUM: 349982113ea0e64c1ced24560c5e160073e0e239
 
 COCOAPODS: 1.6.2

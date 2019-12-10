@@ -64,20 +64,31 @@ struct AddAddress {
     static let address = "address"
     static let id = "_id"
 }
+
 struct VerifyOTPSignIn {
     static let phone = "phone"
     static let otp = "otp"
     
 }
 
-//"area": "area",not used
-//"house": "house",
-//"landmark": "landmark",
-//"pincode": "110014",
-//"street": "12",
-//"city": "delhi",
-//"state": "delhi",
-//"phone": "9874563210",
-//"lat": "23.05", not used
-//"long": "50.23"  not used
-//
+struct AddToCart {
+    static let services = "services"
+    static let name = "name"
+    static let alias = "alias"
+    static let icon = "icon"
+    static let description = "description"
+    static let ordering = "ordering"
+    static let detergents = "detergents"
+    static let wash = "wash"
+    static let drying = "drying"
+    static let bleach = "bleach"
+    static let softner = "softner"
+    static let price = "price"
+    static let pricing = "pricing"
+    static let rushDeliveryOptions = "rush_delivery_options"
+    static let needRushDelivery = "need_rush_delivery"
+    static let pickupSlot = "pickup_slot"
+    static let dropOffSlot = "dropoff_slot"
+    static let specialNotes = "special_notes"
+    static let uploadedImages = "uploaded_images"
+}

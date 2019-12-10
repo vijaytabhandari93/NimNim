@@ -27,5 +27,6 @@ struct Endpoints {
     static let getallAddrress = "customer/fetchalladdress"
     static let checkotp = "checkotp"
     static let uploadImage = "uploadimage"
+    static let addToCart = "addtocart"
 }
 

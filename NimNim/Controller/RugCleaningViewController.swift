@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
@@ -17,7 +18,7 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     @IBOutlet weak var rugCleaningCollectionView: UICollectionView!
     @IBOutlet weak var priceTotalBackgroundView: UICollectionView!
     
-    
+      @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     @IBAction func previousTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }

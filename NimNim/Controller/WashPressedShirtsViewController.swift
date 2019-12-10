@@ -7,10 +7,11 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
-class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate{
-   
+class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
+
     
     //IBOutlets
     @IBOutlet weak var basketLabel: UILabel!
@@ -20,6 +21,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     @IBOutlet weak var WashPressedShirtCollectionView: UICollectionView!
     @IBOutlet weak var PriceTotalBackgroundView: UIView!
     
+    
     @IBOutlet weak var addToCart: UIButton!
     
     @IBOutlet weak var priceLabel: UILabel!
@@ -27,6 +29,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
     
+      @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     //IBActions
     @IBAction func previousTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -37,6 +40,8 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         NavigationManager.shared.push(viewController: orderReviewVC)
     }
     @IBAction func justNimNimIt(_ sender: Any) {
+        serviceModel?.setupNimNimItForWashPressedShirts()
+        WashPressedShirtCollectionView.reloadData()
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
@@ -254,10 +259,6 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     @objc func backViewTapped() {
         view.endEditing(true) //to shutdown the keyboard. Wheneever you tap the text field on a specific screeen , then that screen becomes the first responder of the keyoard.
     }
-    //Delegate Function of TextView
-    func sendImage() {
-          print("need Image")
-    }
     
     func textViewStartedEditingInCell(withTextField textView: UITextView) {
         activeTextView = textView
@@ -267,8 +268,55 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     func textViewEndedEditingInCell(withTextField textView: UITextView) {
         removeTapGestures(forTextView: textView)
     }
+    func upload(image:UIImage?) {
+        guard let image = image else {
+            return
+        }
+        let uploadModel = UploadModel()
+        uploadModel.data = image.jpegData(compressionQuality: 1.0)
+        uploadModel.name = "image"
+        uploadModel.fileName = "jpg"
+        uploadModel.mimeType = .imageJpeg
+        activityIndicator.startAnimating()
+        NetworkingManager.shared.upload(withEndpoint: Endpoints.uploadImage, withModel: uploadModel, withSuccess: {[weak self] (response) in
+            self?.view.showToast(message: "Image uploaded successfully")
+            self?.activityIndicator.stopAnimating()
+            if let responseDict = response as? [String:Any] {
+                if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
+                    self?.serviceModel?.uploadedImages.append(imagePath)
+                }
+            }
+            }, withProgress: { (progress) in
+                
+                print(progress?.fractionCompleted)
+        }) {[weak self] (error) in
+            self?.activityIndicator.stopAnimating()
+            print(error)
+        }
+    }
+    func sendImage() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        self.present(pickerController, animated: true, completion: nil)
+    }
     
     
+    ///MARK: UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+        upload(image: image)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
     
 }
     

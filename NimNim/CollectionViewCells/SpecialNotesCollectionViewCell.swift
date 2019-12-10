@@ -39,7 +39,6 @@ class SpecialNotesCollectionViewCell: UICollectionViewCell, UITextViewDelegate {
         delegate?.textViewStartedEditingInCell(withTextField: textView)
         if textView.text.caseInsensitiveCompare("Any Special notes...") == .orderedSame {
             textView.text = ""
-            
         }
         return true
     }

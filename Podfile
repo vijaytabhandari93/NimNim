@@ -6,6 +6,7 @@ target 'NimNim' do
   use_frameworks!
 
   # Pods for NimNim
+  pod 'SwiftyJSON'
 	pod 'Alamofire'
   pod 'ObjectMapper'
   pod 'NVActivityIndicatorView'
