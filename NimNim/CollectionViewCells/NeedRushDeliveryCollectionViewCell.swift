@@ -9,18 +9,19 @@
 import UIKit
 
 protocol NeedRushDeliveryCollectionViewCellDelegate:class {
-    func rushDeliveryTapped()
+    func rushDeliveryTapped(withIndexPath indexPath : IndexPath?)
 }
 
 class NeedRushDeliveryCollectionViewCell: UICollectionViewCell {
 
     var hours : String?
     var extraPrice : Int?
+    var IndexPath  : IndexPath?
     
     @IBOutlet weak var labelAgainsCheckbox: UILabel!
     @IBOutlet weak var descriptionofLabel: UILabel!
     @IBOutlet weak var tickButton: UIButton!
-    @IBOutlet weak var needRushDeliveryTapped: UIButton!
+    
     
     weak var delegate:NeedRushDeliveryCollectionViewCellDelegate?
 
@@ -31,10 +32,12 @@ class NeedRushDeliveryCollectionViewCell: UICollectionViewCell {
     }
 
     @IBAction func tickButtonTapped(_ sender: Any) {
-        delegate?.rushDeliveryTapped()
+        delegate?.rushDeliveryTapped(withIndexPath : self.IndexPath)
+        
     }
     
-    func configureUI(forRushDeliveryState rushDeliveryState:Bool) {
+    func configureUI(forRushDeliveryState rushDeliveryState:Bool, forIndex IndexPath : IndexPath) {
+        self.IndexPath = IndexPath
         if rushDeliveryState {
             let image = UIImage(named: "path2")
             tickButton.setImage(image, for: .normal)
@@ -45,4 +48,4 @@ class NeedRushDeliveryCollectionViewCell: UICollectionViewCell {
         }
     }
 }
-
+//At the moment the cell is made, with the help of configureUI the indexPath of the cell is given. This index Path is saved in the global variable. The global variable is later used to send the index path value to Rush delivery tapped.

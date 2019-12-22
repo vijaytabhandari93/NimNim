@@ -58,7 +58,6 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
     var state : String?
     var zipcode : String?
     var enterLandmark : String?
-    var phoneNumber: String?
     var id: String?
     
     func resetButtons() {
@@ -77,8 +76,8 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         selectedState = .office
     }
     
-    func postAddress(streetAddress : String?, houseBlockNumber : String?,city : String?,state : String?,zipcode : String?,enterLandmark : String?,phoneNumber: String?,label:String?){
-        guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let enterLandmark = enterLandmark, let phoneNumber = phoneNumber , let label = label else {
+    func postAddress(streetAddress : String?, houseBlockNumber : String?,city : String?,state : String?,zipcode : String?,enterLandmark : String?,label:String?){
+        guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let enterLandmark = enterLandmark,let label = label else {
             return
         }
         
@@ -90,7 +89,6 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             AddAddress.state:state,
             AddAddress.zipcode:zipcode,
             AddAddress.enterLandmark:enterLandmark,
-            AddAddress.phoneNumber:phoneNumber,
             AddAddress.label:label
         ]
         
@@ -113,8 +111,8 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
     }
     
-    func putAddress(streetAddress : String?, houseBlockNumber : String?,city : String?,state : String?,zipcode : String?,enterLandmark : String?,phoneNumber: String?,label:String?,id:String?){
-        guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let enterLandmark = enterLandmark, let phoneNumber = phoneNumber , let label = label, let id = id else {
+    func putAddress(streetAddress : String?, houseBlockNumber : String?,city : String?,state : String?,zipcode : String?,enterLandmark : String?,label:String?,id:String?){
+        guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let enterLandmark = enterLandmark, let label = label, let id = id else {
             return
         }
         
@@ -125,7 +123,6 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             AddAddress.state:state,
             AddAddress.zipcode:zipcode,
             AddAddress.enterLandmark:enterLandmark,
-            AddAddress.phoneNumber:phoneNumber,
             AddAddress.label:label,
             AddAddress.id:id
         ]
@@ -149,9 +146,9 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
 
     @IBAction func addAddressTapped(_ sender: Any) {
         if editTapped{
-            putAddress(streetAddress: streetAddress, houseBlockNumber: houseBlockNumber, city: city, state: state, zipcode: zipcode, enterLandmark: enterLandmark, phoneNumber: phoneNumber,label:label, id: id)
+            putAddress(streetAddress: streetAddress, houseBlockNumber: houseBlockNumber, city: city, state: state, zipcode: zipcode, enterLandmark: enterLandmark,label:label, id: id)
         }else {
-            postAddress(streetAddress: streetAddress, houseBlockNumber: houseBlockNumber, city: city, state: state, zipcode: zipcode, enterLandmark: enterLandmark, phoneNumber: phoneNumber,label:label)
+            postAddress(streetAddress: streetAddress, houseBlockNumber: houseBlockNumber, city: city, state: state, zipcode: zipcode, enterLandmark: enterLandmark,label:label)
         }
     }
     
@@ -197,7 +194,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         label = model?.label
         zipcode = model?.pincode
         enterLandmark = model?.landmark
-        phoneNumber = model?.phone
+
     }
     
     func registerCells() {
@@ -220,7 +217,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         return 1
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -332,12 +329,10 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         else if indexPath.item == 4 {
          zipcode = text
         }
-        else if indexPath.item == 5 {
+        else {
           enterLandmark = text
         }
-        else {
-          phoneNumber = text
-        }
+     
     }
     
     func textFieldStartedEditingInAddAddressCollectionViewCell(withTextField textField: UITextField) {

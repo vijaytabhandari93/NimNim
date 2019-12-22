@@ -11,7 +11,7 @@ import UIKit
 protocol LoginViaOTPTableViewCellDelegate:class {
     func logInViaPasswordTappedInLoginViaOTPTableViewCell()
     func signUpTappedInLoginViaOTPTableViewCell()
-    func getOtpTapped(withPhone phoneNumber:String?)
+    func getOtpTapped(withPhone phoneNumber:String?, withType type:String?)
     func resendOtpTapped(withPhone phoneNumber:String?)
     func verifyOtpTapped(withPhone phoneNumber:String?,withOTP otp:String?)
     func textFieldStartedEditingInLoginViaOTPTableViewCell(withTextField textField:UITextField)
@@ -80,7 +80,7 @@ class LoginViaOTPTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBAction func getOtptapped(_ sender: Any) {
         //if current state is .getOtp then we need to call getOtpTapped in the delegate of this cell...else we need to call verifyOtpTapped in the delegate of this cell...
         if currentState == .getOtp {
-            delegate?.getOtpTapped(withPhone: mobileNumberTextField.text)
+            delegate?.getOtpTapped(withPhone: mobileNumberTextField.text, withType: "login")
         }else {
             delegate?.verifyOtpTapped(withPhone: mobileNumberTextField.text, withOTP: otpTextField.text)
         }

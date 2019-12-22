@@ -9,10 +9,15 @@
 import Foundation
 
 struct UserDefaultKeys {
-    static let location = "kLocationModel"
+    static let location = "kLocationModel"  //logOut
     static let User = "kUser"
     static let authToken = "kAuthToken"
     static let pickUpDropOfPreferences = "kPickUpDropOfPreferences"
     static let descriptionPreferences = "kDescriptionPreferences"
     static let services = "kservices"
+    static let cartId = "kCartId"
+    static let cartAlias = "kcartAlias" // Through this key , we will be saving the array of strings
+    //(aliases) using UserDefaults
+    static let cart = "kCart"
+    static let walletBalance = "kwalletBalance"
 }

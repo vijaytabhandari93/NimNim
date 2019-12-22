@@ -18,6 +18,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     var bannerModel : BannersBaseModel?
     var serviceModel : ServiceBaseModel?
     
+    @IBOutlet weak var basketLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,8 +31,24 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         if let abc = UserObject?.firstName {
         userName.text = "Hello \(abc.capitalized)"
         }
+        setupCartCountLabel()
     }
     
+    override func viewWillAppear(_ animated: Bool){
+        super.viewWillAppear(animated)
+        homeCollectionView.reloadData()
+        setupCartCountLabel()
+    }
+    func setupCartCountLabel() {
+        let cartCount = fetchNoOfServicesInCart()
+        if cartCount > 0 {
+            basketLabel.text = "\(cartCount)"
+            basketLabel.isHidden = false
+        }else {
+            basketLabel.text = "0"
+            basketLabel.isHidden = true
+        }
+    }
     //MARK:UI Methods
     func registerCells() {
         let bannersBaseNib = UINib(nibName: "BannersBaseCollectionViewCell", bundle: nil)
@@ -81,7 +98,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             
         } // definition of error closure
     }
-    
+
+
     //MARK: IBActions
     @IBAction func basketTapped(_UI sender: Any) {
         let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)

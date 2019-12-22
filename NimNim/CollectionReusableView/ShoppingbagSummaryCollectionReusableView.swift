@@ -12,7 +12,18 @@ class ShoppingbagSummaryCollectionReusableView: UICollectionReusableView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        var count = fetchNoOfServicesInCart()
+        if count != 0 {
+            noOfItems.text = "\(count) Items"
+        }
+        else {
+            noOfItems.text = ""
+        }
+  
     }
+    @IBOutlet weak var noOfItems: UILabel!
+
+    
+    
     
 }

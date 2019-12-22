@@ -44,7 +44,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="tickButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="CCM-pk-VU2"/>
+                                    <action selector="tickButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="mya-w5-eT2"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -86,9 +86,9 @@
             <connections>
                 <outlet property="descriptionofLabel" destination="msq-kH-zpZ" id="h33-IZ-wwM"/>
                 <outlet property="labelAgainsCheckbox" destination="PVR-dI-cwD" id="A9u-Xc-7cL"/>
-                <outlet property="tickButton" destination="VhF-oq-Mu0" id="Zbl-Ot-eDH"/>
+                <outlet property="tickButton" destination="VhF-oq-Mu0" id="31K-Fy-mFH"/>
             </connections>
-            <point key="canvasLocation" x="-128" y="-105"/>
+            <point key="canvasLocation" x="-312" y="-105"/>
         </collectionViewCell>
     </objects>
     <resources>

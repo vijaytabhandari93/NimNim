@@ -15,4 +15,8 @@ class DoYouHaveACouponCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
+    @IBOutlet weak var doYouHaveACoupon: UILabel!
+    
+    @IBOutlet weak var chooseCoupon: UILabel!
+    
 }

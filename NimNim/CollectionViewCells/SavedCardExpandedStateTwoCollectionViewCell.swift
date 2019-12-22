@@ -8,8 +8,18 @@
 
 import UIKit
 
-class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
 
+protocol SavedCardExpandedStateTwoCollectionViewCellDelegate:class {
+    func deleteCard(id : String?)
+}
+
+
+class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CardsCollectionViewCellDelegate{
+    
+   
+  
+    
+    weak var delegate :SavedCardExpandedStateTwoCollectionViewCellDelegate?
     var noOfCards : Int = 0
     var cardModel : [CardDetailsModel] = [] // We have purposly made it non optional and assinged zero to it.
     @IBOutlet weak var cardsCollectionView: UICollectionView!
@@ -52,10 +62,16 @@ class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CardsCollectionViewCell", for: indexPath) as! CardsCollectionViewCell
+        cell.delegate = self
         if let cardNumber = cardModel[indexPath.row].last4
         {
         cell.cardNumber.text = "**** **** **** \(cardNumber)"
         }
+        if let cardId = cardModel[indexPath.row].id
+        {
+            cell.cardId = cardId
+        }
+        
         return cell
     }
     
@@ -67,5 +83,7 @@ class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollec
         return CGSize(width: 154, height: 100)
         
     }
-    
+    func deleteCardTapped(withId id : String?){
+        delegate?.deleteCard(id:id)
+    }
 }

@@ -8,12 +8,25 @@
 
 import UIKit
 
-class CardsCollectionViewCell: UICollectionViewCell {
 
+protocol CardsCollectionViewCellDelegate:class {
+    func deleteCardTapped(withId id : String?)
+}
+
+
+class CardsCollectionViewCell: UICollectionViewCell {
+    var cardId : String = ""
+    
+    weak var delegate :CardsCollectionViewCellDelegate?
+    
+    
     @IBOutlet weak var cardNumber: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    @IBAction func deleteTapped(_ sender: Any) {
+        delegate?.deleteCardTapped(withId : cardId)
+    }
 }

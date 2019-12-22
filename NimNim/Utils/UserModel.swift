@@ -10,7 +10,7 @@ import Foundation
 import ObjectMapper
 
 class UserModel: NSObject, Mappable, Codable {
- 
+
     var firstName:String?
     var lastName:String?
     var phone:String?
@@ -21,7 +21,7 @@ class UserModel: NSObject, Mappable, Codable {
     var id:String?
     var dob:String?
     var token:String?
-    
+    var profileImage : String?
     
     required convenience init?(map: Map) { self.init() }
     
@@ -36,6 +36,7 @@ class UserModel: NSObject, Mappable, Codable {
         id            <- map["customer._id"]
         dob            <- map["customer.dob"]
         token       <- map["token"]
+        profileImage       <- map["profile_Image"]
       }
     func saveInUserDefaults() {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: UserDefaultKeys.User)

@@ -8,8 +8,35 @@
 
 import UIKit
 import NVActivityIndicatorView
+import SwiftyJSON
 
-class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate {
+    
+    
+    var activeTextField : UITextField?
+    //NoOfClothes Delegate Methods
+    func textFieldStartedEditingInCell(withTextField textField: UITextField) {
+        activeTextField = textField
+        addTapGestureToView() //once the textbox editing begins the tap gesture starts functioning
+    }
+    
+    func textFieldEndedEditingInCell(withTextField textField: UITextField) {
+        removeTapGestures(forTextField: textField)
+        if let text = textField.text, let intValue = Int(text) {
+            serviceModel?.numberOfClothes = intValue
+            WashPressedShirtCollectionView.reloadData()
+        }
+    }
+    func removeTapGestures(forTextField textField:UITextField) {
+        // This function first checks if the textView that is passed is the currently active TextView or Not...if the user will tap somewhere outside then the textView passed will be equal to the activeTextView...but if the user will tap on another textView and this function gets called...then we need not remove the gesture recognizer...
+        if let activeTextField = activeTextField, activeTextField == textField {
+            for recognizer in view.gestureRecognizers ?? [] {
+                view.removeGestureRecognizer(recognizer)
+            }
+        }
+    }
+    
+    
     
 
     
@@ -45,10 +72,217 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
-        addToCart.setTitle("CheckOut", for: .normal)
-        IsAddToCartTapped = true
-        WashPressedShirtCollectionView.reloadData()
+        if addToCart.titleLabel?.text == "CheckOut" {
+            print("abcd")
+            let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+            let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
+            NavigationManager.shared.push(viewController: cartVC)
+        }
+        else if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
+            updateServiceInCart(withCartId: cartId)
+        }else
+        {
+            addServiceToCart()
+        }
     }
+    
+    func setupCartCountLabel() {
+        let cartCount = fetchNoOfServicesInCart()
+        if cartCount > 0 {
+            basketLabel.text = "\(cartCount)"
+            basketLabel.isHidden = false
+        }else {
+            basketLabel.text = "0"
+            basketLabel.isHidden = true
+        }
+    }
+    
+//    func addServiceToCart() {
+//        var params:[String:Any] = [:]
+//        var serviceParams:[String:Any] = [:]
+//        if let name = serviceModel?.name {
+//            serviceParams[AddToCart.name] = name  // if name is there then set it. "[AddToCart.name]" is the key. "name" is the value
+//        }
+//        if let alias = serviceModel?.alias {
+//            serviceParams[AddToCart.alias] = alias
+//        }
+//        if let icon = serviceModel?.icon {
+//            serviceParams[AddToCart.icon] = icon
+//        }
+//        if let description = serviceModel?.descrip {
+//            serviceParams[AddToCart.description] = description
+//        }
+//        serviceParams[AddToCart.ordering] = 1
+//
+//        if let detergents = serviceModel?.detergents {
+//            var title:String?
+//
+//            for detergent in detergents {
+//                if detergent.isSelected == true {
+//                    title = detergent.title
+//                    break
+//                }
+//
+//            }
+//
+//            if let title = title {
+//                serviceParams[AddToCart.detergents] = [
+//                    "title":title  // In this statement we are setting the "detergents" key of the serviceparam. The value to which it is set is itself a dictionary.
+//                ]
+//            }
+//        }
+//
+//        if let starch = serviceModel?.starch {
+//            var title:String?
+//
+//            for item in starch {
+//                if item.isSelected == true {
+//                    title = item.title
+//                    break
+//                }
+//
+//            }
+//
+//            if let title = title {
+//                serviceParams[AddToCart.starch] = [
+//                    "title":title
+//                ]
+//            }
+//        }
+//
+//        if let returnPreferences = serviceModel?.returnPreferences {
+//            var title:String?
+//
+//            for item in returnPreferences {
+//                if item.isSelected == true {
+//                    title = item.title
+//                    break
+//                }
+//
+//            }
+//
+//            if let title = title {
+//                serviceParams[AddToCart.drying] = [
+//                    "title":title
+//                ]
+//            }
+//        }
+//
+//
+//
+//        if let price = serviceModel?.price {
+//            serviceParams[AddToCart.price] = price
+//        }
+//
+//        if let pricing = serviceModel?.costPerPiece {
+//            serviceParams[AddToCart.pricing] = pricing
+//        }
+//        if let pricingPerBox = serviceModel?.costPerPieceBox{
+//                serviceParams[AddToCart.pricingBox] = pricingPerBox
+//        }
+//        if let rushDeliveryOptions = serviceModel?.rushDeliveryOptions, rushDeliveryOptions.count > 0 {
+//            let firstOption = rushDeliveryOptions[0]
+//            if let turnAroundTime = firstOption.turnAroundTime, let price = firstOption.price {
+//                let rushDict:[String:Any] = [
+//                    "turn_around_time":turnAroundTime,
+//                    "price":price
+//                ]
+//                serviceParams[AddToCart.rushDeliveryOptions] = [rushDict] // array of rush delivery options
+//            }
+//        }
+//
+//        if let isRushDeliverySelected = serviceModel?.isRushDeliverySelected {
+//            serviceParams[AddToCart.needRushDelivery] = isRushDeliverySelected
+//        }
+//
+//        params[AddToCart.services] = [serviceParams]// JSON is a dictionary because of the {}. The JSON is containing key services and the value is an array of dictionary. In our case this array will be having only one dictionary because wee will be adding only one service to cart. This dictionary in our code iss service params.
+//
+//        print(JSON(params))
+//
+//        activityIndicator.startAnimating()
+//        NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+//            self?.addToCart.setTitle("CheckOut", for: .normal)
+//            self?.IsAddToCartTapped = true
+//            self?.WashPressedShirtCollectionView.reloadData()
+//            print("success")
+//            DispatchQueue.main.async {[weak self] in
+//                if let numberOfSections = self?.WashPressedShirtCollectionView.numberOfSections {
+//                    let lastSection = numberOfSections - 1
+//                    self?.WashPressedShirtCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+//                }
+//            }
+//            self?.activityIndicator.stopAnimating()
+//        }) {[weak self] (error) in
+//            print("error")
+//            self?.activityIndicator.stopAnimating()
+//        }
+//    }
+    
+    func addServiceToCart() {
+        if let serviceModel = serviceModel{
+            let modelToDictionary = serviceModel.toJSON()
+            var params : [String:Any] = [:]
+            params[AddToCart.services] = [modelToDictionary]
+            print(JSON(params))
+            activityIndicator.startAnimating()
+            NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+                self?.addToCart.setTitle("CheckOut", for: .normal)
+                self?.IsAddToCartTapped = true
+                self?.WashPressedShirtCollectionView.reloadData()
+                if let response = response as? [String:Any] {
+                    if let cartId = response["cart_id"] as? String {
+                        UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                    }
+                    addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias)
+                    self?.setupCartCountLabel()
+                }
+                print("success")
+                DispatchQueue.main.async {[weak self] in
+                    if let numberOfSections = self?.WashPressedShirtCollectionView.numberOfSections {
+                        let lastSection = numberOfSections - 1
+                        self?.WashPressedShirtCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+                    }
+                }
+                self?.activityIndicator.stopAnimating()
+            }) {[weak self] (error) in
+                print("error")
+                self?.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    func updateServiceInCart(withCartId cartId:String?) {
+        if let serviceModel = serviceModel, let cartId = cartId{
+            var modelToDictionary = serviceModel.toJSON()
+            modelToDictionary["cart_id"] = cartId
+            print(JSON(modelToDictionary))
+            activityIndicator.startAnimating()
+            NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
+                self?.addToCart.setTitle("CheckOut", for: .normal)
+                
+                self?.IsAddToCartTapped = true
+                self?.WashPressedShirtCollectionView.reloadData()
+                if let response = response as? [String:Any] {
+                    if let cartId = response["cart_id"] as? String {
+                        UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                    }
+                    addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias)
+                    self?.setupCartCountLabel()
+                }
+                print("success")
+                DispatchQueue.main.async {[weak self] in
+                    if let numberOfSections = self?.WashPressedShirtCollectionView.numberOfSections {
+                        let lastSection = numberOfSections - 1
+                        self?.WashPressedShirtCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+                    }
+                }
+                self?.activityIndicator.stopAnimating()
+            }) {[weak self] (error) in
+                print("error")
+                self?.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
     
     //MARK:UI Methods
     func registerCells() {
@@ -84,7 +318,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         if let name = serviceModel?.name {
             WashAndPressedShirtLabel.text = "\(name)"
         }
-        if let description = serviceModel?.name {
+        if let description = serviceModel?.descrip {
             descriptionLabel.text = "\(description)"
         }
         WashPressedShirtCollectionView.delegate = self
@@ -92,13 +326,23 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         if let priceOfService = serviceModel?.costPerPiece {
             priceLabel.text = "\(priceOfService)"
         }
+        setupAddToCartButton()
+        setupCartCountLabel()
+    }
+    
+    func setupAddToCartButton(){
+        if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
+            addToCart.setTitle("Update Cart", for: .normal)
+        }else {
+            addToCart.setTitle("Add to Cart", for: .normal)
+        }
     }
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
         PriceTotalBackgroundView.addTopShadowToView()
-        
+        setupCartCountLabel() 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -148,6 +392,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         let section = indexPath.section
         if section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
+            cell.delegate = self
             cell.titleLabel.text = "Number of Clothes"
             return cell
         }
@@ -209,7 +454,9 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         }
         if section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
+               cell.delegate = self
             cell.labelAgainsCheckbox.text = "I need Rush Delivery"
+            cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
             if let arrayRushOptions = serviceModel?.rushDeliveryOptions, arrayRushOptions.count == 1 {
                 let firstPreference = arrayRushOptions[0]
                 if let hours  = firstPreference.turnAroundTime
@@ -317,7 +564,14 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
-    
+    //MARK: NeedRushDeliveryCellDelegate
+    //MARK: NeedRushDeliveryCellDelegate
+    func rushDeliveryTapped(withIndexPath indexPath: IndexPath?) {
+        if let rushDeliveryState = serviceModel?.isRushDeliverySelected {
+            serviceModel?.isRushDeliverySelected = !rushDeliveryState
+            WashPressedShirtCollectionView.reloadData()
+        }
+    }
 }
     
     

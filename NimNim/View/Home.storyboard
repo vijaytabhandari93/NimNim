@@ -10,6 +10,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
         <array key="Montserrat-Medium.ttf">
             <string>Montserrat-Medium</string>
         </array>
@@ -405,7 +408,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select a service to proceed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooZ-wg-VsX">
-                                                        <rect key="frame" x="30" y="49.5" width="245" height="24"/>
+                                                        <rect key="frame" x="30" y="51" width="240.5" height="24"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="24" id="q8a-bU-aaG"/>
                                                         </constraints>
@@ -429,29 +432,34 @@
                                                                     <action selector="basketTappedWith_UI:" destination="63b-8a-BjQ" eventType="touchUpInside" id="o7d-Qx-qzm"/>
                                                                 </connections>
                                                             </button>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-kk-CBs">
-                                                                <rect key="frame" x="16" y="3.5" width="5" height="12"/>
+                                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-kk-CBs">
+                                                                <rect key="frame" x="13" y="-2" width="15" height="15"/>
                                                                 <color key="backgroundColor" red="1" green="0.0" blue="0.1215686275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="12" id="9LX-aB-MM4"/>
-                                                                    <constraint firstAttribute="width" constant="5" id="zdW-HM-XcF"/>
+                                                                    <constraint firstAttribute="height" constant="15" id="9LX-aB-MM4"/>
+                                                                    <constraint firstAttribute="width" constant="15" id="zdW-HM-XcF"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="9"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="11"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
+                                                                <userDefinedRuntimeAttributes>
+                                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                        <real key="value" value="7.5"/>
+                                                                    </userDefinedRuntimeAttribute>
+                                                                </userDefinedRuntimeAttributes>
                                                             </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="ziL-hR-9yG" firstAttribute="leading" secondItem="zyj-yl-Tm5" secondAttribute="leading" id="6OB-wG-fH4"/>
                                                             <constraint firstAttribute="height" constant="26" id="7wS-O4-bmD"/>
-                                                            <constraint firstItem="nZT-kk-CBs" firstAttribute="top" secondItem="zyj-yl-Tm5" secondAttribute="top" constant="3.5" id="X0i-ai-AYe"/>
+                                                            <constraint firstItem="nZT-kk-CBs" firstAttribute="top" secondItem="zyj-yl-Tm5" secondAttribute="top" constant="-2" id="X0i-ai-AYe"/>
                                                             <constraint firstAttribute="width" constant="26" id="X1f-xy-FPu"/>
                                                             <constraint firstItem="M6k-fw-b4L" firstAttribute="top" secondItem="zyj-yl-Tm5" secondAttribute="top" id="ntk-nl-WE4"/>
                                                             <constraint firstAttribute="bottom" secondItem="M6k-fw-b4L" secondAttribute="bottom" id="pwb-au-KYC"/>
                                                             <constraint firstAttribute="trailing" secondItem="M6k-fw-b4L" secondAttribute="trailing" id="qUP-u7-uEb"/>
                                                             <constraint firstItem="M6k-fw-b4L" firstAttribute="leading" secondItem="zyj-yl-Tm5" secondAttribute="leading" id="ssD-tx-fNM"/>
-                                                            <constraint firstAttribute="trailing" secondItem="nZT-kk-CBs" secondAttribute="trailing" constant="5" id="xMX-LX-ez1"/>
+                                                            <constraint firstAttribute="trailing" secondItem="nZT-kk-CBs" secondAttribute="trailing" constant="-2" id="xMX-LX-ez1"/>
                                                             <constraint firstAttribute="bottom" secondItem="ziL-hR-9yG" secondAttribute="bottom" id="zFc-7b-llb"/>
                                                         </constraints>
                                                     </view>
@@ -499,6 +507,7 @@
                         <viewLayoutGuide key="safeArea" id="VcI-GY-4fc"/>
                     </view>
                     <connections>
+                        <outlet property="basketLabel" destination="nZT-kk-CBs" id="dYb-Bv-3dT"/>
                         <outlet property="homeCollectionView" destination="OGR-Iq-8j2" id="T6S-q6-dKC"/>
                         <outlet property="userName" destination="I6s-ya-HPW" id="4Vy-Rq-nSd"/>
                     </connections>
@@ -531,7 +540,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydX-RI-qI2">
-                                                            <rect key="frame" x="147" y="12" width="120" height="20"/>
+                                                            <rect key="frame" x="139" y="12" width="136.5" height="20"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -685,7 +694,7 @@
     </scenes>
     <resources>
         <image name="NIMNIM_logo_whi" width="4000" height="4000"/>
-        <image name="basket" width="26" height="22"/>
+        <image name="basket" width="20" height="19"/>
         <image name="chat" width="23" height="19"/>
         <image name="home" width="19" height="18"/>
         <image name="nav" width="21" height="14"/>

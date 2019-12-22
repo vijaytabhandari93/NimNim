@@ -21,6 +21,7 @@
 		AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */; };
 		AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */; };
 		AC1B9B862392403E00CA7434 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B9B852392403E00CA7434 /* AddressModel.swift */; };
+		AC1BB7D623A7B23A00513947 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1BB7D523A7B23A00513947 /* CartModel.swift */; };
 		AC1EDC60237C71FC00D36C89 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */; };
 		AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */; };
 		AC1FFDA323465DEF00930496 /* ServicesHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA123465DEF00930496 /* ServicesHeaderCollectionReusableView.xib */; };
@@ -44,6 +45,7 @@
 		AC25BFB12371EB8000C79692 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25BFB02371EB8000C79692 /* Endpoints.swift */; };
 		AC25BFB32371EF2D00C79692 /* ServiceableLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */; };
 		AC2BEDC62381600000152C69 /* BannersBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2BEDC52381600000152C69 /* BannersBaseModel.swift */; };
+		AC3151FD23A65ACB0078E68E /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC3151FC23A65ACB0078E68E /* Utils.swift */; };
 		AC41CE6E235C7258001AC676 /* AddNewCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41CE6D235C7258001AC676 /* AddNewCardViewController.swift */; };
 		AC41CE71235C81EF001AC676 /* CardTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC41CE6F235C81EE001AC676 /* CardTypeCollectionViewCell.swift */; };
 		AC41CE72235C81EF001AC676 /* CardTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC41CE70235C81EE001AC676 /* CardTypeCollectionViewCell.xib */; };
@@ -189,6 +191,7 @@
 		AC1AED5D233F058C00638403 /* BannersBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannersBaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC1B9B852392403E00CA7434 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
+		AC1BB7D523A7B23A00513947 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
 		AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		AC1FFDA123465DEF00930496 /* ServicesHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
@@ -212,6 +215,7 @@
 		AC25BFB02371EB8000C79692 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServiceableLocationModel.swift; path = NimNim/Utils/ServiceableLocationModel.swift; sourceTree = SOURCE_ROOT; };
 		AC2BEDC52381600000152C69 /* BannersBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersBaseModel.swift; sourceTree = SOURCE_ROOT; };
+		AC3151FC23A65ACB0078E68E /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		AC41CE6D235C7258001AC676 /* AddNewCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewCardViewController.swift; sourceTree = "<group>"; };
 		AC41CE6F235C81EE001AC676 /* CardTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC41CE70235C81EE001AC676 /* CardTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardTypeCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -461,6 +465,7 @@
 			isa = PBXGroup;
 			children = (
 				AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */,
+				AC1BB7D523A7B23A00513947 /* CartModel.swift */,
 				AC17891723785F1800B20D32 /* UserModel.swift */,
 				ACB4314D2382A007001E6302 /* ServiceBaseModel.swift */,
 				AC2BEDC52381600000152C69 /* BannersBaseModel.swift */,
@@ -582,6 +587,7 @@
 				AC11D1D32336314800F1DBCB /* Colors.swift */,
 				AC25BFB02371EB8000C79692 /* Endpoints.swift */,
 				AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */,
+				AC3151FC23A65ACB0078E68E /* Utils.swift */,
 				AC1789152377D03D00B20D32 /* Params.swift */,
 			);
 			path = Utils;
@@ -864,6 +870,7 @@
 				AC8CDE382326449200CDFB93 /* LoginViaOTPTableViewCell.swift in Sources */,
 				AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */,
 				ACF9CD3223504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.swift in Sources */,
+				AC1BB7D623A7B23A00513947 /* CartModel.swift in Sources */,
 				AC5ADD942362DD8900204E9E /* SelectAddressViewController.swift in Sources */,
 				ACFD92AD235846D10009FB03 /* ReferAFriendCollectionViewCell.swift in Sources */,
 				AC5ADD9E236306C200204E9E /* PickDateAndTimeViewController.swift in Sources */,
@@ -932,6 +939,7 @@
 				AC5ADD912361D99F00204E9E /* ApplyWalletPointsCollectionViewCell.swift in Sources */,
 				AC5ADD8D2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift in Sources */,
 				ACFD92922355D41F0009FB03 /* HouseHoldItemsViewController.swift in Sources */,
+				AC3151FD23A65ACB0078E68E /* Utils.swift in Sources */,
 				ACE0E4EF2353240B00A75D82 /* RugCleaningViewController.swift in Sources */,
 				ACE0E4E9235312F100A75D82 /* ShoeRepairViewController.swift in Sources */,
 				ACFD92C6235B17E20009FB03 /* AddAddressViewController.swift in Sources */,

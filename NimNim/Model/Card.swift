@@ -51,7 +51,7 @@ class CardDetailsModel:NSObject, Mappable, Codable {
     
     func mapping(map: Map) {
         name        <- map["name"]
-        id       <- map["_id"]
+        id       <- map["id"]
         name        <- map["name"]
         last4       <- map["last4"]
         expMonth       <- map["exp_month"]

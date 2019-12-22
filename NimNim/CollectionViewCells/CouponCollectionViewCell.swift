@@ -27,4 +27,5 @@ class CouponCollectionViewCell: UICollectionViewCell {
         code.text = model.code
         id.text = model.id
     }
+    
 }

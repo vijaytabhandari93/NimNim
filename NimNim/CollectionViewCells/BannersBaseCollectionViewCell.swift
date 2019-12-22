@@ -58,4 +58,5 @@ class BannersBaseCollectionViewCell: UICollectionViewCell,UICollectionViewDelega
         return CGSize(width: 320, height: 150)
         
     }
+    
 }

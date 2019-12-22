@@ -55,7 +55,7 @@ class NetworkingManager {
             }
             print("Request:\(String(describing: response.request ?? nil))")
             print("Response:\(String(describing: response.result.value ?? nil))")
-            
+            print("JSON Response:\(JSON(response.result.value))")
             if statusCode >= 200 && statusCode < 400 {
                 success?(response.result.value) // call of closure
             }else {
@@ -133,6 +133,44 @@ class NetworkingManager {
             
             if statusCode >= 200 && statusCode < 400 {
                 print("success")
+                print(JSON(response.result.value))
+                success?(response.result.value) // call of closure
+            }else {
+                print("error")
+                if let responseValue = response.result.value as? [String:Any] {
+                    if let error = responseValue["error"] as? String {
+                        failure?(error) // call of closure
+                    }
+                }
+            }
+        }
+    }
+    func delete(withEndpoint endpoint:String?,withParams params:[String:Any]?, withSuccess success:((Any?)->Void)?, withFailure failure:((Any?) -> Void)?) {
+        guard let endpoint = endpoint else {
+            return
+        }
+        guard let url = URL(string: baseUrl + endpoint) else {
+            return
+        }
+        var headers : HTTPHeaders = [:]
+        if let userModel = UserModel.fetchFromUserDefaults(){
+            if let token = userModel.token{
+                let finaltoken = token
+                headers = ["Authorization":"Bearer \(finaltoken)"]
+            }
+        }
+        Alamofire.request(url, method: .delete, parameters: params, encoding: JSONEncoding.default, headers : headers ).responseJSON {
+            response in
+            guard let statusCode = response.response?.statusCode else {
+                failure?(nil)
+                return
+            }
+            print("Request:\(String(describing: response.request ?? nil))")
+            print("Response:\(String(describing: response.result.value ?? nil))")
+            
+            if statusCode >= 200 && statusCode < 400 {
+                print("success")
+                print(JSON(response.result.value))
                 success?(response.result.value) // call of closure
             }else {
                 print("error")
@@ -193,7 +231,7 @@ class NetworkingManager {
         }
     }
     
-    
+    //  are  we using the below: 
     func dictToJSON(dict:[String: Any]) -> String? {
         if let jsonData = try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted) {
             if let decoded = try? JSONSerialization.jsonObject(with: jsonData, options: []) {

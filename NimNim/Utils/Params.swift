@@ -23,12 +23,13 @@ struct LogInViaFormParams {
 
 struct LogInViaOTP {
     static let mobile = "phone"
+    static let type = "type"
   
 }
 struct VerifyOTP {
     static let mobile = "phone"
     static let otp = "otp"
-    
+    static let type = "type"
 }
 struct ForgotPassword {
     static let email = "email"
@@ -50,6 +51,7 @@ struct AddCard {
     static let cvv = "CVC"
     static let month = "exp_month"
     static let name  = "name"
+    static let cardId = "cardId"
 }
 
 struct AddAddress {
@@ -68,10 +70,10 @@ struct AddAddress {
 struct VerifyOTPSignIn {
     static let phone = "phone"
     static let otp = "otp"
-    
+    static let type = "type"
 }
 
-struct AddToCart {
+struct AddToCart {     // This is a structure to hold all the keys of request params of all services
     static let services = "services"
     static let name = "name"
     static let alias = "alias"
@@ -83,6 +85,7 @@ struct AddToCart {
     static let drying = "drying"
     static let bleach = "bleach"
     static let softner = "softner"
+    static let starch = "starch"
     static let price = "price"
     static let pricing = "pricing"
     static let rushDeliveryOptions = "rush_delivery_options"
@@ -91,4 +94,12 @@ struct AddToCart {
     static let dropOffSlot = "dropoff_slot"
     static let specialNotes = "special_notes"
     static let uploadedImages = "uploaded_images"
+    static let noOfClothes = "noOfClothes"
+    static let pricingBox = "pricingBox"
+    static let needHangers = "needHangers"
+    static let items = "items"
+    static let cartId = "cartId"
+    static let itemId = "itemId"
+    static let code = "code"
+   
 }

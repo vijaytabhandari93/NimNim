@@ -456,6 +456,9 @@
                         <viewLayoutGuide key="safeArea" id="ANW-PM-bpF"/>
                     </view>
                     <connections>
+                        <outlet property="addressMethod" destination="KLe-7T-w7V" id="9GJ-jG-aIc"/>
+                        <outlet property="amountLabel" destination="1qR-wg-w4k" id="pBb-1C-6SK"/>
+                        <outlet property="netPayableLabel" destination="JFp-oz-Reh" id="5Jf-Kx-qfy"/>
                         <outlet property="orderStatusCollectionView" destination="TUR-wx-Wpl" id="5N8-I3-4eU"/>
                         <outlet property="priceTotalBackgroundView" destination="3Ap-bn-FJj" id="yvz-KM-F89"/>
                     </connections>

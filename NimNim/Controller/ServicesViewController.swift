@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import SwiftyJSON
 import NVActivityIndicatorView
 
-class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NeedRushDeliveryCollectionViewCellDelegate{
+class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate{
     //IBOutlets
     @IBOutlet weak var basketLabel: UILabel!
     @IBOutlet weak var washAndFoldLabel: UILabel!
@@ -24,6 +25,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
     var activeTextField : UITextField?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -39,7 +41,27 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         if let priceOfService = serviceModel?.price {
             priceLabel.text = "\(priceOfService)"
         }
-        
+        setupAddToCartButton()
+        setupCartCountLabel()
+    }
+    
+    func setupCartCountLabel() {
+        let cartCount = fetchNoOfServicesInCart()
+        if cartCount > 0 {
+            basketLabel.text = "\(cartCount)"
+            basketLabel.isHidden = false
+        }else {
+            basketLabel.text = "0"
+            basketLabel.isHidden = true
+        }
+    }
+    
+    func setupAddToCartButton(){
+        if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
+            addToCart.setTitle("Update Cart", for: .normal)
+        }else {
+            addToCart.setTitle("Add to Cart", for: .normal)
+        }
     }
     
     //MARK:Gradient Setting
@@ -47,6 +69,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
         priceTotalBackgroundView.addTopShadowToView()
+        setupCartCountLabel()
     }
     //IBActions
     @IBAction func previousTapped(_ sender: Any) {
@@ -65,151 +88,85 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     @IBAction func addToCart(_ sender: Any) {
-        addServiceToCart()
+        if addToCart.titleLabel?.text == "CheckOut" {
+            print("abcd")
+            let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+            let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
+            NavigationManager.shared.push(viewController: cartVC)
+        }
+        else if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
+            updateServiceInCart(withCartId: cartId)
+        }else
+            {
+                addServiceToCart()
+        }
+    }
+    
+    func updateServiceInCart(withCartId cartId:String?) {
+        if let serviceModel = serviceModel, let cartId = cartId{
+            var modelToDictionary = serviceModel.toJSON()
+            modelToDictionary["cart_id"] = cartId
+            print(JSON(modelToDictionary))
+            activityIndicator.startAnimating()
+            NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
+                self?.addToCart.setTitle("CheckOut", for: .normal)
+                
+                self?.IsAddToCartTapped = true
+                self?.prefernces.reloadData()
+                if let response = response as? [String:Any] {
+                    if let cartId = response["cart_id"] as? String {
+                        UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                        addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias)
+                        self?.setupCartCountLabel()
+                    }
+                }
+                
+                print("success")
+                DispatchQueue.main.async {[weak self] in
+                    if let numberOfSections = self?.prefernces.numberOfSections {
+                        let lastSection = numberOfSections - 1
+                        self?.prefernces.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+                    }
+                }
+                self?.activityIndicator.stopAnimating()
+            }) {[weak self] (error) in
+                print("error")
+                self?.activityIndicator.stopAnimating()
+            }
+        }
     }
     
     func addServiceToCart() {
-        var params:[String:Any] = [:]
-        var serviceParams:[String:Any] = [:]
-        if let name = serviceModel?.name {
-            serviceParams[AddToCart.name] = name
-        }
-        if let alias = serviceModel?.alias {
-            serviceParams[AddToCart.alias] = alias
-        }
-        if let icon = serviceModel?.icon {
-            serviceParams[AddToCart.icon] = icon
-        }
-        if let description = serviceModel?.descrip {
-            serviceParams[AddToCart.description] = description
-        }
-        serviceParams[AddToCart.ordering] = 1
-        
-        if let detergents = serviceModel?.detergents {
-            var title:String?
-            
-            for detergent in detergents {
-                if detergent.isSelected == true {
-                    title = detergent.title
+        if let serviceModel = serviceModel{
+            let modelToDictionary = serviceModel.toJSON() // model in dictationary
+            activityIndicator.startAnimating()
+            var params : [String:Any] = [:]
+            params[AddToCart.services] = [modelToDictionary]
+            print(JSON(params))
+            NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+                self?.addToCart.setTitle("CheckOut", for: .normal)//alamofire is conveerting dictionary to JSON
+
+                self?.IsAddToCartTapped = true
+                self?.prefernces.reloadData()
+                if let response = response as? [String:Any] {
+                    if let cartId = response["cart_id"] as? String {
+                        UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                    }
+                    addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias)
+                    self?.setupCartCountLabel()
                 }
-                break
-            }
-            
-            if let title = title {
-                serviceParams[AddToCart.detergents] = [
-                    "title":title
-                ]
-            }
-        }
-        
-        if let wash = serviceModel?.wash {
-            var title:String?
-            
-            for item in wash {
-                if item.isSelected == true {
-                    title = item.title
+                print("success")
+                DispatchQueue.main.async {[weak self] in
+                    if let numberOfSections = self?.prefernces.numberOfSections {
+                        let lastSection = numberOfSections - 1
+                        self?.prefernces.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+                    }
                 }
-                break
+                self?.activityIndicator.stopAnimating()
+            }) {[weak self] (error) in
+                print("error")
+                self?.activityIndicator.stopAnimating()
             }
-            
-            if let title = title {
-                serviceParams[AddToCart.wash] = [
-                    "title":title
-                ]
-            }
-        }
-        
-        if let drying = serviceModel?.drying {
-            var title:String?
-            
-            for item in drying {
-                if item.isSelected == true {
-                    title = item.title
-                }
-                break
-            }
-            
-            if let title = title {
-                serviceParams[AddToCart.drying] = [
-                    "title":title
-                ]
-            }
-        }
-        
-        if let bleach = serviceModel?.bleach {
-            var title:String?
-            
-            for item in bleach {
-                if item.isSelected == true {
-                    title = item.title
-                }
-                break
-            }
-            
-            if let title = title {
-                serviceParams[AddToCart.bleach] = [
-                    "title":title
-                ]
-            }
-        }
-        
-        if let softner = serviceModel?.softner {
-            var title:String?
-            
-            for item in softner {
-                if item.isSelected == true {
-                    title = item.title
-                }
-                break
-            }
-            
-            if let title = title {
-                serviceParams[AddToCart.softner] = [
-                    "title":title
-                ]
-            }
-        }
-        
-        if let price = serviceModel?.price {
-            serviceParams[AddToCart.price] = price
-        }
-        
-        if let pricing = serviceModel?.pricing {
-            serviceParams[AddToCart.pricing] = pricing
-        }
-        
-        if let rushDeliveryOptions = serviceModel?.rushDeliveryOptions, rushDeliveryOptions.count > 0 {
-            let firstOption = rushDeliveryOptions[0]
-            if let turnAroundTime = firstOption.turnAroundTime, let price = firstOption.price {
-                let rushDict:[String:Any] = [
-                    "turn_around_time":turnAroundTime,
-                    "price":price
-                ]
-                serviceParams[AddToCart.rushDeliveryOptions] = [rushDict] // array of rush delivery options
-            }
-        }
-        
-        if let isRushDeliverySelected = serviceModel?.isRushDeliverySelected {
-            serviceParams[AddToCart.needRushDelivery] = isRushDeliverySelected
-        }
-        
-            params[AddToCart.services] = [serviceParams]
-        
-        activityIndicator.startAnimating()
-        NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-            self?.addToCart.setTitle("CheckOut", for: .normal)
-            self?.IsAddToCartTapped = true
-            self?.prefernces.reloadData()
-            DispatchQueue.main.async {[weak self] in
-                if let numberOfSections = self?.prefernces.numberOfSections {
-                    let lastSection = numberOfSections - 1
-                    self?.prefernces.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
-                }
-            }
-            self?.activityIndicator.stopAnimating()
-        }) {[weak self] (error) in
-            
-            self?.activityIndicator.stopAnimating()
         }
     }
     
@@ -229,8 +186,11 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.serviceModel?.uploadedImages.append(imagePath)
+                    // put call of user.....function for update......reload table view (user......tojson).........cell for item at index path .... check for image or label.....kf show......
                 }
             }
+            self?.activityIndicator.stopAnimating()
+            
         }, withProgress: { (progress) in
             
             print(progress?.fractionCompleted)
@@ -370,7 +330,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
             cell.delegate = self
             cell.labelAgainsCheckbox.text = "I need Rush Delivery"
-            cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false)
+            cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
             if let arrayRushOptions = serviceModel?.rushDeliveryOptions, arrayRushOptions.count == 1 {
                 let firstPreference = arrayRushOptions[0]
                 if let hours  = firstPreference.turnAroundTime
@@ -451,6 +411,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             }
         }
     }
+    
     @objc func backViewTapped() {
         view.endEditing(true) //to shutdown the keyboard. Wheneever you tap the text field on a specific screeen , then that screen becomes the first responder of the keyoard.
     }
@@ -508,7 +469,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     
     //MARK: NeedRushDeliveryCellDelegate
-    func rushDeliveryTapped() {
+    func rushDeliveryTapped(withIndexPath indexPath: IndexPath?) {
         if let rushDeliveryState = serviceModel?.isRushDeliverySelected {
             serviceModel?.isRushDeliverySelected = !rushDeliveryState
             prefernces.reloadData()

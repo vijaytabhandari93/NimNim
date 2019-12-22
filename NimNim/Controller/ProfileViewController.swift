@@ -9,7 +9,7 @@
 import UIKit
 import ObjectMapper
 
-class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SavedCardExpandedStateTwoCollectionViewCellDelegate{
     
     //IBOutlets
     @IBOutlet weak var profileCollectionView: UICollectionView!
@@ -36,6 +36,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     
     //Networking Call
+    
     func fetchSavedCards(){
         NetworkingManager.shared.get(withEndpoint: Endpoints.getallcard, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] {
@@ -43,7 +44,6 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 self?.cardBaseModel = cardBaseModel //? is put after self as it is weak self.
                 if let count = cardBaseModel?.data?.count {
                     self?.noOfSavedCards = count
-                    
                 }
                 self?.profileCollectionView.reloadData()
             }
@@ -57,6 +57,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
             
         } // definition of error closure
     }
+    
     func fetchSavedAddress(){
         NetworkingManager.shared.get(withEndpoint: Endpoints.getallAddrress, withParams: nil, withSuccess: {
             [weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
@@ -78,6 +79,30 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
             
         } // definition of error closure
     }
+    //Delete Card
+    func deleteCard(id : String?){
+        guard let id = id else {
+            return
+        }
+        let params:[String:Any] = [
+            AddCard.cardId:id]
+        
+        NetworkingManager.shared.delete(withEndpoint: Endpoints.deletecard, withParams: params, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
+            if let responseDict = response as? [String:Any] {
+                print("successfully deleted")
+                ///its getting deleted but the change is not reflecting at the very moment.
+                self?.fetchSavedCards()
+            }
+            }) //definition of success closure
+        { (error) in
+            if let error = error as? String {
+                print("error")
+            }
+            
+        } // definition of error closure
+    }
+    
+    
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool){
@@ -157,6 +182,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 if let walletBalance = responseDict["balance"] as? Int {
                     self.walletBalance = walletBalance
                     self.profileCollectionView.reloadData()
+                    UserDefaults.standard.set(walletBalance, forKey: UserDefaultKeys.walletBalance)
                 }
             }
             
@@ -217,6 +243,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 }
                 cell.userEmailAddress.text = userModel.email
                 cell.userPhoneNumber.text = userModel.phone
+     
             }
             if let wallet = walletBalance {
                 cell.userPoints.text = "\(wallet)"
@@ -248,7 +275,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
             else  {
                 if noOfSavedCards > 0 {
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardExpandedStateTwoCollectionViewCell", for: indexPath) as! SavedCardExpandedStateTwoCollectionViewCell
-                    
+                    cell.delegate = self
                     cell.noOfCards = noOfSavedCards
                     cell.cardModel = cardBaseModel?.data ?? []
                     cell.cardsCollectionView.reloadData()

@@ -16,10 +16,8 @@ class ServiceCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var serviceDescription: UILabel!
     var alias : String?
     var imageURL : String?
-    
-    @IBAction func selectTapped(_ sender: Any) {
-    }
-    
+    @IBOutlet weak var selectLabel: UILabel!
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -112,11 +112,12 @@ and then flod them. No ironing.</string>
             <size key="customSize" width="301" height="257"/>
             <connections>
                 <outlet property="backgroundCurvedView" destination="9Dq-dv-NKz" id="u7P-vv-wGD"/>
+                <outlet property="selectLabel" destination="OPq-rr-4d6" id="zHe-bl-Nem"/>
                 <outlet property="serviceDescription" destination="F4M-qM-uTM" id="7Lf-xL-MEm"/>
                 <outlet property="serviceImage" destination="xrI-nt-mqB" id="Y22-1T-8o1"/>
                 <outlet property="serviceName" destination="k2S-lS-kLc" id="EsL-bC-ju9"/>
             </connections>
-            <point key="canvasLocation" x="-370" y="42"/>
+            <point key="canvasLocation" x="-4" y="-14"/>
         </collectionViewCell>
     </objects>
     <resources>

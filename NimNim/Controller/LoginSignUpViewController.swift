@@ -64,6 +64,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     var email:String?
     var socialLoginType:String?
     var userId:String?
+    var isHeightAdded = false // global variable made for keyboard height modification
+    var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     var checked = ""
     {
         didSet
@@ -102,9 +104,9 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func addObservers() {
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
     }
     
     
@@ -127,13 +129,20 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.view.frame.origin.y = -keyboardSize.height
+            if !isHeightAdded {
+                let currentHeight = loginSignUpTableView.contentSize.height
+                addedHeight = keyboardSize.height
+                loginSignUpTableView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: currentHeight + addedHeight)
+                isHeightAdded = true
+            }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+        if isHeightAdded {
+            let currentHeight = loginSignUpTableView.contentSize.height
+            loginSignUpTableView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: currentHeight - addedHeight)
+            isHeightAdded = false
         }
     }
     
@@ -314,12 +323,13 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     
     //MARK: Network Requests
     
-    func getOtpTapped(withPhone phoneNumber : String?) {
-        guard let phoneNumber = phoneNumber else {
+    func getOtpTapped(withPhone phoneNumber : String?, withType type:String?) {
+        guard let phoneNumber = phoneNumber, let type = type else {
             return
         }
         let params:[String:Any] = [
             LogInViaOTP.mobile:phoneNumber,
+            LogInViaOTP.type:type
         ]
         activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.customersLoginWithOTP, withParams: params, withSuccess: { (response) in
@@ -347,6 +357,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
         let params:[String:Any] = [
             LogInViaOTP.mobile:phoneNumber,
+            LogInViaOTP.type:"login"
         ]
         activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.resendOTP, withParams: params, withSuccess: { (response) in
@@ -373,8 +384,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
         let params:[String:Any] = [
             VerifyOTP.mobile:phoneNumber,
-            VerifyOTP.otp:otp
-            
+            VerifyOTP.otp:otp,
+            VerifyOTP.type:"login"
         ]
         activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.verifyOTP, withParams: params, withSuccess: { (response) in
@@ -460,7 +471,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     var OTP : String?
     func verifyTappedInSignUpTableViewCell(withPhoneNumber phoneNumber: String?) {
-        getOtpTapped(withPhone: phoneNumber)
+        getOtpTapped(withPhone: phoneNumber, withType: "signup")
         let alert = UIAlertController(title: "Alert", message: "Enter the OTP", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.text = ""}
@@ -468,7 +479,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                let otpTextField = alert?.textFields![0]
                 if let textEntered = otpTextField?.text as? String?{
                 self.OTP = textEntered
-                 self.verify(withPhone: phoneNumber,withOTP: self.OTP)
+                 self.verify(withType: "signup",withOTP: self.OTP)
       
                 }
             }))
@@ -476,32 +487,32 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
        
     }
     
-    func verify(withPhone phone:String?, withOTP otp:String?)
+    func verify(withType type:String?, withOTP otp:String?)
     {
-        guard let phone = phone, let otp = otp, otp.count>0,phone.count>0 else {
+        guard let otp = otp, let type = type, otp.count>0  else {
             return
         }
         let params:[String:Any] = [
-            VerifyOTPSignIn.phone:phone,
+            VerifyOTPSignIn.type:type,
             VerifyOTPSignIn.otp:otp,
         ]
-            activityIndicatorView.startAnimating()
-            NetworkingManager.shared.post(withEndpoint: Endpoints.checkotp, withParams: params, withSuccess: { (response) in
-                if let responseDict = response as? [String:Any] {
-                    let userModel = Mapper<UserModel>().map(JSON: responseDict)
-                    userModel?.saveInUserDefaults()
-                    self.checked = "done"
-                }
-                self.activityIndicatorView.stopAnimating()
-                
-            }) { (error) in
-                self.activityIndicatorView.stopAnimating()
-                if let error = error as? String {
-                    let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-                    self.present(alert, animated: true, completion: nil)
-                }
+        activityIndicatorView.startAnimating()
+        NetworkingManager.shared.post(withEndpoint: Endpoints.checkotp, withParams: params, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+                let userModel = Mapper<UserModel>().map(JSON: responseDict)
+                userModel?.saveInUserDefaults()
+                self.checked = "done"
             }
+            self.activityIndicatorView.stopAnimating()
+            
+        }) { (error) in
+            self.activityIndicatorView.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
         
     }
     func signUpTappedInSignUpTableViewCell(withEmail email:String?, withFirstName firstName:String?, withLastName lastName:String?, withPhoneNumber phoneNumber:String?, withPassword password:String?, withDob dob:String?) {

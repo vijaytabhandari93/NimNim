@@ -75,7 +75,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="wrD-fT-P0w"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="rectangleCopy"/>
+                                        <state key="normal" image="rectangleCopy"/>
                                         <connections>
                                             <action selector="ifLaundered:" destination="gTV-IL-0wX" eventType="touchUpInside" id="PBL-ah-ede"/>
                                         </connections>
@@ -129,7 +129,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="MtI-Tz-4DF"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="rectangleCopy"/>
+                                        <state key="normal" image="rectangleCopy"/>
                                         <connections>
                                             <action selector="ifDryCleaned:" destination="gTV-IL-0wX" eventType="touchUpInside" id="qJe-df-d9M"/>
                                         </connections>
@@ -206,6 +206,7 @@
                 <outlet property="itemLabel" destination="aoC-5F-Wpq" id="xmM-kg-Usp"/>
                 <outlet property="laundryButton" destination="i2e-Rg-8vN" id="P4N-BU-vIX"/>
                 <outlet property="laundryRate" destination="ITu-we-gD1" id="DWI-3d-WUl"/>
+                <outlet property="qty" destination="1Rt-0M-0yy" id="rvl-ef-CBf"/>
             </connections>
             <point key="canvasLocation" x="331.8840579710145" y="167.07589285714286"/>
         </collectionViewCell>

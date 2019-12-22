@@ -30,6 +30,7 @@ class NavigationManager {
     }
     
     func fetchInitialVC() -> UIViewController? {
+        print(UserDefaults.standard.value(forKey: UserDefaultKeys.authToken))
         if let descriptionPreferences = UserDefaults.standard.object(forKey: UserDefaultKeys.descriptionPreferences) as? String , let pickUpDropOffPreferences = UserDefaults.standard.object(forKey: UserDefaultKeys.pickUpDropOfPreferences) as? String{
             let homeSB = UIStoryboard(name: "Home", bundle: nil)
             let secondViewController = homeSB.instantiateViewController(withIdentifier:"HomeBaseViewController") as? HomeBaseViewController

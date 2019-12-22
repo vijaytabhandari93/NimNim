@@ -62,12 +62,20 @@ class ServiceModel:NSObject, Mappable, Codable {
     var isNimNimItAvailable:Bool?
     var costPerPiece : Double?
     var costPerPieceBox : Int?
-    
     //Custom Variables
     var uploadedImages:[String] = []
     var specialNotes:String?
     var numberOfClothes:Int = 0
     var isRushDeliverySelected:Bool = false
+    var needHangers:Bool = false
+    
+    enum Alias:String {
+        case washAndFold = "wash-and-fold"
+        case washAndAirDry = "wash-and-air-dry"
+        case launderedShirts = "laundered-shirts"
+        case householdItems = "household-items"
+        case dryCleaning = "dry-cleaning"
+    }
     
     required convenience init?(map: Map) { self.init() }
     
@@ -94,8 +102,13 @@ class ServiceModel:NSObject, Mappable, Codable {
         pricing <- map["pricing"]
         rushDeliveryOptions <- map["rush_delivery_options"]
         isNimNimItAvailable <- map["is_nimnim_it_available"]
+        uploadedImages <- map["uploaded_images"]
+        specialNotes <- map["special_notes"]
+        numberOfClothes <- map["noOfClothes"]
+        isRushDeliverySelected <- map["need_rush_delivery"]
+        needHangers <- map["needHangers"]
     }
-    
+
     func getMaleItems() -> [ItemModel] {
         var maleItems:[ItemModel] = []  
         if let items = items, items.count > 0 {
@@ -154,6 +167,45 @@ class ServiceModel:NSObject, Mappable, Codable {
             }
         }
     }
+
+    func productQuantity() -> Int {
+        if let alias = alias {
+            if let value = Alias(rawValue: alias) {
+                switch value {
+                case .washAndFold:
+                    return numberOfClothes
+                case .washAndAirDry:
+                    return numberOfClothes
+                case .launderedShirts:
+                    return numberOfClothes
+                case .householdItems:
+                    var quantity = 0
+                    if let items = items {
+                        for item in items {
+                            if let qty = item.qty {
+                                quantity = quantity + qty
+                            }
+                        }
+                    }
+                    return quantity
+                case .dryCleaning:
+                    var quantity = 0
+                    if let items = items {
+                        for item in items {
+                            if let qty = item.maleCount {
+                                quantity = quantity + qty
+                            }
+                            if let qty = item.femaleCount {
+                                quantity = quantity + qty
+                            }
+                        }
+                    }
+                    return quantity
+                }
+            }
+        }
+        return 0
+    }
 }
 class PreferenceModel:NSObject, Mappable, Codable {
     var id:String?
@@ -167,6 +219,7 @@ class PreferenceModel:NSObject, Mappable, Codable {
         title <- map["title"]
         icon <- map["icon"]
         isNimNimItValue <- map["nimnimitvalue"]
+        isSelected <- map["is_selected"]
     }
 }
 
@@ -175,26 +228,34 @@ class PreferenceModel:NSObject, Mappable, Codable {
 class ItemModel:NSObject, Mappable, Codable {
     var id:String?
     var name : String?
-    var laundryPrice : String?
-    var drycleaningPrice : String?
-    var price:Int?
-    var genders:String?
+    var price:Int? //dryCleaning
+    var genders:String? //dryCleaning
     var icon : String?
+    var laundryPrice : String? // presently made string //household
+    var dryCleaningPrice : String? // presently made string //household
+    
     
     //this is our property
-    var count:Int? = 0
-    var maleCount:Int? = 0
-    var femaleCount:Int? = 0
+    var maleCount:Int? = 0 //dryCleaning
+    var femaleCount:Int? = 0 //dryCleaning
+    var IfLaundered : Bool = false //household
+    var IfDrycleaned : Bool = false //household
+    var qty : Int? //household
     
     required convenience init?(map: Map) { self.init() }
     func mapping(map: Map) {
         name             <- map["name"]
         id               <- map["_id"]
         laundryPrice     <- map["laundry_price"]
-        drycleaningPrice <- map["drycleaning_price"]
+        dryCleaningPrice <- map["drycleaning_price"]
         price            <- map["price"]
         genders          <- map["gender"]
         icon             <- map["icon"]
+        maleCount     <- map["male_count"]
+        femaleCount <- map["female_count"]
+        IfLaundered            <- map["if_laundered"]
+        IfDrycleaned          <- map["if_dryCleaned"]
+        qty             <- map["qty"]
     }
 }
 
@@ -208,6 +269,7 @@ class RushDeliveryOptionsModel:NSObject, Mappable, Codable {
         turnAroundTime <- map["turn_around_time"]
         price <- map["price"]
     }
+    
 }
 
 

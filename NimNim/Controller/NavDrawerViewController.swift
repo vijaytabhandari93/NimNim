@@ -10,7 +10,7 @@ import UIKit
 
 class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
-   
+    
     //MARK: IBOutlets
     @IBOutlet weak var navDrawerTableView: UITableView!
     
@@ -22,7 +22,7 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
         super.viewDidLoad()
         setupTableView()
         
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -48,4 +48,22 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
         cell.titleNavDrawer.text = navDrawerlist[indexPath.row]
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 8 {
+            logOut()
+        }
+    }
+    
+    func logOut(){
+        // clear user defaults
+        // clear all navigation controller and move the app to the location screen...
+        if let domain = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: domain)
+            UserDefaults.standard.synchronize()
+            print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
+        }
+                NavigationManager.shared.initializeApp()
+    }
+    
+    
 }

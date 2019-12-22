@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app wants to use photos to upload it alongside the service that you are adding to cart or to setup your profile.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -32,7 +30,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>6</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
@@ -46,6 +44,8 @@
 	<string></string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>please allow location access</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app wants to use photos to upload it alongside the service that you are adding to cart or to setup your profile.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.ttf</string>

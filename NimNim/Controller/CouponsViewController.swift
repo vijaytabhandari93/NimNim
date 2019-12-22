@@ -36,7 +36,37 @@ class CouponsViewController: UIViewController, UICollectionViewDelegate,UICollec
     }
     @IBAction func applyTapped(_ sender: Any) {
         
+        let couponId   = applyCouponCode.text
+        let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId)
+        applyCouponInCart(withCouponId:couponId, withCartId : cartId)
+        
+        
+        // once the api call is rectified .....send the code as param along with cart id in the params.
+        
+        // when the coupon is applied ...bring the user back to the cart (pop)....if cart is containg a coupon then change the text of the cell as "Coupon applied successfully" "coupon code"
+        
     }
+    
+    func applyCouponInCart(withCouponId couponId:String?,withCartId cartId:String?) {
+      guard let couponId = couponId,let cartId = cartId else {
+            return
+        }
+
+        let params:[String:Any] = [
+            AddToCart.code:couponId,
+            AddToCart.cartId:cartId
+            ]
+    NetworkingManager.shared.put(withEndpoint: Endpoints.applypromocode, withParams: params, withSuccess: {[weak self] (response) in
+             if let response = response as? [String:Any]
+             {
+                print("success")
+                self?.navigationController?.popViewController(animated: true)
+        }
+               
+            }) {[weak self] (error) in
+                print("error")
+            }
+        }
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
@@ -88,4 +118,8 @@ class CouponsViewController: UIViewController, UICollectionViewDelegate,UICollec
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        applyCouponCode.text = CouponBaseModelObject?.data?[indexPath.item].code
+        
+    }
 }
