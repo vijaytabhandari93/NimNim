@@ -351,6 +351,16 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func setupCartIdInUserDefaults(fromResponse response:[String:Any]?) {
+        if let response = response {
+            if let customerData = response["customer"] as? [String:Any] {
+                if let cartId = customerData["cart_id"] as? String {
+                    UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                }
+            }
+        }
+    }
+    
     func resendOtpTapped(withPhone phoneNumber: String?) {
         guard let phoneNumber = phoneNumber else {
             return
@@ -392,7 +402,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             if let responseDict = response as? [String:Any] {
                 let userModel = Mapper<UserModel>().map(JSON: responseDict)
                 userModel?.saveInUserDefaults()
-                
+                //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                self.setupCartIdInUserDefaults(fromResponse: responseDict)
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
             let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
@@ -425,7 +436,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             if let responseDict = response as? [String:Any] {
                 let userModel = Mapper<UserModel>().map(JSON: responseDict)
                 userModel?.saveInUserDefaults()
-                
+                //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                self.setupCartIdInUserDefaults(fromResponse: responseDict)
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
             let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
@@ -501,6 +513,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             if let responseDict = response as? [String:Any] {
                 let userModel = Mapper<UserModel>().map(JSON: responseDict)
                 userModel?.saveInUserDefaults()
+                //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                self.setupCartIdInUserDefaults(fromResponse: responseDict)
                 self.checked = "done"
             }
             self.activityIndicatorView.stopAnimating()
@@ -547,7 +561,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                     if let responseDict = response as? [String:Any] {
                         let userModel = Mapper<UserModel>().map(JSON: responseDict)
                         userModel?.saveInUserDefaults()
-                        
+                        //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                        self.setupCartIdInUserDefaults(fromResponse: responseDict)
                     }
                     //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
                     let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
@@ -626,7 +641,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             if let responseDict = response as? [String:Any] {
                 let userModel = Mapper<UserModel>().map(JSON: responseDict)
                 userModel?.saveInUserDefaults()
-                
+                //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                self.setupCartIdInUserDefaults(fromResponse: responseDict)
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
             let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)

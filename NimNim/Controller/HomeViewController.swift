@@ -27,7 +27,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         registerCells()
         fetchBanners()
         fetchServices()
-        // Vijayta Read - Doing fetchCart below to ensure that services that are in cart get synced with the servicesAliasArray every time the app launches... this will also solve the issue that when a user logs out and logs in again then initially all his user defaults are erased... so this will ensure that his previously saved cart items are highlighted on this screen as well when he logs back in...
+        // Read Vijayta - Doing fetchCart below to ensure that services that are in cart get synced with the servicesAliasArray every time the app launches... this will also solve the issue that when a user logs out and logs in again then initially all his user defaults are erased... so this will ensure that his previously saved cart items are highlighted on this screen as well when he logs back in...
         fetchCart()
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
@@ -107,11 +107,14 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     }
     
     func fetchCart() {
+        guard let cartId = UserDefaults.standard.object(forKey: UserDefaultKeys.cartId) as? String, cartId.count > 0 else{
+            return
+        }
         NetworkingManager.shared.get(withEndpoint: Endpoints.fetchCart, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...//in this get call the user Auth token thee cart is being fetched.
             if let responseDict = response as? [String:Any] { //Alamofire is throwing the response as dictionary .....we are convertig it to model
                 let cartModel = Mapper<CartModel>().map(JSON: responseDict)
                 
-                //Vijayta Read - The code below loops over all the services that are there in the user's cart and adds the services to aliases array if not already present (if not already present logic is there in addServiceToCartAliasinUserDefaults function)... that function ensures that services are not added again if already present...
+                //VRead Vijayta - The code below loops over all the services that are there in the user's cart and adds the services to aliases array if not already present (if not already present logic is there in addServiceToCartAliasinUserDefaults function)... that function ensures that services are not added again if already present...
                 if let services = cartModel?.services {
                     for service in services {
                         addServiceToCartAliasinUserDefaults(withAlias: service.alias)
