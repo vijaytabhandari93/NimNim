@@ -50,43 +50,34 @@ class CouponsViewController: UIViewController, UICollectionViewDelegate,UICollec
     }
     
     func applyCouponInCart(withCouponId couponId:String?,withCartId cartId:String?) {
-      guard let couponId = couponId,let cartId = cartId else {
+        guard let couponId = couponId,let cartId = cartId else {
             return
         }
-
+        
         let params:[String:Any] = [
             AddToCart.code:couponId,
             AddToCart.cartId:cartId
-            ]
-    activityIndicator.startAnimating()
-    NetworkingManager.shared.put(withEndpoint: Endpoints.applypromocode, withParams: params, withSuccess: {[weak self] (response) in
-             if let response = response as? [String:Any]
-             {
+        ]
+        activityIndicator.startAnimating()
+        NetworkingManager.shared.put(withEndpoint: Endpoints.applypromocode, withParams: params, withSuccess: {[weak self] (response) in
+            if let response = response as? [String:Any]
+            {
                 print("success")
                 print(JSON(response))
                 self?.navigationController?.popViewController(animated: true)
-//                let ordersStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-//                let orderReview = ordersStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
-//                NavigationManager.shared.push(viewController: orderReview)
-//                orderReview?.isCouponApplied = true
-//                if let couponCodes = response["couponCodes"] as? [[String:Any]] {
-//                    if let firstElement = couponCodes[0] as? [String:Any] {
-//                        if let coupon  = firstElement["code"] as? String {
-//                            orderReview?.couponCode = coupon
-//                        }
-//                    }
-//
-//
-//                }
-//
-             self?.activityIndicator.stopAnimating()
-        }
-               
-            }) {[weak self] (error) in
-                print("error")
                 self?.activityIndicator.stopAnimating()
             }
+            
+        }) {[weak self] (error) in
+            print("error")
+            self?.activityIndicator.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
+            }
         }
+    }
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {

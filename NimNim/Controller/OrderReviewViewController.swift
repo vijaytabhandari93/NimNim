@@ -21,7 +21,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     var couponCode : String? 
     
     func applyPointsTapped(tapped: Bool) {
-    pointsApplied  = tapped
+        pointsApplied  = tapped
     }
     
     func fetchWalletPoints() {
@@ -34,14 +34,14 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                     UserDefaults.standard.set(walletBalance, forKey: UserDefaultKeys.walletBalance)
                 }
             }
-             self.activityIndicator.stopAnimating()
+            self.activityIndicator.stopAnimating()
         }) { (error) in
             if let error = error as? String {
                 let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-              self.activityIndicator.stopAnimating()
+            self.activityIndicator.stopAnimating()
         }
         
     }
@@ -128,7 +128,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         let selectAddressVC = orderSB.instantiateViewController(withIdentifier: "SelectAddressViewController")
         NavigationManager.shared.push(viewController: selectAddressVC)
     }
-   //fetch Cart
+    //fetch Cart
     
     func fetchCart() {
         activityIndicator.startAnimating()
@@ -138,19 +138,19 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 self?.cartModel = cartModel //? is put after self as it is weak self.
                 self?.orderStatusCollectionView.reloadData()
                 print(JSON(cartModel))
-              
-                        if cartModel?.services?.count != nil {
-                            self?.priceTotalBackgroundView.isHidden = false
-                            self?.addressMethod.isHidden = false
-                            self?.amountLabel.text = "To be caluculated"
-                        
+                
+                if cartModel?.services?.count != nil {
+                    self?.priceTotalBackgroundView.isHidden = false
+                    self?.addressMethod.isHidden = false
+                    self?.amountLabel.text = "To be calculated"
+                    
                 }
                 if let cartId = cartModel?.cartId {
-                UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
-                     // from server we are fetching the cart id.
+                    UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                    // from server we are fetching the cart id.
                 }
             }
-             self?.activityIndicator.stopAnimating()
+            self?.activityIndicator.stopAnimating()
             }) //definition of success closure
         { (error) in
             if let error = error as? String {
@@ -158,7 +158,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-             self.activityIndicator.stopAnimating()// definition of error closure
+            self.activityIndicator.stopAnimating()// definition of error closure
         }
         
     }
@@ -198,11 +198,11 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         
         let type3PreferencesNib = UINib(nibName: "ApplyWalletPointsCollectionViewCell", bundle: nil)
         orderStatusCollectionView.register(type3PreferencesNib, forCellWithReuseIdentifier: "ApplyWalletPointsCollectionViewCell")
-       
+        
         
         let headerNib = UINib(nibName: "ShoppingbagSummaryCollectionReusableView", bundle: nil)
         orderStatusCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ShoppingbagSummaryCollectionReusableView")
-       
+        
     }
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -257,7 +257,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
             return CGSize(width: collectionView.frame.size.width, height:160)
         }else {
             if indexPath.item == 0 {
-                 return CGSize(width: collectionView.frame.size.width, height:96)
+                return CGSize(width: collectionView.frame.size.width, height:96)
             }else {
                 return CGSize(width: collectionView.frame.size.width, height:100)
             }
@@ -285,11 +285,11 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if indexPath.section == 1&&indexPath.item == 0 {
-    let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-    let applyCouponVC = SB.instantiateViewController(withIdentifier: "CouponsViewController")
-    NavigationManager.shared.push(viewController: applyCouponVC)
-    
-    }
+        if indexPath.section == 1&&indexPath.item == 0 {
+            let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+            let applyCouponVC = SB.instantiateViewController(withIdentifier: "CouponsViewController")
+            NavigationManager.shared.push(viewController: applyCouponVC)
+            
+        }
     }
 }
