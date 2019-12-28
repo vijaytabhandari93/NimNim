@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AddCardCollectionViewCellDelegate {
     
@@ -14,6 +15,7 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
     @IBOutlet weak var cardCollectionView:UICollectionView!
     @IBOutlet weak var credit: UIButton!
     @IBOutlet weak var debit: UIButton!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
     enum cardtype : Int {
         case credit
@@ -135,7 +137,7 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
             AddCard.cvv:cvv,
             AddCard.cardNumber:cardNumber,
             AddCard.name:name]
-            
+        activityIndicator.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.addCard, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 print(responseDict)
@@ -143,6 +145,7 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
             self.navigationController?.popViewController(animated: true)
+             self.activityIndicator.stopAnimating()
         }) { (error) in
             
             if let error = error as? String {
@@ -152,6 +155,7 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
                 self.present(alert, animated: true, completion: nil)
             }
         }
+         self.activityIndicator.stopAnimating()
     }
     
     @IBAction func addCardTapped(_ sender:Any?) {

@@ -11,6 +11,7 @@ import UIKit
 class SavedAddressCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var addAddressButton:UIButton!
     @IBOutlet weak var bottomSeparator:UIView!
+    @IBOutlet weak var stackViewTopConstraint:NSLayoutConstraint!
     @IBAction func addNewCardTapped(_ sender: Any) {
         
         let profileStoryBoard = UIStoryboard(name: "Profile", bundle: nil)

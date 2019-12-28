@@ -58,6 +58,7 @@
             <connections>
                 <outlet property="addAddressButton" destination="YRH-sL-fix" id="PZX-mf-4dz"/>
                 <outlet property="bottomSeparator" destination="xgA-Iq-3OW" id="PTH-R1-lJr"/>
+                <outlet property="stackViewTopConstraint" destination="n08-KK-gPM" id="goQ-DT-D8C"/>
             </connections>
             <point key="canvasLocation" x="217" y="99"/>
         </collectionViewCell>

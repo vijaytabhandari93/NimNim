@@ -8,13 +8,15 @@
 
 import UIKit
 import ObjectMapper
+import SwiftyJSON
+import NVActivityIndicatorView
 
 class CouponsViewController: UIViewController, UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
      //IBOutlets
     @IBOutlet weak var applyCouponCode : UITextField!
     @IBOutlet weak var couponsCollectionView : UICollectionView!
-    
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     var CouponBaseModelObject : CouponBaseModel?
 
     override func viewDidLoad() {
@@ -56,15 +58,33 @@ class CouponsViewController: UIViewController, UICollectionViewDelegate,UICollec
             AddToCart.code:couponId,
             AddToCart.cartId:cartId
             ]
+    activityIndicator.startAnimating()
     NetworkingManager.shared.put(withEndpoint: Endpoints.applypromocode, withParams: params, withSuccess: {[weak self] (response) in
              if let response = response as? [String:Any]
              {
                 print("success")
+                print(JSON(response))
                 self?.navigationController?.popViewController(animated: true)
+//                let ordersStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+//                let orderReview = ordersStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
+//                NavigationManager.shared.push(viewController: orderReview)
+//                orderReview?.isCouponApplied = true
+//                if let couponCodes = response["couponCodes"] as? [[String:Any]] {
+//                    if let firstElement = couponCodes[0] as? [String:Any] {
+//                        if let coupon  = firstElement["code"] as? String {
+//                            orderReview?.couponCode = coupon
+//                        }
+//                    }
+//
+//
+//                }
+//
+             self?.activityIndicator.stopAnimating()
         }
                
             }) {[weak self] (error) in
                 print("error")
+                self?.activityIndicator.stopAnimating()
             }
         }
     
@@ -79,7 +99,7 @@ class CouponsViewController: UIViewController, UICollectionViewDelegate,UICollec
     
     //MARK: Networking Call
     func fetchCoupons() {
-        
+        activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.promocodes, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] {
                 let couponBaseModel = Mapper<CouponBaseModel>().map(JSON: responseDict)
@@ -87,7 +107,7 @@ class CouponsViewController: UIViewController, UICollectionViewDelegate,UICollec
                 //? is put after self as it is weak self.
                 self?.couponsCollectionView.reloadData()
             }
-            
+            self?.activityIndicator.stopAnimating()
             }) //definition of success closure
         { (error) in
             if let error = error as? String {
@@ -96,7 +116,9 @@ class CouponsViewController: UIViewController, UICollectionViewDelegate,UICollec
                 self.present(alert, animated: true, completion: nil)
             }
             
-        } // definition of error closure
+        }
+        self.activityIndicator.stopAnimating()
+        // definition of error closure
     }
     //MARK:Collection View Datasource Methods
     

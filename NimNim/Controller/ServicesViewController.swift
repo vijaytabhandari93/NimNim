@@ -89,7 +89,6 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     @IBAction func addToCart(_ sender: Any) {
         if addToCart.titleLabel?.text == "CheckOut" {
-            print("abcd")
             let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
             let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
             NavigationManager.shared.push(viewController: cartVC)
@@ -106,11 +105,9 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         if let serviceModel = serviceModel, let cartId = cartId{
             var modelToDictionary = serviceModel.toJSON()
             modelToDictionary["cart_id"] = cartId
-            print(JSON(modelToDictionary))
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)
-                
                 self?.IsAddToCartTapped = true
                 self?.prefernces.reloadData()
                 if let response = response as? [String:Any] {
@@ -137,22 +134,20 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func addServiceToCart() {
-        if let serviceModel = serviceModel{
-            let modelToDictionary = serviceModel.toJSON() // model in dictationary
+        if let serviceModel = serviceModel /// this is received from serviceBase collection view cells(//passing of the service model to the vc. as written)
+        { let modelToDictionary = serviceModel.toJSON() // model in dictationary
             activityIndicator.startAnimating()
-            var params : [String:Any] = [:]
-            params[AddToCart.services] = [modelToDictionary]
-            print(JSON(params))
+            var params : [String:Any] = [:]/// - dictionary
+            params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
             NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)//alamofire is conveerting dictionary to JSON
-
-                self?.IsAddToCartTapped = true
+               self?.IsAddToCartTapped = true
                 self?.prefernces.reloadData()
                 if let response = response as? [String:Any] {
                     if let cartId = response["cart_id"] as? String {
                         UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
                     }
-                    addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias)
+                    addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
                     self?.setupCartCountLabel()
                 }
                 print("success")
@@ -186,8 +181,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.serviceModel?.uploadedImages.append(imagePath)
-                    // put call of user.....function for update......reload table view (user......tojson).........cell for item at index path .... check for image or label.....kf show......
-                }
+                    }
             }
             self?.activityIndicator.stopAnimating()
             

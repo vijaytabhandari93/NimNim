@@ -331,14 +331,34 @@
                                     <constraint firstAttribute="height" constant="71" id="hSn-AY-I45"/>
                                 </constraints>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wnf-si-UwL" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bmJ-dF-rO2"/>
+                                    <constraint firstAttribute="width" constant="50" id="tHt-ig-pZ2"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballGridPulse"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="woJ-gL-5aU" firstAttribute="leading" secondItem="bcm-90-cpL" secondAttribute="leading" id="1F2-cy-lW2"/>
+                            <constraint firstItem="Wnf-si-UwL" firstAttribute="centerX" secondItem="4xQ-44-rgT" secondAttribute="centerX" id="6ei-xy-ej1"/>
                             <constraint firstItem="jAL-wn-kVa" firstAttribute="leading" secondItem="bcm-90-cpL" secondAttribute="leading" id="94y-Zw-riL"/>
                             <constraint firstItem="bcm-90-cpL" firstAttribute="trailing" secondItem="woJ-gL-5aU" secondAttribute="trailing" id="Fr5-vA-Ifl"/>
                             <constraint firstItem="bcm-90-cpL" firstAttribute="trailing" secondItem="jAL-wn-kVa" secondAttribute="trailing" id="Rl5-ql-cYi"/>
                             <constraint firstItem="jAL-wn-kVa" firstAttribute="bottom" secondItem="bcm-90-cpL" secondAttribute="bottom" id="YQC-AV-J3I"/>
+                            <constraint firstItem="Wnf-si-UwL" firstAttribute="centerY" secondItem="4xQ-44-rgT" secondAttribute="centerY" id="g4A-71-y6P"/>
                             <constraint firstItem="woJ-gL-5aU" firstAttribute="top" secondItem="4xQ-44-rgT" secondAttribute="top" id="tvK-N0-hAc"/>
                             <constraint firstItem="bcm-90-cpL" firstAttribute="bottom" secondItem="woJ-gL-5aU" secondAttribute="bottom" id="wVs-S0-DLf"/>
                         </constraints>
@@ -417,7 +437,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyj-yl-Tm5">
-                                                        <rect key="frame" x="353" y="26" width="26" height="26"/>
+                                                        <rect key="frame" x="368" y="26" width="26" height="26"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="basket" translatesAutoresizingMaskIntoConstraints="NO" id="ziL-hR-9yG">
                                                                 <rect key="frame" x="0.0" y="0.0" width="26" height="26"/>
@@ -469,11 +489,29 @@
                                                     <constraint firstItem="ooZ-wg-VsX" firstAttribute="leading" secondItem="knh-9e-VFz" secondAttribute="leading" constant="30" id="2Hx-CM-8Ck"/>
                                                     <constraint firstAttribute="height" constant="74" id="Iio-6u-I9q"/>
                                                     <constraint firstItem="zyj-yl-Tm5" firstAttribute="top" secondItem="knh-9e-VFz" secondAttribute="top" constant="26" id="PdV-cp-sQu"/>
-                                                    <constraint firstAttribute="trailing" secondItem="zyj-yl-Tm5" secondAttribute="trailing" constant="35" id="Wml-la-dpG"/>
+                                                    <constraint firstAttribute="trailing" secondItem="zyj-yl-Tm5" secondAttribute="trailing" constant="20" id="Wml-la-dpG"/>
                                                     <constraint firstItem="I6s-ya-HPW" firstAttribute="leading" secondItem="knh-9e-VFz" secondAttribute="leading" constant="30" id="b05-37-DDy"/>
                                                     <constraint firstItem="ooZ-wg-VsX" firstAttribute="top" secondItem="I6s-ya-HPW" secondAttribute="bottom" constant="2" id="dfX-IY-T6w"/>
                                                     <constraint firstItem="I6s-ya-HPW" firstAttribute="top" secondItem="knh-9e-VFz" secondAttribute="top" constant="24" id="fge-ky-nrM"/>
                                                 </constraints>
+                                            </view>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzi-Bo-DRp" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                                <rect key="frame" x="182" y="331.5" width="50" height="50"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="3mi-KP-RjH"/>
+                                                    <constraint firstAttribute="height" constant="50" id="Jn2-da-srz"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballGridPulse"/>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="5"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -482,9 +520,11 @@
                                             <constraint firstItem="knh-9e-VFz" firstAttribute="leading" secondItem="4nS-OF-IPZ" secondAttribute="leading" id="8PW-k2-GV1"/>
                                             <constraint firstAttribute="trailing" secondItem="OGR-Iq-8j2" secondAttribute="trailing" id="CPn-H6-dAt"/>
                                             <constraint firstItem="knh-9e-VFz" firstAttribute="top" secondItem="4nS-OF-IPZ" secondAttribute="top" id="DdB-tV-Qgm"/>
+                                            <constraint firstItem="bzi-Bo-DRp" firstAttribute="centerY" secondItem="4nS-OF-IPZ" secondAttribute="centerY" id="ZXl-ct-q6N"/>
                                             <constraint firstItem="OGR-Iq-8j2" firstAttribute="top" secondItem="knh-9e-VFz" secondAttribute="bottom" constant="13" id="avp-Or-svq"/>
                                             <constraint firstItem="OGR-Iq-8j2" firstAttribute="leading" secondItem="4nS-OF-IPZ" secondAttribute="leading" id="bDu-b2-A0g"/>
                                             <constraint firstAttribute="bottom" secondItem="OGR-Iq-8j2" secondAttribute="bottom" id="cf8-sL-T5N"/>
+                                            <constraint firstItem="bzi-Bo-DRp" firstAttribute="centerX" secondItem="4nS-OF-IPZ" secondAttribute="centerX" id="jv0-Ne-Vd2"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -507,6 +547,7 @@
                         <viewLayoutGuide key="safeArea" id="VcI-GY-4fc"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="bzi-Bo-DRp" id="4Cu-iy-ovK"/>
                         <outlet property="basketLabel" destination="nZT-kk-CBs" id="dYb-Bv-3dT"/>
                         <outlet property="homeCollectionView" destination="OGR-Iq-8j2" id="T6S-q6-dKC"/>
                         <outlet property="userName" destination="I6s-ya-HPW" id="4Vy-Rq-nSd"/>
@@ -514,7 +555,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L25-Wc-eR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4304.347826086957" y="265.84821428571428"/>
+            <point key="canvasLocation" x="-4819" y="225"/>
         </scene>
         <!--Nav Drawer View Controller-->
         <scene sceneID="gFQ-Zb-a1q">
@@ -571,13 +612,33 @@
                                     <constraint firstItem="ZOl-L2-X7f" firstAttribute="leading" secondItem="549-En-6Jp" secondAttribute="leading" id="pq5-n4-RBB"/>
                                 </constraints>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DYn-mf-fcu" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="406" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="mMQ-fA-0lf"/>
+                                    <constraint firstAttribute="height" constant="50" id="prk-6C-MzR"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballGridPulse"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="549-En-6Jp" firstAttribute="top" secondItem="8OF-Pn-Q7J" secondAttribute="top" constant="57" id="5iv-De-huA"/>
                             <constraint firstItem="8OF-Pn-Q7J" firstAttribute="bottom" secondItem="549-En-6Jp" secondAttribute="bottom" constant="71" id="W9H-fO-xY4"/>
+                            <constraint firstItem="DYn-mf-fcu" firstAttribute="centerY" secondItem="aJr-0w-c9B" secondAttribute="centerY" id="fuP-KQ-Apc"/>
                             <constraint firstItem="8OF-Pn-Q7J" firstAttribute="trailing" secondItem="549-En-6Jp" secondAttribute="trailing" id="hoS-lZ-s1f"/>
                             <constraint firstItem="549-En-6Jp" firstAttribute="leading" secondItem="8OF-Pn-Q7J" secondAttribute="leading" id="hx6-Xb-frn"/>
+                            <constraint firstItem="DYn-mf-fcu" firstAttribute="centerX" secondItem="aJr-0w-c9B" secondAttribute="centerX" id="jSn-Dt-C9X"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="8OF-Pn-Q7J"/>
                     </view>
@@ -596,7 +657,31 @@
                     <view key="view" contentMode="scaleToFill" id="22n-PQ-OfA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LgS-Go-5WW" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="406" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Nde-gB-ww9"/>
+                                    <constraint firstAttribute="width" constant="50" id="icz-aF-f8u"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballGridPulse"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" red="0.96862745100000003" green="0.3803921569" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="LgS-Go-5WW" firstAttribute="centerX" secondItem="22n-PQ-OfA" secondAttribute="centerX" id="nu1-DE-orS"/>
+                            <constraint firstItem="LgS-Go-5WW" firstAttribute="centerY" secondItem="22n-PQ-OfA" secondAttribute="centerY" id="vp4-yH-hWt"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="kOl-dY-peF"/>
                     </view>
                 </viewController>
@@ -666,13 +751,33 @@
                                 <rect key="frame" x="0.0" y="757" width="414" height="105"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rg6-88-uGh" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="406" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JEN-oJ-GLX"/>
+                                    <constraint firstAttribute="width" constant="50" id="Ki4-OX-Cpy"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballGridPulse"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="qkS-Ua-h0H" firstAttribute="trailing" secondItem="iIs-et-Vab" secondAttribute="trailing" id="28M-dg-ubh"/>
+                            <constraint firstItem="Rg6-88-uGh" firstAttribute="centerX" secondItem="ham-W5-gxF" secondAttribute="centerX" id="BDM-bI-ipe"/>
                             <constraint firstItem="iIs-et-Vab" firstAttribute="top" secondItem="94U-HZ-duA" secondAttribute="bottom" id="GmB-vr-eMs"/>
                             <constraint firstItem="94U-HZ-duA" firstAttribute="leading" secondItem="qkS-Ua-h0H" secondAttribute="leading" id="Llh-MS-iCP"/>
                             <constraint firstItem="94U-HZ-duA" firstAttribute="top" secondItem="bX5-ra-hcK" secondAttribute="bottom" constant="8" id="Mb0-qZ-6bG"/>
+                            <constraint firstItem="Rg6-88-uGh" firstAttribute="centerY" secondItem="ham-W5-gxF" secondAttribute="centerY" id="VFd-bs-oiP"/>
                             <constraint firstAttribute="bottom" secondItem="iIs-et-Vab" secondAttribute="bottom" id="Z7H-qC-r1J"/>
                             <constraint firstItem="bX5-ra-hcK" firstAttribute="top" secondItem="qkS-Ua-h0H" secondAttribute="top" id="eSl-Dr-yQU"/>
                             <constraint firstItem="qkS-Ua-h0H" firstAttribute="trailing" secondItem="94U-HZ-duA" secondAttribute="trailing" id="f2C-3o-S5T"/>
@@ -684,6 +789,7 @@
                         <viewLayoutGuide key="safeArea" id="qkS-Ua-h0H"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="Rg6-88-uGh" id="EXj-WP-Dbn"/>
                         <outlet property="profileCollectionView" destination="94U-HZ-duA" id="uFd-ht-c97"/>
                     </connections>
                 </viewController>

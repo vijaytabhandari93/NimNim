@@ -8,12 +8,14 @@
 
 import UIKit
 import ObjectMapper
+import NVActivityIndicatorView
 
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     //MARK:IBOutlets
     @IBOutlet weak var homeCollectionView: UICollectionView!
-    
     @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    
     
     var bannerModel : BannersBaseModel?
     var serviceModel : ServiceBaseModel?
@@ -61,13 +63,14 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     
     //MARK: Networking Methods
     func fetchBanners() {
+        activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.banners, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] {
                 let bannerModel = Mapper<BannersBaseModel>().map(JSON: responseDict)
                 self?.bannerModel = bannerModel //? is put after self as it is weak self.
                 self?.homeCollectionView.reloadData()
             }
-  
+    self?.activityIndicator.stopAnimating()
             }) //definition of success closure
         { (error) in
             if let error = error as? String {
@@ -75,11 +78,12 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-    
+            self.activityIndicator.stopAnimating()
         } // definition of error closure
     }
     
     func fetchServices() {
+        activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.services, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] {
                 let serviceModel = Mapper<ServiceBaseModel>().map(JSON: responseDict)
@@ -87,6 +91,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                 self?.serviceModel?.saveInUserDefaults()
                 self?.homeCollectionView.reloadData()
             }
+            self?.activityIndicator.stopAnimating()
             
             }) //definition of success closure
         { (error) in
@@ -95,7 +100,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            
+            self.activityIndicator.stopAnimating()
         } // definition of error closure
     }
 

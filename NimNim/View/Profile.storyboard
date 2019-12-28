@@ -116,6 +116,24 @@
                                     <action selector="addAddressTapped:" destination="I80-bZ-Onu" eventType="touchUpInside" id="j4r-j9-kyH"/>
                                 </connections>
                             </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FyQ-VV-qe8" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="5uF-pF-K4V"/>
+                                    <constraint firstAttribute="height" constant="50" id="lYu-ue-40L"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballGridPulse"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -128,12 +146,15 @@
                             <constraint firstItem="8fw-Wt-7z6" firstAttribute="leading" secondItem="rf8-vs-2fw" secondAttribute="leading" id="cIg-KG-KWJ"/>
                             <constraint firstItem="rf8-vs-2fw" firstAttribute="bottom" secondItem="8fw-Wt-7z6" secondAttribute="bottom" constant="48" id="gEr-mq-GZh"/>
                             <constraint firstItem="rf8-vs-2fw" firstAttribute="trailing" secondItem="z1m-WF-fFN" secondAttribute="trailing" id="gFC-k9-QUV"/>
+                            <constraint firstItem="FyQ-VV-qe8" firstAttribute="centerY" secondItem="ebK-Eu-kaY" secondAttribute="centerY" id="jSO-yr-JK6"/>
+                            <constraint firstItem="FyQ-VV-qe8" firstAttribute="centerX" secondItem="ebK-Eu-kaY" secondAttribute="centerX" id="q1j-La-4CG"/>
                             <constraint firstItem="rf8-vs-2fw" firstAttribute="bottom" secondItem="iXM-yP-pyC" secondAttribute="bottom" id="tsr-t0-NRn"/>
                             <constraint firstItem="z1m-WF-fFN" firstAttribute="top" secondItem="rf8-vs-2fw" secondAttribute="top" id="wdf-d8-kcx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rf8-vs-2fw"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="FyQ-VV-qe8" id="ONk-Oz-uCC"/>
                         <outlet property="addAddressButton" destination="iXM-yP-pyC" id="vwe-Yg-Ukn"/>
                         <outlet property="addAddressCollectionView" destination="8fw-Wt-7z6" id="MV4-5H-Mfd"/>
                         <outlet property="addressLabel" destination="IaP-6x-Dy0" id="eRf-ZU-Btv"/>
@@ -248,11 +269,31 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5H-ek-ocL" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="Xza-DB-fxX"/>
+                                    <constraint firstAttribute="height" constant="50" id="rsp-Fu-Lcq"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballGridPulse"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="a5H-ek-ocL" firstAttribute="centerY" secondItem="Hq0-19-cq0" secondAttribute="centerY" id="A9a-vO-5rc"/>
                             <constraint firstItem="pLx-Mr-XP4" firstAttribute="trailing" secondItem="wjw-wc-CiD" secondAttribute="trailing" id="CVZ-xX-5OS"/>
                             <constraint firstItem="pLx-Mr-XP4" firstAttribute="top" secondItem="wjw-wc-CiD" secondAttribute="top" id="HfT-6Q-Omg"/>
+                            <constraint firstItem="a5H-ek-ocL" firstAttribute="centerX" secondItem="Hq0-19-cq0" secondAttribute="centerX" id="NyB-Iz-dow"/>
                             <constraint firstItem="G1W-dk-Qnr" firstAttribute="top" secondItem="pLx-Mr-XP4" secondAttribute="bottom" id="QfE-P9-kYJ"/>
                             <constraint firstItem="G1W-dk-Qnr" firstAttribute="leading" secondItem="wjw-wc-CiD" secondAttribute="leading" id="VO7-OG-AuE"/>
                             <constraint firstItem="wjw-wc-CiD" firstAttribute="bottom" secondItem="VO7-8x-nqt" secondAttribute="bottom" id="Wex-CQ-Vyg"/>
@@ -265,6 +306,7 @@
                         <viewLayoutGuide key="safeArea" id="wjw-wc-CiD"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="a5H-ek-ocL" id="Bwp-J4-OEw"/>
                         <outlet property="cardCollectionView" destination="G1W-dk-Qnr" id="iK2-Ph-ADI"/>
                         <outlet property="credit" destination="nbD-7O-NMn" id="eDP-BC-NmN"/>
                         <outlet property="debit" destination="g8V-lZ-5ob" id="2xi-re-0b1"/>

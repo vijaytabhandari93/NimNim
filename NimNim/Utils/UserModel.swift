@@ -36,7 +36,7 @@ class UserModel: NSObject, Mappable, Codable {
         id            <- map["customer._id"]
         dob            <- map["customer.dob"]
         token       <- map["token"]
-        profileImage       <- map["profile_Image"]
+        profileImage       <- map["customer.profileImage"]
       }
     func saveInUserDefaults() {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self), forKey: UserDefaultKeys.User)

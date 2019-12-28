@@ -9,20 +9,23 @@
 import UIKit
 import ObjectMapper
 import SwiftyJSON
+import NVActivityIndicatorView
 
 class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ServiceOrderStatusCollectionViewCellDelegate,ApplyWalletPointsCollectionViewCellDelegate{
     
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     var pointsApplied : Bool = true
     var walletBalance : Int = 0
     
+    var isCouponApplied : Bool = false
+    var couponCode : String? 
+    
     func applyPointsTapped(tapped: Bool) {
-        
-        pointsApplied  = tapped
-
+    pointsApplied  = tapped
     }
     
     func fetchWalletPoints() {
-        
+        activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.fetchwalletbalance, withParams: nil, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 if let walletBalance = responseDict["balance"] as? Int {
@@ -31,15 +34,16 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                     UserDefaults.standard.set(walletBalance, forKey: UserDefaultKeys.walletBalance)
                 }
             }
-            
+             self.activityIndicator.stopAnimating()
         }) { (error) in
             if let error = error as? String {
                 let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            
+              self.activityIndicator.stopAnimating()
         }
+        
     }
     
     
@@ -80,8 +84,8 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     
     func removeItem(withServiceModel model: ServiceModel?) {
         if let model = model {
-        removeItemFromCart(withModel: model)
-    }
+            removeItemFromCart(withModel: model)
+        }
     }
     
     var cartModel : CartModel?
@@ -105,6 +109,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         fetchWalletPoints()
     }
     
+    
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -126,30 +131,26 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
    //fetch Cart
     
     func fetchCart() {
+        activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.fetchCart, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...//in this get call the user Auth token thee cart is being fetched.
             if let responseDict = response as? [String:Any] { //Alamofire is throwing the response as dictionary .....we are convertig it to model
                 let cartModel = Mapper<CartModel>().map(JSON: responseDict)
                 self?.cartModel = cartModel //? is put after self as it is weak self.
                 self?.orderStatusCollectionView.reloadData()
-                let array = cartModel?.services
-                if let array = array {
-                    for item in array {
-                        addServiceToCartAliasinUserDefaults(withAlias: item.alias)
-                        print("added")
+                print(JSON(cartModel))
+              
                         if cartModel?.services?.count != nil {
                             self?.priceTotalBackgroundView.isHidden = false
                             self?.addressMethod.isHidden = false
                             self?.amountLabel.text = "To be caluculated"
-                        }
-                    }
+                        
                 }
                 if let cartId = cartModel?.cartId {
                 UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
-                print(cartId) // from server we are fetching the cart id.
+                     // from server we are fetching the cart id.
                 }
-        print(JSON(responseDict))
             }
-            
+             self?.activityIndicator.stopAnimating()
             }) //definition of success closure
         { (error) in
             if let error = error as? String {
@@ -157,42 +158,26 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            
-        } // definition of error closure
+             self.activityIndicator.stopAnimating()// definition of error closure
+        }
+        
     }
     // remove Item from cart
     func removeItemFromCart(withModel model : ServiceModel) {
         
-        guard let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), let itemId = model.id else {return}
+        guard let itemId = model.id else {return}
         
-     let params:[String:Any] = [
-            AddToCart.cartId:cartId,
+        let params:[String:Any] = [
             AddToCart.itemId:itemId]
-    
-        NetworkingManager.shared.get(withEndpoint: Endpoints.removeItemFromCart, withParams: params, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
+        activityIndicator.startAnimating()
+        NetworkingManager.shared.delete(withEndpoint: Endpoints.removeItemFromCart, withParams: params, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] { //Alamofire is throwing the response as dictionary .....we are convertig it to model
-                let cartModel = Mapper<CartModel>().map(JSON: responseDict)
-                self?.cartModel = cartModel //? is put after self as it is weak self.
-                self?.orderStatusCollectionView.reloadData()
-                var array = cartModel?.services
-                if let array = array {
-                    for item in array {
-                        addServiceToCartAliasinUserDefaults(withAlias: item.alias)
-                        print("added")
-                        if cartModel?.services?.count != nil {
-                            self?.priceTotalBackgroundView.isHidden = false
-                            self?.addressMethod.isHidden = false
-                            self?.amountLabel.text = "To be caluculated"
-                        }
-                    }
-                }
-                if let cartId = cartModel?.cartId {
-                    UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
-                    print(cartId)
-                }
                 print(JSON(responseDict))
+                //remove alias count from cart
+                removeServiceFromCartAliasInUserDefault(withAlias: model.alias)
+                self?.fetchCart()
             }
-            
+            self?.activityIndicator.stopAnimating()
             }) //definition of success closure
         { (error) in
             if let error = error as? String {
@@ -200,7 +185,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            
+            self.activityIndicator.stopAnimating()
         } // definition of error closure
     }
     //MARK:UI Methods
@@ -250,13 +235,17 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         }else {
             if indexPath.item == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DoYouHaveACouponCollectionViewCell", for: indexPath) as! DoYouHaveACouponCollectionViewCell
-                if let coupon = cartModel?.couponCodes?.count , coupon > 0 {
-                   cell.doYouHaveACoupon.text = "Coupons Applied"
-                   let couponItem = cartModel?.couponCodes?[0]
-                   cell.chooseCoupon.text  = "\(couponItem)" }
+                if let couponArray = cartModel?.couponCodes, couponArray.count > 0 {
+                    cell.doYouHaveACoupon.text = "Coupons Applied"
+                    cell.chooseCoupon.text  = couponArray[0].code ?? ""
+                }else {
+                    cell.doYouHaveACoupon.text = "Do you have a Coupon?"
+                    cell.chooseCoupon.text  = "Choose a coupon"
+                }
                 return cell
             }else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ApplyWalletPointsCollectionViewCell", for: indexPath) as! ApplyWalletPointsCollectionViewCell
+                cell.configureCell(withCartModel: cartModel)
                 cell.points.text = "Points \(walletBalance)"
                 return cell
             }

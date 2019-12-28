@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class AddAddressViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AddAddressCollectionViewCellDelegate {
 
     @IBOutlet weak var addAddressCollectionView: UICollectionView!
-    
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
   
     var model : AddressDetailsModel? // used for editing function
     var editTapped : Bool = false // used for editing function
@@ -92,7 +93,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             AddAddress.label:label
         ]
         
-        
+        activityIndicator.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.addAddress, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 print(responseDict)
@@ -100,6 +101,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             }
             
             self.navigationController?.popViewController(animated: true)
+             self.activityIndicator.stopAnimating()
         }) { (error) in
             
             if let error = error as? String {
@@ -108,6 +110,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
                 print("wrong")
                 self.present(alert, animated: true, completion: nil)
             }
+             self.activityIndicator.stopAnimating()
         }
     }
     
@@ -126,13 +129,14 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             AddAddress.label:label,
             AddAddress.id:id
         ]
-        
+        activityIndicator.startAnimating()
         NetworkingManager.shared.put(withEndpoint: Endpoints.addAddress, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 print(responseDict)
                 print("hello")
             }
             self.navigationController?.popViewController(animated: true)
+             self.activityIndicator.stopAnimating()
         }) { (error) in
             
             if let error = error as? String {
@@ -141,7 +145,9 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
                 print("wrong")
                 self.present(alert, animated: true, completion: nil)
             }
+             self.activityIndicator.stopAnimating()
         }
+        
     }
 
     @IBAction func addAddressTapped(_ sender: Any) {

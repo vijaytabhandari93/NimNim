@@ -45,7 +45,7 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="Cf7-AY-UyD" firstAttribute="firstBaseline" secondItem="faI-ee-OiF" secondAttribute="baseline" constant="24" symbolType="layoutAnchor" id="ArN-8N-Ch2"/>
+                <constraint firstItem="Cf7-AY-UyD" firstAttribute="firstBaseline" secondItem="faI-ee-OiF" secondAttribute="baseline" constant="16" symbolType="layoutAnchor" id="ArN-8N-Ch2"/>
                 <constraint firstItem="faI-ee-OiF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="28" id="E7s-Me-A9t"/>
                 <constraint firstItem="Cf7-AY-UyD" firstAttribute="leading" secondItem="faI-ee-OiF" secondAttribute="leading" id="KHf-sB-tlG"/>
                 <constraint firstItem="faI-ee-OiF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="uB6-aI-3s7"/>
@@ -54,7 +54,7 @@
             <connections>
                 <outlet property="noOfSavedAddress" destination="Cf7-AY-UyD" id="FtW-gE-4p2"/>
             </connections>
-            <point key="canvasLocation" x="180" y="39"/>
+            <point key="canvasLocation" x="491" y="-83"/>
         </collectionViewCell>
     </objects>
 </document>

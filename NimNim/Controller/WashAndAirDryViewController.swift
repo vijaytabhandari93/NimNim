@@ -165,7 +165,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     
     @IBAction func addToCartTapped(_ sender: Any) {
         if addToCart.titleLabel?.text == "CheckOut" {
-            print("abcd")
+            //print("abcd")
             let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
             let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
             NavigationManager.shared.push(viewController: cartVC)
@@ -273,11 +273,10 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         if let serviceModel = serviceModel, let cartId = cartId{
             var modelToDictionary = serviceModel.toJSON()
             modelToDictionary["cart_id"] = cartId
-            print(JSON(modelToDictionary))
+            //print(JSON(modelToDictionary))
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)
-                
                 self?.IsAddToCartTapped = true
                 self?.washAndAirDryCollectionView.reloadData()
                 if let response = response as? [String:Any] {
@@ -308,7 +307,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             var params : [String:Any] = [:]
             params[AddToCart.services] = [modelToDictionary]
             activityIndicator.startAnimating()
-            print(JSON(params))
+            //print(JSON(params))
             NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)
                 self?.IsAddToCartTapped = true

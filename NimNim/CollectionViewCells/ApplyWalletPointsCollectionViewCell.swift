@@ -17,22 +17,31 @@ class ApplyWalletPointsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var apply: UIButton!
     
     var lastState : Bool = true
+    var cartModel:CartModel?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
     var delegate : ApplyWalletPointsCollectionViewCellDelegate?
     
+    func configureCell(withCartModel cartModel:CartModel?) {
+        self.cartModel = cartModel
+        setupUI(forState: cartModel?.isWalletSelected)
+    }
+    
     @IBAction func applyPointsTapped(_ sender:Any?) {
-        lastState = !lastState
-        delegate?.applyPointsTapped(tapped: lastState)
-        if lastState {
+        if let isSelected = self.cartModel?.isWalletSelected {
+            self.cartModel?.isWalletSelected = !isSelected
+        }
+        setupUI(forState: self.cartModel?.isWalletSelected)
+    }
+    
+    func setupUI(forState state:Bool?) {
+        if let state = state, state == true {
             let image = UIImage(named: "path2")
             apply.setImage(image, for: .normal)
             apply.backgroundColor = Colors.nimnimGreen
-            
-        }
-        else {
+        }else {
             apply.setImage(nil, for: .normal)
             apply.backgroundColor = Colors.nimnimGrey
         }

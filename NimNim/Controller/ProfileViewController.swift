@@ -8,12 +8,14 @@
 
 import UIKit
 import ObjectMapper
+import NVActivityIndicatorView
+import Kingfisher
 
-class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SavedCardExpandedStateTwoCollectionViewCellDelegate{
+class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SavedCardExpandedStateTwoCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,ProfileCollectionViewCellDelegate {
     
     //IBOutlets
     @IBOutlet weak var profileCollectionView: UICollectionView!
-    
+    var photo : String?
     var noOfSavedCards : Int = 0 // initially
     var noOfSavedAdderess : Int = 0 //initially
     var selectedCard : Bool = false //initially
@@ -21,7 +23,10 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     var walletBalance : Int?
     var cardBaseModel : CardModel?
     var addressBaseModel : AddressModel?
+     // later used to send image
+    var userModel = UserModel.fetchFromUserDefaults()
     
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     @IBAction func editTapped(_ sender: Any) {
     }
     var isFirstSectionSelected = false
@@ -38,6 +43,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     //Networking Call
     
     func fetchSavedCards(){
+         activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.getallcard, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] {
                 let cardBaseModel = Mapper<CardModel>().map(JSON: responseDict)
@@ -47,6 +53,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 }
                 self?.profileCollectionView.reloadData()
             }
+             self?.activityIndicator.stopAnimating()
             }) //definition of success closure
         { (error) in
             if let error = error as? String {
@@ -54,11 +61,12 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            
+            self.activityIndicator.stopAnimating()
         } // definition of error closure
     }
     
     func fetchSavedAddress(){
+         activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.getallAddrress, withParams: nil, withSuccess: {
             [weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] {
@@ -69,6 +77,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 }
                 self?.profileCollectionView.reloadData()
             }
+             self?.activityIndicator.stopAnimating()
             }) //definition of success closure
         { (error) in
             if let error = error as? String {
@@ -77,7 +86,9 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 self.present(alert, animated: true, completion: nil)
             }
             
-        } // definition of error closure
+        }
+         self.activityIndicator.stopAnimating()
+        // definition of error closure
     }
     //Delete Card
     func deleteCard(id : String?){
@@ -86,19 +97,20 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         let params:[String:Any] = [
             AddCard.cardId:id]
-        
+        activityIndicator.startAnimating()
         NetworkingManager.shared.delete(withEndpoint: Endpoints.deletecard, withParams: params, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] {
                 print("successfully deleted")
                 ///its getting deleted but the change is not reflecting at the very moment.
                 self?.fetchSavedCards()
             }
+             self?.activityIndicator.stopAnimating()
             }) //definition of success closure
         { (error) in
             if let error = error as? String {
                 print("error")
             }
-            
+             self.activityIndicator.stopAnimating()
         } // definition of error closure
     }
     
@@ -176,7 +188,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     //MARK: Network Requests
     
     func fetchWalletPoints() {
-        
+        activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.fetchwalletbalance, withParams: nil, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
                 if let walletBalance = responseDict["balance"] as? Int {
@@ -185,14 +197,14 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                     UserDefaults.standard.set(walletBalance, forKey: UserDefaultKeys.walletBalance)
                 }
             }
-            
+             self.activityIndicator.stopAnimating()
         }) { (error) in
             if let error = error as? String {
                 let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-            
+            self.activityIndicator.stopAnimating()
         }
     }
     
@@ -235,18 +247,28 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ProfileCollectionViewCell", for: indexPath) as! ProfileCollectionViewCell
+            cell.delegate = self
             if let userModel = UserModel.fetchFromUserDefaults() {
                 //TODO: Add last name
                 if let a = userModel.firstName , let b = userModel.lastName {
                     cell.userName.text = "\(a.capitalized) \(b.capitalized)"
-                    cell.userLabel.text  = "\(a.prefix(1).capitalized) \(b.prefix(1).capitalized)"
                 }
                 cell.userEmailAddress.text = userModel.email
                 cell.userPhoneNumber.text = userModel.phone
-     
-            }
-            if let wallet = walletBalance {
-                cell.userPoints.text = "\(wallet)"
+                
+                //
+                if let photo = userModel.profileImage, photo.count >  0 {
+                    let iconURL = URL(string: photo)
+                    cell.userImage.kf.setImage(with: iconURL)
+                    cell.userImage.contentMode = .scaleAspectFill///////////
+                }else {
+                    cell.userImage.image = UIImage(named: "photoCamera")
+                    cell.userImage.contentMode = .center/////////////////
+                }
+                if let wallet = walletBalance {
+                    cell.userPoints.text = "\(wallet)"
+                }
+                return cell
             }
             return cell
         }
@@ -286,7 +308,6 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardExpandedStateCollectionViewCell", for: indexPath) as! SavedCardExpandedStateCollectionViewCell
                     cell.missingLabel.text = "No cards"
                     return cell
-                    
                 }
             }
         }
@@ -315,6 +336,8 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 
             }else if indexPath.item == (numberOfItems - 1) {
                 let savedAddressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedAddressCollectionViewCell", for: indexPath) as! SavedAddressCollectionViewCell
+                savedAddressCell.stackViewTopConstraint.constant = 20
+                savedAddressCell.bottomSeparator.isHidden = true
                 return savedAddressCell // last cell
             }else {
                 if noOfSavedAdderess > 0 {
@@ -402,7 +425,78 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         profileCollectionView.reloadData()
     }
     
+    func sendImage() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        self.present(pickerController, animated: true, completion: nil)
+    }
+    ///MARK: UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+        upload(image: image)
+    }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func upload(image:UIImage?) {
+        guard let image = image else {
+            return
+        }
+        let uploadModel = UploadModel()
+        uploadModel.data = image.jpegData(compressionQuality: 1.0)
+        uploadModel.name = "image"
+        uploadModel.fileName = "jpg"
+        uploadModel.mimeType = .imageJpeg
+        activityIndicator.startAnimating()
+        NetworkingManager.shared.upload(withEndpoint: Endpoints.uploadImage, withModel: uploadModel, withSuccess: {[weak self] (response) in
+            self?.view.showToast(message: "Image uploaded successfully")
+            self?.activityIndicator.stopAnimating()
+            if let responseDict = response as? [String:Any] {
+                if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
+                    self?.uploadUserImage(image: imagePath)
+                    // put call of user.....function for update......reload table view (user......tojson).........cell for item at index path .... check for image or label.....kf show......
+                }
+            }
+            self?.activityIndicator.stopAnimating()
+            
+            }, withProgress: { (progress) in
+                
+                print(progress?.fractionCompleted)
+        }) {[weak self] (error) in
+            self?.activityIndicator.stopAnimating()
+            print(error)
+        }
+    }
+    
+    func uploadUserImage(image : String) {
+        var modelToDictionary:[String:Any] = [:]
+        modelToDictionary["profileImage"] = image
+        activityIndicator.startAnimating()
+        NetworkingManager.shared.put(withEndpoint: Endpoints.customerFromCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
+            if let responseDict = response as? [String:Any] {
+                if let photo = responseDict["profileImage"] as? String {
+                    if let userModel = UserModel.fetchFromUserDefaults() {
+                        userModel.profileImage = photo
+                        userModel.saveInUserDefaults()
+                    }
+                }
+            }
+            self?.profileCollectionView.reloadData()
+            self?.activityIndicator.stopAnimating()
+        }) {[weak self] (error) in
+            print("error")
+            self?.activityIndicator.stopAnimating()
+        }
+    }
     
 }
 

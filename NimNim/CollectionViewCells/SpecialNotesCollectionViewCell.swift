@@ -67,7 +67,7 @@ class SpecialNotesCollectionViewCell: UICollectionViewCell, UITextViewDelegate {
             let updatedText = textViewCurrentText.replacingCharacters(in: textRange,
                                                        with: text)
             if updatedText.count > 0 {
-                textView.font = Fonts.regularFont18
+                textView.font = Fonts.regularFont14
                 textView.textColor = Colors.nimnimGreen
             }else {
                 textView.font = Fonts.regularFont12

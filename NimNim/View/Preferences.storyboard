@@ -114,6 +114,24 @@
                                     <action selector="nextTapped:" destination="6HJ-bw-C0e" eventType="touchUpInside" id="l2V-S2-XvC"/>
                                 </connections>
                             </button>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rqe-YW-E9j" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="423" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="XPw-BA-zYk"/>
+                                    <constraint firstAttribute="width" constant="50" id="wji-QV-4p2"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballGridPulse"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <constraints>
                             <constraint firstItem="i1z-Ha-s3U" firstAttribute="top" secondItem="h8X-E9-b3T" secondAttribute="top" constant="20" id="3G5-UG-VUF"/>
@@ -125,7 +143,9 @@
                             <constraint firstItem="h8X-E9-b3T" firstAttribute="trailing" secondItem="i1z-Ha-s3U" secondAttribute="trailing" constant="20" id="WGZ-p7-v4h"/>
                             <constraint firstItem="i1z-Ha-s3U" firstAttribute="leading" secondItem="h8X-E9-b3T" secondAttribute="leading" constant="20" id="Y5u-eQ-CKG"/>
                             <constraint firstItem="Bcb-GR-fPd" firstAttribute="top" secondItem="i1z-Ha-s3U" secondAttribute="bottom" constant="40" id="YqK-II-Ef1"/>
+                            <constraint firstItem="rqe-YW-E9j" firstAttribute="centerY" secondItem="hHT-KC-3JE" secondAttribute="centerY" id="dib-eK-eXJ"/>
                             <constraint firstItem="Bcb-GR-fPd" firstAttribute="leading" secondItem="h8X-E9-b3T" secondAttribute="leading" id="jED-kk-BwL"/>
+                            <constraint firstItem="rqe-YW-E9j" firstAttribute="centerX" secondItem="hHT-KC-3JE" secondAttribute="centerX" id="rLF-2L-Zg2"/>
                             <constraint firstItem="950-42-UWF" firstAttribute="top" secondItem="Bcb-GR-fPd" secondAttribute="bottom" constant="40" id="ryD-Aa-inj"/>
                             <constraint firstItem="Nsh-7l-mnm" firstAttribute="top" secondItem="950-42-UWF" secondAttribute="bottom" constant="22" id="tZL-ca-wmP"/>
                         </constraints>

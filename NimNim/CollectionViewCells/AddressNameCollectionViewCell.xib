@@ -28,13 +28,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tH8-Mt-PY3">
-                        <rect key="frame" x="28" y="0.0" width="50" height="20"/>
+                        <rect key="frame" x="28" y="21" width="50" height="20"/>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                         <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pg-ig-fRt">
-                        <rect key="frame" x="28" y="27" width="274.5" height="51.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pg-ig-fRt">
+                        <rect key="frame" x="28" y="48" width="319" height="51.5"/>
                         <string key="text">30 Germania St, Boston, MA 02130, USA
 8V7W+VR Boston, Massachusetts, USA
 +1 617-368-5080</string>
@@ -43,35 +43,61 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use this Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8k-sg-ARy">
-                        <rect key="frame" x="28" y="107.5" width="116.5" height="17.5"/>
+                        <rect key="frame" x="28" y="128.5" width="116.5" height="17.5"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeS-Wm-YOE">
-                        <rect key="frame" x="174.5" y="106.5" width="20" height="20"/>
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UeS-Wm-YOE">
+                        <rect key="frame" x="174.5" y="127.5" width="20" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="20" id="8Zx-CV-qo4"/>
                             <constraint firstAttribute="height" constant="20" id="KKz-ON-5vL"/>
                         </constraints>
-                        <state key="normal" title="tick" image="tick"/>
+                        <state key="normal" image="path2"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="tickTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="j4c-Dq-Sdw"/>
+                        </connections>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jlx-7s-QV6">
+                        <rect key="frame" x="28" y="149" width="319" height="1"/>
+                        <color key="backgroundColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="aRF-A9-YRk"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="tH8-Mt-PY3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="0er-x8-zri"/>
+                <constraint firstItem="tH8-Mt-PY3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="21" id="0er-x8-zri"/>
                 <constraint firstItem="UeS-Wm-YOE" firstAttribute="leading" secondItem="Z8k-sg-ARy" secondAttribute="trailing" constant="30" id="5px-Gr-ipg"/>
                 <constraint firstItem="6pg-ig-fRt" firstAttribute="top" secondItem="tH8-Mt-PY3" secondAttribute="bottom" constant="7" id="5uu-vE-DKv"/>
                 <constraint firstItem="6pg-ig-fRt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="8zw-hR-9is"/>
                 <constraint firstItem="UeS-Wm-YOE" firstAttribute="centerY" secondItem="Z8k-sg-ARy" secondAttribute="centerY" id="LMY-bt-a1p"/>
+                <constraint firstItem="Jlx-7s-QV6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="Pev-Eb-qUt"/>
                 <constraint firstItem="Z8k-sg-ARy" firstAttribute="top" secondItem="6pg-ig-fRt" secondAttribute="bottom" constant="29" id="Wnf-5j-Ih4"/>
                 <constraint firstItem="Z8k-sg-ARy" firstAttribute="leading" secondItem="6pg-ig-fRt" secondAttribute="leading" id="Ye0-V8-d3L"/>
+                <constraint firstAttribute="bottom" secondItem="Jlx-7s-QV6" secondAttribute="bottom" id="kYC-0m-mNJ"/>
+                <constraint firstAttribute="trailing" secondItem="Jlx-7s-QV6" secondAttribute="trailing" constant="28" id="tii-k9-PPX"/>
+                <constraint firstAttribute="trailing" secondItem="6pg-ig-fRt" secondAttribute="trailing" constant="28" id="yRV-f5-k3o"/>
                 <constraint firstItem="tH8-Mt-PY3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="zwu-4y-ez6"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="addressLabel" destination="6pg-ig-fRt" id="PF6-hm-Ne8"/>
+                <outlet property="locationLabel" destination="tH8-Mt-PY3" id="EkC-de-HmW"/>
+                <outlet property="tick" destination="UeS-Wm-YOE" id="gLK-hL-y9B"/>
+            </connections>
+            <point key="canvasLocation" x="5" y="12"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="tick" width="24" height="24"/>
+        <image name="path2" width="16" height="12"/>
     </resources>
 </document>

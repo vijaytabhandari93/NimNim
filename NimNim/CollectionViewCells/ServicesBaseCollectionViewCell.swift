@@ -116,12 +116,13 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
         }else if services[indexPath.row].alias == "shoe-repair" {
             let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController")
             NavigationManager.shared.push(viewController: dryCleaningVC)
-        }else if services[indexPath.row].alias == "tailoring" {
-            
-        }else if services[indexPath.row].alias == "carpet-cleaning" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
+        }else if services[indexPath.row].alias == "tailoring" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")
+            NavigationManager.shared.push(viewController: householdVC)
+        }else if services[indexPath.row].alias == "carpet-cleaning" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")
             NavigationManager.shared.push(viewController: householdVC)
         }
-        else if services[indexPath.row].alias == "leather-and-special-care-items" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
+        else if services[indexPath.row].alias == "leather-and-special-care-items" {
+            let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
             NavigationManager.shared.push(viewController: householdVC)
             
         }

@@ -13,10 +13,11 @@ class CartModel : NSObject, Mappable, Codable  {
     required convenience init?(map: Map) { self.init() }
     var orderStatus:String?
     var customerId:String?
-    var couponCodes:[String]?
+    var couponCodes:[CouponModel]?
     var cartId : String?
     var orderTotal : Int?
     var services : [ServiceModel]?  //servicemodel is a class which is like a dictionary of key value pairs
+    var isWalletSelected:Bool? = true
     var id : String?
     var v : String?
     

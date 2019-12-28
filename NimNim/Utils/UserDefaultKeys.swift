@@ -20,4 +20,5 @@ struct UserDefaultKeys {
     //(aliases) using UserDefaults
     static let cart = "kCart"
     static let walletBalance = "kwalletBalance"
+    static let addressSelected = "kaddressSelected"
 }

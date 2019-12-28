@@ -23,12 +23,17 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
-        var count = fetchNoOfServicesInCart()
-        if count != 0 {
-            basketLabel.text = "\(count)"
-        }
-        else {
-            basketLabel.text = ""
+        collectionView.reloadData()
+        setupCartCountLabel()
+    }
+    func setupCartCountLabel() {
+        let cartCount = fetchNoOfServicesInCart()
+        if cartCount > 0 {
+            basketLabel.text = "\(cartCount)"
+            basketLabel.isHidden = false
+        }else {
+            basketLabel.text = "0"
+            basketLabel.isHidden = true
         }
     }
     
@@ -40,6 +45,7 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 12, bottom: 20, right: 12)
         collectionView.delegate = self
         collectionView.dataSource = self
+        setupCartCountLabel()
     }
     
     @IBAction func basketTapped(_ sender: Any){
@@ -80,7 +86,7 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
                 cell.alias = services[indexPath.row].alias
                 if let alias = services[indexPath.row].alias {
                 var inAlias = checkIfInCart(withAlias: alias)
-                if inAlias == true {
+                if inAlias == false {
                     cell.serviceName.textColor = UIColor.black
                     cell.serviceDescription.textColor = UIColor.black
                     cell.selectLabel.backgroundColor = Colors.nimnimServicesColor

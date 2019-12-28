@@ -122,7 +122,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     
     @IBAction func addToCartTapped(_ sender: Any) {
         if addToCart.titleLabel?.text == "CheckOut" {
-            print("abcd")
+            //print("abcd")
             let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
             let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
             NavigationManager.shared.push(viewController: cartVC)
@@ -224,7 +224,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
             let modelToDictionary = serviceModel.toJSON()
             var params : [String:Any] = [:]
             params[AddToCart.services] = [modelToDictionary]
-            print(JSON(params))
+            //print(JSON(params))
             activityIndicator.startAnimating()
             NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)
@@ -255,7 +255,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         if let serviceModel = serviceModel, let cartId = cartId{
             var modelToDictionary = serviceModel.toJSON()
             modelToDictionary["cart_id"] = cartId //to send the cart id along with the other params
-            print(JSON(modelToDictionary))
+            //print(JSON(modelToDictionary))
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)
