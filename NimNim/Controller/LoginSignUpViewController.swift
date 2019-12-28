@@ -593,19 +593,48 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             }
             return
         }
-        self.userId = user.userID                  // For client-side use only!
-        self.firstName = user.profile.givenName
-        self.lastName = user.profile.familyName
-        self.email = user.profile.email
-        self.socialLoginType = "google"
-        self.loginSignUpTableView.reloadData()
-        //performSocialSignUp(userInfo: userId, type: "google")
+        //Vijayta Read: If user logs in with google then we check what is the current state of the screen.. if it is of a login type... then this means we have to login and not signup...
+        if currentScreenState == .loginWithPassword || currentScreenState == .loginWithOTP {
+            performSocialLogin(withEmail: user.profile.email)
+        }else {
+            self.userId = user.userID                  // For client-side use only!
+            self.firstName = user.profile.givenName
+            self.lastName = user.profile.familyName
+            self.email = user.profile.email
+            self.socialLoginType = "google"
+            self.loginSignUpTableView.reloadData()
+        }
         
     }
     
-    func performSocialLogin(withEmail email:String?, withType type:String?) {
-        guard let email = email, let type = type else {
+    func performSocialLogin(withEmail email:String?) {
+        guard let email = email else {
             return
+        }
+        let params:[String:Any] = [
+            SocialSignIn.email:email
+        ]
+        activityIndicatorView.startAnimating()
+        NetworkingManager.shared.post(withEndpoint: Endpoints.socialLogin, withParams: params, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+                let userModel = Mapper<UserModel>().map(JSON: responseDict)
+                userModel?.saveInUserDefaults()
+                //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                self.setupCartIdInUserDefaults(fromResponse: responseDict)
+            }
+            //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
+            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+            secondViewController?.screenTypeValue = .pickUpDropOff
+            NavigationManager.shared.push(viewController: secondViewController)
+            self.activityIndicatorView.stopAnimating()
+        }) { (error) in
+            self.activityIndicatorView.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     

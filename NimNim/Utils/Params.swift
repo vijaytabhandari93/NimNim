@@ -33,7 +33,8 @@ struct VerifyOTP {
 }
 struct ForgotPassword {
     static let email = "email"
-    }
+}
+
 struct SocialSignIn {
     static let userId = "accountId"
     static let typeOfSignIn = "type"
