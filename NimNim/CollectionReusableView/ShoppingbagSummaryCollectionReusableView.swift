@@ -9,21 +9,18 @@
 import UIKit
 
 class ShoppingbagSummaryCollectionReusableView: UICollectionReusableView {
-
+    
+    @IBOutlet weak var noOfItems: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        var count = fetchNoOfServicesInCart()
+        let count = fetchNoOfServicesInCart()
         if count != 0 {
             noOfItems.text = "\(count) Items"
         }
         else {
             noOfItems.text = ""
         }
-  
+        
     }
-    @IBOutlet weak var noOfItems: UILabel!
-
-    
-    
-    
 }

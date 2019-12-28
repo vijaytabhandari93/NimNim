@@ -13,7 +13,7 @@ class CartModel : NSObject, Mappable, Codable  {
     required convenience init?(map: Map) { self.init() }
     var orderStatus:String?
     var customerId:String?
-    var couponCodes:[CouponModel]?
+    var couponCode:CouponModel?
     var cartId : String?
     var orderTotal : Int?
     var services : [ServiceModel]?  //servicemodel is a class which is like a dictionary of key value pairs
@@ -24,7 +24,7 @@ class CartModel : NSObject, Mappable, Codable  {
     func mapping(map: Map) {
         orderStatus <- map["order_status"]
         customerId <- map["customerId"]
-        couponCodes <- map["couponCodes"]
+        couponCode <- map["couponCode"]
         cartId <- map["cart_id"]
         orderTotal <-  map["order_total"]
         services  <- map  ["services"]

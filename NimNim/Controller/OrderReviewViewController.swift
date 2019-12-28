@@ -137,13 +137,11 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 let cartModel = Mapper<CartModel>().map(JSON: responseDict)
                 self?.cartModel = cartModel //? is put after self as it is weak self.
                 self?.orderStatusCollectionView.reloadData()
-                print(JSON(cartModel))
                 
                 if cartModel?.services?.count != nil {
                     self?.priceTotalBackgroundView.isHidden = false
                     self?.addressMethod.isHidden = false
                     self?.amountLabel.text = "To be calculated"
-                    
                 }
                 if let cartId = cartModel?.cartId {
                     UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
@@ -160,7 +158,6 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
             }
             self.activityIndicator.stopAnimating()// definition of error closure
         }
-        
     }
     // remove Item from cart
     func removeItemFromCart(withModel model : ServiceModel) {
@@ -235,9 +232,9 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         }else {
             if indexPath.item == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DoYouHaveACouponCollectionViewCell", for: indexPath) as! DoYouHaveACouponCollectionViewCell
-                if let couponArray = cartModel?.couponCodes, couponArray.count > 0 {
+                if let coupon = cartModel?.couponCode {
                     cell.doYouHaveACoupon.text = "Coupons Applied"
-                    cell.chooseCoupon.text  = couponArray[0].code ?? ""
+                    cell.chooseCoupon.text  = coupon.code ?? ""
                 }else {
                     cell.doYouHaveACoupon.text = "Do you have a Coupon?"
                     cell.chooseCoupon.text  = "Choose a coupon"

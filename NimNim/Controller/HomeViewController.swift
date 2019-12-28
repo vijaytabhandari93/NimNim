@@ -27,6 +27,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         registerCells()
         fetchBanners()
         fetchServices()
+        // Vijayta Read - Doing fetchCart below to ensure that services that are in cart get synced with the servicesAliasArray every time the app launches... this will also solve the issue that when a user logs out and logs in again then initially all his user defaults are erased... so this will ensure that his previously saved cart items are highlighted on this screen as well when he logs back in...
+        fetchCart()
         homeCollectionView.delegate = self
         homeCollectionView.dataSource = self
         let UserObject = UserModel.fetchFromUserDefaults()
@@ -102,6 +104,35 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             }
             self.activityIndicator.stopAnimating()
         } // definition of error closure
+    }
+    
+    func fetchCart() {
+        NetworkingManager.shared.get(withEndpoint: Endpoints.fetchCart, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...//in this get call the user Auth token thee cart is being fetched.
+            if let responseDict = response as? [String:Any] { //Alamofire is throwing the response as dictionary .....we are convertig it to model
+                let cartModel = Mapper<CartModel>().map(JSON: responseDict)
+                
+                //Vijayta Read - The code below loops over all the services that are there in the user's cart and adds the services to aliases array if not already present (if not already present logic is there in addServiceToCartAliasinUserDefaults function)... that function ensures that services are not added again if already present...
+                if let services = cartModel?.services {
+                    for service in services {
+                        addServiceToCartAliasinUserDefaults(withAlias: service.alias)
+                    }
+                }
+                if let cartId = cartModel?.cartId {
+                    UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                    // from server we are fetching the cart id.
+                }
+                self?.setupCartCountLabel()
+                self?.homeCollectionView.reloadData()
+            }
+            self?.activityIndicator.stopAnimating()
+            }) //definition of success closure
+        { (error) in
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
 
 
