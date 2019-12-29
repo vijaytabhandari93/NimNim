@@ -44,6 +44,7 @@ struct SocialSignIn {
     static let password = "password"
     static let dob = "dob"
     static let email = "email"
+    static let profileImage = "profileImage"
 }
 
 struct AddCard {
@@ -103,4 +104,14 @@ struct AddToCart {     // This is a structure to hold all the keys of request pa
     static let itemId = "itemId"
     static let code = "code"
    
+}
+
+struct FBSDK {
+    static let email = "email"
+    static let firstName = "first_name"
+    static let id = "id"
+    static let lastName = "last_name"
+    static let picture = "picture"
+    static let pictureData = "data"
+    static let url = "url"
 }

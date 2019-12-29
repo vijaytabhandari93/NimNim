@@ -10,6 +10,8 @@ import UIKit
 import ObjectMapper
 import NVActivityIndicatorView
 import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginWithPasswordTableViewCellDelegate, LoginViaOTPTableViewCellDelegate, SignUpTableViewCellDelegate, GIDSignInDelegate {
 
@@ -64,6 +66,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     var email:String?
     var socialLoginType:String?
     var userId:String?
+    var profileImage:String?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     var checked = ""
@@ -127,6 +130,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             tickButton.setImage(image, for: .normal)
         }
     }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if !isHeightAdded {
@@ -200,7 +204,66 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
+    func fetchDataFromFB() {
+        let params = ["fields": "id,name,email,first_name,last_name,picture"]
+        GraphRequest.init(graphPath: "me", parameters: params).start {[weak self] (connection, result, error) in
+            if (error == nil) {
+                if let accessToken = AccessToken.current {
+                    if accessToken.hasGranted(permission: "public_profile") {
+                        print("public_profile \(accessToken.hasGranted(permission: "public_profile"))")
+                    }
+                    if accessToken.hasGranted(permission: "email") {
+                        print("email \(accessToken.hasGranted(permission: "email"))")
+                    }
+                    if accessToken.hasGranted(permission: "user_friends") {
+                        print("user_friends \(accessToken.hasGranted(permission: "user_friends"))")
+                    }
+                    self?.handleFBResult(withData: result)
+                }
+            }
+        }
+    }
+    
+    func handleFBResult(withData data:Any?) {
+        if let data = data as? [String:Any] {
+            if currentScreenState == .loginWithPassword || currentScreenState == .loginWithOTP {
+                if let email = data[FBSDK.email] as? String {
+                    performSocialLogin(withEmail: email)
+                }
+            }else {
+                if let fbId = data[FBSDK.id] as? String {
+                    self.userId = fbId
+                }
+                if let firstName = data[FBSDK.firstName] as? String {
+                    self.firstName = firstName
+                }
+                if let lastName = data[FBSDK.lastName] as? String {
+                    self.lastName = lastName
+                }
+                if let email = data[FBSDK.email] as? String {
+                    self.email = email
+                }
+                if let picture = data[FBSDK.picture] as? [String:Any] {
+                    if let pictureData = picture[FBSDK.pictureData] as? [String:Any] {
+                        if let url = pictureData[FBSDK.url] as? String {
+                            self.profileImage = url
+                        }
+                    }
+                }
+                self.socialLoginType = "fb"
+                self.loginSignUpTableView.reloadData()
+            }
+            
+            
+        }
+    }
+    
     @IBAction func facebookTapped(_ sender: Any) {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: [.publicProfile, .email], viewController: self) { result in
+          self.loginManagerDidComplete(result)
+            
+        }
     }
     
     @IBAction func instaTapped(_ sender: Any) {
@@ -219,6 +282,17 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         refreshTable()
     }
     
+    func loginManagerDidComplete(_ result: LoginResult) {
+      switch result {
+      case .cancelled:
+        print("")
+      case .failed(let error):
+        print("")
+      case .success(let grantedPermissions, _, _):
+        print("")
+        fetchDataFromFB()
+      }
+    }
   
     
     //MARK: TableView Methods
@@ -662,6 +736,10 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             SocialSignIn.password:password,
             SocialSignIn.email:email,
         ]
+        if let profileImage = profileImage {
+            //Possible in Fb Signup...
+            finalParams[SocialSignIn.profileImage] = profileImage
+        }
         if let dob = dob, dob.count > 0 {
             finalParams[SocialSignIn.dob] = dob
         }

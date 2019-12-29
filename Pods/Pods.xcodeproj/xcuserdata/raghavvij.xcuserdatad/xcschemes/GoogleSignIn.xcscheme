@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1020"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "0548C700D31F8EBC740E67E7FCD6D17E"
+               BlueprintIdentifier = "CAD3534FC55B0333104E5117C0A9A324"
                BuildableName = "GoogleSignIn"
                BlueprintName = "GoogleSignIn"
                ReferencedContainer = "container:Pods.xcodeproj">
