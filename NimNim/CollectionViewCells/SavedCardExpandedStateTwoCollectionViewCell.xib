@@ -70,6 +70,7 @@
                 <outlet property="addNewCardButton" destination="YMz-ev-OVg" id="dL0-QJ-4YV"/>
                 <outlet property="bottomSeparator" destination="k9r-bs-zDr" id="wLy-G6-T4H"/>
                 <outlet property="cardsCollectionView" destination="ux4-8i-b31" id="eU5-gQ-ige"/>
+                <outlet property="heightCollectionView" destination="Tbc-CR-YFu" id="Idt-VN-Tda"/>
             </connections>
             <point key="canvasLocation" x="-79" y="-22"/>
         </collectionViewCell>

@@ -108,6 +108,8 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                 cell.noOfCards = noOfSavedCards
                 cell.cardModel = cardBaseModel?.data ?? []
                 cell.cardsCollectionView.reloadData()
+                cell.IsDeleteToBeShown = false
+                
                 return cell
             }
             else
@@ -126,7 +128,7 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
         }
         else
         {
-            return CGSize(width: collectionView.frame.size.width, height: 257)
+            return CGSize(width: collectionView.frame.size.width, height: 350)
             
         }
     }
@@ -137,6 +139,8 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
         applyHorizontalNimNimGradient()
         fetchSavedCards()
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
     
 }

@@ -14,11 +14,20 @@ protocol SavedCardExpandedStateTwoCollectionViewCellDelegate:class {
 }
 
 
+
 class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CardsCollectionViewCellDelegate{
     
-   
-  
+    var selectedIndex : IndexPath?
     
+    func selectedTapped(withIndexPath indexPath: IndexPath?) {
+        selectedIndex = indexPath
+        cardsCollectionView.reloadData()
+    }
+    
+    
+   var IsDeleteToBeShown : Bool = true 
+    
+    @IBOutlet weak var heightCollectionView: NSLayoutConstraint!
     weak var delegate :SavedCardExpandedStateTwoCollectionViewCellDelegate?
     var noOfCards : Int = 0
     var cardModel : [CardDetailsModel] = [] // We have purposly made it non optional and assinged zero to it.
@@ -71,17 +80,42 @@ class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollec
         {
             cell.cardId = cardId
         }
-        
+    //  hide // show
+        if IsDeleteToBeShown{
+            cell.Delete.isHidden = false
+            cell.tickButton.isHidden = true
+            heightCollectionView.constant = 100
+            cell.bottom.constant = 0
+        }  else
+        {
+            cell.Delete.isHidden = true
+            cell.tickButton.isHidden = false
+            heightCollectionView.constant = 150
+            cell.bottom.constant = 50
+        }
+        if let selectedIndex = selectedIndex {
+            if indexPath == selectedIndex {
+                cell.configureUI(forRushDeliveryState: true, forIndex: indexPath)
+            }
+            else
+            {
+                cell.configureUI(forRushDeliveryState: false, forIndex: indexPath)
+            }
+        } else  {
+            cell.configureUI(forRushDeliveryState: false, forIndex: indexPath)
+        }
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
-    
+   
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 154, height: 100)
-        
+        if IsDeleteToBeShown{
+               return CGSize(width: 154, height: 100)
+            
+        }  else
+        {
+                 return CGSize(width: 154, height: 150)
+        }
     }
     func deleteCardTapped(withId id : String?){
         delegate?.deleteCard(id:id)

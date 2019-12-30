@@ -58,7 +58,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="MDW-ih-jiI">
-                                <rect key="frame" x="111.5" y="534.5" width="191" height="40"/>
+                                <rect key="frame" x="111.5" y="541" width="191" height="40"/>
                                 <subviews>
                                     <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9uJ-r9-Aqp">
                                         <rect key="frame" x="0.0" y="0.0" width="41" height="40"/>
@@ -96,7 +96,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Click the button below to Track your order or to go back home." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1NV-C2-FP3">
-                                <rect key="frame" x="24" y="477" width="366" height="37.5"/>
+                                <rect key="frame" x="24" y="482" width="366" height="39"/>
                                 <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -723,7 +723,7 @@
                                     <constraint firstItem="uo3-SX-7Ah" firstAttribute="top" secondItem="Owd-bn-iab" secondAttribute="top" id="vKK-vt-rls"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e0b-CU-Dlx">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="e0b-CU-Dlx">
                                 <rect key="frame" x="0.0" y="93" width="414" height="721"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="xTV-B0-T7D">
@@ -780,6 +780,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xBX-C8-DXq"/>
                     </view>
+                    <connections>
+                        <outlet property="pickDateandTimeScreenCollectionView" destination="e0b-CU-Dlx" id="fSK-A8-dJC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hTf-nA-qWE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -837,7 +840,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="pickDeliverySlot:" destination="Pg0-Fr-vNy" eventType="touchUpInside" id="rAl-yy-ioY"/>
+                                            <action selector="selectPaymentTapped:" destination="Pg0-Fr-vNy" eventType="touchUpInside" id="EKX-TG-qQE"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -906,6 +909,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="99a-QK-PUT"/>
                     </view>
+                    <connections>
+                        <outlet property="PickDeliveryTimeSlotsCollectionView" destination="9Q5-1e-LiZ" id="3Qy-Ji-F6X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gO-kM-lSo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

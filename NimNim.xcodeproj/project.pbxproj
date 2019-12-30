@@ -42,6 +42,16 @@
 		AC202CDD2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC202CDA2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift */; };
 		AC202CDE2366A8C200C87CA1 /* SavedCardExpandedStateCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC202CDB2366A8C200C87CA1 /* SavedCardExpandedStateCollectionViewCell.xib */; };
 		AC202CE42366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC202CE12366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift */; };
+		AC20417623B74F80001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20417423B74F7F001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.swift */; };
+		AC20417723B74F80001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC20417523B74F7F001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.xib */; };
+		AC20417A23B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20417823B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.swift */; };
+		AC20417B23B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC20417923B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.xib */; };
+		AC20417E23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20417C23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.swift */; };
+		AC20417F23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC20417D23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.xib */; };
+		AC20418223B75223001F86B4 /* DateTimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20418023B75223001F86B4 /* DateTimeCollectionViewCell.swift */; };
+		AC20418323B75223001F86B4 /* DateTimeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC20418123B75223001F86B4 /* DateTimeCollectionViewCell.xib */; };
+		AC20418623B7523A001F86B4 /* TimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC20418423B7523A001F86B4 /* TimeCollectionViewCell.swift */; };
+		AC20418723B7523A001F86B4 /* TimeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC20418523B7523A001F86B4 /* TimeCollectionViewCell.xib */; };
 		AC25BFB12371EB8000C79692 /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25BFB02371EB8000C79692 /* Endpoints.swift */; };
 		AC25BFB32371EF2D00C79692 /* ServiceableLocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */; };
 		AC2BEDC62381600000152C69 /* BannersBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2BEDC52381600000152C69 /* BannersBaseModel.swift */; };
@@ -212,6 +222,16 @@
 		AC202CDA2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedCardExpandedStateTwoCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC202CDB2366A8C200C87CA1 /* SavedCardExpandedStateCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SavedCardExpandedStateCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC202CE12366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedCardExpandedStateCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC20417423B74F7F001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickUpDropServiveNameAndTatTimeCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC20417523B74F7F001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickUpDropServiveNameAndTatTimeCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC20417823B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthAndDateBaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC20417923B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MonthAndDateBaseCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC20417C23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSlotsCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC20417D23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeSlotsCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC20418023B75223001F86B4 /* DateTimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC20418123B75223001F86B4 /* DateTimeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DateTimeCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC20418423B7523A001F86B4 /* TimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC20418523B7523A001F86B4 /* TimeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC25BFB02371EB8000C79692 /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
 		AC25BFB22371EF2D00C79692 /* ServiceableLocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ServiceableLocationModel.swift; path = NimNim/Utils/ServiceableLocationModel.swift; sourceTree = SOURCE_ROOT; };
 		AC2BEDC52381600000152C69 /* BannersBaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannersBaseModel.swift; sourceTree = SOURCE_ROOT; };
@@ -447,6 +467,16 @@
 				AC5ADD962362DEE400204E9E /* showSavedUserInfoCollectionViewCell.xib */,
 				AC5ADD992362E01600204E9E /* AddressNameCollectionViewCell.swift */,
 				AC5ADD9A2362E01600204E9E /* AddressNameCollectionViewCell.xib */,
+				AC20417423B74F7F001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.swift */,
+				AC20417523B74F7F001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.xib */,
+				AC20417823B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.swift */,
+				AC20417923B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.xib */,
+				AC20417C23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.swift */,
+				AC20417D23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.xib */,
+				AC20418023B75223001F86B4 /* DateTimeCollectionViewCell.swift */,
+				AC20418123B75223001F86B4 /* DateTimeCollectionViewCell.xib */,
+				AC20418423B7523A001F86B4 /* TimeCollectionViewCell.swift */,
+				AC20418523B7523A001F86B4 /* TimeCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -720,6 +750,7 @@
 				ACBC97062361CB20006AC5B6 /* ServiceOrderStatusCollectionViewCell.xib in Resources */,
 				AC5ADD9C2362E01600204E9E /* AddressNameCollectionViewCell.xib in Resources */,
 				AC1FFDBF234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.xib in Resources */,
+				AC20417F23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.xib in Resources */,
 				ACF9CD3323504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.xib in Resources */,
 				ACBB8191232E3FAC003DCF77 /* Montserrat-SemiBold.ttf in Resources */,
 				ACE0E4ED2353164500A75D82 /* ShoeRepairCollectionViewCell.xib in Resources */,
@@ -738,10 +769,13 @@
 				ACFD92C4235B17AF0009FB03 /* Profile.storyboard in Resources */,
 				AC5ADD8E2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib in Resources */,
 				AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */,
+				AC20417B23B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.xib in Resources */,
 				ACFD92BE235ACF060009FB03 /* SavedAddressCollectionViewCell.xib in Resources */,
 				AC1FFDB12346F1D100930496 /* Proxima Nova Alt Thin.otf in Resources */,
+				AC20417723B74F80001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.xib in Resources */,
 				ACBB8194232E3FAC003DCF77 /* Montserrat-BoldItalic.ttf in Resources */,
 				ACBB819D232E3FAC003DCF77 /* Montserrat-MediumItalic.ttf in Resources */,
+				AC20418723B7523A001F86B4 /* TimeCollectionViewCell.xib in Resources */,
 				ACFD92A2235830AC0009FB03 /* ProfileCollectionViewCell.xib in Resources */,
 				AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */,
 				ACFD929A2355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.xib in Resources */,
@@ -760,6 +794,7 @@
 				ACFD92962355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.xib in Resources */,
 				ACF9CD2F235043C200039E6C /* SpecialNotesCollectionViewCell.xib in Resources */,
 				ACB89B4E235DB2F600B74109 /* SelectItemCollectionViewCell.xib in Resources */,
+				AC20418323B75223001F86B4 /* DateTimeCollectionViewCell.xib in Resources */,
 				ACBB818F232E3FAB003DCF77 /* Montserrat-ExtraBold.ttf in Resources */,
 				ACBB8196232E3FAC003DCF77 /* Montserrat-Bold.ttf in Resources */,
 				AC1FFDB32346F1D100930496 /* Proxima Nova Alt Bold.otf in Resources */,
@@ -876,6 +911,7 @@
 				AC5ADD9E236306C200204E9E /* PickDateAndTimeViewController.swift in Sources */,
 				AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */,
 				ACBB8177232D1F57003DCF77 /* Extensions.swift in Sources */,
+				AC20418223B75223001F86B4 /* DateTimeCollectionViewCell.swift in Sources */,
 				ACFD92992355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.swift in Sources */,
 				AC5ADD972362DEE400204E9E /* showSavedUserInfoCollectionViewCell.swift in Sources */,
 				ACF9CD23234F69EC00039E6C /* WashAndAirDryViewController.swift in Sources */,
@@ -911,6 +947,7 @@
 				ACB37263234631C900046FB3 /* ServiceCollectionViewCell.swift in Sources */,
 				AC41CE6E235C7258001AC676 /* AddNewCardViewController.swift in Sources */,
 				ACBC96F623606ABC006AC5B6 /* OrderSuccessFailureViewController.swift in Sources */,
+				AC20418623B7523A001F86B4 /* TimeCollectionViewCell.swift in Sources */,
 				ACF9CD3B2350F1DF00039E6C /* DryCleaningViewController.swift in Sources */,
 				AC5ADD9B2362E01600204E9E /* AddressNameCollectionViewCell.swift in Sources */,
 				AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */,
@@ -933,16 +970,19 @@
 				AC41CE75235C822F001AC676 /* AddCardCollectionViewCell.swift in Sources */,
 				AC19C7882383EC3B000919E0 /* CouponsUserModel.swift in Sources */,
 				ACF9CD2E235043C200039E6C /* SpecialNotesCollectionViewCell.swift in Sources */,
+				AC20417623B74F80001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
 				ACFD928F2355C9E80009FB03 /* BoxedCollectionViewCell.swift in Sources */,
 				AC202CE42366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift in Sources */,
 				AC5ADD912361D99F00204E9E /* ApplyWalletPointsCollectionViewCell.swift in Sources */,
 				AC5ADD8D2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift in Sources */,
 				ACFD92922355D41F0009FB03 /* HouseHoldItemsViewController.swift in Sources */,
+				AC20417E23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.swift in Sources */,
 				AC3151FD23A65ACB0078E68E /* Utils.swift in Sources */,
 				ACE0E4EF2353240B00A75D82 /* RugCleaningViewController.swift in Sources */,
 				ACE0E4E9235312F100A75D82 /* ShoeRepairViewController.swift in Sources */,
 				ACFD92C6235B17E20009FB03 /* AddAddressViewController.swift in Sources */,
+				AC20417A23B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.swift in Sources */,
 				AC1789142376A19B00B20D32 /* UserDefaultKeys.swift in Sources */,
 				ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */,
 				ACBC96F82361AEE7006AC5B6 /* OrderStatusViewController.swift in Sources */,

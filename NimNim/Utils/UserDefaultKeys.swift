@@ -21,4 +21,8 @@ struct UserDefaultKeys {
     static let cart = "kCart"
     static let walletBalance = "kwalletBalance"
     static let addressSelected = "kaddressSelected"
+    static let dateSelected = "kDate"
+    static let timeSlotSelected = "kTimeSlot"
+    static let deliverydateSelected = "kdeliveryDate"
+    static let deliverytimeSlotSelected = "kdeliveryTimeSlot"
 }

@@ -125,7 +125,8 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     @IBAction func selectAddressTapped(_ sender: Any) {
         
         let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
-        let selectAddressVC = orderSB.instantiateViewController(withIdentifier: "SelectAddressViewController")
+        let selectAddressVC = orderSB.instantiateViewController(withIdentifier: "SelectAddressViewController") as! SelectAddressViewController
+        
         NavigationManager.shared.push(viewController: selectAddressVC)
     }
     //fetch Cart
