@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import FBSDKCoreKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         //Setting up the root view controller of this project..i.e. initial view controller for project....
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         NavigationManager.shared.initializeApp()
-       
         return true
     }
 
@@ -39,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        AppEvents.activateApp()
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -47,7 +49,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //Used for GoogleSign In
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        return GIDSignIn.sharedInstance().handle(url)
+        var handle = false
+        handle = GIDSignIn.sharedInstance().handle(url)
+        handle = ApplicationDelegate.shared.application(app, open: url, options: options)
+        return handle
     }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        var handle = false
+        handle = ApplicationDelegate.shared.application(
+            application,
+            open: url,
+            sourceApplication: sourceApplication,
+            annotation: annotation
+        )
+        return handle
+    }
+
 }
 

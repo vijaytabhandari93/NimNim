@@ -10,6 +10,8 @@ import UIKit
 import ObjectMapper
 import NVActivityIndicatorView
 import GoogleSignIn
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginWithPasswordTableViewCellDelegate, LoginViaOTPTableViewCellDelegate, SignUpTableViewCellDelegate, GIDSignInDelegate {
 
@@ -64,6 +66,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     var email:String?
     var socialLoginType:String?
     var userId:String?
+    var profileImage:String?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     var checked = ""
@@ -127,6 +130,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             tickButton.setImage(image, for: .normal)
         }
     }
+    
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if !isHeightAdded {
@@ -200,7 +204,66 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
+    func fetchDataFromFB() {
+        let params = ["fields": "id,name,email,first_name,last_name,picture"]
+        GraphRequest.init(graphPath: "me", parameters: params).start {[weak self] (connection, result, error) in
+            if (error == nil) {
+                if let accessToken = AccessToken.current {
+                    if accessToken.hasGranted(permission: "public_profile") {
+                        print("public_profile \(accessToken.hasGranted(permission: "public_profile"))")
+                    }
+                    if accessToken.hasGranted(permission: "email") {
+                        print("email \(accessToken.hasGranted(permission: "email"))")
+                    }
+                    if accessToken.hasGranted(permission: "user_friends") {
+                        print("user_friends \(accessToken.hasGranted(permission: "user_friends"))")
+                    }
+                    self?.handleFBResult(withData: result)
+                }
+            }
+        }
+    }
+    
+    func handleFBResult(withData data:Any?) {
+        if let data = data as? [String:Any] {
+            if currentScreenState == .loginWithPassword || currentScreenState == .loginWithOTP {
+                if let email = data[FBSDK.email] as? String {
+                    performSocialLogin(withEmail: email)
+                }
+            }else {
+                if let fbId = data[FBSDK.id] as? String {
+                    self.userId = fbId
+                }
+                if let firstName = data[FBSDK.firstName] as? String {
+                    self.firstName = firstName
+                }
+                if let lastName = data[FBSDK.lastName] as? String {
+                    self.lastName = lastName
+                }
+                if let email = data[FBSDK.email] as? String {
+                    self.email = email
+                }
+                if let picture = data[FBSDK.picture] as? [String:Any] {
+                    if let pictureData = picture[FBSDK.pictureData] as? [String:Any] {
+                        if let url = pictureData[FBSDK.url] as? String {
+                            self.profileImage = url
+                        }
+                    }
+                }
+                self.socialLoginType = "fb"
+                self.loginSignUpTableView.reloadData()
+            }
+            
+            
+        }
+    }
+    
     @IBAction func facebookTapped(_ sender: Any) {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: [.publicProfile, .email], viewController: self) { result in
+          self.loginManagerDidComplete(result)
+            
+        }
     }
     
     @IBAction func instaTapped(_ sender: Any) {
@@ -219,6 +282,17 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         refreshTable()
     }
     
+    func loginManagerDidComplete(_ result: LoginResult) {
+      switch result {
+      case .cancelled:
+        print("")
+      case .failed(let error):
+        print("")
+      case .success(let grantedPermissions, _, _):
+        print("")
+        fetchDataFromFB()
+      }
+    }
   
     
     //MARK: TableView Methods
@@ -351,6 +425,16 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    func setupCartIdInUserDefaults(fromResponse response:[String:Any]?) {
+        if let response = response {
+            if let customerData = response["customer"] as? [String:Any] {
+                if let cartId = customerData["cart_id"] as? String {
+                    UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                }
+            }
+        }
+    }
+    
     func resendOtpTapped(withPhone phoneNumber: String?) {
         guard let phoneNumber = phoneNumber else {
             return
@@ -392,7 +476,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             if let responseDict = response as? [String:Any] {
                 let userModel = Mapper<UserModel>().map(JSON: responseDict)
                 userModel?.saveInUserDefaults()
-                
+                //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                self.setupCartIdInUserDefaults(fromResponse: responseDict)
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
             let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
@@ -425,7 +510,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             if let responseDict = response as? [String:Any] {
                 let userModel = Mapper<UserModel>().map(JSON: responseDict)
                 userModel?.saveInUserDefaults()
-                
+                //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                self.setupCartIdInUserDefaults(fromResponse: responseDict)
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
             let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
@@ -501,6 +587,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             if let responseDict = response as? [String:Any] {
                 let userModel = Mapper<UserModel>().map(JSON: responseDict)
                 userModel?.saveInUserDefaults()
+                //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                self.setupCartIdInUserDefaults(fromResponse: responseDict)
                 self.checked = "done"
             }
             self.activityIndicatorView.stopAnimating()
@@ -547,7 +635,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                     if let responseDict = response as? [String:Any] {
                         let userModel = Mapper<UserModel>().map(JSON: responseDict)
                         userModel?.saveInUserDefaults()
-                        
+                        //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                        self.setupCartIdInUserDefaults(fromResponse: responseDict)
                     }
                     //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
                     let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
@@ -578,19 +667,48 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             }
             return
         }
-        self.userId = user.userID                  // For client-side use only!
-        self.firstName = user.profile.givenName
-        self.lastName = user.profile.familyName
-        self.email = user.profile.email
-        self.socialLoginType = "google"
-        self.loginSignUpTableView.reloadData()
-        //performSocialSignUp(userInfo: userId, type: "google")
+        //Vijayta Read: If user logs in with google then we check what is the current state of the screen.. if it is of a login type... then this means we have to login and not signup...
+        if currentScreenState == .loginWithPassword || currentScreenState == .loginWithOTP {
+            performSocialLogin(withEmail: user.profile.email)
+        }else {
+            self.userId = user.userID                  // For client-side use only!
+            self.firstName = user.profile.givenName
+            self.lastName = user.profile.familyName
+            self.email = user.profile.email
+            self.socialLoginType = "google"
+            self.loginSignUpTableView.reloadData()
+        }
         
     }
     
-    func performSocialLogin(withEmail email:String?, withType type:String?) {
-        guard let email = email, let type = type else {
+    func performSocialLogin(withEmail email:String?) {
+        guard let email = email else {
             return
+        }
+        let params:[String:Any] = [
+            SocialSignIn.email:email
+        ]
+        activityIndicatorView.startAnimating()
+        NetworkingManager.shared.post(withEndpoint: Endpoints.socialLogin, withParams: params, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+                let userModel = Mapper<UserModel>().map(JSON: responseDict)
+                userModel?.saveInUserDefaults()
+                //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                self.setupCartIdInUserDefaults(fromResponse: responseDict)
+            }
+            //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
+            let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+            secondViewController?.screenTypeValue = .pickUpDropOff
+            NavigationManager.shared.push(viewController: secondViewController)
+            self.activityIndicatorView.stopAnimating()
+        }) { (error) in
+            self.activityIndicatorView.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
         }
     }
     
@@ -618,6 +736,10 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             SocialSignIn.password:password,
             SocialSignIn.email:email,
         ]
+        if let profileImage = profileImage {
+            //Possible in Fb Signup...
+            finalParams[SocialSignIn.profileImage] = profileImage
+        }
         if let dob = dob, dob.count > 0 {
             finalParams[SocialSignIn.dob] = dob
         }
@@ -626,7 +748,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             if let responseDict = response as? [String:Any] {
                 let userModel = Mapper<UserModel>().map(JSON: responseDict)
                 userModel?.saveInUserDefaults()
-                
+                //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
+                self.setupCartIdInUserDefaults(fromResponse: responseDict)
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
             let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
