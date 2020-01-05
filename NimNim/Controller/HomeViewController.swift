@@ -24,6 +24,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print(fetchValidPickupDates())
         registerCells()
         fetchBanners()
         fetchServices()

@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+
 enum MimeType:String { //  by default :Int . There are two values which can be associated with any case in enum that are hash and raw. In this case "image/png" and "image/jpeg" are raw values associated with case imagePng and imageJpeg respeectively . Similarly  Hash Values are 0 and 1 respectively.
     case imagePng = "image/png"
     case imageJpeg = "image/jpg"
@@ -55,7 +56,7 @@ class NetworkingManager {
             }
             print("Request:\(String(describing: response.request ?? nil))")
             print("Response:\(String(describing: response.result.value ?? nil))")
-            print("JSON Response:\(JSON(response.result.value))")
+           // print("JSON Response:\(JSON(response.result.value))")
             if statusCode >= 200 && statusCode < 400 {
                 success?(response.result.value) // call of closure
             }else {

@@ -68,6 +68,29 @@ class ServiceModel:NSObject, Mappable, Codable {
     var numberOfClothes:Int = 0
     var isRushDeliverySelected:Bool = false
     var needHangers:Bool = false
+    var pickupDate : String?
+    var dropOffDate : String?
+    var pickUpTime : String?
+    var dropOffTime  : String?
+    var turnAroundTime:String?
+    //This variable will be used to group the service models with the 
+    var finalTurnaroundTime:String? {
+        get {
+            if isRushDeliverySelected {
+                if let rushDeliveryOptions = rushDeliveryOptions, rushDeliveryOptions.count > 0 {
+                    return  rushDeliveryOptions[0].turnAroundTime
+                }else  {
+                    return "0"
+                }
+            }else {
+                if let turnAroundTime = turnAroundTime {
+                    return turnAroundTime
+                }else {
+                    return "0"
+                }
+            }
+        }
+    }
     
     enum Alias:String {
         case washAndFold = "wash-and-fold"
@@ -107,6 +130,11 @@ class ServiceModel:NSObject, Mappable, Codable {
         numberOfClothes <- map["noOfClothes"]
         isRushDeliverySelected <- map["need_rush_delivery"]
         needHangers <- map["needHangers"]
+        pickupDate <- map["pickupDate"]
+        dropOffDate <- map["dropOffDate"]
+        pickUpTime <- map["pickUpTime"]
+        dropOffTime <- map["dropOffTime"]
+        turnAroundTime <- map["turn_around_time"]
     }
 
     func getMaleItems() -> [ItemModel] {

@@ -7,11 +7,21 @@
 //
 
 import UIKit
+protocol MonthAndDateBaseCollectionViewCellDelegate:class {
+    func selectedDate(forIndexPath indexPath:IndexPath?, withDateIndexPath dateIndexPath:IndexPath?)
+}
 
 class MonthAndDateBaseCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     
-    var  deliverySelections : Bool = false
-    var selectedIndexPath  : IndexPath?
+    var deliverySelections : Bool = false
+    var selectedIndexPath:IndexPath? = IndexPath(item: 0, section: 0) // iske andar
+    var currentIndexPath:IndexPath? // agli screen ke andar yeh sections repeat honge.
+    var second  : Bool = false
+    var dateFormatter = DateFormatter()///date related
+    var dates:[Date] = []
+    
+    weak var delegate:MonthAndDateBaseCollectionViewCellDelegate?
+    
     @IBOutlet weak var monthandDatecollectionView: UICollectionView!
     
     override func awakeFromNib() {
@@ -20,6 +30,7 @@ class MonthAndDateBaseCollectionViewCell: UICollectionViewCell,UICollectionViewD
         registerCells()
         monthandDatecollectionView.delegate = self
         monthandDatecollectionView.dataSource = self
+        dateFormatter.dateFormat = "dd MMM YYYY" ///date related
         // Initialization code
     }
     func registerCells() {
@@ -29,38 +40,30 @@ class MonthAndDateBaseCollectionViewCell: UICollectionViewCell,UICollectionViewD
     
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return dates.count  //  no of cells will be the no of pickup dates. ///date related
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DateTimeCollectionViewCell", for: indexPath) as! DateTimeCollectionViewCell
+        let pickupDates = dates /// date related
+        let date = pickupDates[indexPath.item] /// date related
+        cell.dateLabel.text = dateFormatter.string(from: date) /// date related
         if let selectedIndexPath = selectedIndexPath {
             if indexPath == selectedIndexPath {
-                let savedDate = cell.dateLabel
-                if deliverySelections == false {
-                    UserDefaults.standard.set(savedDate,forKey: UserDefaultKeys.dateSelected)
-                }
-                else
-                {
-                    UserDefaults.standard.set(savedDate,forKey: UserDefaultKeys.deliverydateSelected)
-                }
                 cell.configureCell(forSelectedState:true)
-            }
-            else
-            {
+            }else {
                 cell.configureCell(forSelectedState:false)
             }
         } else  {
             cell.configureCell(forSelectedState:false)
         }
         return cell
+        
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedIndexPath = indexPath
-        
-        
-        monthandDatecollectionView.reloadData()
-        
+        selectedIndexPath = indexPath // 3 cell
+        monthandDatecollectionView.reloadData() //  to make it green
+        delegate?.selectedDate(forIndexPath: currentIndexPath, withDateIndexPath: indexPath)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 120, height: 40)

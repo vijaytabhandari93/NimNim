@@ -18,6 +18,7 @@ protocol SavedCardExpandedStateTwoCollectionViewCellDelegate:class {
 class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CardsCollectionViewCellDelegate{
     
     var selectedIndex : IndexPath?
+    var cartModel : CartModel?
     
     func selectedTapped(withIndexPath indexPath: IndexPath?) {
         selectedIndex = indexPath
@@ -96,6 +97,7 @@ class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollec
         if let selectedIndex = selectedIndex {
             if indexPath == selectedIndex {
                 cell.configureUI(forRushDeliveryState: true, forIndex: indexPath)
+                cartModel?.CardId = cell.cardId
             }
             else
             {

@@ -18,13 +18,14 @@ class AddressNameCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tick: UIButton!
     var addressModel : AddressDetailsModel?
     var IndexPath  : IndexPath?
-    
+    var cartModel : CartModel?
      weak var delegate:AddressNameCollectionViewCellDelegate?
     
     @IBAction func tickTapped(_ sender: Any) {
         delegate?.addressSelectedChangeUI(withIndexPath : self.IndexPath)
         let savedAddress = addressModel?.id
         UserDefaults.standard.set(savedAddress,forKey: UserDefaultKeys.addressSelected)
+        cartModel?.addressId =  addressModel?.id
         
     }
     

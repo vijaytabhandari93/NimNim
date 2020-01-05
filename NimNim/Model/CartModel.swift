@@ -18,8 +18,9 @@ class CartModel : NSObject, Mappable, Codable  {
     var orderTotal : Int?
     var services : [ServiceModel]?  //servicemodel is a class which is like a dictionary of key value pairs
     var isWalletSelected:Bool? = true
-    var id : String?
     var v : String?
+    var addressId : String?
+    var CardId : String?
     
     func mapping(map: Map) {
         orderStatus <- map["order_status"]
@@ -28,7 +29,9 @@ class CartModel : NSObject, Mappable, Codable  {
         cartId <- map["cart_id"]
         orderTotal <-  map["order_total"]
         services  <- map  ["services"]
-        id  <- map["_id"]
         v   <- map ["__v"]
+        addressId <- map["address_id"]
+        CardId  <- map["card_id"]
+        isWalletSelected <- map["isWalletSelected"]
     }
 }

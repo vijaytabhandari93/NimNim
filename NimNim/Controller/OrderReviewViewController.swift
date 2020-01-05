@@ -22,6 +22,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     
     func applyPointsTapped(tapped: Bool) {
         pointsApplied  = tapped
+        cartModel?.isWalletSelected  = pointsApplied
     }
     
     func fetchWalletPoints() {
@@ -126,7 +127,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         
         let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
         let selectAddressVC = orderSB.instantiateViewController(withIdentifier: "SelectAddressViewController") as! SelectAddressViewController
-        
+        selectAddressVC.cartModel = cartModel
         NavigationManager.shared.push(viewController: selectAddressVC)
     }
     //fetch Cart

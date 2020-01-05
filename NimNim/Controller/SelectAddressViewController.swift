@@ -13,6 +13,7 @@ import NVActivityIndicatorView
 
 class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AddressNameCollectionViewCellDelegate {
     
+    var cartModel : CartModel?
     var Index : IndexPath?
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     func addressSelectedChangeUI(withIndexPath indexPath: IndexPath?) {
@@ -33,9 +34,18 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
     
     
     @IBAction func selectTimeSlots(_ sender: Any) {
-        let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-        let pickAndDropVC = SB.instantiateViewController(withIdentifier: "PickDateAndTimeViewController")
-        NavigationManager.shared.push(viewController: pickAndDropVC)
+        if let savedAddress = cartModel?.addressId {
+            let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+                   let pickAndDropVC = SB.instantiateViewController(withIdentifier: "PickDateAndTimeViewController") as! PickDateAndTimeViewController
+                   pickAndDropVC.cartModel = cartModel
+                   NavigationManager.shared.push(viewController: pickAndDropVC)
+        }
+        else {
+            let alert = UIAlertController(title: "Alert", message: "please select the address", preferredStyle: .alert)
+                          alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                          self.present(alert, animated: true, completion: nil)
+        }
+
     }
     
     override func viewDidLoad() {
@@ -123,6 +133,7 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressNameCollectionViewCell", for: indexPath) as! AddressNameCollectionViewCell
             cell.delegate = self
+            cell.cartModel = cartModel
             if Index == indexPath
             {
                 cell.configureUI(forSelected: true, forIndex: indexPath)

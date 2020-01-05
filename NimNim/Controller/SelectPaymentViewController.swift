@@ -9,6 +9,7 @@
 import UIKit
 import ObjectMapper
 import NVActivityIndicatorView
+import SwiftyJSON
 
 
 class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
@@ -17,6 +18,7 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     //IBOutlets
     @IBOutlet weak var selectPaymentCollectionView: UICollectionView!
     var cardBaseModel : CardModel?
+    var cartModel : CartModel?
     var noOfSavedCards : Int = 1// initially
     var selectedCard = true
      @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
@@ -29,11 +31,31 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     //IBActions
     @IBAction func placeOrder(_ sender: Any) {
-        
-        let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-        let placeOrderVC = SB.instantiateViewController(withIdentifier: "OrderSuccessFailureViewController")
-        NavigationManager.shared.push(viewController: placeOrderVC)
-        
+        if let cartModel =  cartModel {
+        var modelToDictionary = cartModel.toJSON()
+            print(JSON(modelToDictionary))
+            activityIndicator.startAnimating()
+          NetworkingManager.shared.post(withEndpoint: Endpoints.order, withParams: modelToDictionary, withSuccess: { (response) in
+              if let responseDict = response as? [String:Any] {
+                 print("success")
+                let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+                       let placeOrderVC = SB.instantiateViewController(withIdentifier: "OrderSuccessFailureViewController")
+                       NavigationManager.shared.push(viewController: placeOrderVC)
+                       
+                 
+              }
+              self.activityIndicator.stopAnimating()
+              
+          }) { (error) in
+              self.activityIndicator.stopAnimating()
+              if let error = error as? String {
+                  let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                  alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                  self.present(alert, animated: true, completion: nil)
+              }
+          }
+            }
+       
     }
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -82,11 +104,10 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 0
-        {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardCollectionViewCell", for: indexPath) as! SavedCardCollectionViewCell
+        { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardCollectionViewCell", for: indexPath) as! SavedCardCollectionViewCell
             cell.savedLabel.text = "Saved Cards"
             if selectedCard == true {
-                cell.configureCell(withExpandedState: true)
+            cell.configureCell(withExpandedState: true)
                 if let number = cardBaseModel?.data?.count, number > 0
                 {
                     if number == 1 {
@@ -105,11 +126,12 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
         else  {
             if noOfSavedCards > 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardExpandedStateTwoCollectionViewCell", for: indexPath) as! SavedCardExpandedStateTwoCollectionViewCell
+                
                 cell.noOfCards = noOfSavedCards
                 cell.cardModel = cardBaseModel?.data ?? []
                 cell.cardsCollectionView.reloadData()
                 cell.IsDeleteToBeShown = false
-                
+                cell.cartModel = cartModel
                 return cell
             }
             else

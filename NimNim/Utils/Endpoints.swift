@@ -35,5 +35,7 @@ struct Endpoints {
     static let fetchCart = "carts"
     static let removeItemFromCart = "removeitemfromcart"
     static let customerFromCart = "customer/customers"
+    static let order = "order"
+    
 }
 

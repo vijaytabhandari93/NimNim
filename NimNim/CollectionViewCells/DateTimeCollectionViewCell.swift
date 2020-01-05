@@ -10,9 +10,15 @@ import UIKit
 
 class DateTimeCollectionViewCell: UICollectionViewCell {
     
+    var cartModel : CartModel?
+    
+    var  deliverySelections : Bool?
+    
     @IBOutlet weak var dateLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Initialization code
     }
     func configureCell(forSelectedState State:Bool) {
