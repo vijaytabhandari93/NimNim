@@ -128,10 +128,14 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
             return cell
         }else if(indexPath.item == (numberOfItems  - 1)) {
             let savedAddressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedAddressCollectionViewCell", for: indexPath) as! SavedAddressCollectionViewCell
+            savedAddressCell.bottomSeparator.isHidden = true
             return savedAddressCell
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressNameCollectionViewCell", for: indexPath) as! AddressNameCollectionViewCell
+            if indexPath.item == addressBaseModel?.data?.count ?? 0{
+                cell.bottomSeparator.isHidden = true
+            }
             cell.delegate = self
             cell.cartModel = cartModel
             if Index == indexPath

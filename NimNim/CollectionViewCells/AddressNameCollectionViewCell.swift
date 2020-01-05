@@ -13,6 +13,7 @@ protocol AddressNameCollectionViewCellDelegate:class {
 }
 class AddressNameCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var bottomSeparator: UIView!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var tick: UIButton!
