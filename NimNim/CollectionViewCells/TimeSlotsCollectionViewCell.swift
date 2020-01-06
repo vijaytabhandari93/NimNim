@@ -67,7 +67,13 @@ class TimeSlotsCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndexPath = indexPath
+        collectionView.reloadData()
         delegate?.selectedTimeSlot(forIndexPath: currentIndexPath, withTimeSlotIndexPath: indexPath)
+        DispatchQueue.main.async {[weak self] in
+            if let selectedIndexPath = self?.selectedIndexPath {
+                self?.timecollectionView.scrollToItem(at: selectedIndexPath, at: .centeredHorizontally, animated: true)
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -64,6 +64,11 @@ class MonthAndDateBaseCollectionViewCell: UICollectionViewCell,UICollectionViewD
         selectedIndexPath = indexPath // 3 cell
         monthandDatecollectionView.reloadData() //  to make it green
         delegate?.selectedDate(forIndexPath: currentIndexPath, withDateIndexPath: indexPath)
+        DispatchQueue.main.async {[weak self] in
+            if let selectedDateIndexPath = self?.selectedIndexPath {
+                self?.monthandDatecollectionView.scrollToItem(at: selectedDateIndexPath, at: .centeredHorizontally, animated: true)
+            }
+        }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 120, height: 40)

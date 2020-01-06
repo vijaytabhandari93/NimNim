@@ -21,7 +21,7 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     var cartModel : CartModel?
     var noOfSavedCards : Int = 1// initially
     var selectedCard = true
-     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchSavedCards()
@@ -31,32 +31,47 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     //IBActions
     @IBAction func placeOrder(_ sender: Any) {
-        if let cartModel =  cartModel {
-        var modelToDictionary = cartModel.toJSON()
-            print(JSON(modelToDictionary))
-            activityIndicator.startAnimating()
-          NetworkingManager.shared.post(withEndpoint: Endpoints.order, withParams: modelToDictionary, withSuccess: { (response) in
-              if let responseDict = response as? [String:Any] {
-                 print("success")
-                let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-                       let placeOrderVC = SB.instantiateViewController(withIdentifier: "OrderSuccessFailureViewController")
-                       NavigationManager.shared.push(viewController: placeOrderVC)
-                       
-                 
-              }
-              self.activityIndicator.stopAnimating()
-              
-          }) { (error) in
-              self.activityIndicator.stopAnimating()
-              if let error = error as? String {
-                  let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
-                  alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-                  self.present(alert, animated: true, completion: nil)
-              }
-          }
+        if let savedCard = cartModel?.CardId {
+            if let cartModel = cartModel {
+                var modelToDictionary = cartModel.toJSON()
+                print(JSON(modelToDictionary))
+                activityIndicator.startAnimating()
+                NetworkingManager.shared.post(withEndpoint: Endpoints.order, withParams: modelToDictionary, withSuccess: { (response) in
+                    if let responseDict = response as? [String:Any] {
+                        print("success")
+                        let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+                        let placeOrderVC = SB.instantiateViewController(withIdentifier: "OrderSuccessFailureViewController") as! OrderSuccessFailureViewController
+                        placeOrderVC.actualOrderStatus = "success"
+                        NavigationManager.shared.push(viewController: placeOrderVC)
+                        UserDefaults.standard.removeObject(forKey: UserDefaultKeys.cartId)
+                         UserDefaults.standard.removeObject(forKey: UserDefaultKeys.cartAlias)
+                        
+                        
+                    }
+                    self.activityIndicator.stopAnimating()
+                    
+                }) { (error) in
+                    self.activityIndicator.stopAnimating()
+                    if let error = error as? String {
+                        let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+                        let placeOrderVC = SB.instantiateViewController(withIdentifier: "OrderSuccessFailureViewController") as! OrderSuccessFailureViewController
+                        placeOrderVC.actualOrderStatus = "fail"
+                        NavigationManager.shared.push(viewController: placeOrderVC)
+                        
+                    }
+                }
             }
-       
+            
+        }
+        else {
+            let alert = UIAlertController(title: "Alert", message: "please select the card", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
+    
+    
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 2
@@ -106,8 +121,9 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
         if indexPath.item == 0
         { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardCollectionViewCell", for: indexPath) as! SavedCardCollectionViewCell
             cell.savedLabel.text = "Saved Cards"
+            cell.arrowImageView.isHidden  =  true
             if selectedCard == true {
-            cell.configureCell(withExpandedState: true)
+                cell.configureCell(withExpandedState: true)
                 if let number = cardBaseModel?.data?.count, number > 0
                 {
                     if number == 1 {
@@ -132,6 +148,7 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                 cell.cardsCollectionView.reloadData()
                 cell.IsDeleteToBeShown = false
                 cell.cartModel = cartModel
+                cell.bottomSeparator.isHidden = true
                 return cell
             }
             else

@@ -116,7 +116,7 @@ class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollec
             
         }  else
         {
-                 return CGSize(width: 154, height: 150)
+                 return CGSize(width: 154, height: 170)
         }
     }
     func deleteCardTapped(withId id : String?){

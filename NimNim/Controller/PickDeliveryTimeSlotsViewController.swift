@@ -12,12 +12,12 @@ class PickDeliveryTimeSlotsViewController:
 UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     var deliverySelections : Bool = true
-    var cartModel : CartModel?
+    var cartModel : CartModel?//
     var dropOffDictionary:[String:[ServiceModel]] = [:]
     var sortedDropKeys:[String] = []
-    var selectedPickupSlot:Date?
-    var selectedDateIndexPaths:[IndexPath] = []
-    var selectedSlotIndexPaths:[IndexPath] = []
+    var selectedPickupSlot:Date?//
+    var selectedDateIndexPaths:[IndexPath] = []//
+    var selectedSlotIndexPaths:[IndexPath] = []//
     
     @IBOutlet weak var PickDeliveryTimeSlotsCollectionView: UICollectionView!
     
@@ -94,20 +94,23 @@ UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollecti
                 if let arrayOfServiceNamesInThisSection = arrayOfServiceModelOfSection.map ({$0.name}) as? [String] {
                     print(arrayOfServiceNamesInThisSection)
                     let servicesString = arrayOfServiceNamesInThisSection.joined(separator: ", ")
-                    cell.label.text = "Drop Off date and time slot for \(servicesString). Only available after \(turnAroundTimeOfSection) hours."
+                    cell.label.text = "Choose drop Off date and time slot for \(servicesString). Only available after \(turnAroundTimeOfSection) hours."
                 }
             }
             return cell
         }
         else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MonthAndDateBaseCollectionViewCell", for: indexPath) as! MonthAndDateBaseCollectionViewCell
-            cell.selectedIndexPath = selectedDateIndexPaths[indexPath.section]
-            cell.currentIndexPath = indexPath
+            cell.selectedIndexPath = selectedDateIndexPaths[indexPath.section] //tap
+            cell.currentIndexPath = indexPath //tap
             if let selectedPickupSlot = selectedPickupSlot, let turnAroundTime = Int(turnAroundTimeOfSection) {
                 cell.dates = fetchValidDropOffDates(withInitialDate: selectedPickupSlot, withTurnaroundTimeInHr: turnAroundTime)
             }
             cell.delegate = self
             cell.monthandDatecollectionView.reloadData()
+            DispatchQueue.main.async {
+                cell.monthandDatecollectionView.scrollToItem(at: self.selectedDateIndexPaths[indexPath.section], at: .centeredHorizontally, animated: true)
+            }
             return cell
         }
         else {
@@ -120,12 +123,14 @@ UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollecti
             }
             cell.delegate = self
             cell.timecollectionView.reloadData()
+            
+            
             return cell
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
-            return CGSize(width: self.view.frame.width, height:90)
+            return CGSize(width: self.view.frame.width, height:80)
         }
         else if indexPath.item == 1
         {
@@ -133,7 +138,7 @@ UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollecti
         }
         else
         {
-            return CGSize(width: self.view.frame.width, height:260)
+            return CGSize(width: self.view.frame.width, height:180)
         }
     }
     
@@ -143,7 +148,8 @@ extension PickDeliveryTimeSlotsViewController: MonthAndDateBaseCollectionViewCel
     func selectedDate(forIndexPath indexPath: IndexPath?, withDateIndexPath dateIndexPath: IndexPath?) {
         if let currentIndexPath = indexPath, let dateIndexPath = dateIndexPath  {
             selectedDateIndexPaths[currentIndexPath.section] = dateIndexPath
-            PickDeliveryTimeSlotsCollectionView.reloadData()
+            let indexSet = IndexSet(integer: currentIndexPath.section)
+            PickDeliveryTimeSlotsCollectionView.reloadSections(indexSet)
         }
     }
 }
@@ -152,7 +158,8 @@ extension PickDeliveryTimeSlotsViewController: TimeSlotsCollectionViewCellDelega
     func selectedTimeSlot(forIndexPath indexPath: IndexPath?, withTimeSlotIndexPath slotIndexPath: IndexPath?) {
         if let currentIndexPath = indexPath, let slotIndexPath = slotIndexPath  {
             selectedSlotIndexPaths[currentIndexPath.section] = slotIndexPath
-            PickDeliveryTimeSlotsCollectionView.reloadData()
+            let indexSet = IndexSet(integer: currentIndexPath.section)
+            PickDeliveryTimeSlotsCollectionView.reloadSections(indexSet)
         }
     }
 }
