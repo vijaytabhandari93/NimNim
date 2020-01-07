@@ -12,8 +12,6 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
-    <key>FacebookAutoLogAppEventsEnabled</key>
-    <true/>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
 	<key>CFBundlePackageType</key>
@@ -51,6 +49,8 @@
 	<string>7</string>
 	<key>FacebookAppID</key>
 	<string>2083793648566119</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<true/>
 	<key>FacebookDisplayName</key>
 	<string>NimNim</string>
 	<key>LSApplicationCategoryType</key>

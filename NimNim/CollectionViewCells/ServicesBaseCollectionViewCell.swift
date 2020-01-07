@@ -74,8 +74,8 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
                 
             }
         }
-        cell.imageURL = services[indexPath.row].icon
-        if let url = services[indexPath.row].icon {
+        cell.imageURL = services[indexPath.item].icon
+        if let url = services[indexPath.item].icon {
             if let urlValue = URL(string: url)
             {
                 cell.serviceImage.kf.setImage(with: urlValue)
