@@ -37,6 +37,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         userName.text = "Hello \(abc.capitalized)"
         }
         setupCartCountLabel()
+ 
+        
     }
     
     override func viewWillAppear(_ animated: Bool){

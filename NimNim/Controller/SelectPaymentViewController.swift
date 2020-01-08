@@ -43,9 +43,9 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                         let placeOrderVC = SB.instantiateViewController(withIdentifier: "OrderSuccessFailureViewController") as! OrderSuccessFailureViewController
                         placeOrderVC.actualOrderStatus = "success"
                         NavigationManager.shared.push(viewController: placeOrderVC)
-                        UserDefaults.standard.removeObject(forKey: UserDefaultKeys.cartId)
-                         UserDefaults.standard.removeObject(forKey: UserDefaultKeys.cartAlias)
-                        
+                      let defaults = UserDefaults.standard
+                        defaults.removeObject(forKey: UserDefaultKeys.cartId)
+                        defaults.removeObject(forKey: UserDefaultKeys.cartAlias)
                         
                     }
                     self.activityIndicator.stopAnimating()

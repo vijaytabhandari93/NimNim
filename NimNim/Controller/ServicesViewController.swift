@@ -43,6 +43,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         }
         setupAddToCartButton()
         setupCartCountLabel()
+       
     }
     
     func setupCartCountLabel() {

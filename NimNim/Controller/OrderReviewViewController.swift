@@ -133,9 +133,10 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     //fetch Cart
     
     func fetchCart() {
-        guard let cartId = UserDefaults.standard.object(forKey: UserDefaultKeys.cartId) as? String, cartId.count > 0 else{
+        guard let cartId =  UserDefaults.standard.object(forKey: UserDefaultKeys.cartId)else {
             return
         }
+        
         activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.fetchCart, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...//in this get call the user Auth token thee cart is being fetched.
             if let responseDict = response as? [String:Any] { //Alamofire is throwing the response as dictionary .....we are convertig it to model

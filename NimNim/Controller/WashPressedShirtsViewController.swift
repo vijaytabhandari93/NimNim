@@ -253,7 +253,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         if let serviceModel = serviceModel, let cartId = cartId{
             var modelToDictionary = serviceModel.toJSON()
             modelToDictionary["cart_id"] = cartId
-            //print(JSON(modelToDictionary))
+            print(JSON(modelToDictionary))
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)

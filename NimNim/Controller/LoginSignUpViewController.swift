@@ -421,7 +421,6 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
-           
         }
     }
     
@@ -429,7 +428,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         if let response = response {
             if let customerData = response["customer"] as? [String:Any] {
                 if let cartId = customerData["cart_id"] as? String {
-                    UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                    //UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
                 }
             }
         }
