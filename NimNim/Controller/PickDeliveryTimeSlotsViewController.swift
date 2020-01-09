@@ -49,6 +49,11 @@ UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollecti
         let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
         let DropVC = SB.instantiateViewController(withIdentifier: "SelectPaymentViewController") as! SelectPaymentViewController
         DropVC.cartModel = cartModel
+        DropVC.selectedPickupSlot = selectedPickupSlot
+        DropVC.selectedDateIndexPaths = selectedDateIndexPaths
+        DropVC.selectedSlotIndexPaths = selectedSlotIndexPaths
+        DropVC.sortedDropKeys = sortedDropKeys
+        DropVC.dropOffDictionary = dropOffDictionary
         NavigationManager.shared.push(viewController: DropVC)
     }
     

@@ -136,7 +136,8 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     func addServiceToCart() {
         if let serviceModel = serviceModel /// this is received from serviceBase collection view cells(//passing of the service model to the vc. as written)
-        { let modelToDictionary = serviceModel.toJSON() // model in dictationary
+        {
+            let modelToDictionary = serviceModel.toJSON() // model in dictationary
             activityIndicator.startAnimating()
             var params : [String:Any] = [:]/// - dictionary
             params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.

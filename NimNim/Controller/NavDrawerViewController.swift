@@ -15,7 +15,7 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet weak var navDrawerTableView: UITableView!
     
     //MARK: Constants and Variables
-    let navDrawerlist = ["Order History","Wallet","Learn How","Subscription","Help","Price","About Us & FAQs","Settings","Logout"]
+    let navDrawerlist = ["Track Orders","Wallet","Help","Pricing","Logout"]
     
     
     override func viewDidLoad() {
@@ -49,9 +49,13 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 8 {
+        if indexPath.row == 5 {
             logOut()
         }
+        if indexPath.row == 0 {
+            OrderHistory()
+        }
+        
     }
     
     func logOut(){
@@ -65,5 +69,13 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
                 NavigationManager.shared.initializeApp()
     }
     
+    func  OrderHistory() {
+        
+              let servicesStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+              let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "OrderStatusViewController") as? OrderStatusViewController
+                  NavigationManager.shared.push(viewController: allServices)
+              
+        
+    }
     
 }

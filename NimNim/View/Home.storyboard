@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -393,13 +391,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GX3-mf-nlx">
-                                <rect key="frame" x="0.0" y="44" width="414" height="784"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4nS-OF-IPZ">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="713"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="747"/>
                                         <subviews>
                                             <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OGR-Iq-8j2">
-                                                <rect key="frame" x="0.0" y="87" width="414" height="626"/>
+                                                <rect key="frame" x="0.0" y="87" width="414" height="660"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="rgY-GJ-s9n">
                                                     <size key="itemSize" width="50" height="50"/>
@@ -496,7 +494,7 @@
                                                 </constraints>
                                             </view>
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bzi-Bo-DRp" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
-                                                <rect key="frame" x="182" y="331.5" width="50" height="50"/>
+                                                <rect key="frame" x="182" y="348.5" width="50" height="50"/>
                                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
@@ -555,7 +553,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L25-Wc-eR2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3481" y="266"/>
+            <point key="canvasLocation" x="-3239" y="266"/>
         </scene>
         <!--Nav Drawer View Controller-->
         <scene sceneID="gFQ-Zb-a1q">
@@ -566,22 +564,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="549-En-6Jp">
-                                <rect key="frame" x="0.0" y="101" width="414" height="656"/>
+                                <rect key="frame" x="0.0" y="101" width="414" height="690"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZOl-L2-X7f">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="656"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="690"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="NavDrawerTableViewCell" id="vUQ-oP-Lkv" customClass="NavDrawerTableViewCell" customModule="NimNim" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                                <rect key="frame" x="0.0" y="28" width="414" height="48.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vUQ-oP-Lkv" id="Uhp-QB-v20">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="48.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydX-RI-qI2">
-                                                            <rect key="frame" x="139" y="12" width="136.5" height="20"/>
+                                                            <rect key="frame" x="139" y="12" width="136.5" height="24.5"/>
                                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
                                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <nil key="highlightedColor"/>
@@ -648,7 +646,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dPx-Mu-ytg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2687" y="266"/>
+            <point key="canvasLocation" x="-2577" y="266"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="GyQ-u8-BTE">
@@ -728,7 +726,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="94U-HZ-duA">
-                                <rect key="frame" x="0.0" y="96" width="414" height="661"/>
+                                <rect key="frame" x="0.0" y="96" width="414" height="695"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="weZ-Ta-waF">
                                     <size key="itemSize" width="50" height="50"/>
@@ -748,7 +746,7 @@
                                 </cells>
                             </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iIs-et-Vab">
-                                <rect key="frame" x="0.0" y="757" width="414" height="105"/>
+                                <rect key="frame" x="0.0" y="791" width="414" height="71"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rg6-88-uGh" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
@@ -795,7 +793,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWF-Gm-ap9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1155" y="266"/>
+            <point key="canvasLocation" x="-1254" y="266"/>
         </scene>
     </scenes>
     <resources>

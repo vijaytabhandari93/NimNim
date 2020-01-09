@@ -32,7 +32,7 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
             let qty = serviceModel.productQuantity()
             productQty.text = "\(String(describing: qty)) Products"
             amount.text = "To be calculated"
-            dropOOffTime.text = "To be discussed"
+        
         }
     }
     

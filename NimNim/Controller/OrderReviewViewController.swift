@@ -257,7 +257,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            return CGSize(width: collectionView.frame.size.width, height:160)
+            return CGSize(width: collectionView.frame.size.width, height:110)
         }else {
             if indexPath.item == 0 {
                 return CGSize(width: collectionView.frame.size.width, height:96)
@@ -270,7 +270,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 0 {
             if let services = cartModel?.services, services.count > 0 {
-                return CGSize(width: collectionView.frame.size.width, height: 120)
+                return CGSize(width: collectionView.frame.size.width, height: 70)
             }
         }
         return CGSize(width: collectionView.frame.size.width, height: 0)

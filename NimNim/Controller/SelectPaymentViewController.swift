@@ -21,9 +21,19 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     var cartModel : CartModel?
     var noOfSavedCards : Int = 1// initially
     var selectedCard = true
+    var selectedPickupSlot:Date?//
+    var selectedDateIndexPaths:[IndexPath] = []//
+    var selectedSlotIndexPaths:[IndexPath] = []
+    var sortedDropKeys:[String] = []
+    var dropOffDictionary:[String:[ServiceModel]] = [:]
+    var dateFormatterForDate = DateFormatter()
+    var dateFormatterForTime = DateFormatter()
+    
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        dateFormatterForDate.dateFormat = "dd MMM YYYY"
+        dateFormatterForTime.dateFormat = "hh:mm"
         fetchSavedCards()
         registerCells()
         selectPaymentCollectionView.delegate = self
@@ -33,6 +43,8 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     @IBAction func placeOrder(_ sender: Any) {
         if let savedCard = cartModel?.CardId {
             if let cartModel = cartModel {
+                setupPickupDateTimeInServices()
+                setupDropOffDateTimeInServices()
                 var modelToDictionary = cartModel.toJSON()
                 print(JSON(modelToDictionary))
                 activityIndicator.startAnimating()
@@ -69,6 +81,48 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
             self.present(alert, animated: true, completion: nil)
         }
         
+    }
+    
+    func setupPickupDateTimeInServices() {
+        if let pickupDate = selectedPickupSlot {
+            let date = dateFormatterForDate.string(from: pickupDate)
+            let time = dateFormatterForTime.string(from: pickupDate)
+            if let services = cartModel?.services {
+                for service in services {
+                    service.pickupDate = date
+                    service.pickUpTime = time
+                }
+            }
+        }
+    }
+    
+    func setupDropOffDateTimeInServices() {
+        if let pickupDate = selectedPickupSlot {
+            for i in 0 ..< sortedDropKeys.count {
+                let key = sortedDropKeys[i]
+                let arrayOfServices = dropOffDictionary[key]
+                if let turnaroundTime = Int(key) {
+                    let dates = fetchValidDropOffDates(withInitialDate: pickupDate, withTurnaroundTimeInHr: turnaroundTime)
+                    let selectedDate = dates[selectedDateIndexPaths[i].item]
+                    let slots = fetchSlots(forDate: selectedDate)
+                    let selectedSlot = slots[selectedSlotIndexPaths[i].item]
+                    let date = dateFormatterForDate.string(from: selectedSlot)
+                    let time = dateFormatterForTime.string(from: selectedSlot)
+                    if let services = arrayOfServices {
+                        for service in services  {
+                            if let cartServices = cartModel?.services {
+                                for cartService in cartServices {
+                                    if service.alias == cartService.alias {
+                                        cartService.dropOffDate = date
+                                        cartService.dropOffTime = time
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     
     

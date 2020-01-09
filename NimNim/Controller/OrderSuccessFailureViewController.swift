@@ -26,7 +26,7 @@ class OrderSuccessFailureViewController: UIViewController {
     }
     
     @IBAction func trackOrderTapped(_ sender: Any) {
-        if trackOrderButton.titleLabel?.text == "Track Order"
+        if trackOrderButton.titleLabel?.text == "Track Orders"
         {
             let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
             let orderStatusVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderStatusViewController")
@@ -58,7 +58,7 @@ class OrderSuccessFailureViewController: UIViewController {
             label.text = "Click the button below to Track your order or to go back home."
             backView.backgroundColor = Colors.nimnimGreen
             
-            trackOrderButton.setTitle("Track Order", for: .normal)
+            trackOrderButton.setTitle("Track Orders", for: .normal)
         } else {
             
                       orderStatusImage.image = UIImage(named: "sad")

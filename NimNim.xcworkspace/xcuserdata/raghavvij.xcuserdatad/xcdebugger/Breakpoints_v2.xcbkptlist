@@ -87,48 +87,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5FA043C9-AAF2-44E7-8B69-E4D063B4DA7F"
+            uuid = "8A56C00B-4279-4DD9-9969-EBA84B9962D3"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NimNim/Controller/WashAndAirDryViewController.swift"
+            filePath = "NimNim/Controller/OrderDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
-            landmarkName = "updateServiceInCart(withCartId:)"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "38FC54D7-4FE8-47AE-A63A-8DF0956B7D72"
+            uuid = "3ACAA55C-752C-403C-BD48-3724ECDC230E"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NimNim/Controller/WashAndAirDryViewController.swift"
+            filePath = "NimNim/Controller/OrderDetailsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
-            landmarkName = "updateServiceInCart(withCartId:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DEEF6AC2-11A3-4523-8EDE-9976EAD88517"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "NimNim/Controller/WashAndAirDryViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "284"
-            endingLineNumber = "284"
-            landmarkName = "updateServiceInCart(withCartId:)"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

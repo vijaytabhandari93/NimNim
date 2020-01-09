@@ -20,6 +20,7 @@ class HomeBaseViewController: UIViewController {
     @IBOutlet weak var navButton: UIButton!
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var profileButton: UIButton!
+    
     @IBOutlet weak var homeButtonBackView: UIView!
     @IBOutlet weak var navButtonBackView: UIView!
     @IBOutlet weak var chatButtonBackView: UIView!
