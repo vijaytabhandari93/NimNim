@@ -20,11 +20,13 @@ class HomeBaseViewController: UIViewController {
     @IBOutlet weak var navButton: UIButton!
     @IBOutlet weak var chatButton: UIButton!
     @IBOutlet weak var profileButton: UIButton!
-    
+    @IBOutlet weak var nimNimButton: UIButton!
     @IBOutlet weak var homeButtonBackView: UIView!
     @IBOutlet weak var navButtonBackView: UIView!
     @IBOutlet weak var chatButtonBackView: UIView!
     @IBOutlet weak var profileButtonBackView: UIView!
+ 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -61,6 +63,8 @@ class HomeBaseViewController: UIViewController {
         chatButtonBackView.alpha = 0
         profileButton.tintColor = Colors.nimnimHomeTabsGrey
         profileButtonBackView.alpha = 0
+       
+
     }
     
     //MARK: IBActions
@@ -80,6 +84,14 @@ class HomeBaseViewController: UIViewController {
         navDrawerContainerView.alpha = 1
     }
     
+    @IBAction func nimNimButtonTapped(_ sender: Any) {
+        
+        let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
+        let NimNimIt = homeStoryboard.instantiateViewController(withIdentifier: "NimNimViewController") as? NimNimViewController
+            NavigationManager.shared.push(viewController: NimNimIt)
+        
+    }
+    
     @IBAction func chatTapped(_ sender: Any) {
         resetAlpha()
         resetButtons()
@@ -87,6 +99,7 @@ class HomeBaseViewController: UIViewController {
         chatButtonBackView.alpha = 1
         chatContainerView.alpha = 1
     }
+    
     @IBAction func profileTapped(_ sender: Any) {
         resetAlpha()
         resetButtons()

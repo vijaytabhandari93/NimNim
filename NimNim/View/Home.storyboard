@@ -292,6 +292,9 @@
                                                                 <integer key="value" value="26"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="nimNimButtonTapped:" destination="1mg-H2-MlS" eventType="touchUpInside" id="Llg-Oe-w8F"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -372,6 +375,7 @@
                         <outlet property="navButton" destination="JKh-uM-ek0" id="sjW-l9-fFM"/>
                         <outlet property="navButtonBackView" destination="FDE-8N-Myw" id="Foj-Fr-zWV"/>
                         <outlet property="navDrawerContainerView" destination="Dh6-nv-4n9" id="HXj-AU-L8M"/>
+                        <outlet property="nimNimButton" destination="tO7-Mv-gih" id="iCi-vc-9Fl"/>
                         <outlet property="profileButton" destination="Ezh-2Q-kdF" id="Ba8-dm-GYn"/>
                         <outlet property="profileButtonBackView" destination="V5a-Bf-o0f" id="LhD-8L-270"/>
                         <outlet property="profileContainerView" destination="Oha-G7-Dlr" id="cFq-fh-kFC"/>
@@ -381,6 +385,141 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fFq-Qp-Rhl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2264" y="-537"/>
+        </scene>
+        <!--Nim Nim View Controller-->
+        <scene sceneID="chE-sQ-RIG">
+            <objects>
+                <viewController storyboardIdentifier="NimNimViewController" id="P0s-TZ-6Co" customClass="NimNimViewController" customModule="NimNim" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Wnv-SZ-Fv1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haR-f4-dDe">
+                                <rect key="frame" x="0.0" y="803" width="414" height="59"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qba-22-YC0">
+                                        <rect key="frame" x="127" y="14.5" width="160" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Select Address Method">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="selectAddressTapped:" destination="P0s-TZ-6Co" eventType="touchUpInside" id="M2j-ca-Um7"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.27843137254901962" green="0.74901960784313726" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="JHJ-0u-Peo"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEY-wJ-M3a">
+                                <rect key="frame" x="0.0" y="44" width="414" height="86"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bfk-79-MTf">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="7ha-WY-Ctt"/>
+                                            <constraint firstAttribute="height" constant="40" id="bGK-za-vxU"/>
+                                        </constraints>
+                                        <state key="normal" image="previous"/>
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="P0s-TZ-6Co" eventType="touchUpInside" id="w2C-cZ-J8t"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just NImNim It means that you can quickly place your order." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ln3-Ro-txZ">
+                                        <rect key="frame" x="28" y="45" width="358" height="41"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just NimNim It" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QpF-PU-qlR">
+                                        <rect key="frame" x="129.5" y="8" width="155" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="Qw2-qp-4lD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ln3-Ro-txZ" firstAttribute="top" secondItem="QpF-PU-qlR" secondAttribute="bottom" constant="13" id="G4B-Yb-Rq2"/>
+                                    <constraint firstItem="QpF-PU-qlR" firstAttribute="centerY" secondItem="bfk-79-MTf" secondAttribute="centerY" id="Rbt-MW-kHD"/>
+                                    <constraint firstItem="bfk-79-MTf" firstAttribute="leading" secondItem="mEY-wJ-M3a" secondAttribute="leading" id="Tq0-sp-1FQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="ln3-Ro-txZ" secondAttribute="trailing" constant="28" id="dJP-Uj-KQq"/>
+                                    <constraint firstItem="ln3-Ro-txZ" firstAttribute="centerX" secondItem="mEY-wJ-M3a" secondAttribute="centerX" id="fVi-DL-tP5"/>
+                                    <constraint firstItem="bfk-79-MTf" firstAttribute="top" secondItem="mEY-wJ-M3a" secondAttribute="top" id="hJX-3y-t6O"/>
+                                    <constraint firstItem="ln3-Ro-txZ" firstAttribute="leading" secondItem="mEY-wJ-M3a" secondAttribute="leading" constant="28" id="lPO-Sd-tjp"/>
+                                    <constraint firstItem="QpF-PU-qlR" firstAttribute="centerX" secondItem="mEY-wJ-M3a" secondAttribute="centerX" id="w2e-Ol-hkZ"/>
+                                    <constraint firstAttribute="height" constant="86" id="yrL-ZZ-TOH"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sSX-B0-HqG">
+                                <rect key="frame" x="0.0" y="130" width="414" height="673"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="zQt-aY-STt">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="4ql-ch-VxF">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kwH-wq-ub1" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
+                                <rect key="frame" x="182" y="428" width="50" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="QLm-98-iSU"/>
+                                    <constraint firstAttribute="height" constant="50" id="cXZ-AT-AZ0"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="typeName" value="ballGridPulse"/>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sSX-B0-HqG" firstAttribute="top" secondItem="mEY-wJ-M3a" secondAttribute="bottom" id="33n-Cc-a9U"/>
+                            <constraint firstItem="kwH-wq-ub1" firstAttribute="centerX" secondItem="SXw-KS-BYs" secondAttribute="centerX" id="3ZS-bR-dTy"/>
+                            <constraint firstItem="mEY-wJ-M3a" firstAttribute="top" secondItem="SXw-KS-BYs" secondAttribute="top" id="3p5-ek-TIp"/>
+                            <constraint firstItem="haR-f4-dDe" firstAttribute="trailing" secondItem="SXw-KS-BYs" secondAttribute="trailing" id="AaM-nT-zjd"/>
+                            <constraint firstItem="mEY-wJ-M3a" firstAttribute="trailing" secondItem="SXw-KS-BYs" secondAttribute="trailing" id="G8r-OS-PTp"/>
+                            <constraint firstItem="sSX-B0-HqG" firstAttribute="leading" secondItem="SXw-KS-BYs" secondAttribute="leading" id="GD3-dk-Kge"/>
+                            <constraint firstItem="kwH-wq-ub1" firstAttribute="centerY" secondItem="SXw-KS-BYs" secondAttribute="centerY" id="OyU-EP-Xci"/>
+                            <constraint firstItem="mEY-wJ-M3a" firstAttribute="leading" secondItem="SXw-KS-BYs" secondAttribute="leading" id="eYl-jH-iad"/>
+                            <constraint firstItem="sSX-B0-HqG" firstAttribute="trailing" secondItem="SXw-KS-BYs" secondAttribute="trailing" id="k2z-Lh-gxM"/>
+                            <constraint firstItem="haR-f4-dDe" firstAttribute="leading" secondItem="SXw-KS-BYs" secondAttribute="leading" id="svO-vf-z5L"/>
+                            <constraint firstItem="haR-f4-dDe" firstAttribute="top" secondItem="sSX-B0-HqG" secondAttribute="bottom" id="vJR-9y-ktO"/>
+                            <constraint firstItem="SXw-KS-BYs" firstAttribute="bottom" secondItem="haR-f4-dDe" secondAttribute="bottom" id="wp5-Rn-XiD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SXw-KS-BYs"/>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="sSX-B0-HqG" id="lhd-fj-qbm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pQT-j5-TOy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1434.7826086956522" y="-551.11607142857144"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Z91-SY-Xkn">
@@ -803,6 +942,7 @@
         <image name="home" width="19" height="18"/>
         <image name="nav" width="21" height="14"/>
         <image name="pencilEditButton" width="16" height="16"/>
+        <image name="previous" width="9" height="15"/>
         <image name="profile" width="17" height="19"/>
     </resources>
 </document>

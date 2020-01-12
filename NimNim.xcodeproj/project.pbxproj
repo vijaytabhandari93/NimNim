@@ -63,6 +63,7 @@
 		AC41CE76235C822F001AC676 /* AddCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC41CE74235C822F001AC676 /* AddCardCollectionViewCell.xib */; };
 		AC496133235C68C100AA7196 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC496131235C68C100AA7196 /* AddressCollectionViewCell.swift */; };
 		AC496134235C68C100AA7196 /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC496132235C68C100AA7196 /* AddressCollectionViewCell.xib */; };
+		AC51847423C85B4F00A45E69 /* NimNimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC51847323C85B4E00A45E69 /* NimNimViewController.swift */; };
 		AC5226F923C70F5F002F111F /* OrderNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5226F723C70F5F002F111F /* OrderNumberCollectionViewCell.swift */; };
 		AC5226FA23C70F5F002F111F /* OrderNumberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5226F823C70F5F002F111F /* OrderNumberCollectionViewCell.xib */; };
 		AC5226FC23C71B14002F111F /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5226FB23C71B14002F111F /* OrderDetailsViewController.swift */; };
@@ -251,6 +252,7 @@
 		AC41CE74235C822F001AC676 /* AddCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC496131235C68C100AA7196 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC496132235C68C100AA7196 /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC51847323C85B4E00A45E69 /* NimNimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimNimViewController.swift; sourceTree = "<group>"; };
 		AC5226F723C70F5F002F111F /* OrderNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNumberCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC5226F823C70F5F002F111F /* OrderNumberCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderNumberCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5226FB23C71B14002F111F /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				AC5ADD9F236309BC00204E9E /* PickDeliveryTimeSlotsViewController.swift */,
 				AC5ADDA123630CC700204E9E /* SelectPaymentViewController.swift */,
 				AC5226FB23C71B14002F111F /* OrderDetailsViewController.swift */,
+				AC51847323C85B4E00A45E69 /* NimNimViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -913,6 +916,7 @@
 				ACFD92992355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.swift in Sources */,
 				AC5ADD972362DEE400204E9E /* showSavedUserInfoCollectionViewCell.swift in Sources */,
 				ACF9CD23234F69EC00039E6C /* WashAndAirDryViewController.swift in Sources */,
+				AC51847423C85B4F00A45E69 /* NimNimViewController.swift in Sources */,
 				AC5ADDA223630CC700204E9E /* SelectPaymentViewController.swift in Sources */,
 				ACF9CD1E234F575900039E6C /* AddMoreServicesCollectionViewCell.swift in Sources */,
 				AC0E2040235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift in Sources */,
@@ -1134,6 +1138,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;
@@ -1155,6 +1160,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;
