@@ -13,11 +13,14 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
     //MARK: IBOutlets
     @IBOutlet weak var preferencesTableView: UITableView!
     @IBOutlet weak var titleLable: UILabel!
+    var reselection = false
    
     
     //MARK: Constants and Variables
     var titleArray:[String] = []
     
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var skipForNow: UIButton!
     var selectedIndexPath: IndexPath?
     
     enum ScreenType {
@@ -28,6 +31,11 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
     var screenTypeValue:ScreenType = .pickUpDropOff
     
     override func viewDidLoad() {
+        if reselection{
+            skipForNow.isHidden = true
+            nextButton.setTitle("Pop", for: .normal)
+            
+        }
         super.viewDidLoad()
         setupScreenModel()
         setuptableview()
@@ -93,30 +101,43 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
     }
     
     @IBAction func nextTapped(_ sender: Any) {
-        if screenTypeValue == .pickUpDropOff {
+        if reselection{
+            if screenTypeValue == .pickUpDropOff {
             if let selectedIndexPath = selectedIndexPath {
-                UserDefaults.standard.set(titleArray[selectedIndexPath.row], forKey: UserDefaultKeys.pickUpDropOfPreferences)
-                if let descriptionPreferences = UserDefaults.standard.object(forKey: UserDefaultKeys.descriptionPreferences) as? String {
-                    let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                    let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
-                    NavigationManager.shared.push(viewController: servicesViewController)
-                }else {
-                    let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
-                    let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
-                    secondViewController?.screenTypeValue = .descriptionOfUser
-                    NavigationManager.shared.push(viewController: secondViewController)
-                }
-            }
-        }else {
-            if let selectedIndexPath = selectedIndexPath { UserDefaults.standard.set(titleArray[selectedIndexPath.row], forKey: UserDefaultKeys.descriptionPreferences)
-                
-                let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
-                let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
-                NavigationManager.shared.push(viewController: servicesViewController)
-                
-            }
-            
+        UserDefaults.standard.set(titleArray[selectedIndexPath.row], forKey: UserDefaultKeys.pickUpDropOfPreferences)
+            let servicesStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+             let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "SelectAddressViewController") as? SelectAddressViewController
+                 NavigationManager.shared.push(viewController: allServices)
+             
+                }}} else {
+            if screenTypeValue == .pickUpDropOff {
+                                 if let selectedIndexPath = selectedIndexPath {
+                                     UserDefaults.standard.set(titleArray[selectedIndexPath.row], forKey: UserDefaultKeys.pickUpDropOfPreferences)
+                                     if let descriptionPreferences = UserDefaults.standard.object(forKey: UserDefaultKeys.descriptionPreferences) as? String {
+                                         let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                                         let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
+                                         NavigationManager.shared.push(viewController: servicesViewController)
+                                     }else {
+                                         let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
+                                         let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+                                         secondViewController?.screenTypeValue = .descriptionOfUser
+                                         NavigationManager.shared.push(viewController: secondViewController)
+                                     }
+                                 }
+                             }else {
+                                 if let selectedIndexPath = selectedIndexPath { UserDefaults.standard.set(titleArray[selectedIndexPath.row], forKey: UserDefaultKeys.descriptionPreferences)
+                                     
+                                     let servicesStoryboard = UIStoryboard(name: "Home", bundle: nil)
+                                     let servicesViewController = servicesStoryboard.instantiateViewController(withIdentifier: "HomeBaseViewController")
+                                     NavigationManager.shared.push(viewController: servicesViewController)
+                                     
+                                 }
+                                 
+                             }
+                      
+                  
         }
+ 
     }
     
     //MARK: Tableview delegate and datasource methods

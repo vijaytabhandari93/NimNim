@@ -33,6 +33,7 @@ class BannerModel:NSObject, Mappable, Codable {
     var alias:String?
     var banner:String?
     var v:Int?
+    var icon : String?
     
     required convenience init?(map: Map) { self.init() }
     
@@ -42,7 +43,7 @@ class BannerModel:NSObject, Mappable, Codable {
         name    <- map["name"]
         alias   <- map["alias"]
         banner      <- map["banner"]
-        
+        icon <- map["icon"]
     }
     
     

@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina3_5" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina3_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <array key="Montserrat-ExtraBold.ttf">
             <string>Montserrat-ExtraBold</string>
-        </array>
-        <array key="Montserrat-Medium.ttf">
-            <string>Montserrat-Medium</string>
         </array>
     </customFonts>
     <objects>
@@ -30,7 +25,7 @@
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rfr-G9-0t4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qir-KU-dzZ">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Qir-KU-dzZ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="150"/>
                                 <color key="backgroundColor" red="0.88235294119999996" green="0.36470588240000001" blue="0.3294117647" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
@@ -41,36 +36,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flat 20 % off today. Just for you. With Love." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fuq-yK-g4B">
-                                <rect key="frame" x="32" y="54.5" width="256" height="41"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SELECT SERVICE &gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xxP-1f-qXO">
-                                <rect key="frame" x="32" y="105.5" width="113" height="16"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="16" id="1Am-eR-Jmi"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="pkJ-fK-KF7" firstAttribute="top" secondItem="rfr-G9-0t4" secondAttribute="top" constant="31" id="0Zg-4w-8mT"/>
                             <constraint firstItem="Qir-KU-dzZ" firstAttribute="top" secondItem="rfr-G9-0t4" secondAttribute="top" id="6sX-4d-HOr"/>
-                            <constraint firstItem="Fuq-yK-g4B" firstAttribute="leading" secondItem="rfr-G9-0t4" secondAttribute="leading" constant="32" id="9Zx-Le-QAr"/>
                             <constraint firstAttribute="trailing" secondItem="Qir-KU-dzZ" secondAttribute="trailing" id="CXk-GI-eby"/>
                             <constraint firstItem="Qir-KU-dzZ" firstAttribute="leading" secondItem="rfr-G9-0t4" secondAttribute="leading" id="DbO-ng-PFb"/>
-                            <constraint firstItem="xxP-1f-qXO" firstAttribute="leading" secondItem="rfr-G9-0t4" secondAttribute="leading" constant="32" id="K9c-TO-mGk"/>
                             <constraint firstItem="pkJ-fK-KF7" firstAttribute="leading" secondItem="rfr-G9-0t4" secondAttribute="leading" constant="32" id="NNe-Gr-Ovi"/>
-                            <constraint firstItem="xxP-1f-qXO" firstAttribute="top" secondItem="Fuq-yK-g4B" secondAttribute="bottom" constant="10" id="Qyu-iT-AEI"/>
-                            <constraint firstItem="Fuq-yK-g4B" firstAttribute="top" secondItem="pkJ-fK-KF7" secondAttribute="bottom" constant="6" id="kPH-oZ-xNq"/>
-                            <constraint firstAttribute="trailing" secondItem="Fuq-yK-g4B" secondAttribute="trailing" constant="32" id="tdw-sk-xzB"/>
                             <constraint firstAttribute="bottom" secondItem="Qir-KU-dzZ" secondAttribute="bottom" id="xQH-JW-AXx"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
@@ -92,8 +65,6 @@
             <size key="customSize" width="323" height="193"/>
             <connections>
                 <outlet property="bannerImageView" destination="Qir-KU-dzZ" id="AeB-X1-eHU"/>
-                <outlet property="label2" destination="Fuq-yK-g4B" id="Ore-n6-y1H"/>
-                <outlet property="label3" destination="xxP-1f-qXO" id="c0O-pu-hhq"/>
                 <outlet property="lable1" destination="pkJ-fK-KF7" id="4yy-t5-x4v"/>
             </connections>
             <point key="canvasLocation" x="173" y="-9"/>

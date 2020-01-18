@@ -49,8 +49,11 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 5 {
+        if indexPath.row == 4 {
             logOut()
+        }
+        if indexPath.row == 3 {
+        pricing()
         }
         if indexPath.row == 0 {
             OrderHistory()
@@ -69,6 +72,13 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
                 NavigationManager.shared.initializeApp()
     }
     
+    func  pricing(){
+        
+        let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
+        let pricing = servicesStoryboard.instantiateViewController(withIdentifier: "PricingViewController") as? PricingViewController
+            NavigationManager.shared.push(viewController: pricing)
+        
+    }
     func  OrderHistory() {
         
               let servicesStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)

@@ -179,6 +179,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 //remove alias count from cart
                 removeServiceFromCartAliasInUserDefault(withAlias: model.alias)
                 self?.fetchCart()
+                self?.orderStatusCollectionView.reloadData()
             }
             self?.activityIndicator.stopAnimating()
             }) //definition of success closure

@@ -85,6 +85,7 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
         }
             cell.orderStatus.text = arrayItem.orderStatus
             cell.service = arrayItem.services
+            cell.date.text = arrayItem.date
             return cell
         }
         
@@ -92,7 +93,7 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
        }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-            return CGSize(width: collectionView.frame.size.width, height:100)
+            return CGSize(width: collectionView.frame.size.width, height:121)
         }
        
 

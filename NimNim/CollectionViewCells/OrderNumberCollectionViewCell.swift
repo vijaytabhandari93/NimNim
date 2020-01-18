@@ -13,6 +13,7 @@ class OrderNumberCollectionViewCell: UICollectionViewCell {
     var service : [ServiceModel]?
     @IBOutlet weak var orderNumber: UILabel!
     @IBOutlet weak var orderStatus: UILabel!
+    @IBOutlet weak var date: UILabel!
     
     @IBAction func viewDetailsOfOrder(_ sender: Any) {
         let ordersStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)

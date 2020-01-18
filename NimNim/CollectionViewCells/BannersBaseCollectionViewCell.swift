@@ -7,9 +7,9 @@
 //
 
 import UIKit
+import Kingfisher
 
 class BannersBaseCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
-    
     
     @IBOutlet weak var bannersCollectionView: UICollectionView!
     
@@ -45,8 +45,12 @@ class BannersBaseCollectionViewCell: UICollectionViewCell,UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerCollectionViewCell", for: indexPath) as! BannerCollectionViewCell
         cell.lable1.text = banners[indexPath.row].name
-        cell.label2.text = banners[indexPath.row].banner
-        cell.label3.text = banners[indexPath.row].id
+        if let url = banners[indexPath.item].icon {
+            if let urlValue = URL(string: url)
+            {
+                cell.bannerImageView.kf.setImage(with: urlValue)
+            }
+        }
         return cell
     }
     

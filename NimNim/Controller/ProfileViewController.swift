@@ -211,7 +211,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return 3
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {

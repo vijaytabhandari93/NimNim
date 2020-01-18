@@ -11,8 +11,9 @@ import ObjectMapper
 import SwiftyJSON
 import NVActivityIndicatorView
 
-class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AddressNameCollectionViewCellDelegate {
+class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AddressNameCollectionViewCellDelegate,deliverynotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
+    var activeTextView : UITextView?
     var cartModel : CartModel?
     var Index : IndexPath?
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
@@ -21,6 +22,34 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
         selectAddressCollectionView.reloadData()
     }
     
+    func upload(image:UIImage?) {
+        guard let image = image else {
+            return
+        }
+        let uploadModel = UploadModel()
+        uploadModel.data = image.jpegData(compressionQuality: 1.0)
+        uploadModel.name = "image"
+        uploadModel.fileName = "jpg"
+        uploadModel.mimeType = .imageJpeg
+        activityIndicator.startAnimating()
+        NetworkingManager.shared.upload(withEndpoint: Endpoints.uploadImage, withModel: uploadModel, withSuccess: {[weak self] (response) in
+            self?.view.showToast(message: "Image uploaded successfully")
+            self?.activityIndicator.stopAnimating()
+            if let responseDict = response as? [String:Any] {
+                if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
+                    self?.cartModel?.deliveryRelatedUploadedImages.append(imagePath)
+                    }
+            }
+            self?.activityIndicator.stopAnimating()
+            
+        }, withProgress: { (progress) in
+            
+            print(progress?.fractionCompleted)
+        }) {[weak self] (error) in
+            self?.activityIndicator.stopAnimating()
+            print(error)
+        }
+    }
     //IBOutlets
     @IBOutlet weak var selectAddressCollectionView:UICollectionView!
     //IBActions
@@ -34,6 +63,7 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
     
     
     @IBAction func selectTimeSlots(_ sender: Any) {
+        cartModel?.deliveryPreference = UserDefaults.standard.object(forKey: UserDefaultKeys.pickUpDropOfPreferences) as! String
         if let savedAddress = cartModel?.addressId {
             let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
                    let pickAndDropVC = SB.instantiateViewController(withIdentifier: "PickDateAndTimeViewController") as! PickDateAndTimeViewController
@@ -60,6 +90,38 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
         fetchSavedAddress()
+        selectAddressCollectionView.reloadData()
+        
+    }
+    
+    func addTapGestureToView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(backViewTapped)) // This line will create an object of tap gesture recognizer
+        self.view.addGestureRecognizer(tapGesture) // This line will add that created object of tap gesture recognizer to the view of this login signup view controller screen....
+    }
+    @objc func backViewTapped() {
+           view.endEditing(true) //to shutdown the keyboard. Wheneever you tap the text field on a specific screeen , then that screen becomes the first responder of the keyoard.
+       }
+    func removeTapGestures(forTextView textView:UITextView) {
+        // This function first checks if the textView that is passed is the currently active TextView or Not...if the user will tap somewhere outside then the textView passed will be equal to the activeTextView...but if the user will tap on another textView and this function gets called...then we need not remove the gesture recognizer...
+        if let activeTextView = activeTextView, activeTextView == textView {
+            for recognizer in view.gestureRecognizers ?? [] {
+                view.removeGestureRecognizer(recognizer)
+            }
+        }
+    }
+
+   ///MARK: UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+        upload(image: image)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
     
     //MARK:UI Methods
@@ -72,8 +134,33 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
         
         let type3PreferencesNib = UINib(nibName: "SavedAddressCollectionViewCell", bundle: nil)
         selectAddressCollectionView.register(type3PreferencesNib, forCellWithReuseIdentifier: "SavedAddressCollectionViewCell")
+        
+        let type4PreferencesNib = UINib(nibName: "deliverynotesCollectionViewCell", bundle: nil)
+               selectAddressCollectionView.register(type4PreferencesNib, forCellWithReuseIdentifier: "deliverynotesCollectionViewCell")
+    }
+    ///Delegate Function of TextView
+    func sendImage() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .photoLibrary
+        self.present(pickerController, animated: true, completion: nil)
     }
     
+    func textViewStartedEditingInCell(withTextField textView: UITextView) {
+        activeTextView = textView
+        addTapGestureToView() //once the textbox editing begins the tap gesture starts functioning
+    }
+    
+    func textViewEndedEditingInCell(withTextField textView: UITextView) {
+        removeTapGestures(forTextView: textView)
+        if let currentText = textView.text {
+            if !(currentText.caseInsensitiveCompare("Any Special Notes...") == .orderedSame) {
+                cartModel?.deliveryNotes = textView.text
+            }
+        }
+    }
     func fetchSavedAddress(){
         activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.getallAddrress, withParams: nil, withSuccess: {
@@ -106,7 +193,7 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = addressBaseModel?.data?.count {
-            return count + 1 + 1 // addresses  + header + add new address cell...
+            return count + 1 + 1 + 1 // addresses  + header + add new address cell + delivery note...
         }
         return 0
     }
@@ -126,10 +213,16 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
                 cell.noOfSavedAddress.text = "You currrently have \(0) saved addresses"
             }
             return cell
-        }else if(indexPath.item == (numberOfItems  - 1)) {
+        }else if(indexPath.item == (numberOfItems  - 2)) {
             let savedAddressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedAddressCollectionViewCell", for: indexPath) as! SavedAddressCollectionViewCell
             savedAddressCell.bottomSeparator.isHidden = true
             return savedAddressCell
+        }
+            else if(indexPath.item == (numberOfItems  - 1)) {
+            let savedAddressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "deliverynotesCollectionViewCell", for: indexPath) as! deliverynotesCollectionViewCell
+            savedAddressCell.delegate = self
+            return savedAddressCell
+            
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressNameCollectionViewCell", for: indexPath) as! AddressNameCollectionViewCell
@@ -211,9 +304,12 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
         if indexPath.item == 0 {
             return CGSize(width: collectionView.frame.size.width, height:71)
         }
-        else if(indexPath.item == (numberOfItems  - 1)) {
+        else if(indexPath.item == (numberOfItems  - 2)) {
             return CGSize(width: collectionView.frame.size.width, height:80)
         }
+            else if(indexPath.item == (numberOfItems  - 1)) {
+                return CGSize(width: collectionView.frame.size.width, height:229)
+            }
         else
         {
             return CGSize(width: collectionView.frame.size.width, height:150)

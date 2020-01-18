@@ -20,6 +20,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
+    @IBOutlet weak var logInSignUpToContinueLabel: UILabel!
     
     enum LoginSignupStates {
         case loginWithPassword
@@ -175,12 +176,14 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     func activateLoginButton() {
         //select login button
         loginButton.titleLabel?.font = Fonts.semiBold16
+        logInSignUpToContinueLabel.text = "Log In to Continue"
         loginButton.setTitleColor(Colors.nimnimGreen, for: .normal)
     }
     
     func activateSignUpButton() {
         //select signup button
         signUpButton.titleLabel?.font = Fonts.semiBold16
+        logInSignUpToContinueLabel.text = "Sign In to Continue"
         signUpButton.setTitleColor(Colors.nimnimGreen, for: .normal)
     }
     

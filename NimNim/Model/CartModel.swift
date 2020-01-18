@@ -21,6 +21,9 @@ class CartModel : NSObject, Mappable, Codable  {
     var v : String?
     var addressId : String?
     var CardId : String?
+    var deliveryRelatedUploadedImages : [String] =  []
+    var deliveryNotes : String?
+    var deliveryPreference : String?
     
     func mapping(map: Map) {
         orderStatus <- map["order_status"]

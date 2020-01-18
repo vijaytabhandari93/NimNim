@@ -9,6 +9,7 @@
 import UIKit
 import ObjectMapper
 import NVActivityIndicatorView
+import SwiftyJSON
 
 class HomeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
     //MARK:IBOutlets
@@ -92,6 +93,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         NetworkingManager.shared.get(withEndpoint: Endpoints.services, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] {
                 let serviceModel = Mapper<ServiceBaseModel>().map(JSON: responseDict)
+                print(JSON(responseDict))
                 self?.serviceModel = serviceModel //? is put after self as it is weak self.
                 self?.serviceModel?.saveInUserDefaults()
                 self?.homeCollectionView.reloadData()

@@ -76,7 +76,7 @@
                 <outlet property="savedLabel" destination="oGv-ok-zRh" id="E1y-8J-4BD"/>
                 <outlet property="subTitleLabel" destination="rG6-PN-bYl" id="S6C-eT-cwr"/>
             </connections>
-            <point key="canvasLocation" x="256" y="70"/>
+            <point key="canvasLocation" x="202" y="0.0"/>
         </collectionViewCell>
     </objects>
     <resources>

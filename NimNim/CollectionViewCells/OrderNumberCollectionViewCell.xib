@@ -19,10 +19,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OrderNumberCollectionViewCell" id="Rj3-c7-A7l" customClass="OrderNumberCollectionViewCell" customModule="NimNim" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+            <rect key="frame" x="0.0" y="0.0" width="483" height="121"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="110"/>
+                <rect key="frame" x="0.0" y="0.0" width="483" height="121"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Order Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LJ-jc-RAx">
@@ -52,13 +52,13 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dd8-xX-QdR">
-                        <rect key="frame" x="278.5" y="21" width="68.5" height="20"/>
+                        <rect key="frame" x="386.5" y="21" width="68.5" height="20"/>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFg-Ks-Ymd">
-                        <rect key="frame" x="57" y="63" width="131" height="30"/>
+                        <rect key="frame" x="324" y="63" width="131" height="30"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                         <state key="normal" title="View Order Details">
                             <color key="titleColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -68,45 +68,62 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UlJ-o1-kVw">
-                        <rect key="frame" x="28" y="109" width="319" height="1"/>
+                        <rect key="frame" x="28" y="120" width="427" height="1"/>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="xit-j8-xdr"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYt-3I-2Da">
-                        <rect key="frame" x="347" y="43" width="0.0" height="0.0"/>
+                        <rect key="frame" x="455" y="43" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.44" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Order Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dw-j2-0Qn">
+                        <rect key="frame" x="57" y="68" width="107.5" height="20"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="28 Sep 2019" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sj3-LV-WNb">
+                        <rect key="frame" x="55" y="89" width="110" height="23"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.44" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="Sj3-LV-WNb" firstAttribute="leading" secondItem="4dw-j2-0Qn" secondAttribute="leading" id="3Vb-0O-zXb"/>
                 <constraint firstAttribute="trailing" secondItem="dd8-xX-QdR" secondAttribute="trailing" constant="28" id="6eR-oQ-Xrb"/>
+                <constraint firstItem="Sj3-LV-WNb" firstAttribute="top" secondItem="4dw-j2-0Qn" secondAttribute="bottom" constant="2" id="9FT-oe-2WV"/>
                 <constraint firstItem="9LJ-jc-RAx" firstAttribute="leading" secondItem="OGf-z2-DNr" secondAttribute="trailing" constant="20" id="9Nm-l2-dt3"/>
                 <constraint firstAttribute="bottom" secondItem="UlJ-o1-kVw" secondAttribute="bottom" id="AO5-Ez-c6j"/>
                 <constraint firstItem="qvz-6U-y02" firstAttribute="top" secondItem="9LJ-jc-RAx" secondAttribute="bottom" constant="2" id="An1-zw-rwN"/>
                 <constraint firstItem="pYt-3I-2Da" firstAttribute="top" secondItem="dd8-xX-QdR" secondAttribute="bottom" constant="2" id="GTv-pt-cQG"/>
+                <constraint firstItem="VFg-Ks-Ymd" firstAttribute="trailing" secondItem="dd8-xX-QdR" secondAttribute="trailing" id="IK4-lI-YUD"/>
                 <constraint firstItem="qvz-6U-y02" firstAttribute="leading" secondItem="9LJ-jc-RAx" secondAttribute="leading" id="Nxd-yM-peF"/>
                 <constraint firstItem="pYt-3I-2Da" firstAttribute="trailing" secondItem="dd8-xX-QdR" secondAttribute="trailing" id="OAv-CK-Zra"/>
                 <constraint firstAttribute="trailing" secondItem="UlJ-o1-kVw" secondAttribute="trailing" constant="28" id="WDs-io-YBr"/>
-                <constraint firstItem="VFg-Ks-Ymd" firstAttribute="leading" secondItem="qvz-6U-y02" secondAttribute="leading" id="Y8q-dX-dGq"/>
                 <constraint firstItem="UlJ-o1-kVw" firstAttribute="leading" secondItem="Rj3-c7-A7l" secondAttribute="leading" constant="28" id="Yhz-H0-fcm"/>
                 <constraint firstItem="9LJ-jc-RAx" firstAttribute="leading" secondItem="Rj3-c7-A7l" secondAttribute="leading" constant="57" id="ZGc-fY-Jun"/>
                 <constraint firstItem="VFg-Ks-Ymd" firstAttribute="top" secondItem="qvz-6U-y02" secondAttribute="top" constant="20" id="auL-1z-2hy"/>
                 <constraint firstItem="OGf-z2-DNr" firstAttribute="centerY" secondItem="9LJ-jc-RAx" secondAttribute="centerY" id="nVc-FN-Xbw"/>
                 <constraint firstItem="dd8-xX-QdR" firstAttribute="centerY" secondItem="9LJ-jc-RAx" secondAttribute="centerY" id="nYD-mE-LSj"/>
+                <constraint firstItem="4dw-j2-0Qn" firstAttribute="leading" secondItem="9LJ-jc-RAx" secondAttribute="leading" id="siQ-54-ms1"/>
+                <constraint firstItem="4dw-j2-0Qn" firstAttribute="centerY" secondItem="VFg-Ks-Ymd" secondAttribute="centerY" id="voW-Cw-E9N"/>
                 <constraint firstItem="9LJ-jc-RAx" firstAttribute="top" secondItem="Rj3-c7-A7l" secondAttribute="top" constant="21" id="yRI-ob-M9k"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="8ZV-5D-BrH"/>
-            <size key="customSize" width="238" height="74"/>
+            <size key="customSize" width="346" height="85"/>
             <connections>
+                <outlet property="date" destination="Sj3-LV-WNb" id="XR2-fo-g7Z"/>
                 <outlet property="orderNumber" destination="qvz-6U-y02" id="kvi-o2-bw2"/>
                 <outlet property="orderStatus" destination="pYt-3I-2Da" id="zG2-40-eqR"/>
             </connections>
-            <point key="canvasLocation" x="-331" y="-202"/>
+            <point key="canvasLocation" x="-252.89855072463769" y="-198.54910714285714"/>
         </collectionViewCell>
     </objects>
 </document>

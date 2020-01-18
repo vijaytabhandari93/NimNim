@@ -301,10 +301,6 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         
     }
   
-    
-   
-
-    
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if IsAddToCartTapped{

@@ -209,8 +209,6 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         let type4PreferencesNib = UINib(nibName: "SpecialNotesCollectionViewCell", bundle: nil)
         prefernces.register(type4PreferencesNib, forCellWithReuseIdentifier: "SpecialNotesCollectionViewCell")
         
-        let type5PreferencesNib = UINib(nibName: "NoofClothesCollectionViewCell", bundle: nil)
-        prefernces.register(type5PreferencesNib, forCellWithReuseIdentifier: "NoofClothesCollectionViewCell")
         
         
         let headerNib = UINib(nibName: "PreferencesCollectionReusableView", bundle: nil)
@@ -220,25 +218,23 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if IsAddToCartTapped{
-            return 5
+            return 4
         }
         else
         {
-            return 4
+            return 3
             
         }//number of clothes, preferences, special notes, rush delivery, add more services
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
-        }else if section == 1 {
             return 5
+        }else if section == 1 {
+            return 1
         }else if section == 2 {
             return 1
         }else if section == 3 {
-            return 1
-        }else if section == 4 {
             return 1
         }
         return 0
@@ -247,15 +243,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let section = indexPath.section
-        
         if section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
-            if let numberOfClothes = serviceModel?.numberOfClothes {
-                cell.noOfPieces.text = "\(numberOfClothes)"
-            }
-            cell.delegate = self
-            return cell
-        }else if section == 1 {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
             switch indexPath.row {
@@ -318,11 +306,11 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                 cell.rightLabel.text = "Non - Scented"
                 return cell
             }
-        }else if section == 2 {
+        }else if section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
             cell.delegate = self
             return cell
-        }else if section == 3 {
+        }else if section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
             cell.delegate = self
             cell.labelAgainsCheckbox.text = "I need Rush Delivery"
@@ -337,7 +325,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                 return cell
             }
         }
-        else if section == 4 {
+        else if section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddMoreServicesCollectionViewCell", for: indexPath) as! AddMoreServicesCollectionViewCell
             return cell
         }
@@ -348,16 +336,14 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let section = indexPath.section
-        
         if section == 0 {
-            return CGSize(width: collectionView.frame.size.width, height:58)
-        }else if section == 1 {
             return CGSize(width: collectionView.frame.size.width, height:104)
-        }else if section == 2 {
+        }
+        else if section == 1 {
             return CGSize(width: collectionView.frame.size.width, height:134)
-        }else if section == 3 {
+        }else if section == 2 {
             return CGSize(width: collectionView.frame.size.width, height:95)
-        }else if section == 4 {
+        }else if section == 3 {
             return CGSize(width: collectionView.frame.size.width, height:48)
         }
         return CGSize(width: collectionView.frame.size.width, height:0)
@@ -365,14 +351,14 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 1 {
+        if section == 0 {
             return CGSize(width: collectionView.frame.size.width, height: 92)
         }
         return CGSize(width: collectionView.frame.size.width, height: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        if indexPath.section == 1 {
+        if indexPath.section == 0 {
             switch kind {
             case UICollectionView.elementKindSectionHeader:
                 let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PreferencesCollectionReusableView", for: indexPath) as! PreferencesCollectionReusableView

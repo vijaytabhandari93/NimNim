@@ -41,6 +41,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
         setupLocationList()
         fetchServiceableLocations()
         setupUseThisLocationButton()
+        locationTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 132, right: 0)
     }
     
     
@@ -53,8 +54,8 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        topShadowView.addBottomShadowToView()
-        bottomShadowView.addAllCornersShadowToView()
+        topShadowView.layer.applySketchShadow(color: Colors.nimnimLocationShadowColor, alpha: 0.24, x: 0, y: 19, blur: 38, spread: 2)
+        bottomShadowView.layer.applySketchShadow(color: Colors.nimnimLocationShadowColor, alpha: 0.24, x: 0, y: 0, blur: 13, spread: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,7 +63,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func setupUseThisLocationButton() {
-        if let selectedPath = selectedIndexPath {
+        if let _ = selectedIndexPath {
             useThisLocationButton.backgroundColor = Colors.nimnimButtonBorderGreen
             useThisLocationButton.isUserInteractionEnabled = true
         }else {
@@ -108,6 +109,12 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
                                 currentLocationSelected.text = location.title
                                 fallsUnderSomeLocation = true
                                 locationTableView.reloadData()
+                                
+                                DispatchQueue.main.async {[weak self] in
+                                    if let selectedIndexPath = self?.selectedIndexPath, let numberOfItems = self?.locationTableView.numberOfRows(inSection: 0), selectedIndexPath.item < numberOfItems {
+                                        self?.locationTableView.scrollToRow(at: selectedIndexPath, at: .middle, animated: true)
+                                    }
+                                }
                             }
                         }
                     }
@@ -173,7 +180,8 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
         }else {
-            locationManager.requestWhenInUseAuthorization()
+           // locationManager.requestWhenInUseAuthorization()
+             locationManager.startUpdatingLocation()
         }
         selectedIndexPath = nil
         locationTableView.reloadData()
