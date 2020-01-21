@@ -183,7 +183,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     func activateSignUpButton() {
         //select signup button
         signUpButton.titleLabel?.font = Fonts.semiBold16
-        logInSignUpToContinueLabel.text = "Sign In to Continue"
+        logInSignUpToContinueLabel.text = "Join NimNim"
         signUpButton.setTitleColor(Colors.nimnimGreen, for: .normal)
     }
     

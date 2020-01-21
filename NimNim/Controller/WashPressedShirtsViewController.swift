@@ -10,10 +10,12 @@ import UIKit
 import NVActivityIndicatorView
 import SwiftyJSON
 
-class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate {
+class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate,BoxedCollectionViewCellDelegate{
     
-    
+    var defaultStateJustNimNimIt : Bool = false
     var activeTextField : UITextField?
+    var isHeightAdded = false // global variable made for keyboard height modification
+    var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     //NoOfClothes Delegate Methods
     func textFieldStartedEditingInCell(withTextField textField: UITextField) {
         activeTextField = textField
@@ -25,6 +27,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         if let text = textField.text, let intValue = Int(text) {
             serviceModel?.numberOfClothes = intValue
             WashPressedShirtCollectionView.reloadData()
+            setupPrice()
         }
     }
     func removeTapGestures(forTextField textField:UITextField) {
@@ -69,6 +72,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     @IBAction func justNimNimIt(_ sender: Any) {
         serviceModel?.setupNimNimItForWashPressedShirts()
         WashPressedShirtCollectionView.reloadData()
+        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
@@ -93,6 +97,12 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         }else {
             basketLabel.text = "0"
             basketLabel.isHidden = true
+        }
+    }
+    
+    func setupPrice() {
+        if let price = serviceModel?.calculatePriceForService() {
+            priceLabel.text = price
         }
     }
     
@@ -308,7 +318,9 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         
     }
     
-    
+    func preferenceTapped(){
+        setupPrice()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -327,7 +339,32 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         }
         setupAddToCartButton()
         setupCartCountLabel()
+        addObservers()
+        setupPrice()
     }
+    func addObservers() {
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
+       }
+       
+       @objc func keyboardWillShow(notification: NSNotification) {
+           if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+               if !isHeightAdded {
+                   addedHeight = keyboardSize.height
+                   WashPressedShirtCollectionView.contentInset = UIEdgeInsets(top: WashPressedShirtCollectionView.contentInset.top, left: WashPressedShirtCollectionView.contentInset.left, bottom: WashPressedShirtCollectionView.contentInset.bottom + addedHeight, right: WashPressedShirtCollectionView.contentInset.right)
+                   isHeightAdded = true
+               }
+           }
+       }
+       
+       @objc func keyboardWillHide(notification: NSNotification) {
+           if isHeightAdded {
+               WashPressedShirtCollectionView.contentInset = UIEdgeInsets(top: WashPressedShirtCollectionView.contentInset.top, left: WashPressedShirtCollectionView.contentInset.left, bottom: WashPressedShirtCollectionView.contentInset.bottom - addedHeight, right: WashPressedShirtCollectionView.contentInset.right)
+               isHeightAdded = false
+           }
+       }
+
     
     func setupAddToCartButton(){
         if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
@@ -375,7 +412,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         if section == 0 {
             return 1
         }else if section == 1 {
-            return 3
+            return 2
         }else if section == 2 {
             return 1
         }else if section == 3 {
@@ -393,22 +430,19 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
             cell.delegate = self
             cell.titleLabel.text = "Number of Clothes"
+            if defaultStateJustNimNimIt {
+                cell.contentView.isHidden = true
+               
+            } else
+            {
+                cell.contentView.isHidden = false
+            }
             return cell
+            
         }
         else if section == 1 {
            switch indexPath.row {
             case 0:
-                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
-                cell.titleLabel.text = "Detergent"
-                if let detergents = serviceModel?.detergents, detergents.count >= 2 {
-                    let firstPreference = detergents[0]
-                    let secondPreference = detergents[1]
-                    cell.leftLabel.text = firstPreference.title
-                    cell.rightLabel.text = secondPreference.title
-                    cell.configureCell(withPreferenceModelArray: detergents)
-                }
-                return cell
-            case 1:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
                 cell.titleLabel.text = "Starch"
                 if let starch = serviceModel?.starch, starch.count >= 2 {
@@ -419,11 +453,13 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
                     cell.configureCell(withPreferenceModelArray: starch)
                 }
                 return cell
-                case 2 :
+                case 1 :
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BoxedCollectionViewCell", for: indexPath) as! BoxedCollectionViewCell
-                cell.titleLabel.text = "Boxed"
+                cell.titleLabel.text = "Return Preference"
+                cell.delegate = self
                 if let returnPreferences = serviceModel?.returnPreferences,
                     returnPreferences.count == 2 {
+         
                     let firstPreference = returnPreferences[0]
                     let secondPreference = returnPreferences[1]
                     cell.leftLabel.text = firstPreference.title
@@ -569,6 +605,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         if let rushDeliveryState = serviceModel?.isRushDeliverySelected {
             serviceModel?.isRushDeliverySelected = !rushDeliveryState
             WashPressedShirtCollectionView.reloadData()
+            setupPrice()
         }
     }
 }

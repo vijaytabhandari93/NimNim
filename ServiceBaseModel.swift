@@ -136,7 +136,7 @@ class ServiceModel:NSObject, Mappable, Codable {
         dropOffTime <- map["dropOffTime"]
         turnAroundTime <- map["turn_around_time"]
     }
-
+    
     func getMaleItems() -> [ItemModel] {
         var maleItems:[ItemModel] = []  
         if let items = items, items.count > 0 {
@@ -182,8 +182,8 @@ class ServiceModel:NSObject, Mappable, Codable {
         selectNimNimItPreference(forPreferences: starch)
         selectNimNimItPreference(forPreferences: returnPreferences)
     }
-
-
+    
+    
     func selectNimNimItPreference(forPreferences preferences:[PreferenceModel]?) {
         if let preferences = preferences {
             for preference in preferences {
@@ -195,7 +195,7 @@ class ServiceModel:NSObject, Mappable, Codable {
             }
         }
     }
-
+    
     func productQuantity() -> Int {
         if let alias = alias {
             if let value = Alias(rawValue: alias) {
@@ -234,6 +234,152 @@ class ServiceModel:NSObject, Mappable, Codable {
         }
         return 0
     }
+    
+    func calculatePriceForService() -> String {
+        if let alias = alias {
+            if let value = Alias(rawValue: alias) {
+                switch value {
+                case .washAndFold:
+                    if let price = price {
+                        return "$\(price) / lb"
+                    }
+                case .washAndAirDry:
+                    if let price = price {
+                        return "$\(price) / lb"
+                    }
+                case .launderedShirts:
+                    var price = 0
+                    if returnPreferences?.first?.isSelected == true {
+                        price = price + numberOfClothes*(costPerPieceBox ?? 0)
+                    }else  {
+                        price = price + numberOfClothes*Int(costPerPiece ?? 0)
+                    }
+                    if isRushDeliverySelected == true {
+                        if let rushPrice = rushDeliveryOptions?.first?.price{
+                            price = price + rushPrice
+                        }
+                    }
+                    return "$\(price)"
+                case .householdItems:
+                    var price = 0
+                    if let items = items {
+                        for item in items {
+                            if let qty = item.qty {
+                                if item.IfDrycleaned {
+                                    if let drycleaningPrice = item.dryCleaningPrice {
+                                        if let intValue = Int(drycleaningPrice) {
+                                            price = price +  (intValue * qty)
+                                        }
+                                    }
+                                }
+                                if item.IfLaundered {
+                                    if let laundryPrice = item.laundryPrice {
+                                        if let intValue = Int(laundryPrice) {
+                                            price = price +  (intValue * qty)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if isRushDeliverySelected == true {
+                        if let rushPrice = rushDeliveryOptions?.first?.price{
+                            price = price + rushPrice
+                        }
+                    }
+                    return "\(price)"
+                    case .dryCleaning:
+                    var price = 0
+                    if let items = items {
+                        for item in items {
+                            if let qty = item.maleCount {
+                                if let ItemPrice =  item.price {
+                                    price = price + (ItemPrice * qty)
+                                }
+                            }
+                            if let qty = item.femaleCount {
+                                if let ItemPrice =  item.price {
+                                    price = price + (ItemPrice * qty)
+                                }
+                            }
+                        }
+                    }
+                    if isRushDeliverySelected == true {
+                        if let rushPrice = rushDeliveryOptions?.first?.price{
+                            price = price + rushPrice
+                        }
+                    }
+                    return "\(price)"
+                }
+            }
+        }
+        return ""
+    }
+    func calculateGenderSpecificPriceForService() -> String {
+        if let alias = alias {
+            if let value = Alias(rawValue: alias) {
+                switch value {
+                case .washAndFold:
+                    if let price = price {
+                        return "$\(price) / lb"
+                    }
+                case .washAndAirDry:
+                    if let price = price {
+                        return "$\(price) / lb"
+                    }
+                case .launderedShirts:
+                    return ""
+                case .householdItems:
+                    var price = 0
+                    if let items = items {
+                        for item in items {
+                            if let qty = item.qty {
+                                if item.IfDrycleaned {
+                                    if let drycleaningPrice = item.dryCleaningPrice {
+                                        if let intValue = Int(drycleaningPrice) {
+                                            price = price +  (intValue * qty)
+                                        }
+                                    }
+                                }
+                                if item.IfLaundered {
+                                    if let laundryPrice = item.laundryPrice {
+                                        if let intValue = Int(laundryPrice) {
+                                            price = price +  (intValue * qty)
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if isRushDeliverySelected == true {
+                        if let rushPrice = rushDeliveryOptions?.first?.price{
+                            price = price + rushPrice
+                        }
+                    }
+                    return "\(price)"
+                case .dryCleaning:
+                    var maleprice = 0
+                    var femaleprice = 0
+                    if let items = items {
+                        for item in items {
+                            if let qty = item.maleCount {
+                                if let ItemPrice =  item.price {
+                                    maleprice = maleprice + (ItemPrice * qty)
+                                }
+                            }
+                            if let qty = item.femaleCount {
+                                if let ItemPrice =  item.price {
+                                    femaleprice = femaleprice + (ItemPrice * qty)
+                                }
+                            }
+                        }
+                    }
+                    return "Women Items: $\(femaleprice) and Men Items: $\(maleprice)"
+                }
+            }
+        }
+        return ""
+    }
 }
 class PreferenceModel:NSObject, Mappable, Codable {
     var id:String?
@@ -251,7 +397,7 @@ class PreferenceModel:NSObject, Mappable, Codable {
     }
 }
 
-  
+
 
 class ItemModel:NSObject, Mappable, Codable {
     var id:String?
@@ -261,6 +407,7 @@ class ItemModel:NSObject, Mappable, Codable {
     var icon : String?
     var laundryPrice : String? // presently made string //household
     var dryCleaningPrice : String? // presently made string //household
+    
     
     
     //this is our property
@@ -285,8 +432,8 @@ class ItemModel:NSObject, Mappable, Codable {
         IfDrycleaned          <- map["if_dryCleaned"]
         qty             <- map["qty"]
     }
+    
 }
-
 class RushDeliveryOptionsModel:NSObject, Mappable, Codable {
     var id:String?
     var turnAroundTime :String?

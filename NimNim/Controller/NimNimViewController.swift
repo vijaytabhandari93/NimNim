@@ -12,7 +12,8 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     
     var activeTextView : UITextView?
-    
+    var isHeightAdded = false // global variable made for keyboard height modification
+    var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
    ///Delegate Function of TextView
     func sendImage() {
         let pickerController = UIImagePickerController()
@@ -126,7 +127,29 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
         registerCells()
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+        addObservers()
+    }
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if !isHeightAdded {
+                addedHeight = keyboardSize.height
+                collectionView.contentInset = UIEdgeInsets(top: collectionView.contentInset.top, left: collectionView.contentInset.left, bottom: collectionView.contentInset.bottom + addedHeight, right: collectionView.contentInset.right)
+                isHeightAdded = true
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if isHeightAdded {
+            collectionView.contentInset = UIEdgeInsets(top: collectionView.contentInset.top, left: collectionView.contentInset.left, bottom: collectionView.contentInset.bottom - addedHeight, right: collectionView.contentInset.right)
+            isHeightAdded = false
+        }
     }
     func rushDeliveryTapped(withIndexPath indexPath: IndexPath?)
     {

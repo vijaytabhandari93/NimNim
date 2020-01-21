@@ -50,6 +50,10 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
         applyNimNimGradient()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle  {
+        return .lightContent
+    }
+    
     //MARK: Setup Screen
     
     func setupScreenModel(){

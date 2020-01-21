@@ -12,8 +12,8 @@ protocol HouseHoldItemCollectionViewCellDelegate:class {
     
     func textFieldStartedEditingInCell(withTextField textField:UITextField) // To tell the VC to add tap geture to the view and to pass the text field selected
     func textFieldEndedEditingInCell(withTextField textField:UITextField) // To tell the VC to remove the tap gesture from the view and to pass the textfield upon which end editing has been called
-    func ifLaunderedTapped(withIndexPath indexPath : IndexPath)
-    func ifDryCleanedTapped(withIndexPath indexPath : IndexPath)
+    func ifLaunderedTapped(withIndexPath indexPath : IndexPath?)
+    func ifDryCleanedTapped(withIndexPath indexPath : IndexPath?)
 }
 
 class HouseHoldItemCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
@@ -45,10 +45,10 @@ class HouseHoldItemCollectionViewCell: UICollectionViewCell,UITextFieldDelegate 
     } // built in delegate function of textfield
     
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        delegate?.textFieldEndedEditingInCell(withTextField: textField)
         if let text = textField.text {
             self.model?.qty = Int(text)
         }
+        delegate?.textFieldEndedEditingInCell(withTextField: textField)
         return true
     } // built in delegate function of textfield
     
@@ -81,6 +81,7 @@ class HouseHoldItemCollectionViewCell: UICollectionViewCell,UITextFieldDelegate 
             self.model?.IfDrycleaned = false
         }
         setupUI()
+        delegate?.ifLaunderedTapped(withIndexPath: indexPath)
     }
     
     @IBAction func ifDryCleaned(_ sender: Any) {
@@ -91,6 +92,7 @@ class HouseHoldItemCollectionViewCell: UICollectionViewCell,UITextFieldDelegate 
             self.model?.IfDrycleaned = true
         }
         setupUI()
+        delegate?.ifDryCleanedTapped(withIndexPath: indexPath)
     }
     
     func configureUI(withModel model:ItemModel?, withIndexPath indexPath:IndexPath?) {

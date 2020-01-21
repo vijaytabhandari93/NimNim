@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 import SwiftyJSON
 
 class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate,HouseHoldItemCollectionViewCellDelegate {
-
+    
     var activeTextField : UITextField?
     //NoOfClothes Delegate Methods
     
@@ -32,6 +32,8 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
+    var isHeightAdded = false // global variable made for keyboard height modification
+    var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     
     
     @IBOutlet weak var addToCart: UIButton!
@@ -50,7 +52,8 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
         priceTotalBackgroundView.addTopShadowToView()
-        setupCartCountLabel() 
+        setupCartCountLabel()
+        setupPrice()
         
     }
     
@@ -68,6 +71,35 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         }
         setupAddToCartButton()
         setupCartCountLabel()
+        addObservers()
+    }
+    func addObservers() {
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
+       }
+       
+       @objc func keyboardWillShow(notification: NSNotification) {
+           if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+               if !isHeightAdded {
+                   addedHeight = keyboardSize.height
+                   houseHoldCollectionView.contentInset = UIEdgeInsets(top: houseHoldCollectionView.contentInset.top, left: houseHoldCollectionView.contentInset.left, bottom: houseHoldCollectionView.contentInset.bottom + addedHeight, right: houseHoldCollectionView.contentInset.right)
+                   isHeightAdded = true
+               }
+           }
+       }
+       
+       @objc func keyboardWillHide(notification: NSNotification) {
+           if isHeightAdded {
+               houseHoldCollectionView.contentInset = UIEdgeInsets(top: houseHoldCollectionView.contentInset.top, left: houseHoldCollectionView.contentInset.left, bottom: houseHoldCollectionView.contentInset.bottom - addedHeight, right: houseHoldCollectionView.contentInset.right)
+               isHeightAdded = false
+           }
+       }
+
+    func setupPrice() {
+        if let price = serviceModel?.calculatePriceForService() {
+            priceLabel.text = price
+        }
     }
     
     func setupAddToCartButton(){
@@ -93,10 +125,10 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     func registerCells() {
         let type1PreferencesNib = UINib(nibName: "HouseHoldItemCollectionViewCell", bundle: nil)
         houseHoldCollectionView.register(type1PreferencesNib, forCellWithReuseIdentifier: "HouseHoldItemCollectionViewCell")
-    
+        
         let type2PreferencesNib = UINib(nibName: "HouseHoldDescriptionCollectionViewCell", bundle: nil)
         houseHoldCollectionView.register(type2PreferencesNib, forCellWithReuseIdentifier: "HouseHoldDescriptionCollectionViewCell")
-
+        
         let type4PreferencesNib = UINib(nibName: "AddMoreServicesCollectionViewCell", bundle: nil)
         houseHoldCollectionView.register(type4PreferencesNib, forCellWithReuseIdentifier: "AddMoreServicesCollectionViewCell")
         let type3PreferencesNib = UINib(nibName: "NeedRushDeliveryCollectionViewCell", bundle: nil)
@@ -135,90 +167,90 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         }
     }
     
-//    func addServiceToCart() {
-//        var params:[String:Any] = [:]
-//        var serviceParams:[String:Any] = [:]
-//        if let name = serviceModel?.name {
-//            serviceParams[AddToCart.name] = name  // if name is there then set it. "[AddToCart.name]" is the key. "name" is the value
-//        }
-//        if let alias = serviceModel?.alias {
-//            serviceParams[AddToCart.alias] = alias
-//        }
-//        if let icon = serviceModel?.icon {
-//            serviceParams[AddToCart.icon] = icon
-//        }
-//        if let description = serviceModel?.descrip {
-//            serviceParams[AddToCart.description] = description
-//        }
-//        serviceParams[AddToCart.ordering] = 1
-//        
-//       
-//        if let items = serviceModel?.items {
-//            var itemArray : [[String?:Any?]] = []
-//            
-//            for item in items {
-//                if item.IfLaundered == true {
-//                    let ItemDict:[String?:Any?] = [
-//                        "price" : item.laundryPrice,
-//                        "qty" : item.qty,
-//                        "if_laundered" : "true",
-//                        "name" : item.name,
-//                        "if_dryCleaned" : "false",
-//                    ]
-//                    itemArray.append(ItemDict)
-//                    
-//                } else if item.IfDrycleaned == true {
-//                    let ItemDict:[String?:Any?] = [
-//                        "price" : item.dryCleaningPrice,
-//                        "qty" : item.qty,
-//                        "if_laundered" : "false",
-//                        "name" : item.name,
-//                        "if_dryCleaned" : "true",
-//                    ]
-//                    itemArray.append(ItemDict)
-//                }
-//            }
-//            serviceParams[AddToCart.items] = itemArray
-//        }
-//
-//        if let rushDeliveryOptions = serviceModel?.rushDeliveryOptions, rushDeliveryOptions.count > 0 {
-//            let firstOption = rushDeliveryOptions[0]
-//            if let turnAroundTime = firstOption.turnAroundTime, let price = firstOption.price {
-//                let rushDict:[String:Any] = [
-//                    "turn_around_time":turnAroundTime,
-//                    "price":price
-//                ]
-//                serviceParams[AddToCart.rushDeliveryOptions] = [rushDict] // array of rush delivery options
-//            }
-//        }
-//        
-//        if let isRushDeliverySelected = serviceModel?.isRushDeliverySelected {
-//            serviceParams[AddToCart.needRushDelivery] = isRushDeliverySelected
-//        }
-//        
-//        params[AddToCart.services] = [serviceParams]// JSON is a dictionary because of the {}. The JSON is containing key services and the value is an array of dictionary. In our case this array will be having only one dictionary because wee will be adding only one service to cart. This dictionary in our code iss service params.
-//        
-//        print(JSON(params))
-//        
-//        activityIndicator.startAnimating()
-//        NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-//            self?.addToCart.setTitle("CheckOut", for: .normal)
-//            self?.IsAddToCartTapped = true
-//            self?.houseHoldCollectionView.reloadData()
-//            print("success")
-//            DispatchQueue.main.async {[weak self] in
-//                if let numberOfSections = self?.houseHoldCollectionView.numberOfSections {
-//                    let lastSection = numberOfSections - 1
-//                    self?.houseHoldCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
-//                }
-//            }
-//            self?.activityIndicator.stopAnimating()
-//        }) {[weak self] (error) in
-//            print("error")
-//            self?.activityIndicator.stopAnimating()
-//        }
-//    }
-//
+    //    func addServiceToCart() {
+    //        var params:[String:Any] = [:]
+    //        var serviceParams:[String:Any] = [:]
+    //        if let name = serviceModel?.name {
+    //            serviceParams[AddToCart.name] = name  // if name is there then set it. "[AddToCart.name]" is the key. "name" is the value
+    //        }
+    //        if let alias = serviceModel?.alias {
+    //            serviceParams[AddToCart.alias] = alias
+    //        }
+    //        if let icon = serviceModel?.icon {
+    //            serviceParams[AddToCart.icon] = icon
+    //        }
+    //        if let description = serviceModel?.descrip {
+    //            serviceParams[AddToCart.description] = description
+    //        }
+    //        serviceParams[AddToCart.ordering] = 1
+    //        
+    //       
+    //        if let items = serviceModel?.items {
+    //            var itemArray : [[String?:Any?]] = []
+    //            
+    //            for item in items {
+    //                if item.IfLaundered == true {
+    //                    let ItemDict:[String?:Any?] = [
+    //                        "price" : item.laundryPrice,
+    //                        "qty" : item.qty,
+    //                        "if_laundered" : "true",
+    //                        "name" : item.name,
+    //                        "if_dryCleaned" : "false",
+    //                    ]
+    //                    itemArray.append(ItemDict)
+    //                    
+    //                } else if item.IfDrycleaned == true {
+    //                    let ItemDict:[String?:Any?] = [
+    //                        "price" : item.dryCleaningPrice,
+    //                        "qty" : item.qty,
+    //                        "if_laundered" : "false",
+    //                        "name" : item.name,
+    //                        "if_dryCleaned" : "true",
+    //                    ]
+    //                    itemArray.append(ItemDict)
+    //                }
+    //            }
+    //            serviceParams[AddToCart.items] = itemArray
+    //        }
+    //
+    //        if let rushDeliveryOptions = serviceModel?.rushDeliveryOptions, rushDeliveryOptions.count > 0 {
+    //            let firstOption = rushDeliveryOptions[0]
+    //            if let turnAroundTime = firstOption.turnAroundTime, let price = firstOption.price {
+    //                let rushDict:[String:Any] = [
+    //                    "turn_around_time":turnAroundTime,
+    //                    "price":price
+    //                ]
+    //                serviceParams[AddToCart.rushDeliveryOptions] = [rushDict] // array of rush delivery options
+    //            }
+    //        }
+    //        
+    //        if let isRushDeliverySelected = serviceModel?.isRushDeliverySelected {
+    //            serviceParams[AddToCart.needRushDelivery] = isRushDeliverySelected
+    //        }
+    //        
+    //        params[AddToCart.services] = [serviceParams]// JSON is a dictionary because of the {}. The JSON is containing key services and the value is an array of dictionary. In our case this array will be having only one dictionary because wee will be adding only one service to cart. This dictionary in our code iss service params.
+    //        
+    //        print(JSON(params))
+    //        
+    //        activityIndicator.startAnimating()
+    //        NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+    //            self?.addToCart.setTitle("CheckOut", for: .normal)
+    //            self?.IsAddToCartTapped = true
+    //            self?.houseHoldCollectionView.reloadData()
+    //            print("success")
+    //            DispatchQueue.main.async {[weak self] in
+    //                if let numberOfSections = self?.houseHoldCollectionView.numberOfSections {
+    //                    let lastSection = numberOfSections - 1
+    //                    self?.houseHoldCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+    //                }
+    //            }
+    //            self?.activityIndicator.stopAnimating()
+    //        }) {[weak self] (error) in
+    //            print("error")
+    //            self?.activityIndicator.stopAnimating()
+    //        }
+    //    }
+    //
     func addServiceToCart() {
         if let serviceModel = serviceModel{
             let modelToDictionary = serviceModel.toJSON()
@@ -300,7 +332,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         return CGSize(width: collectionView.frame.size.width, height:0)
         
     }
-  
+    
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if IsAddToCartTapped{
@@ -331,7 +363,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         
         if section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HouseHoldDescriptionCollectionViewCell", for: indexPath) as! HouseHoldDescriptionCollectionViewCell
-           return cell
+            return cell
         }
         else if section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HouseHoldItemCollectionViewCell", for: indexPath) as! HouseHoldItemCollectionViewCell
@@ -350,7 +382,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         }
         if section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
-                        cell.delegate = self
+            cell.delegate = self
             return cell
         }
         else if section == 3 {
@@ -374,7 +406,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         }
         return UICollectionViewCell()
     }
-   
+    
     
     func removeTapGestures(forTextView textView:UITextView) {
         // This function first checks if the textView that is passed is the currently active TextView or Not...if the user will tap somewhere outside then the textView passed will be equal to the activeTextView...but if the user will tap on another textView and this function gets called...then we need not remove the gesture recognizer...
@@ -444,43 +476,38 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         if let rushDeliveryState = serviceModel?.isRushDeliverySelected {
             serviceModel?.isRushDeliverySelected = !rushDeliveryState
             houseHoldCollectionView.reloadData()
+            setupPrice()
         }
-    }
-
-    //MARK: HouseHoldItemsCollectionViewCellDelegate Methods
-    func ifLaunderedTapped(withIndexPath indexPath : IndexPath) {
-        if let ifLaunderedTapped = serviceModel?.items?[indexPath.row].IfLaundered
-        {
-            serviceModel?.items?[indexPath.row].IfLaundered = !ifLaunderedTapped
-            houseHoldCollectionView.reloadData()
-        }
-        
     }
     
-    func ifDryCleanedTapped(withIndexPath indexPath : IndexPath) {
-        if let ifDryCleanedTapped = serviceModel?.items?[indexPath.row].IfLaundered
-        {
-            serviceModel?.items?[indexPath.row].IfLaundered = !ifDryCleanedTapped
-            houseHoldCollectionView.reloadData()
-        }
+    //MARK: HouseHoldItemsCollectionViewCellDelegate Methods
+    func ifLaunderedTapped(withIndexPath indexPath : IndexPath?) {
+        setupPrice()
+    }
+    
+    func ifDryCleanedTapped(withIndexPath indexPath : IndexPath?) {
+        setupPrice()
     }
     
     func textFieldStartedEditingInCell(withTextField textField: UITextField) {
         activeTextField = textField
         addTapGestureToView() //once the textbox editing begins the tap gesture starts functioning
+        setupPrice()
     }
     
     func textFieldEndedEditingInCell(withTextField textField: UITextField) {
         removeTapGestures(forTextField: textField)
-        
+        setupPrice()
     }
     
     func textViewStartedEditingInCell(withTextField textView: UITextView) {
         activeTextView = textView
         addTapGestureToView() //once the textbox editing begins the tap gesture starts functioning
+        
     }
     
     func textViewEndedEditingInCell(withTextField textView: UITextView) {
         removeTapGestures(forTextView: textView)
+        setupPrice()
     }
 }

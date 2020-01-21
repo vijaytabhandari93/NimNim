@@ -73,7 +73,11 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
         let servicesModel = ServiceBaseModel.fetchFromUserDefaults()
         //TODO: Small M
         if let Model = servicesModel?.data {
-            return Model.count
+            if Model.count >= 5  {
+                return 5
+            }else {
+                return Model.count
+            }
         }
         return 0
     }
@@ -83,6 +87,7 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
             if let services = servicesModel.data {
                 cell.serviceName.text = services[indexPath.row].name
                 cell.serviceDescription.text = services[indexPath.row].descrip
+                cell.serviceDescription.numberOfLines = 4
                 cell.alias = services[indexPath.row].alias
                 if let alias = services[indexPath.row].alias {
                 var inAlias = checkIfInCart(withAlias: alias)

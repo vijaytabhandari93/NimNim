@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol SelectItemCollectionViewCellDelegate:class {
+    func callChange()
+}
+
 class SelectItemCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var selectedImage : UIImageView!
@@ -17,7 +21,7 @@ class SelectItemCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var viewofStack : UIView!
     
     var model : ItemModel? //local
-    
+     weak var delegate:SelectItemCollectionViewCellDelegate?
     enum SelectedGender { 
         case male
         case female
@@ -40,6 +44,7 @@ class SelectItemCollectionViewCell: UICollectionViewCell {
                 }
             }
         }
+        delegate?.callChange()
     }
     @IBAction func plusTapped(_ sender:Any?) {
         if let number = (currentGender == .male) ? model?.maleCount : model?.femaleCount {
@@ -57,6 +62,7 @@ class SelectItemCollectionViewCell: UICollectionViewCell {
                 numberLabel.text = "\(String(describing: newCount))"
             }
         }
+        delegate?.callChange()
     }
     override func awakeFromNib() {
         super.awakeFromNib()

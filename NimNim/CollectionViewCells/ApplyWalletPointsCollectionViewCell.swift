@@ -42,7 +42,8 @@ class ApplyWalletPointsCollectionViewCell: UICollectionViewCell {
             apply.setImage(image, for: .normal)
             apply.backgroundColor = Colors.nimnimGreen
         }else {
-            apply.setImage(nil, for: .normal)
+            let image = UIImage(named: "rectangleCopy")
+            apply.setImage(image, for: .normal)
             apply.backgroundColor = Colors.nimnimGrey
         }
     }

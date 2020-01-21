@@ -46,15 +46,21 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
     
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return services.count
+        if services.count >= 5 {
+           return 2
+        }else{
+           return services.count
+        }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-        cell.serviceName.text = services[indexPath.row].name
-        cell.serviceDescription.text = services[indexPath.row].descrip
-        cell.alias = services[indexPath.row].alias
-        if let alias = services[indexPath.row].alias
+        cell.serviceName.text = services[indexPath.item].name
+        cell.serviceDescription.text = services[indexPath.item].descrip
+        cell.serviceDescription.numberOfLines = 2
+        cell.alias = services[indexPath.item].alias
+        if let alias = services[indexPath.item].alias
         {
             var inAlias = checkIfInCart(withAlias: alias)
             if inAlias == false {
@@ -86,42 +92,42 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let servicesStoryboard = UIStoryboard(name: "Services", bundle: nil)
-        if services[indexPath.row].alias == "wash-and-fold" {
+        if services[indexPath.item].alias == "wash-and-fold" {
             let washAndFoldVC = servicesStoryboard.instantiateViewController(withIdentifier: "ServicesViewController") as! ServicesViewController
-            washAndFoldVC.serviceModel = services[indexPath.row] //passing of the service model to the vc.
+            washAndFoldVC.serviceModel = services[indexPath.item] //passing of the service model to the vc.
             NavigationManager.shared.push(viewController: washAndFoldVC)
             
-        }else if services[indexPath.row].alias == "wash-and-air-dry" {
+        }else if services[indexPath.item].alias == "wash-and-air-dry" {
             let washAndAirDryVC = servicesStoryboard.instantiateViewController(withIdentifier: "WashAndAirDryViewController") as! WashAndAirDryViewController
             
-            washAndAirDryVC.serviceModel = services[indexPath.row]
+            washAndAirDryVC.serviceModel = services[indexPath.item]
             NavigationManager.shared.push(viewController: washAndAirDryVC)
-        }else if services[indexPath.row].alias == "laundered-shirts" {
+        }else if services[indexPath.item].alias == "laundered-shirts" {
             let washPressedVC = servicesStoryboard.instantiateViewController(withIdentifier: "WashPressedShirtsViewController") as!WashPressedShirtsViewController
             
-            washPressedVC.serviceModel = services[indexPath.row]
+            washPressedVC.serviceModel = services[indexPath.item]
             NavigationManager.shared.push(viewController: washPressedVC)
-        }else if services[indexPath.row].alias == "household-items" {
+        }else if services[indexPath.item].alias == "household-items" {
             let houseHoldVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController") as! HouseHoldItemsViewController
-            houseHoldVC.serviceModel = services[indexPath.row]
+            houseHoldVC.serviceModel = services[indexPath.item]
             NavigationManager.shared.push(viewController: houseHoldVC)
-        }else if services[indexPath.row].alias == "dry-cleaning" {
+        }else if services[indexPath.item].alias == "dry-cleaning" {
             
             let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "DryCleaningViewController") as! DryCleaningViewController
             
-            dryCleaningVC.serviceModel = services[indexPath.row]  //refers to 4th element
+            dryCleaningVC.serviceModel = services[indexPath.item]  //refers to 4th element
             NavigationManager.shared.push(viewController: dryCleaningVC)
             
             
-        }else if services[indexPath.row].alias == "shoe-repair" {
+        }else if services[indexPath.item].alias == "shoe-repair" {
             let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController")
             NavigationManager.shared.push(viewController: dryCleaningVC)
-        }else if services[indexPath.row].alias == "tailoring" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")
+        }else if services[indexPath.item].alias == "tailoring" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")
             NavigationManager.shared.push(viewController: householdVC)
-        }else if services[indexPath.row].alias == "carpet-cleaning" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")
+        }else if services[indexPath.item].alias == "carpet-cleaning" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")
             NavigationManager.shared.push(viewController: householdVC)
         }
-        else if services[indexPath.row].alias == "leather-and-special-care-items" {
+        else if services[indexPath.item].alias == "leather-and-special-care-items" {
             let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
             NavigationManager.shared.push(viewController: householdVC)
             

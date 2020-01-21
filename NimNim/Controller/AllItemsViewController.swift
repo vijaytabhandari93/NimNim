@@ -9,9 +9,10 @@
 import UIKit
 import Kingfisher
 
-class AllItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class AllItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SelectItemCollectionViewCellDelegate {
     
     
+    @IBOutlet weak var priceView: UIView!
     //IBOutlets
     @IBOutlet weak var basketLabel:UILabel!
     @IBOutlet weak var women:UIButton!
@@ -25,7 +26,8 @@ class AllItemsViewController: UIViewController,UICollectionViewDelegate,UICollec
         case women
         case men
     }
-    
+    var modelOfServices : ServiceModel?
+   
     var itemArray : [ItemModel] = []
     var selectedState:SelectionType! {
         didSet {
@@ -51,6 +53,11 @@ class AllItemsViewController: UIViewController,UICollectionViewDelegate,UICollec
     var maleItems:[ItemModel] = []
     var femaleItems:[ItemModel] = []
     
+    func setupPrice() {
+        if let price = modelOfServices?.calculateGenderSpecificPriceForService() {
+            orderTotalLabel.text = price
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         selectedState = .women
@@ -60,8 +67,13 @@ class AllItemsViewController: UIViewController,UICollectionViewDelegate,UICollec
         registerCells()
         AllItemsCollectionView.delegate = self
         AllItemsCollectionView.dataSource = self
+        setupPrice()
+    
     }
     
+    func callChange(){
+        setupPrice()
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
@@ -140,7 +152,7 @@ class AllItemsViewController: UIViewController,UICollectionViewDelegate,UICollec
             }
         }
         cell.model = itemArray[indexPath.row]
-        
+        cell.delegate = self
         if let name = itemArray[indexPath.row].icon
         {
             let iconURL = URL(string: name)

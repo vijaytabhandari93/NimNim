@@ -25,10 +25,13 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
     var activeTextField : UITextField?
+    var isHeightAdded = false // global variable made for keyboard height modification
+    var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        addObservers()
         registerCells()
         prefernces.delegate = self
         prefernces.dataSource = self
@@ -38,12 +41,35 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         if let description = serviceModel?.descrip {
             descriptionLabel.text = "\(description)"
         }
-        if let priceOfService = serviceModel?.price {
-            priceLabel.text = "\(priceOfService)"
+        if let priceOfService = serviceModel?.calculatePriceForService() {
+            priceLabel.text = priceOfService
         }
         setupAddToCartButton()
         setupCartCountLabel()
        
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if !isHeightAdded {
+                addedHeight = keyboardSize.height
+                prefernces.contentInset = UIEdgeInsets(top: prefernces.contentInset.top, left: prefernces.contentInset.left, bottom: prefernces.contentInset.bottom + addedHeight, right: prefernces.contentInset.right)
+                isHeightAdded = true
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if isHeightAdded {
+            prefernces.contentInset = UIEdgeInsets(top: prefernces.contentInset.top, left: prefernces.contentInset.left, bottom: prefernces.contentInset.bottom - addedHeight, right: prefernces.contentInset.right)
+            isHeightAdded = false
+        }
     }
     
     func setupCartCountLabel() {

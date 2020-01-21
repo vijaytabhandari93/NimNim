@@ -48,7 +48,8 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
     var expiry:String?
     var cvv:String?
     var nameOnCard:String?
-    
+    var isHeightAdded = false // global variable made for keyboard height modification
+    var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     func resetButtons() {
         credit.isSelected = false
         debit.isSelected = false
@@ -64,8 +65,30 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
         registerCells()
         cardCollectionView.delegate = self
         cardCollectionView.dataSource = self
+        addObservers()
+    }
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if !isHeightAdded {
+                addedHeight = keyboardSize.height
+                cardCollectionView.contentInset = UIEdgeInsets(top: cardCollectionView.contentInset.top, left: cardCollectionView.contentInset.left, bottom: cardCollectionView.contentInset.bottom + addedHeight, right: cardCollectionView.contentInset.right)
+                isHeightAdded = true
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if isHeightAdded {
+            cardCollectionView.contentInset = UIEdgeInsets(top: cardCollectionView.contentInset.top, left: cardCollectionView.contentInset.left, bottom: cardCollectionView.contentInset.bottom - addedHeight, right: cardCollectionView.contentInset.right)
+            isHeightAdded = false
+        }
+    }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         applyHorizontalNimNimGradient()

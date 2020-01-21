@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -32,58 +30,34 @@
                             <constraint firstAttribute="height" constant="1" id="q2b-hR-JS9"/>
                         </constraints>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="JnO-2f-v1n">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="57"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7X-tm-I0P">
-                                <rect key="frame" x="0.0" y="0.0" width="153" height="57"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Clothes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElG-Pm-efY">
-                                        <rect key="frame" x="18" y="20" width="135" height="17.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
-                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ElG-Pm-efY" secondAttribute="trailing" id="RZb-HO-5mk"/>
-                                    <constraint firstItem="ElG-Pm-efY" firstAttribute="centerY" secondItem="R7X-tm-I0P" secondAttribute="centerY" id="ff9-ux-yCc"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZfO-EW-NTf">
-                                <rect key="frame" x="167" y="0.0" width="153" height="57"/>
-                                <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcG-Oe-3Sq">
-                                        <rect key="frame" x="10" y="13.5" width="80" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="0EC-vs-dw9"/>
-                                            <constraint firstAttribute="width" constant="80" id="xon-VE-5MB"/>
-                                        </constraints>
-                                        <color key="textColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                    </textField>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="ZcG-Oe-3Sq" firstAttribute="leading" secondItem="ZfO-EW-NTf" secondAttribute="leading" constant="10" id="FeF-2X-fIc"/>
-                                    <constraint firstItem="ZcG-Oe-3Sq" firstAttribute="centerY" secondItem="ZfO-EW-NTf" secondAttribute="centerY" id="Skl-Fo-oZK"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                    </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Clothes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElG-Pm-efY">
+                        <rect key="frame" x="28" y="0.0" width="135" height="57"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcG-Oe-3Sq">
+                        <rect key="frame" x="183" y="12" width="80" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="PeO-97-xq7"/>
+                            <constraint firstAttribute="width" constant="80" id="xon-VE-5MB"/>
+                        </constraints>
+                        <color key="textColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    </textField>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="JnO-2f-v1n" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4xm-YP-ceg"/>
-                <constraint firstAttribute="trailing" secondItem="JnO-2f-v1n" secondAttribute="trailing" id="HG3-pE-9kC"/>
-                <constraint firstAttribute="bottom" secondItem="JnO-2f-v1n" secondAttribute="bottom" constant="1" id="bxS-RE-ZUc"/>
+                <constraint firstItem="apQ-As-gAs" firstAttribute="top" secondItem="ElG-Pm-efY" secondAttribute="bottom" id="4LF-3k-QU7"/>
+                <constraint firstItem="ElG-Pm-efY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="OhZ-h9-bWj"/>
                 <constraint firstAttribute="bottom" secondItem="apQ-As-gAs" secondAttribute="bottom" id="g0J-HX-Byr"/>
                 <constraint firstAttribute="trailing" secondItem="apQ-As-gAs" secondAttribute="trailing" constant="28" id="gKZ-Ym-JO8"/>
                 <constraint firstItem="apQ-As-gAs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="jl4-FQ-vge"/>
-                <constraint firstItem="JnO-2f-v1n" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lJ9-fh-LWr"/>
+                <constraint firstItem="ZcG-Oe-3Sq" firstAttribute="leading" secondItem="ElG-Pm-efY" secondAttribute="trailing" constant="20" id="lB8-ln-ili"/>
+                <constraint firstItem="ElG-Pm-efY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="whs-Ju-OxX"/>
+                <constraint firstItem="ZcG-Oe-3Sq" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="zLF-UL-3k9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="309" height="88"/>
@@ -91,7 +65,7 @@
                 <outlet property="noOfPieces" destination="ZcG-Oe-3Sq" id="sr5-gK-hmY"/>
                 <outlet property="titleLabel" destination="ElG-Pm-efY" id="m5c-GM-82J"/>
             </connections>
-            <point key="canvasLocation" x="-63.04347826086957" y="13.392857142857142"/>
+            <point key="canvasLocation" x="-63.768115942028992" y="13.392857142857142"/>
         </collectionViewCell>
     </objects>
 </document>

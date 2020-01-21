@@ -167,7 +167,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             return cell
         }
         else{
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServicesBaseCollectionViewCell", for: indexPath) as! ServicesBaseCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServicesBaseCollectionViewCell", for: indexPath) as! ServicesBaseCollectionViewCell //This line ensures that  if cell is not  initialized...then firstly initialize  it...which means that awakeFromNib of that cell will get called...in the awakeFromNib since we made the cell  object as the delegate  and  datasource  of the collectionview...so the corresponding functions of the delegate and datasource protocols start getting called... i.e number of items and cellForRow...etc.
              cell.configureCell(withModel: serviceModel) //To pass the banneer model to the cell.
             return cell
         }

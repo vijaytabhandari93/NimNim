@@ -13,7 +13,8 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
 
     @IBOutlet weak var addAddressCollectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
-  
+   var isHeightAdded = false // global variable made for keyboard height modification
+    var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     var model : AddressDetailsModel? // used for editing function
     var editTapped : Bool = false // used for editing function
     
@@ -77,6 +78,28 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         selectedState = .office
     }
     
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if !isHeightAdded {
+                addedHeight = keyboardSize.height
+                addAddressCollectionView.contentInset = UIEdgeInsets(top: addAddressCollectionView.contentInset.top, left: addAddressCollectionView.contentInset.left, bottom: addAddressCollectionView.contentInset.bottom + addedHeight, right: addAddressCollectionView.contentInset.right)
+                isHeightAdded = true
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if isHeightAdded {
+            addAddressCollectionView.contentInset = UIEdgeInsets(top: addAddressCollectionView.contentInset.top, left: addAddressCollectionView.contentInset.left, bottom: addAddressCollectionView.contentInset.bottom - addedHeight, right: addAddressCollectionView.contentInset.right)
+            isHeightAdded = false
+        }
+    }
     func postAddress(streetAddress : String?, houseBlockNumber : String?,city : String?,state : String?,zipcode : String?,enterLandmark : String?,label:String?){
         guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let enterLandmark = enterLandmark,let label = label else {
             return
@@ -184,7 +207,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         if editTapped == true {
             setUpUIForEditState()
         }
-        
+        addObservers()
     }
     func setUpUIForEditState()
     {

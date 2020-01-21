@@ -7,6 +7,9 @@
 //
 
 import UIKit
+protocol BoxedCollectionViewCellDelegate:class {
+    func preferenceTapped()
+}
 
 class BoxedCollectionViewCell: UICollectionViewCell {
 
@@ -23,7 +26,9 @@ class BoxedCollectionViewCell: UICollectionViewCell {
             //Setup the ui
             setupUI()
         }
+        delegate?.preferenceTapped()
     }
+    weak var delegate:BoxedCollectionViewCellDelegate?
     @IBAction func leftButtonpressed(_ sender: Any) {
         if let preferences = preferences, preferences.count > 1 {
             //Setting up the model
@@ -35,6 +40,7 @@ class BoxedCollectionViewCell: UICollectionViewCell {
             //Setup the ui
             setupUI()
         }
+        delegate?.preferenceTapped()
     }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subLabel: UILabel!

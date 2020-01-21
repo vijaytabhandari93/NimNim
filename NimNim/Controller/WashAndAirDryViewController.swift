@@ -12,6 +12,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     
     
     var activeTextField : UITextField?
+    var defaultStateJustNimNimIt : Bool = false
     //NoOfClothes Delegate Methods
     func textFieldStartedEditingInCell(withTextField textField: UITextField) {
         activeTextField = textField
@@ -50,6 +51,8 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
+    var isHeightAdded = false // global variable made for keyboard height modification
+    var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     
     //MARK:UI Methods
     func registerCells() {
@@ -84,13 +87,36 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         if let description = serviceModel?.descrip {
             descriptionLabel.text = "\(description)"
         }
-        if let priceOfService = serviceModel?.price {
+        if let priceOfService = serviceModel?.calculatePriceForService() {
             priceLabel.text = "\(priceOfService)"
         }
         setupAddToCartButton()
         setupCartCountLabel()
+        addObservers()
+    }
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
     }
     
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if !isHeightAdded {
+                addedHeight = keyboardSize.height
+                washAndAirDryCollectionView.contentInset = UIEdgeInsets(top: washAndAirDryCollectionView.contentInset.top, left: washAndAirDryCollectionView.contentInset.left, bottom: washAndAirDryCollectionView.contentInset.bottom + addedHeight, right: washAndAirDryCollectionView.contentInset.right)
+                isHeightAdded = true
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if isHeightAdded {
+            washAndAirDryCollectionView.contentInset = UIEdgeInsets(top: washAndAirDryCollectionView.contentInset.top, left: washAndAirDryCollectionView.contentInset.left, bottom: washAndAirDryCollectionView.contentInset.bottom - addedHeight, right: washAndAirDryCollectionView.contentInset.right)
+            isHeightAdded = false
+        }
+    }
+
     func setupAddToCartButton(){
         if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
             addToCart.setTitle("Update Cart", for: .normal)
@@ -160,6 +186,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     @IBAction func justNimNimItTapped(_ sender: Any) {
         serviceModel?.setupNimNimItForWashAndAirDry()
         washAndAirDryCollectionView.reloadData()
+        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
     }
     
     
@@ -337,7 +364,6 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let section = indexPath.section
-        
         if section == 0 {
             return CGSize(width: collectionView.frame.size.width, height:88)
         }else if section == 1 {
@@ -402,6 +428,13 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
             cell.titleLabel.text = "Number of Clothes"
             cell.delegate = self
+            if defaultStateJustNimNimIt {
+                cell.contentView.isHidden = true
+               
+            } else
+            {
+                cell.contentView.isHidden = false
+            }
             return cell
         }
         else if section == 1 {

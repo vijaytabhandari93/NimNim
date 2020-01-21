@@ -43,7 +43,8 @@ class NeedRushDeliveryCollectionViewCell: UICollectionViewCell {
             tickButton.setImage(image, for: .normal)
             tickButton.backgroundColor = Colors.nimnimGreen
         }else {
-            tickButton.setImage(nil, for: .normal)
+            let image = UIImage(named: "rectangleCopy")
+            tickButton.setImage(image, for: .normal)
             tickButton.backgroundColor = Colors.nimnimGrey
         }
     }

@@ -26,6 +26,7 @@ class SelectFromListOfClothesCollectionViewCell: UICollectionViewCell {
             selectItemVC.maleItems = maleItems
             selectItemVC.femaleItems = femaleItems
         }
+        selectItemVC.modelOfServices = serviceModel
         NavigationManager.shared.push(viewController:selectItemVC)
         
     }

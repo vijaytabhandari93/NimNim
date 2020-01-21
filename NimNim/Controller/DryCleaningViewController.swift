@@ -19,14 +19,21 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         applyHorizontalNimNimGradient()
         priceTotalBackgroundView.addTopShadowToView()
         setupCartCountLabel() 
-        
+        setupPrice()
     }
+    func setupPrice() {
+           if let price = serviceModel?.calculatePriceForService() {
+               priceLabel.text = "$\(price)"
+           }
+       }
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var addToCart: UIButton!
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
+    var isHeightAdded = false // global variable made for keyboard height modification
+    var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var priceTotalBackgroundView: UIView!
     @IBOutlet weak var dryCleaningCollectionView: UICollectionView!
@@ -123,8 +130,32 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         }
         setupAddToCartButton()
         setupCartCountLabel()
+        addObservers()
+        setupPrice()
     }
-    
+    func addObservers() {
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
+       }
+       
+       @objc func keyboardWillShow(notification: NSNotification) {
+           if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+               if !isHeightAdded {
+                   addedHeight = keyboardSize.height
+                   dryCleaningCollectionView.contentInset = UIEdgeInsets(top: dryCleaningCollectionView.contentInset.top, left: dryCleaningCollectionView.contentInset.left, bottom: dryCleaningCollectionView.contentInset.bottom + addedHeight, right: dryCleaningCollectionView.contentInset.right)
+                   isHeightAdded = true
+               }
+           }
+       }
+       
+       @objc func keyboardWillHide(notification: NSNotification) {
+           if isHeightAdded {
+               dryCleaningCollectionView.contentInset = UIEdgeInsets(top: dryCleaningCollectionView.contentInset.top, left: dryCleaningCollectionView.contentInset.left, bottom: dryCleaningCollectionView.contentInset.bottom - addedHeight, right: dryCleaningCollectionView.contentInset.right)
+               isHeightAdded = false
+           }
+       }
+
     func setupAddToCartButton(){
         if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
             addToCart.setTitle("Update Cart", for: .normal)
@@ -441,6 +472,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
             if let rushDeliveryState = serviceModel?.isRushDeliverySelected {
                 serviceModel?.isRushDeliverySelected = !rushDeliveryState
                 dryCleaningCollectionView.reloadData()
+                setupPrice()
             }
         }
         else{
