@@ -41,7 +41,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     
     
     
-
+    
     
     //IBOutlets
     @IBOutlet weak var basketLabel: UILabel!
@@ -59,7 +59,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
     
-      @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     //IBActions
     @IBAction func previousTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
@@ -103,129 +103,130 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     func setupPrice() {
         if let price = serviceModel?.calculatePriceForService() {
             priceLabel.text = price
+            serviceModel?.servicePrice = price
         }
     }
     
-//    func addServiceToCart() {
-//        var params:[String:Any] = [:]
-//        var serviceParams:[String:Any] = [:]
-//        if let name = serviceModel?.name {
-//            serviceParams[AddToCart.name] = name  // if name is there then set it. "[AddToCart.name]" is the key. "name" is the value
-//        }
-//        if let alias = serviceModel?.alias {
-//            serviceParams[AddToCart.alias] = alias
-//        }
-//        if let icon = serviceModel?.icon {
-//            serviceParams[AddToCart.icon] = icon
-//        }
-//        if let description = serviceModel?.descrip {
-//            serviceParams[AddToCart.description] = description
-//        }
-//        serviceParams[AddToCart.ordering] = 1
-//
-//        if let detergents = serviceModel?.detergents {
-//            var title:String?
-//
-//            for detergent in detergents {
-//                if detergent.isSelected == true {
-//                    title = detergent.title
-//                    break
-//                }
-//
-//            }
-//
-//            if let title = title {
-//                serviceParams[AddToCart.detergents] = [
-//                    "title":title  // In this statement we are setting the "detergents" key of the serviceparam. The value to which it is set is itself a dictionary.
-//                ]
-//            }
-//        }
-//
-//        if let starch = serviceModel?.starch {
-//            var title:String?
-//
-//            for item in starch {
-//                if item.isSelected == true {
-//                    title = item.title
-//                    break
-//                }
-//
-//            }
-//
-//            if let title = title {
-//                serviceParams[AddToCart.starch] = [
-//                    "title":title
-//                ]
-//            }
-//        }
-//
-//        if let returnPreferences = serviceModel?.returnPreferences {
-//            var title:String?
-//
-//            for item in returnPreferences {
-//                if item.isSelected == true {
-//                    title = item.title
-//                    break
-//                }
-//
-//            }
-//
-//            if let title = title {
-//                serviceParams[AddToCart.drying] = [
-//                    "title":title
-//                ]
-//            }
-//        }
-//
-//
-//
-//        if let price = serviceModel?.price {
-//            serviceParams[AddToCart.price] = price
-//        }
-//
-//        if let pricing = serviceModel?.costPerPiece {
-//            serviceParams[AddToCart.pricing] = pricing
-//        }
-//        if let pricingPerBox = serviceModel?.costPerPieceBox{
-//                serviceParams[AddToCart.pricingBox] = pricingPerBox
-//        }
-//        if let rushDeliveryOptions = serviceModel?.rushDeliveryOptions, rushDeliveryOptions.count > 0 {
-//            let firstOption = rushDeliveryOptions[0]
-//            if let turnAroundTime = firstOption.turnAroundTime, let price = firstOption.price {
-//                let rushDict:[String:Any] = [
-//                    "turn_around_time":turnAroundTime,
-//                    "price":price
-//                ]
-//                serviceParams[AddToCart.rushDeliveryOptions] = [rushDict] // array of rush delivery options
-//            }
-//        }
-//
-//        if let isRushDeliverySelected = serviceModel?.isRushDeliverySelected {
-//            serviceParams[AddToCart.needRushDelivery] = isRushDeliverySelected
-//        }
-//
-//        params[AddToCart.services] = [serviceParams]// JSON is a dictionary because of the {}. The JSON is containing key services and the value is an array of dictionary. In our case this array will be having only one dictionary because wee will be adding only one service to cart. This dictionary in our code iss service params.
-//
-//        print(JSON(params))
-//
-//        activityIndicator.startAnimating()
-//        NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-//            self?.addToCart.setTitle("CheckOut", for: .normal)
-//            self?.IsAddToCartTapped = true
-//            self?.WashPressedShirtCollectionView.reloadData()
-//            print("success")
-//            DispatchQueue.main.async {[weak self] in
-//                if let numberOfSections = self?.WashPressedShirtCollectionView.numberOfSections {
-//                    let lastSection = numberOfSections - 1
-//                    self?.WashPressedShirtCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
-//                }
-//            }
-//            self?.activityIndicator.stopAnimating()
-//        }) {[weak self] (error) in
-//            print("error")
-//            self?.activityIndicator.stopAnimating()
-//        }
-//    }
+    //    func addServiceToCart() {
+    //        var params:[String:Any] = [:]
+    //        var serviceParams:[String:Any] = [:]
+    //        if let name = serviceModel?.name {
+    //            serviceParams[AddToCart.name] = name  // if name is there then set it. "[AddToCart.name]" is the key. "name" is the value
+    //        }
+    //        if let alias = serviceModel?.alias {
+    //            serviceParams[AddToCart.alias] = alias
+    //        }
+    //        if let icon = serviceModel?.icon {
+    //            serviceParams[AddToCart.icon] = icon
+    //        }
+    //        if let description = serviceModel?.descrip {
+    //            serviceParams[AddToCart.description] = description
+    //        }
+    //        serviceParams[AddToCart.ordering] = 1
+    //
+    //        if let detergents = serviceModel?.detergents {
+    //            var title:String?
+    //
+    //            for detergent in detergents {
+    //                if detergent.isSelected == true {
+    //                    title = detergent.title
+    //                    break
+    //                }
+    //
+    //            }
+    //
+    //            if let title = title {
+    //                serviceParams[AddToCart.detergents] = [
+    //                    "title":title  // In this statement we are setting the "detergents" key of the serviceparam. The value to which it is set is itself a dictionary.
+    //                ]
+    //            }
+    //        }
+    //
+    //        if let starch = serviceModel?.starch {
+    //            var title:String?
+    //
+    //            for item in starch {
+    //                if item.isSelected == true {
+    //                    title = item.title
+    //                    break
+    //                }
+    //
+    //            }
+    //
+    //            if let title = title {
+    //                serviceParams[AddToCart.starch] = [
+    //                    "title":title
+    //                ]
+    //            }
+    //        }
+    //
+    //        if let returnPreferences = serviceModel?.returnPreferences {
+    //            var title:String?
+    //
+    //            for item in returnPreferences {
+    //                if item.isSelected == true {
+    //                    title = item.title
+    //                    break
+    //                }
+    //
+    //            }
+    //
+    //            if let title = title {
+    //                serviceParams[AddToCart.drying] = [
+    //                    "title":title
+    //                ]
+    //            }
+    //        }
+    //
+    //
+    //
+    //        if let price = serviceModel?.price {
+    //            serviceParams[AddToCart.price] = price
+    //        }
+    //
+    //        if let pricing = serviceModel?.costPerPiece {
+    //            serviceParams[AddToCart.pricing] = pricing
+    //        }
+    //        if let pricingPerBox = serviceModel?.costPerPieceBox{
+    //                serviceParams[AddToCart.pricingBox] = pricingPerBox
+    //        }
+    //        if let rushDeliveryOptions = serviceModel?.rushDeliveryOptions, rushDeliveryOptions.count > 0 {
+    //            let firstOption = rushDeliveryOptions[0]
+    //            if let turnAroundTime = firstOption.turnAroundTime, let price = firstOption.price {
+    //                let rushDict:[String:Any] = [
+    //                    "turn_around_time":turnAroundTime,
+    //                    "price":price
+    //                ]
+    //                serviceParams[AddToCart.rushDeliveryOptions] = [rushDict] // array of rush delivery options
+    //            }
+    //        }
+    //
+    //        if let isRushDeliverySelected = serviceModel?.isRushDeliverySelected {
+    //            serviceParams[AddToCart.needRushDelivery] = isRushDeliverySelected
+    //        }
+    //
+    //        params[AddToCart.services] = [serviceParams]// JSON is a dictionary because of the {}. The JSON is containing key services and the value is an array of dictionary. In our case this array will be having only one dictionary because wee will be adding only one service to cart. This dictionary in our code iss service params.
+    //
+    //        print(JSON(params))
+    //
+    //        activityIndicator.startAnimating()
+    //        NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+    //            self?.addToCart.setTitle("CheckOut", for: .normal)
+    //            self?.IsAddToCartTapped = true
+    //            self?.WashPressedShirtCollectionView.reloadData()
+    //            print("success")
+    //            DispatchQueue.main.async {[weak self] in
+    //                if let numberOfSections = self?.WashPressedShirtCollectionView.numberOfSections {
+    //                    let lastSection = numberOfSections - 1
+    //                    self?.WashPressedShirtCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+    //                }
+    //            }
+    //            self?.activityIndicator.stopAnimating()
+    //        }) {[weak self] (error) in
+    //            print("error")
+    //            self?.activityIndicator.stopAnimating()
+    //        }
+    //    }
     
     func addServiceToCart() {
         if let serviceModel = serviceModel{
@@ -343,28 +344,28 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         setupPrice()
     }
     func addObservers() {
-           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
-           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
-           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
-       }
-       
-       @objc func keyboardWillShow(notification: NSNotification) {
-           if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-               if !isHeightAdded {
-                   addedHeight = keyboardSize.height
-                   WashPressedShirtCollectionView.contentInset = UIEdgeInsets(top: WashPressedShirtCollectionView.contentInset.top, left: WashPressedShirtCollectionView.contentInset.left, bottom: WashPressedShirtCollectionView.contentInset.bottom + addedHeight, right: WashPressedShirtCollectionView.contentInset.right)
-                   isHeightAdded = true
-               }
-           }
-       }
-       
-       @objc func keyboardWillHide(notification: NSNotification) {
-           if isHeightAdded {
-               WashPressedShirtCollectionView.contentInset = UIEdgeInsets(top: WashPressedShirtCollectionView.contentInset.top, left: WashPressedShirtCollectionView.contentInset.left, bottom: WashPressedShirtCollectionView.contentInset.bottom - addedHeight, right: WashPressedShirtCollectionView.contentInset.right)
-               isHeightAdded = false
-           }
-       }
-
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if !isHeightAdded {
+                addedHeight = keyboardSize.height
+                WashPressedShirtCollectionView.contentInset = UIEdgeInsets(top: WashPressedShirtCollectionView.contentInset.top, left: WashPressedShirtCollectionView.contentInset.left, bottom: WashPressedShirtCollectionView.contentInset.bottom + addedHeight, right: WashPressedShirtCollectionView.contentInset.right)
+                isHeightAdded = true
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if isHeightAdded {
+            WashPressedShirtCollectionView.contentInset = UIEdgeInsets(top: WashPressedShirtCollectionView.contentInset.top, left: WashPressedShirtCollectionView.contentInset.left, bottom: WashPressedShirtCollectionView.contentInset.bottom - addedHeight, right: WashPressedShirtCollectionView.contentInset.right)
+            isHeightAdded = false
+        }
+    }
+    
     
     func setupAddToCartButton(){
         if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
@@ -410,7 +411,13 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
+            if defaultStateJustNimNimIt {
+                return 0
+                
+            } else
+            {
+                return 1
+            }
         }else if section == 1 {
             return 2
         }else if section == 2 {
@@ -430,18 +437,17 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
             cell.delegate = self
             cell.titleLabel.text = "Number of Clothes"
-            if defaultStateJustNimNimIt {
-                cell.contentView.isHidden = true
-               
-            } else
-            {
-                cell.contentView.isHidden = false
+            if let noOfClothes = serviceModel?.numberOfClothes {
+                     cell.noOfPieces.text = "\(noOfClothes)"
+            }
+            else {
+               cell.noOfPieces.text = nil
             }
             return cell
             
         }
         else if section == 1 {
-           switch indexPath.row {
+            switch indexPath.row {
             case 0:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
                 cell.titleLabel.text = "Starch"
@@ -453,13 +459,13 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
                     cell.configureCell(withPreferenceModelArray: starch)
                 }
                 return cell
-                case 1 :
+            case 1 :
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BoxedCollectionViewCell", for: indexPath) as! BoxedCollectionViewCell
                 cell.titleLabel.text = "Return Preference"
                 cell.delegate = self
                 if let returnPreferences = serviceModel?.returnPreferences,
                     returnPreferences.count == 2 {
-         
+                    
                     let firstPreference = returnPreferences[0]
                     let secondPreference = returnPreferences[1]
                     cell.leftLabel.text = firstPreference.title
@@ -468,11 +474,11 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
                 }
                 if let subtitle = serviceModel?.costPerPieceBox
                 {
-                cell.subLabel.text = " \(subtitle*100) cents extra per shirt"
+                    cell.subLabel.text = " \(subtitle*100) cents extra per shirt"
                 }
                 return cell
             default:
-                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
                 cell.titleLabel.text = "Detergent"
                 cell.leftImageView.image = UIImage(named: "scented")
                 cell.leftLabel.text = "Scented"
@@ -482,14 +488,14 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
                 
             }
         }
-          if section == 2 {
+        if section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
-                        cell.delegate = self
+            cell.delegate = self
             return cell
         }
         if section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
-               cell.delegate = self
+            cell.delegate = self
             cell.labelAgainsCheckbox.text = "I need Rush Delivery"
             cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
             if let arrayRushOptions = serviceModel?.rushDeliveryOptions, arrayRushOptions.count == 1 {
@@ -505,7 +511,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
             return cell
             
         }
-         return UICollectionViewCell()
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -609,8 +615,8 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         }
     }
 }
-    
-    
 
-    
+
+
+
 

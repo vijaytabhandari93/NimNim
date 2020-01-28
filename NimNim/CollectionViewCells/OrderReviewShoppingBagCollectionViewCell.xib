@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionReusableView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OrderReviewShoppingBagCollectionReusableView" id="3fC-Ln-dCl" customClass="OrderReviewShoppingBagCollectionReusableView" customModule="NimNim" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="392" height="168"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shopping Bag Summary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbX-fy-PO9">
+                    <rect key="frame" x="28" y="28" width="176" height="17.5"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pbv-rJ-beW">
+                    <rect key="frame" x="28" y="167" width="336" height="1"/>
+                    <color key="backgroundColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="CI5-hw-Hk1"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="I44-Sp-e5i"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2 Items" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6zP-CY-Gyq">
+                    <rect key="frame" x="319.5" y="28" width="44.5" height="15"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                    <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 Sept, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7cB-ch-z6j">
+                    <rect key="frame" x="28" y="47.5" width="78" height="15"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                    <color key="textColor" red="0.039215686274509803" green="0.023529411764705882" blue="0.1803921568627451" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items Pick up time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xcK-mC-o9D">
+                    <rect key="frame" x="28" y="82.5" width="113.5" height="15"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                    <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.44" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:30AM - 12:30PM, 21 Mon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQM-8H-wdz">
+                    <rect key="frame" x="28" y="99.5" width="184.5" height="17.5"/>
+                    <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                    <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.87" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="CQM-8H-wdz" firstAttribute="leading" secondItem="xcK-mC-o9D" secondAttribute="leading" id="9JG-Pt-iip"/>
+                <constraint firstItem="7cB-ch-z6j" firstAttribute="leading" secondItem="PbX-fy-PO9" secondAttribute="leading" id="CvC-RO-W4Y"/>
+                <constraint firstItem="7cB-ch-z6j" firstAttribute="top" secondItem="PbX-fy-PO9" secondAttribute="bottom" constant="2" id="HJP-TX-2wB"/>
+                <constraint firstItem="xcK-mC-o9D" firstAttribute="leading" secondItem="PbX-fy-PO9" secondAttribute="leading" id="N2v-gj-qrk"/>
+                <constraint firstItem="6zP-CY-Gyq" firstAttribute="top" secondItem="3fC-Ln-dCl" secondAttribute="top" constant="28" id="O6d-6J-bAe"/>
+                <constraint firstItem="PbX-fy-PO9" firstAttribute="top" secondItem="3fC-Ln-dCl" secondAttribute="top" constant="28" id="P8A-eV-fiz"/>
+                <constraint firstItem="PbX-fy-PO9" firstAttribute="leading" secondItem="3fC-Ln-dCl" secondAttribute="leading" constant="28" id="SFi-e8-dia"/>
+                <constraint firstItem="CQM-8H-wdz" firstAttribute="top" secondItem="xcK-mC-o9D" secondAttribute="bottom" constant="2" id="SYz-9N-UBu"/>
+                <constraint firstItem="pbv-rJ-beW" firstAttribute="leading" secondItem="3fC-Ln-dCl" secondAttribute="leading" constant="28" id="TQC-7O-nsL"/>
+                <constraint firstItem="xcK-mC-o9D" firstAttribute="top" secondItem="7cB-ch-z6j" secondAttribute="bottom" constant="20" id="Uy9-xd-yAx"/>
+                <constraint firstAttribute="bottom" secondItem="pbv-rJ-beW" secondAttribute="bottom" id="eTv-OX-pPJ"/>
+                <constraint firstAttribute="trailing" secondItem="pbv-rJ-beW" secondAttribute="trailing" constant="28" id="pXT-Rv-Nwh"/>
+                <constraint firstAttribute="trailing" secondItem="6zP-CY-Gyq" secondAttribute="trailing" constant="28" id="r7E-bj-UTc"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Qiw-RB-mLf"/>
+            <connections>
+                <outlet property="noOfItems" destination="6zP-CY-Gyq" id="g8D-Ba-j6D"/>
+            </connections>
+            <point key="canvasLocation" x="78" y="-2"/>
+        </collectionReusableView>
+    </objects>
+</document>

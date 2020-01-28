@@ -125,6 +125,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                         addServiceToCartAliasinUserDefaults(withAlias: service.alias)
                     }
                 }
+                setupAliasesFromCart(withModel: cartModel)
                 if let cartId = cartModel?.cartId {
                     UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
                     // from server we are fetching the cart id.

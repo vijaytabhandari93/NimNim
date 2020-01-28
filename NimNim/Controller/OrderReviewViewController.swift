@@ -149,6 +149,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                     self?.addressMethod.isHidden = false
                     self?.amountLabel.text = "To be calculated"
                 }
+                setupAliasesFromCart(withModel: cartModel)
                 if let cartId = cartModel?.cartId {
                     UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
                     // from server we are fetching the cart id.
@@ -168,10 +169,12 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     // remove Item from cart
     func removeItemFromCart(withModel model : ServiceModel) {
         
-        guard let itemId = model.id else {return}
+        guard let itemId = model.id, let cartId = UserDefaults.standard.object(forKey: UserDefaultKeys.cartId) else {return}
         
         let params:[String:Any] = [
-            AddToCart.itemId:itemId]
+            AddToCart.itemId:itemId,
+            AddToCart.cart_Id:cartId
+        ]
         activityIndicator.startAnimating()
         NetworkingManager.shared.delete(withEndpoint: Endpoints.removeItemFromCart, withParams: params, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] { //Alamofire is throwing the response as dictionary .....we are convertig it to model
@@ -250,7 +253,14 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
             }else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ApplyWalletPointsCollectionViewCell", for: indexPath) as! ApplyWalletPointsCollectionViewCell
                 cell.configureCell(withCartModel: cartModel)
-                cell.points.text = "Points \(walletBalance)"
+                cell.pointsinWallet = walletBalance
+                if walletBalance == 0 {
+                cell.points.text = "No Points"
+                }
+                else
+                {
+                    cell.points.text = "Points \(walletBalance)"
+                }
                 return cell
             }
         }

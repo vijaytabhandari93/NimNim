@@ -28,6 +28,23 @@ func addServiceToCartAliasinUserDefaults(withAlias alias : String?) // written i
     }
 }
 
+func setupAliasArray(withValue aliases:[String]?) {
+    if let aliases = aliases {
+        UserDefaults.standard.set(aliases, forKey: UserDefaultKeys.cartAlias)
+    }
+}
+
+func setupAliasesFromCart(withModel model:CartModel?)  {
+    if let cartModel = model {
+        if let services = cartModel.services {
+            let aliases = services.map { (serviceModel) -> String in
+                return serviceModel.alias ?? ""
+            }
+            setupAliasArray(withValue: aliases)
+        }
+    }
+}
+
 func removeServiceFromCartAliasInUserDefault(withAlias alias:String?) {
     if let alias = alias {
         if var aliasArray = UserDefaults.standard.object(forKey: UserDefaultKeys.cartAlias) as? [String] {  // alias array is an array of string ....ie ["wash and fold","waash and air Dry" etc]

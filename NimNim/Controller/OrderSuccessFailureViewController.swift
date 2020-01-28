@@ -20,9 +20,17 @@ class OrderSuccessFailureViewController: UIViewController {
     @IBOutlet weak var homeButton : UIButton!
     
     @IBAction func homeTapped(_ sender: Any) {
-         let homeStoryboard = UIStoryboard(name: "Home", bundle: nil)
-        let homeVC = homeStoryboard.instantiateViewController(withIdentifier: "HomeViewController")
-       NavigationManager.shared.push(viewController: homeVC)
+        
+        let homeVC =  self.navigationController?.viewControllers.first(where: { (viewController) -> Bool in
+            if viewController is HomeBaseViewController  {
+                return true
+            }else {
+                return false
+            }
+        })
+        if let homeVC = homeVC {
+            self.navigationController?.popToViewController(homeVC, animated: false)
+        }
     }
     
     @IBAction func trackOrderTapped(_ sender: Any) {

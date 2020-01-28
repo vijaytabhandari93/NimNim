@@ -13,6 +13,7 @@ import SwiftyJSON
 class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate,HouseHoldItemCollectionViewCellDelegate {
     
     var activeTextField : UITextField?
+    var defaultStateJustNimNimIt : Bool = false
     //NoOfClothes Delegate Methods
     
     func addTapGestureToView() {
@@ -74,31 +75,32 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         addObservers()
     }
     func addObservers() {
-           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
-           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
-           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
-       }
-       
-       @objc func keyboardWillShow(notification: NSNotification) {
-           if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-               if !isHeightAdded {
-                   addedHeight = keyboardSize.height
-                   houseHoldCollectionView.contentInset = UIEdgeInsets(top: houseHoldCollectionView.contentInset.top, left: houseHoldCollectionView.contentInset.left, bottom: houseHoldCollectionView.contentInset.bottom + addedHeight, right: houseHoldCollectionView.contentInset.right)
-                   isHeightAdded = true
-               }
-           }
-       }
-       
-       @objc func keyboardWillHide(notification: NSNotification) {
-           if isHeightAdded {
-               houseHoldCollectionView.contentInset = UIEdgeInsets(top: houseHoldCollectionView.contentInset.top, left: houseHoldCollectionView.contentInset.left, bottom: houseHoldCollectionView.contentInset.bottom - addedHeight, right: houseHoldCollectionView.contentInset.right)
-               isHeightAdded = false
-           }
-       }
-
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if !isHeightAdded {
+                addedHeight = keyboardSize.height
+                houseHoldCollectionView.contentInset = UIEdgeInsets(top: houseHoldCollectionView.contentInset.top, left: houseHoldCollectionView.contentInset.left, bottom: houseHoldCollectionView.contentInset.bottom + addedHeight, right: houseHoldCollectionView.contentInset.right)
+                isHeightAdded = true
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if isHeightAdded {
+            houseHoldCollectionView.contentInset = UIEdgeInsets(top: houseHoldCollectionView.contentInset.top, left: houseHoldCollectionView.contentInset.left, bottom: houseHoldCollectionView.contentInset.bottom - addedHeight, right: houseHoldCollectionView.contentInset.right)
+            isHeightAdded = false
+        }
+    }
+    
     func setupPrice() {
         if let price = serviceModel?.calculatePriceForService() {
             priceLabel.text = price
+            serviceModel?.servicePrice = price
         }
     }
     
@@ -148,7 +150,8 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         NavigationManager.shared.push(viewController: orderReviewVC)
     }
     @IBAction func justNimNimIt(_ sender: Any) {
-        
+        houseHoldCollectionView.reloadData()
+        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
         
     }
     
@@ -345,169 +348,182 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
-        }else if section == 1 {
-            return serviceModel?.items?.count ?? 0
-        }else if section == 2 {
-            return 1
-        }else if section == 3 {
-            return 1
-        }else if section == 4 {
-            return 1
-        }
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let section = indexPath.section
-        
-        if section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HouseHoldDescriptionCollectionViewCell", for: indexPath) as! HouseHoldDescriptionCollectionViewCell
-            return cell
-        }
-        else if section == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HouseHoldItemCollectionViewCell", for: indexPath) as! HouseHoldItemCollectionViewCell
-            if let items = serviceModel?.items
-            {
-                cell.delegate = self
-                cell.itemLabel.text = items[indexPath.row].name
-                if let laundryRate = items[indexPath.row].laundryPrice , let dryCleaningRate = items[indexPath.row].dryCleaningPrice {
-                    cell.laundryRate.text = "$\(String(describing: laundryRate))"
-                    cell.dryCleaningRate.text = "$\(String(describing: dryCleaningRate))"
+            if defaultStateJustNimNimIt {
+                return 0
                 }
-                let itemModel = items[indexPath.item]
-                cell.configureUI(withModel: itemModel, withIndexPath: indexPath)
+            else
+            {
+                return 1
             }
-            return cell
+        }else if section == 1 {
+            if defaultStateJustNimNimIt {
+                return 0
+                }
+            else
+            {
+                return serviceModel?.items?.count ?? 0
+            }
         }
-        if section == 2 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
-            cell.delegate = self
-            return cell
+        else if section == 2 {
+                return 1
+            }else if section == 3 {
+                return 1
+            }else if section == 4 {
+                return 1
+            }
+            return 0
         }
-        else if section == 3 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
-            cell.delegate = self
-            cell.labelAgainsCheckbox.text = "I need Rush Delivery"
-            cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
-            if let arrayRushOptions = serviceModel?.rushDeliveryOptions, arrayRushOptions.count == 1 {
-                let firstPreference = arrayRushOptions[0]
-                if let hours  = firstPreference.turnAroundTime
-                    ,let extraPrice = firstPreference.price
+        
+        func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            let section = indexPath.section
+            
+            if section == 0 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HouseHoldDescriptionCollectionViewCell", for: indexPath) as! HouseHoldDescriptionCollectionViewCell
+                return cell
+            }
+            else if section == 1 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HouseHoldItemCollectionViewCell", for: indexPath) as! HouseHoldItemCollectionViewCell
+                if let items = serviceModel?.items
                 {
-                    cell.descriptionofLabel.text = "Under rush delivery your clothes will be delivered with in \(hours) Hours and $\(extraPrice) will be charged extra for the same"
+                    cell.delegate = self
+                    cell.itemLabel.text = items[indexPath.row].name
+                    if let laundryRate = items[indexPath.row].laundryPrice , let dryCleaningRate = items[indexPath.row].dryCleaningPrice {
+                        cell.laundryRate.text = "$\(String(describing: laundryRate))"
+                        cell.dryCleaningRate.text = "$\(String(describing: dryCleaningRate))"
+                    }
+                    let itemModel = items[indexPath.item]
+                    cell.configureUI(withModel: itemModel, withIndexPath: indexPath)
                 }
                 return cell
             }
-        }
-        else if section == 4 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddMoreServicesCollectionViewCell", for: indexPath) as! AddMoreServicesCollectionViewCell
-            return cell
-        }
-        return UICollectionViewCell()
-    }
-    
-    
-    func removeTapGestures(forTextView textView:UITextView) {
-        // This function first checks if the textView that is passed is the currently active TextView or Not...if the user will tap somewhere outside then the textView passed will be equal to the activeTextView...but if the user will tap on another textView and this function gets called...then we need not remove the gesture recognizer...
-        if let activeTextView = activeTextView, activeTextView == textView {
-            for recognizer in view.gestureRecognizers ?? [] {
-                view.removeGestureRecognizer(recognizer)
+            if section == 2 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
+                cell.delegate = self
+                return cell
             }
-        }
-    }
-    @objc func backViewTapped() {
-        view.endEditing(true) //to shutdown the keyboard. Wheneever you tap the text field on a specific screeen , then that screen becomes the first responder of the keyoard.
-    }
-    // Function of ImageView
-    func upload(image:UIImage?) {
-        guard let image = image else {
-            return
-        }
-        let uploadModel = UploadModel()
-        uploadModel.data = image.jpegData(compressionQuality: 1.0)
-        uploadModel.name = "image"
-        uploadModel.fileName = "jpg"
-        uploadModel.mimeType = .imageJpeg
-        activityIndicator.startAnimating()
-        NetworkingManager.shared.upload(withEndpoint: Endpoints.uploadImage, withModel: uploadModel, withSuccess: {[weak self] (response) in
-            self?.view.showToast(message: "Image uploaded successfully")
-            self?.activityIndicator.stopAnimating()
-            if let responseDict = response as? [String:Any] {
-                if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
-                    self?.serviceModel?.uploadedImages.append(imagePath)
+            else if section == 3 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
+                cell.delegate = self
+                cell.labelAgainsCheckbox.text = "I need Rush Delivery"
+                cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
+                if let arrayRushOptions = serviceModel?.rushDeliveryOptions, arrayRushOptions.count == 1 {
+                    let firstPreference = arrayRushOptions[0]
+                    if let hours  = firstPreference.turnAroundTime
+                        ,let extraPrice = firstPreference.price
+                    {
+                        cell.descriptionofLabel.text = "Under rush delivery your clothes will be delivered with in \(hours) Hours and $\(extraPrice) will be charged extra for the same"
+                    }
+                    return cell
                 }
             }
-            }, withProgress: { (progress) in
-                
-                print(progress?.fractionCompleted)
-        }) {[weak self] (error) in
-            self?.activityIndicator.stopAnimating()
-            print(error)
+            else if section == 4 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddMoreServicesCollectionViewCell", for: indexPath) as! AddMoreServicesCollectionViewCell
+                return cell
+            }
+            return UICollectionViewCell()
         }
-    }
-    func sendImage() {
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.allowsEditing = true
-        pickerController.mediaTypes = ["public.image"]
-        pickerController.sourceType = .photoLibrary
-        self.present(pickerController, animated: true, completion: nil)
-    }
-    
-    
-    ///MARK: UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true, completion: nil)
         
-        guard let image = info[.editedImage] as? UIImage else {
-            return
+        
+        func removeTapGestures(forTextView textView:UITextView) {
+            // This function first checks if the textView that is passed is the currently active TextView or Not...if the user will tap somewhere outside then the textView passed will be equal to the activeTextView...but if the user will tap on another textView and this function gets called...then we need not remove the gesture recognizer...
+            if let activeTextView = activeTextView, activeTextView == textView {
+                for recognizer in view.gestureRecognizers ?? [] {
+                    view.removeGestureRecognizer(recognizer)
+                }
+            }
         }
-        upload(image: image)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    
-    //MARK: NeedRushDeliveryCellDelegate
-    func rushDeliveryTapped(withIndexPath indexPath: IndexPath?) {
-        if let rushDeliveryState = serviceModel?.isRushDeliverySelected {
-            serviceModel?.isRushDeliverySelected = !rushDeliveryState
-            houseHoldCollectionView.reloadData()
+        @objc func backViewTapped() {
+            view.endEditing(true) //to shutdown the keyboard. Wheneever you tap the text field on a specific screeen , then that screen becomes the first responder of the keyoard.
+        }
+        // Function of ImageView
+        func upload(image:UIImage?) {
+            guard let image = image else {
+                return
+            }
+            let uploadModel = UploadModel()
+            uploadModel.data = image.jpegData(compressionQuality: 1.0)
+            uploadModel.name = "image"
+            uploadModel.fileName = "jpg"
+            uploadModel.mimeType = .imageJpeg
+            activityIndicator.startAnimating()
+            NetworkingManager.shared.upload(withEndpoint: Endpoints.uploadImage, withModel: uploadModel, withSuccess: {[weak self] (response) in
+                self?.view.showToast(message: "Image uploaded successfully")
+                self?.activityIndicator.stopAnimating()
+                if let responseDict = response as? [String:Any] {
+                    if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
+                        self?.serviceModel?.uploadedImages.append(imagePath)
+                    }
+                }
+                }, withProgress: { (progress) in
+                    
+                    print(progress?.fractionCompleted)
+            }) {[weak self] (error) in
+                self?.activityIndicator.stopAnimating()
+                print(error)
+            }
+        }
+        func sendImage() {
+            let pickerController = UIImagePickerController()
+            pickerController.delegate = self
+            pickerController.allowsEditing = true
+            pickerController.mediaTypes = ["public.image"]
+            pickerController.sourceType = .photoLibrary
+            self.present(pickerController, animated: true, completion: nil)
+        }
+        
+        
+        ///MARK: UIImagePickerControllerDelegate
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            picker.dismiss(animated: true, completion: nil)
+            
+            guard let image = info[.editedImage] as? UIImage else {
+                return
+            }
+            upload(image: image)
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            picker.dismiss(animated: true, completion: nil)
+        }
+        
+        
+        //MARK: NeedRushDeliveryCellDelegate
+        func rushDeliveryTapped(withIndexPath indexPath: IndexPath?) {
+            if let rushDeliveryState = serviceModel?.isRushDeliverySelected {
+                serviceModel?.isRushDeliverySelected = !rushDeliveryState
+                houseHoldCollectionView.reloadData()
+                setupPrice()
+            }
+        }
+        
+        //MARK: HouseHoldItemsCollectionViewCellDelegate Methods
+        func ifLaunderedTapped(withIndexPath indexPath : IndexPath?) {
             setupPrice()
         }
-    }
-    
-    //MARK: HouseHoldItemsCollectionViewCellDelegate Methods
-    func ifLaunderedTapped(withIndexPath indexPath : IndexPath?) {
-        setupPrice()
-    }
-    
-    func ifDryCleanedTapped(withIndexPath indexPath : IndexPath?) {
-        setupPrice()
-    }
-    
-    func textFieldStartedEditingInCell(withTextField textField: UITextField) {
-        activeTextField = textField
-        addTapGestureToView() //once the textbox editing begins the tap gesture starts functioning
-        setupPrice()
-    }
-    
-    func textFieldEndedEditingInCell(withTextField textField: UITextField) {
-        removeTapGestures(forTextField: textField)
-        setupPrice()
-    }
-    
-    func textViewStartedEditingInCell(withTextField textView: UITextView) {
-        activeTextView = textView
-        addTapGestureToView() //once the textbox editing begins the tap gesture starts functioning
         
-    }
-    
-    func textViewEndedEditingInCell(withTextField textView: UITextView) {
-        removeTapGestures(forTextView: textView)
-        setupPrice()
-    }
+        func ifDryCleanedTapped(withIndexPath indexPath : IndexPath?) {
+            setupPrice()
+        }
+        
+        func textFieldStartedEditingInCell(withTextField textField: UITextField) {
+            activeTextField = textField
+            addTapGestureToView() //once the textbox editing begins the tap gesture starts functioning
+            setupPrice()
+        }
+        
+        func textFieldEndedEditingInCell(withTextField textField: UITextField) {
+            removeTapGestures(forTextField: textField)
+            setupPrice()
+        }
+        
+        func textViewStartedEditingInCell(withTextField textView: UITextView) {
+            activeTextView = textView
+            addTapGestureToView() //once the textbox editing begins the tap gesture starts functioning
+            
+        }
+        
+        func textViewEndedEditingInCell(withTextField textView: UITextView) {
+            removeTapGestures(forTextView: textView)
+            setupPrice()
+        }
 }

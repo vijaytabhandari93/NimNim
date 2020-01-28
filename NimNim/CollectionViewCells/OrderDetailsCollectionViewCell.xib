@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
         <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
         </array>
@@ -19,10 +22,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OrderDetailsCollectionViewCell" id="wSo-h0-owV" customClass="OrderDetailsCollectionViewCell" customModule="NimNim" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="135"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="128"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laundered Shirts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kaT-WP-cCO">
@@ -64,45 +67,28 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gae-9q-AQn">
-                        <rect key="frame" x="28" y="134" width="319" height="1"/>
+                        <rect key="frame" x="28" y="127" width="319" height="1"/>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="RGC-dh-30f"/>
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="3TZ-GU-eJu">
-                        <rect key="frame" x="35" y="81" width="305.5" height="42.5"/>
+                        <rect key="frame" x="57" y="73" width="183" height="42.5"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="13" translatesAutoresizingMaskIntoConstraints="NO" id="mkM-HF-cY5">
-                                <rect key="frame" x="0.0" y="0.0" width="305.5" height="17.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nwZ-b0-7rq">
+                                <rect key="frame" x="0.0" y="0.0" width="183" height="42.5"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Items Pick up time :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7h-1b-hLJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="143.5" height="17.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="7AM - 9AM, 21 Jan 2020" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uPC-Rw-Ngx">
-                                        <rect key="frame" x="156.5" y="0.0" width="149" height="17.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nwZ-b0-7rq">
-                                <rect key="frame" x="0.0" y="26.5" width="305.5" height="16"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items Drop Off time :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sd-nO-3eW">
-                                        <rect key="frame" x="0.0" y="0.0" width="140.5" height="16"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items Drop Off time and date :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sd-nO-3eW">
+                                        <rect key="frame" x="0.0" y="0.0" width="183" height="15"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.44" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9AM - 11AM, 21 Jan 2020" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFw-9n-slW">
-                                        <rect key="frame" x="150.5" y="0.0" width="155" height="16"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="0.0" y="25" width="183" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.87" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -115,7 +101,6 @@
             <constraints>
                 <constraint firstItem="QOz-Ok-ttb" firstAttribute="top" secondItem="kaT-WP-cCO" secondAttribute="bottom" constant="2" id="4t8-xd-wFk"/>
                 <constraint firstItem="aca-Ak-chc" firstAttribute="centerY" secondItem="QOz-Ok-ttb" secondAttribute="centerY" id="B8X-u5-0KT"/>
-                <constraint firstItem="3TZ-GU-eJu" firstAttribute="centerX" secondItem="wSo-h0-owV" secondAttribute="centerX" id="E8h-B6-RUp"/>
                 <constraint firstItem="kaT-WP-cCO" firstAttribute="leading" secondItem="Itx-8C-e3B" secondAttribute="trailing" constant="20" id="Jfg-ty-shs"/>
                 <constraint firstAttribute="trailing" secondItem="xyA-m7-5UQ" secondAttribute="trailing" constant="28" id="PjF-gd-94r"/>
                 <constraint firstAttribute="bottom" secondItem="gae-9q-AQn" secondAttribute="bottom" id="RQ8-PK-Xwl"/>
@@ -123,22 +108,22 @@
                 <constraint firstItem="QOz-Ok-ttb" firstAttribute="leading" secondItem="kaT-WP-cCO" secondAttribute="leading" id="XD8-vn-RUh"/>
                 <constraint firstItem="aca-Ak-chc" firstAttribute="trailing" secondItem="xyA-m7-5UQ" secondAttribute="trailing" id="ZAr-MZ-7eR"/>
                 <constraint firstItem="gae-9q-AQn" firstAttribute="leading" secondItem="wSo-h0-owV" secondAttribute="leading" constant="28" id="aue-Me-dRo"/>
+                <constraint firstItem="3TZ-GU-eJu" firstAttribute="leading" secondItem="kaT-WP-cCO" secondAttribute="leading" id="c4s-tj-VYg"/>
                 <constraint firstItem="xyA-m7-5UQ" firstAttribute="centerY" secondItem="kaT-WP-cCO" secondAttribute="centerY" id="k6H-xT-Wz1"/>
                 <constraint firstItem="kaT-WP-cCO" firstAttribute="leading" secondItem="wSo-h0-owV" secondAttribute="leading" constant="57" id="m2m-Nc-mL6"/>
                 <constraint firstAttribute="trailing" secondItem="gae-9q-AQn" secondAttribute="trailing" constant="28" id="myV-Ba-RfO"/>
                 <constraint firstItem="Itx-8C-e3B" firstAttribute="centerY" secondItem="kaT-WP-cCO" secondAttribute="centerY" id="sD3-XM-0nl"/>
-                <constraint firstItem="3TZ-GU-eJu" firstAttribute="firstBaseline" secondItem="QOz-Ok-ttb" secondAttribute="baseline" constant="40" id="wLr-3p-7LZ"/>
+                <constraint firstItem="3TZ-GU-eJu" firstAttribute="firstBaseline" secondItem="QOz-Ok-ttb" secondAttribute="baseline" constant="30" id="wLr-3p-7LZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="m0o-Ld-ZPR"/>
-            <size key="customSize" width="238" height="29"/>
+            <size key="customSize" width="238" height="22"/>
             <connections>
                 <outlet property="amountPayable" destination="aca-Ak-chc" id="OOH-S4-c0w"/>
                 <outlet property="dropOffGTimeSlotDate" destination="zFw-9n-slW" id="LE1-lr-EMb"/>
                 <outlet property="noOfProducts" destination="QOz-Ok-ttb" id="twm-9E-t3V"/>
-                <outlet property="pickUpTimeSlotDate" destination="uPC-Rw-Ngx" id="2o4-pl-lMh"/>
                 <outlet property="serviceName" destination="kaT-WP-cCO" id="aYE-Gc-Oaz"/>
             </connections>
-            <point key="canvasLocation" x="-834.05797101449286" y="-488.50446428571428"/>
+            <point key="canvasLocation" x="-834.05797101449286" y="-490.84821428571428"/>
         </collectionViewCell>
     </objects>
 </document>

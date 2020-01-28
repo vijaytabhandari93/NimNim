@@ -23,7 +23,8 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         removeTapGestures(forTextField: textField)
         if let text = textField.text, let intValue = Int(text) {
             serviceModel?.numberOfClothes = intValue
-            washAndAirDryCollectionView.reloadData()
+            UserDefaults.standard.set(intValue , forKey : "noOfClothes")
+          washAndAirDryCollectionView.reloadData()
         }
     }
     func removeTapGestures(forTextField textField:UITextField) {
@@ -88,7 +89,8 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             descriptionLabel.text = "\(description)"
         }
         if let priceOfService = serviceModel?.calculatePriceForService() {
-            priceLabel.text = "\(priceOfService)"
+            priceLabel.text = priceOfService
+            serviceModel?.servicePrice = priceOfService
         }
         setupAddToCartButton()
         setupCartCountLabel()
@@ -407,8 +409,14 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             return 4 }//number of clothes, preferences, special notes, rush delivery, add more services
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if section == 0 {
+       if section == 0 {
+        if defaultStateJustNimNimIt {
+            return 0
+            
+        } else
+        {
             return 1
+        }
         }else if section == 1 {
             return 3
         }else if section == 2 {
@@ -428,13 +436,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
             cell.titleLabel.text = "Number of Clothes"
             cell.delegate = self
-            if defaultStateJustNimNimIt {
-                cell.contentView.isHidden = true
-               
-            } else
-            {
-                cell.contentView.isHidden = false
-            }
+            cell.noOfPieces.text = UserDefaults.standard.object(forKey: "noOfClothes") as? String
             return cell
         }
         else if section == 1 {

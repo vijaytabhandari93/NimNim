@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="OrderReviewAddressCollectionViewCell" id="gTV-IL-0wX" customClass="OrderReviewAddressCollectionViewCell" customModule="NimNim" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="350" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items Pick up/Drop Off Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnO-6d-D0B">
+                        <rect key="frame" x="28" y="10" width="189.5" height="15"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.44" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 Germania St, Boston, MA 02130, USA 8V7W+VR Boston, Massachusetts, USA +1 617-368-5080" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9S-KK-zcb">
+                        <rect key="frame" x="28" y="28" width="294" height="51.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.87" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7h2-d0-xew">
+                        <rect key="frame" x="28" y="99" width="294" height="1"/>
+                        <color key="backgroundColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="SBr-wD-hrt"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="BnO-6d-D0B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Agu-JM-EwX"/>
+                <constraint firstItem="7h2-d0-xew" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="Bgr-Mw-Uut"/>
+                <constraint firstAttribute="bottom" secondItem="7h2-d0-xew" secondAttribute="bottom" id="KdW-Vq-WKv"/>
+                <constraint firstItem="w9S-KK-zcb" firstAttribute="top" secondItem="BnO-6d-D0B" secondAttribute="bottom" constant="3" id="PKo-6r-r6h"/>
+                <constraint firstAttribute="trailing" secondItem="w9S-KK-zcb" secondAttribute="trailing" constant="28" id="QbN-7i-3u3"/>
+                <constraint firstItem="BnO-6d-D0B" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="c45-yF-V9V"/>
+                <constraint firstAttribute="trailing" secondItem="7h2-d0-xew" secondAttribute="trailing" constant="28" id="sAV-kt-g9v"/>
+                <constraint firstItem="w9S-KK-zcb" firstAttribute="leading" secondItem="BnO-6d-D0B" secondAttribute="leading" id="yB1-mi-fiS"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="350" height="100"/>
+            <point key="canvasLocation" x="114.49275362318842" y="161.38392857142856"/>
+        </collectionViewCell>
+    </objects>
+</document>

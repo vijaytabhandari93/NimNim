@@ -43,9 +43,12 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         }
         if let priceOfService = serviceModel?.calculatePriceForService() {
             priceLabel.text = priceOfService
+            serviceModel?.servicePrice = priceOfService
         }
         setupAddToCartButton()
         setupCartCountLabel()
+        
+        
        
     }
     
@@ -123,8 +126,8 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         else if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
             updateServiceInCart(withCartId: cartId)
         }else
-            {
-                addServiceToCart()
+        {
+            addServiceToCart()
         }
     }
     
@@ -132,6 +135,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         if let serviceModel = serviceModel, let cartId = cartId{
             var modelToDictionary = serviceModel.toJSON()
             modelToDictionary["cart_id"] = cartId
+            print(JSON(modelToDictionary))
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)
@@ -167,6 +171,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             activityIndicator.startAnimating()
             var params : [String:Any] = [:]/// - dictionary
             params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
+            print(JSON(params))
             NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)//alamofire is conveerting dictionary to JSON
                self?.IsAddToCartTapped = true
@@ -456,6 +461,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         removeTapGestures(forTextField: textField)
         if let text = textField.text, let intValue = Int(text) {
             serviceModel?.numberOfClothes = intValue
+       
             prefernces.reloadData()
         }
     }

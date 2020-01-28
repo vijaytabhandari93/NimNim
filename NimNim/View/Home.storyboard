@@ -17,9 +17,6 @@
         <array key="Montserrat-SemiBold.ttf">
             <string>Montserrat-SemiBold</string>
         </array>
-        <array key="ProximaNova-Regular.otf">
-            <string>ProximaNova-Regular</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Home Base View Controller-->
@@ -397,20 +394,23 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="haR-f4-dDe">
                                 <rect key="frame" x="0.0" y="803" width="414" height="59"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qba-22-YC0">
-                                        <rect key="frame" x="161" y="14.5" width="92" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Order Review">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qba-22-YC0">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="59"/>
+                                        <state key="normal" title="Add to cart">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="selectAddressTapped:" destination="P0s-TZ-6Co" eventType="touchUpInside" id="M2j-ca-Um7"/>
+                                            <action selector="addToCartTapped:" destination="P0s-TZ-6Co" eventType="touchUpInside" id="7dQ-ZY-H7q"/>
                                         </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.27843137254901962" green="0.74901960784313726" blue="0.65490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="qba-22-YC0" firstAttribute="top" secondItem="haR-f4-dDe" secondAttribute="top" id="4za-zT-RWa"/>
+                                    <constraint firstAttribute="trailing" secondItem="qba-22-YC0" secondAttribute="trailing" id="HfQ-mb-F5g"/>
                                     <constraint firstAttribute="height" constant="59" id="JHJ-0u-Peo"/>
+                                    <constraint firstItem="qba-22-YC0" firstAttribute="leading" secondItem="haR-f4-dDe" secondAttribute="leading" id="Ymt-dL-wIT"/>
+                                    <constraint firstAttribute="bottom" secondItem="qba-22-YC0" secondAttribute="bottom" id="dpP-PL-Rgw"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mEY-wJ-M3a">
@@ -457,7 +457,7 @@
                                     <constraint firstAttribute="height" constant="86" id="yrL-ZZ-TOH"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sSX-B0-HqG">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sSX-B0-HqG">
                                 <rect key="frame" x="0.0" y="130" width="414" height="673"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="zQt-aY-STt">
@@ -514,6 +514,7 @@
                         <viewLayoutGuide key="safeArea" id="SXw-KS-BYs"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="kwH-wq-ub1" id="Usy-tV-Ewi"/>
                         <outlet property="collectionView" destination="sSX-B0-HqG" id="lhd-fj-qbm"/>
                     </connections>
                 </viewController>
@@ -562,15 +563,6 @@
                                                         <rect key="frame" x="30" y="24" width="272" height="25"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                                         <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please select a service to proceed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooZ-wg-VsX">
-                                                        <rect key="frame" x="30" y="51" width="240.5" height="24"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="24" id="q8a-bU-aaG"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="ProximaNova-Regular" family="Proxima Nova" pointSize="16"/>
-                                                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zyj-yl-Tm5">
@@ -623,12 +615,10 @@
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.97254901960784312" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="ooZ-wg-VsX" firstAttribute="leading" secondItem="knh-9e-VFz" secondAttribute="leading" constant="30" id="2Hx-CM-8Ck"/>
                                                     <constraint firstAttribute="height" constant="74" id="Iio-6u-I9q"/>
                                                     <constraint firstItem="zyj-yl-Tm5" firstAttribute="top" secondItem="knh-9e-VFz" secondAttribute="top" constant="26" id="PdV-cp-sQu"/>
                                                     <constraint firstAttribute="trailing" secondItem="zyj-yl-Tm5" secondAttribute="trailing" constant="20" id="Wml-la-dpG"/>
                                                     <constraint firstItem="I6s-ya-HPW" firstAttribute="leading" secondItem="knh-9e-VFz" secondAttribute="leading" constant="30" id="b05-37-DDy"/>
-                                                    <constraint firstItem="ooZ-wg-VsX" firstAttribute="top" secondItem="I6s-ya-HPW" secondAttribute="bottom" constant="2" id="dfX-IY-T6w"/>
                                                     <constraint firstItem="I6s-ya-HPW" firstAttribute="top" secondItem="knh-9e-VFz" secondAttribute="top" constant="24" id="fge-ky-nrM"/>
                                                 </constraints>
                                             </view>

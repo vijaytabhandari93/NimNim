@@ -26,19 +26,19 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Order Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LJ-jc-RAx">
-                        <rect key="frame" x="57" y="21" width="136.5" height="20"/>
+                        <rect key="frame" x="30" y="21" width="136.5" height="20"/>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1234" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qvz-6U-y02">
-                        <rect key="frame" x="57" y="43" width="26" height="15"/>
+                        <rect key="frame" x="30" y="43" width="26" height="15"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.44" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OGf-z2-DNr">
-                        <rect key="frame" x="28" y="37" width="9" height="8"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OGf-z2-DNr">
+                        <rect key="frame" x="12" y="27" width="8" height="8"/>
                         <color key="backgroundColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="8" id="1nf-cr-q07"/>
@@ -81,7 +81,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# Order Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4dw-j2-0Qn">
-                        <rect key="frame" x="57" y="68" width="107.5" height="20"/>
+                        <rect key="frame" x="30" y="68" width="107.5" height="20"/>
                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -99,7 +99,7 @@
                 <constraint firstItem="Sj3-LV-WNb" firstAttribute="leading" secondItem="4dw-j2-0Qn" secondAttribute="leading" id="3Vb-0O-zXb"/>
                 <constraint firstAttribute="trailing" secondItem="dd8-xX-QdR" secondAttribute="trailing" constant="28" id="6eR-oQ-Xrb"/>
                 <constraint firstItem="Sj3-LV-WNb" firstAttribute="top" secondItem="4dw-j2-0Qn" secondAttribute="bottom" constant="2" id="9FT-oe-2WV"/>
-                <constraint firstItem="9LJ-jc-RAx" firstAttribute="leading" secondItem="OGf-z2-DNr" secondAttribute="trailing" constant="20" id="9Nm-l2-dt3"/>
+                <constraint firstItem="9LJ-jc-RAx" firstAttribute="leading" secondItem="OGf-z2-DNr" secondAttribute="trailing" constant="10" id="9Nm-l2-dt3"/>
                 <constraint firstAttribute="bottom" secondItem="UlJ-o1-kVw" secondAttribute="bottom" id="AO5-Ez-c6j"/>
                 <constraint firstItem="qvz-6U-y02" firstAttribute="top" secondItem="9LJ-jc-RAx" secondAttribute="bottom" constant="2" id="An1-zw-rwN"/>
                 <constraint firstItem="pYt-3I-2Da" firstAttribute="top" secondItem="dd8-xX-QdR" secondAttribute="bottom" constant="2" id="GTv-pt-cQG"/>
@@ -108,7 +108,7 @@
                 <constraint firstItem="pYt-3I-2Da" firstAttribute="trailing" secondItem="dd8-xX-QdR" secondAttribute="trailing" id="OAv-CK-Zra"/>
                 <constraint firstAttribute="trailing" secondItem="UlJ-o1-kVw" secondAttribute="trailing" constant="28" id="WDs-io-YBr"/>
                 <constraint firstItem="UlJ-o1-kVw" firstAttribute="leading" secondItem="Rj3-c7-A7l" secondAttribute="leading" constant="28" id="Yhz-H0-fcm"/>
-                <constraint firstItem="9LJ-jc-RAx" firstAttribute="leading" secondItem="Rj3-c7-A7l" secondAttribute="leading" constant="57" id="ZGc-fY-Jun"/>
+                <constraint firstItem="9LJ-jc-RAx" firstAttribute="leading" secondItem="Rj3-c7-A7l" secondAttribute="leading" constant="30" id="ZGc-fY-Jun"/>
                 <constraint firstItem="VFg-Ks-Ymd" firstAttribute="top" secondItem="qvz-6U-y02" secondAttribute="top" constant="20" id="auL-1z-2hy"/>
                 <constraint firstItem="OGf-z2-DNr" firstAttribute="centerY" secondItem="9LJ-jc-RAx" secondAttribute="centerY" id="nVc-FN-Xbw"/>
                 <constraint firstItem="dd8-xX-QdR" firstAttribute="centerY" secondItem="9LJ-jc-RAx" secondAttribute="centerY" id="nYD-mE-LSj"/>

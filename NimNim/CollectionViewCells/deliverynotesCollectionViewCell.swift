@@ -24,14 +24,15 @@ class deliverynotesCollectionViewCell: UICollectionViewCell,UITextViewDelegate {
     var notesWritten : String?
     weak var delegate : deliverynotesCollectionViewCellDelegate?
     
-    @IBAction func editPreferenceTapped(_ sender: Any) {
-        let servicesStoryboard = UIStoryboard(name: "Preferences", bundle: nil)
-               let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
-    allServices?.reselection = true
-    NavigationManager.shared.push(viewController: allServices)
-   
-       
-    }
+//    @IBAction func editPreferenceTapped(_ sender: Any) {
+//   if let vc = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+//    {
+//        present(vc, animated: true, completion: nil)
+//                vc?.reselection = true
+//    }
+//   
+//       
+//    }
     
     @IBAction func uploadImageTapped(_ sender: Any) {
             delegate?.sendImage()

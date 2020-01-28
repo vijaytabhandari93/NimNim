@@ -13,6 +13,7 @@
 		AC0E2040235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0E203E235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift */; };
 		AC0E2041235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC0E203F235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib */; };
 		AC11D1D42336314800F1DBCB /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC11D1D32336314800F1DBCB /* Colors.swift */; };
+		AC12C20923DF11B9002E2A91 /* EmptyCartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC12C20723DF11B9002E2A91 /* EmptyCartViewController.swift */; };
 		AC16B9B0238FC7A300BC7CD8 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC16B9AF238FC7A300BC7CD8 /* Card.swift */; };
 		AC1789142376A19B00B20D32 /* UserDefaultKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */; };
 		AC1789162377D03D00B20D32 /* Params.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1789152377D03D00B20D32 /* Params.swift */; };
@@ -64,6 +65,8 @@
 		AC496133235C68C100AA7196 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC496131235C68C100AA7196 /* AddressCollectionViewCell.swift */; };
 		AC496134235C68C100AA7196 /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC496132235C68C100AA7196 /* AddressCollectionViewCell.xib */; };
 		AC51847423C85B4F00A45E69 /* NimNimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC51847323C85B4E00A45E69 /* NimNimViewController.swift */; };
+		AC5199C923D997B400961C48 /* PriceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5199C823D997B400961C48 /* PriceListViewController.swift */; };
+		AC5199CB23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5199CA23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift */; };
 		AC51C56A23CF54EA0010954C /* deliverynotesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC51C56823CF54EA0010954C /* deliverynotesCollectionViewCell.swift */; };
 		AC51C56B23CF54EA0010954C /* deliverynotesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC51C56923CF54EA0010954C /* deliverynotesCollectionViewCell.xib */; };
 		AC5226F923C70F5F002F111F /* OrderNumberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5226F723C70F5F002F111F /* OrderNumberCollectionViewCell.swift */; };
@@ -96,7 +99,6 @@
 		AC5F80E723CE0E280093B864 /* PriceViewListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5F80E523CE0E280093B864 /* PriceViewListCollectionViewCell.xib */; };
 		AC5F80EA23CE14A40093B864 /* ItemPriceListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F80E823CE14A40093B864 /* ItemPriceListCollectionViewCell.swift */; };
 		AC5F80EB23CE14A40093B864 /* ItemPriceListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5F80E923CE14A40093B864 /* ItemPriceListCollectionViewCell.xib */; };
-		AC5F80ED23CE17440093B864 /* PriceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F80EC23CE17440093B864 /* PriceListViewController.swift */; };
 		AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */; };
 		AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC793F16232CDBB9009E61A1 /* Preferences.storyboard */; };
 		AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */; };
@@ -110,6 +112,12 @@
 		AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9BCAC52324DF90009818C3 /* AppDelegate.swift */; };
 		AC9BCACD2324DF90009818C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC9BCACC2324DF90009818C3 /* Assets.xcassets */; };
 		AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC9BCACE2324DF90009818C3 /* LaunchScreen.storyboard */; };
+		ACA65EF623DECE040095EC20 /* OrderReviewAddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA65EF423DECE040095EC20 /* OrderReviewAddressCollectionViewCell.swift */; };
+		ACA65EF723DECE040095EC20 /* OrderReviewAddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA65EF523DECE040095EC20 /* OrderReviewAddressCollectionViewCell.xib */; };
+		ACA65EFC23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA65EFA23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.swift */; };
+		ACA65EFD23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA65EFB23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.xib */; };
+		ACA65F0423DEFE990095EC20 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA65F0223DEFE990095EC20 /* CollectionReusableView.swift */; };
+		ACA65F0523DEFE990095EC20 /* CollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA65F0323DEFE990095EC20 /* CollectionReusableView.xib */; };
 		ACB37263234631C900046FB3 /* ServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB37261234631C900046FB3 /* ServiceCollectionViewCell.swift */; };
 		ACB37264234631C900046FB3 /* ServiceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB37262234631C900046FB3 /* ServiceCollectionViewCell.xib */; };
 		ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB37265234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift */; };
@@ -215,6 +223,7 @@
 		AC0E203E235B243E00C7F3B7 /* AddAddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC0E203F235B243E00C7F3B7 /* AddAddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddAddressCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC11D1D32336314800F1DBCB /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		AC12C20723DF11B9002E2A91 /* EmptyCartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCartViewController.swift; sourceTree = "<group>"; };
 		AC16B9AF238FC7A300BC7CD8 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultKeys.swift; sourceTree = "<group>"; };
 		AC1789152377D03D00B20D32 /* Params.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Params.swift; sourceTree = "<group>"; };
@@ -268,6 +277,8 @@
 		AC496131235C68C100AA7196 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC496132235C68C100AA7196 /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC51847323C85B4E00A45E69 /* NimNimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimNimViewController.swift; sourceTree = "<group>"; };
+		AC5199C823D997B400961C48 /* PriceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceListViewController.swift; sourceTree = "<group>"; };
+		AC5199CA23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseHoldItemsPriceViewController.swift; sourceTree = "<group>"; };
 		AC51C56823CF54EA0010954C /* deliverynotesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = deliverynotesCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC51C56923CF54EA0010954C /* deliverynotesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = deliverynotesCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5226F723C70F5F002F111F /* OrderNumberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderNumberCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -300,7 +311,6 @@
 		AC5F80E523CE0E280093B864 /* PriceViewListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceViewListCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5F80E823CE14A40093B864 /* ItemPriceListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemPriceListCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC5F80E923CE14A40093B864 /* ItemPriceListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemPriceListCollectionViewCell.xib; sourceTree = "<group>"; };
-		AC5F80EC23CE17440093B864 /* PriceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceListViewController.swift; sourceTree = "<group>"; };
 		AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		AC793F16232CDBB9009E61A1 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignup.storyboard; sourceTree = "<group>"; };
@@ -316,6 +326,12 @@
 		AC9BCACC2324DF90009818C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC9BCACF2324DF90009818C3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC9BCAD12324DF90009818C3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACA65EF423DECE040095EC20 /* OrderReviewAddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReviewAddressCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACA65EF523DECE040095EC20 /* OrderReviewAddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderReviewAddressCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACA65EFA23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderReviewCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACA65EFB23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderReviewCardCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACA65F0223DEFE990095EC20 /* CollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
+		ACA65F0323DEFE990095EC20 /* CollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionReusableView.xib; sourceTree = "<group>"; };
 		ACB37261234631C900046FB3 /* ServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACB37262234631C900046FB3 /* ServiceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACB37265234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesBaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -539,6 +555,12 @@
 				AC5F80E923CE14A40093B864 /* ItemPriceListCollectionViewCell.xib */,
 				AC51C56823CF54EA0010954C /* deliverynotesCollectionViewCell.swift */,
 				AC51C56923CF54EA0010954C /* deliverynotesCollectionViewCell.xib */,
+				ACA65EF423DECE040095EC20 /* OrderReviewAddressCollectionViewCell.swift */,
+				ACA65EF523DECE040095EC20 /* OrderReviewAddressCollectionViewCell.xib */,
+				ACA65EFA23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.swift */,
+				ACA65EFB23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.xib */,
+				ACA65F0223DEFE990095EC20 /* CollectionReusableView.swift */,
+				ACA65F0323DEFE990095EC20 /* CollectionReusableView.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -617,7 +639,9 @@
 				AC5226FB23C71B14002F111F /* OrderDetailsViewController.swift */,
 				AC51847323C85B4E00A45E69 /* NimNimViewController.swift */,
 				AC5E697223CC72BD000DF84E /* PricingViewController.swift */,
-				AC5F80EC23CE17440093B864 /* PriceListViewController.swift */,
+				AC5199C823D997B400961C48 /* PriceListViewController.swift */,
+				AC5199CA23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift */,
+				AC12C20723DF11B9002E2A91 /* EmptyCartViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -826,6 +850,7 @@
 				ACE0E4ED2353164500A75D82 /* ShoeRepairCollectionViewCell.xib in Resources */,
 				AC1FFDAD2346F1D100930496 /* Proxima Nova Black.otf in Resources */,
 				ACBB8198232E3FAC003DCF77 /* Montserrat-Medium.ttf in Resources */,
+				ACA65EFD23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.xib in Resources */,
 				AC5F80E323CDCFA10093B864 /* PricingHeaderCollectionViewCell.xib in Resources */,
 				ACFD92AE235846D10009FB03 /* ReferAFriendCollectionViewCell.xib in Resources */,
 				AC1FFDC32347773200930496 /* PreferencesCollectionReusableView.xib in Resources */,
@@ -835,6 +860,8 @@
 				ACF9CD1F234F575900039E6C /* AddMoreServicesCollectionViewCell.xib in Resources */,
 				AC5226FA23C70F5F002F111F /* OrderNumberCollectionViewCell.xib in Resources */,
 				ACBC96FE2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.xib in Resources */,
+				ACA65F0523DEFE990095EC20 /* CollectionReusableView.xib in Resources */,
+				ACA65EF723DECE040095EC20 /* OrderReviewAddressCollectionViewCell.xib in Resources */,
 				AC51C56B23CF54EA0010954C /* deliverynotesCollectionViewCell.xib in Resources */,
 				ACBAAF62233C6D7300E1E4A6 /* BannerCollectionViewCell.xib in Resources */,
 				AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */,
@@ -954,8 +981,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC12C20923DF11B9002E2A91 /* EmptyCartViewController.swift in Sources */,
 				AC8CDE382326449200CDFB93 /* LoginViaOTPTableViewCell.swift in Sources */,
 				AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */,
+				ACA65EFC23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.swift in Sources */,
 				AC5226FF23C738D4002F111F /* OrderDetailsCollectionViewCell.swift in Sources */,
 				ACF9CD3223504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.swift in Sources */,
 				AC1BB7D623A7B23A00513947 /* CartModel.swift in Sources */,
@@ -968,7 +997,6 @@
 				AC20418223B75223001F86B4 /* DateTimeCollectionViewCell.swift in Sources */,
 				AC5F80E623CE0E280093B864 /* PriceViewListCollectionViewCell.swift in Sources */,
 				ACFD92992355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.swift in Sources */,
-				AC5F80ED23CE17440093B864 /* PriceListViewController.swift in Sources */,
 				AC5ADD972362DEE400204E9E /* showSavedUserInfoCollectionViewCell.swift in Sources */,
 				ACF9CD23234F69EC00039E6C /* WashAndAirDryViewController.swift in Sources */,
 				AC51847423C85B4F00A45E69 /* NimNimViewController.swift in Sources */,
@@ -978,6 +1006,7 @@
 				AC1B9B862392403E00CA7434 /* AddressModel.swift in Sources */,
 				AC25BFB12371EB8000C79692 /* Endpoints.swift in Sources */,
 				ACBAAF6A233D0CC800E1E4A6 /* HomeViewController.swift in Sources */,
+				ACA65EF623DECE040095EC20 /* OrderReviewAddressCollectionViewCell.swift in Sources */,
 				ACBC96FD2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.swift in Sources */,
 				AC1FFDBE234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift in Sources */,
 				ACD8BA452351DF87005C1EAA /* NavigationManager.swift in Sources */,
@@ -990,7 +1019,9 @@
 				AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */,
 				AC092FCE232F606F00FE1B77 /* NavDrawerTableViewCell.swift in Sources */,
 				AC8CDE31232540DD00CDFB93 /* LoginSignUpViewController.swift in Sources */,
+				AC5199C923D997B400961C48 /* PriceListViewController.swift in Sources */,
 				ACFD92A5235838280009FB03 /* SavedCardCollectionViewCell.swift in Sources */,
+				ACA65F0423DEFE990095EC20 /* CollectionReusableView.swift in Sources */,
 				AC496133235C68C100AA7196 /* AddressCollectionViewCell.swift in Sources */,
 				AC5E697323CC72BD000DF84E /* PricingViewController.swift in Sources */,
 				ACB4314E2382A007001E6302 /* ServiceBaseModel.swift in Sources */,
@@ -1015,6 +1046,7 @@
 				AC11D1D42336314800F1DBCB /* Colors.swift in Sources */,
 				ACBC96F423606A06006AC5B6 /* CouponsViewController.swift in Sources */,
 				AC5226F923C70F5F002F111F /* OrderNumberCollectionViewCell.swift in Sources */,
+				AC5199CB23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift in Sources */,
 				AC25BFB32371EF2D00C79692 /* ServiceableLocationModel.swift in Sources */,
 				AC41CE71235C81EF001AC676 /* CardTypeCollectionViewCell.swift in Sources */,
 				ACF9CD1A234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift in Sources */,
@@ -1198,7 +1230,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;
@@ -1220,7 +1252,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;

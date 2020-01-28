@@ -7,14 +7,40 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 
 class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,NeedRushDeliveryCollectionViewCellDelegate,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    @IBOutlet weak var collectionView: UICollectionView!
     var activeTextView : UITextView?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
-   ///Delegate Function of TextView
+    var isRushDeliverySelected = false
+    
+    //TODO: Replace this everywhere...
+    var servicesModel = ServiceBaseModel.fetchFromUserDefaults()
+    var services:[ServiceModel] = []
+    var uploadedImages:[String] = []
+    var specialNotes:String?
+    
+    ///Delegate Function of TextView
+    let acceptedAliases:[String] = [
+        "wash-and-air-dry",
+        "laundered-shirts",
+        "household-items",
+        "dry-cleaning",
+        "wash-and-fold"
+    ]
+    override func viewDidLoad(){
+        super.viewDidLoad()
+        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        registerCells()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        addObservers()
+    }
+    
     func sendImage() {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
@@ -41,7 +67,7 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
             }
         }
     }
-   
+    
     @objc func backViewTapped() {
         view.endEditing(true) //to shutdown the keyboard. Wheneever you tap the text field on a specific screeen , then that screen becomes the first responder of the keyoard.
     }
@@ -50,7 +76,7 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
         removeTapGestures(forTextView: textView)
         if let currentText = textView.text {
             if !(currentText.caseInsensitiveCompare("Any Special Notes...") == .orderedSame) {
-                //serviceModel?.specialNotes = textView.text
+                specialNotes = textView.text
             }
         }
     }
@@ -70,65 +96,163 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     
     
-      func upload(image:UIImage?) {
-//          guard let image = image else {
-//              return
-//          }
-//          let uploadModel = UploadModel()
-//          uploadModel.data = image.jpegData(compressionQuality: 1.0)
-//          uploadModel.name = "image"
-//          uploadModel.fileName = "jpg"
-//          uploadModel.mimeType = .imageJpeg
-//          activityIndicator.startAnimating()
-//          NetworkingManager.shared.upload(withEndpoint: Endpoints.uploadImage, withModel: uploadModel, withSuccess: {[weak self] (response) in
-//              self?.view.showToast(message: "Image uploaded successfully")
-//              self?.activityIndicator.stopAnimating()
-//              if let responseDict = response as? [String:Any] {
-//                  if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
-//                      self?.serviceModel?.uploadedImages.append(imagePath)
-//                      }
-//              }
-//              self?.activityIndicator.stopAnimating()
-//
-//          }, withProgress: { (progress) in
-//
-//              print(progress?.fractionCompleted)
-//          }) {[weak self] (error) in
-//              self?.activityIndicator.stopAnimating()
-//              print(error)
-//          }
-      }
-    
-    
-    @IBOutlet weak var collectionView: UICollectionView!
-    
-    //TODO: Replace this everywhere...
-    var servicesModel = ServiceBaseModel.fetchFromUserDefaults()
-    var services:[ServiceModel] = []
+    func upload(image:UIImage?) {
+        guard let image = image else {
+            return
+        }
+        let uploadModel = UploadModel()
+        uploadModel.data = image.jpegData(compressionQuality: 1.0)
+        uploadModel.name = "image"
+        uploadModel.fileName = "jpg"
+        uploadModel.mimeType = .imageJpeg
+        activityIndicator?.startAnimating()
+        NetworkingManager.shared.upload(withEndpoint: Endpoints.uploadImage, withModel: uploadModel, withSuccess: {[weak self] (response) in
+            self?.view.showToast(message: "Image uploaded successfully")
+            if let responseDict = response as? [String:Any] {
+                if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
+                    self?.uploadedImages.append(imagePath)
+                }
+            }
+            self?.activityIndicator?.stopAnimating()
+            }, withProgress: { (progress) in
+                
+                print(progress?.fractionCompleted)
+        }) {[weak self] (error) in
+            print(error)
+            self?.activityIndicator?.stopAnimating()
+        }
+    }
     
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
+        services = fetchServicesToShow()
         collectionView.reloadData()
-        
     }
     
-    @IBAction func selectAddressTapped(_ sender: Any) {
-        //  add to cart ....and open order review screen.
-        
+    @IBAction func addToCartTapped(_ sender: Any) {
+        // add to cart...and open order review screen.
+        addToCart(withServiceModels: services)
     }
     
-    override func viewDidLoad(){
-        super.viewDidLoad()
-        collectionView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
-        services = servicesModel?.data ?? []
-        registerCells()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        addObservers()
+    func addToCart(withServiceModels services:[ServiceModel]?) {
+        if let services = services {
+            let selectedServices = services.filter { (serviceModel) -> Bool in
+                return serviceModel.isSelectedForNimNimIt
+            }
+            var finalArray:[[String:Any]] = []
+            for service in selectedServices {
+                if service.alias == "wash-and-air-dry" {
+                    service.setupNimNimItForWashAndAirDry()
+                }else if service.alias == "wash-and-fold" {
+                    service.setupNimNimItForWashAndFold()
+                }else if service.alias == "laundered-shirts" {
+                    service.setupNimNimItForWashPressedShirts()
+                }
+                service.isRushDeliverySelected = isRushDeliverySelected
+                service.specialNotes = specialNotes
+                service.uploadedImages = uploadedImages
+                let jsonDict = service.toJSON()
+                finalArray.append(jsonDict)
+            }
+            if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
+                updateCart(fromArray: finalArray, withCartId: cartId)
+            }
+            else
+                {
+                if let firstItem = finalArray.first  {
+                    addServicesToCart(withArray: [firstItem])
+                }
+            }
+        }
     }
+    
+    func updateCart(fromArray array:[[String:Any]], withCartId  cartId:String?) {
+        if let cartId = cartId {
+            let dispatchGroup = DispatchGroup()
+            for item in array  {
+                dispatchGroup.enter()
+                updateServicesInCart(withCartId: cartId, andService: item, withDispatchGroup: dispatchGroup)
+            }
+            dispatchGroup.notify(queue: .main) {[weak self] in
+                self?.openOrderReview()
+            }
+        }
+    }
+    
+    func updateServicesInCart(withCartId cartId:String?, andService service:[String:Any], withDispatchGroup dispatchGroup:DispatchGroup?) {
+        if let cartId = cartId{
+            var service = service
+            service["cart_id"] = cartId
+            activityIndicator.startAnimating()
+            NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: service, withSuccess: {[weak self] (response) in
+                if let response = response as? [String:Any] {
+                    if let cartId = response["cart_id"] as? String {
+                        UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                    }
+                    if let services = self?.services  {
+                        let selectedServices = services.filter { (serviceModel) -> Bool in
+                            return serviceModel.isSelectedForNimNimIt
+                        }
+                        let aliases = selectedServices.map { (serviceModel) -> String in
+                            return serviceModel.alias ?? ""
+                        }
+                        for alias in aliases  {
+                            addServiceToCartAliasinUserDefaults(withAlias: alias) // to make alias
+                        }
+                    }
+                }
+                dispatchGroup?.leave()
+                self?.activityIndicator.stopAnimating()
+            }) {[weak self] (error) in
+                print("error")
+                dispatchGroup?.leave()
+                self?.activityIndicator.stopAnimating()
+            }
+        }
+    }
+    
+    func addServicesToCart(withArray array:[[String:Any]]) {
+        activityIndicator.startAnimating()
+        var params : [String:Any] = [:]/// - dictionary
+        params[AddToCart.services] = array///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
+        NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+            if let response = response as? [String:Any] {
+                if let cartId = response["cart_id"] as? String {
+                    UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                    if let services = self?.services  {
+                        let selectedServices = services.filter { (serviceModel) -> Bool in
+                            return serviceModel.isSelectedForNimNimIt // the sserviceson which user has tapped
+                        }
+                        let aliases = selectedServices.map { (serviceModel) -> String in
+                            return serviceModel.alias ?? ""
+                        }
+                        for alias in aliases  {
+                            addServiceToCartAliasinUserDefaults(withAlias: alias) // to make alias
+                        }
+                        let selectedServicesBarringFirst = Array(selectedServices.dropFirst()) //  to eliminate firsst
+                        
+                        self?.addToCart(withServiceModels: selectedServicesBarringFirst)
+                    }
+                }
+                
+            }
+            self?.activityIndicator.stopAnimating()
+        }) {[weak self] (error) in
+            print("error")
+            self?.activityIndicator.stopAnimating()
+        }
+    }
+    
+    func openOrderReview() {
+        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+        NavigationManager.shared.push(viewController: orderReviewVC)
+
+    }
+    
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
@@ -153,10 +277,8 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
     }
     func rushDeliveryTapped(withIndexPath indexPath: IndexPath?)
     {
-//        if let rushDeliveryState = serviceModel?.isRushDeliverySelected {
-//            serviceModel?.isRushDeliverySelected = !rushDeliveryState
-//            collectionView.reloadData()
-//        }
+        isRushDeliverySelected  = !isRushDeliverySelected
+        collectionView.reloadData()
     }
     
     func registerCells(){
@@ -164,26 +286,40 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
         collectionView.register(type1PreferencesNib, forCellWithReuseIdentifier: "ServiceCollectionViewCell")
         let type2PreferencesNib = UINib(nibName: "NeedRushDeliveryCollectionViewCell", bundle: nil)
         collectionView.register(type2PreferencesNib, forCellWithReuseIdentifier: "NeedRushDeliveryCollectionViewCell")
-        
         let type3PreferencesNib = UINib(nibName: "SpecialNotesCollectionViewCell", bundle: nil)
         collectionView.register(type3PreferencesNib, forCellWithReuseIdentifier: "SpecialNotesCollectionViewCell")
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
-        
         navigationController?.popViewController(animated: true)
-        
-    }
+        }
     
+    func fetchServicesToShow() -> [ServiceModel] {
+        var servicesData:[ServiceModel] = []
+        if let services =  servicesModel?.data  {
+            let resultArray = services.filter { (service) -> Bool in
+                if let isNimNimItAvailable = service.isNimNimItAvailable, let alias = service.alias {
+                    if isNimNimItAvailable == true && !checkIfInCart(withAlias: alias) && acceptedAliases.contains(alias)  {
+                        return true
+                    }else{
+                        return false
+                    }
+                }
+                return false
+            }
+            servicesData = resultArray
+        }
+        return servicesData
+    }
     
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 4
+            return services.count
         }else if section == 1 {
             return 1
         }else if section == 2 {
@@ -196,29 +332,44 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
     {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServiceCollectionViewCell", for: indexPath) as! ServiceCollectionViewCell
-            if let servicesModel = ServiceBaseModel.fetchFromUserDefaults() {
-                if let services = servicesModel.data {
-                    cell.serviceName.text = services[indexPath.row].name
-                    cell.serviceDescription.text = services[indexPath.row].descrip
-                    cell.alias = services[indexPath.row].alias
-                    if let url = services[indexPath.row].icon {
-                        if let urlValue = URL(string: url)
-                        {
-                            cell.serviceImage.kf.setImage(with: urlValue)
-                        }
+            if services.count > indexPath.item {
+                let service = services[indexPath.item]
+                cell.serviceName.text = services[indexPath.item].name
+                cell.serviceDescription.text = services[indexPath.item].descrip
+                cell.alias = services[indexPath.row].alias
+                if let url = services[indexPath.row].icon {
+                    if let urlValue = URL(string: url)
+                    {
+                        cell.serviceImage.kf.setImage(with: urlValue)
                     }
                 }
                 
-                return cell
+                if service.isSelectedForNimNimIt {
+                    cell.serviceName.textColor = UIColor.white
+                    cell.serviceDescription.textColor = UIColor.white
+                    cell.backgroundCurvedView.backgroundColor = Colors.nimnimServicesColor
+                    cell.selectLabel.backgroundColor = UIColor.white
+                    cell.selectLabel.text = "Edit"
+                    cell.selectLabel.textColor = Colors.nimnimServicesColor
+                } else {
+                    cell.serviceName.textColor = UIColor.black
+                    cell.serviceDescription.textColor = UIColor.black
+                    cell.selectLabel.backgroundColor = Colors.nimnimServicesColor
+                    cell.backgroundCurvedView.backgroundColor = UIColor.white
+                    cell.selectLabel.text = "Select"
+                    cell.selectLabel.textColor = UIColor.white
+                }
             }
+            
             return cell
         }else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
+            cell.configureUI(forRushDeliveryState: isRushDeliverySelected, forIndex: indexPath)
             cell.delegate = self
-//            cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
+            cell.delegate = self
             return cell
         }
     }
@@ -238,8 +389,11 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if  indexPath.section == 0
         {
-            
-            
+            if services.count > indexPath.item {
+                let service = services[indexPath.item]
+                service.isSelectedForNimNimIt = !service.isSelectedForNimNimIt
+                collectionView.reloadData()
+            }
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {

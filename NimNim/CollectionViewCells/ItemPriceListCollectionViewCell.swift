@@ -12,6 +12,7 @@ class ItemPriceListCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var label: UILabel!
     
+    @IBOutlet weak var extraPrice: UILabel!
     @IBOutlet weak var labelPrice: UILabel!
     
     override func awakeFromNib() {

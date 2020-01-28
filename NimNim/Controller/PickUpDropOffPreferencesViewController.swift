@@ -33,7 +33,7 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
     override func viewDidLoad() {
         if reselection{
             skipForNow.isHidden = true
-            nextButton.setTitle("Pop", for: .normal)
+            nextButton.setTitle("Done", for: .normal)
             
         }
         super.viewDidLoad()

@@ -17,22 +17,18 @@ class PriceViewListCollectionViewCell: UICollectionViewCell {
     
         if screenType == "Dry Cleaning"{
             let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
-            let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "PriceListViewController") as? PriceListViewController
+            let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "PriceListViewController") as! PriceListViewController
                 NavigationManager.shared.push(viewController: allServices)
-//        if let allServices = allServices {
-//                  allServices.pricingListTitlelabel.text = "Dry Cleaning List"
-//            }
-
+           
+            }
+        else
             
-        } else{
+          {
             let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
-                      let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "PriceListViewController") as? PriceListViewController
+            let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsPriceViewController") as! HouseHoldItemsPriceViewController
                           NavigationManager.shared.push(viewController: allServices)
-//            if let allServices = allServices {
-//                 allServices.pricingListTitlelabel.text = "HouseHoldItemsList"
-//            }
-             
-             
+                
+            
         }
             
     }

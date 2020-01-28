@@ -405,7 +405,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         let params:[String:Any] = [
-            LogInViaOTP.mobile:phoneNumber,
+            LogInViaOTP.mobile:"+1\(phoneNumber)",
             LogInViaOTP.type:type
         ]
         activityIndicatorView.startAnimating()
@@ -431,7 +431,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         if let response = response {
             if let customerData = response["customer"] as? [String:Any] {
                 if let cartId = customerData["cart_id"] as? String {
-                    //UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                    UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
                 }
             }
         }
@@ -442,7 +442,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         let params:[String:Any] = [
-            LogInViaOTP.mobile:phoneNumber,
+            LogInViaOTP.mobile:"+1\(phoneNumber)",
             LogInViaOTP.type:"login"
         ]
         activityIndicatorView.startAnimating()
@@ -469,7 +469,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         let params:[String:Any] = [
-            VerifyOTP.mobile:phoneNumber,
+            VerifyOTP.mobile:"+1\(phoneNumber)",
             VerifyOTP.otp:otp,
             VerifyOTP.type:"login"
         ]
@@ -622,7 +622,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             var params:[String:Any] = [
                 SignUpViaFormParams.firstName:firstName,
                 SignUpViaFormParams.lastName:lastName,
-                SignUpViaFormParams.phone:phoneNumber,
+                SignUpViaFormParams.phone:"+1\(phoneNumber)",
                 SignUpViaFormParams.password:password,
                 SignUpViaFormParams.email:email
             ]

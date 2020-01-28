@@ -53,8 +53,8 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
         pricingCollectionView.register(type3PreferencesNib, forCellWithReuseIdentifier: "PricingHeaderCollectionViewCell")
         
         let type4PreferencesNib = UINib(nibName: "PriceViewListCollectionViewCell", bundle: nil)
-               pricingCollectionView.register(type4PreferencesNib, forCellWithReuseIdentifier: "PriceViewListCollectionViewCell")
-}
+        pricingCollectionView.register(type4PreferencesNib, forCellWithReuseIdentifier: "PriceViewListCollectionViewCell")
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
@@ -65,8 +65,14 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
         return CGSize(width: collectionView.frame.size.width, height:15)
     }
     else {
-        return CGSize(width: collectionView.frame.size.width, height:34)
-        
+        let label =  UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.frame.size.width - 30, height: CGFloat.greatestFiniteMagnitude))
+        label.text = "Shirts are pressed and returned on Wooden hangers"
+        label.numberOfLines = 0
+        label.font = Fonts.regularFont12
+        label.sizeToFit()
+        let h: CGFloat = label.frame.size.height
+        print(h)
+        return CGSize.init(width:collectionView.frame.size.width, height : h+10)
         }
     }
     
@@ -124,9 +130,9 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PricingHeaderCollectionViewCell", for: indexPath) as! PricingHeaderCollectionViewCell
                 cell.servicelabel.text = "Wash & Fold"
                 if selectedWashAndFold == true {
-                     cell.configureCell(withExpandedState: true)
+                    cell.configureCell(withExpandedState: true)
                 } else {
-                     cell.configureCell(withExpandedState: false)
+                    cell.configureCell(withExpandedState: false)
                 }
                 return cell
             }
@@ -156,9 +162,9 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PricingHeaderCollectionViewCell", for: indexPath) as! PricingHeaderCollectionViewCell
                 cell.servicelabel.text = "Wash & Air Dry"
                 if selectedWashAndAirDry == true {
-                     cell.configureCell(withExpandedState: true)
+                    cell.configureCell(withExpandedState: true)
                 }else {
-                     cell.configureCell(withExpandedState: false)
+                    cell.configureCell(withExpandedState: false)
                 }
                 return cell
             }
@@ -183,9 +189,9 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PricingHeaderCollectionViewCell", for: indexPath) as! PricingHeaderCollectionViewCell
                 cell.servicelabel.text = "Laundered Shirts"
                 if selectedLaunderedShirts == true {
-                     cell.configureCell(withExpandedState: true)
+                    cell.configureCell(withExpandedState: true)
                 }else {
-                     cell.configureCell(withExpandedState: false)
+                    cell.configureCell(withExpandedState: false)
                 }
                 return cell
             }
@@ -220,11 +226,11 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PricingHeaderCollectionViewCell", for: indexPath) as! PricingHeaderCollectionViewCell
                 cell.servicelabel.text = "Household Items"
                 if selectedHouseholdItems == true {
-                     cell.configureCell(withExpandedState: true)
+                    cell.configureCell(withExpandedState: true)
                 }else {
-                     cell.configureCell(withExpandedState: false)
+                    cell.configureCell(withExpandedState: false)
                 }
-               return cell
+                return cell
             }
             else if indexPath.item == 1  {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceViewListCollectionViewCell", for: indexPath) as! PriceViewListCollectionViewCell
@@ -257,9 +263,9 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             
         }
-         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-          cell.label.text = "Delivered within 24 hours, Rush service Available "
-          return cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
+        cell.label.text = "Delivered within 24 hours, Rush service Available "
+        return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.item == 0 {

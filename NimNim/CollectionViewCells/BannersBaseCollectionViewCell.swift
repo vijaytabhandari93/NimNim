@@ -44,7 +44,7 @@ class BannersBaseCollectionViewCell: UICollectionViewCell,UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BannerCollectionViewCell", for: indexPath) as! BannerCollectionViewCell
-        cell.lable1.text = banners[indexPath.row].name
+   
         if let url = banners[indexPath.item].icon {
             if let urlValue = URL(string: url)
             {

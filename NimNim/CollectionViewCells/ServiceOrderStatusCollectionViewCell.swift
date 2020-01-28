@@ -31,7 +31,7 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
             serviceName.text = serviceModel.name
             let qty = serviceModel.productQuantity()
             productQty.text = "\(String(describing: qty)) Products"
-            amount.text = "To be calculated"
+            amount.text = serviceModel.servicePrice
         
         }
     }

@@ -861,7 +861,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dry Cleaning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z4V-ro-0en">
-                                        <rect key="frame" x="149.5" y="13" width="115" height="24"/>
+                                        <rect key="frame" x="140" y="13" width="134.5" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="XwY-OZ-vVc"/>
                                         </constraints>
@@ -949,7 +949,7 @@
                                 <rect key="frame" x="0.0" y="766" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zu4-qh-a0t">
-                                        <rect key="frame" x="28" y="16" width="65.5" height="16.5"/>
+                                        <rect key="frame" x="28" y="15.5" width="76" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1958,8 +1958,8 @@
                                 <rect key="frame" x="0.0" y="814" width="414" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAc-xz-e5T">
-                                        <rect key="frame" x="187.5" y="9" width="39" height="30"/>
-                                        <color key="backgroundColor" red="0.2784313725" green="0.74901960779999999" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="48"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                         <state key="normal" title="Done">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1972,7 +1972,11 @@
                                 <color key="backgroundColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="mAc-xz-e5T" firstAttribute="centerX" secondItem="kXc-Jh-uUO" secondAttribute="centerX" id="9oA-ch-OoS"/>
+                                    <constraint firstAttribute="trailing" secondItem="mAc-xz-e5T" secondAttribute="trailing" id="AVS-VD-xln"/>
+                                    <constraint firstItem="mAc-xz-e5T" firstAttribute="leading" secondItem="kXc-Jh-uUO" secondAttribute="leading" id="KoU-0f-I8w"/>
                                     <constraint firstAttribute="height" constant="48" id="WYT-8K-Pi5"/>
+                                    <constraint firstItem="mAc-xz-e5T" firstAttribute="top" secondItem="kXc-Jh-uUO" secondAttribute="top" id="fbl-jH-Bkl"/>
+                                    <constraint firstAttribute="bottom" secondItem="mAc-xz-e5T" secondAttribute="bottom" id="fcx-UD-GAK"/>
                                     <constraint firstItem="mAc-xz-e5T" firstAttribute="centerY" secondItem="kXc-Jh-uUO" secondAttribute="centerY" id="y0m-yG-5Vf"/>
                                 </constraints>
                             </view>

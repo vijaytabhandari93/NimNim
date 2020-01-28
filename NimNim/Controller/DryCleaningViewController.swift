@@ -23,7 +23,8 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     func setupPrice() {
            if let price = serviceModel?.calculatePriceForService() {
-               priceLabel.text = "$\(price)"
+               priceLabel.text = price
+                serviceModel?.servicePrice = price
            }
        }
     
@@ -34,6 +35,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     var activeTextView : UITextView?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
+    var defaultStateJustNimNimIt : Bool = false
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var priceTotalBackgroundView: UIView!
     @IBOutlet weak var dryCleaningCollectionView: UICollectionView!
@@ -53,8 +55,16 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
-        }else if section == 1 {
+                   if defaultStateJustNimNimIt {
+                       return 0
+                       
+                   } else
+                   {
+                       return 1
+            }
+            
+        }
+        else if section == 1 {
             return 1
         }else if section == 2 {
             return 1
@@ -249,7 +259,8 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         navigationController?.popViewController(animated: true)
     }
     @IBAction func justNimNimIt(_ sender: Any) {
-        
+        dryCleaningCollectionView.reloadData()
+        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
@@ -393,7 +404,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         if let serviceModel = serviceModel, let cartId = cartId{
             var modelToDictionary = serviceModel.toJSON()
             modelToDictionary["cart_id"] = cartId
-            //print(JSON(modelToDictionary))
+            print(JSON(modelToDictionary))
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)

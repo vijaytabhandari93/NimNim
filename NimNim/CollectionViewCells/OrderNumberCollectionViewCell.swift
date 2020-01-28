@@ -9,7 +9,7 @@
 import UIKit
 
 class OrderNumberCollectionViewCell: UICollectionViewCell {
-
+    
     var service : [ServiceModel]?
     @IBOutlet weak var orderNumber: UILabel!
     @IBOutlet weak var orderStatus: UILabel!
@@ -17,17 +17,17 @@ class OrderNumberCollectionViewCell: UICollectionViewCell {
     
     @IBAction func viewDetailsOfOrder(_ sender: Any) {
         let ordersStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-              let allServices = ordersStoryboard.instantiateViewController(withIdentifier: "OrderDetailsViewController") as? OrderDetailsViewController
+        let allServices = ordersStoryboard.instantiateViewController(withIdentifier: "OrderDetailsViewController") as? OrderDetailsViewController
         if let allServices  = allServices {
-              allServices.service = service
+            allServices.service = service
         }
-      
-                  NavigationManager.shared.push(viewController: allServices)
+        
+        NavigationManager.shared.push(viewController: allServices)
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

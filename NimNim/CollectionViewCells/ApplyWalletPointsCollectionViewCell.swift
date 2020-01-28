@@ -15,7 +15,7 @@ class ApplyWalletPointsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var points: UILabel!
     @IBOutlet weak var apply: UIButton!
-    
+    var pointsinWallet  : Int = 0
     var lastState : Bool = true
     var cartModel:CartModel?
     override func awakeFromNib() {
@@ -26,7 +26,14 @@ class ApplyWalletPointsCollectionViewCell: UICollectionViewCell {
     
     func configureCell(withCartModel cartModel:CartModel?) {
         self.cartModel = cartModel
-        setupUI(forState: cartModel?.isWalletSelected)
+        if  pointsinWallet == 0 {
+            setupUIforNonselectablestate()
+            setupUI(forState: false)
+        }
+        else {
+            setupUI(forState: cartModel?.isWalletSelected)
+          }
+       
     }
     
     @IBAction func applyPointsTapped(_ sender:Any?) {
@@ -46,5 +53,8 @@ class ApplyWalletPointsCollectionViewCell: UICollectionViewCell {
             apply.setImage(image, for: .normal)
             apply.backgroundColor = Colors.nimnimGrey
         }
+    }
+    func setupUIforNonselectablestate(){
+        apply.isEnabled = false
     }
 }

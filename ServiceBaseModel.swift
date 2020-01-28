@@ -65,7 +65,7 @@ class ServiceModel:NSObject, Mappable, Codable {
     //Custom Variables
     var uploadedImages:[String] = []
     var specialNotes:String?
-    var numberOfClothes:Int = 0
+    var numberOfClothes:Int?
     var isRushDeliverySelected:Bool = false
     var needHangers:Bool = false
     var pickupDate : String?
@@ -73,6 +73,8 @@ class ServiceModel:NSObject, Mappable, Codable {
     var pickUpTime : String?
     var dropOffTime  : String?
     var turnAroundTime:String?
+    //Not to be sent to server..hence not adding in mapping function
+    var isSelectedForNimNimIt = false
     //This variable will be used to group the service models with the 
     var finalTurnaroundTime:String? {
         get {
@@ -91,6 +93,7 @@ class ServiceModel:NSObject, Mappable, Codable {
             }
         }
     }
+    var servicePrice : String?
     
     enum Alias:String {
         case washAndFold = "wash-and-fold"
@@ -135,6 +138,7 @@ class ServiceModel:NSObject, Mappable, Codable {
         pickUpTime <- map["pickUpTime"]
         dropOffTime <- map["dropOffTime"]
         turnAroundTime <- map["turn_around_time"]
+        servicePrice <- map["servicePrice"]
     }
     
     func getMaleItems() -> [ItemModel] {
@@ -201,11 +205,17 @@ class ServiceModel:NSObject, Mappable, Codable {
             if let value = Alias(rawValue: alias) {
                 switch value {
                 case .washAndFold:
-                    return numberOfClothes
+                    if let numberOfClothes = numberOfClothes {
+                        return numberOfClothes
+                    }
                 case .washAndAirDry:
-                    return numberOfClothes
+                    if let numberOfClothes = numberOfClothes {
+                        return numberOfClothes
+                    }
                 case .launderedShirts:
-                    return numberOfClothes
+                    if let numberOfClothes = numberOfClothes {
+                        return numberOfClothes
+                    }
                 case .householdItems:
                     var quantity = 0
                     if let items = items {
@@ -249,10 +259,12 @@ class ServiceModel:NSObject, Mappable, Codable {
                     }
                 case .launderedShirts:
                     var price = 0
-                    if returnPreferences?.first?.isSelected == true {
-                        price = price + numberOfClothes*(costPerPieceBox ?? 0)
-                    }else  {
-                        price = price + numberOfClothes*Int(costPerPiece ?? 0)
+                    if let numberOfClothes = numberOfClothes  {
+                        if returnPreferences?.first?.isSelected == true {
+                            price = price + numberOfClothes*(costPerPieceBox ?? 0)
+                        }else  {
+                            price = price + numberOfClothes*Int(costPerPiece ?? 0)
+                        }
                     }
                     if isRushDeliverySelected == true {
                         if let rushPrice = rushDeliveryOptions?.first?.price{
@@ -287,8 +299,8 @@ class ServiceModel:NSObject, Mappable, Codable {
                             price = price + rushPrice
                         }
                     }
-                    return "\(price)"
-                    case .dryCleaning:
+                    return "$\(price)"
+                case .dryCleaning:
                     var price = 0
                     if let items = items {
                         for item in items {
@@ -309,7 +321,7 @@ class ServiceModel:NSObject, Mappable, Codable {
                             price = price + rushPrice
                         }
                     }
-                    return "\(price)"
+                    return "$\(price)"
                 }
             }
         }
@@ -356,7 +368,7 @@ class ServiceModel:NSObject, Mappable, Codable {
                             price = price + rushPrice
                         }
                     }
-                    return "\(price)"
+                    return "$\(price)"
                 case .dryCleaning:
                     var maleprice = 0
                     var femaleprice = 0
@@ -374,7 +386,7 @@ class ServiceModel:NSObject, Mappable, Codable {
                             }
                         }
                     }
-                    return "Women Items: $\(femaleprice) and Men Items: $\(maleprice)"
+                    return "$\(femaleprice+maleprice)"
                 }
             }
         }

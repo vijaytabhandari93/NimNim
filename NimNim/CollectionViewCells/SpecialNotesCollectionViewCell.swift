@@ -56,6 +56,7 @@ class SpecialNotesCollectionViewCell: UICollectionViewCell, UITextViewDelegate {
         }
         return true
     }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         // This function is changing the font of the textField to montserratMedium/20 as soon as the user starts typing into the textField...and changing it back to montserratRegular/14 when the text is cleared or rubbed completely....
         // range =

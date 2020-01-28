@@ -35,9 +35,11 @@ class OrderModel : NSObject, Mappable, Codable  {
     var CardId : String?
     var orderNumber : Int?
     var date : String = "key to be created"
-   
+    var updated_at : String?
+    var createdAt :String?
     
     func mapping(map: Map) {
+        updated_at <- map["updated_at"]
         orderStatus <- map["order_status"]
         customerId <- map["customerId"]
         couponCode <- map["couponCode"]
@@ -50,6 +52,7 @@ class OrderModel : NSObject, Mappable, Codable  {
         isWalletSelected <- map["isWalletSelected"]
         orderNumber <- map["orderNumber"]
         date  <-  map["date"]
+        createdAt <- map["created_at"]
     }
 }
 
