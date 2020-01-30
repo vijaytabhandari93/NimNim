@@ -49,9 +49,17 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
     @IBAction func basketTapped(_ sender: Any){
-        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
-        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
-        NavigationManager.shared.push(viewController: orderReviewVC)
+        let cartCount = fetchNoOfServicesInCart()
+        if cartCount > 0 {
+            let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+            let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+            NavigationManager.shared.push(viewController: orderReviewVC)
+        }else {
+            let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+            let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "EmptyCartViewController")
+            NavigationManager.shared.push(viewController: orderReviewVC)
+        }
+        
     }
     
     func registerCells(){

@@ -9,22 +9,59 @@
 import UIKit
 
 class EmptyCartViewController: UIViewController {
-
+    
+    @IBOutlet weak var homebutton: UIButton!
+    
+    @IBOutlet weak var descriptionContainingUserName: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+        homebutton.layer.borderWidth  = 1.5
+        homebutton.layer.borderColor  = Colors.nimnimGreen.cgColor
+        
+        if let userModel = UserModel.fetchFromUserDefaults() {
+            if let a = userModel.firstName {
+                descriptionContainingUserName.text  = "Hello \(a.capitalized), your Cart is currently empty.  Please add services from the Service page to place an order. "
+            }
+               
+        }
+        }
+        
+        @IBAction func homeButtonTapped(_ sender: Any) {
+            
+            let homeVC =  self.navigationController?.viewControllers.first(where: { (viewController) -> Bool in
+                if viewController is HomeBaseViewController  {
+                    return true
+                }else {
+                    return false
+                }
+            })
+            if let homeVC = homeVC {
+                self.navigationController?.popToViewController(homeVC, animated: false)
+            }
+        }
+        
+        
+        @IBAction func addServicesTapped(_ sender: Any) {
+            
+            let homeVC =  self.navigationController?.viewControllers.first(where: { (viewController) -> Bool in
+                if viewController is HomeBaseViewController  {
+                    return true
+                }else {
+                    return false
+                }
+            })
+            if let homeVC = homeVC {
+                self.navigationController?.popToViewController(homeVC, animated: false)
+            }
+            
+            let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
+            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"AllServicesViewController") as? AllServicesViewController
+            NavigationManager.shared.push(viewController: secondViewController)
+        }
+        
+        
+        
 }
+
+

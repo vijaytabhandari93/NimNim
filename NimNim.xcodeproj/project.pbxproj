@@ -118,6 +118,7 @@
 		ACA65EFD23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA65EFB23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.xib */; };
 		ACA65F0423DEFE990095EC20 /* CollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA65F0223DEFE990095EC20 /* CollectionReusableView.swift */; };
 		ACA65F0523DEFE990095EC20 /* CollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACA65F0323DEFE990095EC20 /* CollectionReusableView.xib */; };
+		ACAD665123E0499400072607 /* ShoeRepairSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACAD665023E0499400072607 /* ShoeRepairSecondViewController.swift */; };
 		ACB37263234631C900046FB3 /* ServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB37261234631C900046FB3 /* ServiceCollectionViewCell.swift */; };
 		ACB37264234631C900046FB3 /* ServiceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACB37262234631C900046FB3 /* ServiceCollectionViewCell.xib */; };
 		ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACB37265234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift */; };
@@ -164,6 +165,10 @@
 		ACBC96FE2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBC96FC2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.xib */; };
 		ACBC97052361CB20006AC5B6 /* ServiceOrderStatusCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBC97032361CB20006AC5B6 /* ServiceOrderStatusCollectionViewCell.swift */; };
 		ACBC97062361CB20006AC5B6 /* ServiceOrderStatusCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBC97042361CB20006AC5B6 /* ServiceOrderStatusCollectionViewCell.xib */; };
+		ACBE06C823E0503B00451006 /* AddShoeRepairCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE06C623E0503B00451006 /* AddShoeRepairCollectionViewCell.swift */; };
+		ACBE06C923E0503B00451006 /* AddShoeRepairCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBE06C723E0503B00451006 /* AddShoeRepairCollectionViewCell.xib */; };
+		ACBE06CE23E0573000451006 /* ShoeTaskAddedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE06CC23E0573000451006 /* ShoeTaskAddedCollectionViewCell.swift */; };
+		ACBE06CF23E0573000451006 /* ShoeTaskAddedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBE06CD23E0573000451006 /* ShoeTaskAddedCollectionViewCell.xib */; };
 		ACD8BA432351AB41005C1EAA /* HomeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */; };
 		ACD8BA452351DF87005C1EAA /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8BA442351DF87005C1EAA /* NavigationManager.swift */; };
 		ACE0E4E9235312F100A75D82 /* ShoeRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0E4E8235312F100A75D82 /* ShoeRepairViewController.swift */; };
@@ -332,6 +337,7 @@
 		ACA65EFB23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderReviewCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACA65F0223DEFE990095EC20 /* CollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionReusableView.swift; sourceTree = "<group>"; };
 		ACA65F0323DEFE990095EC20 /* CollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionReusableView.xib; sourceTree = "<group>"; };
+		ACAD665023E0499400072607 /* ShoeRepairSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeRepairSecondViewController.swift; sourceTree = "<group>"; };
 		ACB37261234631C900046FB3 /* ServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACB37262234631C900046FB3 /* ServiceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACB37265234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesBaseCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -378,6 +384,10 @@
 		ACBC96FC2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoppingbagSummaryCollectionReusableView.xib; sourceTree = "<group>"; };
 		ACBC97032361CB20006AC5B6 /* ServiceOrderStatusCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceOrderStatusCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACBC97042361CB20006AC5B6 /* ServiceOrderStatusCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServiceOrderStatusCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACBE06C623E0503B00451006 /* AddShoeRepairCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShoeRepairCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACBE06C723E0503B00451006 /* AddShoeRepairCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddShoeRepairCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACBE06CC23E0573000451006 /* ShoeTaskAddedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeTaskAddedCollectionViewCell.swift; sourceTree = "<group>"; };
+		ACBE06CD23E0573000451006 /* ShoeTaskAddedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoeTaskAddedCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseViewController.swift; sourceTree = "<group>"; };
 		ACD8BA442351DF87005C1EAA /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		ACE0E4E8235312F100A75D82 /* ShoeRepairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeRepairViewController.swift; sourceTree = "<group>"; };
@@ -561,6 +571,10 @@
 				ACA65EFB23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.xib */,
 				ACA65F0223DEFE990095EC20 /* CollectionReusableView.swift */,
 				ACA65F0323DEFE990095EC20 /* CollectionReusableView.xib */,
+				ACBE06C623E0503B00451006 /* AddShoeRepairCollectionViewCell.swift */,
+				ACBE06C723E0503B00451006 /* AddShoeRepairCollectionViewCell.xib */,
+				ACBE06CC23E0573000451006 /* ShoeTaskAddedCollectionViewCell.swift */,
+				ACBE06CD23E0573000451006 /* ShoeTaskAddedCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -642,6 +656,7 @@
 				AC5199C823D997B400961C48 /* PriceListViewController.swift */,
 				AC5199CA23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift */,
 				AC12C20723DF11B9002E2A91 /* EmptyCartViewController.swift */,
+				ACAD665023E0499400072607 /* ShoeRepairSecondViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -859,6 +874,7 @@
 				ACBB818C232E3FAB003DCF77 /* Montserrat-SemiBoldItalic.ttf in Resources */,
 				ACF9CD1F234F575900039E6C /* AddMoreServicesCollectionViewCell.xib in Resources */,
 				AC5226FA23C70F5F002F111F /* OrderNumberCollectionViewCell.xib in Resources */,
+				ACBE06CF23E0573000451006 /* ShoeTaskAddedCollectionViewCell.xib in Resources */,
 				ACBC96FE2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.xib in Resources */,
 				ACA65F0523DEFE990095EC20 /* CollectionReusableView.xib in Resources */,
 				ACA65EF723DECE040095EC20 /* OrderReviewAddressCollectionViewCell.xib in Resources */,
@@ -911,6 +927,7 @@
 				AC5F80DF23CD9F1A0093B864 /* DescriptionCollectionViewCell.xib in Resources */,
 				AC5F80E723CE0E280093B864 /* PriceViewListCollectionViewCell.xib in Resources */,
 				ACF9CD1B234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib in Resources */,
+				ACBE06C923E0503B00451006 /* AddShoeRepairCollectionViewCell.xib in Resources */,
 				ACBB818D232E3FAB003DCF77 /* Montserrat-ExtraLightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1032,6 +1049,7 @@
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
 				AC1FFDB723474FC700930496 /* ServicesViewController.swift in Sources */,
 				ACF9CD3623504EFD00039E6C /* NoofClothesCollectionViewCell.swift in Sources */,
+				ACAD665123E0499400072607 /* ShoeRepairSecondViewController.swift in Sources */,
 				ACD8BA432351AB41005C1EAA /* HomeBaseViewController.swift in Sources */,
 				ACB37263234631C900046FB3 /* ServiceCollectionViewCell.swift in Sources */,
 				AC41CE6E235C7258001AC676 /* AddNewCardViewController.swift in Sources */,
@@ -1062,6 +1080,7 @@
 				AC17891823785F1800B20D32 /* UserModel.swift in Sources */,
 				AC41CE75235C822F001AC676 /* AddCardCollectionViewCell.swift in Sources */,
 				AC19C7882383EC3B000919E0 /* CouponsUserModel.swift in Sources */,
+				ACBE06C823E0503B00451006 /* AddShoeRepairCollectionViewCell.swift in Sources */,
 				ACF9CD2E235043C200039E6C /* SpecialNotesCollectionViewCell.swift in Sources */,
 				AC20417623B74F80001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.swift in Sources */,
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
@@ -1075,6 +1094,7 @@
 				AC3151FD23A65ACB0078E68E /* Utils.swift in Sources */,
 				ACE0E4EF2353240B00A75D82 /* RugCleaningViewController.swift in Sources */,
 				ACE0E4E9235312F100A75D82 /* ShoeRepairViewController.swift in Sources */,
+				ACBE06CE23E0573000451006 /* ShoeTaskAddedCollectionViewCell.swift in Sources */,
 				ACFD92C6235B17E20009FB03 /* AddAddressViewController.swift in Sources */,
 				AC20417A23B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.swift in Sources */,
 				AC1789142376A19B00B20D32 /* UserDefaultKeys.swift in Sources */,

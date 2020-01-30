@@ -28,7 +28,7 @@ class CartModel : NSObject, Mappable, Codable  {
     func mapping(map: Map) {
         orderStatus <- map["order_status"]
         customerId <- map["customerId"]
-        couponCode <- map["couponCode"]
+        couponCode <- map["promo_code_applied"]
         cartId <- map["cart_id"]
         orderTotal <-  map["order_total"]
         services  <- map  ["services"]

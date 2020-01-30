@@ -58,6 +58,8 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
+        @IBOutlet weak var justNimNimIt: UIButton!
+    var justNimNimItSelected : Bool = false
     
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     //IBActions
@@ -65,14 +67,34 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         navigationController?.popViewController(animated: true)
     }
     @IBAction func basketTapped(_ sender: Any) {
-        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
-        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
-        NavigationManager.shared.push(viewController: orderReviewVC)
+        let cartCount = fetchNoOfServicesInCart()
+        if cartCount > 0 {
+            let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+            let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+            NavigationManager.shared.push(viewController: orderReviewVC)
+        }else {
+            let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+            let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "EmptyCartViewController")
+            NavigationManager.shared.push(viewController: orderReviewVC)
+        }
+        
     }
     @IBAction func justNimNimIt(_ sender: Any) {
         serviceModel?.setupNimNimItForWashPressedShirts()
         WashPressedShirtCollectionView.reloadData()
         defaultStateJustNimNimIt = !defaultStateJustNimNimIt
+        justNimNimItSelected  = !justNimNimItSelected
+        if justNimNimItSelected {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+        }
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {

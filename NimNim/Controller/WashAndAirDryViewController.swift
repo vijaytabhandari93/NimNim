@@ -55,6 +55,9 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     
+    @IBOutlet weak var justNimNimIt: UIButton!
+     var justNimNimItSelected : Bool = false
+    
     //MARK:UI Methods
     func registerCells() {
         let type1PreferencesNib = UINib(nibName: "WashAndFoldPreferencesCollectionViewCell", bundle: nil)
@@ -180,15 +183,35 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     
     @IBAction func basketTapped(_ sender: Any) {
-        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
-        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
-        NavigationManager.shared.push(viewController: orderReviewVC)
+        let cartCount = fetchNoOfServicesInCart()
+        if cartCount > 0 {
+            let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+            let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+            NavigationManager.shared.push(viewController: orderReviewVC)
+        }else {
+            let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+            let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "EmptyCartViewController")
+            NavigationManager.shared.push(viewController: orderReviewVC)
+        }
+        
     }
     
     @IBAction func justNimNimItTapped(_ sender: Any) {
         serviceModel?.setupNimNimItForWashAndAirDry()
         washAndAirDryCollectionView.reloadData()
         defaultStateJustNimNimIt = !defaultStateJustNimNimIt
+        justNimNimItSelected  = !justNimNimItSelected
+        if justNimNimItSelected {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+        }
     }
     
     

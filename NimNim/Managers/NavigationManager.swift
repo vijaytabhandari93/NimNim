@@ -81,4 +81,10 @@ class NavigationManager {
             baseNavigationController?.pushViewController(vc, animated: true)
         } // common function in whicvh the view controller is passed
     }
+    
+    func pushWithoutAnimation(viewController vc:UIViewController?) {
+        if let vc = vc {
+            baseNavigationController?.pushViewController(vc, animated: false)
+        } // common function in whicvh the view controller is passed
+    }
 }

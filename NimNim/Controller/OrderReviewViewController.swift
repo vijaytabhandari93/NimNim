@@ -148,6 +148,12 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                     self?.priceTotalBackgroundView.isHidden = false
                     self?.addressMethod.isHidden = false
                     self?.amountLabel.text = "To be calculated"
+                    let cartCount = fetchNoOfServicesInCart()
+                    if cartCount == 0 {
+                        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+                        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "EmptyCartViewController")
+                        NavigationManager.shared.pushWithoutAnimation(viewController: orderReviewVC)
+                    }
                 }
                 setupAliasesFromCart(withModel: cartModel)
                 if let cartId = cartModel?.cartId {
@@ -185,6 +191,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 self?.orderStatusCollectionView.reloadData()
             }
             self?.activityIndicator.stopAnimating()
+            
             }) //definition of success closure
         { (error) in
             if let error = error as? String {
@@ -255,7 +262,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 cell.configureCell(withCartModel: cartModel)
                 cell.pointsinWallet = walletBalance
                 if walletBalance == 0 {
-                cell.points.text = "No Points"
+                    cell.points.text = "No Points"
                 }
                 else
                 {

@@ -147,9 +147,17 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
 
     //MARK: IBActions
     @IBAction func basketTapped(_UI sender: Any) {
-        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
-        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
-        NavigationManager.shared.push(viewController: orderReviewVC)
+        let cartCount = fetchNoOfServicesInCart()
+        if cartCount > 0 {
+            let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+            let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+            NavigationManager.shared.push(viewController: orderReviewVC)
+        }else {
+            let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+            let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "EmptyCartViewController")
+            NavigationManager.shared.push(viewController: orderReviewVC)
+        }
+        
     }
     
     //MARK:Collection View Datasource Methods

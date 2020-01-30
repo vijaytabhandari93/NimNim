@@ -21,7 +21,11 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     @IBOutlet weak var addToCart: UIButton!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
-    var serviceModel:ServiceModel? 
+    
+    @IBOutlet weak var justNimNimIt: UIButton!
+    var justNimNimItSelected : Bool = false
+    
+    var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
     var activeTextField : UITextField?
@@ -49,7 +53,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         setupCartCountLabel()
         
         
-       
+        
     }
     
     func addObservers() {
@@ -107,12 +111,33 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     @IBAction func basketTapped(_ sender: Any) {
-        let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
-        let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
-        NavigationManager.shared.push(viewController: orderReviewVC)
+        let cartCount = fetchNoOfServicesInCart()
+        if cartCount > 0 {
+            let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+            let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "OrderReviewViewController")
+            NavigationManager.shared.push(viewController: orderReviewVC)
+        }else {
+            let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
+            let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "EmptyCartViewController")
+            NavigationManager.shared.push(viewController: orderReviewVC)
+        }
+        
     }
     
     @IBAction func justNimNimIt(_ sender: Any) {
+        justNimNimItSelected  = !justNimNimItSelected
+        if justNimNimItSelected {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+        }
+        
         serviceModel?.setupNimNimItForWashAndFold()
         prefernces.reloadData()
     }
@@ -130,6 +155,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             addServiceToCart()
         }
     }
+    
     
     func updateServiceInCart(withCartId cartId:String?) {
         if let serviceModel = serviceModel, let cartId = cartId{
@@ -174,7 +200,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             print(JSON(params))
             NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)//alamofire is conveerting dictionary to JSON
-               self?.IsAddToCartTapped = true
+                self?.IsAddToCartTapped = true
                 self?.prefernces.reloadData()
                 if let response = response as? [String:Any] {
                     if let cartId = response["cart_id"] as? String {
@@ -214,13 +240,13 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.serviceModel?.uploadedImages.append(imagePath)
-                    }
+                }
             }
             self?.activityIndicator.stopAnimating()
             
-        }, withProgress: { (progress) in
-            
-            print(progress?.fractionCompleted)
+            }, withProgress: { (progress) in
+                
+                print(progress?.fractionCompleted)
         }) {[weak self] (error) in
             self?.activityIndicator.stopAnimating()
             print(error)
@@ -371,7 +397,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             return CGSize(width: collectionView.frame.size.width, height:104)
         }
         else if section == 1 {
-            return CGSize(width: collectionView.frame.size.width, height:134)
+            return CGSize(width: collectionView.frame.size.width, height:191)
         }else if section == 2 {
             return CGSize(width: collectionView.frame.size.width, height:95)
         }else if section == 3 {
@@ -461,12 +487,12 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         removeTapGestures(forTextField: textField)
         if let text = textField.text, let intValue = Int(text) {
             serviceModel?.numberOfClothes = intValue
-       
+            
             prefernces.reloadData()
         }
     }
     
-
+    
     ///MARK: UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true, completion: nil)

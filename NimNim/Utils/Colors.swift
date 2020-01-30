@@ -25,4 +25,6 @@ struct Colors {
     static let nimnimServicesShadowColor = UIColor(red: 94/255, green: 163/255, blue: 149/255, alpha: 0.22)
     static let nimnimServicesColor = UIColor(red: 124/255, green: 216/255, blue: 198/255, alpha: 1)
     static let nimnimLocationShadowColor = UIColor(red: 58/255, green: 76/255, blue: 130/255, alpha: 1)
+    static let addToCartUnselectable = UIColor(red: 202/255, green: 207/255, blue: 217/255, alpha: 1)
+    static let borderColor = UIColor(red: 202/255, green: 207/255, blue: 217/255, alpha: 0.5)
 }

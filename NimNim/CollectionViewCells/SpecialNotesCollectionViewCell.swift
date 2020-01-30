@@ -23,12 +23,24 @@ class SpecialNotesCollectionViewCell: UICollectionViewCell, UITextViewDelegate {
     weak var delegate : SpecialNotesCollectionViewCellDelegate?
     var notesWritten : String?
     
+    @IBOutlet weak var firstImage: UIImageView!
+    @IBOutlet weak var secondImage: UIImageView!
+    @IBOutlet weak var thirdImage: UIImageView!
+    
     override func awakeFromNib() {
         //border addition to be done
         super.awakeFromNib()
         notesTextBox.delegate = self
         // Initialization code
         notesTextBox.textContainerInset = UIEdgeInsets(top: 18, left: 20, bottom: 18, right: 20)
+        
+        firstImage.layer.borderWidth = 1
+        secondImage.layer.borderWidth = 1
+        thirdImage.layer.borderWidth = 1
+        firstImage.layer.borderColor = Colors.borderColor.cgColor
+        secondImage.layer.borderColor = Colors.borderColor.cgColor
+        thirdImage.layer.borderColor = Colors.borderColor.cgColor
+        
     }
     
     @IBAction func pinTappedToUploadImages(_ sender: Any) {
@@ -66,7 +78,7 @@ class SpecialNotesCollectionViewCell: UICollectionViewCell, UITextViewDelegate {
             let textRange = Range(range, in: textViewCurrentText) {
             //Here, we are using the range and text values to determine the upcoming string inside the textfield...this will enable to setup the font beforehand....
             let updatedText = textViewCurrentText.replacingCharacters(in: textRange,
-                                                       with: text)
+                                                                      with: text)
             if updatedText.count > 0 {
                 textView.font = Fonts.regularFont14
                 textView.textColor = Colors.nimnimGreen

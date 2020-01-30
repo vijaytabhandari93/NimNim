@@ -42,7 +42,7 @@ class OrderModel : NSObject, Mappable, Codable  {
         updated_at <- map["updated_at"]
         orderStatus <- map["order_status"]
         customerId <- map["customerId"]
-        couponCode <- map["couponCode"]
+        couponCode <- map["promo_code_applied"]
         cartId <- map["cart_id"]
         orderTotal <-  map["order_total"]
         services  <- map  ["services"]
