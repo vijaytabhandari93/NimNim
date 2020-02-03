@@ -141,6 +141,8 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         }
     }
     
+    
+    
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -556,6 +558,11 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     
     func textViewEndedEditingInCell(withTextField textView: UITextView) {
         removeTapGestures(forTextView: textView)
+        if let currentText = textView.text {
+            if !(currentText.caseInsensitiveCompare("Any Special Notes...") == .orderedSame) {
+                serviceModel?.specialNotes = textView.text
+            }
+        }
     }
     ///MARK: UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {

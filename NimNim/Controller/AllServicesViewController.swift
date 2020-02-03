@@ -168,7 +168,8 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
             
             
         }else if services[indexPath.row].alias == "shoe-repair" {
-            let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController")
+            let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController") as! ShoeRepairViewController
+            dryCleaningVC.serviceModel = services[indexPath.row]  //refers to 4th element
             NavigationManager.shared.push(viewController: dryCleaningVC)
         }else if services[indexPath.row].alias == "tailoring" {
             

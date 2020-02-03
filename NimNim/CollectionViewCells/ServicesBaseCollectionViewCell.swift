@@ -120,8 +120,9 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
             
             
         }else if services[indexPath.item].alias == "shoe-repair" {
-            let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController")
-            NavigationManager.shared.push(viewController: dryCleaningVC)
+            let shoeRepairVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController") as! ShoeRepairViewController
+            shoeRepairVC.serviceModel = services[indexPath.item]
+            NavigationManager.shared.push(viewController: shoeRepairVC)
         }else if services[indexPath.item].alias == "tailoring" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")
             NavigationManager.shared.push(viewController: householdVC)
         }else if services[indexPath.item].alias == "carpet-cleaning" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")

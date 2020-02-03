@@ -60,7 +60,7 @@
                 <outlet property="label" destination="XWK-kb-ARd" id="vjv-xb-4WI"/>
                 <outlet property="labelPrice" destination="GJh-tt-FW4" id="bmV-gJ-j9N"/>
             </connections>
-            <point key="canvasLocation" x="-317.39130434782612" y="146.31696428571428"/>
+            <point key="canvasLocation" x="142" y="136"/>
         </collectionViewCell>
     </objects>
 </document>

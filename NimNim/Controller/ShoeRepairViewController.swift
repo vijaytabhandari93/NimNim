@@ -11,18 +11,26 @@ import NVActivityIndicatorView
 
 class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoeRepairSecondViewControllerDelegate,AddShoeRepairCollectionViewCellDelegate {
     
+    var serviceModel:ServiceModel?
+    
+    
     func pushSecondViewController() {
         let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
         let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"ShoeRepairSecondViewController") as? ShoeRepairSecondViewController
+        secondViewController?.serviceModel = serviceModel
         NavigationManager.shared.push(viewController: secondViewController)
         secondViewController?.delegate = self
-        
-        
     }
     
     
-    func addShoeRepairTask() {
-        taskAdded  = true
+    func addShoeRepairTask(withTask taskModel:TaskModel?) {
+        if let taskModel = taskModel  {
+            if serviceModel?.tasks == nil  {
+                serviceModel?.tasks = []
+            }
+            serviceModel?.tasks?.append(taskModel)
+        }
+        shoeRepairCollectionView.reloadData()
     }
     
     
@@ -38,7 +46,6 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     @IBOutlet weak var addToCart: UIButton!
     
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
-    var taskAdded = false
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var priceValue: UILabel!
     //MARK:View Controller
@@ -56,7 +63,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
         
-        if !taskAdded{
+        if let tasks = serviceModel?.tasks, tasks.count > 0 {
             addToCart.backgroundColor = Colors.addToCartUnselectable
             priceTotalbackgroundView.constant = 0
             totalPrice.isHidden = true
@@ -97,41 +104,73 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         
     }
-    
-    
-    
-    
+
     //MARK:Collection View Datasource Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        var numberOfSections =  0
+        if let tasks = serviceModel?.tasks, tasks.count > 0 {
+            numberOfSections = tasks.count + 1
+        }else {
+            numberOfSections = 1
+        }
+        if section == (numberOfSections - 1) {
+            //Add task section
+            return 1
+        }else {
+            if let tasks = serviceModel?.tasks, tasks.count > section {
+                let currentTask = tasks[section]
+                return currentTask.getSelectedItems().count + 1
+            }
+        }
+        return  0
     }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-           if !taskAdded{
-               return 1
-           }
-           else
-           {
-               return 2
-               
-           }
-       }
+        if let tasks = serviceModel?.tasks, tasks.count > 0 {
+            return tasks.count + 1
+        }else {
+            return 1
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.section == 0  {
+        var numberOfSections =  0
+        if let tasks = serviceModel?.tasks, tasks.count > 0 {
+            numberOfSections = tasks.count + 1
+        }else {
+            numberOfSections = 1
+        }
+        if indexPath.section == (numberOfSections - 1)  {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddShoeRepairCollectionViewCell", for: indexPath) as! AddShoeRepairCollectionViewCell
             cell.delegate = self
             return cell
         }
-        
         else {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoeTaskAddedCollectionViewCell", for: indexPath) as! ShoeTaskAddedCollectionViewCell
-            return cell
+            if indexPath.item == 0 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoeTaskAddedCollectionViewCell", for: indexPath) as! ShoeTaskAddedCollectionViewCell
+                
+                return cell
+            }else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedTasksCollectionViewCell", for: indexPath) as! SelectedTasksCollectionViewCell
+                if let tasks = serviceModel?.tasks, tasks.count > indexPath.section {
+                    let currentTask = tasks[indexPath.section]
+                    let selectedItems = currentTask.getSelectedItems()
+                    if selectedItems.count  > indexPath.item - 1 {
+                        let currentItem = selectedItems[indexPath.item - 1]
+                        cell.taskTitleCell.text = currentItem.name
+                    }
+                    if indexPath.item == (collectionView.numberOfItems(inSection: indexPath.section) -  1) {
+                        cell.separatorView.isHidden = false
+                    }else {
+                        cell.separatorView.isHidden = true
+                    }
+                }
+                return cell
+            }
         }
-        
-        
-        
     }
+    
     //MARK:UI Methods
     func registerCells() {
         let noOfClothesNib = UINib(nibName: "AddShoeRepairCollectionViewCell", bundle: nil)
@@ -140,12 +179,12 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         let noOfClothesNib1 = UINib(nibName: "ShoeTaskAddedCollectionViewCell", bundle: nil)
         shoeRepairCollectionView.register(noOfClothesNib1, forCellWithReuseIdentifier: "ShoeTaskAddedCollectionViewCell")
         
+        let noOfClothesNib2 = UINib(nibName: "SelectedTasksCollectionViewCell", bundle: nil)
+        shoeRepairCollectionView.register(noOfClothesNib2, forCellWithReuseIdentifier: "SelectedTasksCollectionViewCell")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         return CGSize(width: collectionView.frame.size.width, height:60)
-        
     }
     
     

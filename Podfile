@@ -6,6 +6,7 @@ target 'NimNim' do
   use_frameworks!
 
   # Pods for NimNim
+  pod 'iOSDropDown'  #this is for dropdown in shoe repair and tailoring  screens...
   pod 'SwiftyJSON'
 	pod 'Alamofire'
   pod 'ObjectMapper'

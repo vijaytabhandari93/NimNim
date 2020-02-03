@@ -54,6 +54,7 @@ class ServiceModel:NSObject, Mappable, Codable {
     var returnPreferences : [PreferenceModel]?
     var ordering:Int?
     var items : [ItemModel]?
+    var tasks : [TaskModel]?//for shoe repair...
     var minimum_quantity_required:Int?
     var price : Double?
     var pricing:String?
@@ -139,6 +140,7 @@ class ServiceModel:NSObject, Mappable, Codable {
         dropOffTime <- map["dropOffTime"]
         turnAroundTime <- map["turn_around_time"]
         servicePrice <- map["servicePrice"]
+        tasks        <- map["tasks"]
     }
     
     func getMaleItems() -> [ItemModel] {
@@ -411,7 +413,8 @@ class PreferenceModel:NSObject, Mappable, Codable {
 
 
 
-class ItemModel:NSObject, Mappable, Codable {
+class ItemModel:NSObject, Mappable, Codable, NSCopying {
+    
     var id:String?
     var name : String?
     var price:Int? //dryCleaning
@@ -419,7 +422,7 @@ class ItemModel:NSObject, Mappable, Codable {
     var icon : String?
     var laundryPrice : String? // presently made string //household
     var dryCleaningPrice : String? // presently made string //household
-    
+    var isSelectedShoeRepairPreference:Bool?
     
     
     //this is our property
@@ -443,9 +446,16 @@ class ItemModel:NSObject, Mappable, Codable {
         IfLaundered            <- map["if_laundered"]
         IfDrycleaned          <- map["if_dryCleaned"]
         qty             <- map["qty"]
+        isSelectedShoeRepairPreference <- map["is_selected_shoe_repair_pref"]
     }
     
+    //Below function is used to create a copy of the ItemModel object...
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = ItemModel(JSON: self.toJSON())
+        return copy!
+    }
 }
+
 class RushDeliveryOptionsModel:NSObject, Mappable, Codable {
     var id:String?
     var turnAroundTime :String?
@@ -456,7 +466,67 @@ class RushDeliveryOptionsModel:NSObject, Mappable, Codable {
         turnAroundTime <- map["turn_around_time"]
         price <- map["price"]
     }
+}
+
+class TaskModel: NSObject, Mappable, Codable {
+    var specialNotes:String?
+    var uploadedImages:[String] = []
+    var items:[ItemModel] = []
+    var gender:String?
+ 
+    required convenience init?(map: Map) { self.init() }
     
+    func mapping(map: Map) {
+        specialNotes   <- map["special_notes"]
+        uploadedImages <- map["uploaded_images"]
+        items  <- map["items"]
+        gender         <- map["gender"]
+    }
+    func getGenderSpecificItems() -> [ItemModel]{
+        if gender == "male" {
+            return getMaleItems()
+        }else
+        {
+            return getFemaleItems()
+        }
+    }
+    
+    func getSelectedItems() -> [ItemModel] {
+        let genderSpecificItems = getGenderSpecificItems()
+        
+        let selectedItems = genderSpecificItems.filter { (item) -> Bool in
+            if let isSelected =  item.isSelectedShoeRepairPreference, isSelected == true {
+                return true
+            }
+            return false
+        }
+        
+        return selectedItems
+    }
+    
+    func getMaleItems() -> [ItemModel] {
+        var maleItems:[ItemModel] = []
+        if items.count > 0 {
+            for item in items {
+                if item.genders == "male" {
+                    maleItems.append(item)
+                }
+            }
+        }
+        return maleItems
+    }
+    
+    func getFemaleItems() -> [ItemModel] {
+        var femaleItems:[ItemModel] = []
+        if items.count > 0 {
+            for item in items {
+                if item.genders == "female" {
+                    femaleItems.append(item)
+                }
+            }
+        }
+        return femaleItems
+    }
 }
 
 

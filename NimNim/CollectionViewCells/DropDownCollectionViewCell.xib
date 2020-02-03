@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DropDownCollectionViewCell" id="gTV-IL-0wX" customClass="DropDownCollectionViewCell" customModule="NimNim" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Iy4-7P-IL0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="66"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mVF-xT-KFK">
+                                <rect key="frame" x="28" y="19" width="33" height="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.34000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Pants" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tmh-nW-bvY" customClass="DropDown" customModule="iOSDropDown">
+                                <rect key="frame" x="28" y="42" width="350" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="4bO-JV-fOY"/>
+                                </constraints>
+                                <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIL-1C-cdU">
+                                <rect key="frame" x="28" y="65" width="358" height="1"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="Z7W-JJ-Lj9"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="mVF-xT-KFK" firstAttribute="top" secondItem="Iy4-7P-IL0" secondAttribute="top" constant="19" id="K2M-eT-bS7"/>
+                            <constraint firstAttribute="bottom" secondItem="CIL-1C-cdU" secondAttribute="bottom" id="QDu-jF-8Rl"/>
+                            <constraint firstItem="tmh-nW-bvY" firstAttribute="top" secondItem="mVF-xT-KFK" secondAttribute="bottom" constant="8" id="SIG-lV-mKp"/>
+                            <constraint firstAttribute="trailing" secondItem="tmh-nW-bvY" secondAttribute="trailing" constant="36" id="VdL-wv-Ttl"/>
+                            <constraint firstItem="tmh-nW-bvY" firstAttribute="leading" secondItem="mVF-xT-KFK" secondAttribute="leading" id="ce7-XQ-AKh"/>
+                            <constraint firstItem="mVF-xT-KFK" firstAttribute="leading" secondItem="Iy4-7P-IL0" secondAttribute="leading" constant="28" id="da8-mu-JeM"/>
+                            <constraint firstAttribute="trailing" secondItem="CIL-1C-cdU" secondAttribute="trailing" constant="28" id="h5a-8h-aXo"/>
+                            <constraint firstItem="CIL-1C-cdU" firstAttribute="leading" secondItem="tmh-nW-bvY" secondAttribute="leading" id="nDa-nx-tep"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="Iy4-7P-IL0" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Wjz-F4-b3Q"/>
+                <constraint firstItem="Iy4-7P-IL0" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Zd3-7O-anW"/>
+                <constraint firstAttribute="bottom" secondItem="Iy4-7P-IL0" secondAttribute="bottom" id="Zty-YJ-9od"/>
+                <constraint firstAttribute="trailing" secondItem="Iy4-7P-IL0" secondAttribute="trailing" id="nOm-Fo-J2d"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="414" height="70"/>
+            <connections>
+                <outlet property="dropDownTextField" destination="tmh-nW-bvY" id="iYG-Xs-bvp"/>
+                <outlet property="headingLabel" destination="mVF-xT-KFK" id="dnl-kU-rRj"/>
+            </connections>
+            <point key="canvasLocation" x="-17.39130434782609" y="145.98214285714286"/>
+        </collectionViewCell>
+    </objects>
+</document>

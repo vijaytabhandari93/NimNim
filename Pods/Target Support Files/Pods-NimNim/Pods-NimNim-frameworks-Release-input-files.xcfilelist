@@ -10,3 +10,4 @@ ${BUILT_PRODUCTS_DIR}/NTMonthYearPicker/NTMonthYearPicker.framework
 ${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework
 ${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
+${BUILT_PRODUCTS_DIR}/iOSDropDown/iOSDropDown.framework

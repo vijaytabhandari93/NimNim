@@ -577,6 +577,11 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     
     func textViewEndedEditingInCell(withTextField textView: UITextView) {
         removeTapGestures(forTextView: textView)
+        if let currentText = textView.text {
+            if !(currentText.caseInsensitiveCompare("Any Special Notes...") == .orderedSame) {
+                serviceModel?.specialNotes = textView.text
+            }
+        }
     }
     func upload(image:UIImage?) {
         guard let image = image else {

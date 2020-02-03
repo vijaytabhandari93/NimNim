@@ -498,7 +498,12 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
     func textViewEndedEditingInCell(withTextField textView: UITextView) {
-         removeTapGestures(forTextView: textView)
+        removeTapGestures(forTextView: textView)
+        if let currentText = textView.text {
+            if !(currentText.caseInsensitiveCompare("Any Special Notes...") == .orderedSame) {
+                serviceModel?.specialNotes = textView.text
+            }
+        }
     }
     //MARK: NeedRushDeliveryCellDelegate
     func rushDeliveryTapped(withIndexPath indexPath: IndexPath?) {

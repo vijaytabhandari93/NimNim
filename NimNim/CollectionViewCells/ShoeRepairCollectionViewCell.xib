@@ -66,7 +66,12 @@
                             <constraint firstAttribute="height" constant="24" id="BYy-Kh-Tiv"/>
                             <constraint firstAttribute="width" constant="24" id="Zg5-se-WMA"/>
                         </constraints>
-                        <state key="normal" title="Button" image="tick"/>
+                        <state key="normal" image="tick"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="6"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                         <connections>
                             <action selector="tickbuttonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="6ac-60-tei"/>
                         </connections>
@@ -88,6 +93,7 @@
             <connections>
                 <outlet property="actionLabel" destination="enK-Wl-27w" id="4wJ-9r-PK5"/>
                 <outlet property="priceLabel" destination="0Ks-5M-Y9f" id="ztf-cs-SPS"/>
+                <outlet property="tickButton" destination="d6K-wA-8dE" id="3Xp-3I-75O"/>
             </connections>
             <point key="canvasLocation" x="553.62318840579712" y="-38.504464285714285"/>
         </collectionViewCell>
