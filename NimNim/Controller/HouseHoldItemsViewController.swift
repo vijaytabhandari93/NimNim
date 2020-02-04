@@ -9,9 +9,10 @@
 import UIKit
 import NVActivityIndicatorView
 import SwiftyJSON
+import Kingfisher
 
 class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate,HouseHoldItemCollectionViewCellDelegate {
-    
+    var imageAdded : Bool = false
     var activeTextField : UITextField?
     var defaultStateJustNimNimIt : Bool = false
     //NoOfClothes Delegate Methods
@@ -99,12 +100,18 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     }
     
     func setupPrice() {
+        if defaultStateJustNimNimIt {
+                     let price = "$0"
+                     priceLabel.text = price
+                     serviceModel?.servicePrice = price
+                     }
+                 else {
         if let price = serviceModel?.calculatePriceForService() {
             priceLabel.text = price
             serviceModel?.servicePrice = price
         }
     }
-    
+    }
     func setupAddToCartButton(){
         if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
             addToCart.setTitle("Update Cart", for: .normal)
@@ -159,20 +166,23 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         
     }
     @IBAction func justNimNimIt(_ sender: Any) {
-        houseHoldCollectionView.reloadData()
         defaultStateJustNimNimIt = !defaultStateJustNimNimIt
-        justNimNimItSelected  = !justNimNimItSelected
-        if justNimNimItSelected {
+        if defaultStateJustNimNimIt {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            
         }
         else
         {
             justNimNimIt.backgroundColor = .white
             justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            
+            
         }
+        setupPrice()
+        houseHoldCollectionView.reloadData()
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
@@ -346,7 +356,13 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         }else if section == 1 {
             return CGSize(width: collectionView.frame.size.width, height:73)
         }else if section == 2 {
-            return CGSize(width: collectionView.frame.size.width, height:134)
+            if imageAdded  {
+            return CGSize(width: collectionView.frame.size.width, height:191)
+        }
+        else
+        {
+            return CGSize(width: collectionView.frame.size.width, height:120)
+        }
         }else if section == 3 {
             return CGSize(width: collectionView.frame.size.width, height:95)
         }else if section == 4 {
@@ -419,6 +435,25 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
             if section == 2 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
                 cell.delegate = self
+                if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 0 {
+                               if let urlValue = URL(string: ImageNames[0])
+                               {
+                                   cell.firstImage.kf.setImage(with: urlValue)
+                               }
+                               
+                           }
+                           if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 1 {
+                               if let urlValue = URL(string: ImageNames[1])
+                               {
+                                   cell.secondImage.kf.setImage(with: urlValue)
+                               }
+                           }
+                           if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 2 {
+                               if let urlValue = URL(string: ImageNames[2])
+                               {
+                                   cell.thirdImage.kf.setImage(with: urlValue)
+                               }
+                           }
                 return cell
             }
             else if section == 3 {
@@ -472,6 +507,8 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
                 if let responseDict = response as? [String:Any] {
                     if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                         self?.serviceModel?.uploadedImages.append(imagePath)
+                        self?.imageAdded = true
+                        self?.houseHoldCollectionView.reloadData()
                     }
                 }
                 }, withProgress: { (progress) in

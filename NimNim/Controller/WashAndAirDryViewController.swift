@@ -8,9 +8,11 @@
 import UIKit
 import SwiftyJSON
 import NVActivityIndicatorView
+import Kingfisher
+
 class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NoofClothesCollectionViewCellDelegate {
     
-    
+    var imageAdded : Bool = false
     var activeTextField : UITextField?
     var defaultStateJustNimNimIt : Bool = false
     //NoOfClothes Delegate Methods
@@ -24,7 +26,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         if let text = textField.text, let intValue = Int(text) {
             serviceModel?.numberOfClothes = intValue
             UserDefaults.standard.set(intValue , forKey : "noOfClothes")
-          washAndAirDryCollectionView.reloadData()
+            washAndAirDryCollectionView.reloadData()
         }
     }
     func removeTapGestures(forTextField textField:UITextField) {
@@ -56,7 +58,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     
     @IBOutlet weak var justNimNimIt: UIButton!
-     var justNimNimItSelected : Bool = false
+    var justNimNimItSelected : Bool = false
     
     //MARK:UI Methods
     func registerCells() {
@@ -121,7 +123,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             isHeightAdded = false
         }
     }
-
+    
     func setupAddToCartButton(){
         if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
             addToCart.setTitle("Update Cart", for: .normal)
@@ -168,6 +170,8 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.serviceModel?.uploadedImages.append(imagePath)
+                    self?.imageAdded = true
+                    self?.washAndAirDryCollectionView.reloadData()
                 }
             }
             }, withProgress: { (progress) in
@@ -199,21 +203,22 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     
     @IBAction func justNimNimItTapped(_ sender: Any) {
-        serviceModel?.setupNimNimItForWashAndAirDry()
-        washAndAirDryCollectionView.reloadData()
-        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
-        justNimNimItSelected  = !justNimNimItSelected
+        justNimNimItSelected = !justNimNimItSelected
         if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            serviceModel?.setupNimNimItForWashAndAirDry()
         }
         else
         {
             justNimNimIt.backgroundColor = .white
             justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.undosetupNimNimItForWashAndAirDry()
+            
         }
+        washAndAirDryCollectionView.reloadData()
     }
     
     
@@ -232,97 +237,97 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         }
     }
     
-//    func addServiceToCart() {
-//
-//        var params : [String:Any] = [:]
-//        var serviceParams : [String:Any] = [:]
-//
-//        if let name = serviceModel?.name {
-//            serviceParams[AddToCart.name] = name
-//        }
-//        if let alias = serviceModel?.alias {
-//            serviceParams[AddToCart.alias] = alias
-//        }
-//        if let icon = serviceModel?.icon {
-//            serviceParams[AddToCart.icon] = icon
-//        }
-//        if let description = serviceModel?.descrip {
-//            serviceParams[AddToCart.description] = description
-//        }
-//        serviceParams[AddToCart.ordering] = 1
-//
-//
-//        if let washes = serviceModel?.wash{
-//            var title : String?
-//            for wash in washes {
-//                if wash.isSelected == true {
-//                    title = wash.title
-//                       break
-//                }
-//            }
-//            if let title = title {
-//                serviceParams[AddToCart.wash] = ["title" : title]
-//            }
-//        }
-//        if let bleaches = serviceModel?.bleach{
-//            var title : String?
-//            for bleach in bleaches {
-//                if bleach.isSelected == true {
-//                    title = bleach.title
-//                      break
-//                }
-//
-//            }
-//            if let  title = title {
-//                serviceParams[AddToCart.bleach]  = ["title" : title]
-//            }
-//        }
-//        if let softners = serviceModel?.softner {
-//            var title : String?
-//            for softner in softners {
-//                if softner.isSelected == true {
-//                    title = softner.title
-//                    break
-//                }
-//
-//            }
-//            if let title = title {
-//                serviceParams[AddToCart.softner] = ["title" : title]
-//            }
-//        }
-//        //special notes
-//        //speical notes image
-//        //image
-//
-//        if let price = serviceModel?.price {
-//            serviceParams[AddToCart.price] = price
-//        }
-//
-//        if let pricing = serviceModel?.pricing {
-//            serviceParams[AddToCart.pricing] = pricing
-//        }
-//
-//        params[AddToCart.services] = [serviceParams]
-//        //JSON is a dictionary because of the {}. The JSON is containing key services and the value is an array of dictionary. In our case this array will be having only one dictionary because wee will be adding only one service to cart. This dictionary in our code iss service params.
-//        print(JSON(params))
-//        activityIndicator.startAnimating()
-//        NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-//            self?.addToCart.setTitle("CheckOut", for: .normal)
-//            self?.IsAddToCartTapped = true
-//            self?.washAndAirDryCollectionView.reloadData()
-//            print("success")
-//            DispatchQueue.main.async {[weak self] in
-//                if let numberOfSections = self?.washAndAirDryCollectionView.numberOfSections {
-//                    let lastSection = numberOfSections - 1
-//                    self?.washAndAirDryCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
-//                }
-//            }
-//            self?.activityIndicator.stopAnimating()
-//        }) {[weak self] (error) in
-//            print("error")
-//            self?.activityIndicator.stopAnimating()
-//        }
-//    }
+    //    func addServiceToCart() {
+    //
+    //        var params : [String:Any] = [:]
+    //        var serviceParams : [String:Any] = [:]
+    //
+    //        if let name = serviceModel?.name {
+    //            serviceParams[AddToCart.name] = name
+    //        }
+    //        if let alias = serviceModel?.alias {
+    //            serviceParams[AddToCart.alias] = alias
+    //        }
+    //        if let icon = serviceModel?.icon {
+    //            serviceParams[AddToCart.icon] = icon
+    //        }
+    //        if let description = serviceModel?.descrip {
+    //            serviceParams[AddToCart.description] = description
+    //        }
+    //        serviceParams[AddToCart.ordering] = 1
+    //
+    //
+    //        if let washes = serviceModel?.wash{
+    //            var title : String?
+    //            for wash in washes {
+    //                if wash.isSelected == true {
+    //                    title = wash.title
+    //                       break
+    //                }
+    //            }
+    //            if let title = title {
+    //                serviceParams[AddToCart.wash] = ["title" : title]
+    //            }
+    //        }
+    //        if let bleaches = serviceModel?.bleach{
+    //            var title : String?
+    //            for bleach in bleaches {
+    //                if bleach.isSelected == true {
+    //                    title = bleach.title
+    //                      break
+    //                }
+    //
+    //            }
+    //            if let  title = title {
+    //                serviceParams[AddToCart.bleach]  = ["title" : title]
+    //            }
+    //        }
+    //        if let softners = serviceModel?.softner {
+    //            var title : String?
+    //            for softner in softners {
+    //                if softner.isSelected == true {
+    //                    title = softner.title
+    //                    break
+    //                }
+    //
+    //            }
+    //            if let title = title {
+    //                serviceParams[AddToCart.softner] = ["title" : title]
+    //            }
+    //        }
+    //        //special notes
+    //        //speical notes image
+    //        //image
+    //
+    //        if let price = serviceModel?.price {
+    //            serviceParams[AddToCart.price] = price
+    //        }
+    //
+    //        if let pricing = serviceModel?.pricing {
+    //            serviceParams[AddToCart.pricing] = pricing
+    //        }
+    //
+    //        params[AddToCart.services] = [serviceParams]
+    //        //JSON is a dictionary because of the {}. The JSON is containing key services and the value is an array of dictionary. In our case this array will be having only one dictionary because wee will be adding only one service to cart. This dictionary in our code iss service params.
+    //        print(JSON(params))
+    //        activityIndicator.startAnimating()
+    //        NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+    //            self?.addToCart.setTitle("CheckOut", for: .normal)
+    //            self?.IsAddToCartTapped = true
+    //            self?.washAndAirDryCollectionView.reloadData()
+    //            print("success")
+    //            DispatchQueue.main.async {[weak self] in
+    //                if let numberOfSections = self?.washAndAirDryCollectionView.numberOfSections {
+    //                    let lastSection = numberOfSections - 1
+    //                    self?.washAndAirDryCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+    //                }
+    //            }
+    //            self?.activityIndicator.stopAnimating()
+    //        }) {[weak self] (error) in
+    //            print("error")
+    //            self?.activityIndicator.stopAnimating()
+    //        }
+    //    }
     func updateServiceInCart(withCartId cartId:String?) {
         if let serviceModel = serviceModel, let cartId = cartId{
             var modelToDictionary = serviceModel.toJSON()
@@ -334,7 +339,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
                 self?.IsAddToCartTapped = true
                 self?.washAndAirDryCollectionView.reloadData()
                 if let response = response as? [String:Any] {
-                       print(JSON(response))
+                    print(JSON(response))
                     if let cartId = response["cart_id"] as? String {
                         UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
                     }
@@ -396,7 +401,13 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         }else if section == 1 {
             return CGSize(width: collectionView.frame.size.width, height:104)
         }else if section == 2 {
-            return CGSize(width: collectionView.frame.size.width, height:134)
+            if imageAdded  {
+                return CGSize(width: collectionView.frame.size.width, height:191)
+            }
+            else
+            {
+                return CGSize(width: collectionView.frame.size.width, height:120)
+            }
         }else if section == 3 {
             return CGSize(width: collectionView.frame.size.width, height:95)
         }else if section == 4 {
@@ -434,14 +445,14 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             return 4 }//number of clothes, preferences, special notes, rush delivery, add more services
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       if section == 0 {
-        if defaultStateJustNimNimIt {
-            return 0
-            
-        } else
-        {
-            return 1
-        }
+        if section == 0 {
+            if justNimNimItSelected {
+                return 0
+                
+            } else
+            {
+                return 1
+            }
         }else if section == 1 {
             return 3
         }else if section == 2 {
@@ -512,6 +523,25 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         if section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
             cell.delegate = self
+            if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 0 {
+                if let urlValue = URL(string: ImageNames[0])
+                {
+                    cell.firstImage.kf.setImage(with: urlValue)
+                }
+                
+            }
+            if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 1 {
+                if let urlValue = URL(string: ImageNames[1])
+                {
+                    cell.secondImage.kf.setImage(with: urlValue)
+                }
+            }
+            if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 2 {
+                if let urlValue = URL(string: ImageNames[2])
+                {
+                    cell.thirdImage.kf.setImage(with: urlValue)
+                }
+            }
             return cell
         }
         else if section == 3 {

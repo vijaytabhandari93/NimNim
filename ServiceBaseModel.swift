@@ -54,7 +54,7 @@ class ServiceModel:NSObject, Mappable, Codable {
     var returnPreferences : [PreferenceModel]?
     var ordering:Int?
     var items : [ItemModel]?
-    var tasks : [TaskModel]?//for shoe repair...
+    var tasks : [TaskModel]? = [] //for shoe repair...
     var minimum_quantity_required:Int?
     var price : Double?
     var pricing:String?
@@ -95,13 +95,17 @@ class ServiceModel:NSObject, Mappable, Codable {
         }
     }
     var servicePrice : String?
-    
+
     enum Alias:String {
         case washAndFold = "wash-and-fold"
         case washAndAirDry = "wash-and-air-dry"
         case launderedShirts = "laundered-shirts"
         case householdItems = "household-items"
         case dryCleaning = "dry-cleaning"
+        case carpetCleaning = "carpet-cleaning"
+        case shoeRepair = "shoe-repair"
+        case tailoring = "tailoring"
+        
     }
     
     required convenience init?(map: Map) { self.init() }
@@ -140,8 +144,16 @@ class ServiceModel:NSObject, Mappable, Codable {
         dropOffTime <- map["dropOffTime"]
         turnAroundTime <- map["turn_around_time"]
         servicePrice <- map["servicePrice"]
-        tasks        <- map["tasks"]
+        tasks <- map["tasks"]
     }
+//    func  getPriceOfService() -> String?{
+//           var price  = 0
+//           for tasks in serviceModel  {
+//            price = price +
+//           }
+//
+//           return
+//       }
     
     func getMaleItems() -> [ItemModel] {
         var maleItems:[ItemModel] = []  
@@ -177,6 +189,19 @@ class ServiceModel:NSObject, Mappable, Codable {
         selectNimNimItPreference(forPreferences: softner)
     }
     
+      func undosetupNimNimItForWashAndFold() {
+          undoselectNimNimItPreference(forPreferences: detergents)
+          undoselectNimNimItPreference(forPreferences: wash)
+          undoselectNimNimItPreference(forPreferences: drying)
+          undoselectNimNimItPreference(forPreferences: bleach)
+          undoselectNimNimItPreference(forPreferences: softner)
+      }
+      
+    func undosetupNimNimItForWashAndAirDry() {
+        undoselectNimNimItPreference(forPreferences: wash)
+        undoselectNimNimItPreference(forPreferences: bleach)
+        undoselectNimNimItPreference(forPreferences: softner)
+    }
     func setupNimNimItForWashAndAirDry() {
         selectNimNimItPreference(forPreferences: wash)
         selectNimNimItPreference(forPreferences: bleach)
@@ -189,6 +214,11 @@ class ServiceModel:NSObject, Mappable, Codable {
         selectNimNimItPreference(forPreferences: returnPreferences)
     }
     
+    func undoSetupNimNimItForWashPressedShirts() {
+           undoselectNimNimItPreference(forPreferences: detergents)
+           undoselectNimNimItPreference(forPreferences: starch)
+           undoselectNimNimItPreference(forPreferences: returnPreferences)
+       }
     
     func selectNimNimItPreference(forPreferences preferences:[PreferenceModel]?) {
         if let preferences = preferences {
@@ -201,6 +231,15 @@ class ServiceModel:NSObject, Mappable, Codable {
             }
         }
     }
+    func undoselectNimNimItPreference(forPreferences preferences:[PreferenceModel]?) {
+           if let preferences = preferences {
+               for preference in preferences {
+      
+                       preference.isSelected = false
+                  
+                   }
+               }
+           }
     
     func productQuantity() -> Int {
         if let alias = alias {
@@ -241,6 +280,18 @@ class ServiceModel:NSObject, Mappable, Codable {
                         }
                     }
                     return quantity
+                    case .carpetCleaning:
+                     if let numberOfClothes = numberOfClothes {
+                         return numberOfClothes
+                     }
+                    case .shoeRepair:
+                    if let numberOfClothes = numberOfClothes {
+                        return numberOfClothes
+                    }
+                    case .tailoring:
+                    if let numberOfClothes = numberOfClothes {
+                        return numberOfClothes
+                    }
                 }
             }
         }
@@ -255,11 +306,16 @@ class ServiceModel:NSObject, Mappable, Codable {
                     if let price = price {
                         return "$\(price) / lb"
                     }
+                case .washAndFold:
+                    if let price = price {
+                        return "$\(price) / lb"
+                    }
                 case .washAndAirDry:
                     if let price = price {
                         return "$\(price) / lb"
                     }
                 case .launderedShirts:
+                    
                     var price = 0
                     if let numberOfClothes = numberOfClothes  {
                         if returnPreferences?.first?.isSelected == true {
@@ -324,6 +380,18 @@ class ServiceModel:NSObject, Mappable, Codable {
                         }
                     }
                     return "$\(price)"
+                    case .carpetCleaning:
+                                       if let price = price {
+                                           return "$\(price) / square foot"
+                                       }
+                    case .shoeRepair:
+                                       if let price = price {
+                                           return "$\(price) / lb"
+                                       }
+                    case .tailoring:
+                                       if let price = price {
+                                           return "$\(price) / lb"
+                                       }
                 }
             }
         }
@@ -389,6 +457,18 @@ class ServiceModel:NSObject, Mappable, Codable {
                         }
                     }
                     return "$\(femaleprice+maleprice)"
+                    case .carpetCleaning:
+                                       if let price = price {
+                                           return "$\(price) / lb"
+                                       }
+                    case .shoeRepair:
+                                       if let price = price {
+                                           return "$\(price) / lb"
+                                       }
+                    case .tailoring:
+                                       if let price = price {
+                                           return "$\(price) / lb"
+                                       }
                 }
             }
         }
@@ -470,9 +550,10 @@ class RushDeliveryOptionsModel:NSObject, Mappable, Codable {
 
 class TaskModel: NSObject, Mappable, Codable {
     var specialNotes:String?
-    var uploadedImages:[String] = []
+    var uploadedImages:[String]=[]
     var items:[ItemModel] = []
     var gender:String?
+    var taskPrice : Int = 0
  
     required convenience init?(map: Map) { self.init() }
     
@@ -493,16 +574,26 @@ class TaskModel: NSObject, Mappable, Codable {
     
     func getSelectedItems() -> [ItemModel] {
         let genderSpecificItems = getGenderSpecificItems()
-        
         let selectedItems = genderSpecificItems.filter { (item) -> Bool in
             if let isSelected =  item.isSelectedShoeRepairPreference, isSelected == true {
                 return true
             }
             return false
         }
-        
         return selectedItems
     }
+    func getSelectedItemsPrice() -> Int {
+        let SelectedItems = getSelectedItems()
+        var price = 0
+        for  item in SelectedItems {
+            if let priceOfItem = item.price {
+                   price = price + priceOfItem
+            }
+         }
+        return price
+    }
+    
+
     
     func getMaleItems() -> [ItemModel] {
         var maleItems:[ItemModel] = []

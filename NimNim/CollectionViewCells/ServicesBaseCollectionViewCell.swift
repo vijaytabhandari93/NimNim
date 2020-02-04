@@ -46,11 +46,11 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
     
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if services.count >= 5 {
-//           return 2
-//        }else{
-           return services.count
-        //}
+        if services.count >= 5 {
+            return 2
+        }else{
+            return services.count
+        }
         
     }
     

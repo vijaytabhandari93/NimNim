@@ -9,6 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import SwiftyJSON
+import Kingfisher
 
 class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate {
     
@@ -22,14 +23,22 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         setupPrice()
     }
     func setupPrice() {
-           if let price = serviceModel?.calculatePriceForService() {
-               priceLabel.text = price
+        if defaultStateJustNimNimIt {
+            let price = "$0"
+            priceLabel.text = price
+            serviceModel?.servicePrice = price
+        }
+        else {
+            if let price = serviceModel?.calculatePriceForService() {
+                priceLabel.text = price
                 serviceModel?.servicePrice = price
-           }
-       }
+            }
+        }
+    }
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var addToCart: UIButton!
+    var imageAdded : Bool = false
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
@@ -58,12 +67,12 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-                   if defaultStateJustNimNimIt {
-                       return 0
-                       
-                   } else
-                   {
-                       return 1
+            if defaultStateJustNimNimIt {
+                return 0
+                
+            } else
+            {
+                return 1
             }
             
         }
@@ -101,6 +110,25 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         else if section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
             cell.delegate = self
+            if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 0 {
+                if let urlValue = URL(string: ImageNames[0])
+                {
+                    cell.firstImage.kf.setImage(with: urlValue)
+                }
+                
+            }
+            if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 1 {
+                if let urlValue = URL(string: ImageNames[1])
+                {
+                    cell.secondImage.kf.setImage(with: urlValue)
+                }
+            }
+            if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 2 {
+                if let urlValue = URL(string: ImageNames[2])
+                {
+                    cell.thirdImage.kf.setImage(with: urlValue)
+                }
+            }
             return cell
             
         }
@@ -126,7 +154,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         return UICollectionViewCell()
         
     }
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,28 +175,28 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         setupPrice()
     }
     func addObservers() {
-           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
-           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
-           NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
-       }
-       
-       @objc func keyboardWillShow(notification: NSNotification) {
-           if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-               if !isHeightAdded {
-                   addedHeight = keyboardSize.height
-                   dryCleaningCollectionView.contentInset = UIEdgeInsets(top: dryCleaningCollectionView.contentInset.top, left: dryCleaningCollectionView.contentInset.left, bottom: dryCleaningCollectionView.contentInset.bottom + addedHeight, right: dryCleaningCollectionView.contentInset.right)
-                   isHeightAdded = true
-               }
-           }
-       }
-       
-       @objc func keyboardWillHide(notification: NSNotification) {
-           if isHeightAdded {
-               dryCleaningCollectionView.contentInset = UIEdgeInsets(top: dryCleaningCollectionView.contentInset.top, left: dryCleaningCollectionView.contentInset.left, bottom: dryCleaningCollectionView.contentInset.bottom - addedHeight, right: dryCleaningCollectionView.contentInset.right)
-               isHeightAdded = false
-           }
-       }
-
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if !isHeightAdded {
+                addedHeight = keyboardSize.height
+                dryCleaningCollectionView.contentInset = UIEdgeInsets(top: dryCleaningCollectionView.contentInset.top, left: dryCleaningCollectionView.contentInset.left, bottom: dryCleaningCollectionView.contentInset.bottom + addedHeight, right: dryCleaningCollectionView.contentInset.right)
+                isHeightAdded = true
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if isHeightAdded {
+            dryCleaningCollectionView.contentInset = UIEdgeInsets(top: dryCleaningCollectionView.contentInset.top, left: dryCleaningCollectionView.contentInset.left, bottom: dryCleaningCollectionView.contentInset.bottom - addedHeight, right: dryCleaningCollectionView.contentInset.right)
+            isHeightAdded = false
+        }
+    }
+    
     func setupAddToCartButton(){
         if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
             addToCart.setTitle("Update Cart", for: .normal)
@@ -220,6 +248,8 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.serviceModel?.uploadedImages.append(imagePath)
+                    self?.imageAdded = true
+                    self?.dryCleaningCollectionView.reloadData()
                 }
             }
             }, withProgress: { (progress) in
@@ -270,20 +300,23 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         navigationController?.popViewController(animated: true)
     }
     @IBAction func justNimNimIt(_ sender: Any) {
-        dryCleaningCollectionView.reloadData()
         defaultStateJustNimNimIt = !defaultStateJustNimNimIt
-        justNimNimItSelected  = !justNimNimItSelected
-        if justNimNimItSelected {
+        if defaultStateJustNimNimIt {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            
         }
         else
         {
             justNimNimIt.backgroundColor = .white
             justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            
+            
         }
+        setupPrice()
+        dryCleaningCollectionView.reloadData()
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
@@ -301,95 +334,95 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         }
     }
     
-//    func addServiceToCart() {
-//        var params:[String:Any] = [:]
-//        var serviceParams:[String:Any] = [:]
-//        if let name = serviceModel?.name {
-//            serviceParams[AddToCart.name] = name  // if name is there then set it. "[AddToCart.name]" is the key. "name" is the value
-//        }
-//        
-//        if let alias = serviceModel?.alias {
-//            serviceParams[AddToCart.alias] = alias
-//        }
-//        
-//        if let icon = serviceModel?.icon {
-//            serviceParams[AddToCart.icon] = icon
-//        }
-//        
-//        if let description = serviceModel?.descrip {
-//            serviceParams[AddToCart.description] = description
-//        }
-//        
-//        serviceParams[AddToCart.ordering] = 1
-//        
-//        if let items = serviceModel?.items {
-//            var itemArray : [[String?:Any?]] = []
-//            
-//            for item in items {
-//                if let maleCount = item.maleCount {
-//                    if maleCount > 0 {
-//                        let ItemDict:[String?:Any?] = [
-//                            "price" : item.price,
-//                            "qty" : maleCount,
-//                            "name" : item.name,
-//                            "male" : "true"
-//                        ]
-//                        itemArray.append(ItemDict)
-//                    }
-//                }
-//                if let femaleCount = item.femaleCount {
-//                    if femaleCount > 0 {
-//                        let ItemDict:[String?:Any?] = [
-//                            "price" : item.price,
-//                            "qty" : femaleCount,
-//                            "name" : item.name,
-//                            "female" : "true"
-//                        ]
-//                        itemArray.append(ItemDict)
-//                        
-//                    }
-//                }
-//            }
-//            serviceParams[AddToCart.items] = itemArray
-//        }
-//
-//        if let rushDeliveryOptions = serviceModel?.rushDeliveryOptions, rushDeliveryOptions.count > 0 {
-//            let firstOption = rushDeliveryOptions[0]
-//            if let turnAroundTime = firstOption.turnAroundTime, let price = firstOption.price {
-//                let rushDict:[String:Any] = [
-//                    "turn_around_time":turnAroundTime,
-//                    "price":price
-//                ]
-//                serviceParams[AddToCart.rushDeliveryOptions] = [rushDict] // array of rush delivery options
-//            }
-//        }
-//        
-//        if let needHangersSelected = serviceModel?.isRushDeliverySelected {
-//            serviceParams[AddToCart.needHangers] = needHangersSelected
-//        }
-//        
-//        params[AddToCart.services] = [serviceParams]// JSON is a dictionary because of the {}. The JSON is containing key services and the value is an array of dictionary. In our case this array will be having only one dictionary because wee will be adding only one service to cart. This dictionary in our code iss service params.
-//        
-//        print(JSON(params))
-//        
-//        activityIndicator.startAnimating()
-//        NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-//            self?.addToCart.setTitle("CheckOut", for: .normal)
-//            self?.IsAddToCartTapped = true
-//            self?.dryCleaningCollectionView.reloadData()
-//            print("success")
-//            DispatchQueue.main.async {[weak self] in
-//                if let numberOfSections = self?.dryCleaningCollectionView.numberOfSections {
-//                    let lastSection = numberOfSections - 1
-//                    self?.dryCleaningCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
-//                }
-//            }
-//            self?.activityIndicator.stopAnimating()
-//        }) {[weak self] (error) in
-//            print("error")
-//            self?.activityIndicator.stopAnimating()
-//        }
-//    }
+    //    func addServiceToCart() {
+    //        var params:[String:Any] = [:]
+    //        var serviceParams:[String:Any] = [:]
+    //        if let name = serviceModel?.name {
+    //            serviceParams[AddToCart.name] = name  // if name is there then set it. "[AddToCart.name]" is the key. "name" is the value
+    //        }
+    //
+    //        if let alias = serviceModel?.alias {
+    //            serviceParams[AddToCart.alias] = alias
+    //        }
+    //
+    //        if let icon = serviceModel?.icon {
+    //            serviceParams[AddToCart.icon] = icon
+    //        }
+    //
+    //        if let description = serviceModel?.descrip {
+    //            serviceParams[AddToCart.description] = description
+    //        }
+    //
+    //        serviceParams[AddToCart.ordering] = 1
+    //
+    //        if let items = serviceModel?.items {
+    //            var itemArray : [[String?:Any?]] = []
+    //
+    //            for item in items {
+    //                if let maleCount = item.maleCount {
+    //                    if maleCount > 0 {
+    //                        let ItemDict:[String?:Any?] = [
+    //                            "price" : item.price,
+    //                            "qty" : maleCount,
+    //                            "name" : item.name,
+    //                            "male" : "true"
+    //                        ]
+    //                        itemArray.append(ItemDict)
+    //                    }
+    //                }
+    //                if let femaleCount = item.femaleCount {
+    //                    if femaleCount > 0 {
+    //                        let ItemDict:[String?:Any?] = [
+    //                            "price" : item.price,
+    //                            "qty" : femaleCount,
+    //                            "name" : item.name,
+    //                            "female" : "true"
+    //                        ]
+    //                        itemArray.append(ItemDict)
+    //
+    //                    }
+    //                }
+    //            }
+    //            serviceParams[AddToCart.items] = itemArray
+    //        }
+    //
+    //        if let rushDeliveryOptions = serviceModel?.rushDeliveryOptions, rushDeliveryOptions.count > 0 {
+    //            let firstOption = rushDeliveryOptions[0]
+    //            if let turnAroundTime = firstOption.turnAroundTime, let price = firstOption.price {
+    //                let rushDict:[String:Any] = [
+    //                    "turn_around_time":turnAroundTime,
+    //                    "price":price
+    //                ]
+    //                serviceParams[AddToCart.rushDeliveryOptions] = [rushDict] // array of rush delivery options
+    //            }
+    //        }
+    //
+    //        if let needHangersSelected = serviceModel?.isRushDeliverySelected {
+    //            serviceParams[AddToCart.needHangers] = needHangersSelected
+    //        }
+    //
+    //        params[AddToCart.services] = [serviceParams]// JSON is a dictionary because of the {}. The JSON is containing key services and the value is an array of dictionary. In our case this array will be having only one dictionary because wee will be adding only one service to cart. This dictionary in our code iss service params.
+    //
+    //        print(JSON(params))
+    //
+    //        activityIndicator.startAnimating()
+    //        NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+    //            self?.addToCart.setTitle("CheckOut", for: .normal)
+    //            self?.IsAddToCartTapped = true
+    //            self?.dryCleaningCollectionView.reloadData()
+    //            print("success")
+    //            DispatchQueue.main.async {[weak self] in
+    //                if let numberOfSections = self?.dryCleaningCollectionView.numberOfSections {
+    //                    let lastSection = numberOfSections - 1
+    //                    self?.dryCleaningCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+    //                }
+    //            }
+    //            self?.activityIndicator.stopAnimating()
+    //        }) {[weak self] (error) in
+    //            print("error")
+    //            self?.activityIndicator.stopAnimating()
+    //        }
+    //    }
     
     func addServiceToCart() {
         if let serviceModel = serviceModel{
@@ -465,7 +498,13 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         }else if section == 1 {
             return CGSize(width: collectionView.frame.size.width, height:95)
         }else if section == 2 {
-            return CGSize(width: collectionView.frame.size.width, height:134)
+            if imageAdded  {
+                return CGSize(width: collectionView.frame.size.width, height:191)
+            }
+            else
+            {
+                return CGSize(width: collectionView.frame.size.width, height:120)
+            }
         }else if section == 3 {
             return CGSize(width: collectionView.frame.size.width, height:95)
         }else if section == 4 {
@@ -521,5 +560,5 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
             }
         }
     }
-
+    
 }

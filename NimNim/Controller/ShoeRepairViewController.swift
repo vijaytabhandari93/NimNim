@@ -8,12 +8,13 @@
 
 import UIKit
 import NVActivityIndicatorView
+import Kingfisher
 
-class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoeRepairSecondViewControllerDelegate,AddShoeRepairCollectionViewCellDelegate {
+class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoeRepairSecondViewControllerDelegate,AddShoeRepairCollectionViewCellDelegate,ShoeTaskAddedCollectionViewCellDelegate {
+    
+    
     
     var serviceModel:ServiceModel?
-    
-    
     func pushSecondViewController() {
         let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
         let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"ShoeRepairSecondViewController") as? ShoeRepairSecondViewController
@@ -21,18 +22,48 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         NavigationManager.shared.push(viewController: secondViewController)
         secondViewController?.delegate = self
     }
-    
+    // we have created the push function and also created first controller as the delegate of the  first.
     
     func addShoeRepairTask(withTask taskModel:TaskModel?) {
         if let taskModel = taskModel  {
-            if serviceModel?.tasks == nil  {
-                serviceModel?.tasks = []
-            }
             serviceModel?.tasks?.append(taskModel)
+            priceValue.text = getPriceOfService()
         }
-        shoeRepairCollectionView.reloadData()
+        setupScreen()
     }
     
+    
+     func setupCartCountLabel() {
+         let cartCount = fetchNoOfServicesInCart()
+         if cartCount > 0 {
+             basketLabel.text = "\(cartCount)"
+             basketLabel.isHidden = false
+         }else {
+             basketLabel.text = "0"
+             basketLabel.isHidden = true
+         }
+     }
+    func editShoeRepairTask(withTask taskModel: TaskModel?, withindex indexPath: IndexPath) {
+        if let taskModel = taskModel  {
+        serviceModel?.tasks?[indexPath.section] = taskModel
+        priceValue.text = getPriceOfService()
+       }
+        setupScreen()
+        }
+    
+    
+    
+    func  getPriceOfService() ->String {
+        var price = 0
+        if let items =  serviceModel?.tasks {
+            for item in items  {
+                price = item.taskPrice  + price
+            }
+        }
+        return "$\(price)"
+        
+    }
+    // the task which is created in the second view controller is added in the first view controller.
     
     //MARK: IBOutlets
     @IBOutlet weak var basketLabel: UILabel!
@@ -40,14 +71,13 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     @IBOutlet weak var shoeRepairCollectionView: UICollectionView!
     @IBOutlet weak var shoeRepairLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
     @IBOutlet weak var priceTotalbackgroundView: NSLayoutConstraint!
     @IBOutlet weak var justNimNimIt: UIButton!
     @IBOutlet weak var addToCart: UIButton!
-    
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var priceValue: UILabel!
+    
     //MARK:View Controller
     
     override func viewDidLoad() {
@@ -56,29 +86,31 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         registerCells()
         shoeRepairCollectionView.delegate = self
         shoeRepairCollectionView.dataSource = self
+        setupCartCountLabel()
         
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        applyHorizontalNimNimGradient()
-        
+    func setupScreen(){
         if let tasks = serviceModel?.tasks, tasks.count > 0 {
-            addToCart.backgroundColor = Colors.addToCartUnselectable
-            priceTotalbackgroundView.constant = 0
-            totalPrice.isHidden = true
-            priceValue.isHidden = true
-            
-        } else {
             addToCart.backgroundColor = Colors.nimnimGreen
             priceTotalbackgroundView.constant = 48
             justNimNimIt.isHidden = true
             totalPrice.isHidden = false
             priceValue.isHidden = false
+        } else {
+            addToCart.backgroundColor = Colors.addToCartUnselectable
+            priceTotalbackgroundView.constant = 0
+            totalPrice.isHidden = true
+            priceValue.isHidden = true
+            
         }
-       
         shoeRepairCollectionView.reloadData()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        applyHorizontalNimNimGradient()
+        setupScreen()
+        setupCartCountLabel()
     }
     
     
@@ -104,7 +136,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         
     }
-
+    
     //MARK:Collection View Datasource Methods
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -120,7 +152,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         }else {
             if let tasks = serviceModel?.tasks, tasks.count > section {
                 let currentTask = tasks[section]
-                return currentTask.getSelectedItems().count + 1
+                return currentTask.getSelectedItems().count + 1  // the  number  of items in  section  is equal to number of  tasks and add  1.
             }
         }
         return  0
@@ -149,6 +181,9 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         else {
             if indexPath.item == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoeTaskAddedCollectionViewCell", for: indexPath) as! ShoeTaskAddedCollectionViewCell
+                cell.delegate  = self
+                cell.IndexPath = indexPath
+                cell.taskNumberLabel.text  =  "\(indexPath.section + 1).  Task Added"
                 
                 return cell
             }else {
@@ -184,10 +219,44 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.size.width, height:60)
+        var numberOfSections =  0
+        if let tasks = serviceModel?.tasks, tasks.count > 0 {
+            numberOfSections = tasks.count + 1
+        }else {
+            numberOfSections = 1
+        }
+        if indexPath.section == (numberOfSections - 1)  {
+            return CGSize(width: collectionView.frame.size.width, height:60)
+        }
+        else {
+            if indexPath.item == 0 {
+                return CGSize(width: collectionView.frame.size.width, height:30)
+            }else {
+                return CGSize(width: collectionView.frame.size.width, height:22)
+            }
+        }
+    }
+    //Delegate functions of task
+    func editTapped(withIndexPath indexPath: IndexPath?) {
+        let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
+        let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"ShoeRepairSecondViewController") as? ShoeRepairSecondViewController
+        secondViewController?.serviceModel = serviceModel
+        secondViewController?.delegate = self
+        if let model = serviceModel?.tasks?[indexPath!.section] {
+            secondViewController?.taskModel = model
+            secondViewController?.editModeOn = true
+            secondViewController?.indexPath = indexPath
+            NavigationManager.shared.push(viewController: secondViewController)
+            }
+        
     }
     
-    
-    
+    func deleteTapped(withIndexPath indexPath: IndexPath?) {
+        if let model = serviceModel?.tasks?[indexPath!.section] {
+            serviceModel?.tasks?.remove(at: indexPath!.section)
+            shoeRepairCollectionView.reloadData()
+            priceValue.text = getPriceOfService()
+    }
+}
     
 }

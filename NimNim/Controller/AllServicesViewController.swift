@@ -17,7 +17,7 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
     //TODO: Replace this everywhere...
     var servicesModel = ServiceBaseModel.fetchFromUserDefaults()
     var services:[ServiceModel] = []
-
+    
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool){
@@ -79,13 +79,16 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let servicesModel = ServiceBaseModel.fetchFromUserDefaults()
-        //TODO: Small M
         if let Model = servicesModel?.data {
-            if Model.count >= 5  {
-                return 5
-            }else {
-                return Model.count
+            if Model.count >= 8 {
+                return 8
             }
+            else
+            {
+                return Model.count
+                
+            }
+            
         }
         return 0
     }
@@ -98,32 +101,32 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
                 cell.serviceDescription.numberOfLines = 4
                 cell.alias = services[indexPath.row].alias
                 if let alias = services[indexPath.row].alias {
-                var inAlias = checkIfInCart(withAlias: alias)
-                if inAlias == false {
-                    cell.serviceName.textColor = UIColor.black
-                    cell.serviceDescription.textColor = UIColor.black
-                    cell.selectLabel.backgroundColor = Colors.nimnimServicesColor
-                    cell.backgroundCurvedView.backgroundColor = UIColor.white
-                    cell.selectLabel.text = "Select"
-                    cell.selectLabel.textColor = UIColor.white
-                } else {
-                    cell.serviceName.textColor = UIColor.white
-                    cell.serviceDescription.textColor = UIColor.white
-                    cell.backgroundCurvedView.backgroundColor = Colors.nimnimServicesColor
-                    cell.selectLabel.backgroundColor = UIColor.white
-                    cell.selectLabel.text = "Edit"
-                    cell.selectLabel.textColor = Colors.nimnimServicesColor
-                    
+                    var inAlias = checkIfInCart(withAlias: alias)
+                    if inAlias == false {
+                        cell.serviceName.textColor = UIColor.black
+                        cell.serviceDescription.textColor = UIColor.black
+                        cell.selectLabel.backgroundColor = Colors.nimnimServicesColor
+                        cell.backgroundCurvedView.backgroundColor = UIColor.white
+                        cell.selectLabel.text = "Select"
+                        cell.selectLabel.textColor = UIColor.white
+                    } else {
+                        cell.serviceName.textColor = UIColor.white
+                        cell.serviceDescription.textColor = UIColor.white
+                        cell.backgroundCurvedView.backgroundColor = Colors.nimnimServicesColor
+                        cell.selectLabel.backgroundColor = UIColor.white
+                        cell.selectLabel.text = "Edit"
+                        cell.selectLabel.textColor = Colors.nimnimServicesColor
+                        
+                    }
                 }
-                }
-            if let url = services[indexPath.row].icon {
+                if let url = services[indexPath.row].icon {
                     if let urlValue = URL(string: url)
                     {
                         cell.serviceImage.kf.setImage(with: urlValue)
                     }
                 }
                 
-           
+                
             }
             
             return cell
@@ -168,23 +171,22 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
             
             
         }else if services[indexPath.row].alias == "shoe-repair" {
-            let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController") as! ShoeRepairViewController
-            dryCleaningVC.serviceModel = services[indexPath.row]  //refers to 4th element
-            NavigationManager.shared.push(viewController: dryCleaningVC)
+            let shoeRepairVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController") as! ShoeRepairViewController
+            shoeRepairVC.serviceModel = services[indexPath.row]  //refers to 4th element
+            NavigationManager.shared.push(viewController: shoeRepairVC)
         }else if services[indexPath.row].alias == "tailoring" {
+            let rugVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController") as! RugCleaningViewController
+            rugVC.serviceModel = services[indexPath.row]
+            NavigationManager.shared.push(viewController: rugVC)
             
-        }else if services[indexPath.row].alias == "carpet-cleaning" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
-            NavigationManager.shared.push(viewController: householdVC)
+        }else if services[indexPath.row].alias == "carpet-cleaning" {
+            let rugVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController") as! RugCleaningViewController
+            rugVC.serviceModel = services[indexPath.row]
+            NavigationManager.shared.push(viewController: rugVC)
         }
-        else if services[indexPath.row].alias == "leather-and-special-care-items" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
-            NavigationManager.shared.push(viewController: householdVC)
-            
-        }
+        
         else {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
             NavigationManager.shared.push(viewController: householdVC)
-            
-            
-            
-        }
+            }
     }
 }

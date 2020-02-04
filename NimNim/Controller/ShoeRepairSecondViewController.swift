@@ -12,77 +12,72 @@ import NVActivityIndicatorView
 
 protocol ShoeRepairSecondViewControllerDelegate:class {
     func addShoeRepairTask(withTask taskModel:TaskModel?)
+    func editShoeRepairTask(withTask taskModel:TaskModel? , withindex indexPath:IndexPath)
 }
 
 class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, SpecialNotesCollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,ShoeRepairCollectionViewCellDelegate,DropDownCollectionViewCellDelegate {
     
     
     //MARK: IBOutlets
+    
+    @IBOutlet weak var repairToaddorUpdate: UIButton!
     @IBOutlet weak var priceTotalBackgroundView: UIView!
     @IBOutlet weak var shoeRepairCollectionView: UICollectionView!
     @IBOutlet weak var shoeRepairLabel: UILabel!
-    @IBOutlet weak var womenButton: UIButton!
-    @IBOutlet weak var menButton: UIButton!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
-    enum SelectionType: Int {
-        case women
-        case men
-    }
+    
+    var indexPath : IndexPath?
+    var editModeOn :  Bool  = false
+    
+    var imageAdded : Bool = false
     var activeTextView : UITextView?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     var selectedDropDownIndex:Int?
     weak var delegate:ShoeRepairSecondViewControllerDelegate?
-    var selectedState:SelectionType! {
-        didSet {
-            if selectedState == .women {
-                resetButtons()
-                womenButton.isSelected = true
-                womenButton.titleLabel?.font = Fonts.semiBold16
-                womenButton.setTitleColor(UIColor.white, for: .normal)
-                shoeRepairCollectionView.reloadData()
-            }else {
-                resetButtons()
-                menButton.isSelected = true
-                menButton.titleLabel?.font = Fonts.semiBold16
-                menButton.setTitleColor(UIColor.white, for: .normal)
-                shoeRepairCollectionView.reloadData()
-            }
-        }
-    }
     var serviceModel:ServiceModel?
     var taskModel:TaskModel?
+    @IBOutlet weak var priceLabel: UILabel!
     
     @IBAction func AddSShoereepairTaskTapped(_ sender: Any) {
-        delegate?.addShoeRepairTask(withTask: taskModel)
+        if editModeOn{
+            if let indexPath = indexPath {
+                 delegate?.editShoeRepairTask(withTask: taskModel, withindex : indexPath)
+            }
+           
+        } else
+        {
+          delegate?.addShoeRepairTask(withTask: taskModel)
+        }
         navigationController?.popViewController(animated: true)
     }
+    
     //MARK:View Controller
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if editModeOn {
+            repairToaddorUpdate.setTitle("Edit Shoe Repair Task", for: .normal)
+               }
         setupTaskModel()
         registerCells()
         shoeRepairCollectionView.delegate = self
         shoeRepairCollectionView.dataSource = self
-        selectedState = .women
         addObservers()
+        setupPrice()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if editModeOn {
+            repairToaddorUpdate.titleLabel?.text = "Edit Shoe Repair Task"
+        }
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
         priceTotalBackgroundView.addTopShadowToView()
+        setupPrice()
     }
     
-    func resetButtons() {
-        menButton.isSelected = false
-        womenButton.isSelected = false
-        menButton.setTitleColor(Colors.nimnimGenderWhite, for: .normal)
-        menButton.titleLabel?.font = Fonts.regularFont12
-        womenButton.setTitleColor(Colors.nimnimGenderWhite, for: .normal)
-        womenButton.titleLabel?.font = Fonts.regularFont12
-    }
+    
     
     func setupTaskModel() {
         if taskModel == nil {
@@ -96,10 +91,12 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
                 }
             }
             selectedDropDownIndex = 0
-            taskModel?.gender = "male"
+            taskModel?.gender = "male" // to first show men items
         }
         
     }
+    
+    //the above is the main function which is used to setup the task model. We are creating a copy of the itemModels and assigning to the  above created task model. This is required  otherwise it will be resulting in copy by reference.
     
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
@@ -138,13 +135,6 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
         NavigationManager.shared.push(viewController: orderReviewVC)
     }
     
-    @IBAction func womenTapped(_ sender: Any) {
-        selectedState = .women
-    }
-    
-    @IBAction func menTapped(_ sender: Any) {
-        selectedState = .men
-    }
     
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -167,7 +157,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DropDownCollectionViewCell", for: indexPath) as! DropDownCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DropDownCollectionViewCell", for: indexPath) as! DropDownCollectionViewCell
             cell.headingLabel.text = "Please select your type of shoe".uppercased()
             cell.configureCell(withOptions: ["Male","Female"], withSelectedIndex: selectedDropDownIndex)
             cell.delegate = self
@@ -176,12 +166,32 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
         else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
             cell.delegate = self
+            if let ImageNames =  taskModel?.uploadedImages, ImageNames.count > 0 {
+                if let urlValue = URL(string: ImageNames[0])
+                {
+                    cell.firstImage.kf.setImage(with: urlValue)
+                }
+                
+            }
+            if let ImageNames =  taskModel?.uploadedImages, ImageNames.count > 1 {
+                if let urlValue = URL(string: ImageNames[1])
+                {
+                    cell.secondImage.kf.setImage(with: urlValue)
+                }
+            }
+            if let ImageNames =  taskModel?.uploadedImages, ImageNames.count > 2 {
+                if let urlValue = URL(string: ImageNames[2])
+                {
+                    cell.thirdImage.kf.setImage(with: urlValue)
+                }
+            }
             return cell
-        }else {
+        }
+        else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoeRepairCollectionViewCell", for: indexPath) as! ShoeRepairCollectionViewCell
             cell.actionLabel.text = taskModel?.getGenderSpecificItems()[indexPath.item].name
             if let price = taskModel?.getGenderSpecificItems()[indexPath.item].price {
-                cell.priceLabel.text = "\(price)"
+                cell.priceLabel.text = "$\(price)"
             }
             cell.delegate = self
             if let state = taskModel?.getGenderSpecificItems()[indexPath.item].isSelectedShoeRepairPreference
@@ -213,15 +223,21 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
             return CGSize(width: collectionView.frame.size.width, height: 66)
         }
         else if indexPath.section == 1 {
-            return CGSize(width: collectionView.frame.size.width, height:191)
-        }else {
-            return CGSize(width: collectionView.frame.size.width, height:54)
+            if imageAdded  {
+                return CGSize(width: collectionView.frame.size.width, height:191)
+            }
+            else
+            {
+                return CGSize(width: collectionView.frame.size.width, height:120)
+            }
             
-        }
+        }else {
+            return CGSize(width: collectionView.frame.size.width, height:45)
+            }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 2  {
-            return CGSize(width: collectionView.frame.size.width, height: 92)
+            return CGSize(width: collectionView.frame.size.width, height: 72)
         } else{
             return CGSize(width: collectionView.frame.size.width, height: 0)
         }
@@ -256,6 +272,8 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.taskModel?.uploadedImages.append(imagePath)
+                    self?.imageAdded = true
+                    self?.shoeRepairCollectionView.reloadData()
                 }
             }
             }, withProgress: { (progress) in
@@ -266,7 +284,6 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
             print(error)
         }
     }
-    
     
     //MARK: SpecialNotesTableViewCellDelegate
     func sendImage(){// To tell the VC to send image post call
@@ -321,6 +338,8 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
     @objc func backViewTapped() {
         view.endEditing(true) //to shutdown the keyboard. Wheneever you tap the text field on a specific screeen , then that screen becomes the first responder of the keyoard.
     }
+    
+    //delegate function of ShoeRepairCollectionViewCellDelegate
     func preferenceSelected(withIndexPath indexPath: IndexPath?) {
         if let indexPath = indexPath {
             if let state = taskModel?.getGenderSpecificItems()[indexPath.item].isSelectedShoeRepairPreference
@@ -329,7 +348,19 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
             }
         }
         shoeRepairCollectionView.reloadData()
+        setupPrice()
+       
     }
+      
+    func setupPrice(){
+        if let taskPrice = taskModel?.getSelectedItemsPrice()
+        {
+          priceLabel.text = "$\(taskPrice)"
+          taskModel?.taskPrice = taskPrice
+        }
+
+    }
+    // the  above function  is used to capture the  effect of checking and unchecking done in the ShoeRepairCollectionViewCell. The taskmModel's  item array's isSelectedShoeRepairPreference is made true and false accoringly.
     
     //MARK: DropDownCollectionViewCellDelegate Methods
     func selectedDropDownValue(withValue value:String?, withIndex index:Int?) {
@@ -339,7 +370,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
         }else {
             taskModel?.gender = "female"
         }
-        selectedDropDownIndex = index
+        selectedDropDownIndex = index  //global variable
         shoeRepairCollectionView.reloadData()
     }
     

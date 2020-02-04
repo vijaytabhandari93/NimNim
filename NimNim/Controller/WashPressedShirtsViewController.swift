@@ -9,9 +9,11 @@
 import UIKit
 import NVActivityIndicatorView
 import SwiftyJSON
+import Kingfisher
 
 class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate,BoxedCollectionViewCellDelegate{
     
+    var imageAdded : Bool = false
     var defaultStateJustNimNimIt : Bool = false
     var activeTextField : UITextField?
     var isHeightAdded = false // global variable made for keyboard height modification
@@ -58,8 +60,8 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
-        @IBOutlet weak var justNimNimIt: UIButton!
-    var justNimNimItSelected : Bool = false
+    @IBOutlet weak var justNimNimIt: UIButton!
+    
     
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     //IBActions
@@ -80,21 +82,23 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         
     }
     @IBAction func justNimNimIt(_ sender: Any) {
-        serviceModel?.setupNimNimItForWashPressedShirts()
-        WashPressedShirtCollectionView.reloadData()
         defaultStateJustNimNimIt = !defaultStateJustNimNimIt
-        justNimNimItSelected  = !justNimNimItSelected
-        if justNimNimItSelected {
+        if defaultStateJustNimNimIt {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            serviceModel?.setupNimNimItForWashPressedShirts()
         }
         else
         {
             justNimNimIt.backgroundColor = .white
             justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.undoSetupNimNimItForWashPressedShirts()
+            
         }
+        setupPrice()
+        WashPressedShirtCollectionView.reloadData()
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
@@ -123,11 +127,19 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     
     func setupPrice() {
-        if let price = serviceModel?.calculatePriceForService() {
+        if defaultStateJustNimNimIt {
+            let price = "$0"
             priceLabel.text = price
             serviceModel?.servicePrice = price
         }
+        else {
+            if let price = serviceModel?.calculatePriceForService() {
+                priceLabel.text = price
+                serviceModel?.servicePrice = price}
+        }
+        
     }
+    
     
     //    func addServiceToCart() {
     //        var params:[String:Any] = [:]
@@ -357,9 +369,6 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         }
         WashPressedShirtCollectionView.delegate = self
         WashPressedShirtCollectionView.dataSource = self
-        if let priceOfService = serviceModel?.costPerPiece {
-            priceLabel.text = "\(priceOfService)"
-        }
         setupAddToCartButton()
         setupCartCountLabel()
         addObservers()
@@ -460,10 +469,10 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
             cell.delegate = self
             cell.titleLabel.text = "Number of Clothes"
             if let noOfClothes = serviceModel?.numberOfClothes {
-                     cell.noOfPieces.text = "\(noOfClothes)"
+                cell.noOfPieces.text = "\(noOfClothes)"
             }
             else {
-               cell.noOfPieces.text = nil
+                cell.noOfPieces.text = nil
             }
             return cell
             
@@ -513,6 +522,25 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         if section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
             cell.delegate = self
+            if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 0 {
+                if let urlValue = URL(string: ImageNames[0])
+                {
+                    cell.firstImage.kf.setImage(with: urlValue)
+                }
+                
+            }
+            if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 1 {
+                if let urlValue = URL(string: ImageNames[1])
+                {
+                    cell.secondImage.kf.setImage(with: urlValue)
+                }
+            }
+            if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 2 {
+                if let urlValue = URL(string: ImageNames[2])
+                {
+                    cell.thirdImage.kf.setImage(with: urlValue)
+                }
+            }
             return cell
         }
         if section == 3 {
@@ -544,7 +572,13 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         }else if section == 1 {
             return CGSize(width: collectionView.frame.size.width, height:104)
         }else if section == 2 {
-            return CGSize(width: collectionView.frame.size.width, height:134)
+            if imageAdded  {
+                return CGSize(width: collectionView.frame.size.width, height:191)
+            }
+            else
+            {
+                return CGSize(width: collectionView.frame.size.width, height:120)
+            }
         }else if section == 3 {
             return CGSize(width: collectionView.frame.size.width, height:95)
         }else if section == 4 {
@@ -599,6 +633,8 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.serviceModel?.uploadedImages.append(imagePath)
+                    self?.imageAdded = true
+                    self?.WashPressedShirtCollectionView.reloadData()
                 }
             }
             }, withProgress: { (progress) in

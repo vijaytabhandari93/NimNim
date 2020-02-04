@@ -302,17 +302,17 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
         if indexPath.item == 0 {
-            return CGSize(width: collectionView.frame.size.width, height:71)
+            return CGSize(width: collectionView.frame.size.width, height:60)
         }
         else if(indexPath.item == (numberOfItems  - 2)) {
-            return CGSize(width: collectionView.frame.size.width, height:80)
+            return CGSize(width: collectionView.frame.size.width, height:50)
         }
             else if(indexPath.item == (numberOfItems  - 1)) {
-                return CGSize(width: collectionView.frame.size.width, height:229)
+                return CGSize(width: collectionView.frame.size.width, height:175)
             }
         else
         {
-            return CGSize(width: collectionView.frame.size.width, height:150)
+            return CGSize(width: collectionView.frame.size.width, height:90)
         }
     }
     

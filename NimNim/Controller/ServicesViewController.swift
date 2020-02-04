@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import NVActivityIndicatorView
+import Kingfisher
 
 class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate{
     //IBOutlets
@@ -20,11 +21,11 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     @IBOutlet weak var priceLabel: UILabel! 
     @IBOutlet weak var addToCart: UIButton!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
-    
-    
     @IBOutlet weak var justNimNimIt: UIButton!
-    var justNimNimItSelected : Bool = false
     
+    
+    var justNimNimItSelected : Bool = false
+    var imageAdded : Bool = false
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
@@ -125,20 +126,21 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     @IBAction func justNimNimIt(_ sender: Any) {
-        justNimNimItSelected  = !justNimNimItSelected
+        justNimNimItSelected = !justNimNimItSelected
         if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            serviceModel?.setupNimNimItForWashAndFold()
         }
         else
         {
             justNimNimIt.backgroundColor = .white
             justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.undosetupNimNimItForWashAndFold()
+            
         }
-        
-        serviceModel?.setupNimNimItForWashAndFold()
         prefernces.reloadData()
     }
     
@@ -240,6 +242,8 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.serviceModel?.uploadedImages.append(imagePath)
+                    self?.imageAdded = true
+                    self?.prefernces.reloadData()
                 }
             }
             self?.activityIndicator.stopAnimating()
@@ -366,6 +370,25 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         }else if section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
             cell.delegate = self
+            if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 0 {
+                           if let urlValue = URL(string: ImageNames[0])
+                           {
+                               cell.firstImage.kf.setImage(with: urlValue)
+                           }
+                           
+                       }
+                       if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 1 {
+                           if let urlValue = URL(string: ImageNames[1])
+                           {
+                               cell.secondImage.kf.setImage(with: urlValue)
+                           }
+                       }
+                       if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 2 {
+                           if let urlValue = URL(string: ImageNames[2])
+                           {
+                               cell.thirdImage.kf.setImage(with: urlValue)
+                           }
+                       }
             return cell
         }else if section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
@@ -397,8 +420,15 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             return CGSize(width: collectionView.frame.size.width, height:104)
         }
         else if section == 1 {
+            if imageAdded  {
             return CGSize(width: collectionView.frame.size.width, height:191)
-        }else if section == 2 {
+        }
+        else
+        {
+            return CGSize(width: collectionView.frame.size.width, height:120)
+        }
+        }
+        else if section == 2 {
             return CGSize(width: collectionView.frame.size.width, height:95)
         }else if section == 3 {
             return CGSize(width: collectionView.frame.size.width, height:48)

@@ -88,7 +88,7 @@
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cBJ-h2-bQ6">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cBJ-h2-bQ6">
                                 <rect key="frame" x="28" y="122.5" width="52" height="52"/>
                                 <color key="backgroundColor" red="0.76470588235294112" green="0.79607843137254897" blue="0.85098039215686272" alpha="0.16" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
@@ -101,7 +101,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nVF-oj-uve">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nVF-oj-uve">
                                 <rect key="frame" x="88" y="122.5" width="52" height="52"/>
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.79607843140000001" blue="0.85098039219999999" alpha="0.16" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
@@ -114,7 +114,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hik-I2-EJ7">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hik-I2-EJ7">
                                 <rect key="frame" x="148" y="122.5" width="52" height="52"/>
                                 <color key="backgroundColor" red="0.76470588240000004" green="0.79607843140000001" blue="0.85098039219999999" alpha="0.16" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>

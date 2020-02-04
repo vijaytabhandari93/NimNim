@@ -21,17 +21,15 @@ class DropDownCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
+
     }
     
-    func setupDropDown() {
-        
-    }
+
     
     func configureCell(withOptions options:[String], withSelectedIndex selectedIndex:Int?) {
         dropDownTextField.optionArray = options
         if let selectedIndex = selectedIndex {
+             dropDownTextField.text = options[selectedIndex]
             dropDownTextField.selectedIndex = selectedIndex
         }
         dropDownTextField.didSelect {[weak self] (option, index, id) in
