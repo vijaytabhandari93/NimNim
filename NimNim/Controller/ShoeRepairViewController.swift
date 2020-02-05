@@ -9,11 +9,12 @@
 import UIKit
 import NVActivityIndicatorView
 import Kingfisher
+import SwiftyJSON
 
 class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoeRepairSecondViewControllerDelegate,AddShoeRepairCollectionViewCellDelegate,ShoeTaskAddedCollectionViewCellDelegate {
     
     
-    
+    var justNimNimItSelected : Bool = false
     var serviceModel:ServiceModel?
     func pushSecondViewController() {
         let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
@@ -33,23 +34,23 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     
     
-     func setupCartCountLabel() {
-         let cartCount = fetchNoOfServicesInCart()
-         if cartCount > 0 {
-             basketLabel.text = "\(cartCount)"
-             basketLabel.isHidden = false
-         }else {
-             basketLabel.text = "0"
-             basketLabel.isHidden = true
-         }
-     }
+    func setupCartCountLabel() {
+        let cartCount = fetchNoOfServicesInCart()
+        if cartCount > 0 {
+            basketLabel.text = "\(cartCount)"
+            basketLabel.isHidden = false
+        }else {
+            basketLabel.text = "0"
+            basketLabel.isHidden = true
+        }
+    }
     func editShoeRepairTask(withTask taskModel: TaskModel?, withindex indexPath: IndexPath) {
         if let taskModel = taskModel  {
-        serviceModel?.tasks?[indexPath.section] = taskModel
-        priceValue.text = getPriceOfService()
-       }
-        setupScreen()
+            serviceModel?.tasks?[indexPath.section] = taskModel
+            priceValue.text = getPriceOfService()
         }
+        setupScreen()
+    }
     
     
     
@@ -87,23 +88,36 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         shoeRepairCollectionView.delegate = self
         shoeRepairCollectionView.dataSource = self
         setupCartCountLabel()
+        setupScreen()
         
     }
     func setupScreen(){
-        if let tasks = serviceModel?.tasks, tasks.count > 0 {
+        if justNimNimItSelected{
             addToCart.backgroundColor = Colors.nimnimGreen
-            priceTotalbackgroundView.constant = 48
-            justNimNimIt.isHidden = true
-            totalPrice.isHidden = false
-            priceValue.isHidden = false
-        } else {
-            addToCart.backgroundColor = Colors.addToCartUnselectable
-            priceTotalbackgroundView.constant = 0
-            totalPrice.isHidden = true
-            priceValue.isHidden = true
+            addToCart.isEnabled = true
+        }
+        else
+        {
+            if let tasks = serviceModel?.tasks, tasks.count > 0 {
+                addToCart.backgroundColor = Colors.nimnimGreen
+                addToCart.isEnabled = true
+                priceTotalbackgroundView.constant = 48
+                justNimNimIt.isHidden = true
+                totalPrice.isHidden = false
+                priceValue.isHidden = false
+            } else {
+                addToCart.backgroundColor = Colors.addToCartUnselectable
+                addToCart.isEnabled = false
+                priceTotalbackgroundView.constant = 0
+                totalPrice.isHidden = true
+                priceValue.isHidden = true
+                
+            }
+            shoeRepairCollectionView.reloadData()
             
         }
-        shoeRepairCollectionView.reloadData()
+        
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,7 +134,31 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func addToCartTapped(_ sender: Any) {
+        let params = serviceModel?.toJSON()
+        print(JSON(params))
+    }
+    
+    
     @IBAction func justNimNimIt(_ sender: Any) {
+        
+        justNimNimItSelected = !justNimNimItSelected
+        if justNimNimItSelected {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            
+            
+        }
+        setupScreen()
+        shoeRepairCollectionView.reloadData()
     }
     
     @IBAction func basketTapped(_ sender: Any) {
@@ -159,11 +197,16 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if let tasks = serviceModel?.tasks, tasks.count > 0 {
-            return tasks.count + 1
-        }else {
-            return 1
+        if justNimNimItSelected{
+            return 0
+        }  else {
+            if let tasks = serviceModel?.tasks, tasks.count > 0 {
+                return tasks.count + 1
+            }else {
+                return 1
+            }
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -247,16 +290,18 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
             secondViewController?.editModeOn = true
             secondViewController?.indexPath = indexPath
             NavigationManager.shared.push(viewController: secondViewController)
-            }
+        }
         
     }
     
     func deleteTapped(withIndexPath indexPath: IndexPath?) {
-        if let model = serviceModel?.tasks?[indexPath!.section] {
-            serviceModel?.tasks?.remove(at: indexPath!.section)
-            shoeRepairCollectionView.reloadData()
-            priceValue.text = getPriceOfService()
+        if let indexPath = indexPath{
+            if let _ = serviceModel?.tasks?[indexPath.section] {
+                serviceModel?.tasks?.remove(at: indexPath.section)
+                shoeRepairCollectionView.reloadData()
+                priceValue.text = getPriceOfService()
+            }
+        }
     }
-}
     
 }

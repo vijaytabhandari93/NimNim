@@ -1239,6 +1239,9 @@
                                         <state key="normal" title="Add to Cart">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addToCartTapped:" destination="FxO-gM-fpC" eventType="touchUpInside" id="bFR-5P-wFb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -1376,7 +1379,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rug Cleaning" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayu-Nj-w17">
-                                        <rect key="frame" x="137.5" y="13" width="139.5" height="24"/>
+                                        <rect key="frame" x="147" y="13" width="120.5" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="McJ-tQ-bKk"/>
                                         </constraints>
@@ -1463,13 +1466,13 @@
                                 <rect key="frame" x="0.0" y="766" width="414" height="48"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vj2-1j-IZG">
-                                        <rect key="frame" x="28" y="15.5" width="76" height="17.5"/>
+                                        <rect key="frame" x="28" y="16" width="65.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1.75" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udo-Wi-GSD">
-                                        <rect key="frame" x="352" y="15.5" width="34" height="17.5"/>
+                                        <rect key="frame" x="350.5" y="16" width="35.5" height="16.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>

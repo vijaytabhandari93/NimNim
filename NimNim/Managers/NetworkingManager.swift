@@ -55,7 +55,8 @@ class NetworkingManager {
                 return
             }
             print("Request:\(String(describing: response.request ?? nil))")
-            print("Response:\(String(describing: response.result.value ?? nil))")
+            let json = JSON(response.result.value)
+            print("Response:\(String(describing: json))")
            // print("JSON Response:\(JSON(response.result.value))")
             if statusCode >= 200 && statusCode < 400 {                success?(response.result.value) // call of closure
             }else {
