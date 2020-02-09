@@ -88,11 +88,8 @@
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Default Preference : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBx-PV-Wwg">
-                                <rect key="frame" x="28" y="127.5" width="150" height="17.5"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="Qzo-Z6-Low"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PickUp/DropOff Preference : " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBx-PV-Wwg">
+                                <rect key="frame" x="28" y="127.5" width="205.5" height="17.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -111,7 +108,7 @@
                                 </constraints>
                                 <state key="normal" image="editIconGrey"/>
                                 <connections>
-                                    <action selector="editPreferenceTapped:" destination="Bqy-qF-Zxa" eventType="touchUpInside" id="UQw-aY-eC5"/>
+                                    <action selector="editPreferenceTapped:" destination="Bqy-qF-Zxa" eventType="touchUpInside" id="Gfu-qO-Lp6"/>
                                 </connections>
                             </button>
                         </subviews>

@@ -8,11 +8,12 @@
 
 import UIKit
 
-protocol deliverynotesCollectionViewCellDelegate:class{
+protocol DeliverynotesCollectionViewCellDelegate:class{
     func sendImage()// To tell the VC to send image post call
     func textViewStartedEditingInCell(withTextField textView
         :UITextView) // To tell the VC to add tap geture to the view and to pass the text View selected
     func textViewEndedEditingInCell(withTextField textView : UITextView) // To tell the VC to remove the tap gesture from the view and to pass the textview upon which end editing has been called
+    func preferenceTapped()
 }
 
 
@@ -22,17 +23,12 @@ class deliverynotesCollectionViewCell: UICollectionViewCell,UITextViewDelegate {
     @IBOutlet weak var preferenceSelected: UILabel!
     @IBOutlet weak var uploadImage: UIImageView!
     var notesWritten : String?
-    weak var delegate : deliverynotesCollectionViewCellDelegate?
+    weak var delegate : DeliverynotesCollectionViewCellDelegate?
     
-//    @IBAction func editPreferenceTapped(_ sender: Any) {
-//   if let vc = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
-//    {
-//        present(vc, animated: true, completion: nil)
-//                vc?.reselection = true
-//    }
-//   
-//       
-//    }
+    @IBAction func editPreferenceTapped(_ sender: Any) {
+        
+        delegate?.preferenceTapped()
+    }
     
     @IBAction func uploadImageTapped(_ sender: Any) {
             delegate?.sendImage()
@@ -41,9 +37,19 @@ class deliverynotesCollectionViewCell: UICollectionViewCell,UITextViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        preferenceSelected.text = UserDefaults.standard.object(forKey: UserDefaultKeys.pickUpDropOfPreferences) as! String
+        
         notes.delegate = self
         notes.textContainerInset = UIEdgeInsets(top: 18, left: 20, bottom: 18, right: 20)
+    }
+    
+    func configureCell() {
+        if let pref = UserDefaults.standard.object(forKey: UserDefaultKeys.pickUpDropOfPreferences) as? String  {
+            preferenceSelected.text = pref
+            preferenceSelected.textColor = Colors.nimnimGreen
+        }else {
+            preferenceSelected.text = "Please choose your preference"
+            preferenceSelected.textColor = Colors.nimnimGrey
+        }
     }
 
   func textViewShouldBeginEditing(_ textView: UITextView) -> Bool{

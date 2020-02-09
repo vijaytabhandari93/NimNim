@@ -46,18 +46,17 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="IBB-A6-sCM" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="1jC-AL-Ifv"/>
                 <constraint firstItem="xgA-Iq-3OW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="4fo-Qx-vo4"/>
                 <constraint firstAttribute="bottom" secondItem="xgA-Iq-3OW" secondAttribute="bottom" id="ALC-xO-8Qk"/>
                 <constraint firstAttribute="trailing" secondItem="xgA-Iq-3OW" secondAttribute="trailing" constant="28" id="Ld0-eH-CdN"/>
                 <constraint firstItem="IBB-A6-sCM" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="U8h-dv-ZtN"/>
-                <constraint firstItem="IBB-A6-sCM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="n08-KK-gPM"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="375" height="40"/>
             <connections>
                 <outlet property="addAddressButton" destination="YRH-sL-fix" id="PZX-mf-4dz"/>
                 <outlet property="bottomSeparator" destination="xgA-Iq-3OW" id="PTH-R1-lJr"/>
-                <outlet property="stackViewTopConstraint" destination="n08-KK-gPM" id="goQ-DT-D8C"/>
             </connections>
             <point key="canvasLocation" x="3.6231884057971016" y="12.053571428571429"/>
         </collectionViewCell>

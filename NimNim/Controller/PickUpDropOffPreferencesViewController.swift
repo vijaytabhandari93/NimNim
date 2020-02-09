@@ -107,13 +107,12 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
     @IBAction func nextTapped(_ sender: Any) {
         if reselection{
             if screenTypeValue == .pickUpDropOff {
-            if let selectedIndexPath = selectedIndexPath {
-        UserDefaults.standard.set(titleArray[selectedIndexPath.row], forKey: UserDefaultKeys.pickUpDropOfPreferences)
-            let servicesStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-             let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "SelectAddressViewController") as? SelectAddressViewController
-                 NavigationManager.shared.push(viewController: allServices)
-             
-                }}} else {
+                if let selectedIndexPath = selectedIndexPath {
+                    UserDefaults.standard.set(titleArray[selectedIndexPath.row], forKey: UserDefaultKeys.pickUpDropOfPreferences)
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        } else {
             if screenTypeValue == .pickUpDropOff {
                                  if let selectedIndexPath = selectedIndexPath {
                                      UserDefaults.standard.set(titleArray[selectedIndexPath.row], forKey: UserDefaultKeys.pickUpDropOfPreferences)

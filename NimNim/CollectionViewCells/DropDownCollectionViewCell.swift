@@ -21,7 +21,8 @@ class DropDownCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        dropDownTextField.selectedRowColor = Colors.nimnimGreen
+        dropDownTextField.checkMarkEnabled = false
     }
     
 

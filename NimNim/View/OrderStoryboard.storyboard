@@ -533,32 +533,6 @@ place an order.</string>
                                     <constraint firstItem="baD-kV-afk" firstAttribute="centerY" secondItem="pLc-30-HKy" secondAttribute="centerY" id="ZuB-Tl-Ghs"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ap-bn-FJj">
-                                <rect key="frame" x="0.0" y="766" width="414" height="48"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Net Payable Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFp-oz-Reh">
-                                        <rect key="frame" x="28" y="15.5" width="150.5" height="17.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
-                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qR-wg-w4k">
-                                        <rect key="frame" x="351" y="15.5" width="35" height="17.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
-                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="01u-tZ-YQ5"/>
-                                    <constraint firstAttribute="height" constant="48" id="KrQ-f2-NQh"/>
-                                    <constraint firstItem="1qR-wg-w4k" firstAttribute="centerY" secondItem="3Ap-bn-FJj" secondAttribute="centerY" id="YVk-0X-2jY"/>
-                                    <constraint firstAttribute="trailing" secondItem="1qR-wg-w4k" secondAttribute="trailing" constant="28" id="g6I-VX-Le2"/>
-                                    <constraint firstItem="JFp-oz-Reh" firstAttribute="centerY" secondItem="3Ap-bn-FJj" secondAttribute="centerY" id="ker-hO-gd0"/>
-                                    <constraint firstItem="JFp-oz-Reh" firstAttribute="leading" secondItem="3Ap-bn-FJj" secondAttribute="leading" constant="28" id="m26-yV-S1D"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KLe-7T-w7V">
                                 <rect key="frame" x="0.0" y="814" width="414" height="48"/>
                                 <subviews>
@@ -606,6 +580,32 @@ place an order.</string>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ap-bn-FJj">
+                                <rect key="frame" x="0.0" y="766" width="414" height="48"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Net Payable Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JFp-oz-Reh">
+                                        <rect key="frame" x="28" y="15.5" width="150.5" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1qR-wg-w4k">
+                                        <rect key="frame" x="351" y="15.5" width="35" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="01u-tZ-YQ5"/>
+                                    <constraint firstAttribute="height" constant="48" id="KrQ-f2-NQh"/>
+                                    <constraint firstItem="1qR-wg-w4k" firstAttribute="centerY" secondItem="3Ap-bn-FJj" secondAttribute="centerY" id="YVk-0X-2jY"/>
+                                    <constraint firstAttribute="trailing" secondItem="1qR-wg-w4k" secondAttribute="trailing" constant="28" id="g6I-VX-Le2"/>
+                                    <constraint firstItem="JFp-oz-Reh" firstAttribute="centerY" secondItem="3Ap-bn-FJj" secondAttribute="centerY" id="ker-hO-gd0"/>
+                                    <constraint firstItem="JFp-oz-Reh" firstAttribute="leading" secondItem="3Ap-bn-FJj" secondAttribute="leading" constant="28" id="m26-yV-S1D"/>
+                                </constraints>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rdA-68-Ikx" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
                                 <rect key="frame" x="182" y="423" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1058,7 +1058,7 @@ place an order.</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8At-nS-huR">
-                                        <rect key="frame" x="130.5" y="13" width="153.5" height="23.5"/>
+                                        <rect key="frame" x="118.5" y="12.5" width="177.5" height="24.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>

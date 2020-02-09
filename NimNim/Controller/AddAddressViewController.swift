@@ -101,20 +101,26 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
     }
     func postAddress(streetAddress : String?, houseBlockNumber : String?,city : String?,state : String?,zipcode : String?,enterLandmark : String?,label:String?){
-        guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let enterLandmark = enterLandmark,let label = label else {
+        guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let label = label else {
+            let alert = UIAlertController(title: "Alert", message: "Please fill all the mandatory fields.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
             return
         }
         
         
-        let params:[String:Any] = [ 
+        var params:[String:Any] = [
             AddAddress.streetAddress:streetAddress,
             AddAddress.houseBlockNumber:houseBlockNumber,
             AddAddress.city:city,
             AddAddress.state:state,
             AddAddress.zipcode:zipcode,
-            AddAddress.enterLandmark:enterLandmark,
             AddAddress.label:label
         ]
+        
+        if let enterLandmark = enterLandmark {
+            params[AddAddress.enterLandmark] = enterLandmark
+        }
         
         activityIndicator.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.addAddress, withParams: params, withSuccess: { (response) in
@@ -311,7 +317,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             
         else if indexPath.item == 5 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
-            cell.label.text = "ENTER LANDMARK"
+            cell.label.text = "ENTER LANDMARK (optional)"
             if editTapped == true {
                 cell.addressText.text = model?.landmark
                 

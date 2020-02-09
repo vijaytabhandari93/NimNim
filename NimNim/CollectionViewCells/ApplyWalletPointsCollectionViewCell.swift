@@ -26,14 +26,14 @@ class ApplyWalletPointsCollectionViewCell: UICollectionViewCell {
     
     func configureCell(withCartModel cartModel:CartModel?) {
         self.cartModel = cartModel
-        if  pointsinWallet == 0 {
+        apply.isEnabled = true
+        if pointsinWallet == 0 {
             setupUIforNonselectablestate()
             setupUI(forState: false)
         }
         else {
             setupUI(forState: cartModel?.isWalletSelected)
-          }
-       
+        }
     }
     
     @IBAction func applyPointsTapped(_ sender:Any?) {

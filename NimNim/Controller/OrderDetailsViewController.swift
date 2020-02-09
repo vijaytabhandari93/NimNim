@@ -95,13 +95,19 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
         if let array = addressBaseModel?.data {
             for item in array {
                 if item.id == self.address  {
-                    if let street = item.street , let house = item.house, let city = item.city , let state = item.state  ,  let pincode =  item.pincode ,let landmark = item.landmark {
-                        return "\(street),  \(house), \(city), \(state), \(pincode), \(landmark)"
+                    if let street = item.street , let house = item.house, let city = item.city , let state = item.state  ,  let pincode =  item.pincode {
+                        var finalAddress = ""
+                        if let landmark = item.landmark {
+                           finalAddress = "\(street),  \(house), \(city), \(state), \(pincode), \(landmark)"
+                        }else {
+                            finalAddress = "\(street),  \(house), \(city), \(state), \(pincode)"
+                        }
+                        return finalAddress
                     }
                 }
             }
         }
-        return "not matched"
+        return ""
     }
     func selectedCard()
     {

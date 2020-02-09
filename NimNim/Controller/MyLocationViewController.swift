@@ -76,11 +76,11 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location = locations[locations.count - 1]
         if location.horizontalAccuracy > 0 {
+            print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
             self.locationManager.stopUpdatingLocation()
             long = location.coordinate.longitude
             lat = location.coordinate.latitude
             checkForServiceableLocation()
-            print("longitude = \(location.coordinate.longitude), latitude = \(location.coordinate.latitude)")
         }
     }
     
@@ -96,23 +96,31 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     func checkForServiceableLocation() {
         if let locations = serviceableLocationModel?.data, locations.count > 0 {
             var fallsUnderSomeLocation = false
+            var distance:Double?
             for i in 0..<locations.count {
                 let location = locations[i]
                 if let latitude = location.lat, let longitude = location.long, let radius = location.radius {
                     if let doubleLat = Double(latitude), let doubleLong = Double(longitude) , let doubleRadius = Double(radius) {
                         let circularRegion = CLCircularRegion(center: CLLocationCoordinate2D(latitude: doubleLat, longitude: doubleLong), radius:  doubleRadius, identifier: "")
                         if let lat = lat, let long = long { //our location
+                            let currentLocation = CLLocation(latitude: lat, longitude: long)
                             if circularRegion.contains(CLLocationCoordinate2D(latitude: lat, longitude: long)) {
                                 // This means that the user's location lies under this location model...
-                                locationModel = location //This is used to globally save this location...when user taps on detect my location...for further local storage...
-                                selectedIndexPath = IndexPath(row: i, section: 0)
-                                currentLocationSelected.text = location.title
-                                fallsUnderSomeLocation = true
-                                locationTableView.reloadData()
+                                let locationOfRegion = CLLocation(latitude: doubleLat, longitude: doubleLong)
+                                let value = currentLocation.distance(from: locationOfRegion)
                                 
-                                DispatchQueue.main.async {[weak self] in
-                                    if let selectedIndexPath = self?.selectedIndexPath, let numberOfItems = self?.locationTableView.numberOfRows(inSection: 0), selectedIndexPath.item < numberOfItems {
-                                        self?.locationTableView.scrollToRow(at: selectedIndexPath, at: .middle, animated: true)
+                                if isValueLessThanDistance(withValue: value, withDistance: distance) {
+                                    distance = value
+                                    locationModel = location //This is used to globally save this location...when user taps on detect my location...for further local storage...
+                                    selectedIndexPath = IndexPath(row: i, section: 0)
+                                    currentLocationSelected.text = location.title
+                                    fallsUnderSomeLocation = true
+                                    locationTableView.reloadData()
+                                    
+                                    DispatchQueue.main.async {[weak self] in
+                                        if let selectedIndexPath = self?.selectedIndexPath, let numberOfItems = self?.locationTableView.numberOfRows(inSection: 0), selectedIndexPath.item < numberOfItems {
+                                            self?.locationTableView.scrollToRow(at: selectedIndexPath, at: .middle, animated: true)
+                                        }
                                     }
                                 }
                             }
@@ -125,6 +133,14 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
                 let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"NonServiceable") as? NonServiceable
                 NavigationManager.shared.push(viewController: secondViewController) //if the location of user does not fall in the radius of servicable locations , the non servoable screen will be pushed.
             }
+        }
+    }
+    
+    func isValueLessThanDistance(withValue value:Double?, withDistance distance:Double?) -> Bool {
+        if let value = value, let distance = distance  {
+            return (value < distance)
+        }else {
+            return true
         }
     }
     
@@ -180,7 +196,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             locationManager.startUpdatingLocation()
         }else {
-           // locationManager.requestWhenInUseAuthorization()
+             locationManager.requestWhenInUseAuthorization()
              locationManager.startUpdatingLocation()
         }
         selectedIndexPath = nil

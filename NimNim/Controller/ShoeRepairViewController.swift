@@ -27,6 +27,11 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     // we have created the push function and also created first controller as the delegate of the  first.
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        priceTotalBackgroundView.addTopShadowToView()
+    }
+    
     func addShoeRepairTask(withTask taskModel:TaskModel?) {
         if let taskModel = taskModel  {
             serviceModel?.tasks?.append(taskModel)

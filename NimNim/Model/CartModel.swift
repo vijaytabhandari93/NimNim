@@ -36,5 +36,8 @@ class CartModel : NSObject, Mappable, Codable  {
         addressId <- map["address_id"]
         CardId  <- map["card_id"]
         isWalletSelected <- map["isWalletSelected"]
+        deliveryNotes <- map["deliveryNotes"]
+        deliveryPreference  <- map["deliveryPreference"]
+        deliveryRelatedUploadedImages <- map["deliveryRelatedUploadedImages"]
     }
 }

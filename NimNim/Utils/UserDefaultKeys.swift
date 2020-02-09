@@ -25,4 +25,6 @@ struct UserDefaultKeys {
     static let timeSlotSelected = "kTimeSlot"
     static let deliverydateSelected = "kdeliveryDate"
     static let deliverytimeSlotSelected = "kdeliveryTimeSlot"
+    static let savedAddressId = "kSavedAddressId"
+    static let savedCardId = "kSavedCardId"
 }

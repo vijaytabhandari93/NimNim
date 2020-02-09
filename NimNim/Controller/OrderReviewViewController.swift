@@ -259,7 +259,6 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 return cell
             }else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ApplyWalletPointsCollectionViewCell", for: indexPath) as! ApplyWalletPointsCollectionViewCell
-                cell.configureCell(withCartModel: cartModel)
                 cell.pointsinWallet = walletBalance
                 if walletBalance == 0 {
                     cell.points.text = "No Points"
@@ -268,6 +267,10 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 {
                     cell.points.text = "Points \(walletBalance)"
                 }
+                
+                cell.configureCell(withCartModel: cartModel)
+                
+                
                 return cell
             }
         }
@@ -306,7 +309,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 1&&indexPath.item == 0 {
+        if indexPath.section == 1 && indexPath.item == 0 {
             let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
             let applyCouponVC = SB.instantiateViewController(withIdentifier: "CouponsViewController")
             NavigationManager.shared.push(viewController: applyCouponVC)

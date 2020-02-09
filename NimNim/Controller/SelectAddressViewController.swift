@@ -11,15 +11,23 @@ import ObjectMapper
 import SwiftyJSON
 import NVActivityIndicatorView
 
-class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AddressNameCollectionViewCellDelegate,deliverynotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AddressNameCollectionViewCellDelegate,DeliverynotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
     var activeTextView : UITextView?
     var cartModel : CartModel?
     var Index : IndexPath?
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     func addressSelectedChangeUI(withIndexPath indexPath: IndexPath?) {
-        Index = indexPath
-        selectAddressCollectionView.reloadData()
+        if let indexPath = indexPath {
+            Index = indexPath
+            if let data = addressBaseModel?.data,data.count > (indexPath.item - 1) {
+                if let addressId = data[indexPath.item - 1].id  {
+                    UserDefaults.standard.set(addressId, forKey: UserDefaultKeys.savedAddressId)
+                }
+                
+            }
+            selectAddressCollectionView.reloadData()
+        }
     }
     
     func upload(image:UIImage?) {
@@ -63,15 +71,22 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
     
     
     @IBAction func selectTimeSlots(_ sender: Any) {
-        cartModel?.deliveryPreference = UserDefaults.standard.object(forKey: UserDefaultKeys.pickUpDropOfPreferences) as! String
-        if let savedAddress = cartModel?.addressId {
+        if let pref = UserDefaults.standard.object(forKey: UserDefaultKeys.pickUpDropOfPreferences) as? String  {
+            cartModel?.deliveryPreference = pref
+        }else {
+            let alert = UIAlertController(title: "Alert", message: "Please select your pick up/drop off preference", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            return
+        }
+        if let _ = cartModel?.addressId {
             let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
                    let pickAndDropVC = SB.instantiateViewController(withIdentifier: "PickDateAndTimeViewController") as! PickDateAndTimeViewController
                    pickAndDropVC.cartModel = cartModel
                    NavigationManager.shared.push(viewController: pickAndDropVC)
         }
         else {
-            let alert = UIAlertController(title: "Alert", message: "please select the address", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Alert", message: "Please select the address", preferredStyle: .alert)
                           alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                           self.present(alert, animated: true, completion: nil)
         }
@@ -83,15 +98,18 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
         registerCells()
         selectAddressCollectionView.delegate = self
         selectAddressCollectionView.dataSource = self
+        selectAddressCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
     }
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if let pref = UserDefaults.standard.object(forKey: UserDefaultKeys.pickUpDropOfPreferences) as? String {
+            cartModel?.deliveryPreference = pref
+        }
         applyHorizontalNimNimGradient()
         fetchSavedAddress()
         selectAddressCollectionView.reloadData()
-        
     }
     
     func addTapGestureToView() {
@@ -148,6 +166,15 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
         self.present(pickerController, animated: true, completion: nil)
     }
     
+    func preferenceTapped() {
+        if let vc = UIStoryboard(name: "Preferences", bundle: nil).instantiateViewController(withIdentifier: "PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
+        {
+            vc.screenTypeValue = .pickUpDropOff
+            vc.reselection = true
+            NavigationManager.shared.push(viewController: vc)
+        }
+    }
+    
     func textViewStartedEditingInCell(withTextField textView: UITextView) {
         activeTextView = textView
         addTapGestureToView() //once the textbox editing begins the tap gesture starts functioning
@@ -171,6 +198,17 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
                 print(JSON(responseDict))
                 if let count = addressBaseModel?.data?.count {
                     self?.noOfSavedAdderess = count
+                }
+                if self?.Index == nil {
+                    if let data = addressBaseModel?.data, let savedAddressId = UserDefaults.standard.string(forKey: UserDefaultKeys.savedAddressId) {
+                        let i = data.firstIndex { (addressModel) -> Bool in
+                            return addressModel.id == savedAddressId
+                        }
+                        if let val = i {
+                            self?.Index = IndexPath(item: val + 1, section: 0)
+                            self?.cartModel?.addressId = savedAddressId
+                        }
+                    }
                 }
                 self?.selectAddressCollectionView.reloadData()
             }
@@ -218,11 +256,11 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
             savedAddressCell.bottomSeparator.isHidden = true
             return savedAddressCell
         }
-            else if(indexPath.item == (numberOfItems  - 1)) {
+        else if(indexPath.item == (numberOfItems  - 1)) {
             let savedAddressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "deliverynotesCollectionViewCell", for: indexPath) as! deliverynotesCollectionViewCell
             savedAddressCell.delegate = self
+            savedAddressCell.configureCell()
             return savedAddressCell
-            
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressNameCollectionViewCell", for: indexPath) as! AddressNameCollectionViewCell
@@ -231,7 +269,7 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
             }
             cell.delegate = self
             cell.cartModel = cartModel
-            if Index == indexPath
+            if Index?.item == indexPath.item
             {
                 cell.configureUI(forSelected: true, forIndex: indexPath)
             }
@@ -305,7 +343,7 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
             return CGSize(width: collectionView.frame.size.width, height:60)
         }
         else if(indexPath.item == (numberOfItems  - 2)) {
-            return CGSize(width: collectionView.frame.size.width, height:50)
+            return CGSize(width: collectionView.frame.size.width, height:70)
         }
             else if(indexPath.item == (numberOfItems  - 1)) {
                 return CGSize(width: collectionView.frame.size.width, height:175)

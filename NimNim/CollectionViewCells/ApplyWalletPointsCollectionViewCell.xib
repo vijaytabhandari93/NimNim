@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -63,16 +61,28 @@
                             <constraint firstAttribute="height" constant="46.5" id="kFz-M3-LoZ"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4o-7X-M0Q">
+                        <rect key="frame" x="275" y="0.0" width="100" height="100"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="XCB-KM-mVK"/>
+                        </constraints>
+                        <connections>
+                            <action selector="applyPointsTapped:" destination="Vcm-zR-xJv" eventType="touchUpInside" id="1Pl-a5-hHF"/>
+                        </connections>
+                    </button>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="9Dz-IV-AuB" firstAttribute="centerY" secondItem="2RU-PB-dbk" secondAttribute="centerY" id="Fge-eg-vig"/>
+                <constraint firstAttribute="bottom" secondItem="C4o-7X-M0Q" secondAttribute="bottom" id="HQ9-um-EHo"/>
                 <constraint firstItem="2RU-PB-dbk" firstAttribute="top" secondItem="Vcm-zR-xJv" secondAttribute="top" constant="29" id="TS7-c9-VrN"/>
                 <constraint firstItem="hKB-0f-zKW" firstAttribute="bottom" secondItem="2RU-PB-dbk" secondAttribute="bottom" id="WDN-Na-ZzA"/>
+                <constraint firstItem="C4o-7X-M0Q" firstAttribute="top" secondItem="Vcm-zR-xJv" secondAttribute="top" id="WhB-WK-LXB"/>
                 <constraint firstItem="2RU-PB-dbk" firstAttribute="leading" secondItem="Vcm-zR-xJv" secondAttribute="leading" constant="28" id="dnt-rm-1dX"/>
                 <constraint firstItem="hKB-0f-zKW" firstAttribute="leading" secondItem="2RU-PB-dbk" secondAttribute="trailing" constant="10" id="eDV-x0-C1R"/>
                 <constraint firstItem="qy4-DQ-8qZ" firstAttribute="leading" secondItem="2RU-PB-dbk" secondAttribute="trailing" constant="10" id="eWu-Bt-p9R"/>
+                <constraint firstAttribute="trailing" secondItem="C4o-7X-M0Q" secondAttribute="trailing" id="fPW-ze-FEH"/>
                 <constraint firstItem="qy4-DQ-8qZ" firstAttribute="top" secondItem="2RU-PB-dbk" secondAttribute="top" id="mdc-mP-iUI"/>
                 <constraint firstAttribute="trailing" secondItem="9Dz-IV-AuB" secondAttribute="trailing" constant="28" id="wIu-Pj-xuj"/>
             </constraints>
@@ -82,7 +92,7 @@
                 <outlet property="apply" destination="9Dz-IV-AuB" id="0tf-v9-BD7"/>
                 <outlet property="points" destination="hKB-0f-zKW" id="zUT-ZS-nv9"/>
             </connections>
-            <point key="canvasLocation" x="124" y="163"/>
+            <point key="canvasLocation" x="123.91304347826087" y="162.72321428571428"/>
         </collectionViewCell>
     </objects>
     <resources>
