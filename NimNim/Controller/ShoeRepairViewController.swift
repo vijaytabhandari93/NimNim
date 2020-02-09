@@ -14,6 +14,7 @@ import SwiftyJSON
 class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoeRepairSecondViewControllerDelegate,AddShoeRepairCollectionViewCellDelegate,ShoeTaskAddedCollectionViewCellDelegate {
     
     
+    @IBOutlet weak var justNimNimItHeightConstraint: NSLayoutConstraint!
     var justNimNimItSelected : Bool = false
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
@@ -106,16 +107,16 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                 justNimNimIt.isHidden = true
                 totalPrice.isHidden = false
                 priceValue.isHidden = false
+                justNimNimItHeightConstraint.constant = 0
             } else {
                 addToCart.backgroundColor = Colors.addToCartUnselectable
                 addToCart.isEnabled = false
                 priceTotalbackgroundView.constant = 0
                 totalPrice.isHidden = true
                 priceValue.isHidden = true
-                
+                justNimNimItHeightConstraint.constant = 40
             }
             shoeRepairCollectionView.reloadData()
-            
         }
         
         
@@ -381,6 +382,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                 serviceModel?.tasks?.remove(at: indexPath.section)
                 shoeRepairCollectionView.reloadData()
                 priceValue.text = getPriceOfService()
+                setupScreen()
             }
         }
     }

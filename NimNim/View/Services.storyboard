@@ -1297,6 +1297,7 @@
                         <outlet property="basketLabel" destination="lLX-Le-QWY" id="DaY-qR-giO"/>
                         <outlet property="descriptionLabel" destination="uhr-w7-A2B" id="4gF-1M-LJ1"/>
                         <outlet property="justNimNimIt" destination="QmP-09-S6D" id="DUp-hu-sK5"/>
+                        <outlet property="justNimNimItHeightConstraint" destination="6gu-Lo-YNU" id="f3O-ay-DpX"/>
                         <outlet property="priceTotalBackgroundView" destination="5X4-Yp-9C1" id="H4c-xZ-irs"/>
                         <outlet property="priceTotalbackgroundView" destination="mr3-Mv-DEu" id="s2i-7F-eyW"/>
                         <outlet property="priceValue" destination="cTb-4A-opU" id="kFC-o6-FvU"/>
