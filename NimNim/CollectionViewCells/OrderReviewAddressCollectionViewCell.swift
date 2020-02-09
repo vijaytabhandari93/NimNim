@@ -10,6 +10,7 @@ import UIKit
 
 class OrderReviewAddressCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var address: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

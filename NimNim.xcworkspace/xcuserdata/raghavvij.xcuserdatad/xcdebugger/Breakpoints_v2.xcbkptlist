@@ -5,29 +5,18 @@
    version = "2.0">
    <Breakpoints>
       <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.ExceptionBreakpoint">
-         <BreakpointContent
-            uuid = "AD0F7FAE-9D76-49DC-899C-A0CF16C8A393"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            scope = "1"
-            stopOnStyle = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "97F08C61-85E7-4040-927B-17C6E465A913"
+            uuid = "908B24BD-4442-41AD-A470-25E1623B8204"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "NimNim/Controller/ShoeRepairSecondViewController.swift"
+            filePath = "NimNim/Controller/LoginSignUpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "collectionView(_:viewForSupplementaryElementOfKind:at:)"
+            startingLineNumber = "291"
+            endingLineNumber = "291"
+            landmarkName = "loginManagerDidComplete(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

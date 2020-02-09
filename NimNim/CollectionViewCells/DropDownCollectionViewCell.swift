@@ -29,7 +29,7 @@ class DropDownCollectionViewCell: UICollectionViewCell, UITextFieldDelegate {
     func configureCell(withOptions options:[String], withSelectedIndex selectedIndex:Int?) {
         dropDownTextField.optionArray = options
         if let selectedIndex = selectedIndex {
-             dropDownTextField.text = options[selectedIndex]
+            dropDownTextField.text = options[selectedIndex]
             dropDownTextField.selectedIndex = selectedIndex
         }
         dropDownTextField.didSelect {[weak self] (option, index, id) in

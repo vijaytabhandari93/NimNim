@@ -175,7 +175,7 @@ class AllServicesViewController: UIViewController,UICollectionViewDelegate,UICol
             shoeRepairVC.serviceModel = services[indexPath.row]  //refers to 4th element
             NavigationManager.shared.push(viewController: shoeRepairVC)
         }else if services[indexPath.row].alias == "tailoring" {
-            let rugVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController") as! RugCleaningViewController
+            let rugVC = servicesStoryboard.instantiateViewController(withIdentifier: "TailoringViewController") as! TailoringViewController
             rugVC.serviceModel = services[indexPath.row]
             NavigationManager.shared.push(viewController: rugVC)
             

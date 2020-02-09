@@ -1,9 +1,9 @@
 //
-//  ShoeRepairViewController.swift
+//  TailoringViewController.swift
 //  NimNim
 //
-//  Created by Raghav Vij on 13/10/19.
-//  Copyright © 2019 NimNim. All rights reserved.
+//  Created by Raghav Vij on 07/02/20.
+//  Copyright © 2020 NimNim. All rights reserved.
 //
 
 import UIKit
@@ -11,15 +11,14 @@ import NVActivityIndicatorView
 import Kingfisher
 import SwiftyJSON
 
-class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoeRepairSecondViewControllerDelegate,AddShoeRepairCollectionViewCellDelegate,ShoeTaskAddedCollectionViewCellDelegate {
-    
+class TailoringViewController:UIViewController ,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,ShoeRepairSecondViewControllerDelegate,AddTailoringRepairCollectionViewCellDelegate,ShoeTaskAddedCollectionViewCellDelegate {
     
     var justNimNimItSelected : Bool = false
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     func pushSecondViewController() {
         let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
-        let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"ShoeRepairSecondViewController") as? ShoeRepairSecondViewController
+        let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"TailoringSecondViewController") as? TailoringSecondViewController
         secondViewController?.serviceModel = serviceModel
         NavigationManager.shared.push(viewController: secondViewController)
         secondViewController?.delegate = self
@@ -45,6 +44,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
             basketLabel.isHidden = true
         }
     }
+    
     func editShoeRepairTask(withTask taskModel: TaskModel?, withindex indexPath: IndexPath) {
         if let taskModel = taskModel  {
             serviceModel?.tasks?[indexPath.section] = taskModel
@@ -216,6 +216,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
             }
         }
     }
+
     
     
     @IBAction func justNimNimIt(_ sender: Any) {
@@ -268,7 +269,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         }else {
             if let tasks = serviceModel?.tasks, tasks.count > section {
                 let currentTask = tasks[section]
-                return currentTask.getSelectedItems().count + 1  // the  number  of items in  section  is equal to number of  tasks and add  1.
+                return currentTask.getTailoringSelectedItems().count + 1  // the  number  of items in  section  is equal to number of  tasks and add  1.
             }
         }
         return  0
@@ -284,6 +285,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                 return 1
             }
         }
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -294,7 +296,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
             numberOfSections = 1
         }
         if indexPath.section == (numberOfSections - 1)  {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddShoeRepairCollectionViewCell", for: indexPath) as! AddShoeRepairCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddTailoringRepairCollectionViewCell", for: indexPath) as! AddTailoringRepairCollectionViewCell
             cell.delegate = self
             return cell
         }
@@ -310,7 +312,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectedTasksCollectionViewCell", for: indexPath) as! SelectedTasksCollectionViewCell
                 if let tasks = serviceModel?.tasks, tasks.count > indexPath.section {
                     let currentTask = tasks[indexPath.section]
-                    let selectedItems = currentTask.getSelectedItems()
+                    let selectedItems = currentTask.getTailoringSelectedItems()
                     if selectedItems.count  > indexPath.item - 1 {
                         let currentItem = selectedItems[indexPath.item - 1]
                         cell.taskTitleCell.text = currentItem.name
@@ -328,15 +330,14 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     
     //MARK:UI Methods
     func registerCells() {
-        let noOfClothesNib = UINib(nibName: "AddShoeRepairCollectionViewCell", bundle: nil)
-        shoeRepairCollectionView.register(noOfClothesNib, forCellWithReuseIdentifier: "AddShoeRepairCollectionViewCell")
+        let noOfClothesNib = UINib(nibName: "AddTailoringRepairCollectionViewCell", bundle: nil)
+        shoeRepairCollectionView.register(noOfClothesNib, forCellWithReuseIdentifier: "AddTailoringRepairCollectionViewCell")
         
         let noOfClothesNib1 = UINib(nibName: "ShoeTaskAddedCollectionViewCell", bundle: nil)
         shoeRepairCollectionView.register(noOfClothesNib1, forCellWithReuseIdentifier: "ShoeTaskAddedCollectionViewCell")
         
         let noOfClothesNib2 = UINib(nibName: "SelectedTasksCollectionViewCell", bundle: nil)
         shoeRepairCollectionView.register(noOfClothesNib2, forCellWithReuseIdentifier: "SelectedTasksCollectionViewCell")
-        
         let type6PreferencesNib = UINib(nibName: "AddMoreServicesCollectionViewCell", bundle: nil)
         shoeRepairCollectionView.register(type6PreferencesNib, forCellWithReuseIdentifier:"AddMoreServicesCollectionViewCell")
         
@@ -363,7 +364,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     //Delegate functions of task
     func editTapped(withIndexPath indexPath: IndexPath?) {
         let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
-        let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"ShoeRepairSecondViewController") as? ShoeRepairSecondViewController
+        let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"TailoringSecondViewController") as? TailoringSecondViewController
         secondViewController?.serviceModel = serviceModel
         secondViewController?.delegate = self
         if let model = serviceModel?.tasks?[indexPath!.section] {

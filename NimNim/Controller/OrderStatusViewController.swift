@@ -17,12 +17,13 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
     
     @IBOutlet weak var trackOrderCollectionViiew: UICollectionView!
     
-    
+    var dateOfOrderCreation : String?
     var orderArrayModel : OrderBaseModel?
     override func viewDidLoad() {
         super.viewDidLoad()
         trackOrderCollectionViiew.delegate =  self
         trackOrderCollectionViiew.dataSource = self
+        trackOrderCollectionViiew.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
         registerCells()
         fetchOrderHistory()
         
@@ -84,24 +85,39 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
             {
                 cell.orderNumber.text =  "\(number)"
             }
+            if let price = arrayItem.orderTotal {
+                cell.price = "$\(price)"
+            }
+            
+            if let address = arrayItem.addressId
+                       {
+                        cell.address = address
+                       }
+            if let cardId = arrayItem.CardId
+                                 {
+                                  cell.cardId = cardId
+                                 }
+            cell.orderModel = arrayItem
             if let date = arrayItem.createdAt
             {
                 print(date)
                 let dateFormatter = DateFormatter()
                 dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.mss'Z'"
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
                 if let finalDate = dateFormatter.date(from:date) {
                     let calendar = Calendar.current
                     let components = calendar.dateComponents([.year, .month,.day], from: finalDate)
                     if let DateTobeShown = calendar.date(from:components){
                         let formatter = DateFormatter()
-                        formatter.dateFormat = "MM/dd/yyyy"
+                        formatter.dateFormat = "dd MMM, YYYY"
                         cell.date.text = formatter.string(from: DateTobeShown)
                         print(formatter.string(from: DateTobeShown))
+                        self.dateOfOrderCreation = formatter.string(from: DateTobeShown)
                     }
                     
                     
                 }
+                
             }
             cell.orderStatus.text = arrayItem.orderStatus
             cell.service = arrayItem.services

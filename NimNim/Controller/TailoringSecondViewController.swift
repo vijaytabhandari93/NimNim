@@ -1,21 +1,21 @@
 //
-//  ShoeRepairViewController.swift
+//  TailoringSecondViewController.swift
 //  NimNim
 //
-//  Created by Raghav Vij on 13/10/19.
-//  Copyright © 2019 NimNim. All rights reserved.
+//  Created by Raghav Vij on 07/02/20.
+//  Copyright © 2020 NimNim. All rights reserved.
 //
 
 import UIKit
 import NVActivityIndicatorView
 
 
-protocol ShoeRepairSecondViewControllerDelegate:class {
+protocol TailoringSecondViewControllerDelegate:class {
     func addShoeRepairTask(withTask taskModel:TaskModel?)
     func editShoeRepairTask(withTask taskModel:TaskModel? , withindex indexPath:IndexPath)
 }
 
-class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, SpecialNotesCollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,ShoeRepairCollectionViewCellDelegate,DropDownCollectionViewCellDelegate {
+class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout, SpecialNotesCollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,ShoeRepairCollectionViewCellDelegate,DropDownCollectionViewCellDelegate {
     
     
     //MARK: IBOutlets
@@ -28,6 +28,8 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
     
     var indexPath : IndexPath?
     var editModeOn :  Bool  = false
+    
+    var imageAdded : Bool = false
     var activeTextView : UITextView?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
@@ -38,15 +40,15 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
     @IBOutlet weak var priceLabel: UILabel!
     
     @IBAction func AddSShoereepairTaskTapped(_ sender: Any) {
-        if let selectedItems = taskModel?.getSelectedItems(), selectedItems.count > 0 {
+        if let selectedItems = taskModel?.getTailoringSelectedItems(), selectedItems.count > 0 {
             if editModeOn{
                 if let indexPath = indexPath {
-                     delegate?.editShoeRepairTask(withTask: taskModel, withindex : indexPath)
+                    delegate?.editShoeRepairTask(withTask: taskModel, withindex : indexPath)
                 }
-               
+                
             } else
             {
-              delegate?.addShoeRepairTask(withTask: taskModel)
+                delegate?.addShoeRepairTask(withTask: taskModel)
             }
             navigationController?.popViewController(animated: true)
         }else {
@@ -61,8 +63,8 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         if editModeOn {
-            repairToaddorUpdate.setTitle("Edit Shoe Repair Task", for: .normal)
-               }
+            repairToaddorUpdate.setTitle("Edit Tailoring  Task", for: .normal)
+        }
         setupTaskModel()
         registerCells()
         shoeRepairCollectionView.delegate = self
@@ -73,7 +75,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
     
     override func viewWillAppear(_ animated: Bool) {
         if editModeOn {
-            repairToaddorUpdate.titleLabel?.text = "Edit Shoe Repair Task"
+            repairToaddorUpdate.titleLabel?.text = "Edit Tailoring  Task"
         }
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
@@ -89,13 +91,13 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
             if let items = serviceModel?.items {
                 for item in items {
                     if let itemCopy = item.copy() as? ItemModel {
-                        itemCopy.isSelectedShoeRepairPreference = false
+                        itemCopy.isSelectedTailoringRepairPreference = false
                         taskModel?.items.append(itemCopy)
                     }
                 }
             }
             selectedDropDownIndex = 0
-            taskModel?.gender = "male" // to first show men items
+            taskModel?.garMentType = "Pants" // to first show men items
         }
         
     }
@@ -163,13 +165,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DropDownCollectionViewCell", for: indexPath) as! DropDownCollectionViewCell
             cell.headingLabel.text = "Please select your type of shoe".uppercased()
-            if let selectedGender = taskModel?.gender {
-                let genders = ["Male","Female"]
-                selectedDropDownIndex = genders.firstIndex(where: { (gender) -> Bool in
-                    return gender.caseInsensitiveCompare(selectedGender) == .orderedSame
-                })
-            }
-            cell.configureCell(withOptions: ["Male","Female"], withSelectedIndex: selectedDropDownIndex)
+            cell.configureCell(withOptions: ["Pants","Skirt","Blouse","Jacket","Dress"], withSelectedIndex: selectedDropDownIndex)
             cell.delegate = self
             return cell
         }
@@ -181,6 +177,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
                 {
                     cell.firstImage.kf.setImage(with: urlValue)
                 }
+                
             }
             if let ImageNames =  taskModel?.uploadedImages, ImageNames.count > 1 {
                 if let urlValue = URL(string: ImageNames[1])
@@ -198,12 +195,12 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoeRepairCollectionViewCell", for: indexPath) as! ShoeRepairCollectionViewCell
-            cell.actionLabel.text = taskModel?.getGenderSpecificItems()[indexPath.item].name
-            if let price = taskModel?.getGenderSpecificItems()[indexPath.item].price {
+            cell.actionLabel.text = taskModel?.getGarmentSpecificItems()[indexPath.item].name
+            if let price = taskModel?.getGarmentSpecificItems()[indexPath.item].price {
                 cell.priceLabel.text = "$\(price)"
             }
             cell.delegate = self
-            if let state = taskModel?.getGenderSpecificItems()[indexPath.item].isSelectedShoeRepairPreference
+            if let state = taskModel?.getGarmentSpecificItems()[indexPath.item].isSelectedTailoringRepairPreference
             {
                 cell.configureUI(forPreferenceSelectedState: state, forIndex: indexPath)
             }
@@ -232,7 +229,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
             return CGSize(width: collectionView.frame.size.width, height: 66)
         }
         else if indexPath.section == 1 {
-            if let uploadedImages = self.taskModel?.uploadedImages, uploadedImages.count > 0  {
+            if imageAdded  {
                 return CGSize(width: collectionView.frame.size.width, height:191)
             }
             else
@@ -281,6 +278,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.taskModel?.uploadedImages.append(imagePath)
+                    self?.imageAdded = true
                     self?.shoeRepairCollectionView.reloadData()
                 }
             }
@@ -350,37 +348,54 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
     //delegate function of ShoeRepairCollectionViewCellDelegate
     func preferenceSelected(withIndexPath indexPath: IndexPath?) {
         if let indexPath = indexPath {
-            if let state = taskModel?.getGenderSpecificItems()[indexPath.item].isSelectedShoeRepairPreference
+            if let state = taskModel?.getGarmentSpecificItems()[indexPath.item].isSelectedTailoringRepairPreference
             {
-                taskModel?.getGenderSpecificItems()[indexPath.item].isSelectedShoeRepairPreference = !state
+                taskModel?.getGarmentSpecificItems()[indexPath.item].isSelectedTailoringRepairPreference = !state
             }
         }
         shoeRepairCollectionView.reloadData()
         setupPrice()
-       
     }
-      
+    
     func setupPrice(){
-        if let taskPrice = taskModel?.getSelectedItemsPrice()
+        if let taskPrice = taskModel?.getTailoringSelectedItemsPrice()
         {
-          priceLabel.text = "$\(taskPrice)"
-          taskModel?.taskPrice = taskPrice
+            priceLabel.text = "$\(taskPrice)"
+            taskModel?.taskPrice = taskPrice
         }
-
+        
     }
     // the  above function  is used to capture the  effect of checking and unchecking done in the ShoeRepairCollectionViewCell. The taskmModel's  item array's isSelectedShoeRepairPreference is made true and false accoringly.
     
-    //MARK: DropDownCollectionViewCellDelegate Methods
-    func selectedDropDownValue(withValue value:String?, withIndex index:Int?) {
-        print("male")
-        taskModel?.resetSelections()
-        if let value = value, value.caseInsensitiveCompare("male") == .orderedSame {
-            taskModel?.gender = "male"
-        }else {
-            taskModel?.gender = "female"
-        }
-        selectedDropDownIndex = index  //global variable
-        shoeRepairCollectionView.reloadData()
+    enum garmentState : String {
+        case pants   = "Pants"
+        case skirt  = "Skirt"
+        case blouse = "Blouse"
+        case jackets = "Jackets"
+        case dress = "Dress"
     }
     
+    //MARK: DropDownCollectionViewCellDelegate Methods
+    func selectedDropDownValue(withValue value:String?, withIndex index:Int?) {
+        taskModel?.resetSelections()
+        if let value = value {
+            if let value = garmentState(rawValue: value) {
+                switch value {
+                case .pants:
+                    taskModel?.garMentType = "pants"
+                case .skirt:
+                    taskModel?.garMentType = "skirt"
+                case .blouse:
+                    taskModel?.garMentType = "blouse"
+                case .jackets:
+                    taskModel?.garMentType = "jackets"
+                case .dress:
+                    taskModel?.garMentType = "dress"
+                }
+                selectedDropDownIndex = index  //global variable
+                shoeRepairCollectionView.reloadData()
+            }
+            
+        }
+    }
 }

@@ -103,7 +103,7 @@ struct AddToCart {     // This is a structure to hold all the keys of request pa
     static let cartId = "cartId"
     static let cart_Id = "cart_id"
     static let itemId = "itemId"
-    static let code = "code"
+    static let code = "couponCode"
    
 }
 

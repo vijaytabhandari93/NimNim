@@ -14,7 +14,6 @@ class OrderDetailsCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var serviceName: UILabel!
     @IBOutlet weak var noOfProducts: UILabel!
     @IBOutlet weak var amountPayable: UILabel!
-    @IBOutlet weak var pickUpTimeSlotDate: UILabel!
     @IBOutlet weak var dropOffGTimeSlotDate: UILabel!
     
     override func awakeFromNib() {

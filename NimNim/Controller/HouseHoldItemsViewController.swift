@@ -101,16 +101,16 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     
     func setupPrice() {
         if defaultStateJustNimNimIt {
-                     let price = "$0"
-                     priceLabel.text = price
-                     serviceModel?.servicePrice = price
-                     }
-                 else {
-        if let price = serviceModel?.calculatePriceForService() {
+            let price = "$0"
             priceLabel.text = price
             serviceModel?.servicePrice = price
         }
-    }
+        else {
+            if let price = serviceModel?.calculatePriceForService() {
+                priceLabel.text = price
+                serviceModel?.servicePrice = price
+            }
+        }
     }
     func setupAddToCartButton(){
         if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {

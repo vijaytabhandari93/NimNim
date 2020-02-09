@@ -135,7 +135,8 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         else {
             if let price = serviceModel?.calculatePriceForService() {
                 priceLabel.text = price
-                serviceModel?.servicePrice = price}
+                serviceModel?.servicePrice = price
+            }
         }
         
     }

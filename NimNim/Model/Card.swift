@@ -44,8 +44,8 @@ class CardDetailsModel:NSObject, Mappable, Codable {
     var id:String?
     var name:String?
     var last4 : String?
-    var expMonth :String?
-    var expYear :String?
+    var expMonth :Int?
+    var expYear :Int?
     var brand : String?
     required convenience init?(map: Map) { self.init() }
     

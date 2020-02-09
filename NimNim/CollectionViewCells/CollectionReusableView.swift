@@ -9,7 +9,11 @@
 import UIKit
 
 class CollectionReusableView: UICollectionReusableView {
-
+    
+    @IBOutlet weak var noOfItems: UILabel!
+    @IBOutlet weak var pickUpDateAndTime: UILabel!
+    @IBOutlet weak var orderCreatedDate: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

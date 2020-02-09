@@ -89,6 +89,10 @@
 		AC5ADD9E236306C200204E9E /* PickDateAndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADD9D236306C200204E9E /* PickDateAndTimeViewController.swift */; };
 		AC5ADDA0236309BC00204E9E /* PickDeliveryTimeSlotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADD9F236309BC00204E9E /* PickDeliveryTimeSlotsViewController.swift */; };
 		AC5ADDA223630CC700204E9E /* SelectPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADDA123630CC700204E9E /* SelectPaymentViewController.swift */; };
+		AC5BC1A323ED304200FAF8C1 /* TailoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BC1A223ED304200FAF8C1 /* TailoringViewController.swift */; };
+		AC5BC1A523ED306400FAF8C1 /* TailoringSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BC1A423ED306400FAF8C1 /* TailoringSecondViewController.swift */; };
+		AC5BC1A823ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BC1A623ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift */; };
+		AC5BC1A923ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5BC1A723ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.xib */; };
 		AC5E697323CC72BD000DF84E /* PricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E697223CC72BD000DF84E /* PricingViewController.swift */; };
 		AC5E697523CC7319000DF84E /* Pricing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5E697423CC7319000DF84E /* Pricing.storyboard */; };
 		AC5F80DA23CD9DED0093B864 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F80D823CD9DED0093B864 /* PriceCollectionViewCell.swift */; };
@@ -310,6 +314,10 @@
 		AC5ADD9D236306C200204E9E /* PickDateAndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDateAndTimeViewController.swift; sourceTree = "<group>"; };
 		AC5ADD9F236309BC00204E9E /* PickDeliveryTimeSlotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDeliveryTimeSlotsViewController.swift; sourceTree = "<group>"; };
 		AC5ADDA123630CC700204E9E /* SelectPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentViewController.swift; sourceTree = "<group>"; };
+		AC5BC1A223ED304200FAF8C1 /* TailoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailoringViewController.swift; sourceTree = "<group>"; };
+		AC5BC1A423ED306400FAF8C1 /* TailoringSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailoringSecondViewController.swift; sourceTree = "<group>"; };
+		AC5BC1A623ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTailoringRepairCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC5BC1A723ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTailoringRepairCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5E697223CC72BD000DF84E /* PricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingViewController.swift; sourceTree = "<group>"; };
 		AC5E697423CC7319000DF84E /* Pricing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pricing.storyboard; sourceTree = "<group>"; };
 		AC5F80D823CD9DED0093B864 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -587,6 +595,8 @@
 				AC9B9A3523E71CED00FB0A17 /* DropDownCollectionViewCell.xib */,
 				AC56424A23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.swift */,
 				AC56424B23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.xib */,
+				AC5BC1A623ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift */,
+				AC5BC1A723ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -669,6 +679,8 @@
 				AC5199CA23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift */,
 				AC12C20723DF11B9002E2A91 /* EmptyCartViewController.swift */,
 				ACAD665023E0499400072607 /* ShoeRepairSecondViewController.swift */,
+				AC5BC1A223ED304200FAF8C1 /* TailoringViewController.swift */,
+				AC5BC1A423ED306400FAF8C1 /* TailoringSecondViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -873,6 +885,7 @@
 				AC5ADD9C2362E01600204E9E /* AddressNameCollectionViewCell.xib in Resources */,
 				AC1FFDBF234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.xib in Resources */,
 				AC20417F23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.xib in Resources */,
+				AC5BC1A923ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.xib in Resources */,
 				ACF9CD3323504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.xib in Resources */,
 				ACBB8191232E3FAC003DCF77 /* Montserrat-SemiBold.ttf in Resources */,
 				ACE0E4ED2353164500A75D82 /* ShoeRepairCollectionViewCell.xib in Resources */,
@@ -1075,6 +1088,7 @@
 				AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */,
 				ACE0E4EC2353164500A75D82 /* ShoeRepairCollectionViewCell.swift in Sources */,
 				ACBC97052361CB20006AC5B6 /* ServiceOrderStatusCollectionViewCell.swift in Sources */,
+				AC5BC1A523ED306400FAF8C1 /* TailoringSecondViewController.swift in Sources */,
 				ACFD92952355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.swift in Sources */,
 				AC11D1D42336314800F1DBCB /* Colors.swift in Sources */,
 				ACBC96F423606A06006AC5B6 /* CouponsViewController.swift in Sources */,
@@ -1088,6 +1102,7 @@
 				ACB89B4D235DB2F600B74109 /* SelectItemCollectionViewCell.swift in Sources */,
 				AC1FFDC22347773200930496 /* PreferencesCollectionReusableView.swift in Sources */,
 				AC5F80DA23CD9DED0093B864 /* PriceCollectionViewCell.swift in Sources */,
+				AC5BC1A323ED304200FAF8C1 /* TailoringViewController.swift in Sources */,
 				ACFD92A1235830AC0009FB03 /* ProfileCollectionViewCell.swift in Sources */,
 				ACF0205F232E425F007559E8 /* Fonts.swift in Sources */,
 				ACBC96FA2361B1C0006AC5B6 /* OrderReviewViewController.swift in Sources */,
@@ -1101,6 +1116,7 @@
 				AC9BCAC62324DF90009818C3 /* AppDelegate.swift in Sources */,
 				AC51C56A23CF54EA0010954C /* deliverynotesCollectionViewCell.swift in Sources */,
 				ACFD928F2355C9E80009FB03 /* BoxedCollectionViewCell.swift in Sources */,
+				AC5BC1A823ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift in Sources */,
 				AC202CE42366A91600C87CA1 /* SavedCardExpandedStateCollectionViewCell.swift in Sources */,
 				AC5ADD912361D99F00204E9E /* ApplyWalletPointsCollectionViewCell.swift in Sources */,
 				AC5ADD8D2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift in Sources */,

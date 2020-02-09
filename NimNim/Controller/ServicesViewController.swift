@@ -52,9 +52,6 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         }
         setupAddToCartButton()
         setupCartCountLabel()
-        
-        
-        
     }
     
     func addObservers() {
@@ -157,6 +154,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             addServiceToCart()
         }
     }
+    
     
     
     func updateServiceInCart(withCartId cartId:String?) {

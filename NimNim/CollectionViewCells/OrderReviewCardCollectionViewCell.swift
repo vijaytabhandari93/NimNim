@@ -10,6 +10,10 @@ import UIKit
 
 class OrderReviewCardCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var cardHolderName: UILabel!
+    @IBOutlet weak var cardNumber: UILabel!
+    @IBOutlet weak var validTill: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

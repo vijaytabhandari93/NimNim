@@ -396,7 +396,7 @@ place an order.</string>
                                 <rect key="frame" x="0.0" y="93" width="414" height="769"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m47-Jt-h2b">
-                                        <rect key="frame" x="20" y="20" width="374" height="749"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="n0P-kU-43h">
                                             <size key="itemSize" width="50" height="50"/>
@@ -419,9 +419,9 @@ place an order.</string>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="m47-Jt-h2b" secondAttribute="bottom" id="ECr-Vj-lvZ"/>
-                                    <constraint firstItem="m47-Jt-h2b" firstAttribute="top" secondItem="60X-HB-oAM" secondAttribute="top" constant="20" symbolic="YES" id="QC0-xY-2fV"/>
-                                    <constraint firstAttribute="trailing" secondItem="m47-Jt-h2b" secondAttribute="trailing" constant="20" symbolic="YES" id="lOy-S1-nFh"/>
-                                    <constraint firstItem="m47-Jt-h2b" firstAttribute="leading" secondItem="60X-HB-oAM" secondAttribute="leading" constant="20" symbolic="YES" id="x0K-fV-fiZ"/>
+                                    <constraint firstItem="m47-Jt-h2b" firstAttribute="top" secondItem="60X-HB-oAM" secondAttribute="top" id="QC0-xY-2fV"/>
+                                    <constraint firstAttribute="trailing" secondItem="m47-Jt-h2b" secondAttribute="trailing" id="lOy-S1-nFh"/>
+                                    <constraint firstItem="m47-Jt-h2b" firstAttribute="leading" secondItem="60X-HB-oAM" secondAttribute="leading" id="x0K-fV-fiZ"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7BC-79-IPJ">
@@ -588,7 +588,7 @@ place an order.</string>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="TUR-wx-Wpl">
                                 <rect key="frame" x="0.0" y="93" width="414" height="673"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="2iU-cG-Ww7">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="2iU-cG-Ww7">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1058,7 +1058,7 @@ place an order.</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8At-nS-huR">
-                                        <rect key="frame" x="118.5" y="12.5" width="177.5" height="24.5"/>
+                                        <rect key="frame" x="130.5" y="13" width="153.5" height="23.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -1214,32 +1214,6 @@ place an order.</string>
                                     <constraint firstAttribute="height" constant="49" id="Juf-a9-fe0"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOM-hg-57o">
-                                <rect key="frame" x="0.0" y="766" width="414" height="48"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Net Payable Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pC2-8t-03w">
-                                        <rect key="frame" x="28" y="15.5" width="150.5" height="17.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
-                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$250" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FS1-hM-aXf">
-                                        <rect key="frame" x="351" y="15.5" width="35" height="17.5"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
-                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="FS1-hM-aXf" firstAttribute="centerY" secondItem="AOM-hg-57o" secondAttribute="centerY" id="BLr-Jk-121"/>
-                                    <constraint firstAttribute="height" constant="48" id="MFe-Sl-yfV"/>
-                                    <constraint firstItem="pC2-8t-03w" firstAttribute="leading" secondItem="AOM-hg-57o" secondAttribute="leading" constant="28" id="Ujd-9z-srl"/>
-                                    <constraint firstItem="pC2-8t-03w" firstAttribute="centerY" secondItem="AOM-hg-57o" secondAttribute="centerY" id="YzS-53-h90"/>
-                                    <constraint firstAttribute="trailing" secondItem="FS1-hM-aXf" secondAttribute="trailing" constant="28" id="ZU5-YC-kSa"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="gDK-gT-Dzc"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5c7-xe-rbQ">
                                 <rect key="frame" x="0.0" y="814" width="414" height="48"/>
                                 <subviews>
@@ -1250,7 +1224,7 @@ place an order.</string>
                                             <constraint firstAttribute="height" constant="48" id="lJd-YJ-eFe"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
-                                        <state key="normal" title="Home">
+                                        <state key="normal" title="Done">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
@@ -1269,7 +1243,7 @@ place an order.</string>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gsw-wr-Nv8">
                                 <rect key="frame" x="0.0" y="93" width="414" height="673"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="bZj-tO-LkC">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="bZj-tO-LkC">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -1287,6 +1261,31 @@ place an order.</string>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AOM-hg-57o">
+                                <rect key="frame" x="0.0" y="766" width="414" height="48"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Net Payable Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pC2-8t-03w">
+                                        <rect key="frame" x="28" y="15.5" width="150.5" height="17.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FS1-hM-aXf">
+                                        <rect key="frame" x="386" y="24" width="0.0" height="0.0"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="FS1-hM-aXf" firstAttribute="centerY" secondItem="AOM-hg-57o" secondAttribute="centerY" id="BLr-Jk-121"/>
+                                    <constraint firstAttribute="height" constant="48" id="MFe-Sl-yfV"/>
+                                    <constraint firstItem="pC2-8t-03w" firstAttribute="leading" secondItem="AOM-hg-57o" secondAttribute="leading" constant="28" id="Ujd-9z-srl"/>
+                                    <constraint firstItem="pC2-8t-03w" firstAttribute="centerY" secondItem="AOM-hg-57o" secondAttribute="centerY" id="YzS-53-h90"/>
+                                    <constraint firstAttribute="trailing" secondItem="FS1-hM-aXf" secondAttribute="trailing" constant="28" id="ZU5-YC-kSa"/>
+                                </constraints>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZxH-Yo-h0z" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
                                 <rect key="frame" x="182" y="423" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1328,6 +1327,8 @@ place an order.</string>
                     </view>
                     <connections>
                         <outlet property="orderDetailsCollectionView" destination="gsw-wr-Nv8" id="koM-3Q-JWd"/>
+                        <outlet property="totalPayableAmount" destination="FS1-hM-aXf" id="sbu-rb-gZO"/>
+                        <outlet property="totalPayableAmountShadowView" destination="AOM-hg-57o" id="S90-dz-543"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xks-sI-1mF" userLabel="First Responder" sceneMemberID="firstResponder"/>

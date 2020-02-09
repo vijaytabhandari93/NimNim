@@ -74,6 +74,7 @@ class ServiceModel:NSObject, Mappable, Codable {
     var pickUpTime : String?
     var dropOffTime  : String?
     var turnAroundTime:String?
+    var status:String?
     //Not to be sent to server..hence not adding in mapping function
     var isSelectedForNimNimIt = false
     //This variable will be used to group the service models with the 
@@ -125,6 +126,7 @@ class ServiceModel:NSObject, Mappable, Codable {
         softner <- map["softner"]
         bleach <- map["bleach"]
         starch <- map["starch"]
+        status <- map["status"]
         returnPreferences <- map["return_preference"]
         ordering    <- map["ordering"]
         items <- map["items"]
@@ -503,7 +505,8 @@ class ItemModel:NSObject, Mappable, Codable, NSCopying {
     var laundryPrice : String? // presently made string //household
     var dryCleaningPrice : String? // presently made string //household
     var isSelectedShoeRepairPreference:Bool?
-    
+    var isSelectedTailoringRepairPreference:Bool?
+    var garmentType : String?
     
     //this is our property
     var maleCount:Int? = 0 //dryCleaning
@@ -527,6 +530,7 @@ class ItemModel:NSObject, Mappable, Codable, NSCopying {
         IfDrycleaned          <- map["if_dryCleaned"]
         qty             <- map["qty"]
         isSelectedShoeRepairPreference <- map["is_selected_shoe_repair_pref"]
+        isSelectedTailoringRepairPreference <- map["is_selected_shoe_repair_pref"]
     }
     
     //Below function is used to create a copy of the ItemModel object...
@@ -552,8 +556,9 @@ class TaskModel: NSObject, Mappable, Codable {
     var specialNotes:String?
     var uploadedImages:[String]=[]
     var items:[ItemModel] = []
-    var gender:String?
+    var gender:String? //   we have made this
     var taskPrice : Int = 0
+    var garMentType : String?
  
     required convenience init?(map: Map) { self.init() }
     
@@ -571,6 +576,22 @@ class TaskModel: NSObject, Mappable, Codable {
             return getFemaleItems()
         }
     }
+    func getGarmentSpecificItems() -> [ItemModel]{
+           if garMentType == "pants" {
+               return getPants()
+           }else if garMentType == "skirt" {
+               return getSkirt()
+           }else if garMentType == "blouse" {
+               return getblouse()
+           }else if garMentType == "jackets" {
+               return getjackets()
+           }else {
+               return getdress()
+           }
+       
+        }
+
+
     
     func getSelectedItems() -> [ItemModel] {
         let genderSpecificItems = getGenderSpecificItems()
@@ -582,8 +603,31 @@ class TaskModel: NSObject, Mappable, Codable {
         }
         return selectedItems
     }
+    
+    func getTailoringSelectedItems() -> [ItemModel] {
+           let garmentSpecificItems = getGarmentSpecificItems()
+           let selectedItems = garmentSpecificItems.filter { (item) -> Bool in
+               if let isSelected =  item.isSelectedTailoringRepairPreference, isSelected == true {
+                   return true
+               }
+               return false
+           }
+           return selectedItems
+       }
+    
     func getSelectedItemsPrice() -> Int {
         let SelectedItems = getSelectedItems()
+        var price = 0
+        for  item in SelectedItems {
+            if let priceOfItem = item.price {
+                price = price + priceOfItem
+            }
+         }
+        return price
+    }
+    
+    func getTailoringSelectedItemsPrice() -> Int {
+        let SelectedItems = getTailoringSelectedItems()
         var price = 0
         for  item in SelectedItems {
             if let priceOfItem = item.price {
@@ -592,7 +636,6 @@ class TaskModel: NSObject, Mappable, Codable {
          }
         return price
     }
-    
 
     
     func getMaleItems() -> [ItemModel] {
@@ -617,6 +660,71 @@ class TaskModel: NSObject, Mappable, Codable {
             }
         }
         return femaleItems
+    }
+    func getPants() -> [ItemModel] {
+        var femaleItems:[ItemModel] = []
+        if items.count > 0 {
+            for item in items {
+                if item.garmentType == "Pants" {
+                    femaleItems.append(item)
+                }
+            }
+        }
+        return femaleItems
+    }
+    func getSkirt() -> [ItemModel] {
+        var femaleItems:[ItemModel] = []
+        if items.count > 0 {
+            for item in items {
+                if item.garmentType == "Skirt" {
+                    femaleItems.append(item)
+                }
+            }
+        }
+        return femaleItems
+    }
+    
+    func getblouse() -> [ItemModel] {
+        var femaleItems:[ItemModel] = []
+        if items.count > 0 {
+            for item in items {
+                if item.genders == "blouse" {
+                    femaleItems.append(item)
+                }
+            }
+        }
+        return femaleItems
+    }
+    func getjackets() -> [ItemModel] {
+        var femaleItems:[ItemModel] = []
+        if items.count > 0 {
+            for item in items {
+                if item.genders == "male" {//hardcoded to be changed later
+                    femaleItems.append(item)
+                }
+            }
+        }
+        return femaleItems
+    }
+    func getdress() -> [ItemModel] {
+        var femaleItems:[ItemModel] = []
+        if items.count > 0 {
+            for item in items {
+                if item.genders == "female" { //hardcoded to be changed later
+                    femaleItems.append(item)
+                }
+            }
+        }
+        return femaleItems
+    }
+    
+    func resetSelections() {
+        if items.count > 0 {
+            for item in items {
+                item.isSelectedShoeRepairPreference = false
+                item.isSelectedTailoringRepairPreference = false
+            }
+        }
     }
 }
 
