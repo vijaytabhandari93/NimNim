@@ -28,12 +28,15 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     var dropOffDictionary:[String:[ServiceModel]] = [:]
     var dateFormatterForDate = DateFormatter()
     var dateFormatterForTime = DateFormatter()
+    var dateFormatterForPUDODates = DateFormatter()
     
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
         dateFormatterForDate.dateFormat = "dd MMM YYYY"
         dateFormatterForTime.dateFormat = "hh:mm"
+        dateFormatterForPUDODates.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatterForPUDODates.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         fetchSavedCards()
         registerCells()
         selectPaymentCollectionView.delegate = self
@@ -85,12 +88,21 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     
     func setupPickupDateTimeInServices() {
         if let pickupDate = selectedPickupSlot {
+            let startPickupDate = dateFormatterForPUDODates.string(from: pickupDate)
+            var endPickupDate:String?
+            if let finalEndPUDate = dateValue(byaddingHours: 2, toDate: pickupDate) {
+                endPickupDate = dateFormatterForPUDODates.string(from: finalEndPUDate)
+            }
             let date = dateFormatterForDate.string(from: pickupDate)
             let time = dateFormatterForTime.string(from: pickupDate)
             if let services = cartModel?.services {
                 for service in services {
                     service.pickupDate = date
                     service.pickUpTime = time
+                    service.pickupStartDate = startPickupDate
+                    if let endDate = endPickupDate{
+                        service.pickupEndDate = endDate
+                    }
                 }
             }
         }
@@ -108,6 +120,12 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                     let selectedSlot = slots[selectedSlotIndexPaths[i].item]
                     let date = dateFormatterForDate.string(from: selectedSlot)
                     let time = dateFormatterForTime.string(from: selectedSlot)
+                    let startDateForDropOff = dateFormatterForPUDODates.string(from: selectedSlot)
+                    
+                    var endDropOffDate:String?
+                    if let finalEndPUDate = dateValue(byaddingHours: 2, toDate: selectedSlot) {
+                        endDropOffDate = dateFormatterForPUDODates.string(from: finalEndPUDate)
+                    }
                     if let services = arrayOfServices {
                         for service in services  {
                             if let cartServices = cartModel?.services {
@@ -115,6 +133,10 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                                     if service.alias == cartService.alias {
                                         cartService.dropOffDate = date
                                         cartService.dropOffTime = time
+                                        cartService.dropOffStartDate = startDateForDropOff
+                                        if let endDate = endDropOffDate {
+                                            cartService.dropOffEndDate = endDate
+                                        }
                                     }
                                 }
                             }
@@ -171,6 +193,7 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     @IBAction func previousTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.item == 0
         { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedCardCollectionViewCell", for: indexPath) as! SavedCardCollectionViewCell
@@ -232,6 +255,7 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
         applyHorizontalNimNimGradient()
         fetchSavedCards()
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }

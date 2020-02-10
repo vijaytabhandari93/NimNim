@@ -307,3 +307,11 @@ func fetchDateSlot(forHour hour:Int, ofDate date:Date) -> Date {
         return Date()
     }
 } // this function helps us to create any date with the desired datecomponent.
+
+func dateValue(byaddingHours hours:Int, toDate date:Date) -> Date? {
+    let calendar = Calendar.current
+    if let finalDate = calendar.date(byAdding: .hour, value: hours, to: date) {
+        return finalDate
+    }
+    return nil
+}

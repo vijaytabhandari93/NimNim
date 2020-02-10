@@ -73,6 +73,10 @@ class ServiceModel:NSObject, Mappable, Codable {
     var dropOffDate : String?
     var pickUpTime : String?
     var dropOffTime  : String?
+    var pickupStartDate:String?
+    var pickupEndDate:String?
+    var dropOffStartDate:String?
+    var dropOffEndDate:String?
     var turnAroundTime:String?
     var status:String?
     //Not to be sent to server..hence not adding in mapping function
@@ -147,6 +151,10 @@ class ServiceModel:NSObject, Mappable, Codable {
         turnAroundTime <- map["turn_around_time"]
         servicePrice <- map["servicePrice"]
         tasks <- map["tasks"]
+        pickupStartDate <- map["pickupStartDate"]
+        pickupEndDate <- map["pickupEndDate"]
+        dropOffStartDate <- map["dropOffStartDate"]
+        dropOffEndDate <- map["dropOffEndDate"]
     }
 //    func  getPriceOfService() -> String?{
 //           var price  = 0
