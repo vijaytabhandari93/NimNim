@@ -93,6 +93,12 @@
 		AC5BC1A523ED306400FAF8C1 /* TailoringSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BC1A423ED306400FAF8C1 /* TailoringSecondViewController.swift */; };
 		AC5BC1A823ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BC1A623ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift */; };
 		AC5BC1A923ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5BC1A723ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.xib */; };
+		AC5CA87F23F1985C000D0E39 /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CA87E23F1985C000D0E39 /* WalletViewController.swift */; };
+		AC5CA88123F19E33000D0E39 /* WalletModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CA88023F19E33000D0E39 /* WalletModel.swift */; };
+		AC5CA88423F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CA88223F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.swift */; };
+		AC5CA88523F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5CA88323F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.xib */; };
+		AC5CA88823F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CA88623F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift */; };
+		AC5CA88923F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5CA88723F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib */; };
 		AC5E697323CC72BD000DF84E /* PricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E697223CC72BD000DF84E /* PricingViewController.swift */; };
 		AC5E697523CC7319000DF84E /* Pricing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5E697423CC7319000DF84E /* Pricing.storyboard */; };
 		AC5F80DA23CD9DED0093B864 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F80D823CD9DED0093B864 /* PriceCollectionViewCell.swift */; };
@@ -318,6 +324,12 @@
 		AC5BC1A423ED306400FAF8C1 /* TailoringSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailoringSecondViewController.swift; sourceTree = "<group>"; };
 		AC5BC1A623ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTailoringRepairCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC5BC1A723ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddTailoringRepairCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC5CA87E23F1985C000D0E39 /* WalletViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController.swift; sourceTree = "<group>"; };
+		AC5CA88023F19E33000D0E39 /* WalletModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletModel.swift; sourceTree = "<group>"; };
+		AC5CA88223F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalanceCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC5CA88323F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletBalanceCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC5CA88623F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTransactionCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC5CA88723F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTransactionCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5E697223CC72BD000DF84E /* PricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingViewController.swift; sourceTree = "<group>"; };
 		AC5E697423CC7319000DF84E /* Pricing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pricing.storyboard; sourceTree = "<group>"; };
 		AC5F80D823CD9DED0093B864 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -597,6 +609,10 @@
 				AC56424B23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.xib */,
 				AC5BC1A623ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift */,
 				AC5BC1A723ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.xib */,
+				AC5CA88223F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.swift */,
+				AC5CA88323F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.xib */,
+				AC5CA88623F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift */,
+				AC5CA88723F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -622,6 +638,7 @@
 				AC16B9AF238FC7A300BC7CD8 /* Card.swift */,
 				AC1B9B852392403E00CA7434 /* AddressModel.swift */,
 				AC52270123C7539E002F111F /* OrderModel.swift */,
+				AC5CA88023F19E33000D0E39 /* WalletModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -681,6 +698,7 @@
 				ACAD665023E0499400072607 /* ShoeRepairSecondViewController.swift */,
 				AC5BC1A223ED304200FAF8C1 /* TailoringViewController.swift */,
 				AC5BC1A423ED306400FAF8C1 /* TailoringSecondViewController.swift */,
+				AC5CA87E23F1985C000D0E39 /* WalletViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -910,6 +928,7 @@
 				AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */,
 				ACF9CD2B235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.xib in Resources */,
 				ACFD92C4235B17AF0009FB03 /* Profile.storyboard in Resources */,
+				AC5CA88523F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.xib in Resources */,
 				AC5ADD8E2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib in Resources */,
 				AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */,
 				AC20417B23B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.xib in Resources */,
@@ -923,6 +942,7 @@
 				AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */,
 				ACFD929A2355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.xib in Resources */,
 				AC1EDC60237C71FC00D36C89 /* GoogleService-Info.plist in Resources */,
+				AC5CA88923F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib in Resources */,
 				AC5ADD922361D99F00204E9E /* ApplyWalletPointsCollectionViewCell.xib in Resources */,
 				ACBB819E232E3FAC003DCF77 /* Montserrat-Black.ttf in Resources */,
 				AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */,
@@ -1055,6 +1075,7 @@
 				ACBC96FD2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.swift in Sources */,
 				AC1FFDBE234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift in Sources */,
 				ACD8BA452351DF87005C1EAA /* NavigationManager.swift in Sources */,
+				AC5CA87F23F1985C000D0E39 /* WalletViewController.swift in Sources */,
 				ACF9CD2A235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift in Sources */,
 				AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */,
 				ACF9CD3D2351EB9C00039E6C /* WashPressedShirtsViewController.swift in Sources */,
@@ -1094,7 +1115,9 @@
 				ACBC96F423606A06006AC5B6 /* CouponsViewController.swift in Sources */,
 				AC5226F923C70F5F002F111F /* OrderNumberCollectionViewCell.swift in Sources */,
 				AC5199CB23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift in Sources */,
+				AC5CA88123F19E33000D0E39 /* WalletModel.swift in Sources */,
 				AC25BFB32371EF2D00C79692 /* ServiceableLocationModel.swift in Sources */,
+				AC5CA88823F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift in Sources */,
 				AC41CE71235C81EF001AC676 /* CardTypeCollectionViewCell.swift in Sources */,
 				ACF9CD1A234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift in Sources */,
 				AC5226FC23C71B14002F111F /* OrderDetailsViewController.swift in Sources */,
@@ -1108,6 +1131,7 @@
 				ACBC96FA2361B1C0006AC5B6 /* OrderReviewViewController.swift in Sources */,
 				ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */,
 				AC17891823785F1800B20D32 /* UserModel.swift in Sources */,
+				AC5CA88423F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.swift in Sources */,
 				AC41CE75235C822F001AC676 /* AddCardCollectionViewCell.swift in Sources */,
 				AC19C7882383EC3B000919E0 /* CouponsUserModel.swift in Sources */,
 				ACBE06C823E0503B00451006 /* AddShoeRepairCollectionViewCell.swift in Sources */,
@@ -1282,7 +1306,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;
@@ -1304,7 +1328,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 11;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;
