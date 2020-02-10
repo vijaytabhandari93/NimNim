@@ -111,6 +111,7 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.uploadedImages.append(imagePath)
+                    self?.collectionView.reloadData()
                 }
             }
             self?.activityIndicator?.stopAnimating()
@@ -370,6 +371,22 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
             cell.delegate = self
+            if uploadedImages.count > 0 {
+                if let urlValue = URL(string: uploadedImages[0])
+                {
+                    cell.firstImage.kf.setImage(with: urlValue)
+                }}
+                if uploadedImages.count > 1 {
+                if let urlValue = URL(string: uploadedImages[1])
+                {
+                    cell.secondImage.kf.setImage(with: urlValue)
+                    }}
+               if uploadedImages.count > 2 {
+                 if let urlValue = URL(string: uploadedImages[2])
+                {
+                    cell.thirdImage.kf.setImage(with: urlValue)
+                }
+            }
             return cell
         }
     }
@@ -382,7 +399,13 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }else if indexPath.section == 1  {
             return CGSize(width: collectionView.frame.size.width, height :95)
         }else  {
-            return CGSize(width:collectionView.frame.size.width,height:134)
+            if uploadedImages.count  > 0 {
+                 return CGSize(width:collectionView.frame.size.width,height:191)
+            }
+            else {
+              return CGSize(width:collectionView.frame.size.width,height:120)
+            }
+            
         }
     }
     

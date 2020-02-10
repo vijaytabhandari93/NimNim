@@ -30,9 +30,48 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
         if let serviceModel = model {
             serviceName.text = serviceModel.name
             let qty = serviceModel.productQuantity()
-            productQty.text = "\(String(describing: qty)) Products"
+            if serviceModel.alias == "shoe-repair" {
+                if qty == 1 {
+                    productQty.text = "\(String(describing: qty)) Shoe Repair Task"
+                }else {
+                    productQty.text = "\(String(describing: qty)) Shoe Repair Tasks"
+                }
+            }
+            else if serviceModel.alias == "tailoring" {
+                if qty == 1 {
+                    productQty.text = "\(String(describing: qty)) Tailoring Task"
+                }else {
+                    productQty.text = "\(String(describing: qty)) Tailoring Tasks"
+                }
+            }
+            else if serviceModel.alias == "carpet-cleaning" {
+                    if qty == 1 {
+                        productQty.text = "\(String(describing: qty)) Carpet"
+                    }else {
+                        productQty.text = "\(String(describing: qty)) Carpets"
+            }
+                }
+                else if serviceModel.alias == "laundered-shirts" {
+                        if qty == 1 {
+                            productQty.text = "\(String(describing: qty)) Shirt"
+                        }else {
+                            productQty.text = "\(String(describing: qty)) Shirts"
+                }
+                    }
+
+                else if serviceModel.alias == "wash-and-fold" {
+                        productQty.text = "To be weighed"
+                }
+
+            else {
+                if qty == 1 {
+                    productQty.text = "\(String(describing: qty)) Clothes"
+                }else  {
+                    productQty.text = "\(String(describing: qty)) Clothes"
+                }
+            }
             amount.text = serviceModel.servicePrice
-        
+            
         }
     }
     
@@ -41,7 +80,7 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
         
     }
     @IBAction func removeDidTapped(_ sender: Any) {
-     delegate?.removeItem(withServiceModel :model)
+        delegate?.removeItem(withServiceModel :model)
         
     }
     @IBAction func viewOrderDetailsDidTapped(_ sender: Any) {
@@ -53,5 +92,5 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
 }

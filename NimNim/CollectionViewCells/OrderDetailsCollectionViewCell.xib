@@ -95,13 +95,27 @@
                             </stackView>
                         </subviews>
                     </stackView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKX-pP-YdH">
+                        <rect key="frame" x="305.5" y="71.5" width="41.5" height="16"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                        <color key="textColor" red="0.039215686274509803" green="0.023529411764705882" blue="0.1803921568627451" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4l-dG-ooV">
+                        <rect key="frame" x="347" y="100" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.85999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="QOz-Ok-ttb" firstAttribute="top" secondItem="kaT-WP-cCO" secondAttribute="bottom" constant="2" id="4t8-xd-wFk"/>
                 <constraint firstItem="aca-Ak-chc" firstAttribute="centerY" secondItem="QOz-Ok-ttb" secondAttribute="centerY" id="B8X-u5-0KT"/>
+                <constraint firstItem="W4l-dG-ooV" firstAttribute="trailing" secondItem="mKX-pP-YdH" secondAttribute="trailing" id="EYk-bg-4c7"/>
                 <constraint firstItem="kaT-WP-cCO" firstAttribute="leading" secondItem="Itx-8C-e3B" secondAttribute="trailing" constant="20" id="Jfg-ty-shs"/>
+                <constraint firstItem="W4l-dG-ooV" firstAttribute="centerY" secondItem="zFw-9n-slW" secondAttribute="centerY" id="Nk0-S3-wW3"/>
                 <constraint firstAttribute="trailing" secondItem="xyA-m7-5UQ" secondAttribute="trailing" constant="28" id="PjF-gd-94r"/>
                 <constraint firstAttribute="bottom" secondItem="gae-9q-AQn" secondAttribute="bottom" id="RQ8-PK-Xwl"/>
                 <constraint firstItem="kaT-WP-cCO" firstAttribute="top" secondItem="wSo-h0-owV" secondAttribute="top" constant="20" id="VLD-jU-X1l"/>
@@ -111,8 +125,10 @@
                 <constraint firstItem="3TZ-GU-eJu" firstAttribute="leading" secondItem="kaT-WP-cCO" secondAttribute="leading" id="c4s-tj-VYg"/>
                 <constraint firstItem="xyA-m7-5UQ" firstAttribute="centerY" secondItem="kaT-WP-cCO" secondAttribute="centerY" id="k6H-xT-Wz1"/>
                 <constraint firstItem="kaT-WP-cCO" firstAttribute="leading" secondItem="wSo-h0-owV" secondAttribute="leading" constant="57" id="m2m-Nc-mL6"/>
+                <constraint firstItem="mKX-pP-YdH" firstAttribute="centerY" secondItem="5sd-nO-3eW" secondAttribute="centerY" id="m4J-Bz-d8o"/>
                 <constraint firstAttribute="trailing" secondItem="gae-9q-AQn" secondAttribute="trailing" constant="28" id="myV-Ba-RfO"/>
                 <constraint firstItem="Itx-8C-e3B" firstAttribute="centerY" secondItem="kaT-WP-cCO" secondAttribute="centerY" id="sD3-XM-0nl"/>
+                <constraint firstItem="mKX-pP-YdH" firstAttribute="trailing" secondItem="xyA-m7-5UQ" secondAttribute="trailing" id="uWe-UI-S81"/>
                 <constraint firstItem="3TZ-GU-eJu" firstAttribute="firstBaseline" secondItem="QOz-Ok-ttb" secondAttribute="baseline" constant="30" id="wLr-3p-7LZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="m0o-Ld-ZPR"/>
@@ -122,8 +138,9 @@
                 <outlet property="dropOffGTimeSlotDate" destination="zFw-9n-slW" id="LE1-lr-EMb"/>
                 <outlet property="noOfProducts" destination="QOz-Ok-ttb" id="twm-9E-t3V"/>
                 <outlet property="serviceName" destination="kaT-WP-cCO" id="aYE-Gc-Oaz"/>
+                <outlet property="serviceStatus" destination="W4l-dG-ooV" id="Rhn-MC-da3"/>
             </connections>
-            <point key="canvasLocation" x="-834.05797101449286" y="-490.84821428571428"/>
+            <point key="canvasLocation" x="-588" y="-511"/>
         </collectionViewCell>
     </objects>
 </document>

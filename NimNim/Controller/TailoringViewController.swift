@@ -79,6 +79,14 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var priceValue: UILabel!
+    @IBOutlet weak var addNewService: UIButton!
+    @IBAction func addMoreServices(_ sender: Any) {
+        let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
+             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"AllServicesViewController") as? AllServicesViewController
+             NavigationManager.shared.push(viewController: secondViewController)
+    
+    }
+    
     
     //MARK:View Controller
     
@@ -106,12 +114,15 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
                 justNimNimIt.isHidden = true
                 totalPrice.isHidden = false
                 priceValue.isHidden = false
+                addNewService.isHidden = false
+            
             } else {
                 addToCart.backgroundColor = Colors.addToCartUnselectable
                 addToCart.isEnabled = false
                 priceTotalbackgroundView.constant = 0
                 totalPrice.isHidden = true
                 priceValue.isHidden = true
+                addNewService.isHidden = true
                 
             }
             shoeRepairCollectionView.reloadData()
@@ -124,6 +135,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
+        priceTotalBackgroundView.addTopShadowToView()
         setupScreen()
         setupCartCountLabel()
     }
@@ -259,14 +271,18 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var numberOfSections =  0
         if let tasks = serviceModel?.tasks, tasks.count > 0 {
-            numberOfSections = tasks.count + 1
+            numberOfSections = tasks.count + 2
         }else {
-            numberOfSections = 1
+            numberOfSections = 2
         }
-        if section == (numberOfSections - 1) {
+        if section == (numberOfSections - 2) {
             //Add task section
             return 1
-        }else {
+        }
+            else if section == (numberOfSections - 1){
+                return 1
+            }
+        else {
             if let tasks = serviceModel?.tasks, tasks.count > section {
                 let currentTask = tasks[section]
                 return currentTask.getTailoringSelectedItems().count + 1  // the  number  of items in  section  is equal to number of  tasks and add  1.
@@ -280,9 +296,9 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
             return 0
         }  else {
             if let tasks = serviceModel?.tasks, tasks.count > 0 {
-                return tasks.count + 1
+                return tasks.count + 2
             }else {
-                return 1
+                return 2
             }
         }
         
@@ -291,15 +307,19 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         var numberOfSections =  0
         if let tasks = serviceModel?.tasks, tasks.count > 0 {
-            numberOfSections = tasks.count + 1
+            numberOfSections = tasks.count + 2
         }else {
-            numberOfSections = 1
+            numberOfSections = 2
         }
         if indexPath.section == (numberOfSections - 1)  {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddTailoringRepairCollectionViewCell", for: indexPath) as! AddTailoringRepairCollectionViewCell
-            cell.delegate = self
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RushDeliveryNotAvailableCollectionViewCell", for: indexPath) as! RushDeliveryNotAvailableCollectionViewCell
             return cell
         }
+            else if indexPath.section == (numberOfSections - 2)  {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddTailoringRepairCollectionViewCell", for: indexPath) as! AddTailoringRepairCollectionViewCell
+                cell.delegate = self
+                return cell
+            }
         else {
             if indexPath.item == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoeTaskAddedCollectionViewCell", for: indexPath) as! ShoeTaskAddedCollectionViewCell
@@ -338,21 +358,24 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
         
         let noOfClothesNib2 = UINib(nibName: "SelectedTasksCollectionViewCell", bundle: nil)
         shoeRepairCollectionView.register(noOfClothesNib2, forCellWithReuseIdentifier: "SelectedTasksCollectionViewCell")
-        let type6PreferencesNib = UINib(nibName: "AddMoreServicesCollectionViewCell", bundle: nil)
-        shoeRepairCollectionView.register(type6PreferencesNib, forCellWithReuseIdentifier:"AddMoreServicesCollectionViewCell")
+        let type6PreferencesNib = UINib(nibName: "RushDeliveryNotAvailableCollectionViewCell", bundle: nil)
+        shoeRepairCollectionView.register(type6PreferencesNib, forCellWithReuseIdentifier:"RushDeliveryNotAvailableCollectionViewCell")
         
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var numberOfSections =  0
         if let tasks = serviceModel?.tasks, tasks.count > 0 {
-            numberOfSections = tasks.count + 1
+            numberOfSections = tasks.count + 2
         }else {
-            numberOfSections = 1
+            numberOfSections = 2
         }
         if indexPath.section == (numberOfSections - 1)  {
             return CGSize(width: collectionView.frame.size.width, height:60)
         }
+           else if indexPath.section == (numberOfSections - 2)  {
+                       return CGSize(width: collectionView.frame.size.width, height:60)
+                   }
         else {
             if indexPath.item == 0 {
                 return CGSize(width: collectionView.frame.size.width, height:30)

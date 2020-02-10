@@ -36,7 +36,7 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
         dateFormatterForDate.dateFormat = "dd MMM YYYY"
         dateFormatterForTime.dateFormat = "hh:mm"
         dateFormatterForPUDODates.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatterForPUDODates.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        dateFormatterForPUDODates.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"//ashish
         fetchSavedCards()
         registerCells()
         selectPaymentCollectionView.delegate = self

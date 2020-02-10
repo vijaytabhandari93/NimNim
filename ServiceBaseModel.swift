@@ -295,12 +295,12 @@ class ServiceModel:NSObject, Mappable, Codable {
                          return numberOfClothes
                      }
                     case .shoeRepair:
-                    if let numberOfClothes = numberOfClothes {
-                        return numberOfClothes
+                        if let count = tasks?.count {
+                        return count
                     }
                     case .tailoring:
-                    if let numberOfClothes = numberOfClothes {
-                        return numberOfClothes
+                   if let count = tasks?.count {
+                    return count
                     }
                 }
             }

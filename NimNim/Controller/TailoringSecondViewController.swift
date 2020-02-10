@@ -29,7 +29,7 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
     var indexPath : IndexPath?
     var editModeOn :  Bool  = false
     
-    var imageAdded : Bool = false
+
     var activeTextView : UITextView?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
@@ -164,7 +164,13 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DropDownCollectionViewCell", for: indexPath) as! DropDownCollectionViewCell
-            cell.headingLabel.text = "Please select your type of shoe".uppercased()
+            cell.headingLabel.text = "Please select your type of garment".uppercased()
+            if let selectedGarment = taskModel?.garMentType {
+                let garments = ["Pants","Skirt","Blouse","Jacket","Dress"]
+                selectedDropDownIndex = garments.firstIndex(where: { (garment) -> Bool in
+                    return garment.caseInsensitiveCompare(selectedGarment) == .orderedSame
+                })//the above function is comparing each of the element in the array garments with the selectedGarment.
+            }
             cell.configureCell(withOptions: ["Pants","Skirt","Blouse","Jacket","Dress"], withSelectedIndex: selectedDropDownIndex)
             cell.delegate = self
             return cell
@@ -229,14 +235,13 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
             return CGSize(width: collectionView.frame.size.width, height: 66)
         }
         else if indexPath.section == 1 {
-            if imageAdded  {
-                return CGSize(width: collectionView.frame.size.width, height:191)
-            }
-            else
-            {
-                return CGSize(width: collectionView.frame.size.width, height:120)
-            }
-            
+            if let uploadedImages = self.taskModel?.uploadedImages, uploadedImages.count > 0  {
+                           return CGSize(width: collectionView.frame.size.width, height:191)
+                       }
+                       else
+                       {
+                           return CGSize(width: collectionView.frame.size.width, height:120)
+                       }
         }else {
             return CGSize(width: collectionView.frame.size.width, height:45)
         }
@@ -278,7 +283,6 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.taskModel?.uploadedImages.append(imagePath)
-                    self?.imageAdded = true
                     self?.shoeRepairCollectionView.reloadData()
                 }
             }

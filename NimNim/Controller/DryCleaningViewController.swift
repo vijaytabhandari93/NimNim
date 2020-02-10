@@ -38,7 +38,6 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var addToCart: UIButton!
-    var imageAdded : Bool = false
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
@@ -198,11 +197,9 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
     func setupAddToCartButton(){
-        if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
-            addToCart.setTitle("Update Cart", for: .normal)
-        }else {
+        
             addToCart.setTitle("Add to Cart", for: .normal)
-        }
+        
     }
     
     func setupCartCountLabel() {
@@ -248,7 +245,6 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.serviceModel?.uploadedImages.append(imagePath)
-                    self?.imageAdded = true
                     self?.dryCleaningCollectionView.reloadData()
                 }
             }
@@ -498,7 +494,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         }else if section == 1 {
             return CGSize(width: collectionView.frame.size.width, height:95)
         }else if section == 2 {
-            if imageAdded  {
+             if let count = serviceModel?.uploadedImages.count , count  > 0  {
                 return CGSize(width: collectionView.frame.size.width, height:191)
             }
             else

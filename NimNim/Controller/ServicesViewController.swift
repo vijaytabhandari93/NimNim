@@ -25,7 +25,6 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     
     var justNimNimItSelected : Bool = false
-    var imageAdded : Bool = false
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
@@ -89,11 +88,8 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func setupAddToCartButton(){
-        if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
-            addToCart.setTitle("Update Cart", for: .normal)
-        }else {
-            addToCart.setTitle("Add to Cart", for: .normal)
-        }
+       addToCart.setTitle("Add to Cart", for: .normal)
+
     }
     
     //MARK:Gradient Setting
@@ -240,7 +236,6 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.serviceModel?.uploadedImages.append(imagePath)
-                    self?.imageAdded = true
                     self?.prefernces.reloadData()
                 }
             }
@@ -418,7 +413,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             return CGSize(width: collectionView.frame.size.width, height:104)
         }
         else if section == 1 {
-            if imageAdded  {
+            if let count = serviceModel?.uploadedImages.count , count  > 0{
             return CGSize(width: collectionView.frame.size.width, height:191)
         }
         else

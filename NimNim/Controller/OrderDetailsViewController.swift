@@ -289,7 +289,8 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                 if let servicePrice = serviceItem.servicePrice {
                     cell.amountPayable.text = servicePrice
                 }
-                cell.noOfProducts.text = "Total Items: \(serviceItem.productQuantity())"
+                cell.configureCell(withModel: serviceItem)
+                cell.serviceStatus.text  = serviceItem.status
             }
             return cell
         }else if indexPath.section == 1 {

@@ -21,6 +21,10 @@ class DateTimeCollectionViewCell: UICollectionViewCell {
         
         // Initialization code
     }
+    override func layoutSubviews() {
+         super.layoutSubviews()
+         self.layer.applySketchShadow(color: Colors.nimnimServicesShadowColor, alpha: 1, x: 12, y: 12, blur: 14, spread: 0)
+     }
     func configureCell(forSelectedState State:Bool) {
         if State {
             dateLabel.backgroundColor = Colors.nimnimGreen

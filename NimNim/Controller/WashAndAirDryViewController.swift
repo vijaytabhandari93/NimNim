@@ -12,7 +12,7 @@ import Kingfisher
 
 class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NoofClothesCollectionViewCellDelegate {
     
-    var imageAdded : Bool = false
+
     var activeTextField : UITextField?
     var defaultStateJustNimNimIt : Bool = false
     //NoOfClothes Delegate Methods
@@ -125,11 +125,8 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     
     func setupAddToCartButton(){
-        if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
-            addToCart.setTitle("Update Cart", for: .normal)
-        }else {
+        
             addToCart.setTitle("Add to Cart", for: .normal)
-        }
     }
     
     func setupCartCountLabel() {
@@ -170,7 +167,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             if let responseDict = response as? [String:Any] {
                 if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                     self?.serviceModel?.uploadedImages.append(imagePath)
-                    self?.imageAdded = true
+ 
                     self?.washAndAirDryCollectionView.reloadData()
                 }
             }
@@ -401,7 +398,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         }else if section == 1 {
             return CGSize(width: collectionView.frame.size.width, height:104)
         }else if section == 2 {
-            if imageAdded  {
+            if let count = serviceModel?.uploadedImages.count , count  > 0  {
                 return CGSize(width: collectionView.frame.size.width, height:191)
             }
             else

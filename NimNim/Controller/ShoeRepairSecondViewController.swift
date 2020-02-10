@@ -303,7 +303,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
         self.present(pickerController, animated: true, completion: nil)
     }
     func textViewStartedEditingInCell(withTextField textView
-        :UITextView){ // To tell the VC to add tap geture to the view and to pass the text View selected
+        :UITextView) { // To tell the VC to add tap geture to the view and to pass the text View selected
         activeTextView = textView
         addTapGestureToView() //once the textbox editing begins the tap gesture starts functioning//
     }

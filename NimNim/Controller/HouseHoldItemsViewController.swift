@@ -12,7 +12,7 @@ import SwiftyJSON
 import Kingfisher
 
 class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate,HouseHoldItemCollectionViewCellDelegate {
-    var imageAdded : Bool = false
+
     var activeTextField : UITextField?
     var defaultStateJustNimNimIt : Bool = false
     //NoOfClothes Delegate Methods
@@ -113,11 +113,9 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         }
     }
     func setupAddToCartButton(){
-        if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
-            addToCart.setTitle("Update Cart", for: .normal)
-        }else {
+      
             addToCart.setTitle("Add to Cart", for: .normal)
-        }
+        
     }
     
     func setupCartCountLabel() {
@@ -356,7 +354,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         }else if section == 1 {
             return CGSize(width: collectionView.frame.size.width, height:73)
         }else if section == 2 {
-            if imageAdded  {
+            if let count = serviceModel?.uploadedImages.count , count  > 0   {
             return CGSize(width: collectionView.frame.size.width, height:191)
         }
         else
@@ -507,7 +505,6 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
                 if let responseDict = response as? [String:Any] {
                     if let imagePath = responseDict["path"] as? String, imagePath.count > 0 {
                         self?.serviceModel?.uploadedImages.append(imagePath)
-                        self?.imageAdded = true
                         self?.houseHoldCollectionView.reloadData()
                     }
                 }
