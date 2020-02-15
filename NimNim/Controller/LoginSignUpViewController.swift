@@ -415,6 +415,9 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 if let msg = responseDict["msg"] as? String {
                     //we can assume here that otp was sent successfully...
                     self.otpState = .verifyOtp
+                    if type == "signup" {
+                        self.showOtpAlert()
+                    }
                 }
             }
             self.activityIndicatorView.stopAnimating()
@@ -561,19 +564,21 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     var OTP : String?
     func verifyTappedInSignUpTableViewCell(withPhoneNumber phoneNumber: String?) {
         getOtpTapped(withPhone: phoneNumber, withType: "signup")
+    }
+    
+    func showOtpAlert()  {
         let alert = UIAlertController(title: "Alert", message: "Enter the OTP", preferredStyle: .alert)
-        alert.addTextField { (textField) in
-            textField.text = ""}
-            alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler:{[weak alert] (_) in
-               let otpTextField = alert?.textFields![0]
-                if let textEntered = otpTextField?.text as? String?{
-                self.OTP = textEntered
-                 self.verify(withType: "signup",withOTP: self.OTP)
-      
-                }
-            }))
-        self.present(alert, animated: true, completion: nil)
-       
+          alert.addTextField { (textField) in
+              textField.text = ""}
+              alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler:{[weak alert] (_) in
+                 let otpTextField = alert?.textFields![0]
+                  if let textEntered = otpTextField?.text as? String?{
+                  self.OTP = textEntered
+                   self.verify(withType: "signup",withOTP: self.OTP)
+        
+                  }
+              }))
+          self.present(alert, animated: true, completion: nil)
     }
     
     func verify(withType type:String?, withOTP otp:String?)

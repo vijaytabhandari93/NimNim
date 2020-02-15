@@ -410,3 +410,4 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     }
     
 }
+

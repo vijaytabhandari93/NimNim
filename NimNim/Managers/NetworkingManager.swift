@@ -102,6 +102,10 @@ class NetworkingManager {
                 if let responseValue = response.result.value as? [String:Any] {
                     if let error = responseValue["error"] as? String {
                         failure?(error) // call of closure
+                    }else if let error = responseValue["error"] as? [String:Any] {
+                        if let message = error["message"] as? String {
+                            failure?(message) // call of closure
+                        }
                     }
                 }
             }
@@ -141,6 +145,10 @@ class NetworkingManager {
                 if let responseValue = response.result.value as? [String:Any] {
                     if let error = responseValue["error"] as? String {
                         failure?(error) // call of closure
+                    }else if let error = responseValue["error"] as? [String:Any] {
+                        if let message = error["message"] as? String {
+                            failure?(message) // call of closure
+                        }
                     }
                 }
             }
@@ -178,6 +186,10 @@ class NetworkingManager {
                 if let responseValue = response.result.value as? [String:Any] {
                     if let error = responseValue["error"] as? String {
                         failure?(error) // call of closure
+                    }else if let error = responseValue["error"] as? [String:Any] {
+                        if let message = error["message"] as? String {
+                            failure?(message) // call of closure
+                        }
                     }
                 }
             }

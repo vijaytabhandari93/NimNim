@@ -58,21 +58,69 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    { if indexPath.item == 0  {
-        return CGSize(width: collectionView.frame.size.width, height:45)
-    }
-    else if indexPath.item == 1  {
-        return CGSize(width: collectionView.frame.size.width, height:15)
-    }
-    else {
-        let label =  UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.frame.size.width - 30, height: CGFloat.greatestFiniteMagnitude))
-        label.text = "Shirts are pressed and returned on Wooden hangers"
-        label.numberOfLines = 0
-        label.font = Fonts.regularFont12
-        label.sizeToFit()
-        let h: CGFloat = label.frame.size.height
-        print(h)
-        return CGSize.init(width:collectionView.frame.size.width, height : h+10)
+    {
+        if indexPath.item == 0
+        {
+            return CGSize(width: collectionView.frame.size.width, height:45)
+        }
+        else if indexPath.item == 1  {
+            return CGSize(width: collectionView.frame.size.width, height:15)
+        }
+        else {
+            var text = ""
+            if indexPath.section == 0 {
+                if indexPath.item == 2 {
+                    text = "Minimum - 10 lbs"
+                }
+                if indexPath.item == 3 {
+                    text = "Clothes will be washed and folded"
+                }
+                if indexPath.item == 4 {
+                    text = "Delivered Within 24 hours, Rush service Available"
+                }
+            }else if indexPath.section == 1 {
+                if indexPath.item == 2 {
+                    text = "No Minimum, items are billed per piece"
+                }
+                if indexPath.item == 3 {
+                    text = "Order will be delivered Within 24 hours, Rush service available"
+                }
+            }else if indexPath.section == 2 {
+                if indexPath.item == 2 {
+                    text = "Shirts are washed and pressed and returned on Wooden hangers"
+                }
+                if indexPath.item == 3 {
+                    text = "Customer can select preference as Boxed Shirts vs. shirts on hanger or choose light/medium/heavy or no starch"
+                }
+                if indexPath.item == 4 {
+                    text = "1 Male Laundered Shirt"
+                }
+                if indexPath.item == 5 {
+                    text = "Delivered within 24 hours, Rush service Available"
+                }
+            }else if indexPath.section == 3 {
+                if indexPath.item == 2 {
+                    text = "All Items List and Price"
+                }
+                if indexPath.item == 3 {
+                    text = "Delivered within 24 hours, Rush service Available"
+                }
+            }else if indexPath.section == 4 {
+                if indexPath.item == 2 {
+                    text = "All Items List and Price"
+                }
+                if indexPath.item == 3 {
+                    text = "Delivered within 24 hours, Rush service Available"
+                }
+            }
+            let label =  UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.frame.size.width - 40, height: CGFloat.greatestFiniteMagnitude))
+            label.text = text
+            label.numberOfLines = 0
+            label.font = Fonts.regularFont12
+            label.sizeToFit()
+            let h: CGFloat = label.frame.size.height
+            print(h)
+            return CGSize.init(width:collectionView.frame.size.width, height : h+10)
         }
     }
     
@@ -153,7 +201,7 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else  if indexPath.item == 4
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text = "Delivered Within 24 hours, Rush service Available "
+                cell.label.text = "Delivered Within 24 hours, Rush service Available"
                 return cell
             }
         }
@@ -218,7 +266,7 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else if indexPath.item == 5
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text  = "Delivered within 24 hours, Rush service Available "
+                cell.label.text  = "Delivered within 24 hours, Rush service Available"
                 return cell
             }
         }else if indexPath.section == 3 {
@@ -240,7 +288,7 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text = "Delivered within 24 hours, Rush service Available "
+                cell.label.text = "Delivered within 24 hours, Rush service Available"
                 return cell
             }
         }
