@@ -13,6 +13,7 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
     
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var activeTextView : UITextView?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
@@ -129,12 +130,14 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
     override func viewWillAppear(_ animated: Bool){
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
-        services = fetchServicesToShow()
+        services = fetchServicesToShow() //main function
         collectionView.reloadData()
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
         // add to cart...and open order review screen.
+        
+            
         addToCart(withServiceModels: services)
     }
     
@@ -142,6 +145,11 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
         if let services = services {
             let selectedServices = services.filter { (serviceModel) -> Bool in
                 return serviceModel.isSelectedForNimNimIt
+            }
+            if selectedServices.count < 1  {
+                let alert = UIAlertController(title: "Alert", message: "Please select atleast one service", preferredStyle: .alert)
+                               alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                               self.present(alert, animated: true, completion: nil)
             }
             var finalArray:[[String:Any]] = []
             for service in selectedServices {
@@ -233,7 +241,7 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
                         for alias in aliases  {
                             addServiceToCartAliasinUserDefaults(withAlias: alias) // to make alias
                         }
-                        let selectedServicesBarringFirst = Array(selectedServices.dropFirst()) //  to eliminate firsst
+                        let selectedServicesBarringFirst = Array(selectedServices.dropFirst()) //  to eliminate first
                         
                         self?.addToCart(withServiceModels: selectedServicesBarringFirst)
                     }
@@ -311,7 +319,7 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
             servicesData = resultArray
         }
         return servicesData
-    }
+    } //the above function basically first gets all the services from the backend.  It then creates a result array of the services to be shown in justNimNimIt by using the filter functioon.
     
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {

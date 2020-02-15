@@ -93,7 +93,8 @@ class CouponsViewController: UIViewController, UICollectionViewDelegate,UICollec
         activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.promocodes, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
             if let responseDict = response as? [String:Any] {
-                let couponBaseModel = Mapper<CouponBaseModel>().map(JSON: responseDict)
+                print(JSON(responseDict))
+let couponBaseModel = Mapper<CouponBaseModel>().map(JSON: responseDict)
                 self?.CouponBaseModelObject = couponBaseModel
                 //? is put after self as it is weak self.
                 self?.couponsCollectionView.reloadData()
@@ -132,7 +133,7 @@ class CouponsViewController: UIViewController, UICollectionViewDelegate,UICollec
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        applyCouponCode.text = CouponBaseModelObject?.data?[indexPath.item].code
+        applyCouponCode.text = CouponBaseModelObject?.data?[indexPath.item].codeName
         
     }
 }

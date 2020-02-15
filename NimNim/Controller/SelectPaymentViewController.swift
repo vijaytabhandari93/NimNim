@@ -240,7 +240,7 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
-            return CGSize(width:collectionView.frame.size.width , height: 64)
+            return CGSize(width:collectionView.frame.size.width , height: 50)
         }
         else
         {

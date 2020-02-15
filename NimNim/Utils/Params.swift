@@ -45,6 +45,7 @@ struct SocialSignIn {
     static let dob = "dob"
     static let email = "email"
     static let profileImage = "profileImage"
+    static let type = "type"
 }
 
 struct AddCard {
@@ -103,7 +104,7 @@ struct AddToCart {     // This is a structure to hold all the keys of request pa
     static let cartId = "cartId"
     static let cart_Id = "cart_id"
     static let itemId = "itemId"
-    static let code = "couponCode"
+    static let code = "code"
    
 }
 

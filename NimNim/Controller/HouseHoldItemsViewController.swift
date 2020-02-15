@@ -11,7 +11,7 @@ import NVActivityIndicatorView
 import SwiftyJSON
 import Kingfisher
 
-class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate,HouseHoldItemCollectionViewCellDelegate {
+class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,HouseHoldItemCollectionViewCellDelegate {
 
     var activeTextField : UITextField?
     var defaultStateJustNimNimIt : Bool = false
@@ -139,8 +139,8 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         
         let type4PreferencesNib = UINib(nibName: "AddMoreServicesCollectionViewCell", bundle: nil)
         houseHoldCollectionView.register(type4PreferencesNib, forCellWithReuseIdentifier: "AddMoreServicesCollectionViewCell")
-        let type3PreferencesNib = UINib(nibName: "NeedRushDeliveryCollectionViewCell", bundle: nil)
-        houseHoldCollectionView.register(type3PreferencesNib, forCellWithReuseIdentifier: "NeedRushDeliveryCollectionViewCell")
+        let type3PreferencesNib = UINib(nibName: "RushDeliveryNotAvailableCollectionViewCell", bundle: nil)
+        houseHoldCollectionView.register(type3PreferencesNib, forCellWithReuseIdentifier: "RushDeliveryNotAvailableCollectionViewCell")
         let type5PreferencesNib = UINib(nibName: "SpecialNotesCollectionViewCell", bundle: nil)
         houseHoldCollectionView.register(type5PreferencesNib, forCellWithReuseIdentifier: "SpecialNotesCollectionViewCell")
         
@@ -422,8 +422,8 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
                     cell.delegate = self
                     cell.itemLabel.text = items[indexPath.row].name
                     if let laundryRate = items[indexPath.row].laundryPrice , let dryCleaningRate = items[indexPath.row].dryCleaningPrice {
-                        cell.laundryRate.text = "$\(String(describing: laundryRate))"
-                        cell.dryCleaningRate.text = "$\(String(describing: dryCleaningRate))"
+                        cell.laundryRate.text = "$\(String(describing: laundryRate))/pc"
+                        cell.dryCleaningRate.text = "$\(String(describing: dryCleaningRate))/pc"
                     }
                     let itemModel = items[indexPath.item]
                     cell.configureUI(withModel: itemModel, withIndexPath: indexPath)
@@ -455,19 +455,8 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
                 return cell
             }
             else if section == 3 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
-                cell.delegate = self
-                cell.labelAgainsCheckbox.text = "I need Rush Delivery"
-                cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
-                if let arrayRushOptions = serviceModel?.rushDeliveryOptions, arrayRushOptions.count == 1 {
-                    let firstPreference = arrayRushOptions[0]
-                    if let hours  = firstPreference.turnAroundTime
-                        ,let extraPrice = firstPreference.price
-                    {
-                        cell.descriptionofLabel.text = "Under rush delivery your clothes will be delivered with in \(hours) Hours and $\(extraPrice) will be charged extra for the same"
-                    }
-                    return cell
-                }
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RushDeliveryNotAvailableCollectionViewCell", for: indexPath) as! RushDeliveryNotAvailableCollectionViewCell
+                return cell
             }
             else if section == 4 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddMoreServicesCollectionViewCell", for: indexPath) as! AddMoreServicesCollectionViewCell

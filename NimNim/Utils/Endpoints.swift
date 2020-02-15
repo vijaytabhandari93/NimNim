@@ -37,7 +37,6 @@ struct Endpoints {
     static let customerFromCart = "customer/customers"
     static let order = "order"
     static let orderhistory = "orderhistory"
-
-    
+    static let wallet = "wallets?current_page=1"
 }
 

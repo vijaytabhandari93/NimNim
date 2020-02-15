@@ -10,6 +10,16 @@ import UIKit
 
 class WalletTransactionCollectionViewCell: UICollectionViewCell {
 
+    
+    @IBOutlet weak var orderNumber: UILabel!
+    
+    @IBOutlet weak var amount: UILabel!
+    
+    @IBOutlet weak var transactionType: UILabel!
+    
+    @IBOutlet weak var date: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

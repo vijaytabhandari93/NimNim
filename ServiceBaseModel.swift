@@ -62,7 +62,7 @@ class ServiceModel:NSObject, Mappable, Codable {
     var v:Int?
     var isNimNimItAvailable:Bool?
     var costPerPiece : Double?
-    var costPerPieceBox : Int?
+    var costPerPieceBox : Double?
     //Custom Variables
     var uploadedImages:[String] = []
     var specialNotes:String?
@@ -326,17 +326,17 @@ class ServiceModel:NSObject, Mappable, Codable {
                     }
                 case .launderedShirts:
                     
-                    var price = 0
+                    var price:Double = 0
                     if let numberOfClothes = numberOfClothes  {
                         if returnPreferences?.first?.isSelected == true {
-                            price = price + numberOfClothes*(costPerPieceBox ?? 0)
+                            price = price + Double(Double(numberOfClothes)*(costPerPieceBox ?? 0))
                         }else  {
-                            price = price + numberOfClothes*Int(costPerPiece ?? 0)
+                            price = price + Double(Double(numberOfClothes)*(costPerPiece ?? 0))
                         }
                     }
                     if isRushDeliverySelected == true {
                         if let rushPrice = rushDeliveryOptions?.first?.price{
-                            price = price + rushPrice
+                            price = price + Double(rushPrice)
                         }
                     }
                     return "$\(price)"

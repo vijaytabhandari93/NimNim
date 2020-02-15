@@ -74,6 +74,11 @@
                                             <constraint firstAttribute="width" constant="24" id="wrD-fT-P0w"/>
                                         </constraints>
                                         <state key="normal" image="rectangleCopy"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="ifLaundered:" destination="gTV-IL-0wX" eventType="touchUpInside" id="PBL-ah-ede"/>
                                         </connections>
@@ -128,6 +133,11 @@
                                             <constraint firstAttribute="width" constant="24" id="MtI-Tz-4DF"/>
                                         </constraints>
                                         <state key="normal" image="rectangleCopy"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="ifDryCleaned:" destination="gTV-IL-0wX" eventType="touchUpInside" id="qJe-df-d9M"/>
                                         </connections>
@@ -167,16 +177,16 @@
                                 <rect key="frame" x="282" y="0.0" width="93" height="72"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Quantity" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1Rt-0M-0yy">
-                                        <rect key="frame" x="8" y="19" width="77" height="34"/>
+                                        <rect key="frame" x="12" y="19" width="69" height="34"/>
                                         <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                     </textField>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="1Rt-0M-0yy" secondAttribute="trailing" constant="8" id="4v4-GW-YlM"/>
-                                    <constraint firstItem="1Rt-0M-0yy" firstAttribute="leading" secondItem="nUg-HB-itK" secondAttribute="leading" constant="8" id="HnE-3c-c3b"/>
+                                    <constraint firstAttribute="trailing" secondItem="1Rt-0M-0yy" secondAttribute="trailing" constant="12" id="4v4-GW-YlM"/>
+                                    <constraint firstItem="1Rt-0M-0yy" firstAttribute="leading" secondItem="nUg-HB-itK" secondAttribute="leading" constant="12" id="HnE-3c-c3b"/>
                                     <constraint firstItem="1Rt-0M-0yy" firstAttribute="centerY" secondItem="nUg-HB-itK" secondAttribute="centerY" id="Pui-e3-kA9"/>
                                 </constraints>
                             </view>

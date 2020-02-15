@@ -141,7 +141,9 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
                 let firstPreference = arrayRushOptions[0]
                 if let hours  = firstPreference.turnAroundTime
                     ,let extraPrice = firstPreference.price
-                { cell.descriptionofLabel.text = "Under rush delivery your clothes will be delivered with in \(hours) Hours and $\(extraPrice) will be charged extra for the same" }
+                { cell.descriptionofLabel.text = "Under rush delivery your clothes will be delivered with in \(hours) Hours"// and $\(extraPrice) will be charged extra for the same"
+                    
+                }
                 return cell
             }
         }

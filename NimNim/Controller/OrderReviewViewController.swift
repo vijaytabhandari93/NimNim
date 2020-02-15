@@ -140,7 +140,9 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.fetchCart, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...//in this get call the user Auth token thee cart is being fetched.
             if let responseDict = response as? [String:Any] { //Alamofire is throwing the response as dictionary .....we are convertig it to model
+                print(JSON(responseDict))
                 let cartModel = Mapper<CartModel>().map(JSON: responseDict)
+                
                 self?.cartModel = cartModel //? is put after self as it is weak self.
                 self?.orderStatusCollectionView.reloadData()
                 
@@ -251,7 +253,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DoYouHaveACouponCollectionViewCell", for: indexPath) as! DoYouHaveACouponCollectionViewCell
                 if let coupon = cartModel?.couponCode {
                     cell.doYouHaveACoupon.text = "Coupons Applied"
-                    cell.chooseCoupon.text  = coupon.code ?? ""
+                    cell.chooseCoupon.text  = coupon.codeName ?? ""
                 }else {
                     cell.doYouHaveACoupon.text = "Do you have a Coupon?"
                     cell.chooseCoupon.text  = "Choose a coupon"

@@ -49,6 +49,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
+    let mobileExt = "+91"
     var activeTextField:UITextField?
     var otpState:OTPState = .getOtp {
         didSet {
@@ -231,7 +232,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         if let data = data as? [String:Any] {
             if currentScreenState == .loginWithPassword || currentScreenState == .loginWithOTP {
                 if let email = data[FBSDK.email] as? String {
-                    performSocialLogin(withEmail: email)
+                    performSocialLogin(withEmail: email, withType: "fb")
                 }
             }else {
                 if let fbId = data[FBSDK.id] as? String {
@@ -405,7 +406,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         let params:[String:Any] = [
-            LogInViaOTP.mobile:"+1\(phoneNumber)",
+            LogInViaOTP.mobile:"\(mobileExt)\(phoneNumber)",
             LogInViaOTP.type:type
         ]
         activityIndicatorView.startAnimating()
@@ -442,7 +443,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         let params:[String:Any] = [
-            LogInViaOTP.mobile:"+1\(phoneNumber)",
+            LogInViaOTP.mobile:"\(mobileExt)\(phoneNumber)",
             LogInViaOTP.type:"login"
         ]
         activityIndicatorView.startAnimating()
@@ -469,7 +470,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         let params:[String:Any] = [
-            VerifyOTP.mobile:"+1\(phoneNumber)",
+            VerifyOTP.mobile:"\(mobileExt)\(phoneNumber)",
             VerifyOTP.otp:otp,
             VerifyOTP.type:"login"
         ]
@@ -622,7 +623,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             var params:[String:Any] = [
                 SignUpViaFormParams.firstName:firstName,
                 SignUpViaFormParams.lastName:lastName,
-                SignUpViaFormParams.phone:"+1\(phoneNumber)",
+                SignUpViaFormParams.phone:"\(mobileExt)\(phoneNumber)",
                 SignUpViaFormParams.password:password,
                 SignUpViaFormParams.email:email
             ]
@@ -671,7 +672,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
         //Vijayta Read: If user logs in with google then we check what is the current state of the screen.. if it is of a login type... then this means we have to login and not signup...
         if currentScreenState == .loginWithPassword || currentScreenState == .loginWithOTP {
-            performSocialLogin(withEmail: user.profile.email)
+            performSocialLogin(withEmail: user.profile.email, withType: "google")
         }else {
             self.userId = user.userID                  // For client-side use only!
             self.firstName = user.profile.givenName
@@ -683,12 +684,14 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         
     }
     
-    func performSocialLogin(withEmail email:String?) {
-        guard let email = email else {
+    func performSocialLogin(withEmail email:String?,withType type : String?) {
+        guard let email = email ,let type = type else {
             return
         }
         let params:[String:Any] = [
-            SocialSignIn.email:email
+            SocialSignIn.email:email,
+            SocialSignIn.type:type
+            
         ]
         activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.socialLogin, withParams: params, withSuccess: { (response) in

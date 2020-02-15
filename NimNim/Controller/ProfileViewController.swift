@@ -336,7 +336,6 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                 
             }else if indexPath.item == (numberOfItems - 1) {
                 let savedAddressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SavedAddressCollectionViewCell", for: indexPath) as! SavedAddressCollectionViewCell
-                savedAddressCell.stackViewTopConstraint.constant = 20
                 savedAddressCell.bottomSeparator.isHidden = true
                 return savedAddressCell // last cell
             }else {

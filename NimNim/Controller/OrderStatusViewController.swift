@@ -40,7 +40,7 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
         NetworkingManager.shared.get(withEndpoint: Endpoints.orderhistory, withParams: nil, withSuccess: {[weak self] (response) in
             if let responseDict = response as? [[String:Any]]{
                 let dict = ["data":responseDict]
-                print(responseDict)
+               print(JSON(dict))
                 let orderModel = Mapper<OrderBaseModel>().map(JSON: dict)
                 self?.orderArrayModel = orderModel //? is put after self as it is weak self.
                 print(self?.orderArrayModel)
@@ -85,7 +85,7 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
             {
                 cell.orderNumber.text =  "\(number)"
             }
-            if let price = arrayItem.orderTotal {
+            if let price = arrayItem.orderAmount {
                 cell.price = "$\(price)"
             }
             

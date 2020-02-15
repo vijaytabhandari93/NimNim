@@ -32,14 +32,22 @@ class CouponModel:NSObject, Mappable, Codable {
     var discount:Int?
     var code:String?
     var v:Int?
+    var validfrom : String?
+    var validto : String?
+    var codeName : String?
+    var idTobeused  : String?
     
     required convenience init?(map: Map) { self.init() }
     
     func mapping(map: Map) {
+        validto  <- map["valid_to"]
+        validfrom  <- map["valid_from"]
         v        <- map["__v"]
-        id       <- map["_id"]
+        id       <- map["cartId"] // DONE  AS IN FETCH  CART  RESPONSE
+        idTobeused    <- map["_id"]
         discount    <- map["discount"]
-        code   <- map["code"]
-    }
+        code   <- map["couponCode"] // DONE  AS IN FETCH  CART  RESPONSE
+        codeName <- map["code"]
 }
 
+}

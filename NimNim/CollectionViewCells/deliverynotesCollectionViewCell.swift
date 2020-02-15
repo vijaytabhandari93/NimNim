@@ -47,7 +47,7 @@ class deliverynotesCollectionViewCell: UICollectionViewCell,UITextViewDelegate {
             preferenceSelected.text = pref
             preferenceSelected.textColor = Colors.nimnimGreen
         }else {
-            preferenceSelected.text = "Please choose your preference"
+            preferenceSelected.text = "Please select your preference"
             preferenceSelected.textColor = Colors.nimnimGrey
         }
     }

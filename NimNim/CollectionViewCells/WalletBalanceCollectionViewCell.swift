@@ -10,6 +10,9 @@ import UIKit
 
 class WalletBalanceCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var currentdate: UILabel!
+    @IBOutlet weak var walletBalance: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

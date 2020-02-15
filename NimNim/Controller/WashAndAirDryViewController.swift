@@ -64,10 +64,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     func registerCells() {
         let type1PreferencesNib = UINib(nibName: "WashAndFoldPreferencesCollectionViewCell", bundle: nil)
         washAndAirDryCollectionView.register(type1PreferencesNib, forCellWithReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell")
-        
-        let type2PreferencesNib = UINib(nibName: "NoofClothesCollectionViewCell", bundle: nil)
-        washAndAirDryCollectionView.register(type2PreferencesNib, forCellWithReuseIdentifier: "NoofClothesCollectionViewCell")
-        
+      
         
         let type4PreferencesNib = UINib(nibName: "SpecialNotesCollectionViewCell", bundle: nil)
         washAndAirDryCollectionView.register(type4PreferencesNib, forCellWithReuseIdentifier: "SpecialNotesCollectionViewCell")
@@ -394,10 +391,8 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let section = indexPath.section
         if section == 0 {
-            return CGSize(width: collectionView.frame.size.width, height:88)
-        }else if section == 1 {
             return CGSize(width: collectionView.frame.size.width, height:104)
-        }else if section == 2 {
+        }else if section == 1 {
             if let count = serviceModel?.uploadedImages.count , count  > 0  {
                 return CGSize(width: collectionView.frame.size.width, height:191)
             }
@@ -405,9 +400,9 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             {
                 return CGSize(width: collectionView.frame.size.width, height:120)
             }
-        }else if section == 3 {
+        }else if section == 2 {
             return CGSize(width: collectionView.frame.size.width, height:95)
-        }else if section == 4 {
+        }else if section == 3 {
             return CGSize(width: collectionView.frame.size.width, height:48)
         }
         return CGSize(width: collectionView.frame.size.width, height:0)
@@ -415,7 +410,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 1 {
+        if section == 0 {
             return CGSize(width: collectionView.frame.size.width, height: 92)
         }
         return CGSize(width: collectionView.frame.size.width, height: 0)
@@ -436,27 +431,19 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if IsAddToCartTapped{
-            return 5 }
+            return 4 }
         else
         {
-            return 4 }//number of clothes, preferences, special notes, rush delivery, add more services
+            return 3 }// preferences, special notes, rush delivery, add more services
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            if justNimNimItSelected {
-                return 0
-                
-            } else
-            {
-                return 1
-            }
+               return 3
         }else if section == 1 {
-            return 3
+            return 1
         }else if section == 2 {
             return 1
         }else if section == 3 {
-            return 1
-        }else if section == 4 {
             return 1
         }
         return 0
@@ -466,13 +453,6 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         
         let section = indexPath.section
         if section == 0 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
-            cell.titleLabel.text = "Number of Clothes"
-            cell.delegate = self
-            cell.noOfPieces.text = UserDefaults.standard.object(forKey: "noOfClothes") as? String
-            return cell
-        }
-        else if section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell
             switch indexPath.row {
             case 0:
@@ -517,7 +497,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
                 
             }
         }
-        if section == 2 {
+        if section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
             cell.delegate = self
             if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 0 {
@@ -541,7 +521,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             }
             return cell
         }
-        else if section == 3 {
+        else if section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RushDeliveryNotAvailableCollectionViewCell", for: indexPath) as! RushDeliveryNotAvailableCollectionViewCell
             return cell
         }

@@ -28,6 +28,7 @@ class OrderModel : NSObject, Mappable, Codable  {
     var couponCode:CouponModel?
     var cartId : String?
     var orderTotal : Int?
+    var orderAmount : Int?
     var services : [ServiceModel]?  //servicemodel is a class which is like a dictionary of key value pairs
     var isWalletSelected:Bool? = true
     var v : String?
@@ -53,6 +54,7 @@ class OrderModel : NSObject, Mappable, Codable  {
         orderNumber <- map["orderNumber"]
         date  <-  map["date"]
         createdAt <- map["created_at"]
+        orderAmount<-map["order_amount"]
     }
 }
 

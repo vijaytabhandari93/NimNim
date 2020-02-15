@@ -52,6 +52,9 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
         if indexPath.row == 4 {
             logOut()
         }
+        if indexPath.row == 1 {
+              wallet()
+               }
         if indexPath.row == 3 {
         pricing()
         }
@@ -83,6 +86,14 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
         
               let servicesStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
               let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "OrderStatusViewController") as? OrderStatusViewController
+                  NavigationManager.shared.push(viewController: allServices)
+              
+        
+    }
+    func wallet() {
+        
+              let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
+              let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "WalletViewController") as? WalletViewController
                   NavigationManager.shared.push(viewController: allServices)
               
         

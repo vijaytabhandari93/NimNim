@@ -24,8 +24,8 @@ class CouponCollectionViewCell: UICollectionViewCell {
         if let discountValue = model.discount {
             discount.text = "\(discountValue)"
         }
-        code.text = model.code
-        id.text = model.id
+        code.text = model.codeName
+        id.text = model.idTobeused
     }
     
 }
