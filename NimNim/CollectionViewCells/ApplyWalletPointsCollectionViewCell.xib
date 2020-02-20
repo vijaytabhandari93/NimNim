@@ -70,10 +70,18 @@
                             <action selector="applyPointsTapped:" destination="Vcm-zR-xJv" eventType="touchUpInside" id="1Pl-a5-hHF"/>
                         </connections>
                     </button>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e65-t6-PKN">
+                        <rect key="frame" x="0.0" y="92" width="375" height="8"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97647058819999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="wMd-iB-jal"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="e65-t6-PKN" secondAttribute="trailing" id="FAv-YF-Mzh"/>
                 <constraint firstItem="9Dz-IV-AuB" firstAttribute="centerY" secondItem="2RU-PB-dbk" secondAttribute="centerY" id="Fge-eg-vig"/>
                 <constraint firstAttribute="bottom" secondItem="C4o-7X-M0Q" secondAttribute="bottom" id="HQ9-um-EHo"/>
                 <constraint firstItem="2RU-PB-dbk" firstAttribute="top" secondItem="Vcm-zR-xJv" secondAttribute="top" constant="29" id="TS7-c9-VrN"/>
@@ -84,12 +92,15 @@
                 <constraint firstItem="qy4-DQ-8qZ" firstAttribute="leading" secondItem="2RU-PB-dbk" secondAttribute="trailing" constant="10" id="eWu-Bt-p9R"/>
                 <constraint firstAttribute="trailing" secondItem="C4o-7X-M0Q" secondAttribute="trailing" id="fPW-ze-FEH"/>
                 <constraint firstItem="qy4-DQ-8qZ" firstAttribute="top" secondItem="2RU-PB-dbk" secondAttribute="top" id="mdc-mP-iUI"/>
+                <constraint firstItem="e65-t6-PKN" firstAttribute="leading" secondItem="Vcm-zR-xJv" secondAttribute="leading" id="pUJ-4t-stP"/>
+                <constraint firstAttribute="bottom" secondItem="e65-t6-PKN" secondAttribute="bottom" id="uIK-7h-OP0"/>
                 <constraint firstAttribute="trailing" secondItem="9Dz-IV-AuB" secondAttribute="trailing" constant="28" id="wIu-Pj-xuj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="mI3-ob-srm"/>
             <size key="customSize" width="295" height="169"/>
             <connections>
                 <outlet property="apply" destination="9Dz-IV-AuB" id="0tf-v9-BD7"/>
+                <outlet property="applyWalletPoints" destination="qy4-DQ-8qZ" id="DgO-9T-9g9"/>
                 <outlet property="points" destination="hKB-0f-zKW" id="zUT-ZS-nv9"/>
             </connections>
             <point key="canvasLocation" x="123.91304347826087" y="162.72321428571428"/>

@@ -16,5 +16,5 @@ target 'NimNim' do
   pod 'FBSDKCoreKit/Swift'
   pod 'FBSDKLoginKit/Swift'
   pod 'NTMonthYearPicker' #To have a datepicker with month and year input only support...
-  
+  pod 'MoEngage-iOS-SDK','~> 5.0'
 end

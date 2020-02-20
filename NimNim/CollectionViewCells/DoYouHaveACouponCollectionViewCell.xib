@@ -35,7 +35,6 @@
                         <rect key="frame" x="79" y="51.5" width="105" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="X1R-Se-u7y"/>
-                            <constraint firstAttribute="width" constant="105" id="Y87-D3-Jc0"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                         <nil key="textColor"/>

@@ -8,6 +8,7 @@
 
 import UIKit
 import NVActivityIndicatorView
+import SwiftyJSON
 
 class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,AddCardCollectionViewCellDelegate {
     
@@ -163,7 +164,7 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
         activityIndicator.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.addCard, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
-                print(responseDict)
+                print(JSON(responseDict))
                 print("hello")
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
@@ -177,8 +178,9 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
                 print("wrong")
                 self.present(alert, animated: true, completion: nil)
             }
+                   self.activityIndicator.stopAnimating()
         }
-         self.activityIndicator.stopAnimating()
+  
     }
     
     @IBAction func addCardTapped(_ sender:Any?) {

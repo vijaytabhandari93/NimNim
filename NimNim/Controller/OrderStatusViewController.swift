@@ -43,7 +43,7 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
                print(JSON(dict))
                 let orderModel = Mapper<OrderBaseModel>().map(JSON: dict)
                 self?.orderArrayModel = orderModel //? is put after self as it is weak self.
-                print(self?.orderArrayModel)
+                print(self?.orderArrayModel?.toJSON())
                 self?.trackOrderCollectionViiew.reloadData()
             }
             
@@ -85,6 +85,7 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
             {
                 cell.orderNumber.text =  "\(number)"
             }
+            
             if let price = arrayItem.orderAmount {
                 cell.price = "$\(price)"
             }

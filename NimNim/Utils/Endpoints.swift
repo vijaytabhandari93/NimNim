@@ -38,5 +38,7 @@ struct Endpoints {
     static let order = "order"
     static let orderhistory = "orderhistory"
     static let wallet = "wallets?current_page=1"
+    static let verifyresetpasswordotp = "verifyresetpasswordotp"
+    static let resetpassword = "resetpassword"
 }
 

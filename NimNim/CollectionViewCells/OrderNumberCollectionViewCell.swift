@@ -10,6 +10,7 @@ import UIKit
 
 class OrderNumberCollectionViewCell: UICollectionViewCell {
     
+    
     var cardId : String?
     var address : String?
     var price:String?
@@ -27,8 +28,8 @@ class OrderNumberCollectionViewCell: UICollectionViewCell {
             allServices.date  = date.text
             allServices.address  = address
             allServices.cardId = cardId
-            allServices.totalPrice = price
             allServices.orderModel = orderModel
+            
         }
         NavigationManager.shared.push(viewController: allServices)
     }

@@ -98,6 +98,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
         shoeRepairCollectionView.dataSource = self
         setupCartCountLabel()
         setupScreen()
+        totalPrice.text = serviceModel?.servicePrice
         
     }
     func setupScreen(){

@@ -99,7 +99,7 @@ class ServiceModel:NSObject, Mappable, Codable {
             }
         }
     }
-    var servicePrice : String?
+    var servicePrice : String?// later to be used in fetch order history
 
     enum Alias:String {
         case washAndFold = "wash-and-fold"
@@ -164,6 +164,7 @@ class ServiceModel:NSObject, Mappable, Codable {
 //
 //           return
 //       }
+   
     
     func getMaleItems() -> [ItemModel] {
         var maleItems:[ItemModel] = []  
@@ -308,14 +309,58 @@ class ServiceModel:NSObject, Mappable, Codable {
         return 0
     }
     
-    func calculatePriceForService() -> String {
+    func validateAddToCartForService() ->  Bool {
         if let alias = alias {
             if let value = Alias(rawValue: alias) {
                 switch value {
                 case .washAndFold:
-                    if let price = price {
-                        return "$\(price) / lb"
+                    let selectedDetergent = detergents?.first(where: { (prefModel) -> Bool in
+                        if prefModel.isSelected == true {
+                            return true
+                        }else {
+                            return false
+                        }
+                    })
+                    if selectedDetergent == nil {
+                        return false
                     }
+                    
+                    let selectedWash = wash?.first(where: { (prefModel) -> Bool in
+                        if prefModel.isSelected == true {
+                            return true
+                        }else {
+                            return false
+                        }
+                    })
+                    if selectedWash == nil {
+                        return false
+                    }
+                    
+                    return true
+                case .washAndAirDry:
+                    return true
+                case .launderedShirts:
+                    return true
+                case .householdItems:
+                    return true
+                case .dryCleaning:
+                    return true
+                case .carpetCleaning:
+                    return true
+                case .shoeRepair:
+                    return true
+                case .tailoring:
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    func calculatePriceForService() -> String {
+        if let alias = alias {
+            if let value = Alias(rawValue: alias) {
+                switch value {
                 case .washAndFold:
                     if let price = price {
                         return "$\(price) / lb"
@@ -334,11 +379,7 @@ class ServiceModel:NSObject, Mappable, Codable {
                             price = price + Double(Double(numberOfClothes)*(costPerPiece ?? 0))
                         }
                     }
-                    if isRushDeliverySelected == true {
-                        if let rushPrice = rushDeliveryOptions?.first?.price{
-                            price = price + Double(rushPrice)
-                        }
-                    }
+                   
                     return "$\(price)"
                 case .householdItems:
                     var price = 0
@@ -362,11 +403,6 @@ class ServiceModel:NSObject, Mappable, Codable {
                             }
                         }
                     }
-                    if isRushDeliverySelected == true {
-                        if let rushPrice = rushDeliveryOptions?.first?.price{
-                            price = price + rushPrice
-                        }
-                    }
                     return "$\(price)"
                 case .dryCleaning:
                     var price = 0
@@ -384,11 +420,7 @@ class ServiceModel:NSObject, Mappable, Codable {
                             }
                         }
                     }
-                    if isRushDeliverySelected == true {
-                        if let rushPrice = rushDeliveryOptions?.first?.price{
-                            price = price + rushPrice
-                        }
-                    }
+                
                     return "$\(price)"
                     case .carpetCleaning:
                                        if let price = price {
@@ -443,11 +475,7 @@ class ServiceModel:NSObject, Mappable, Codable {
                             }
                         }
                     }
-                    if isRushDeliverySelected == true {
-                        if let rushPrice = rushDeliveryOptions?.first?.price{
-                            price = price + rushPrice
-                        }
-                    }
+                    
                     return "$\(price)"
                 case .dryCleaning:
                     var maleprice = 0
@@ -514,6 +542,7 @@ class ItemModel:NSObject, Mappable, Codable, NSCopying {
     var dryCleaningPrice : String? // presently made string //household
     var isSelectedShoeRepairPreference:Bool?
     var isSelectedTailoringRepairPreference:Bool?
+    var garment:String? //key added in item level
     var garmentType : String?
     
     //this is our property
@@ -534,6 +563,7 @@ class ItemModel:NSObject, Mappable, Codable, NSCopying {
         icon             <- map["icon"]
         maleCount     <- map["male_count"]
         femaleCount <- map["female_count"]
+        garment <- map["garment"]
         IfLaundered            <- map["if_laundered"]
         IfDrycleaned          <- map["if_dryCleaned"]
         qty             <- map["qty"]
@@ -585,14 +615,16 @@ class TaskModel: NSObject, Mappable, Codable {
         }
     }
     func getGarmentSpecificItems() -> [ItemModel]{
-           if garMentType == "pants" {
+           if garMentType == "pantsandjeans" {
                return getPants()
-           }else if garMentType == "skirt" {
-               return getSkirt()
+           }else if garMentType == "shirt" {
+               return getShirt()
            }else if garMentType == "blouse" {
                return getblouse()
-           }else if garMentType == "jackets" {
+           }else if garMentType == "jacket" {
                return getjackets()
+           }else if garMentType == "shorts" {
+               return getshorts()
            }else {
                return getdress()
            }
@@ -669,22 +701,24 @@ class TaskModel: NSObject, Mappable, Codable {
         }
         return femaleItems
     }
+    
     func getPants() -> [ItemModel] {
         var femaleItems:[ItemModel] = []
         if items.count > 0 {
             for item in items {
-                if item.garmentType == "Pants" {
+                if item.garment == "pantsandjeans" {
                     femaleItems.append(item)
                 }
             }
         }
         return femaleItems
     }
-    func getSkirt() -> [ItemModel] {
+    
+    func getShirt() -> [ItemModel] {
         var femaleItems:[ItemModel] = []
         if items.count > 0 {
             for item in items {
-                if item.garmentType == "Skirt" {
+                if item.garment == "shirt" {
                     femaleItems.append(item)
                 }
             }
@@ -696,7 +730,7 @@ class TaskModel: NSObject, Mappable, Codable {
         var femaleItems:[ItemModel] = []
         if items.count > 0 {
             for item in items {
-                if item.genders == "blouse" {
+                if item.garment == "blouse" {
                     femaleItems.append(item)
                 }
             }
@@ -707,7 +741,7 @@ class TaskModel: NSObject, Mappable, Codable {
         var femaleItems:[ItemModel] = []
         if items.count > 0 {
             for item in items {
-                if item.genders == "male" {//hardcoded to be changed later
+                if item.garment == "jacket" {//hardcoded to be changed later
                     femaleItems.append(item)
                 }
             }
@@ -718,7 +752,7 @@ class TaskModel: NSObject, Mappable, Codable {
         var femaleItems:[ItemModel] = []
         if items.count > 0 {
             for item in items {
-                if item.genders == "female" { //hardcoded to be changed later
+                if item.garment == "dress" { //hardcoded to be changed later
                     femaleItems.append(item)
                 }
             }
@@ -726,6 +760,18 @@ class TaskModel: NSObject, Mappable, Codable {
         return femaleItems
     }
     
+    func getshorts() -> [ItemModel] {
+        var femaleItems:[ItemModel] = []
+        if items.count > 0 {
+            for item in items {
+                if item.garment == "shorts" { //hardcoded to be changed later
+                    femaleItems.append(item)
+                }
+            }
+        }
+        return femaleItems
+    }
+
     func resetSelections() {
         if items.count > 0 {
             for item in items {

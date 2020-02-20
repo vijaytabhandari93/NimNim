@@ -28,7 +28,7 @@ class OrderModel : NSObject, Mappable, Codable  {
     var couponCode:CouponModel?
     var cartId : String?
     var orderTotal : Int?
-    var orderAmount : Int?
+    var orderAmount : Double?
     var services : [ServiceModel]?  //servicemodel is a class which is like a dictionary of key value pairs
     var isWalletSelected:Bool? = true
     var v : String?
@@ -38,12 +38,16 @@ class OrderModel : NSObject, Mappable, Codable  {
     var date : String = "key to be created"
     var updated_at : String?
     var createdAt :String?
+    var walletPoints : String?//later to be used in fetch order history
+    var issues:[IssueModel] = []
+
+    //When submit ticket is tapped on submit ticket screen... you will create an Issue Model and store the concerned type and description in it...and pass this model to Order Details Screen...
     
     func mapping(map: Map) {
         updated_at <- map["updated_at"]
         orderStatus <- map["order_status"]
         customerId <- map["customerId"]
-        couponCode <- map["promo_code_applied"]
+        couponCode <- map["couponCode"]
         cartId <- map["cart_id"]
         orderTotal <-  map["order_total"]
         services  <- map  ["services"]
@@ -54,7 +58,19 @@ class OrderModel : NSObject, Mappable, Codable  {
         orderNumber <- map["orderNumber"]
         date  <-  map["date"]
         createdAt <- map["created_at"]
-        orderAmount<-map["order_amount"]
+        orderAmount<-map["order_amount"]///provided by  mukesh for orderAmout
+        walletPoints<-map["walletPoints"]
+    }
+}
+
+class IssueModel: NSObject, Mappable, Codable {
+    var type:String?
+    var issueDescription:String?
+    
+    required convenience init?(map: Map) { self.init() }
+    func mapping(map: Map) {
+        type <- map["type"]
+        issueDescription <- map["issueDescription"]
     }
 }
 

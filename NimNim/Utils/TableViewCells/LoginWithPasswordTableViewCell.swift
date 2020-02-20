@@ -14,7 +14,7 @@ protocol LoginWithPasswordTableViewCellDelegate:class {
     func textFieldStartedEditingInLoginViaPasswordTableViewCell(withTextField textField:UITextField) // To tell the loginSignUpVC to add tap geture to the view and to pass the text field selected
     func textFieldEndedEditingInLoginViaPasswordTableViewCell(withTextField textField:UITextField) // To tell the loginSignUpVC to remove the tap gesture from the view and to pass the textfield upon which end editing has been called
     func logInTappedInLoginWithPasswordTableViewCell(withEmail email:String?,withPassword password:String?) // main login tapped
-    func sendLinkTappedInLoginWithPasswordTableViewCell(withEmail email:String?)
+    func sendLinkTappedInLoginWithPasswordTableViewCell(withPhone email:String?)
 }
 enum PasswordState {
     case forgotPassword
@@ -26,13 +26,11 @@ class LoginWithPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     //MARK: IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var passwordView: UIView!
     @IBOutlet weak var otpAndForgotPasswordView: UIView!
     @IBOutlet weak var dontHaveAccountView: UIView!
     @IBOutlet weak var PasswordViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var passwordViewHeightConstraint: NSLayoutConstraint!
-    
     @IBOutlet weak var logInButton: UIButton!
     
     //MARK: Constants and Variables
@@ -56,13 +54,16 @@ class LoginWithPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     func setupView() {
         if currentState == .forgotPassword {
             passwordView.isHidden = true
+            emailTextField.text = ""
+            emailTextField.placeholder = "Phone number here *"
             PasswordViewTopConstraint.constant = 0
-            logInButton.setTitle("Send Link", for: .normal)
+            logInButton.setTitle("Send OTP", for: .normal)
             passwordViewHeightConstraint.constant = 0
             otpAndForgotPasswordView.isHidden = true
             dontHaveAccountView.isHidden = true
         }else {
             passwordView.isHidden = false
+            emailTextField.placeholder = "Email here *"
             PasswordViewTopConstraint.constant = 39
             logInButton.setTitle("Log In", for: .normal)
             passwordViewHeightConstraint.constant = 28
@@ -89,7 +90,7 @@ class LoginWithPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     @IBAction func logInTapped(_ sender: Any) {
         //if current state is .getOtp then we need to call getOtpTapped in the delegate of this cell...else we need to call verifyOtpTapped in the delegate of this cell...
         if currentState == .forgotPassword {
-            delegate?.sendLinkTappedInLoginWithPasswordTableViewCell(withEmail: emailTextField.text)
+            delegate?.sendLinkTappedInLoginWithPasswordTableViewCell(withPhone: emailTextField.text)
         }else {
             delegate?.logInTappedInLoginWithPasswordTableViewCell( withEmail:emailTextField.text, withPassword: passwordTextField.text)
         }

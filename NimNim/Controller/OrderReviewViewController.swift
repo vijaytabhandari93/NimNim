@@ -75,6 +75,18 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "DryCleaningViewController") as! DryCleaningViewController
                 dryCleaningVC.serviceModel = model  //refers to 4th element
                 NavigationManager.shared.push(viewController: dryCleaningVC)
+            }else if model.alias == "tailoring" {
+                let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "TailoringViewController") as!TailoringViewController
+                dryCleaningVC.serviceModel = model  //refers to 4th element
+                NavigationManager.shared.push(viewController: dryCleaningVC)
+            }else if model.alias == "shoe-repair" {
+                let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController") as! ShoeRepairViewController
+                dryCleaningVC.serviceModel = model  //refers to 4th element
+                NavigationManager.shared.push(viewController: dryCleaningVC)
+            }else if model.alias == "carpet-cleaning" {
+                let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController") as! RugCleaningViewController
+                dryCleaningVC.serviceModel = model  //refers to 4th element
+                NavigationManager.shared.push(viewController: dryCleaningVC)
             }
             else {
                 let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
@@ -101,10 +113,10 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       orderStatusCollectionView.reloadData()
         registerCells()
         orderStatusCollectionView.delegate = self
         orderStatusCollectionView.dataSource = self
-        priceTotalBackgroundView.isHidden = true
         addressMethod.isHidden = true
         fetchCart()
         fetchWalletPoints()
@@ -115,7 +127,6 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
-        priceTotalBackgroundView.addTopShadowToView()
         fetchCart()
         orderStatusCollectionView.reloadData()
     }
@@ -144,12 +155,12 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 let cartModel = Mapper<CartModel>().map(JSON: responseDict)
                 
                 self?.cartModel = cartModel //? is put after self as it is weak self.
-                self?.orderStatusCollectionView.reloadData()
+                
                 
                 if cartModel?.services?.count != nil {
-                    self?.priceTotalBackgroundView.isHidden = false
+                    
                     self?.addressMethod.isHidden = false
-                    self?.amountLabel.text = "To be calculated"
+                    
                     let cartCount = fetchNoOfServicesInCart()
                     if cartCount == 0 {
                         let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
@@ -162,6 +173,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                     UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
                     // from server we are fetching the cart id.
                 }
+                self?.orderStatusCollectionView.reloadData()
             }
             self?.activityIndicator.stopAnimating()
             }) //definition of success closure
@@ -222,15 +234,35 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     }
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+         return 3
+    }
+    
+    func GetRushStatus() -> Bool {
+        if let services = cartModel?.services, services.count > 0 {
+            for service in services  {
+            if service.isRushDeliverySelected == true
+            {return true
+            }
+        }
+        return false
+       }
+     return false
+    
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         if section == 0 {
             if let services = cartModel?.services, services.count > 0 {
-                return services.count
+                return  services.count
             }
-        }else {
+        }
+        else if section == 1 {
+            if GetRushStatus() {
+                return 1
+            }
+        }
+        else {
             if let services = cartModel?.services, services.count > 0 {
                 return 2  // this statement ensures that no cell is made when cart is empty
             }
@@ -247,6 +279,11 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 let service = services[indexPath.item]
                 cell.configureCell(withModel: service)
             }
+            return cell
+        }else if indexPath.section == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DoYouHaveACouponCollectionViewCell", for: indexPath) as! DoYouHaveACouponCollectionViewCell
+                cell.doYouHaveACoupon.text = "Rush Delivery is Applicable"
+                cell.chooseCoupon.text  = "Additional $20 will be charged"
             return cell
         }else {
             if indexPath.item == 0 {
@@ -281,7 +318,15 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
             return CGSize(width: collectionView.frame.size.width, height:110)
-        }else {
+        }else if indexPath.section == 1 {
+            if GetRushStatus() {
+
+                return CGSize(width: collectionView.frame.size.width, height:110)
+            } else {
+                return CGSize(width: collectionView.frame.size.width, height:0)
+            }
+        }
+        else {
             if indexPath.item == 0 {
                 return CGSize(width: collectionView.frame.size.width, height:96)
             }else {
@@ -294,9 +339,12 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         if section == 0 {
             if let services = cartModel?.services, services.count > 0 {
                 return CGSize(width: collectionView.frame.size.width, height: 70)
+            }else  {
+               return CGSize(width: collectionView.frame.size.width, height: 0)
             }
+        }else {
+           return CGSize(width: collectionView.frame.size.width, height: 0)
         }
-        return CGSize(width: collectionView.frame.size.width, height: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -311,7 +359,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if indexPath.section == 1 && indexPath.item == 0 {
+        if indexPath.section == 2 && indexPath.item == 0 {
             let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
             let applyCouponVC = SB.instantiateViewController(withIdentifier: "CouponsViewController")
             NavigationManager.shared.push(viewController: applyCouponVC)

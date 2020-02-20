@@ -26,22 +26,26 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Home" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tH8-Mt-PY3">
-                        <rect key="frame" x="28" y="10" width="44" height="17.5"/>
+                        <rect key="frame" x="28" y="10" width="50" height="17.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17.5" id="8pz-iH-LoI"/>
+                            <constraint firstAttribute="width" constant="50" id="plJ-IA-ipU"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pg-ig-fRt">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="319" placeholderIntrinsicHeight="51.5" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6pg-ig-fRt">
                         <rect key="frame" x="28" y="34.5" width="319" height="51.5"/>
-                        <string key="text">30 Germania St, Boston, MA 02130, USA
-8V7W+VR Boston, Massachusetts, USA
-+1 617-368-5080</string>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use this Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z8k-sg-ARy">
                         <rect key="frame" x="28" y="96" width="116.5" height="17.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17.5" id="SJz-kF-oVA"/>
+                        </constraints>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -79,6 +83,7 @@
                 <constraint firstItem="6pg-ig-fRt" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="8zw-hR-9is"/>
                 <constraint firstItem="UeS-Wm-YOE" firstAttribute="centerY" secondItem="Z8k-sg-ARy" secondAttribute="centerY" id="LMY-bt-a1p"/>
                 <constraint firstItem="Jlx-7s-QV6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="Pev-Eb-qUt"/>
+                <constraint firstItem="Jlx-7s-QV6" firstAttribute="top" secondItem="Z8k-sg-ARy" secondAttribute="bottom" constant="13.5" id="WOb-Ok-Zm9"/>
                 <constraint firstItem="Z8k-sg-ARy" firstAttribute="top" secondItem="6pg-ig-fRt" secondAttribute="bottom" constant="10" id="Wnf-5j-Ih4"/>
                 <constraint firstItem="Z8k-sg-ARy" firstAttribute="leading" secondItem="6pg-ig-fRt" secondAttribute="leading" id="Ye0-V8-d3L"/>
                 <constraint firstAttribute="bottom" secondItem="Jlx-7s-QV6" secondAttribute="bottom" id="kYC-0m-mNJ"/>

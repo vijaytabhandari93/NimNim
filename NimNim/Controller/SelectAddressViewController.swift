@@ -17,6 +17,7 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
     var cartModel : CartModel?
     var Index : IndexPath?
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    
     func addressSelectedChangeUI(withIndexPath indexPath: IndexPath?) {
         if let indexPath = indexPath {
             Index = indexPath
@@ -349,8 +350,72 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
                 return CGSize(width: collectionView.frame.size.width, height:175)
             }
         else
+            
         {
-            return CGSize(width: collectionView.frame.size.width, height:90)
+            let addressIndex = indexPath.item - 1
+            var finalAddressString = ""
+            if let house = self.addressBaseModel?.data?[addressIndex].house, house.count > 0 {
+                finalAddressString = house
+            }
+            if let street = self.addressBaseModel?.data?[addressIndex].street, street.count > 0 {
+                if finalAddressString.count > 0 {
+                    finalAddressString = "\(finalAddressString), \(street)"
+                }else {
+                    finalAddressString = street
+                }
+            }
+            if let area = self.addressBaseModel?.data?[addressIndex].area, area.count > 0 {
+                if finalAddressString.count > 0 {
+                    finalAddressString = "\(finalAddressString), \(area)"
+                }else {
+                    finalAddressString = area
+                }
+            }
+            if let landmark = self.addressBaseModel?.data?[addressIndex].landmark, landmark.count > 0 {
+                if finalAddressString.count > 0 {
+                    finalAddressString = "\(finalAddressString), \(landmark)"
+                }else {
+                    finalAddressString = landmark
+                }
+            }
+            if let city = self.addressBaseModel?.data?[addressIndex].city, city.count > 0 {
+                if finalAddressString.count > 0 {
+                    finalAddressString = "\(finalAddressString), \(city)"
+                }else {
+                    finalAddressString = city
+                }
+            }
+            if let state = self.addressBaseModel?.data?[addressIndex].state, state.count > 0 {
+                if finalAddressString.count > 0 {
+                    finalAddressString = "\(finalAddressString), \(state)"
+                }else {
+                    finalAddressString = state
+                }
+            }
+            if let pincode = self.addressBaseModel?.data?[addressIndex].pincode, pincode.count > 0 {
+                if finalAddressString.count > 0 {
+                    finalAddressString = "\(finalAddressString), \(pincode)"
+                }else {
+                    finalAddressString = pincode
+                }
+            }
+            if let phone = self.addressBaseModel?.data?[addressIndex].phone, phone.count > 0 {
+                if finalAddressString.count > 0 {
+                    finalAddressString = "\(finalAddressString), \(phone)"
+                }else {
+                    finalAddressString = phone
+                }
+            }
+            
+            let label =  UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.frame.size.width - 40, height: CGFloat.greatestFiniteMagnitude))
+            
+                      label.text = finalAddressString
+                      label.numberOfLines = 0
+                      label.font = Fonts.regularFont14
+                      label.sizeToFit()
+                      let h: CGFloat = label.frame.size.height
+                      print(h)
+                      return CGSize.init(width:collectionView.frame.size.width, height : h+100)
         }
     }
     

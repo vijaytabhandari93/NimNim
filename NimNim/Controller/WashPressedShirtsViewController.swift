@@ -501,10 +501,14 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
                     cell.rightLabel.text = secondPreference.title
                     cell.configureCell(withPreferenceModelArray: returnPreferences)
                 }
-                if let subtitle = serviceModel?.costPerPieceBox
-                {
-                    cell.subLabel.text = " \(subtitle*100) cents extra per shirt"
+                if let boxPrice  = serviceModel?.costPerPieceBox , let piecePrice = serviceModel?.costPerPiece  {
+                  var diff =  boxPrice - piecePrice
+                  var cents = diff*100
+                  var roundedCents = Int(cents)
+                  cell.subLabel.text = " \(roundedCents) cents extra per shirt."
                 }
+             
+                
                 return cell
             default:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WashAndFoldPreferencesCollectionViewCell", for: indexPath) as! WashAndFoldPreferencesCollectionViewCell

@@ -89,6 +89,7 @@
 		AC5ADD9E236306C200204E9E /* PickDateAndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADD9D236306C200204E9E /* PickDateAndTimeViewController.swift */; };
 		AC5ADDA0236309BC00204E9E /* PickDeliveryTimeSlotsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADD9F236309BC00204E9E /* PickDeliveryTimeSlotsViewController.swift */; };
 		AC5ADDA223630CC700204E9E /* SelectPaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADDA123630CC700204E9E /* SelectPaymentViewController.swift */; };
+		AC5B6C5123F955750000F2D1 /* DeeplinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5B6C5023F955750000F2D1 /* DeeplinkManager.swift */; };
 		AC5BC1A323ED304200FAF8C1 /* TailoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BC1A223ED304200FAF8C1 /* TailoringViewController.swift */; };
 		AC5BC1A523ED306400FAF8C1 /* TailoringSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BC1A423ED306400FAF8C1 /* TailoringSecondViewController.swift */; };
 		AC5BC1A823ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5BC1A623ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift */; };
@@ -99,6 +100,10 @@
 		AC5CA88523F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5CA88323F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.xib */; };
 		AC5CA88823F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CA88623F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift */; };
 		AC5CA88923F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5CA88723F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib */; };
+		AC5CDC3A23FD72480047940F /* NeedHelpCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CDC3823FD72480047940F /* NeedHelpCollectionViewCell.swift */; };
+		AC5CDC3B23FD72480047940F /* NeedHelpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5CDC3923FD72480047940F /* NeedHelpCollectionViewCell.xib */; };
+		AC5CDC3E23FD726B0047940F /* HelpRequiredCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CDC3C23FD726B0047940F /* HelpRequiredCollectionViewCell.swift */; };
+		AC5CDC3F23FD726B0047940F /* HelpRequiredCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5CDC3D23FD726B0047940F /* HelpRequiredCollectionViewCell.xib */; };
 		AC5E697323CC72BD000DF84E /* PricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E697223CC72BD000DF84E /* PricingViewController.swift */; };
 		AC5E697523CC7319000DF84E /* Pricing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5E697423CC7319000DF84E /* Pricing.storyboard */; };
 		AC5F80DA23CD9DED0093B864 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F80D823CD9DED0093B864 /* PriceCollectionViewCell.swift */; };
@@ -113,6 +118,7 @@
 		AC5F80EB23CE14A40093B864 /* ItemPriceListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5F80E923CE14A40093B864 /* ItemPriceListCollectionViewCell.xib */; };
 		AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */; };
 		AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC793F16232CDBB9009E61A1 /* Preferences.storyboard */; };
+		AC7BE99123FE5CEC00F77014 /* SubmitTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BE99023FE5CEC00F77014 /* SubmitTicketViewController.swift */; };
 		AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */; };
 		AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CDE2C232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift */; };
 		AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2D232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib */; };
@@ -320,6 +326,7 @@
 		AC5ADD9D236306C200204E9E /* PickDateAndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDateAndTimeViewController.swift; sourceTree = "<group>"; };
 		AC5ADD9F236309BC00204E9E /* PickDeliveryTimeSlotsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDeliveryTimeSlotsViewController.swift; sourceTree = "<group>"; };
 		AC5ADDA123630CC700204E9E /* SelectPaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPaymentViewController.swift; sourceTree = "<group>"; };
+		AC5B6C5023F955750000F2D1 /* DeeplinkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkManager.swift; sourceTree = "<group>"; };
 		AC5BC1A223ED304200FAF8C1 /* TailoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailoringViewController.swift; sourceTree = "<group>"; };
 		AC5BC1A423ED306400FAF8C1 /* TailoringSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailoringSecondViewController.swift; sourceTree = "<group>"; };
 		AC5BC1A623ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTailoringRepairCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -330,6 +337,10 @@
 		AC5CA88323F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletBalanceCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5CA88623F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTransactionCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC5CA88723F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletTransactionCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC5CDC3823FD72480047940F /* NeedHelpCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeedHelpCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC5CDC3923FD72480047940F /* NeedHelpCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NeedHelpCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC5CDC3C23FD726B0047940F /* HelpRequiredCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequiredCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC5CDC3D23FD726B0047940F /* HelpRequiredCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpRequiredCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5E697223CC72BD000DF84E /* PricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingViewController.swift; sourceTree = "<group>"; };
 		AC5E697423CC7319000DF84E /* Pricing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pricing.storyboard; sourceTree = "<group>"; };
 		AC5F80D823CD9DED0093B864 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -344,6 +355,7 @@
 		AC5F80E923CE14A40093B864 /* ItemPriceListCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemPriceListCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		AC793F16232CDBB9009E61A1 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
+		AC7BE99023FE5CEC00F77014 /* SubmitTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitTicketViewController.swift; sourceTree = "<group>"; };
 		AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignup.storyboard; sourceTree = "<group>"; };
 		AC8CDE2C232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPasswordTableViewCell.swift; sourceTree = "<group>"; };
 		AC8CDE2D232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginWithPasswordTableViewCell.xib; sourceTree = "<group>"; };
@@ -613,6 +625,10 @@
 				AC5CA88323F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.xib */,
 				AC5CA88623F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift */,
 				AC5CA88723F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib */,
+				AC5CDC3823FD72480047940F /* NeedHelpCollectionViewCell.swift */,
+				AC5CDC3923FD72480047940F /* NeedHelpCollectionViewCell.xib */,
+				AC5CDC3C23FD726B0047940F /* HelpRequiredCollectionViewCell.swift */,
+				AC5CDC3D23FD726B0047940F /* HelpRequiredCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -622,6 +638,7 @@
 			children = (
 				AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */,
 				ACD8BA442351DF87005C1EAA /* NavigationManager.swift */,
+				AC5B6C5023F955750000F2D1 /* DeeplinkManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -699,6 +716,7 @@
 				AC5BC1A223ED304200FAF8C1 /* TailoringViewController.swift */,
 				AC5BC1A423ED306400FAF8C1 /* TailoringSecondViewController.swift */,
 				AC5CA87E23F1985C000D0E39 /* WalletViewController.swift */,
+				AC7BE99023FE5CEC00F77014 /* SubmitTicketViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -932,6 +950,7 @@
 				AC5ADD8E2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib in Resources */,
 				AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */,
 				AC20417B23B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.xib in Resources */,
+				AC5CDC3B23FD72480047940F /* NeedHelpCollectionViewCell.xib in Resources */,
 				ACFD92BE235ACF060009FB03 /* SavedAddressCollectionViewCell.xib in Resources */,
 				AC1FFDB12346F1D100930496 /* Proxima Nova Alt Thin.otf in Resources */,
 				AC20417723B74F80001F86B4 /* PickUpDropServiveNameAndTatTimeCollectionViewCell.xib in Resources */,
@@ -943,6 +962,7 @@
 				ACFD929A2355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.xib in Resources */,
 				AC1EDC60237C71FC00D36C89 /* GoogleService-Info.plist in Resources */,
 				AC5CA88923F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib in Resources */,
+				AC5CDC3F23FD726B0047940F /* HelpRequiredCollectionViewCell.xib in Resources */,
 				AC5ADD922361D99F00204E9E /* ApplyWalletPointsCollectionViewCell.xib in Resources */,
 				ACBB819E232E3FAC003DCF77 /* Montserrat-Black.ttf in Resources */,
 				AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */,
@@ -1051,6 +1071,7 @@
 				ACA65EFC23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.swift in Sources */,
 				AC5226FF23C738D4002F111F /* OrderDetailsCollectionViewCell.swift in Sources */,
 				ACF9CD3223504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.swift in Sources */,
+				AC5B6C5123F955750000F2D1 /* DeeplinkManager.swift in Sources */,
 				AC1BB7D623A7B23A00513947 /* CartModel.swift in Sources */,
 				AC5ADD942362DD8900204E9E /* SelectAddressViewController.swift in Sources */,
 				ACFD92AD235846D10009FB03 /* ReferAFriendCollectionViewCell.swift in Sources */,
@@ -1058,6 +1079,7 @@
 				AC5ADD9E236306C200204E9E /* PickDateAndTimeViewController.swift in Sources */,
 				AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */,
 				ACBB8177232D1F57003DCF77 /* Extensions.swift in Sources */,
+				AC5CDC3A23FD72480047940F /* NeedHelpCollectionViewCell.swift in Sources */,
 				AC20418223B75223001F86B4 /* DateTimeCollectionViewCell.swift in Sources */,
 				AC5F80E623CE0E280093B864 /* PriceViewListCollectionViewCell.swift in Sources */,
 				ACFD92992355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.swift in Sources */,
@@ -1127,11 +1149,13 @@
 				AC5F80DA23CD9DED0093B864 /* PriceCollectionViewCell.swift in Sources */,
 				AC5BC1A323ED304200FAF8C1 /* TailoringViewController.swift in Sources */,
 				ACFD92A1235830AC0009FB03 /* ProfileCollectionViewCell.swift in Sources */,
+				AC7BE99123FE5CEC00F77014 /* SubmitTicketViewController.swift in Sources */,
 				ACF0205F232E425F007559E8 /* Fonts.swift in Sources */,
 				ACBC96FA2361B1C0006AC5B6 /* OrderReviewViewController.swift in Sources */,
 				ACB37267234631EC00046FB3 /* ServicesBaseCollectionViewCell.swift in Sources */,
 				AC17891823785F1800B20D32 /* UserModel.swift in Sources */,
 				AC5CA88423F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.swift in Sources */,
+				AC5CDC3E23FD726B0047940F /* HelpRequiredCollectionViewCell.swift in Sources */,
 				AC41CE75235C822F001AC676 /* AddCardCollectionViewCell.swift in Sources */,
 				AC19C7882383EC3B000919E0 /* CouponsUserModel.swift in Sources */,
 				ACBE06C823E0503B00451006 /* AddShoeRepairCollectionViewCell.swift in Sources */,
@@ -1306,7 +1330,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;
@@ -1328,7 +1352,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;

@@ -97,7 +97,7 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
                 }
             }
             selectedDropDownIndex = 0
-            taskModel?.garMentType = "Pants" // to first show men items
+            taskModel?.garMentType = "pantsandjeans" // to first show men items
         }
         
     }
@@ -157,7 +157,7 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
         }
         else {
             //prefs
-            return taskModel?.getGenderSpecificItems().count ?? 0
+            return taskModel?.getGarmentSpecificItems().count ?? 0
         }
     }
     
@@ -166,12 +166,12 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DropDownCollectionViewCell", for: indexPath) as! DropDownCollectionViewCell
             cell.headingLabel.text = "Please select your type of garment".uppercased()
             if let selectedGarment = taskModel?.garMentType {
-                let garments = ["Pants","Skirt","Blouse","Jacket","Dress"]
+                let garments = ["pantsandjeans","Shirt","Blouse","Jacket","Dress","Shorts"]
                 selectedDropDownIndex = garments.firstIndex(where: { (garment) -> Bool in
                     return garment.caseInsensitiveCompare(selectedGarment) == .orderedSame
                 })//the above function is comparing each of the element in the array garments with the selectedGarment.
             }
-            cell.configureCell(withOptions: ["Pants","Skirt","Blouse","Jacket","Dress"], withSelectedIndex: selectedDropDownIndex)
+            cell.configureCell(withOptions: ["Pants/Jeans","Shirt","Blouse","Jacket","Dress","Shorts"], withSelectedIndex: selectedDropDownIndex)
             cell.delegate = self
             return cell
         }
@@ -372,34 +372,34 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
     // the  above function  is used to capture the  effect of checking and unchecking done in the ShoeRepairCollectionViewCell. The taskmModel's  item array's isSelectedShoeRepairPreference is made true and false accoringly.
     
     enum garmentState : String {
-        case pants   = "Pants"
-        case skirt  = "Skirt"
-        case blouse = "Blouse"
-        case jackets = "Jackets"
-        case dress = "Dress"
+        case pants   = "pantsandjeans"
+        case shirt  = "shirt"
+        case blouse = "blouse"
+        case jackets = "jacket"
+        case dress = "dress"
+        case shorts = "shorts"
     }
     
     //MARK: DropDownCollectionViewCellDelegate Methods
     func selectedDropDownValue(withValue value:String?, withIndex index:Int?) {
         taskModel?.resetSelections()
-        if let value = value {
-            if let value = garmentState(rawValue: value) {
-                switch value {
-                case .pants:
-                    taskModel?.garMentType = "pants"
-                case .skirt:
-                    taskModel?.garMentType = "skirt"
-                case .blouse:
-                    taskModel?.garMentType = "blouse"
-                case .jackets:
-                    taskModel?.garMentType = "jackets"
-                case .dress:
-                    taskModel?.garMentType = "dress"
-                }
+        if let value = value, value.caseInsensitiveCompare("pantsandjeans") == .orderedSame {
+            taskModel?.garMentType = "pantsandjeans"
+        }else if let value = value, value.caseInsensitiveCompare("shirt") == .orderedSame  {
+            taskModel?.garMentType = "shirt"
+        }else if let value = value, value.caseInsensitiveCompare("blouse") == .orderedSame  {
+            taskModel?.garMentType = "blouse"
+        }else if let value = value, value.caseInsensitiveCompare("jacket") == .orderedSame  {
+            taskModel?.garMentType = "jacket"
+        }else if let value = value, value.caseInsensitiveCompare("dress") == .orderedSame  {
+            taskModel?.garMentType = "dress"
+        }else {
+            taskModel?.garMentType = "shorts"
+        }
                 selectedDropDownIndex = index  //global variable
                 shoeRepairCollectionView.reloadData()
             }
             
-        }
+        
     }
-}
+

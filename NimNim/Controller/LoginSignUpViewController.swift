@@ -416,7 +416,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                     //we can assume here that otp was sent successfully...
                     self.otpState = .verifyOtp
                     if type == "signup" {
-                        self.showOtpAlert()
+                        self.showOtpAlert() // call this only incase of success
                     }
                 }
             }
@@ -535,17 +535,21 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    func sendLinkTappedInLoginWithPasswordTableViewCell(withEmail email:String?){
+    var phone : String?
+    func sendLinkTappedInLoginWithPasswordTableViewCell(withPhone email:String?){
         guard let email = email else {return}
+        phone = email
         let params: [String:Any] =
-            [ForgotPassword.email:email]
+            [ForgotPassword.phone:email]
         activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.forgotPasssword, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
-                if let success = responseDict["success"] as? Bool, success == true{
-                    self.passwordState = .logIn
+                if let msg = responseDict["msg"] as? String {
+                    //we can assume here that otp was sent successfully...
+                    self.otpState = .verifyOtp
+                    self.showOtpAlertPasswordResetting() // call this only incase of success (pass)
+                    
                 }
-                
             }
             self.activityIndicatorView.stopAnimating()
             
@@ -566,6 +570,20 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         getOtpTapped(withPhone: phoneNumber, withType: "signup")
     }
     
+    
+    func showOtpAlertPasswordResetting()  {
+        let alert = UIAlertController(title: "Alert", message: "Enter the OTP", preferredStyle: .alert)
+          alert.addTextField { (textField) in
+              textField.text = ""}
+              alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler:{[weak alert] (_) in
+                 let otpTextField = alert?.textFields![0]
+                  if let textEntered = otpTextField?.text as? String?{
+                   self.verifyOTP(withOTP: textEntered)
+        
+                  }
+              }))
+          self.present(alert, animated: true, completion: nil)
+    }
     func showOtpAlert()  {
         let alert = UIAlertController(title: "Alert", message: "Enter the OTP", preferredStyle: .alert)
           alert.addTextField { (textField) in
@@ -573,14 +591,87 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
               alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler:{[weak alert] (_) in
                  let otpTextField = alert?.textFields![0]
                   if let textEntered = otpTextField?.text as? String?{
-                  self.OTP = textEntered
-                   self.verify(withType: "signup",withOTP: self.OTP)
+                    self.verify(withType:"signup",withOTP: textEntered)
         
                   }
               }))
           self.present(alert, animated: true, completion: nil)
     }
-    
+    func showResetPasswordAlert()  {
+        let alert = UIAlertController(title: "Alert", message: "Reset Password", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.text = ""
+            textField.placeholder = "New Password"
+        }
+        alert.addTextField { (textField) in
+            textField.text = ""
+            textField.placeholder = "Confirm Password"
+        }
+        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler:{[weak alert] (_) in
+            let passwordField = alert?.textFields![0]
+            let confirmPasswordField = alert?.textFields![1]
+            if let password = passwordField?.text as? String?,let confirmPassword = confirmPasswordField?.text as? String?{
+                self.resetPassword( withPassword : password , withConfirmedPassword : confirmPassword)
+                
+            }
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    func resetPassword(withPassword password:String?,withConfirmedPassword confirmPassword:String?)
+      {
+          guard let password = password,let confirmPassword = confirmPassword else {
+              return
+          }
+          let params:[String:Any] = [
+              ResetPassword.phone:phone,
+              ResetPassword.password:password,
+              ResetPassword.confirmPassword:confirmPassword
+          ]
+          activityIndicatorView.startAnimating()
+          NetworkingManager.shared.post(withEndpoint: Endpoints.resetpassword, withParams: params, withSuccess: { (response) in
+              if let responseDict = response as? [String:Any] {
+               print("success")
+               let alert = UIAlertController(title: "Alert", message: "Your password has been successfully reset", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+              }
+              self.activityIndicatorView.stopAnimating()
+              
+          }) { (error) in
+              self.activityIndicatorView.stopAnimating()
+              if let error = error as? String {
+                  let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                  alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                  self.present(alert, animated: true, completion: nil)
+              }
+          }
+          
+      }
+    func verifyOTP(withOTP otp:String?)
+    {
+        guard let otp = otp, otp.count>0  else {
+            return
+        }
+        let params:[String:Any] = [
+            VerifyOTPSignIn.otp:otp,
+        ]
+        activityIndicatorView.startAnimating()
+        NetworkingManager.shared.post(withEndpoint: Endpoints.verifyresetpasswordotp, withParams: params, withSuccess: { (response) in
+            if let responseDict = response as? [String:Any] {
+            self.showResetPasswordAlert()//(forgot password)
+            }
+            self.activityIndicatorView.stopAnimating()
+            
+        }) { (error) in
+            self.activityIndicatorView.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
+        
+    }
     func verify(withType type:String?, withOTP otp:String?)
     {
         guard let otp = otp, let type = type, otp.count>0  else {

@@ -32,7 +32,7 @@ struct VerifyOTP {
     static let type = "type"
 }
 struct ForgotPassword {
-    static let email = "email"
+    static let phone = "phone"
 }
 
 struct SocialSignIn {
@@ -75,6 +75,12 @@ struct VerifyOTPSignIn {
     static let otp = "otp"
     static let type = "type"
 }
+struct ResetPassword {
+    static let phone = "phone"
+    static let password = "password"
+    static let confirmPassword = "confirm_password"
+}
+
 
 struct AddToCart {     // This is a structure to hold all the keys of request params of all services
     static let services = "services"

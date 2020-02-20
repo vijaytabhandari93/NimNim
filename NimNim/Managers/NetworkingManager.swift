@@ -92,8 +92,8 @@ class NetworkingManager {
                 return
             }
             print("Request:\(String(describing: response.request ?? nil))")
-            print("Response:\(String(describing: response.result.value ?? nil))")
-            
+                let json = JSON(response.result.value)
+                  print("Response:\(String(describing: json))")
             if statusCode >= 200 && statusCode < 400 {
                 print("success")
                 success?(response.result.value) // call of closure
@@ -106,11 +106,17 @@ class NetworkingManager {
                         if let message = error["message"] as? String {
                             failure?(message) // call of closure
                         }
+                         if let raw = error["raw"] as? [String:Any]  {
+                                    if let message = raw["message"] as? String {
+                                    failure?(message)
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-    }
+    
     
     func put(withEndpoint endpoint:String?,withParams params:[String:Any]?, withSuccess success:((Any?)->Void)?, withFailure failure:((Any?) -> Void)?) {
         guard let endpoint = endpoint else {

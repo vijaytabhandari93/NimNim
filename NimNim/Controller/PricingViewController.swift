@@ -296,6 +296,11 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             if indexPath.item == 0  {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PricingHeaderCollectionViewCell", for: indexPath) as! PricingHeaderCollectionViewCell
                 cell.servicelabel.text  = "Dry Cleaning"
+                if selectedDryCleaning == true {
+                    cell.configureCell(withExpandedState: true)
+                }else {
+                    cell.configureCell(withExpandedState: false)
+                }
                 return cell
             }
             else if indexPath.item == 1  {

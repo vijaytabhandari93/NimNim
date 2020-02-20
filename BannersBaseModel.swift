@@ -34,6 +34,7 @@ class BannerModel:NSObject, Mappable, Codable {
     var banner:String?
     var v:Int?
     var icon : String?
+    var deeplinking:String?
     
     required convenience init?(map: Map) { self.init() }
     
@@ -44,9 +45,7 @@ class BannerModel:NSObject, Mappable, Codable {
         alias   <- map["alias"]
         banner      <- map["banner"]
         icon <- map["icon"]
+        deeplinking <- map["deeplinking"]
     }
-    
-    
-    
 }
 

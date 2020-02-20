@@ -13,6 +13,8 @@ protocol ApplyWalletPointsCollectionViewCellDelegate:class {
 }
 class ApplyWalletPointsCollectionViewCell: UICollectionViewCell {
     
+    
+    @IBOutlet weak var applyWalletPoints: UILabel!
     @IBOutlet weak var points: UILabel!
     @IBOutlet weak var apply: UIButton!
     var pointsinWallet  : Int = 0

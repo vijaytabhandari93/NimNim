@@ -98,6 +98,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="oS5-v1-RBr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="21" id="1eg-vz-LSn"/>
+                <constraint firstItem="ypO-ka-uJa" firstAttribute="top" secondItem="tM8-ow-4QL" secondAttribute="bottom" constant="29.5" id="1qN-el-9uH"/>
                 <constraint firstItem="oW6-bS-Rxy" firstAttribute="leading" secondItem="7bJ-1O-xgp" secondAttribute="leading" id="2jY-xK-AgM"/>
                 <constraint firstItem="tM8-ow-4QL" firstAttribute="centerY" secondItem="oS5-v1-RBr" secondAttribute="centerY" id="3Xc-69-Smf"/>
                 <constraint firstItem="dcS-tE-2vv" firstAttribute="top" secondItem="tM8-ow-4QL" secondAttribute="bottom" constant="2" id="ARH-YU-eTd"/>
@@ -112,7 +113,6 @@
                 <constraint firstItem="oW6-bS-Rxy" firstAttribute="centerY" secondItem="ypO-ka-uJa" secondAttribute="centerY" id="rch-X7-cZA"/>
                 <constraint firstItem="ypO-ka-uJa" firstAttribute="trailing" secondItem="dcS-tE-2vv" secondAttribute="trailing" id="s3Q-LT-kzg"/>
                 <constraint firstItem="7bJ-1O-xgp" firstAttribute="leading" secondItem="oS5-v1-RBr" secondAttribute="leading" id="uEb-eO-45H"/>
-                <constraint firstItem="ypO-ka-uJa" firstAttribute="top" secondItem="dcS-tE-2vv" secondAttribute="bottom" constant="10" id="wlE-EI-ql2"/>
                 <constraint firstItem="fcy-iW-Ztw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="xoX-tq-Bt0"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>

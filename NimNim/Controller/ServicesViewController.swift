@@ -189,6 +189,11 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     func addServiceToCart() {
         if let serviceModel = serviceModel /// this is received from serviceBase collection view cells(//passing of the service model to the vc. as written)
         {
+            if serviceModel.validateAddToCartForService() {
+                // Allow Add to Cart...
+            }else {
+                //  Show Alertf...
+            }
             let modelToDictionary = serviceModel.toJSON() // model in dictationary
             activityIndicator.startAnimating()
             var params : [String:Any] = [:]/// - dictionary

@@ -11,10 +11,27 @@ import ObjectMapper
 import SwiftyJSON
 import NVActivityIndicatorView
 
-class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,NeedHelpCollectionViewCellDelegate,SubmitTicketViewControllerDelegate {
+    
+    func submitTicket(withIssueDescription issueDescription: String,withType type: String) {
+    print(issueDescription)
+    print(type)
+    }
+        
+        
+    func helpCellTapped(withType type: String) {
+        let Storyboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+        let VC = Storyboard.instantiateViewController(withIdentifier: "SubmitTicketViewController") as! SubmitTicketViewController
+        VC.delegate = self
+        VC.type = type //  to tell the VC its type(issue number)
+        NavigationManager.shared.push(viewController: VC)
+
+    }
+    
     
     @IBOutlet weak var totalPayableAmount: UILabel!
     @IBOutlet weak var totalPayableAmountShadowView: UIView!
+    
     var addressBaseModel : AddressModel?
     var noOfSavedAdderess : Int = 0 //initially
     var cardBaseModel : CardModel?
@@ -26,7 +43,6 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     var expMonth :Int?
     var number: String?
     var date :String?
-    var totalPrice:String?
     var orderModel:OrderModel?
     var service : [ServiceModel]?
     var  count : Int?
@@ -64,8 +80,8 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     }
     
     func setupOrderTotal() {
-        if let price = totalPrice  {
-            totalPayableAmount.text = price
+        if let price = orderModel?.orderAmount  {
+            totalPayableAmount.text = "$\(price)"
         }
     }
     
@@ -147,6 +163,8 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
 
         let type6PreferencesNib = UINib(nibName: "ApplyWalletPointsCollectionViewCell", bundle: nil)
         orderDetailsCollectionView.register(type6PreferencesNib, forCellWithReuseIdentifier: "ApplyWalletPointsCollectionViewCell")
+        let type7PreferencesNib = UINib(nibName: "NeedHelpCollectionViewCell", bundle: nil)
+        orderDetailsCollectionView.register(type7PreferencesNib, forCellWithReuseIdentifier: "NeedHelpCollectionViewCell")
     }
     //IBActions
     @IBAction func previousTapped(_ sender: Any) {
@@ -154,7 +172,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -164,15 +182,20 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                 return service.count
             }
         }else if section == 1 {
-            //Promocode
-            return 0
+            if orderModel?.couponCode?.discount != nil
+            {return 1}
+            else
+            { return 0}
         }else if section == 2 {
             //Wallet
-            return 0
+            return 1
         }else if section == 3 {
             //Address
             return 1
         }else if section == 4 {
+            //Card
+            return 1
+        }else if section == 5 {
             //Card
             return 1
         }
@@ -286,9 +309,9 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                     }
                     
                 }
-                if let servicePrice = serviceItem.servicePrice {
-                    cell.amountPayable.text = servicePrice
-                }
+//                if let servicePrice = serviceItem.servicePrice {
+//                    cell.amountPayable.text = servicePrice
+//                } as we will get the service price from order history
                 cell.configureCell(withModel: serviceItem)
                 cell.serviceStatus.text  = serviceItem.status
             }
@@ -297,14 +320,23 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             //Promo
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DoYouHaveACouponCollectionViewCell", for: indexPath) as! DoYouHaveACouponCollectionViewCell
             cell.doYouHaveACoupon.text = "Coupons Applied"
-            if let coupon = orderModel?.couponCode {
-                cell.chooseCoupon.text  = coupon.code ?? ""
+            if let coupon = orderModel?.couponCode?.discount {
+                cell.chooseCoupon.text  = "$\(coupon) discount is applied on this order."
             }
             return cell
         }else if indexPath.section == 2 {
             //Wallet -- section == 2
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ApplyWalletPointsCollectionViewCell", for: indexPath) as! ApplyWalletPointsCollectionViewCell
+            cell.applyWalletPoints.text = "Wallet Points Applied"
+            cell.apply.isHidden = true
+            cell.points.text = orderModel?.walletPoints
+        
             return cell
+        }else if indexPath.section == 5 {
+            //Wallet -- section == 2
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedHelpCollectionViewCell", for: indexPath) as! NeedHelpCollectionViewCell
+            cell.delegate = self
+         return cell
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ApplyWalletPointsCollectionViewCell", for: indexPath) as! ApplyWalletPointsCollectionViewCell
@@ -358,7 +390,10 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             return CGSize.init(width:collectionView.frame.size.width, height : h+58) //58 ---fixed height other than address part...
         }else if indexPath.section == 4 {
             return CGSize(width: collectionView.frame.size.width, height:178)
-        } else {
+        }else if indexPath.section == 5 {
+            return CGSize(width: collectionView.frame.size.width, height:180)
+        }
+        else {
             return CGSize(width: collectionView.frame.size.width, height:0)
         }
     }
