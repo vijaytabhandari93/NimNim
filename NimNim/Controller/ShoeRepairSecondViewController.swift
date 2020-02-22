@@ -246,7 +246,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 2  {
-            return CGSize(width: collectionView.frame.size.width, height: 72)
+            return CGSize(width: collectionView.frame.size.width, height: 80)
         } else{
             return CGSize(width: collectionView.frame.size.width, height: 0)
         }

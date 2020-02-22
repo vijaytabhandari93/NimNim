@@ -113,7 +113,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       orderStatusCollectionView.reloadData()
+        orderStatusCollectionView.reloadData()
         registerCells()
         orderStatusCollectionView.delegate = self
         orderStatusCollectionView.dataSource = self

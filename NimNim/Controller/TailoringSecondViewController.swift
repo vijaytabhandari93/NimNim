@@ -29,7 +29,7 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
     var indexPath : IndexPath?
     var editModeOn :  Bool  = false
     
-
+    
     var activeTextView : UITextView?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
@@ -223,9 +223,7 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
         
         let type1PreferencesNib = UINib(nibName: "ShoeRepairCollectionViewCell", bundle: nil)
         shoeRepairCollectionView.register(type1PreferencesNib, forCellWithReuseIdentifier: "ShoeRepairCollectionViewCell")
-        
-        
-        
+
         let headerNib = UINib(nibName: "PreferencesCollectionReusableView", bundle: nil)
         shoeRepairCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "PreferencesCollectionReusableView")
     }
@@ -236,19 +234,19 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
         }
         else if indexPath.section == 1 {
             if let uploadedImages = self.taskModel?.uploadedImages, uploadedImages.count > 0  {
-                           return CGSize(width: collectionView.frame.size.width, height:191)
-                       }
-                       else
-                       {
-                           return CGSize(width: collectionView.frame.size.width, height:120)
-                       }
+                return CGSize(width: collectionView.frame.size.width, height:191)
+            }
+            else
+            {
+                return CGSize(width: collectionView.frame.size.width, height:120)
+            }
         }else {
             return CGSize(width: collectionView.frame.size.width, height:45)
         }
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         if section == 2  {
-            return CGSize(width: collectionView.frame.size.width, height: 72)
+            return CGSize(width: collectionView.frame.size.width, height: 80)
         } else{
             return CGSize(width: collectionView.frame.size.width, height: 0)
         }
@@ -367,7 +365,6 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
             priceLabel.text = "$\(taskPrice)"
             taskModel?.taskPrice = taskPrice
         }
-        
     }
     // the  above function  is used to capture the  effect of checking and unchecking done in the ShoeRepairCollectionViewCell. The taskmModel's  item array's isSelectedShoeRepairPreference is made true and false accoringly.
     
@@ -396,10 +393,10 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
         }else {
             taskModel?.garMentType = "shorts"
         }
-                selectedDropDownIndex = index  //global variable
-                shoeRepairCollectionView.reloadData()
-            }
-            
-        
+        selectedDropDownIndex = index  //global variable
+        shoeRepairCollectionView.reloadData()
     }
+    
+    
+}
 
