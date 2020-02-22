@@ -40,7 +40,12 @@ class OrderModel : NSObject, Mappable, Codable  {
     var createdAt :String?
     var walletPoints : String?//later to be used in fetch order history
     var issues:[IssueModel] = []
-
+    var paidViaWallet:Double? //Amount paid from user's  wallet
+    var paidViaStripe:Double? //Amount paid from card
+    var rushDeliveryCost:Double? // Rush Delivery charges
+    var grandTotal:Double? // GrandTotal Amount - Price of  services + rush delivery - promo...
+    var subTotal:Double? // price of services
+    var walletPointsApplicable:Double?
     //When submit ticket is tapped on submit ticket screen... you will create an Issue Model and store the concerned type and description in it...and pass this model to Order Details Screen...
     
     func mapping(map: Map) {
@@ -60,6 +65,11 @@ class OrderModel : NSObject, Mappable, Codable  {
         createdAt <- map["created_at"]
         orderAmount<-map["order_amount"]///provided by  mukesh for orderAmout
         walletPoints<-map["walletPoints"]
+        paidViaWallet <- map["paidViaWallet"]
+        paidViaStripe <- map["paidViaStripe"]
+        rushDeliveryCost <- map["rushdeliverycost"]
+        subTotal <- map["sub_total"]
+        grandTotal <- map["grand_total"]
     }
 }
 

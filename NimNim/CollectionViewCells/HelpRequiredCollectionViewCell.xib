@@ -25,37 +25,31 @@
                 <rect key="frame" x="0.0" y="0.0" width="149" height="94"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Issue" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbr-qB-Gfa">
-                        <rect key="frame" x="10" y="0.0" width="129" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Issue" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zbr-qB-Gfa">
+                        <rect key="frame" x="20" y="19" width="109" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="JUC-bL-2tn"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpc-vp-DbY">
-                        <rect key="frame" x="10" y="25" width="129" height="69"/>
+                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="wordWrap" numberOfLines="0" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wpc-vp-DbY">
+                        <rect key="frame" x="20" y="50" width="109" height="0.0"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                         <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="layer.CornerRadius">
-                                <integer key="value" value="5"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </label>
                 </subviews>
             </view>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="wpc-vp-DbY" secondAttribute="bottom" id="DwL-WQ-eTc"/>
-                <constraint firstAttribute="trailing" secondItem="zbr-qB-Gfa" secondAttribute="trailing" constant="10" id="FIm-Pd-5Cr"/>
-                <constraint firstAttribute="trailing" secondItem="wpc-vp-DbY" secondAttribute="trailing" constant="10" id="RRH-nV-qKa"/>
-                <constraint firstItem="zbr-qB-Gfa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eDu-hx-AI0"/>
-                <constraint firstItem="wpc-vp-DbY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="emK-5a-DpS"/>
-                <constraint firstItem="wpc-vp-DbY" firstAttribute="top" secondItem="zbr-qB-Gfa" secondAttribute="bottom" constant="5" id="fPE-PL-hCn"/>
-                <constraint firstItem="zbr-qB-Gfa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="qTK-LR-jFj"/>
+                <constraint firstAttribute="trailing" secondItem="zbr-qB-Gfa" secondAttribute="trailing" constant="20" id="FIm-Pd-5Cr"/>
+                <constraint firstAttribute="trailing" secondItem="wpc-vp-DbY" secondAttribute="trailing" constant="20" id="RRH-nV-qKa"/>
+                <constraint firstItem="zbr-qB-Gfa" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="19" id="eDu-hx-AI0"/>
+                <constraint firstItem="wpc-vp-DbY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="emK-5a-DpS"/>
+                <constraint firstItem="wpc-vp-DbY" firstAttribute="top" secondItem="zbr-qB-Gfa" secondAttribute="bottom" constant="11" id="fPE-PL-hCn"/>
+                <constraint firstItem="zbr-qB-Gfa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="20" id="qTK-LR-jFj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="149" height="94"/>

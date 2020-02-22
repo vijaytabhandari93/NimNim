@@ -16,6 +16,7 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
     
     
     @IBOutlet weak var trackOrderCollectionViiew: UICollectionView!
+    @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
     var dateOfOrderCreation : String?
     var orderArrayModel : OrderBaseModel?
@@ -36,25 +37,24 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
     func fetchOrderHistory() {
-        
+        activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.orderhistory, withParams: nil, withSuccess: {[weak self] (response) in
             if let responseDict = response as? [[String:Any]]{
                 let dict = ["data":responseDict]
                print(JSON(dict))
                 let orderModel = Mapper<OrderBaseModel>().map(JSON: dict)
                 self?.orderArrayModel = orderModel //? is put after self as it is weak self.
-                print(self?.orderArrayModel?.toJSON())
                 self?.trackOrderCollectionViiew.reloadData()
             }
-            
+            self?.activityIndicator.stopAnimating()
             }) //definition of success closure
-        { (error) in
+        {[weak self] (error) in
             if let error = error as? String {
                 let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                self?.present(alert, animated: true, completion: nil)
             }
-            
+            self?.activityIndicator.stopAnimating()
         }
     }
     

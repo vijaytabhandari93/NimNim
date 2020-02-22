@@ -31,8 +31,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Points xyz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKB-0f-zKW">
-                        <rect key="frame" x="79" y="51" width="133" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Points xyz" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hKB-0f-zKW">
+                        <rect key="frame" x="79" y="60.5" width="60" height="15"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -71,7 +71,7 @@
                         </connections>
                     </button>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e65-t6-PKN">
-                        <rect key="frame" x="0.0" y="92" width="375" height="8"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="8"/>
                         <color key="backgroundColor" red="0.97254901959999995" green="0.97647058819999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="8" id="wMd-iB-jal"/>
@@ -84,6 +84,7 @@
                 <constraint firstAttribute="trailing" secondItem="e65-t6-PKN" secondAttribute="trailing" id="FAv-YF-Mzh"/>
                 <constraint firstItem="9Dz-IV-AuB" firstAttribute="centerY" secondItem="2RU-PB-dbk" secondAttribute="centerY" id="Fge-eg-vig"/>
                 <constraint firstAttribute="bottom" secondItem="C4o-7X-M0Q" secondAttribute="bottom" id="HQ9-um-EHo"/>
+                <constraint firstItem="e65-t6-PKN" firstAttribute="top" secondItem="Vcm-zR-xJv" secondAttribute="top" id="L7s-pQ-KER"/>
                 <constraint firstItem="2RU-PB-dbk" firstAttribute="top" secondItem="Vcm-zR-xJv" secondAttribute="top" constant="29" id="TS7-c9-VrN"/>
                 <constraint firstItem="hKB-0f-zKW" firstAttribute="bottom" secondItem="2RU-PB-dbk" secondAttribute="bottom" id="WDN-Na-ZzA"/>
                 <constraint firstItem="C4o-7X-M0Q" firstAttribute="top" secondItem="Vcm-zR-xJv" secondAttribute="top" id="WhB-WK-LXB"/>
@@ -93,7 +94,6 @@
                 <constraint firstAttribute="trailing" secondItem="C4o-7X-M0Q" secondAttribute="trailing" id="fPW-ze-FEH"/>
                 <constraint firstItem="qy4-DQ-8qZ" firstAttribute="top" secondItem="2RU-PB-dbk" secondAttribute="top" id="mdc-mP-iUI"/>
                 <constraint firstItem="e65-t6-PKN" firstAttribute="leading" secondItem="Vcm-zR-xJv" secondAttribute="leading" id="pUJ-4t-stP"/>
-                <constraint firstAttribute="bottom" secondItem="e65-t6-PKN" secondAttribute="bottom" id="uIK-7h-OP0"/>
                 <constraint firstAttribute="trailing" secondItem="9Dz-IV-AuB" secondAttribute="trailing" constant="28" id="wIu-Pj-xuj"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="mI3-ob-srm"/>

@@ -488,6 +488,7 @@ place an order.</string>
                         <viewLayoutGuide key="safeArea" id="gB7-Jl-ApS"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="G8c-bW-1VF" id="NNc-qS-tqh"/>
                         <outlet property="trackOrderCollectionViiew" destination="m47-Jt-h2b" id="151-dD-iFY"/>
                     </connections>
                 </viewController>

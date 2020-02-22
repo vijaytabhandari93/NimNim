@@ -317,20 +317,20 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            return CGSize(width: collectionView.frame.size.width, height:122)
+            return CGSize(width: collectionView.frame.size.width, height:144.5)
         }else if indexPath.section == 1 {
             if GetRushStatus() {
 
-                return CGSize(width: collectionView.frame.size.width, height:110)
+                return CGSize(width: collectionView.frame.size.width, height:110.5)
             } else {
                 return CGSize(width: collectionView.frame.size.width, height:0)
             }
         }
         else {
             if indexPath.item == 0 {
-                return CGSize(width: collectionView.frame.size.width, height:96)
+                return CGSize(width: collectionView.frame.size.width, height:110.5)
             }else {
-                return CGSize(width: collectionView.frame.size.width, height:100)
+                return CGSize(width: collectionView.frame.size.width, height:110.5)
             }
         }
     }

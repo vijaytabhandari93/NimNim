@@ -26,13 +26,20 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items Pick up/Drop Off Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BnO-6d-D0B">
-                        <rect key="frame" x="28" y="20" width="189.5" height="15"/>
+                        <rect key="frame" x="28" y="38" width="189.5" height="15"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                         <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.44" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PqQ-Jl-igb">
+                        <rect key="frame" x="0.0" y="0.0" width="350" height="8"/>
+                        <color key="backgroundColor" red="0.97254901959999995" green="0.97647058819999999" blue="0.99215686270000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="8" id="nLr-Z3-rrj"/>
+                        </constraints>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 Germania St, Boston, MA 02130, USA 8V7W+VR Boston, Massachusetts, USA +1 617-368-5080" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w9S-KK-zcb">
-                        <rect key="frame" x="28" y="38" width="294" height="51.5"/>
+                        <rect key="frame" x="28" y="58" width="294" height="51.5"/>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.87" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -47,12 +54,15 @@
                 </subviews>
             </view>
             <constraints>
-                <constraint firstItem="BnO-6d-D0B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="Agu-JM-EwX"/>
+                <constraint firstItem="BnO-6d-D0B" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="38" id="Agu-JM-EwX"/>
                 <constraint firstItem="7h2-d0-xew" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="Bgr-Mw-Uut"/>
                 <constraint firstAttribute="bottom" secondItem="7h2-d0-xew" secondAttribute="bottom" id="KdW-Vq-WKv"/>
-                <constraint firstItem="w9S-KK-zcb" firstAttribute="top" secondItem="BnO-6d-D0B" secondAttribute="bottom" constant="3" id="PKo-6r-r6h"/>
+                <constraint firstAttribute="trailing" secondItem="PqQ-Jl-igb" secondAttribute="trailing" id="LUu-3Y-fgW"/>
+                <constraint firstItem="PqQ-Jl-igb" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="OAP-qv-esM"/>
+                <constraint firstItem="w9S-KK-zcb" firstAttribute="top" secondItem="BnO-6d-D0B" secondAttribute="bottom" constant="5" id="PKo-6r-r6h"/>
                 <constraint firstAttribute="trailing" secondItem="w9S-KK-zcb" secondAttribute="trailing" constant="28" id="QbN-7i-3u3"/>
                 <constraint firstItem="BnO-6d-D0B" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="c45-yF-V9V"/>
+                <constraint firstItem="PqQ-Jl-igb" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pNa-4Y-g17"/>
                 <constraint firstAttribute="trailing" secondItem="7h2-d0-xew" secondAttribute="trailing" constant="28" id="sAV-kt-g9v"/>
                 <constraint firstItem="w9S-KK-zcb" firstAttribute="leading" secondItem="BnO-6d-D0B" secondAttribute="leading" id="yB1-mi-fiS"/>
             </constraints>

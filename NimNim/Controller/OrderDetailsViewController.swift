@@ -309,9 +309,6 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                     }
                     
                 }
-//                if let servicePrice = serviceItem.servicePrice {
-//                    cell.amountPayable.text = servicePrice
-//                } as we will get the service price from order history
                 cell.configureCell(withModel: serviceItem)
                 cell.serviceStatus.text  = serviceItem.status
             }
@@ -371,13 +368,13 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            return CGSize(width: collectionView.frame.size.width, height:130.5)
+            return CGSize(width: collectionView.frame.size.width, height:145.5)
         }else if indexPath.section == 1 {
             //Promo
-            return CGSize(width: collectionView.frame.size.width, height:100)
+            return CGSize(width: collectionView.frame.size.width, height:110.5)
         }else if indexPath.section == 2 {
             //Wallet
-            return CGSize(width: collectionView.frame.size.width, height:100)
+            return CGSize(width: collectionView.frame.size.width, height:110.5)
         }else if indexPath.section == 3 {
             //Address
             let label =  UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.frame.size.width - 56, height: CGFloat.greatestFiniteMagnitude))
@@ -387,11 +384,11 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             label.sizeToFit()
             let h: CGFloat = label.frame.size.height
             print(h)
-            return CGSize.init(width:collectionView.frame.size.width, height : h+58) //58 ---fixed height other than address part...
+            return CGSize.init(width:collectionView.frame.size.width, height : h+84) //84 ---fixed height other than address part...
         }else if indexPath.section == 4 {
-            return CGSize(width: collectionView.frame.size.width, height:178)
+            return CGSize(width: collectionView.frame.size.width, height:214)
         }else if indexPath.section == 5 {
-            return CGSize(width: collectionView.frame.size.width, height:180)
+            return CGSize(width: collectionView.frame.size.width, height:198)
         }
         else {
             return CGSize(width: collectionView.frame.size.width, height:0)

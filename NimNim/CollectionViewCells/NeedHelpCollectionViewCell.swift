@@ -33,10 +33,7 @@ class NeedHelpCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,
     
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-     
-            return 4
-        
-        
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -47,13 +44,13 @@ class NeedHelpCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 150, height: 95)
+        return CGSize(width: 214, height: 98)
         
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var type = Issueheadings[indexPath.item]
+        let type = Issueheadings[indexPath.item]
         delegate?.helpCellTapped(withType: type)
-          }
+    }
 //here type is referring to the issue number(indexPath.item).
 }
 

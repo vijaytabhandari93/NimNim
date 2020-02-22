@@ -18,9 +18,8 @@ class HelpRequiredCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     override func layoutSubviews() {
-           super.layoutSubviews()
-           self.addTopShadowToView()
-        self.addBottomShadowToView()
-       }
+        super.layoutSubviews()
+        self.layer.applySketchShadow(color: Colors.nimnimServicesShadowColor, alpha: 1, x: 6, y: 6, blur: 12, spread: 0)
+    }
 
 }

@@ -265,9 +265,7 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddressNameCollectionViewCell", for: indexPath) as! AddressNameCollectionViewCell
-            if indexPath.item == addressBaseModel?.data?.count ?? 0{
-                cell.bottomSeparator.isHidden = true
-            }
+            cell.bottomSeparator.isHidden = false
             cell.delegate = self
             cell.cartModel = cartModel
             if Index?.item == indexPath.item
@@ -411,11 +409,11 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
             
                       label.text = finalAddressString
                       label.numberOfLines = 0
-                      label.font = Fonts.regularFont14
+                      label.font = Fonts.medium14
                       label.sizeToFit()
                       let h: CGFloat = label.frame.size.height
                       print(h)
-                      return CGSize.init(width:collectionView.frame.size.width, height : h+100)
+                      return CGSize.init(width:collectionView.frame.size.width, height : h+96)
         }
     }
     
