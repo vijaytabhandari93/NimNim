@@ -33,6 +33,8 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
             if serviceModel.alias == "shoe-repair" {
                 if qty == 1 {
                     productQty.text = "\(String(describing: qty)) Shoe Repair Task"
+                }else if qty == 0 {
+                    productQty.text = "Tasks to be counted"
                 }else {
                     productQty.text = "\(String(describing: qty)) Shoe Repair Tasks"
                 }
@@ -40,33 +42,47 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
             else if serviceModel.alias == "tailoring" {
                 if qty == 1 {
                     productQty.text = "\(String(describing: qty)) Tailoring Task"
+                }else if qty == 0 {
+                    productQty.text = "Tasks to be counted"
                 }else {
                     productQty.text = "\(String(describing: qty)) Tailoring Tasks"
                 }
             }
             else if serviceModel.alias == "carpet-cleaning" {
-                    if qty == 1 {
-                        productQty.text = "\(String(describing: qty)) Carpet"
-                    }else {
-                        productQty.text = "\(String(describing: qty)) Carpets"
+                if qty == 1 {
+                    productQty.text = "\(String(describing: qty)) Carpet"
+                }else if qty == 0 {
+                    productQty.text = "Rugs to be counted"
+                }
+                else {
+                    productQty.text = "\(String(describing: qty)) Carpets"
+                }
             }
+            else if serviceModel.alias == "laundered-shirts" {
+                if qty == 1 {
+                    productQty.text = "\(String(describing: qty)) Shirt"
+                } else if qty == 0 {
+                    productQty.text = "Shirts to be counted"
                 }
-                else if serviceModel.alias == "laundered-shirts" {
-                        if qty == 1 {
-                            productQty.text = "\(String(describing: qty)) Shirt"
-                        }else {
-                            productQty.text = "\(String(describing: qty)) Shirts"
+                else {
+                    productQty.text = "\(String(describing: qty)) Shirts"
                 }
-                    }
-
-                else if serviceModel.alias == "wash-and-fold" {
-                        productQty.text = "To be weighed"
-                }
-
+            }
+                
+            else if serviceModel.alias == "wash-and-fold" {
+                productQty.text = "Clothes to be weighed"
+            }
+            else if serviceModel.alias == "wash-and-air-dry" {
+                productQty.text = "Clothes to be weighed"
+            }
             else {
                 if qty == 1 {
-                    productQty.text = "\(String(describing: qty)) Clothes"
-                }else  {
+                    productQty.text = "\(String(describing: qty)) Cloth"
+                    
+                }else if qty == 0 {
+                    productQty.text = "Clothes to be counted"
+                }
+                else  {
                     productQty.text = "\(String(describing: qty)) Clothes"
                 }
             }

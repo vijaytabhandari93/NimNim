@@ -158,6 +158,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             var modelToDictionary = serviceModel.toJSON()
             modelToDictionary["cart_id"] = cartId
             print(JSON(modelToDictionary))
+            if serviceModel.validateAddToCartForService() {
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)
@@ -183,6 +184,16 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                 print("error")
                 self?.activityIndicator.stopAnimating()
             }
+            }
+            else {
+                //  Show Alertf...
+                let alert = UIAlertController(title: "Alert", message: "Please choose all the required preferences or simply click Just NimNim It.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+            }
+            
         }
     }
     
@@ -190,38 +201,43 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         if let serviceModel = serviceModel /// this is received from serviceBase collection view cells(//passing of the service model to the vc. as written)
         {
             if serviceModel.validateAddToCartForService() {
-                // Allow Add to Cart...
+               let modelToDictionary = serviceModel.toJSON() // model in dictationary
+                           activityIndicator.startAnimating()
+                           var params : [String:Any] = [:]/// - dictionary
+                           params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
+                           print(JSON(params))
+                           NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+                               self?.addToCart.setTitle("CheckOut", for: .normal)//alamofire is conveerting dictionary to JSON
+                               self?.IsAddToCartTapped = true
+                               self?.prefernces.reloadData()
+                               if let response = response as? [String:Any] {
+                                   if let cartId = response["cart_id"] as? String {
+                                       UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                                   }
+                                   addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
+                                   self?.setupCartCountLabel()
+                               }
+                               print("success")
+                               DispatchQueue.main.async {[weak self] in
+                                   if let numberOfSections = self?.prefernces.numberOfSections {
+                                       let lastSection = numberOfSections - 1
+                                       self?.prefernces.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+                                   }
+                               }
+                               self?.activityIndicator.stopAnimating()
+                           }) {[weak self] (error) in
+                               print("error")
+                               self?.activityIndicator.stopAnimating()
+                           }
             }else {
                 //  Show Alertf...
+                let alert = UIAlertController(title: "Alert", message: "Please choose all the required preferences or simply click Just NimNim It.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                
             }
-            let modelToDictionary = serviceModel.toJSON() // model in dictationary
-            activityIndicator.startAnimating()
-            var params : [String:Any] = [:]/// - dictionary
-            params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
-            print(JSON(params))
-            NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-                self?.addToCart.setTitle("CheckOut", for: .normal)//alamofire is conveerting dictionary to JSON
-                self?.IsAddToCartTapped = true
-                self?.prefernces.reloadData()
-                if let response = response as? [String:Any] {
-                    if let cartId = response["cart_id"] as? String {
-                        UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
-                    }
-                    addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
-                    self?.setupCartCountLabel()
-                }
-                print("success")
-                DispatchQueue.main.async {[weak self] in
-                    if let numberOfSections = self?.prefernces.numberOfSections {
-                        let lastSection = numberOfSections - 1
-                        self?.prefernces.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
-                    }
-                }
-                self?.activityIndicator.stopAnimating()
-            }) {[weak self] (error) in
-                print("error")
-                self?.activityIndicator.stopAnimating()
-            }
+           
         }
     }
     

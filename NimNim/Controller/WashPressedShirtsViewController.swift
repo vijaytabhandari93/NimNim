@@ -87,6 +87,8 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
             serviceModel?.setupNimNimItForWashPressedShirts()
+            serviceModel?.numberOfClothes = 0
+
         }
         else
         {
@@ -127,7 +129,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     
     func setupPrice() {
         if defaultStateJustNimNimIt {
-            let price = "$0"
+            let price = "@Pricelist"
             priceLabel.text = price
             serviceModel?.servicePrice = price
         }
@@ -261,57 +263,25 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     //            self?.activityIndicator.stopAnimating()
     //        }
     //    }
-    
-    func addServiceToCart() {
-        if let serviceModel = serviceModel{
-            let modelToDictionary = serviceModel.toJSON()
-            var params : [String:Any] = [:]
-            params[AddToCart.services] = [modelToDictionary]
-            //print(JSON(params))
-            activityIndicator.startAnimating()
-            NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-                self?.addToCart.setTitle("CheckOut", for: .normal)
-                self?.IsAddToCartTapped = true
-                self?.WashPressedShirtCollectionView.reloadData()
-                if let response = response as? [String:Any] {
-                    if let cartId = response["cart_id"] as? String {
-                        UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
-                    }
-                    addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias)
-                    self?.setupCartCountLabel()
-                }
-                print("success")
-                DispatchQueue.main.async {[weak self] in
-                    if let numberOfSections = self?.WashPressedShirtCollectionView.numberOfSections {
-                        let lastSection = numberOfSections - 1
-                        self?.WashPressedShirtCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
-                    }
-                }
-                self?.activityIndicator.stopAnimating()
-            }) {[weak self] (error) in
-                print("error")
-                self?.activityIndicator.stopAnimating()
-            }
-        }
-    }
-    func updateServiceInCart(withCartId cartId:String?) {
+  func updateServiceInCart(withCartId cartId:String?) {
         if let serviceModel = serviceModel, let cartId = cartId{
             var modelToDictionary = serviceModel.toJSON()
             modelToDictionary["cart_id"] = cartId
             print(JSON(modelToDictionary))
+            if serviceModel.validateAddToCartForService() {
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)
-                
                 self?.IsAddToCartTapped = true
                 self?.WashPressedShirtCollectionView.reloadData()
                 if let response = response as? [String:Any] {
                     if let cartId = response["cart_id"] as? String {
                         UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                        addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias)
+                        self?.setupCartCountLabel()
                     }
-                    addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias)
-                    self?.setupCartCountLabel()
                 }
+                
                 print("success")
                 DispatchQueue.main.async {[weak self] in
                     if let numberOfSections = self?.WashPressedShirtCollectionView.numberOfSections {
@@ -324,6 +294,60 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
                 print("error")
                 self?.activityIndicator.stopAnimating()
             }
+            }
+            else {
+                //  Show Alertf...
+                let alert = UIAlertController(title: "Alert", message: "Please enter the number of shirts and choose all the required preferences or simply click Just NimNim It.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+            }
+            
+        }
+    }
+    
+    func addServiceToCart() {
+        if let serviceModel = serviceModel /// this is received from serviceBase collection view cells(//passing of the service model to the vc. as written)
+        {
+            if serviceModel.validateAddToCartForService() {
+               let modelToDictionary = serviceModel.toJSON() // model in dictationary
+                           activityIndicator.startAnimating()
+                           var params : [String:Any] = [:]/// - dictionary
+                           params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
+                           print(JSON(params))
+                           NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+                               self?.addToCart.setTitle("CheckOut", for: .normal)//alamofire is conveerting dictionary to JSON
+                               self?.IsAddToCartTapped = true
+                               self?.WashPressedShirtCollectionView.reloadData()
+                               if let response = response as? [String:Any] {
+                                   if let cartId = response["cart_id"] as? String {
+                                       UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                                   }
+                                   addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
+                                   self?.setupCartCountLabel()
+                               }
+                               print("success")
+                               DispatchQueue.main.async {[weak self] in
+                                   if let numberOfSections = self?.WashPressedShirtCollectionView.numberOfSections {
+                                       let lastSection = numberOfSections - 1
+                                       self?.WashPressedShirtCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+                                   }
+                               }
+                               self?.activityIndicator.stopAnimating()
+                           }) {[weak self] (error) in
+                               print("error")
+                               self?.activityIndicator.stopAnimating()
+                           }
+            }else {
+                //  Show Alertf...
+                let alert = UIAlertController(title: "Alert", message: "Please enter the number of shirts and choose all the required preferences or simply click Just NimNim It.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+            }
+           
         }
     }
     

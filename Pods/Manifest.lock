@@ -34,6 +34,9 @@ PODS:
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
+  - Mixpanel-swift (2.7.0):
+    - Mixpanel-swift/Complete (= 2.7.0)
+  - Mixpanel-swift/Complete (2.7.0)
   - NTMonthYearPicker (1.0.0)
   - NVActivityIndicatorView (4.8.0):
     - NVActivityIndicatorView/Presenter (= 4.8.0)
@@ -48,6 +51,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - iOSDropDown
   - Kingfisher
+  - Mixpanel-swift
   - NTMonthYearPicker
   - NVActivityIndicatorView
   - ObjectMapper
@@ -64,6 +68,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - iOSDropDown
     - Kingfisher
+    - Mixpanel-swift
     - NTMonthYearPicker
     - NVActivityIndicatorView
     - ObjectMapper
@@ -79,11 +84,12 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
+  Mixpanel-swift: af074beb44bdac38ab611e1d575a073bbb3d6780
   NTMonthYearPicker: 27e1739d6e29428628c8275a7c1a9e4835c352f4
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 578fa0ad82f17450fd18f95c9cb60579635a715d
+PODFILE CHECKSUM: 4de95a553d27d518e53d41f92962c20ea8bb1478
 
 COCOAPODS: 1.9.0.beta.3

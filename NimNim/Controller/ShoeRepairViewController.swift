@@ -156,16 +156,16 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         let params = serviceModel?.toJSON()
         print(JSON(params))
         if addToCart.titleLabel?.text == "CheckOut" {
-                  let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-                  let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
-                  NavigationManager.shared.push(viewController: cartVC)
-              }
-              else if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
-                  updateServiceInCart(withCartId: cartId)
-              }else
-              {
-                  addServiceToCart()
-              }
+            let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+            let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
+            NavigationManager.shared.push(viewController: cartVC)
+        }
+        else if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
+            updateServiceInCart(withCartId: cartId)
+        }else
+        {
+            addServiceToCart()
+        }
     }
     func updateServiceInCart(withCartId cartId:String?) {
         if let serviceModel = serviceModel, let cartId = cartId{
@@ -319,10 +319,10 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
             return cell
         }
         else if indexPath.section == (numberOfSections - 2)  {
-                       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddShoeRepairCollectionViewCell", for: indexPath) as! AddShoeRepairCollectionViewCell
-                       cell.delegate = self
-                       return cell
-                   }
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddShoeRepairCollectionViewCell", for: indexPath) as! AddShoeRepairCollectionViewCell
+            cell.delegate = self
+            return cell
+        }
         else {
             if indexPath.item == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoeTaskAddedCollectionViewCell", for: indexPath) as! ShoeTaskAddedCollectionViewCell
@@ -377,9 +377,9 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         if indexPath.section == (numberOfSections - 1)  {
             return CGSize(width: collectionView.frame.size.width, height:60)
         }
-         else if indexPath.section == (numberOfSections - 2)  {
-                       return CGSize(width: collectionView.frame.size.width, height:60)
-                   }
+        else if indexPath.section == (numberOfSections - 2)  {
+            return CGSize(width: collectionView.frame.size.width, height:60)
+        }
         else {
             if indexPath.item == 0 {
                 return CGSize(width: collectionView.frame.size.width, height:30)

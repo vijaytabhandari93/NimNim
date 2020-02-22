@@ -100,7 +100,7 @@ class ServiceModel:NSObject, Mappable, Codable {
         }
     }
     var servicePrice : String?// later to be used in fetch order history
-
+    
     enum Alias:String {
         case washAndFold = "wash-and-fold"
         case washAndAirDry = "wash-and-air-dry"
@@ -156,15 +156,15 @@ class ServiceModel:NSObject, Mappable, Codable {
         dropOffStartDate <- map["dropOffStartDate"]
         dropOffEndDate <- map["dropOffEndDate"]
     }
-//    func  getPriceOfService() -> String?{
-//           var price  = 0
-//           for tasks in serviceModel  {
-//            price = price +
-//           }
-//
-//           return
-//       }
-   
+    //    func  getPriceOfService() -> String?{
+    //           var price  = 0
+    //           for tasks in serviceModel  {
+    //            price = price +
+    //           }
+    //
+    //           return
+    //       }
+    
     
     func getMaleItems() -> [ItemModel] {
         var maleItems:[ItemModel] = []  
@@ -200,14 +200,14 @@ class ServiceModel:NSObject, Mappable, Codable {
         selectNimNimItPreference(forPreferences: softner)
     }
     
-      func undosetupNimNimItForWashAndFold() {
-          undoselectNimNimItPreference(forPreferences: detergents)
-          undoselectNimNimItPreference(forPreferences: wash)
-          undoselectNimNimItPreference(forPreferences: drying)
-          undoselectNimNimItPreference(forPreferences: bleach)
-          undoselectNimNimItPreference(forPreferences: softner)
-      }
-      
+    func undosetupNimNimItForWashAndFold() {
+        undoselectNimNimItPreference(forPreferences: detergents)
+        undoselectNimNimItPreference(forPreferences: wash)
+        undoselectNimNimItPreference(forPreferences: drying)
+        undoselectNimNimItPreference(forPreferences: bleach)
+        undoselectNimNimItPreference(forPreferences: softner)
+    }
+    
     func undosetupNimNimItForWashAndAirDry() {
         undoselectNimNimItPreference(forPreferences: wash)
         undoselectNimNimItPreference(forPreferences: bleach)
@@ -226,10 +226,10 @@ class ServiceModel:NSObject, Mappable, Codable {
     }
     
     func undoSetupNimNimItForWashPressedShirts() {
-           undoselectNimNimItPreference(forPreferences: detergents)
-           undoselectNimNimItPreference(forPreferences: starch)
-           undoselectNimNimItPreference(forPreferences: returnPreferences)
-       }
+        undoselectNimNimItPreference(forPreferences: detergents)
+        undoselectNimNimItPreference(forPreferences: starch)
+        undoselectNimNimItPreference(forPreferences: returnPreferences)
+    }
     
     func selectNimNimItPreference(forPreferences preferences:[PreferenceModel]?) {
         if let preferences = preferences {
@@ -243,14 +243,14 @@ class ServiceModel:NSObject, Mappable, Codable {
         }
     }
     func undoselectNimNimItPreference(forPreferences preferences:[PreferenceModel]?) {
-           if let preferences = preferences {
-               for preference in preferences {
-      
-                       preference.isSelected = false
-                  
-                   }
-               }
-           }
+        if let preferences = preferences {
+            for preference in preferences {
+                
+                preference.isSelected = false
+                
+            }
+        }
+    }
     
     func productQuantity() -> Int {
         if let alias = alias {
@@ -291,17 +291,17 @@ class ServiceModel:NSObject, Mappable, Codable {
                         }
                     }
                     return quantity
-                    case .carpetCleaning:
-                     if let numberOfClothes = numberOfClothes {
-                         return numberOfClothes
-                     }
-                    case .shoeRepair:
-                        if let count = tasks?.count {
+                case .carpetCleaning:
+                    if let numberOfClothes = numberOfClothes {
+                        return numberOfClothes
+                    }
+                case .shoeRepair:
+                    if let count = tasks?.count {
                         return count
                     }
-                    case .tailoring:
-                   if let count = tasks?.count {
-                    return count
+                case .tailoring:
+                    if let count = tasks?.count {
+                        return count
                     }
                 }
             }
@@ -335,17 +335,111 @@ class ServiceModel:NSObject, Mappable, Codable {
                     if selectedWash == nil {
                         return false
                     }
-                    
+                    let selectedDry = drying?.first(where: { (prefModel) -> Bool in
+                        if prefModel.isSelected == true {
+                            return true
+                        }else {
+                            return false
+                        }
+                    })
+                    if selectedDry == nil {
+                        return false
+                    }
+                    let selectedBleach = bleach?.first(where: { (prefModel) -> Bool in
+                        if prefModel.isSelected == true {
+                            return true
+                        }else {
+                            return false
+                        }
+                    })
+                    if selectedBleach == nil {
+                        return false
+                    }
+                    let selectedSoftner = softner?.first(where: { (prefModel) -> Bool in
+                        if prefModel.isSelected == true {
+                            return true
+                        }else {
+                            return false
+                        }
+                    })
+                    if selectedSoftner == nil {
+                        return false
+                    }
                     return true
                 case .washAndAirDry:
+                    let selectedWash = wash?.first(where: { (prefModel) -> Bool in
+                        if prefModel.isSelected == true {
+                            return true
+                        }else {
+                            return false
+                        }
+                    })
+                    if selectedWash == nil {
+                        return false
+                    }
+                    let selectedBleach = bleach?.first(where: { (prefModel) -> Bool in
+                        if prefModel.isSelected == true {
+                            return true
+                        }else {
+                            return false
+                        }
+                    })
+                    if selectedBleach == nil {
+                        return false
+                    }
+                    let selectedSoftner = softner?.first(where: { (prefModel) -> Bool in
+                        if prefModel.isSelected == true {
+                            return true
+                        }else {
+                            return false
+                        }
+                    })
+                    if selectedSoftner == nil {
+                        return false
+                    }
+
                     return true
                 case .launderedShirts:
+                    if numberOfClothes == nil {
+                        return false
+                    }
+                    let selectedStarch = starch?.first(where: { (prefModel) -> Bool in
+                        if prefModel.isSelected == true {
+                            return true
+                        }else {
+                            return false
+                        }
+                    })
+                    if selectedStarch == nil {
+                        return false
+                    }
+                    let selectedReturnPreference = returnPreferences?.first(where: { (prefModel) -> Bool in
+                        if prefModel.isSelected == true {
+                            return true
+                        }else {
+                            return false
+                        }
+                    })
+                    if selectedReturnPreference == nil {
+                        return false
+                    }
                     return true
                 case .householdItems:
+                    if servicePrice == "$0"
+                    {
+                        return false
+                    }
                     return true
                 case .dryCleaning:
-                    return true
+                   if servicePrice == "$0"
+                                 {
+                                     return false
+                                 }
+                   return true
                 case .carpetCleaning:
+                    if numberOfClothes == nil {
+                        return false
+                    }
                     return true
                 case .shoeRepair:
                     return true
@@ -363,11 +457,11 @@ class ServiceModel:NSObject, Mappable, Codable {
                 switch value {
                 case .washAndFold:
                     if let price = price {
-                        return "$\(price) / lb"
+                        return "@ $\(price)/lb"
                     }
                 case .washAndAirDry:
                     if let price = price {
-                        return "$\(price) / lb"
+                        return "@ $\(price)/lb"
                     }
                 case .launderedShirts:
                     
@@ -379,7 +473,7 @@ class ServiceModel:NSObject, Mappable, Codable {
                             price = price + Double(Double(numberOfClothes)*(costPerPiece ?? 0))
                         }
                     }
-                   
+                    
                     return "$\(price)"
                 case .householdItems:
                     var price = 0
@@ -420,20 +514,20 @@ class ServiceModel:NSObject, Mappable, Codable {
                             }
                         }
                     }
-                
+                    
                     return "$\(price)"
-                    case .carpetCleaning:
-                                       if let price = price {
-                                           return "$\(price) / square foot"
-                                       }
-                    case .shoeRepair:
-                                       if let price = price {
-                                           return "$\(price) / lb"
-                                       }
-                    case .tailoring:
-                                       if let price = price {
-                                           return "$\(price) / lb"
-                                       }
+                case .carpetCleaning:
+                    if let price = price {
+                        return "$\(price) / square foot"
+                    }
+                case .shoeRepair:
+                    if let price = price {
+                        return "$\(price) / lb"
+                    }
+                case .tailoring:
+                    if let price = price {
+                        return "$\(price) / lb"
+                    }
                 }
             }
         }
@@ -495,18 +589,18 @@ class ServiceModel:NSObject, Mappable, Codable {
                         }
                     }
                     return "$\(femaleprice+maleprice)"
-                    case .carpetCleaning:
-                                       if let price = price {
-                                           return "$\(price) / lb"
-                                       }
-                    case .shoeRepair:
-                                       if let price = price {
-                                           return "$\(price) / lb"
-                                       }
-                    case .tailoring:
-                                       if let price = price {
-                                           return "$\(price) / lb"
-                                       }
+                case .carpetCleaning:
+                    if let price = price {
+                        return "$\(price) / lb"
+                    }
+                case .shoeRepair:
+                    if let price = price {
+                        return "$\(price) / lb"
+                    }
+                case .tailoring:
+                    if let price = price {
+                        return "$\(price) / lb"
+                    }
                 }
             }
         }
@@ -568,7 +662,7 @@ class ItemModel:NSObject, Mappable, Codable, NSCopying {
         IfDrycleaned          <- map["if_dryCleaned"]
         qty             <- map["qty"]
         isSelectedShoeRepairPreference <- map["is_selected_shoe_repair_pref"]
-        isSelectedTailoringRepairPreference <- map["is_selected_shoe_repair_pref"]
+        isSelectedTailoringRepairPreference <- map["is_selected_tailoring_pref"]
     }
     
     //Below function is used to create a copy of the ItemModel object...
@@ -597,7 +691,7 @@ class TaskModel: NSObject, Mappable, Codable {
     var gender:String? //   we have made this
     var taskPrice : Int = 0
     var garMentType : String?
- 
+    
     required convenience init?(map: Map) { self.init() }
     
     func mapping(map: Map) {
@@ -605,6 +699,8 @@ class TaskModel: NSObject, Mappable, Codable {
         uploadedImages <- map["uploaded_images"]
         items  <- map["items"]
         gender         <- map["gender"]
+        garMentType  <- map["garmentType"]
+        taskPrice <- map["taskPrice"]
     }
     func getGenderSpecificItems() -> [ItemModel]{
         if gender == "male" {
@@ -615,23 +711,23 @@ class TaskModel: NSObject, Mappable, Codable {
         }
     }
     func getGarmentSpecificItems() -> [ItemModel]{
-           if garMentType == "pantsandjeans" {
-               return getPants()
-           }else if garMentType == "shirt" {
-               return getShirt()
-           }else if garMentType == "blouse" {
-               return getblouse()
-           }else if garMentType == "jacket" {
-               return getjackets()
-           }else if garMentType == "shorts" {
-               return getshorts()
-           }else {
-               return getdress()
-           }
-       
+        if garMentType == "pantsandjeans" {
+            return getPants()
+        }else if garMentType == "shirt" {
+            return getShirt()
+        }else if garMentType == "blouse" {
+            return getblouse()
+        }else if garMentType == "jacket" {
+            return getjackets()
+        }else if garMentType == "shorts" {
+            return getshorts()
+        }else {
+            return getdress()
         }
-
-
+        
+    }
+    
+    
     
     func getSelectedItems() -> [ItemModel] {
         let genderSpecificItems = getGenderSpecificItems()
@@ -645,15 +741,15 @@ class TaskModel: NSObject, Mappable, Codable {
     }
     
     func getTailoringSelectedItems() -> [ItemModel] {
-           let garmentSpecificItems = getGarmentSpecificItems()
-           let selectedItems = garmentSpecificItems.filter { (item) -> Bool in
-               if let isSelected =  item.isSelectedTailoringRepairPreference, isSelected == true {
-                   return true
-               }
-               return false
-           }
-           return selectedItems
-       }
+        let garmentSpecificItems = getGarmentSpecificItems()
+        let selectedItems = garmentSpecificItems.filter { (item) -> Bool in
+            if let isSelected =  item.isSelectedTailoringRepairPreference, isSelected == true {
+                return true
+            }
+            return false
+        }
+        return selectedItems
+    }
     
     func getSelectedItemsPrice() -> Int {
         let SelectedItems = getSelectedItems()
@@ -662,7 +758,7 @@ class TaskModel: NSObject, Mappable, Codable {
             if let priceOfItem = item.price {
                 price = price + priceOfItem
             }
-         }
+        }
         return price
     }
     
@@ -671,12 +767,12 @@ class TaskModel: NSObject, Mappable, Codable {
         var price = 0
         for  item in SelectedItems {
             if let priceOfItem = item.price {
-                   price = price + priceOfItem
+                price = price + priceOfItem
             }
-         }
+        }
         return price
     }
-
+    
     
     func getMaleItems() -> [ItemModel] {
         var maleItems:[ItemModel] = []
@@ -771,7 +867,7 @@ class TaskModel: NSObject, Mappable, Codable {
         }
         return femaleItems
     }
-
+    
     func resetSelections() {
         if items.count > 0 {
             for item in items {

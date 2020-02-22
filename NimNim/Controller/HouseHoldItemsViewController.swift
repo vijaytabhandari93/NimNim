@@ -101,7 +101,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     
     func setupPrice() {
         if defaultStateJustNimNimIt {
-            let price = "$0"
+            let price = "@Pricelist"
             priceLabel.text = price
             serviceModel?.servicePrice = price
         }
@@ -169,7 +169,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
-            
+  
         }
         else
         {
@@ -282,43 +282,12 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     //        }
     //    }
     //
-    func addServiceToCart() {
-        if let serviceModel = serviceModel{
-            let modelToDictionary = serviceModel.toJSON()
-            var params : [String:Any] = [:]
-            params[AddToCart.services] = [modelToDictionary]
-            //print(JSON(params))
-            activityIndicator.startAnimating()
-            NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-                self?.addToCart.setTitle("CheckOut", for: .normal)
-                self?.IsAddToCartTapped = true
-                self?.houseHoldCollectionView.reloadData()
-                if let response = response as? [String:Any] {
-                    if let cartId = response["cart_id"] as? String {
-                        UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
-                    }
-                    addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias)
-                    self?.setupCartCountLabel()
-                }
-                print("success")
-                DispatchQueue.main.async {[weak self] in
-                    if let numberOfSections = self?.houseHoldCollectionView.numberOfSections {
-                        let lastSection = numberOfSections - 1
-                        self?.houseHoldCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
-                    }
-                }
-                self?.activityIndicator.stopAnimating()
-            }) {[weak self] (error) in
-                print("error")
-                self?.activityIndicator.stopAnimating()
-            }
-        }
-    }
-    func updateServiceInCart(withCartId cartId:String?) {
+   func updateServiceInCart(withCartId cartId:String?) {
         if let serviceModel = serviceModel, let cartId = cartId{
             var modelToDictionary = serviceModel.toJSON()
-            modelToDictionary["cart_id"] = cartId //to send the cart id along with the other params
+            modelToDictionary["cart_id"] = cartId
             print(JSON(modelToDictionary))
+            if serviceModel.validateAddToCartForService() {
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
                 self?.addToCart.setTitle("CheckOut", for: .normal)
@@ -331,6 +300,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
                         self?.setupCartCountLabel()
                     }
                 }
+                
                 print("success")
                 DispatchQueue.main.async {[weak self] in
                     if let numberOfSections = self?.houseHoldCollectionView.numberOfSections {
@@ -343,6 +313,60 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
                 print("error")
                 self?.activityIndicator.stopAnimating()
             }
+            }
+            else {
+                //  Show Alertf...
+                let alert = UIAlertController(title: "Alert", message: "Please enter the quantity and choose either laundry/drycleaning option or simply choose Just NimNim It.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+            }
+            
+        }
+    }
+    
+    func addServiceToCart() {
+        if let serviceModel = serviceModel /// this is received from serviceBase collection view cells(//passing of the service model to the vc. as written)
+        {
+            if serviceModel.validateAddToCartForService() {
+               let modelToDictionary = serviceModel.toJSON() // model in dictationary
+                           activityIndicator.startAnimating()
+                           var params : [String:Any] = [:]/// - dictionary
+                           params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
+                           print(JSON(params))
+                           NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+                               self?.addToCart.setTitle("CheckOut", for: .normal)//alamofire is conveerting dictionary to JSON
+                               self?.IsAddToCartTapped = true
+                               self?.houseHoldCollectionView.reloadData()
+                               if let response = response as? [String:Any] {
+                                   if let cartId = response["cart_id"] as? String {
+                                       UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                                   }
+                                   addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
+                                   self?.setupCartCountLabel()
+                               }
+                               print("success")
+                               DispatchQueue.main.async {[weak self] in
+                                   if let numberOfSections = self?.houseHoldCollectionView.numberOfSections {
+                                       let lastSection = numberOfSections - 1
+                                       self?.houseHoldCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+                                   }
+                               }
+                               self?.activityIndicator.stopAnimating()
+                           }) {[weak self] (error) in
+                               print("error")
+                               self?.activityIndicator.stopAnimating()
+                           }
+            }else {
+                //  Show Alertf...
+                let alert = UIAlertController(title: "Alert", message: "Please enter the quantity and choose either laundry/drycleaning option or simply choose Just NimNim It.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+                
+                
+            }
+           
         }
     }
     

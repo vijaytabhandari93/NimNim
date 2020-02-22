@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Setting up the root view controller of this project..i.e. initial view controller for project....
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         NavigationManager.shared.initializeApp()
+        MixPanelManager.shared.initializeMixPanel()
         return true
     }
 

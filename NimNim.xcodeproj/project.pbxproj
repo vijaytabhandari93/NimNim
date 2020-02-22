@@ -119,6 +119,7 @@
 		AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */; };
 		AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC793F16232CDBB9009E61A1 /* Preferences.storyboard */; };
 		AC7BE99123FE5CEC00F77014 /* SubmitTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BE99023FE5CEC00F77014 /* SubmitTicketViewController.swift */; };
+		AC7BE99323FEF29A00F77014 /* MixPanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BE99223FEF29900F77014 /* MixPanelManager.swift */; };
 		AC8CDE2A23251A2500CDFB93 /* LoginSignup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */; };
 		AC8CDE2E232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC8CDE2C232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift */; };
 		AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC8CDE2D232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib */; };
@@ -356,6 +357,7 @@
 		AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		AC793F16232CDBB9009E61A1 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		AC7BE99023FE5CEC00F77014 /* SubmitTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitTicketViewController.swift; sourceTree = "<group>"; };
+		AC7BE99223FEF29900F77014 /* MixPanelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixPanelManager.swift; sourceTree = "<group>"; };
 		AC8CDE2923251A2500CDFB93 /* LoginSignup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginSignup.storyboard; sourceTree = "<group>"; };
 		AC8CDE2C232537FF00CDFB93 /* LoginWithPasswordTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWithPasswordTableViewCell.swift; sourceTree = "<group>"; };
 		AC8CDE2D232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginWithPasswordTableViewCell.xib; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 				AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */,
 				ACD8BA442351DF87005C1EAA /* NavigationManager.swift */,
 				AC5B6C5023F955750000F2D1 /* DeeplinkManager.swift */,
+				AC7BE99223FEF29900F77014 /* MixPanelManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1066,6 +1069,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC12C20923DF11B9002E2A91 /* EmptyCartViewController.swift in Sources */,
+				AC7BE99323FEF29A00F77014 /* MixPanelManager.swift in Sources */,
 				AC8CDE382326449200CDFB93 /* LoginViaOTPTableViewCell.swift in Sources */,
 				AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */,
 				ACA65EFC23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.swift in Sources */,

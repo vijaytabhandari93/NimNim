@@ -63,7 +63,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
         if editModeOn {
             repairToaddorUpdate.setTitle("Edit Shoe Repair Task", for: .normal)
                }
-        setupTaskModel()
+        setupTaskModel()///on opening second view controller the taskModel is created.
         registerCells()
         shoeRepairCollectionView.delegate = self
         shoeRepairCollectionView.dataSource = self
@@ -97,7 +97,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
             selectedDropDownIndex = 0
             taskModel?.gender = "male" // to first show men items
         }
-        
+     
     }
     
     //the above is the main function which is used to setup the task model. We are creating a copy of the itemModels and assigning to the  above created task model. This is required  otherwise it will be resulting in copy by reference.

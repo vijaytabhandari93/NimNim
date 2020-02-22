@@ -317,7 +317,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.section == 0 {
-            return CGSize(width: collectionView.frame.size.width, height:110)
+            return CGSize(width: collectionView.frame.size.width, height:122)
         }else if indexPath.section == 1 {
             if GetRushStatus() {
 
