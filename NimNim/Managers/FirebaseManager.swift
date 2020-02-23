@@ -15,6 +15,5 @@ class FirebaseManager {
     func initializeFirebase() {
         FirebaseApp.configure()
     }
-    
-    
+
 }
