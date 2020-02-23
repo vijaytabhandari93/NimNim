@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         NavigationManager.shared.initializeApp()
         MixPanelManager.shared.initializeMixPanel()
+        FirebaseManager.shared.initializeFirebase()
         return true
     }
 

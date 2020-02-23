@@ -24,7 +24,7 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
         super.viewDidLoad()
         trackOrderCollectionViiew.delegate =  self
         trackOrderCollectionViiew.dataSource = self
-        trackOrderCollectionViiew.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 40, right: 0)
+        trackOrderCollectionViiew.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         registerCells()
         fetchOrderHistory()
         

@@ -23,7 +23,6 @@
 		AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */; };
 		AC1B9B862392403E00CA7434 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1B9B852392403E00CA7434 /* AddressModel.swift */; };
 		AC1BB7D623A7B23A00513947 /* CartModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1BB7D523A7B23A00513947 /* CartModel.swift */; };
-		AC1EDC60237C71FC00D36C89 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */; };
 		AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */; };
 		AC1FFDA323465DEF00930496 /* ServicesHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA123465DEF00930496 /* ServicesHeaderCollectionReusableView.xib */; };
 		AC1FFDAC2346F1D100930496 /* ProximaNova-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = AC1FFDA42346F1D000930496 /* ProximaNova-Regular.otf */; };
@@ -106,6 +105,8 @@
 		AC5CDC3F23FD726B0047940F /* HelpRequiredCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5CDC3D23FD726B0047940F /* HelpRequiredCollectionViewCell.xib */; };
 		AC5E697323CC72BD000DF84E /* PricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E697223CC72BD000DF84E /* PricingViewController.swift */; };
 		AC5E697523CC7319000DF84E /* Pricing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5E697423CC7319000DF84E /* Pricing.storyboard */; };
+		AC5F786224024EC100E6E7C3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC5F786124024EC100E6E7C3 /* GoogleService-Info.plist */; };
+		AC5F786424025E4700E6E7C3 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F786324025E4700E6E7C3 /* FirebaseManager.swift */; };
 		AC5F80DA23CD9DED0093B864 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F80D823CD9DED0093B864 /* PriceCollectionViewCell.swift */; };
 		AC5F80DB23CD9DED0093B864 /* PriceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5F80D923CD9DED0093B864 /* PriceCollectionViewCell.xib */; };
 		AC5F80DE23CD9F1A0093B864 /* DescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F80DC23CD9F190093B864 /* DescriptionCollectionViewCell.swift */; };
@@ -261,7 +262,6 @@
 		AC1AED5E233F058C00638403 /* BannersBaseCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannersBaseCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC1B9B852392403E00CA7434 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		AC1BB7D523A7B23A00513947 /* CartModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartModel.swift; sourceTree = "<group>"; };
-		AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AC1FFDA023465DEF00930496 /* ServicesHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		AC1FFDA123465DEF00930496 /* ServicesHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ServicesHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
 		AC1FFDA42346F1D000930496 /* ProximaNova-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "ProximaNova-Regular.otf"; sourceTree = "<group>"; };
@@ -344,6 +344,8 @@
 		AC5CDC3D23FD726B0047940F /* HelpRequiredCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpRequiredCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5E697223CC72BD000DF84E /* PricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingViewController.swift; sourceTree = "<group>"; };
 		AC5E697423CC7319000DF84E /* Pricing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pricing.storyboard; sourceTree = "<group>"; };
+		AC5F786124024EC100E6E7C3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		AC5F786324025E4700E6E7C3 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		AC5F80D823CD9DED0093B864 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC5F80D923CD9DED0093B864 /* PriceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PriceCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5F80DC23CD9F190093B864 /* DescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 				ACD8BA442351DF87005C1EAA /* NavigationManager.swift */,
 				AC5B6C5023F955750000F2D1 /* DeeplinkManager.swift */,
 				AC7BE99223FEF29900F77014 /* MixPanelManager.swift */,
+				AC5F786324025E4700E6E7C3 /* FirebaseManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -770,8 +773,8 @@
 				AC8CDE27232518A200CDFB93 /* View */,
 				AC8CDE28232518AC00CDFB93 /* Controller */,
 				AC9BCAC52324DF90009818C3 /* AppDelegate.swift */,
+				AC5F786124024EC100E6E7C3 /* GoogleService-Info.plist */,
 				AC9BCACC2324DF90009818C3 /* Assets.xcassets */,
-				AC1EDC5F237C71FC00D36C89 /* GoogleService-Info.plist */,
 				AC9BCAD12324DF90009818C3 /* Info.plist */,
 			);
 			path = NimNim;
@@ -849,6 +852,7 @@
 				AC9BCAC02324DF90009818C3 /* Resources */,
 				D9B2177530E3C72726E3B6FC /* [CP] Embed Pods Frameworks */,
 				91BE2C17108F40B604D340DA /* [CP] Copy Pods Resources */,
+				AC5F786524025F2200E6E7C3 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -926,6 +930,7 @@
 				AC20417F23B74FC9001F86B4 /* TimeSlotsCollectionViewCell.xib in Resources */,
 				AC5BC1A923ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.xib in Resources */,
 				ACF9CD3323504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.xib in Resources */,
+				AC5F786224024EC100E6E7C3 /* GoogleService-Info.plist in Resources */,
 				ACBB8191232E3FAC003DCF77 /* Montserrat-SemiBold.ttf in Resources */,
 				ACE0E4ED2353164500A75D82 /* ShoeRepairCollectionViewCell.xib in Resources */,
 				AC1FFDAD2346F1D100930496 /* Proxima Nova Black.otf in Resources */,
@@ -963,7 +968,6 @@
 				ACFD92A2235830AC0009FB03 /* ProfileCollectionViewCell.xib in Resources */,
 				AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */,
 				ACFD929A2355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.xib in Resources */,
-				AC1EDC60237C71FC00D36C89 /* GoogleService-Info.plist in Resources */,
 				AC5CA88923F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib in Resources */,
 				AC5CDC3F23FD726B0047940F /* HelpRequiredCollectionViewCell.xib in Resources */,
 				AC5ADD922361D99F00204E9E /* ApplyWalletPointsCollectionViewCell.xib in Resources */,
@@ -1021,6 +1025,23 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		AC5F786524025F2200E6E7C3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}\n$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)\n";
 		};
 		ACE5BD3CA5ED6FAAE182846E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1144,6 +1165,7 @@
 				AC5CA88123F19E33000D0E39 /* WalletModel.swift in Sources */,
 				AC25BFB32371EF2D00C79692 /* ServiceableLocationModel.swift in Sources */,
 				AC5CA88823F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift in Sources */,
+				AC5F786424025E4700E6E7C3 /* FirebaseManager.swift in Sources */,
 				AC41CE71235C81EF001AC676 /* CardTypeCollectionViewCell.swift in Sources */,
 				ACF9CD1A234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift in Sources */,
 				AC5226FC23C71B14002F111F /* OrderDetailsViewController.swift in Sources */,
@@ -1249,6 +1271,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1310,6 +1333,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

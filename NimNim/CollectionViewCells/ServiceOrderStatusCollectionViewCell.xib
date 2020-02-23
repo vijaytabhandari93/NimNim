@@ -53,15 +53,12 @@
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payable Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tM8-ow-4QL">
                         <rect key="frame" x="246.5" y="30.5" width="100.5" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="100.5" id="5LI-14-aP3"/>
-                        </constraints>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                         <color key="textColor" red="0.039215686274509803" green="0.023529411764705882" blue="0.1803921568627451" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@ Pricelist" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcS-tE-2vv">
-                        <rect key="frame" x="215.5" y="47.5" width="131.5" height="40"/>
+                        <rect key="frame" x="276" y="47.5" width="71" height="40"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="40" id="vmP-Ce-GNz"/>
                         </constraints>
@@ -70,10 +67,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypO-ka-uJa">
-                        <rect key="frame" x="249" y="85.5" width="98" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="98" id="rxJ-1l-hfc"/>
-                        </constraints>
+                        <rect key="frame" x="252" y="85.5" width="95" height="30"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                         <state key="normal" title="Remove Item">
                             <color key="titleColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
@@ -110,7 +104,6 @@
                 <constraint firstItem="dcS-tE-2vv" firstAttribute="top" secondItem="tM8-ow-4QL" secondAttribute="bottom" constant="2" id="ARH-YU-eTd"/>
                 <constraint firstAttribute="bottom" secondItem="fcy-iW-Ztw" secondAttribute="bottom" id="LgO-hn-gVL"/>
                 <constraint firstItem="ud6-CK-RR9" firstAttribute="centerY" secondItem="oS5-v1-RBr" secondAttribute="centerY" id="P6N-Bu-vZ7"/>
-                <constraint firstItem="dcS-tE-2vv" firstAttribute="leading" secondItem="tM8-ow-4QL" secondAttribute="leading" constant="-31" id="PLk-e2-ZPJ"/>
                 <constraint firstItem="oS5-v1-RBr" firstAttribute="leading" secondItem="ud6-CK-RR9" secondAttribute="trailing" constant="20" id="QK2-06-pe7"/>
                 <constraint firstAttribute="trailing" secondItem="fcy-iW-Ztw" secondAttribute="trailing" constant="28" id="axQ-LS-WtE"/>
                 <constraint firstItem="oS5-v1-RBr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="57" id="eu1-2R-aNT"/>

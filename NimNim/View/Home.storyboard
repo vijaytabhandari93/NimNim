@@ -897,8 +897,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTR-SO-KJX">
                                 <rect key="frame" x="0.0" y="93" width="414" height="769"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sAd-8t-b1Y">
-                                        <rect key="frame" x="20" y="20" width="374" height="749"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="sAd-8t-b1Y">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="769"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u0x-NP-4IR">
                                             <size key="itemSize" width="50" height="50"/>
@@ -920,10 +920,10 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="sAd-8t-b1Y" firstAttribute="leading" secondItem="bTR-SO-KJX" secondAttribute="leading" constant="20" symbolic="YES" id="3eJ-pj-1Mn"/>
-                                    <constraint firstItem="sAd-8t-b1Y" firstAttribute="top" secondItem="bTR-SO-KJX" secondAttribute="top" constant="20" symbolic="YES" id="BQQ-KP-LFQ"/>
+                                    <constraint firstItem="sAd-8t-b1Y" firstAttribute="leading" secondItem="bTR-SO-KJX" secondAttribute="leading" id="3eJ-pj-1Mn"/>
+                                    <constraint firstItem="sAd-8t-b1Y" firstAttribute="top" secondItem="bTR-SO-KJX" secondAttribute="top" id="BQQ-KP-LFQ"/>
                                     <constraint firstAttribute="bottom" secondItem="sAd-8t-b1Y" secondAttribute="bottom" id="PJJ-Pw-YQb"/>
-                                    <constraint firstAttribute="trailing" secondItem="sAd-8t-b1Y" secondAttribute="trailing" constant="20" symbolic="YES" id="Y58-DE-rqj"/>
+                                    <constraint firstAttribute="trailing" secondItem="sAd-8t-b1Y" secondAttribute="trailing" id="Y58-DE-rqj"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9w9-ia-d7n">

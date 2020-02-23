@@ -538,9 +538,9 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     var phone : String?
     func sendLinkTappedInLoginWithPasswordTableViewCell(withPhone email:String?){
         guard let email = email else {return}
-        phone = email
+        phone = "\(mobileExt)\(email)"
         let params: [String:Any] =
-            [ForgotPassword.phone:email]
+            [ForgotPassword.phone:"\(mobileExt)\(email)"]
         activityIndicatorView.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.forgotPasssword, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
@@ -548,7 +548,6 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                     //we can assume here that otp was sent successfully...
                     self.otpState = .verifyOtp
                     self.showOtpAlertPasswordResetting() // call this only incase of success (pass)
-                    
                 }
             }
             self.activityIndicatorView.stopAnimating()
