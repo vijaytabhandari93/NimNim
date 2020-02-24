@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -42,11 +40,15 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cay-Ic-EpX">
                                 <rect key="frame" x="0.0" y="0.0" width="200.5" height="61"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scented" translatesAutoresizingMaskIntoConstraints="NO" id="Va1-j8-fnG">
-                                        <rect key="frame" x="0.0" y="10" width="29" height="28"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Va1-j8-fnG">
+                                        <rect key="frame" x="0.0" y="15.5" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Yoe-JO-3iV"/>
+                                            <constraint firstAttribute="width" constant="30" id="rax-tS-TON"/>
+                                        </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Scented" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g62-yu-yFB">
-                                        <rect key="frame" x="37" y="23" width="50.5" height="15"/>
+                                        <rect key="frame" x="38" y="23" width="50.5" height="15"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -63,9 +65,9 @@
                                     <constraint firstItem="Va1-j8-fnG" firstAttribute="leading" secondItem="Cay-Ic-EpX" secondAttribute="leading" id="7FW-HR-71c"/>
                                     <constraint firstItem="MF6-ux-aCa" firstAttribute="top" secondItem="Cay-Ic-EpX" secondAttribute="top" id="7OA-fF-uIJ"/>
                                     <constraint firstItem="g62-yu-yFB" firstAttribute="centerY" secondItem="Cay-Ic-EpX" secondAttribute="centerY" id="Ney-JX-lYo"/>
-                                    <constraint firstItem="Va1-j8-fnG" firstAttribute="bottom" secondItem="g62-yu-yFB" secondAttribute="bottom" id="RYv-1w-NTb"/>
                                     <constraint firstItem="MF6-ux-aCa" firstAttribute="leading" secondItem="Cay-Ic-EpX" secondAttribute="leading" id="a1W-J2-mIZ"/>
                                     <constraint firstAttribute="bottom" secondItem="MF6-ux-aCa" secondAttribute="bottom" id="hcN-Mx-P4c"/>
+                                    <constraint firstItem="Va1-j8-fnG" firstAttribute="centerY" secondItem="g62-yu-yFB" secondAttribute="centerY" id="mYd-Ip-ntR"/>
                                     <constraint firstItem="g62-yu-yFB" firstAttribute="leading" secondItem="Va1-j8-fnG" secondAttribute="trailing" constant="8" id="wnn-CS-Wdu"/>
                                     <constraint firstAttribute="trailing" secondItem="MF6-ux-aCa" secondAttribute="trailing" id="xRv-v7-Bk0"/>
                                 </constraints>
@@ -73,8 +75,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="akI-rv-icg">
                                 <rect key="frame" x="200.5" y="0.0" width="200.5" height="61"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nonScented" translatesAutoresizingMaskIntoConstraints="NO" id="HCh-Qi-cmA">
-                                        <rect key="frame" x="0.0" y="23" width="29" height="15"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HCh-Qi-cmA">
+                                        <rect key="frame" x="0.0" y="15.5" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="6QB-mC-mH0"/>
+                                            <constraint firstAttribute="height" constant="30" id="7MK-Ui-DQq"/>
+                                        </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O28-Fg-fkc">
                                         <rect key="frame" x="0.0" y="0.0" width="200.5" height="61"/>
@@ -83,7 +89,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Non - Scented" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E8E-fi-Sll">
-                                        <rect key="frame" x="37" y="23" width="86" height="15"/>
+                                        <rect key="frame" x="38" y="23" width="86" height="15"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" red="0.76078431369999999" green="0.76862745099999996" blue="0.79607843140000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -97,8 +103,8 @@
                                     <constraint firstItem="O28-Fg-fkc" firstAttribute="top" secondItem="akI-rv-icg" secondAttribute="top" id="9jx-M0-0ys"/>
                                     <constraint firstItem="O28-Fg-fkc" firstAttribute="leading" secondItem="akI-rv-icg" secondAttribute="leading" id="Cw4-lK-9Mw"/>
                                     <constraint firstItem="HCh-Qi-cmA" firstAttribute="leading" secondItem="akI-rv-icg" secondAttribute="leading" id="Ueu-Lu-9Bg"/>
-                                    <constraint firstItem="HCh-Qi-cmA" firstAttribute="bottom" secondItem="E8E-fi-Sll" secondAttribute="bottom" id="VNO-iR-QD0"/>
                                     <constraint firstItem="E8E-fi-Sll" firstAttribute="leading" secondItem="HCh-Qi-cmA" secondAttribute="trailing" constant="8" id="dV5-RJ-H4B"/>
+                                    <constraint firstItem="HCh-Qi-cmA" firstAttribute="centerY" secondItem="E8E-fi-Sll" secondAttribute="centerY" id="lO5-5W-hAK"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -145,8 +151,4 @@
             <point key="canvasLocation" x="2293" y="-110"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="nonScented" width="29" height="15"/>
-        <image name="scented" width="29" height="28"/>
-    </resources>
 </document>
