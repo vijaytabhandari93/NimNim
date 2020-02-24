@@ -49,7 +49,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    let mobileExt = "+91"
+    let mobileExt = "+1"
     var activeTextField:UITextField?
     var otpState:OTPState = .getOtp {
         didSet {
