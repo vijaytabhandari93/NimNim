@@ -17,6 +17,7 @@ target 'NimNim' do
   pod 'FBSDKLoginKit/Swift'
   pod 'NTMonthYearPicker' #To have a datepicker with month and year input only support...
   pod 'Firebase/Analytics'
+  pod 'Firebase/Core'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Performance'
   pod 'Mixpanel-swift'

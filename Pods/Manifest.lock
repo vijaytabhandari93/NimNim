@@ -162,6 +162,7 @@ DEPENDENCIES:
   - FBSDKCoreKit/Swift
   - FBSDKLoginKit/Swift
   - Firebase/Analytics
+  - Firebase/Core
   - Firebase/Crashlytics
   - Firebase/Performance
   - GoogleSignIn
@@ -246,6 +247,6 @@ SPEC CHECKSUMS:
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: f73554bd1221b943bdfbd50a5f6dcb3357f58125
+PODFILE CHECKSUM: 12f50ee3246ccc44b640fb041de97306b6e61a27
 
 COCOAPODS: 1.7.4

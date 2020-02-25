@@ -79,7 +79,6 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                     }
                 }
             }
-            
         }
         else {
             let alert = UIAlertController(title: "Alert", message: "please select the card", preferredStyle: .alert)

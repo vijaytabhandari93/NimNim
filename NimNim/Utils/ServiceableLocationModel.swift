@@ -14,6 +14,29 @@ class ServiceableLocationModel:NSObject, Mappable {
     var total:Int?
     var totalPages:Int?
     var data:[LocationModel]?
+    var currentText:String?
+    var filteredData:[LocationModel]? {
+        get {
+            if let currentText = currentText, currentText.count > 0 {
+                let filteredArray = data?.filter({ (model) -> Bool in
+                    let titleMatches = model.title?.contains(currentText)
+                    let zipcodeMatches = model.pincode?.contains(currentText)
+                    if titleMatches == true || zipcodeMatches == true {
+                        return true
+                    }else {
+                        return false
+                    }
+                })
+                return filteredArray
+            }else {
+                return data
+            }
+        }
+    }
+    
+    func resetText() {
+        currentText = nil
+    }
     
     required convenience init?(map: Map) { self.init() }
     

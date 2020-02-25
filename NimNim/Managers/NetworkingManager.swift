@@ -48,6 +48,7 @@ class NetworkingManager {
                 headers = ["Authorization":"Bearer \(finaltoken)"]
             }
         }
+        print("Headers:\(JSON(headers))")
         Alamofire.request(url, method: .get, parameters: params, headers : headers).responseJSON{
             response in
             guard let statusCode = response.response?.statusCode else {

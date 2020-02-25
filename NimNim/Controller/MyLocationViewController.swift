@@ -15,19 +15,22 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     
     //MARK:IBOutlets
     
-    @IBOutlet weak var pin: UIImageView!
     @IBOutlet weak var locationTableView: UITableView!
     @IBOutlet weak var currentLocationSelected: UILabel!
     @IBOutlet weak var bottomShadowView: UIView!
     @IBOutlet weak var topShadowView: UIView!
     @IBOutlet weak var useThisLocationButton: UIButton!
+    @IBOutlet weak var searchBackView: UIView!
+    @IBOutlet weak var searchTextField: UITextField!
+    
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     
     //MARK: Variables and Constants
     let locationManager = CLLocationManager()
     var long : Double?
     var lat : Double?
-    
+    var isHeightAdded = false // global variable made for keyboard height modification
+    var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     var selectedIndexPath: IndexPath? {
         didSet {
             setupUseThisLocationButton()
@@ -42,6 +45,8 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
         fetchServiceableLocations()
         setupUseThisLocationButton()
         locationTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 132, right: 0)
+        setupTextField()
+        addObservers()
     }
     
     
@@ -54,12 +59,41 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        topShadowView.layer.applySketchShadow(color: Colors.nimnimLocationShadowColor, alpha: 0.24, x: 0, y: 19, blur: 38, spread: 2)
+        searchBackView.layer.applySketchShadow(color: Colors.nimnimLocationShadowColor, alpha: 0.24, x: 0, y: 19, blur: 38, spread: 2)
         bottomShadowView.layer.applySketchShadow(color: Colors.nimnimLocationShadowColor, alpha: 0.24, x: 0, y: 0, blur: 13, spread: 0)
+    }
+    
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil) //when keyboard will go , this notification will be called.
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillChangeFrameNotification, object: nil) //when keyboard change from one number pad to another , this notification will be called.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            if !isHeightAdded {
+                let currentHeight = locationTableView.contentSize.height
+                addedHeight = keyboardSize.height
+                locationTableView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: currentHeight + addedHeight)
+                isHeightAdded = true
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if isHeightAdded {
+            let currentHeight = locationTableView.contentSize.height
+            locationTableView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: currentHeight - addedHeight)
+            isHeightAdded = false
+        }
+    }
+    
+    func setupTextField() {
+        searchTextField.delegate = self
     }
     
     func setupUseThisLocationButton() {
@@ -67,6 +101,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
             useThisLocationButton.backgroundColor = Colors.nimnimButtonBorderGreen
             useThisLocationButton.isUserInteractionEnabled = true
         }else {
+            currentLocationSelected.text = "Detect my location"
             useThisLocationButton.backgroundColor = UIColor.lightGray
             useThisLocationButton.isUserInteractionEnabled = false
         }
@@ -80,7 +115,12 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
             self.locationManager.stopUpdatingLocation()
             long = location.coordinate.longitude
             lat = location.coordinate.latitude
-            checkForServiceableLocation()
+            serviceableLocationModel?.resetText()
+            reloadTable()
+            //Dispatch Queue so that serviceability is checked after reload...
+            DispatchQueue.main.async {[weak self] in
+                self?.checkForServiceableLocation()
+            }
         }
     }
     
@@ -94,7 +134,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func checkForServiceableLocation() {
-        if let locations = serviceableLocationModel?.data, locations.count > 0 {
+        if let locations = serviceableLocationModel?.filteredData, locations.count > 0 {
             var fallsUnderSomeLocation = false
             var distance:Double?
             for i in 0..<locations.count {
@@ -216,7 +256,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     
     //MARK: TableView DataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let locationArray = serviceableLocationModel?.data {
+        if let locationArray = serviceableLocationModel?.filteredData {
             return locationArray.count
         }
         return 0
@@ -224,7 +264,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationcCell", for: indexPath) as! LocationcCell
-        if let locationArray = serviceableLocationModel?.data {
+        if let locationArray = serviceableLocationModel?.filteredData {
             let location = locationArray[indexPath.row]
             cell.locationName.text = location.title
             cell.locationPincode.text = location.pincode
@@ -248,7 +288,7 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndexPath = indexPath // the selected index path is sent in selectedindexPath
         locationTableView.reloadData()
-        if let locationArray = serviceableLocationModel?.data {
+        if let locationArray = serviceableLocationModel?.filteredData {
             let location = locationArray[indexPath.row]
             locationModel = location //This is used to globally save this location...when user taps on it...for further local storage...
             currentLocationSelected.text = location.title
@@ -257,7 +297,43 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
 }
 
 
-
+extension MyLocationViewController: UISearchTextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true) //To shut the keyboard// this function is called when the user is pressing the return button
+        return true
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        
+        return true
+    } // built in delegate function of textfield
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    } // built in delegate function of textfield
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // This function is changing the font of the textField to montserratMedium/20 as soon as the user starts typing into the textField...and changing it back to montserratRegular/14 when the text is cleared or rubbed completely....
+        // range =
+        
+        //Here we are converting NSRange to Range using the NSRange value passed above...and the current textField text...we have done this because the function "replacingCharacters" used below expects a Range Value and not NSRange value...
+        if let text = textField.text,
+            let textRange = Range(range, in: text) {
+            //Here, we are using the range and text values to determine the upcoming string inside the textfield...this will enable to setup the font beforehand....
+            let updatedText = text.replacingCharacters(in: textRange,
+                                                       with: string)
+            selectedIndexPath = nil
+            serviceableLocationModel?.currentText = updatedText
+            reloadTable()
+        }
+        return true
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchTextField.resignFirstResponder()
+    }
+}
 
 
 
