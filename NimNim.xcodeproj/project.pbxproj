@@ -706,11 +706,11 @@
 				AC41CE6D235C7258001AC676 /* AddNewCardViewController.swift */,
 				ACB89B49235DA5E900B74109 /* AllItemsViewController.swift */,
 				ACBC96F323606A06006AC5B6 /* CouponsViewController.swift */,
-				ACBC96F523606ABC006AC5B6 /* OrderSuccessFailureViewController.swift */,
 				ACBC96F72361AEE7006AC5B6 /* OrderStatusViewController.swift */,
 				AC5ADD932362DD8900204E9E /* SelectAddressViewController.swift */,
 				AC5ADD9D236306C200204E9E /* PickDateAndTimeViewController.swift */,
 				AC5ADD9F236309BC00204E9E /* PickDeliveryTimeSlotsViewController.swift */,
+				ACBC96F523606ABC006AC5B6 /* OrderSuccessFailureViewController.swift */,
 				AC5ADDA123630CC700204E9E /* SelectPaymentViewController.swift */,
 				AC5226FB23C71B14002F111F /* OrderDetailsViewController.swift */,
 				AC51847323C85B4E00A45E69 /* NimNimViewController.swift */,
@@ -1358,7 +1358,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
@@ -1381,7 +1381,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;

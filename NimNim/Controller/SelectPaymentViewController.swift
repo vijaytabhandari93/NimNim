@@ -73,6 +73,9 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                         placeOrderVC.actualOrderStatus = "fail"
                         NavigationManager.shared.push(viewController: placeOrderVC)
                         
+                        let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
                     }
                 }
             }
