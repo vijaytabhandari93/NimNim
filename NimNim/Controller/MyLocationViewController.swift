@@ -313,6 +313,12 @@ extension MyLocationViewController: UISearchTextFieldDelegate {
         return true
     } // built in delegate function of textfield
     
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        selectedIndexPath = nil
+        serviceableLocationModel?.currentText = nil
+        return true
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // This function is changing the font of the textField to montserratMedium/20 as soon as the user starts typing into the textField...and changing it back to montserratRegular/14 when the text is cleared or rubbed completely....
         // range =
