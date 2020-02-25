@@ -68,6 +68,9 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                 }) { (error) in
                     self.activityIndicator.stopAnimating()
                     if let error = error as? String {
+                        let defaults = UserDefaults.standard
+                        defaults.removeObject(forKey: UserDefaultKeys.cartId)
+                        defaults.removeObject(forKey: UserDefaultKeys.cartAlias)
                         let SB = UIStoryboard(name: "OrderStoryboard", bundle: nil)
                         let placeOrderVC = SB.instantiateViewController(withIdentifier: "OrderSuccessFailureViewController") as! OrderSuccessFailureViewController
                         placeOrderVC.actualOrderStatus = "fail"
