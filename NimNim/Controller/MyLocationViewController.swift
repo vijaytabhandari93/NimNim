@@ -316,6 +316,7 @@ extension MyLocationViewController: UISearchTextFieldDelegate {
     func textFieldShouldClear(_ textField: UITextField) -> Bool {
         selectedIndexPath = nil
         serviceableLocationModel?.currentText = nil
+        reloadTable()
         return true
     }
     
