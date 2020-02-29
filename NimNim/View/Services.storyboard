@@ -128,15 +128,29 @@
                                             <action selector="justNimNimIt:" destination="d7e-3E-JYO" eventType="touchUpInside" id="AKa-AN-89o"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8C-WK-uA0">
+                                        <rect key="frame" x="300" y="174.5" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="VUx-5R-JK3"/>
+                                            <constraint firstAttribute="width" constant="30" id="dSB-Rc-QIz"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="info.circle" catalog="system"/>
+                                        <connections>
+                                            <action selector="infoTapped:" destination="d7e-3E-JYO" eventType="touchUpInside" id="HgC-X4-hPN"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="v2y-DQ-ZBw" firstAttribute="centerX" secondItem="rJc-KM-lhM" secondAttribute="centerX" id="3J0-OY-vg3"/>
                                     <constraint firstItem="O84-Xa-sWS" firstAttribute="top" secondItem="rJc-KM-lhM" secondAttribute="top" id="3fA-Zd-Dgk"/>
+                                    <constraint firstItem="t8C-WK-uA0" firstAttribute="centerY" secondItem="hF6-qV-eow" secondAttribute="centerY" id="3l0-I6-fwk"/>
                                     <constraint firstItem="Wg0-DY-gmT" firstAttribute="top" secondItem="v2y-DQ-ZBw" secondAttribute="bottom" constant="20" id="BfU-HK-A7A"/>
                                     <constraint firstItem="kMH-Vy-Rlf" firstAttribute="centerY" secondItem="O84-Xa-sWS" secondAttribute="centerY" id="FbW-Tj-SuE"/>
                                     <constraint firstAttribute="trailing" secondItem="kMH-Vy-Rlf" secondAttribute="trailing" constant="20" id="Ifd-eO-cQi"/>
                                     <constraint firstItem="v2y-DQ-ZBw" firstAttribute="centerY" secondItem="O84-Xa-sWS" secondAttribute="centerY" id="Lq3-Qb-tR1"/>
+                                    <constraint firstItem="t8C-WK-uA0" firstAttribute="leading" secondItem="hF6-qV-eow" secondAttribute="trailing" constant="3" id="ODG-7d-6n6"/>
                                     <constraint firstItem="O84-Xa-sWS" firstAttribute="leading" secondItem="rJc-KM-lhM" secondAttribute="leading" id="R4w-Va-Jic"/>
                                     <constraint firstAttribute="trailing" secondItem="Wg0-DY-gmT" secondAttribute="trailing" constant="32" id="RLv-z2-RzK"/>
                                     <constraint firstAttribute="bottom" secondItem="hF6-qV-eow" secondAttribute="bottom" constant="20" id="VW4-0D-90f"/>
@@ -2216,6 +2230,85 @@
             </objects>
             <point key="canvasLocation" x="1282.608695652174" y="434.59821428571428"/>
         </scene>
+        <!--Just Nim Nim Info View Controller-->
+        <scene sceneID="gN7-so-EnV">
+            <objects>
+                <viewController storyboardIdentifier="JustNimNimInfoViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="overCurrentContext" useStoryboardIdentifierAsRestorationIdentifier="YES" id="uok-eZ-JIa" customClass="JustNimNimInfoViewController" customModule="NimNim" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KSf-X7-cq5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ttN-0h-MgO">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="334" placeholderIntrinsicHeight="263" translatesAutoresizingMaskIntoConstraints="NO" id="R3k-qU-7qQ">
+                                <rect key="frame" x="60" y="316.5" width="294" height="263"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Just Nim Nim It" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJ2-Uq-Yra">
+                                        <rect key="frame" x="40" y="20" width="214" height="22"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="18"/>
+                                        <color key="textColor" red="0.2784313725" green="0.74901960779999999" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="hfasdkhfkjasdhfjdskahfjkdsahfjdshfjkdshfkjhsadjkfhasdjfhasdkfja" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGc-Qm-umx">
+                                        <rect key="frame" x="20" y="52" width="254" height="191"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0v-CB-KP1">
+                                        <rect key="frame" x="254" y="11" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="cTi-km-OZM"/>
+                                            <constraint firstAttribute="height" constant="40" id="ipM-qD-olU"/>
+                                        </constraints>
+                                        <state key="normal" image="close"/>
+                                        <connections>
+                                            <action selector="closeTapped:" destination="uok-eZ-JIa" eventType="touchUpInside" id="Q6Y-1n-G5n"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="jGc-Qm-umx" firstAttribute="leading" secondItem="R3k-qU-7qQ" secondAttribute="leading" constant="20" id="46O-WK-Umb"/>
+                                    <constraint firstItem="jGc-Qm-umx" firstAttribute="top" secondItem="kJ2-Uq-Yra" secondAttribute="bottom" constant="10" id="Ept-6g-e1U"/>
+                                    <constraint firstAttribute="trailing" secondItem="kJ2-Uq-Yra" secondAttribute="trailing" constant="40" id="F1B-Pk-fHq"/>
+                                    <constraint firstAttribute="trailing" secondItem="jGc-Qm-umx" secondAttribute="trailing" constant="20" id="SC2-AY-OGH"/>
+                                    <constraint firstAttribute="bottom" secondItem="jGc-Qm-umx" secondAttribute="bottom" constant="20" id="WD3-gB-AId"/>
+                                    <constraint firstItem="kJ2-Uq-Yra" firstAttribute="leading" secondItem="R3k-qU-7qQ" secondAttribute="leading" constant="40" id="cN5-yY-tkW"/>
+                                    <constraint firstItem="kJ2-Uq-Yra" firstAttribute="top" secondItem="R3k-qU-7qQ" secondAttribute="top" constant="20" id="im1-XU-G3h"/>
+                                    <constraint firstAttribute="trailing" secondItem="c0v-CB-KP1" secondAttribute="trailing" id="rhV-kx-xPP"/>
+                                    <constraint firstItem="c0v-CB-KP1" firstAttribute="centerY" secondItem="kJ2-Uq-Yra" secondAttribute="centerY" id="tU0-W6-X6z"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ttN-0h-MgO" firstAttribute="leading" secondItem="wne-e7-dDS" secondAttribute="leading" id="6Lo-iQ-IHi"/>
+                            <constraint firstItem="R3k-qU-7qQ" firstAttribute="leading" secondItem="wne-e7-dDS" secondAttribute="leading" constant="60" id="L8o-AB-v2j"/>
+                            <constraint firstItem="wne-e7-dDS" firstAttribute="trailing" secondItem="ttN-0h-MgO" secondAttribute="trailing" id="fqz-a4-rox"/>
+                            <constraint firstItem="R3k-qU-7qQ" firstAttribute="centerY" secondItem="KSf-X7-cq5" secondAttribute="centerY" id="hDH-tA-RVH"/>
+                            <constraint firstAttribute="bottom" secondItem="ttN-0h-MgO" secondAttribute="bottom" id="np7-lH-ZTb"/>
+                            <constraint firstItem="ttN-0h-MgO" firstAttribute="top" secondItem="KSf-X7-cq5" secondAttribute="top" id="ssQ-ox-esg"/>
+                            <constraint firstItem="wne-e7-dDS" firstAttribute="trailing" secondItem="R3k-qU-7qQ" secondAttribute="trailing" constant="60" id="ydX-BV-tkl"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="wne-e7-dDS"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="jGc-Qm-umx" id="HWV-JS-mEd"/>
+                        <outlet property="titleLabel" destination="kJ2-Uq-Yra" id="flv-3h-0C0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bTx-md-ap2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1969.5652173913045" y="227.67857142857142"/>
+        </scene>
         <!--Shoe Repair Second View Controller-->
         <scene sceneID="UXS-sS-no7">
             <objects>
@@ -2849,6 +2942,8 @@
     </scenes>
     <resources>
         <image name="basket-1" width="20" height="19"/>
+        <image name="close" width="12" height="12"/>
+        <image name="info.circle" catalog="system" width="64" height="60"/>
         <image name="previous" width="9" height="15"/>
     </resources>
 </document>

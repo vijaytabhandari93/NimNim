@@ -80,6 +80,7 @@
 		AC556809240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC556807240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib */; };
 		AC56424C23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56424A23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.swift */; };
 		AC56424D23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC56424B23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.xib */; };
+		AC5A5169240A5B5900E3BD54 /* JustNimNimInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */; };
 		AC5ADD8D2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADD8B2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift */; };
 		AC5ADD8E2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5ADD8C2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib */; };
 		AC5ADD912361D99F00204E9E /* ApplyWalletPointsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADD8F2361D99F00204E9E /* ApplyWalletPointsCollectionViewCell.swift */; };
@@ -323,6 +324,7 @@
 		AC556807240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseHoldItemPriceCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC56424A23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTasksCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC56424B23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedTasksCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustNimNimInfoViewController.swift; sourceTree = "<group>"; };
 		AC5ADD8B2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoYouHaveACouponCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC5ADD8C2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoYouHaveACouponCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5ADD8F2361D99F00204E9E /* ApplyWalletPointsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyWalletPointsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -735,6 +737,7 @@
 				AC7BE99023FE5CEC00F77014 /* SubmitTicketViewController.swift */,
 				AC4FD7F124094A98003D85D7 /* TailoringPricingViewController.swift */,
 				AC4FD7F3240957DA003D85D7 /* ShoeRepairPricingViewController.swift */,
+				AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1136,6 +1139,7 @@
 				ACBC96FD2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.swift in Sources */,
 				AC1FFDBE234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift in Sources */,
 				ACD8BA452351DF87005C1EAA /* NavigationManager.swift in Sources */,
+				AC5A5169240A5B5900E3BD54 /* JustNimNimInfoViewController.swift in Sources */,
 				AC5CA87F23F1985C000D0E39 /* WalletViewController.swift in Sources */,
 				ACF9CD2A235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift in Sources */,
 				AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */,

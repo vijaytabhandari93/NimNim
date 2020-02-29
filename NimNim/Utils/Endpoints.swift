@@ -9,7 +9,7 @@
 import Foundation
 
 struct Endpoints {
-    static let serviceableLocations = "admin/serviceable_regions" //static keyword is used for allowing us to use these variables directly by using dot operator with the class name. These are not instance variables. This means we need not initialize the Endpoints object to use them. These are like class variables.
+    static let serviceableLocations = "serviceable_regions" //static keyword is used for allowing us to use these variables directly by using dot operator with the class name. These are not instance variables. This means we need not initialize the Endpoints object to use them. These are like class variables.
     static let customers = "customer/customers"
     static let customersLoginWithPassword = "customer/login"
     static let customersLoginWithOTP = "sendotp"
