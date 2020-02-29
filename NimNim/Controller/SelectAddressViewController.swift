@@ -20,8 +20,8 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
     
     func addressSelectedChangeUI(withIndexPath indexPath: IndexPath?) {
         if let indexPath = indexPath {
-            Index = indexPath
-            if let data = addressBaseModel?.data,data.count > (indexPath.item - 1) {
+            Index = indexPath // setting of Index
+            if let data = addressBaseModel?.data,data.count > (indexPath.item - 1) { // to manage last  cell seelection
                 if let addressId = data[indexPath.item - 1].id  {
                     UserDefaults.standard.set(addressId, forKey: UserDefaultKeys.savedAddressId)
                 }

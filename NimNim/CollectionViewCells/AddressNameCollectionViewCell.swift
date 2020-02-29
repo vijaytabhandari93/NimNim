@@ -24,10 +24,7 @@ class AddressNameCollectionViewCell: UICollectionViewCell {
     
     @IBAction func tickTapped(_ sender: Any) {
         delegate?.addressSelectedChangeUI(withIndexPath : self.IndexPath)
-        let savedAddress = addressModel?.id
-        UserDefaults.standard.set(savedAddress,forKey: UserDefaultKeys.addressSelected)
         cartModel?.addressId =  addressModel?.id
-        
     }
     
     override func awakeFromNib() {

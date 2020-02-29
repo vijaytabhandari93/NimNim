@@ -12,7 +12,7 @@ import NVActivityIndicatorView
 import SwiftyJSON
 
 
-class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
+class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SavedCardExpandedStateTwoCollectionViewCellDelegate2{
     
     
     //IBOutlets
@@ -29,6 +29,7 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     var dateFormatterForDate = DateFormatter()
     var dateFormatterForTime = DateFormatter()
     var dateFormatterForPUDODates = DateFormatter()
+    var Index : IndexPath?
     
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     override func viewDidLoad() {
@@ -43,6 +44,19 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
         selectPaymentCollectionView.dataSource = self
     }
     //IBActions
+    
+    func cardSelectedChangeUI(withIndexPath indexPath: IndexPath?) {
+        if let indexPath = indexPath {
+            Index = indexPath // setting of Index
+            if let data = cardBaseModel?.data,data.count > indexPath.item {
+                if let cardId = data[indexPath.item].id  {
+                    UserDefaults.standard.set(cardId, forKey: UserDefaultKeys.savedCardId)
+                }
+            }
+            selectPaymentCollectionView.reloadData()
+        }
+    }
+    
     @IBAction func placeOrder(_ sender: Any) {
         if let savedCard = cartModel?.CardId {
             if let cartModel = cartModel {
@@ -168,6 +182,17 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                 if let count = cardBaseModel?.data?.count {
                     self?.noOfSavedCards = count
                 }
+                if self?.Index == nil {
+                                   if let data = cardBaseModel?.data, let savedCardId = UserDefaults.standard.string(forKey: UserDefaultKeys.savedCardId) {
+                                       let i = data.firstIndex { (cardModel) -> Bool in
+                                           return cardModel.id == savedCardId
+                                       }
+                                       if let val = i {
+                                           self?.Index = IndexPath(item: val, section: 0)
+                                           self?.cartModel?.CardId = savedCardId
+                                       }
+                                   }
+                               }
                 self?.selectPaymentCollectionView.reloadData()
             }
             self?.activityIndicator.stopAnimating()
@@ -231,6 +256,8 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                 cell.IsDeleteToBeShown = false
                 cell.cartModel = cartModel
                 cell.bottomSeparator.isHidden = true
+                cell.selectedIndex = Index
+                cell.delegate2 = self
                 return cell
             }
             else

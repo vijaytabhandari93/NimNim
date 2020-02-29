@@ -13,15 +13,22 @@ protocol SavedCardExpandedStateTwoCollectionViewCellDelegate:class {
     func deleteCard(id : String?)
 }
 
-
+protocol SavedCardExpandedStateTwoCollectionViewCellDelegate2:class {
+   func cardSelectedChangeUI(withIndexPath : IndexPath?)
+}
 
 class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,CardsCollectionViewCellDelegate{
+    
     
     var selectedIndex : IndexPath?
     var cartModel : CartModel?
     
     func selectedTapped(withIndexPath indexPath: IndexPath?) {
         selectedIndex = indexPath
+        delegate2?.cardSelectedChangeUI(withIndexPath: indexPath)
+        if let indexPath = indexPath , cardModel.count > indexPath.item {
+            cartModel?.CardId = cardModel[indexPath.item].id
+        }
         cardsCollectionView.reloadData()
     }
     
@@ -30,10 +37,10 @@ class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollec
     
     @IBOutlet weak var heightCollectionView: NSLayoutConstraint!
     weak var delegate :SavedCardExpandedStateTwoCollectionViewCellDelegate?
+    weak var delegate2 :SavedCardExpandedStateTwoCollectionViewCellDelegate2?
     var noOfCards : Int = 0
     var cardModel : [CardDetailsModel] = [] // We have purposly made it non optional and assinged zero to it.
     @IBOutlet weak var cardsCollectionView: UICollectionView!
-    
     @IBOutlet weak var addNewCardButton:UIButton!
     @IBOutlet weak var bottomSeparator:UIView!
     
@@ -97,7 +104,7 @@ class SavedCardExpandedStateTwoCollectionViewCell: UICollectionViewCell,UICollec
         if let selectedIndex = selectedIndex {
             if indexPath == selectedIndex {
                 cell.configureUI(forRushDeliveryState: true, forIndex: indexPath)
-                cartModel?.CardId = cell.cardId
+               
             }
             else
             {
