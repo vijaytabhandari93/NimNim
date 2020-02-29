@@ -79,6 +79,7 @@ class ServiceModel:NSObject, Mappable, Codable {
     var dropOffEndDate:String?
     var turnAroundTime:String?
     var status:String?
+    var totalCost:Double?
     //Not to be sent to server..hence not adding in mapping function
     var isSelectedForNimNimIt = false
     //This variable will be used to group the service models with the 
@@ -155,15 +156,8 @@ class ServiceModel:NSObject, Mappable, Codable {
         pickupEndDate <- map["pickupEndDate"]
         dropOffStartDate <- map["dropOffStartDate"]
         dropOffEndDate <- map["dropOffEndDate"]
+        totalCost <- map["total_cost"]
     }
-    //    func  getPriceOfService() -> String?{
-    //           var price  = 0
-    //           for tasks in serviceModel  {
-    //            price = price +
-    //           }
-    //
-    //           return
-    //       }
     
     
     func getMaleItems() -> [ItemModel] {
