@@ -80,7 +80,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     }
     
     func setupOrderTotal() {
-        if let price = orderModel?.orderAmount  {
+        if let price = orderModel?.grandTotal  {
             totalPayableAmount.text = "$\(price)"
         }
     }
