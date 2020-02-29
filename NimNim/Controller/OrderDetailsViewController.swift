@@ -80,7 +80,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     }
     
     func setupOrderTotal() {
-        if let price = orderModel?.orderAmount  {
+        if let price = orderModel?.grandTotal  {
             totalPayableAmount.text = "$\(price)"
         }
     }
@@ -309,6 +309,11 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                     }
                     
                 }
+                if let serviceCost = serviceItem.totalCost {
+                    cell.amountPayable.text = "$\(serviceCost)"
+                }else {
+                    cell.amountPayable.text = nil
+                }
                 cell.configureCell(withModel: serviceItem)
                 cell.serviceStatus.text  = serviceItem.status
             }
@@ -326,8 +331,11 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ApplyWalletPointsCollectionViewCell", for: indexPath) as! ApplyWalletPointsCollectionViewCell
             cell.applyWalletPoints.text = "Wallet Points Applied"
             cell.apply.isHidden = true
-            cell.points.text = orderModel?.walletPoints
-        
+            if let walletPoints = orderModel?.paidViaWallet {
+                cell.points.text = "$\(walletPoints)"
+            }else {
+                cell.points.text = nil
+            }
             return cell
         }else if indexPath.section == 5 {
             //Wallet -- section == 2
