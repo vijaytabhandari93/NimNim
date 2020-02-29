@@ -149,7 +149,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             if let issueTitle = issueTitle, issueTitle.count > 0 {
                 let mailVC = MFMailComposeViewController()
                 mailVC.mailComposeDelegate = self
-                mailVC.setToRecipients(["a@getnimnim.com","raghavvij.92@gmail.com"])
+                mailVC.setToRecipients(["support@getnimnim.com"])
                 if let orderNumber = orderModel?.orderNumber  {
                     let subject = "Reporting issue:\(issueTitle) for orderNumber:\(orderNumber)"
                     mailVC.setSubject(subject)
