@@ -10,6 +10,7 @@ import UIKit
 import ObjectMapper
 import SwiftyJSON
 import NVActivityIndicatorView
+import MessageUI
 
 class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,NeedHelpCollectionViewCellDelegate,SubmitTicketViewControllerDelegate {
     
@@ -20,12 +21,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
         
         
     func helpCellTapped(withType type: String) {
-        let Storyboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-        let VC = Storyboard.instantiateViewController(withIdentifier: "SubmitTicketViewController") as! SubmitTicketViewController
-        VC.delegate = self
-        VC.type = type //  to tell the VC its type(issue number)
-        NavigationManager.shared.push(viewController: VC)
-
+        openMailVC(withIssueTitle: type)
     }
     
     
@@ -148,6 +144,25 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
         }
     }
     
+    func openMailVC(withIssueTitle issueTitle:String?) {
+        if MFMailComposeViewController.canSendMail()  {
+            if let issueTitle = issueTitle, issueTitle.count > 0 {
+                let mailVC = MFMailComposeViewController()
+                mailVC.mailComposeDelegate = self
+                mailVC.setToRecipients(["a@getnimnim.com","raghavvij.92@gmail.com"])
+                if let orderNumber = orderModel?.orderNumber  {
+                    let subject = "Reporting issue:\(issueTitle) for orderNumber:\(orderNumber)"
+                    mailVC.setSubject(subject)
+                }
+                present(mailVC, animated: true, completion: nil)
+            }
+        }else {
+            let alert = UIAlertController(title: "Alert", message: "Probably, you have not configured your email account in Apple Mail application. Try again after doing so.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
+    
     //MARK:UI Methods
     func registerCells() {
         let headerNib = UINib(nibName: "CollectionReusableView", bundle: nil)
@@ -223,7 +238,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                 }
    
             }
-            if let serviceItem = service?[indexPath.item] {
+            if let serviceItem = service?.first {
                 if var pickUpTime = serviceItem.pickUpTime, let pickUpDate = serviceItem.pickupDate {
                     if pickUpTime == "07:00" {
                         pickUpTime = "7AM - 9AM"
@@ -406,6 +421,21 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
         }
         else {
             return CGSize(width: collectionView.frame.size.width, height:0)
+        }
+    }
+}
+
+extension OrderDetailsViewController: MFMailComposeViewControllerDelegate, UINavigationControllerDelegate{
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        controller.dismiss(animated: true, completion: nil)
+        if result == .sent {
+            let alert = UIAlertController(title: "Alert", message: "Your issue has been successfully reported. We will get back to you.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }else {
+            let alert = UIAlertController(title: "Alert", message: "Sorry your issue could not be reported. Please try again.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
         }
     }
 }
