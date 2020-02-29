@@ -63,6 +63,8 @@
 		AC41CE76235C822F001AC676 /* AddCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC41CE74235C822F001AC676 /* AddCardCollectionViewCell.xib */; };
 		AC496133235C68C100AA7196 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC496131235C68C100AA7196 /* AddressCollectionViewCell.swift */; };
 		AC496134235C68C100AA7196 /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC496132235C68C100AA7196 /* AddressCollectionViewCell.xib */; };
+		AC4FD7F224094A98003D85D7 /* TailoringPricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FD7F124094A98003D85D7 /* TailoringPricingViewController.swift */; };
+		AC4FD7F4240957DA003D85D7 /* ShoeRepairPricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FD7F3240957DA003D85D7 /* ShoeRepairPricingViewController.swift */; };
 		AC51847423C85B4F00A45E69 /* NimNimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC51847323C85B4E00A45E69 /* NimNimViewController.swift */; };
 		AC5199C923D997B400961C48 /* PriceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5199C823D997B400961C48 /* PriceListViewController.swift */; };
 		AC5199CB23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5199CA23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift */; };
@@ -74,6 +76,8 @@
 		AC5226FF23C738D4002F111F /* OrderDetailsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5226FD23C738D4002F111F /* OrderDetailsCollectionViewCell.swift */; };
 		AC52270023C738D4002F111F /* OrderDetailsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5226FE23C738D4002F111F /* OrderDetailsCollectionViewCell.xib */; };
 		AC52270223C7539E002F111F /* OrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC52270123C7539E002F111F /* OrderModel.swift */; };
+		AC556808240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC556806240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.swift */; };
+		AC556809240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC556807240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib */; };
 		AC56424C23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56424A23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.swift */; };
 		AC56424D23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC56424B23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.xib */; };
 		AC5ADD8D2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADD8B2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift */; };
@@ -302,6 +306,8 @@
 		AC41CE74235C822F001AC676 /* AddCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC496131235C68C100AA7196 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC496132235C68C100AA7196 /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC4FD7F124094A98003D85D7 /* TailoringPricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailoringPricingViewController.swift; sourceTree = "<group>"; };
+		AC4FD7F3240957DA003D85D7 /* ShoeRepairPricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeRepairPricingViewController.swift; sourceTree = "<group>"; };
 		AC51847323C85B4E00A45E69 /* NimNimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimNimViewController.swift; sourceTree = "<group>"; };
 		AC5199C823D997B400961C48 /* PriceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceListViewController.swift; sourceTree = "<group>"; };
 		AC5199CA23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseHoldItemsPriceViewController.swift; sourceTree = "<group>"; };
@@ -313,6 +319,8 @@
 		AC5226FD23C738D4002F111F /* OrderDetailsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDetailsCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC5226FE23C738D4002F111F /* OrderDetailsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailsCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC52270123C7539E002F111F /* OrderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderModel.swift; sourceTree = "<group>"; };
+		AC556806240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseHoldItemPriceCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC556807240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseHoldItemPriceCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC56424A23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTasksCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC56424B23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedTasksCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5ADD8B2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoYouHaveACouponCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -633,6 +641,8 @@
 				AC5CDC3923FD72480047940F /* NeedHelpCollectionViewCell.xib */,
 				AC5CDC3C23FD726B0047940F /* HelpRequiredCollectionViewCell.swift */,
 				AC5CDC3D23FD726B0047940F /* HelpRequiredCollectionViewCell.xib */,
+				AC556806240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.swift */,
+				AC556807240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -723,6 +733,8 @@
 				AC5BC1A423ED306400FAF8C1 /* TailoringSecondViewController.swift */,
 				AC5CA87E23F1985C000D0E39 /* WalletViewController.swift */,
 				AC7BE99023FE5CEC00F77014 /* SubmitTicketViewController.swift */,
+				AC4FD7F124094A98003D85D7 /* TailoringPricingViewController.swift */,
+				AC4FD7F3240957DA003D85D7 /* ShoeRepairPricingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -915,6 +927,7 @@
 				ACBC96EE2360429B006AC5B6 /* OrderStoryboard.storyboard in Resources */,
 				AC1FFDB22346F1D100930496 /* Proxima Nova Extrabold.otf in Resources */,
 				ACB37264234631C900046FB3 /* ServiceCollectionViewCell.xib in Resources */,
+				AC556809240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib in Resources */,
 				AC41CE76235C822F001AC676 /* AddCardCollectionViewCell.xib in Resources */,
 				ACBB819A232E3FAC003DCF77 /* Montserrat-BlackItalic.ttf in Resources */,
 				AC52270023C738D4002F111F /* OrderDetailsCollectionViewCell.xib in Resources */,
@@ -1090,6 +1103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC12C20923DF11B9002E2A91 /* EmptyCartViewController.swift in Sources */,
+				AC4FD7F224094A98003D85D7 /* TailoringPricingViewController.swift in Sources */,
 				AC7BE99323FEF29A00F77014 /* MixPanelManager.swift in Sources */,
 				AC8CDE382326449200CDFB93 /* LoginViaOTPTableViewCell.swift in Sources */,
 				AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */,
@@ -1138,6 +1152,7 @@
 				AC496133235C68C100AA7196 /* AddressCollectionViewCell.swift in Sources */,
 				AC5E697323CC72BD000DF84E /* PricingViewController.swift in Sources */,
 				ACB4314E2382A007001E6302 /* ServiceBaseModel.swift in Sources */,
+				AC556808240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.swift in Sources */,
 				AC1789162377D03D00B20D32 /* Params.swift in Sources */,
 				AC2BEDC62381600000152C69 /* BannersBaseModel.swift in Sources */,
 				ACFD92B9235ACC460009FB03 /* CardsCollectionViewCell.swift in Sources */,
@@ -1162,6 +1177,7 @@
 				ACBC96F423606A06006AC5B6 /* CouponsViewController.swift in Sources */,
 				AC5226F923C70F5F002F111F /* OrderNumberCollectionViewCell.swift in Sources */,
 				AC5199CB23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift in Sources */,
+				AC4FD7F4240957DA003D85D7 /* ShoeRepairPricingViewController.swift in Sources */,
 				AC5CA88123F19E33000D0E39 /* WalletModel.swift in Sources */,
 				AC25BFB32371EF2D00C79692 /* ServiceableLocationModel.swift in Sources */,
 				AC5CA88823F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift in Sources */,

@@ -20,13 +20,24 @@ class PriceViewListCollectionViewCell: UICollectionViewCell {
             let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "PriceListViewController") as! PriceListViewController
                 NavigationManager.shared.push(viewController: allServices)
            
-            }
+            } else if screenType == "Tailoring"{
+                       let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
+                       let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "TailoringViewController") as! TailoringViewController
+                           NavigationManager.shared.push(viewController: allServices)
+                      
+                       }
+            else if screenType == "Shoe Repair"{
+             let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
+             let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "TailoringViewController") as! TailoringViewController
+                 NavigationManager.shared.push(viewController: allServices)
+            
+             }
         else
             
           {
             let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
             let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsPriceViewController") as! HouseHoldItemsPriceViewController
-                          NavigationManager.shared.push(viewController: allServices)
+                NavigationManager.shared.push(viewController: allServices)
                 
             
         }

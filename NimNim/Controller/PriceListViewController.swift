@@ -61,7 +61,7 @@ class PriceListViewController: UIViewController,UICollectionViewDataSource,UICol
                             {
                                 cell.label.text = arrayOfItem[indexPath.item].name
                                 if let price = arrayOfItem[indexPath.item].price {
-                                    cell.labelPrice.text = "\(price)"
+                                    cell.labelPrice.text = "$\(price)"
                                 }
                                  
                                   return cell

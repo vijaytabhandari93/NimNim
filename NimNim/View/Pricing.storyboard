@@ -283,17 +283,17 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dry Cleaning Price" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9N-aF-J8v">
-                                                <rect key="frame" x="261" y="83" width="85" height="48"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dry Cleaning Price" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9N-aF-J8v">
+                                                <rect key="frame" x="279" y="83" width="75" height="48"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="85" id="VYg-ur-0Bu"/>
+                                                    <constraint firstAttribute="width" constant="75" id="VYg-ur-0Bu"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pTH-oZ-QB1">
-                                                <rect key="frame" x="20" y="135" width="334" height="701"/>
+                                                <rect key="frame" x="0.0" y="135" width="374" height="701"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CZ9-SY-yVi">
                                                     <size key="itemSize" width="50" height="50"/>
@@ -324,8 +324,8 @@
                                                     <action selector="crossButton:" destination="W1d-cc-CrK" eventType="touchUpInside" id="UBu-5J-vmi"/>
                                                 </connections>
                                             </button>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laundered Price" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6n-xi-XcW">
-                                                <rect key="frame" x="169" y="91" width="82" height="32"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Laundered Price" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E6n-xi-XcW">
+                                                <rect key="frame" x="187" y="91" width="82" height="32"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="82" id="C8j-g3-6V1"/>
                                                 </constraints>
@@ -336,10 +336,10 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="pTH-oZ-QB1" firstAttribute="leading" secondItem="siN-3Z-TQJ" secondAttribute="leading" constant="20" id="0Ys-e3-3Xj"/>
+                                            <constraint firstItem="pTH-oZ-QB1" firstAttribute="leading" secondItem="siN-3Z-TQJ" secondAttribute="leading" id="0Ys-e3-3Xj"/>
                                             <constraint firstItem="eFQ-ST-DxU" firstAttribute="leading" secondItem="siN-3Z-TQJ" secondAttribute="leading" constant="28" id="4FX-ps-KBF"/>
                                             <constraint firstItem="E6n-xi-XcW" firstAttribute="centerY" secondItem="h9N-aF-J8v" secondAttribute="centerY" id="4oo-dM-UoE"/>
-                                            <constraint firstAttribute="trailing" secondItem="pTH-oZ-QB1" secondAttribute="trailing" constant="20" id="5xx-yh-umj"/>
+                                            <constraint firstAttribute="trailing" secondItem="pTH-oZ-QB1" secondAttribute="trailing" id="5xx-yh-umj"/>
                                             <constraint firstItem="57C-Hk-Ltp" firstAttribute="top" secondItem="siN-3Z-TQJ" secondAttribute="top" constant="48" id="PcW-ow-tDO"/>
                                             <constraint firstItem="eFQ-ST-DxU" firstAttribute="top" secondItem="57C-Hk-Ltp" secondAttribute="bottom" constant="31" id="a4P-9R-5us"/>
                                             <constraint firstItem="pTH-oZ-QB1" firstAttribute="top" secondItem="eFQ-ST-DxU" secondAttribute="bottom" constant="20" id="aRw-ti-ITH"/>
@@ -348,7 +348,7 @@
                                             <constraint firstItem="8sI-fn-6p0" firstAttribute="top" secondItem="siN-3Z-TQJ" secondAttribute="top" constant="10" id="gOC-Z9-Qja"/>
                                             <constraint firstItem="h9N-aF-J8v" firstAttribute="centerY" secondItem="eFQ-ST-DxU" secondAttribute="centerY" id="n4Y-Wl-KZE"/>
                                             <constraint firstItem="h9N-aF-J8v" firstAttribute="leading" secondItem="E6n-xi-XcW" secondAttribute="trailing" constant="10" id="oPw-Kx-eOL"/>
-                                            <constraint firstAttribute="trailing" secondItem="h9N-aF-J8v" secondAttribute="trailing" constant="28" id="og8-A7-lTi"/>
+                                            <constraint firstAttribute="trailing" secondItem="h9N-aF-J8v" secondAttribute="trailing" constant="20" id="og8-A7-lTi"/>
                                             <constraint firstAttribute="trailing" secondItem="8sI-fn-6p0" secondAttribute="trailing" constant="10" id="qcW-md-NGz"/>
                                         </constraints>
                                     </view>
@@ -380,7 +380,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y0p-mv-6xU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1013" y="-16"/>
+            <point key="canvasLocation" x="1494" y="-519"/>
         </scene>
         <!--Wallet View Controller-->
         <scene sceneID="KXH-Mf-tKw">

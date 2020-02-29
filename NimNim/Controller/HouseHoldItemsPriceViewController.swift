@@ -49,7 +49,7 @@ class HouseHoldItemsPriceViewController: UIViewController,UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemPriceListCollectionViewCell", for: indexPath) as! ItemPriceListCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HouseHoldItemPriceCollectionViewCell", for: indexPath) as! HouseHoldItemPriceCollectionViewCell
         var count =  serviceModel?.data?.count
         if let count = count ,count > 0 {
             for i in 0...count-1 {
@@ -61,10 +61,10 @@ class HouseHoldItemsPriceViewController: UIViewController,UICollectionViewDataSo
                         {
                             cell.label.text = arrayOfItem[indexPath.item].name
                             if let price = arrayOfItem[indexPath.item].dryCleaningPrice {
-                                cell.labelPrice.text = "\(price)"
+                                cell.label2.text = "$\(price)"
                             }
                             if let price = arrayOfItem[indexPath.item].laundryPrice {
-                                cell.extraPrice.text = "\(price)"
+                                cell.extraPrice.text = "$\(price)"
                             }
                             
                             
@@ -80,8 +80,8 @@ class HouseHoldItemsPriceViewController: UIViewController,UICollectionViewDataSo
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.size.width, height: 20)
-        
-    }
+        }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
@@ -92,8 +92,8 @@ class HouseHoldItemsPriceViewController: UIViewController,UICollectionViewDataSo
     }
     
     func registerCells() {
-        let bannersBaseNib = UINib(nibName: "ItemPriceListCollectionViewCell", bundle: nil)
-        collectionView.register(bannersBaseNib, forCellWithReuseIdentifier: "ItemPriceListCollectionViewCell")
+        let bannersBaseNib = UINib(nibName: "HouseHoldItemPriceCollectionViewCell", bundle: nil)
+        collectionView.register(bannersBaseNib, forCellWithReuseIdentifier: "HouseHoldItemPriceCollectionViewCell")
     }
     
     

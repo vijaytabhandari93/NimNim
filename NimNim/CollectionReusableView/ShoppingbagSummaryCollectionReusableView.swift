@@ -16,11 +16,15 @@ class ShoppingbagSummaryCollectionReusableView: UICollectionReusableView {
         super.awakeFromNib()
         let count = fetchNoOfServicesInCart()
         if count != 0 {
-            noOfItems.text = "\(count) Items"
+            if count == 1 {
+                noOfItems.text = "1 Service"
+            }else {
+                noOfItems.text = "\(count) Services"
+            }
         }
-        else {
-            noOfItems.text = ""
+        else
+        {
+        noOfItems.text = ""
         }
-        
     }
 }

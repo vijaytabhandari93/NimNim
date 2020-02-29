@@ -33,7 +33,9 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
     var selectedLaunderedShirts  : Bool  = false
     var selectedDryCleaning  : Bool  = false
     var selectedHouseholdItems  : Bool  = false
-    
+    var selectedTailoring  : Bool  = false
+    var selectedShoeRepair  : Bool  = false
+    var selectedRugCleaning  : Bool  = false
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool){
@@ -61,10 +63,10 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
     {
         if indexPath.item == 0
         {
-            return CGSize(width: collectionView.frame.size.width, height:45)
+            return CGSize(width: collectionView.frame.size.width, height:35)
         }
-        else if indexPath.item == 1  {
-            return CGSize(width: collectionView.frame.size.width, height:15)
+        else if indexPath.section == 0 && indexPath.item == 1 || indexPath.section == 1 && indexPath.item == 1 || indexPath.section == 2 && indexPath.item == 1 || indexPath.section == 7 && indexPath.item == 1 {
+        return CGSize(width: collectionView.frame.size.width, height:10)
         }
         else {
             var text = ""
@@ -99,18 +101,39 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
                     text = "Delivered within 24 hours, Rush service Available"
                 }
             }else if indexPath.section == 3 {
-                if indexPath.item == 2 {
+                if indexPath.item == 1 {
                     text = "All Items List and Price"
                 }
-                if indexPath.item == 3 {
+                if indexPath.item == 2 {
                     text = "Delivered within 24 hours, Rush service Available"
                 }
             }else if indexPath.section == 4 {
-                if indexPath.item == 2 {
+                if indexPath.item == 1 {
                     text = "All Items List and Price"
                 }
-                if indexPath.item == 3 {
+                if indexPath.item == 2 {
                     text = "Delivered within 24 hours, Rush service Available"
+                }
+            }else if indexPath.section == 5 {
+                if indexPath.item == 1 {
+                    text = "All Items List and Price"
+                }
+                if indexPath.item == 2 {
+                    text = "Delivered within 24 hours, Rush service Available"
+                }
+            }else if indexPath.section == 6 {
+                if indexPath.item == 1 {
+                    text = "All Items List and Price"
+                }
+                if indexPath.item == 2 {
+                    text = "Delivered within 24 hours, Rush service Available"
+                }
+            } else if indexPath.section == 7 {
+                if indexPath.item == 2 {
+                    text = "Billing is done by taking HEIGHT X LENGTH X  $4 per square foot"
+                }
+                if indexPath.item == 3 {
+                    text = "The delivery time minimum would be 7 days and NimNim team will pick up and drop off from the customer door "
                 }
             }
             let label =  UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.frame.size.width - 40, height: CGFloat.greatestFiniteMagnitude))
@@ -124,10 +147,9 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
     }
     
-    
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return 8
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
@@ -162,9 +184,30 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
                 return 1
             }
         }
-        else  {
+        else if section == 4 {
             if selectedDryCleaning == true{
                 return 3
+            }
+            else{
+                return 1
+            }
+        }else if section == 5 {
+            if selectedTailoring == true{
+                return 3
+            }
+            else{
+                return 1
+            }
+        }else if section == 6 {
+            if selectedShoeRepair == true{
+                return 3
+            }
+            else{
+                return 1
+            }
+        } else {
+            if selectedRugCleaning == true{
+                return 4
             }
             else{
                 return 1
@@ -292,7 +335,7 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
                 return cell
             }
         }
-        else {
+        else if indexPath.section == 4 {
             if indexPath.item == 0  {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PricingHeaderCollectionViewCell", for: indexPath) as! PricingHeaderCollectionViewCell
                 cell.servicelabel.text  = "Dry Cleaning"
@@ -315,6 +358,80 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
                 return cell
             }
             
+        }else if indexPath.section == 5 {
+            if indexPath.item == 0  {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PricingHeaderCollectionViewCell", for: indexPath) as! PricingHeaderCollectionViewCell
+                cell.servicelabel.text  = "Tailoring"
+                if selectedTailoring == true {
+                    cell.configureCell(withExpandedState: true)
+                }else {
+                    cell.configureCell(withExpandedState: false)
+                }
+                return cell
+            }
+            else if indexPath.item == 1  {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceViewListCollectionViewCell", for: indexPath) as! PriceViewListCollectionViewCell
+                cell.label.text = "All Items List and Price"
+                cell.screenType  = "Tailoring"
+                return cell
+            }
+            else
+            { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
+                cell.label.text = "Delivered within 24 hours, Rush service Available "
+                return cell
+            }
+            
+        }else if indexPath.section == 6 {
+            if indexPath.item == 0  {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PricingHeaderCollectionViewCell", for: indexPath) as! PricingHeaderCollectionViewCell
+                cell.servicelabel.text  = "Shoe Repair"
+                if selectedShoeRepair == true {
+                    cell.configureCell(withExpandedState: true)
+                }else {
+                    cell.configureCell(withExpandedState: false)
+                }
+                return cell
+            }
+            else if indexPath.item == 1  {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceViewListCollectionViewCell", for: indexPath) as! PriceViewListCollectionViewCell
+                cell.label.text = "All Items List and Price"
+                cell.screenType  = "Shoe Repair"
+                return cell
+            }
+            else
+            { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
+                cell.label.text = "Delivered within 24 hours, Rush service Available "
+                return cell
+            }
+            
+        } else {
+            if indexPath.item == 0  {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PricingHeaderCollectionViewCell", for: indexPath) as! PricingHeaderCollectionViewCell
+                cell.servicelabel.text = "Rug Cleaning"
+                if selectedRugCleaning == true {
+                    cell.configureCell(withExpandedState: true)
+                }else {
+                    cell.configureCell(withExpandedState: false)
+                }
+                return cell
+            }
+            else if indexPath.item == 1  {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceCollectionViewCell", for: indexPath) as! PriceCollectionViewCell
+                cell.priceLabel.text = "$4/square foot"
+                return cell
+            }
+            else if indexPath.item == 2 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
+                cell.label.text = "Billing is done by taking LENGTH X BREADTH $4 per square foot"
+                return cell
+            }
+                
+            else
+            { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
+                cell.label.text  = "The delivery time minimum would be 7 days and NimNim team will pick up and drop off from the customer door"
+                return cell
+            }
+            
         }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
         cell.label.text = "Delivered within 24 hours, Rush service Available "
@@ -332,9 +449,15 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         else if indexPath.section == 3 && indexPath.item == 0 {
             selectedHouseholdItems = !selectedHouseholdItems
+        }else if indexPath.section == 4 && indexPath.item == 0 {
+            selectedDryCleaning = !selectedDryCleaning
+        }else if indexPath.section == 5 && indexPath.item == 0 {
+            selectedTailoring = !selectedTailoring
+        }else if indexPath.section == 6 && indexPath.item == 0 {
+            selectedShoeRepair = !selectedShoeRepair
         }
         else {
-            selectedDryCleaning = !selectedDryCleaning
+            selectedRugCleaning = !selectedRugCleaning
         }
         pricingCollectionView.reloadData()
         

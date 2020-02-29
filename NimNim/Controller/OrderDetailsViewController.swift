@@ -215,7 +215,13 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
         case UICollectionView.elementKindSectionHeader:
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "CollectionReusableView", for: indexPath) as! CollectionReusableView
             if let count = service?.count {
-                headerView.noOfItems.text = "\(count) Items"
+                if count == 1
+                {
+                headerView.noOfItems.text = "\(count) Service"
+                }else {
+                headerView.noOfItems.text = "\(count) Services"
+                }
+   
             }
             if let serviceItem = service?[indexPath.item] {
                 if var pickUpTime = serviceItem.pickUpTime, let pickUpDate = serviceItem.pickupDate {
