@@ -183,6 +183,13 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         houseHoldCollectionView.reloadData()
     }
     
+    @IBAction func infoTapped(_ sender: Any) {
+        let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
+        jnnvc.titleValue = "Just Nim Nim It For \n HouseHoldItems"
+        jnnvc.descriptionValue = "NimNim team what is best care method for your sheets, just NimNim it."
+        present(jnnvc, animated: true, completion: nil)
+    }
+    
     @IBAction func addToCartTapped(_ sender: Any) {
         if addToCart.titleLabel?.text == "CheckOut" {
             //print("abcd")

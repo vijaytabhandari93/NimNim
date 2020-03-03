@@ -15,11 +15,11 @@ import MessageUI
 class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,NeedHelpCollectionViewCellDelegate,SubmitTicketViewControllerDelegate {
     
     func submitTicket(withIssueDescription issueDescription: String,withType type: String) {
-    print(issueDescription)
-    print(type)
+        print(issueDescription)
+        print(type)
     }
-        
-        
+    
+    
     func helpCellTapped(withType type: String) {
         openMailVC(withIssueTitle: type)
     }
@@ -57,7 +57,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     @IBAction func homeTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         orderDetailsCollectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 20, right: 0)
@@ -110,7 +110,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                     if let street = item.street , let house = item.house, let city = item.city , let state = item.state  ,  let pincode =  item.pincode {
                         var finalAddress = ""
                         if let landmark = item.landmark {
-                           finalAddress = "\(street),  \(house), \(city), \(state), \(pincode), \(landmark)"
+                            finalAddress = "\(street),  \(house), \(city), \(state), \(pincode), \(landmark)"
                         }else {
                             finalAddress = "\(street),  \(house), \(city), \(state), \(pincode)"
                         }
@@ -175,7 +175,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
         orderDetailsCollectionView.register(type4PreferencesNib, forCellWithReuseIdentifier: "OrderReviewCardCollectionViewCell")
         let type5PreferencesNib = UINib(nibName: "DoYouHaveACouponCollectionViewCell", bundle: nil)
         orderDetailsCollectionView.register(type5PreferencesNib, forCellWithReuseIdentifier: "DoYouHaveACouponCollectionViewCell")
-
+        
         let type6PreferencesNib = UINib(nibName: "ApplyWalletPointsCollectionViewCell", bundle: nil)
         orderDetailsCollectionView.register(type6PreferencesNib, forCellWithReuseIdentifier: "ApplyWalletPointsCollectionViewCell")
         let type7PreferencesNib = UINib(nibName: "NeedHelpCollectionViewCell", bundle: nil)
@@ -188,15 +188,27 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 6
+        
     }
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section ==  0 {
             //Services
-            if let service = service {
+//            if let service = service , let rushCharges = orderModel?.rushDeliveryCost, rushCharges > 0 {
+//                return service.count + 1
+//            }
+            if let orderModel  = orderModel {
+                var rushStatus = orderModel.confirmRushRequiredOrNot()
+            if let service = service , rushStatus > 0 {
+            return service.count + 1
+            }
+            }
+            else if let service = service{
                 return service.count
             }
-        }else if section == 1 {
+        }
+        else if section == 1 {
             if orderModel?.couponCode?.discount != nil
             {return 1}
             else
@@ -232,11 +244,11 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             if let count = service?.count {
                 if count == 1
                 {
-                headerView.noOfItems.text = "\(count) Service"
+                    headerView.noOfItems.text = "\(count) Service"
                 }else {
-                headerView.noOfItems.text = "\(count) Services"
+                    headerView.noOfItems.text = "\(count) Services"
                 }
-   
+                
             }
             if let serviceItem = service?.first {
                 if var pickUpTime = serviceItem.pickUpTime, let pickUpDate = serviceItem.pickupDate {
@@ -296,7 +308,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             OrderReviewAddressCollectionViewCell
             cell.address.text = selectedGetaddress()
             return cell
-        } else if indexPath.section == 0  {
+        } else if indexPath.section == 0 && indexPath.item != service?.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrderDetailsCollectionViewCell", for: indexPath) as! OrderDetailsCollectionViewCell
             if let serviceItem = service?[indexPath.item] {
                 cell.serviceName.text = serviceItem.name
@@ -339,7 +351,12 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                 cell.serviceStatus.text  = serviceItem.status
             }
             return cell
-        }else if indexPath.section == 1 {
+        }  else if indexPath.section == 0 && indexPath.item == service?.count {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DoYouHaveACouponCollectionViewCell", for: indexPath) as! DoYouHaveACouponCollectionViewCell
+                          cell.doYouHaveACoupon.text = "Rush Delivery is Applicable"
+                          cell.chooseCoupon.text  = "Additional $20 will be charged"
+                      return cell
+        } else if indexPath.section == 1 {
             //Promo
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DoYouHaveACouponCollectionViewCell", for: indexPath) as! DoYouHaveACouponCollectionViewCell
             cell.doYouHaveACoupon.text = "Coupons Applied"
@@ -362,7 +379,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             //Wallet -- section == 2
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedHelpCollectionViewCell", for: indexPath) as! NeedHelpCollectionViewCell
             cell.delegate = self
-         return cell
+            return cell
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ApplyWalletPointsCollectionViewCell", for: indexPath) as! ApplyWalletPointsCollectionViewCell
@@ -396,7 +413,10 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 0 {
+        if indexPath.section == 0 && indexPath.item == service?.count{
+            return CGSize(width: collectionView.frame.size.width, height:110.5)
+        }else if indexPath.section == 0 && indexPath.item != service?.count {
+            //Promo
             return CGSize(width: collectionView.frame.size.width, height:145.5)
         }else if indexPath.section == 1 {
             //Promo

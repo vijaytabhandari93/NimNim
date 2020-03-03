@@ -22,6 +22,8 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         setupCartCountLabel() 
         setupPrice()
     }
+    
+    
     func setupPrice() {
         if defaultStateJustNimNimIt {
             let price = "@Pricelist"
@@ -313,6 +315,12 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         }
         setupPrice()
         dryCleaningCollectionView.reloadData()
+    }
+    @IBAction func infoTapped(_ sender: Any) {
+        let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
+        jnnvc.titleValue = "Just Nim Nim It For \n DryCleaning"
+        jnnvc.descriptionValue = "Don’t worry about counting or care label, just press it, our pros will do the rest."
+        present(jnnvc, animated: true, completion: nil)
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {

@@ -101,6 +101,12 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         setupPrice()
         WashPressedShirtCollectionView.reloadData()
     }
+    @IBAction func infoTapped(_ sender: Any) {
+        let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
+        jnnvc.titleValue = "Just Nim Nim It For \n Laundered Shirts"
+        jnnvc.descriptionValue = "Press NimNim It to opt out of counting the number of shirts, we got your back."
+        present(jnnvc, animated: true, completion: nil)
+    }
     
     @IBAction func addToCartTapped(_ sender: Any) {
         if addToCart.titleLabel?.text == "CheckOut" {

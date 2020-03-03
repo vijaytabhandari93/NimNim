@@ -71,6 +71,17 @@ class OrderModel : NSObject, Mappable, Codable  {
         subTotal <- map["sub_total"]
         grandTotal <- map["grand_total"]
     }
+    func confirmRushRequiredOrNot() ->Int {
+        if let services = services {
+            for service in services {
+                if service.isRushDeliverySelected == true {
+                    return 20
+                    break
+                }
+            }
+        }
+    return 0
+    }
 }
 
 class IssueModel: NSObject, Mappable, Codable {

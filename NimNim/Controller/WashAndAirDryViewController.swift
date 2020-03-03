@@ -196,6 +196,12 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         
     }
     
+    @IBAction func infoIconTapped(_ sender: Any) {
+        let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
+               jnnvc.titleValue = "Just Nim Nim It For \n Wash & Air-Dry"
+               jnnvc.descriptionValue = "We will bill you for $3/lb, no per piece pricing, Just press NimNim it."
+               present(jnnvc, animated: true, completion: nil)
+    }
     @IBAction func justNimNimItTapped(_ sender: Any) {
         justNimNimItSelected = !justNimNimItSelected
         if justNimNimItSelected {

@@ -57,8 +57,14 @@ class OrderDetailsCollectionViewCell: UICollectionViewCell {
                 }
                     }
 
-                else if serviceModel.alias == "wash-and-fold" {
-                        noOfProducts.text = "To be weighed"
+                else if serviceModel.alias == "wash-and-fold" || serviceModel.alias == "wash-and-air-dry"{
+                if qty != 0 {
+                     noOfProducts.text = "\(qty) lbs"
+                }
+                else {
+                    noOfProducts.text = "To be weighed"
+                }
+                       
                 }
 
             else {

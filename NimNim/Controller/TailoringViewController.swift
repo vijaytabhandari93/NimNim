@@ -252,6 +252,12 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
         setupScreen()
         shoeRepairCollectionView.reloadData()
     }
+    @IBAction func infoTapped(_ sender: Any) {
+        let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
+        jnnvc.titleValue = "Just Nim Nim It For \n Tailoring"
+        jnnvc.descriptionValue = "Just Press NimNim It for a private visit from NimNim tailor for only $25. Luxury at your fingertips."
+        present(jnnvc, animated: true, completion: nil)
+    }
     
     @IBAction func basketTapped(_ sender: Any) {
         let cartCount = fetchNoOfServicesInCart()

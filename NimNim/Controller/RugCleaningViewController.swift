@@ -215,6 +215,12 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         }
         rugCleaningCollectionView.reloadData()
     }
+    @IBAction func infoTapped(_ sender: Any) {
+        let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
+        jnnvc.titleValue = "Just Nim Nim It For \n Carpet Cleaning"
+        jnnvc.descriptionValue = "Don’t worry, about running around. You can just leave this easy task to NimNim at the best price in market."
+        present(jnnvc, animated: true, completion: nil)
+    }
     
     
     @IBAction func addToCartTapped(_ sender: Any) {

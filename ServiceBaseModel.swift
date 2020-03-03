@@ -38,6 +38,9 @@ class ServiceBaseModel:NSObject, Mappable, Codable {
         return nil
     }
     
+    
+    
+    
 }
 class ServiceModel:NSObject, Mappable, Codable {
     var id:String?
@@ -80,6 +83,7 @@ class ServiceModel:NSObject, Mappable, Codable {
     var turnAroundTime:String?
     var status:String?
     var totalCost:Double?
+    var weight : Double?
     //Not to be sent to server..hence not adding in mapping function
     var isSelectedForNimNimIt = false
     //This variable will be used to group the service models with the 
@@ -157,7 +161,9 @@ class ServiceModel:NSObject, Mappable, Codable {
         dropOffStartDate <- map["dropOffStartDate"]
         dropOffEndDate <- map["dropOffEndDate"]
         totalCost <- map["total_cost"]
+        weight <- map["weight"]
     }
+    
     
     
     func getMaleItems() -> [ItemModel] {
@@ -246,21 +252,21 @@ class ServiceModel:NSObject, Mappable, Codable {
         }
     }
     
-    func productQuantity() -> Int {
+    func productQuantity() -> Double {
         if let alias = alias {
             if let value = Alias(rawValue: alias) {
                 switch value {
                 case .washAndFold:
-                    if let numberOfClothes = numberOfClothes {
-                        return numberOfClothes
+                    if let weight = weight {
+                        return weight
                     }
                 case .washAndAirDry:
-                    if let numberOfClothes = numberOfClothes {
-                        return numberOfClothes
+                   if let weight = weight {
+                        return weight
                     }
                 case .launderedShirts:
                     if let numberOfClothes = numberOfClothes {
-                        return numberOfClothes
+                        return Double(numberOfClothes)
                     }
                 case .householdItems:
                     var quantity = 0
@@ -271,7 +277,7 @@ class ServiceModel:NSObject, Mappable, Codable {
                             }
                         }
                     }
-                    return quantity
+                    return Double(quantity)
                 case .dryCleaning:
                     var quantity = 0
                     if let items = items {
@@ -284,18 +290,19 @@ class ServiceModel:NSObject, Mappable, Codable {
                             }
                         }
                     }
-                    return quantity
+                    return Double(quantity)
                 case .carpetCleaning:
                     if let numberOfClothes = numberOfClothes {
-                        return numberOfClothes
+                        return Double(numberOfClothes)
+                        
                     }
                 case .shoeRepair:
                     if let count = tasks?.count {
-                        return count
+                        return Double(count)
                     }
                 case .tailoring:
                     if let count = tasks?.count {
-                        return count
+                        return Double(count)
                     }
                 }
             }
