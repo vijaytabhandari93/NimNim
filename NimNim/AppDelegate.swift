@@ -23,6 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NavigationManager.shared.initializeApp()
         MixPanelManager.shared.initializeMixPanel()
         FirebaseManager.shared.initializeFirebase()
+        PushNotificationsManager.shared.requestForPermission()
         return true
     }
 
@@ -47,6 +48,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    func application(
+      _ application: UIApplication,
+      didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
+    ) {
+      let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
+      let token = tokenParts.joined()
+      print("Device Token: \(token)")
+    }
+
+    func application(
+      _ application: UIApplication,
+      didFailToRegisterForRemoteNotificationsWithError error: Error) {
+      print("Failed to register: \(error)")
     }
     
     //Used for GoogleSign In
