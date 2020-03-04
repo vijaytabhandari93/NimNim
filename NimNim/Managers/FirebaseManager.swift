@@ -14,6 +14,33 @@ class FirebaseManager {
     
     func initializeFirebase() {
         FirebaseApp.configure()
+        setupUserProperties()
+    }
+    
+    func setupUserProperties() {
+        if let userModel = UserModel.fetchFromUserDefaults(){
+            if let firstName = userModel.firstName {
+                Analytics.setUserProperty(firstName, forName: "firstname")
+            }
+            if let lastName = userModel.lastName {
+                Analytics.setUserProperty(String(lastName.prefix(36)), forName: "lastname")
+            }
+            if let email = userModel.email {
+                Analytics.setUserProperty(String(email.prefix(36)), forName: "email")
+            }
+            if let phone = userModel.phone {
+                Analytics.setUserProperty(String(phone.prefix(36)), forName: "phone")
+            }
+            if let dob = userModel.dob {
+                Analytics.setUserProperty(String(dob.prefix(36)), forName: "dob")
+            }
+            if let id = userModel.id {
+                Analytics.setUserProperty(String(id.prefix(36)), forName: "userId")
+            }
+            if let token = userModel.token {
+                Analytics.setUserProperty(String(token.prefix(36)), forName: "authtoken")
+            }
+        }
     }
 
 }

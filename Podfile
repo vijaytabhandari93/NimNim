@@ -20,5 +20,7 @@ target 'NimNim' do
   pod 'Firebase/Core'
   pod 'Firebase/Crashlytics'
   pod 'Firebase/Performance'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/InAppMessaging'
   pod 'Mixpanel-swift'
 end

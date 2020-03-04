@@ -9,7 +9,7 @@
 import UIKit
 import GoogleSignIn
 import FBSDKCoreKit
-
+import FirebaseMessaging
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MixPanelManager.shared.initializeMixPanel()
         FirebaseManager.shared.initializeFirebase()
         PushNotificationsManager.shared.requestForPermission()
+        PushNotificationsManager.shared.checkForPushNotificationFromAppLaunch(withLaunchOptions: launchOptions)
         return true
     }
 
@@ -56,6 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) {
       let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
       let token = tokenParts.joined()
+        Messaging.messaging().apnsToken = deviceToken
       print("Device Token: \(token)")
     }
 
@@ -63,6 +65,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       _ application: UIApplication,
       didFailToRegisterForRemoteNotificationsWithError error: Error) {
       print("Failed to register: \(error)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        PushNotificationsManager.shared.handlePushNotification(withUserInfo: userInfo)
     }
     
     //Used for GoogleSign In

@@ -9,6 +9,7 @@
 import Foundation
 import UserNotifications
 import UIKit
+import SwiftyJSON
 
 class PushNotificationsManager {
     static let shared = PushNotificationsManager()
@@ -32,6 +33,20 @@ class PushNotificationsManager {
             DispatchQueue.main.async {
                 UIApplication.shared.registerForRemoteNotifications()
             }
+        }
+    }
+
+    func checkForPushNotificationFromAppLaunch(withLaunchOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) {
+        let notificationOption = launchOptions?[.remoteNotification]
+        if let notification = notificationOption as? [String: Any] {
+            handlePushNotification(withUserInfo: notification)
+        }
+    }
+    
+    func handlePushNotification(withUserInfo userInfo:[AnyHashable : Any]?) {
+        if let userInfo = userInfo as? [String:Any] {
+            let userInfoJson = JSON(arrayLiteral: userInfo)
+            print(userInfoJson)
         }
     }
 }

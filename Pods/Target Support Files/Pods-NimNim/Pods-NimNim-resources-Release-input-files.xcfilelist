@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-NimNim/Pods-NimNim-resources.sh
+${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInAppMessaging/InAppMessagingDisplayResources.bundle
 ${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle
