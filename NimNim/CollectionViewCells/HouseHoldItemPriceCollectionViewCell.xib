@@ -31,14 +31,14 @@
                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$7.25" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jv0-Q7-8sX">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$7.25" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jv0-Q7-8sX">
                         <rect key="frame" x="235.5" y="24" width="40.5" height="19.5"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
                         <color key="textColor" red="0.019607843140000001" green="0.44705882349999998" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0K-zR-Xs1">
-                        <rect key="frame" x="175.5" y="33.5" width="0.0" height="0.0"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$6.8" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0K-zR-Xs1">
+                        <rect key="frame" x="142" y="24" width="33.5" height="19.5"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
                         <color key="textColor" red="0.019607843140000001" green="0.44705882349999998" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -50,7 +50,7 @@
                 <constraint firstItem="nLm-tW-Ida" firstAttribute="centerY" secondItem="Twl-cz-QL8" secondAttribute="centerY" id="Nd1-y1-fda"/>
                 <constraint firstItem="b0K-zR-Xs1" firstAttribute="centerY" secondItem="jv0-Q7-8sX" secondAttribute="centerY" id="Ux3-Df-Cgf"/>
                 <constraint firstItem="jv0-Q7-8sX" firstAttribute="centerY" secondItem="nLm-tW-Ida" secondAttribute="centerY" id="jbh-TN-OMZ"/>
-                <constraint firstItem="jv0-Q7-8sX" firstAttribute="leading" secondItem="b0K-zR-Xs1" secondAttribute="trailing" constant="60" id="kiQ-Fp-b1I"/>
+                <constraint firstAttribute="trailing" secondItem="b0K-zR-Xs1" secondAttribute="trailing" constant="128.5" id="ozV-6m-MLI"/>
                 <constraint firstAttribute="trailing" secondItem="jv0-Q7-8sX" secondAttribute="trailing" constant="28" id="wMN-yd-cdt"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="8Xz-XD-1q7"/>

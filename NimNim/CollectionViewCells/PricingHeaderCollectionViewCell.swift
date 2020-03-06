@@ -10,6 +10,7 @@ import UIKit
 
 class PricingHeaderCollectionViewCell: UICollectionViewCell {
 
+    @IBOutlet weak var heightConstraintOfBottomSeparator: NSLayoutConstraint!
     @IBOutlet weak var servicelabel: UILabel!
     @IBOutlet weak var bottomSeparator: UIView!
     
@@ -24,9 +25,11 @@ class PricingHeaderCollectionViewCell: UICollectionViewCell {
               if isExpanded {
                   arrow.image = UIImage(named: "downArrow")
                   bottomSeparator.isHidden = true
+                
                 }else {
                   arrow.image = UIImage(named: "rightArrow")
                   bottomSeparator.isHidden = false
+                  
                   }
 }
     

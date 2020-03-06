@@ -252,21 +252,21 @@ class ServiceModel:NSObject, Mappable, Codable {
         }
     }
     
-    func productQuantity() -> Double {
+    func productQuantity() -> Int {
         if let alias = alias {
             if let value = Alias(rawValue: alias) {
                 switch value {
                 case .washAndFold:
                     if let weight = weight {
-                        return weight
+                        return Int(weight)
                     }
                 case .washAndAirDry:
                    if let weight = weight {
-                        return weight
+                        return Int(weight)
                     }
                 case .launderedShirts:
                     if let numberOfClothes = numberOfClothes {
-                        return Double(numberOfClothes)
+                        return (numberOfClothes)
                     }
                 case .householdItems:
                     var quantity = 0
@@ -277,7 +277,7 @@ class ServiceModel:NSObject, Mappable, Codable {
                             }
                         }
                     }
-                    return Double(quantity)
+                    return quantity
                 case .dryCleaning:
                     var quantity = 0
                     if let items = items {
@@ -290,19 +290,19 @@ class ServiceModel:NSObject, Mappable, Codable {
                             }
                         }
                     }
-                    return Double(quantity)
+                    return quantity
                 case .carpetCleaning:
                     if let numberOfClothes = numberOfClothes {
-                        return Double(numberOfClothes)
+                        return numberOfClothes
                         
                     }
                 case .shoeRepair:
                     if let count = tasks?.count {
-                        return Double(count)
+                        return count
                     }
                 case .tailoring:
                     if let count = tasks?.count {
-                        return Double(count)
+                        return count
                     }
                 }
             }

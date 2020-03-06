@@ -80,6 +80,9 @@
 		AC556809240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC556807240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib */; };
 		AC56424C23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56424A23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.swift */; };
 		AC56424D23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC56424B23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.xib */; };
+		AC56671F24102BB700813DE8 /* OnboardingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56671E24102BB700813DE8 /* OnboardingEvents.swift */; };
+		AC56672124102C3F00813DE8 /* AnalyticsEventNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56672024102C3F00813DE8 /* AnalyticsEventNames.swift */; };
+		AC56672324102D5C00813DE8 /* AnalyticsEventProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56672224102D5C00813DE8 /* AnalyticsEventProperties.swift */; };
 		AC5A5169240A5B5900E3BD54 /* JustNimNimInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */; };
 		AC5ADD8D2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADD8B2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift */; };
 		AC5ADD8E2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5ADD8C2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib */; };
@@ -123,6 +126,8 @@
 		AC5F80EB23CE14A40093B864 /* ItemPriceListCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5F80E923CE14A40093B864 /* ItemPriceListCollectionViewCell.xib */; };
 		AC621ECD2326BCDC00AFD052 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */; };
 		AC773999240E2C2C00DCFE75 /* PushNotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC773998240E2C2C00DCFE75 /* PushNotificationsManager.swift */; };
+		AC77F9612410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC77F95F2410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.swift */; };
+		AC77F9622410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC77F9602410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.xib */; };
 		AC793F17232CDBB9009E61A1 /* Preferences.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC793F16232CDBB9009E61A1 /* Preferences.storyboard */; };
 		AC7BE99123FE5CEC00F77014 /* SubmitTicketViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BE99023FE5CEC00F77014 /* SubmitTicketViewController.swift */; };
 		AC7BE99323FEF29A00F77014 /* MixPanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7BE99223FEF29900F77014 /* MixPanelManager.swift */; };
@@ -325,6 +330,9 @@
 		AC556807240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HouseHoldItemPriceCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC56424A23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTasksCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC56424B23E7CD9C00D591C7 /* SelectedTasksCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectedTasksCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC56671E24102BB700813DE8 /* OnboardingEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEvents.swift; sourceTree = "<group>"; };
+		AC56672024102C3F00813DE8 /* AnalyticsEventNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventNames.swift; sourceTree = "<group>"; };
+		AC56672224102D5C00813DE8 /* AnalyticsEventProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventProperties.swift; sourceTree = "<group>"; };
 		AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustNimNimInfoViewController.swift; sourceTree = "<group>"; };
 		AC5ADD8B2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoYouHaveACouponCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC5ADD8C2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoYouHaveACouponCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -369,6 +377,8 @@
 		AC621ECC2326BCDC00AFD052 /* NetworkingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		AC773997240E2BD300DCFE75 /* NimNim.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NimNim.entitlements; sourceTree = "<group>"; };
 		AC773998240E2C2C00DCFE75 /* PushNotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationsManager.swift; sourceTree = "<group>"; };
+		AC77F95F2410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingSubHeadingCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC77F9602410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PricingSubHeadingCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC793F16232CDBB9009E61A1 /* Preferences.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Preferences.storyboard; sourceTree = "<group>"; };
 		AC7BE99023FE5CEC00F77014 /* SubmitTicketViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitTicketViewController.swift; sourceTree = "<group>"; };
 		AC7BE99223FEF29900F77014 /* MixPanelManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixPanelManager.swift; sourceTree = "<group>"; };
@@ -527,6 +537,16 @@
 			path = CollectionReusableView;
 			sourceTree = "<group>";
 		};
+		AC56671D24102B9900813DE8 /* AnalyticsEvents */ = {
+			isa = PBXGroup;
+			children = (
+				AC56671E24102BB700813DE8 /* OnboardingEvents.swift */,
+				AC56672024102C3F00813DE8 /* AnalyticsEventNames.swift */,
+				AC56672224102D5C00813DE8 /* AnalyticsEventProperties.swift */,
+			);
+			path = AnalyticsEvents;
+			sourceTree = "<group>";
+		};
 		AC5CF45C233C6D0600FF780A /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -648,6 +668,8 @@
 				AC5CDC3D23FD726B0047940F /* HelpRequiredCollectionViewCell.xib */,
 				AC556806240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.swift */,
 				AC556807240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib */,
+				AC77F95F2410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.swift */,
+				AC77F9602410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -784,6 +806,7 @@
 			isa = PBXGroup;
 			children = (
 				AC773997240E2BD300DCFE75 /* NimNim.entitlements */,
+				AC56671D24102B9900813DE8 /* AnalyticsEvents */,
 				AC1FFD9F23465DBA00930496 /* CollectionReusableView */,
 				AC5CF45C233C6D0600FF780A /* CollectionViewCells */,
 				ACBB8178232E3F86003DCF77 /* Fonts */,
@@ -1006,6 +1029,7 @@
 				ACFD92962355D7BE0009FB03 /* HouseHoldItemCollectionViewCell.xib in Resources */,
 				ACF9CD2F235043C200039E6C /* SpecialNotesCollectionViewCell.xib in Resources */,
 				AC5F80EB23CE14A40093B864 /* ItemPriceListCollectionViewCell.xib in Resources */,
+				AC77F9622410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.xib in Resources */,
 				AC5E697523CC7319000DF84E /* Pricing.storyboard in Resources */,
 				ACB89B4E235DB2F600B74109 /* SelectItemCollectionViewCell.xib in Resources */,
 				AC20418323B75223001F86B4 /* DateTimeCollectionViewCell.xib in Resources */,
@@ -1126,12 +1150,14 @@
 				AC5F80EA23CE14A40093B864 /* ItemPriceListCollectionViewCell.swift in Sources */,
 				AC5ADD9E236306C200204E9E /* PickDateAndTimeViewController.swift in Sources */,
 				AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */,
+				AC56672324102D5C00813DE8 /* AnalyticsEventProperties.swift in Sources */,
 				ACBB8177232D1F57003DCF77 /* Extensions.swift in Sources */,
 				AC5CDC3A23FD72480047940F /* NeedHelpCollectionViewCell.swift in Sources */,
 				AC20418223B75223001F86B4 /* DateTimeCollectionViewCell.swift in Sources */,
 				AC5F80E623CE0E280093B864 /* PriceViewListCollectionViewCell.swift in Sources */,
 				ACFD92992355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.swift in Sources */,
 				AC5ADD972362DEE400204E9E /* showSavedUserInfoCollectionViewCell.swift in Sources */,
+				AC56672124102C3F00813DE8 /* AnalyticsEventNames.swift in Sources */,
 				ACF9CD23234F69EC00039E6C /* WashAndAirDryViewController.swift in Sources */,
 				AC51847423C85B4F00A45E69 /* NimNimViewController.swift in Sources */,
 				AC5ADDA223630CC700204E9E /* SelectPaymentViewController.swift in Sources */,
@@ -1163,6 +1189,7 @@
 				AC5E697323CC72BD000DF84E /* PricingViewController.swift in Sources */,
 				ACB4314E2382A007001E6302 /* ServiceBaseModel.swift in Sources */,
 				AC556808240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.swift in Sources */,
+				AC77F9612410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.swift in Sources */,
 				AC1789162377D03D00B20D32 /* Params.swift in Sources */,
 				AC2BEDC62381600000152C69 /* BannersBaseModel.swift in Sources */,
 				ACFD92B9235ACC460009FB03 /* CardsCollectionViewCell.swift in Sources */,
@@ -1201,6 +1228,7 @@
 				AC5F80DA23CD9DED0093B864 /* PriceCollectionViewCell.swift in Sources */,
 				AC5BC1A323ED304200FAF8C1 /* TailoringViewController.swift in Sources */,
 				ACFD92A1235830AC0009FB03 /* ProfileCollectionViewCell.swift in Sources */,
+				AC56671F24102BB700813DE8 /* OnboardingEvents.swift in Sources */,
 				AC7BE99123FE5CEC00F77014 /* SubmitTicketViewController.swift in Sources */,
 				ACF0205F232E425F007559E8 /* Fonts.swift in Sources */,
 				ACBC96FA2361B1C0006AC5B6 /* OrderReviewViewController.swift in Sources */,
@@ -1385,7 +1413,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NimNim/NimNim.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
@@ -1409,7 +1437,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NimNim/NimNim.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;

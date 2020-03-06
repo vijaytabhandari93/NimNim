@@ -16,12 +16,13 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     var justNimNimItSelected : Bool = false
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
+    
     func pushSecondViewController() {
         let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
         let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"TailoringSecondViewController") as? TailoringSecondViewController
         secondViewController?.serviceModel = serviceModel
-        NavigationManager.shared.push(viewController: secondViewController)
         secondViewController?.delegate = self
+        NavigationManager.shared.push(viewController: secondViewController)
     }
     // we have created the push function and also created first controller as the delegate of the  first.
     
@@ -82,9 +83,9 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     @IBOutlet weak var addNewService: UIButton!
     @IBAction func addMoreServices(_ sender: Any) {
         let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
-             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"AllServicesViewController") as? AllServicesViewController
-             NavigationManager.shared.push(viewController: secondViewController)
-    
+        let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"AllServicesViewController") as? AllServicesViewController
+        NavigationManager.shared.push(viewController: secondViewController)
+        
     }
     
     
@@ -116,7 +117,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
                 totalPrice.isHidden = false
                 priceValue.isHidden = false
                 addNewService.isHidden = false
-            
+                
             } else {
                 addToCart.backgroundColor = Colors.addToCartUnselectable
                 addToCart.isEnabled = false
@@ -141,6 +142,11 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
         setupCartCountLabel()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        priceTotalBackgroundView.addTopShadowToView()
+    }
+    
     
     
     //MARK: IBActions
@@ -152,16 +158,16 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
         let params = serviceModel?.toJSON()
         print(JSON(params))
         if addToCart.titleLabel?.text == "CheckOut" {
-                  let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-                  let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
-                  NavigationManager.shared.push(viewController: cartVC)
-              }
-              else if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
-                  updateServiceInCart(withCartId: cartId)
-              }else
-              {
-                  addServiceToCart()
-              }
+            let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+            let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
+            NavigationManager.shared.push(viewController: cartVC)
+        }
+        else if let cartId = UserDefaults.standard.string(forKey: UserDefaultKeys.cartId), cartId.count > 0 {
+            updateServiceInCart(withCartId: cartId)
+        }else
+        {
+            addServiceToCart()
+        }
     }
     func updateServiceInCart(withCartId cartId:String?) {
         if let serviceModel = serviceModel, let cartId = cartId{
@@ -229,7 +235,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
             }
         }
     }
-
+    
     
     
     @IBAction func justNimNimIt(_ sender: Any) {
@@ -255,7 +261,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     @IBAction func infoTapped(_ sender: Any) {
         let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
         jnnvc.titleValue = "Just Nim Nim It For \n Tailoring"
-        jnnvc.descriptionValue = "Just Press NimNim It for a private visit from NimNim tailor for only $25. Luxury at your fingertips."
+        jnnvc.descriptionValue = "Get a private tailor to come visit you at home for just $25! Select the Just NimNim it option to get luxury at your doorstep."
         present(jnnvc, animated: true, completion: nil)
     }
     
@@ -286,9 +292,9 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
             //Add task section
             return 1
         }
-            else if section == (numberOfSections - 1){
-                return 1
-            }
+        else if section == (numberOfSections - 1){
+            return 1
+        }
         else {
             if let tasks = serviceModel?.tasks, tasks.count > section {
                 let currentTask = tasks[section]
@@ -322,11 +328,11 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RushDeliveryNotAvailableCollectionViewCell", for: indexPath) as! RushDeliveryNotAvailableCollectionViewCell
             return cell
         }
-            else if indexPath.section == (numberOfSections - 2)  {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddTailoringRepairCollectionViewCell", for: indexPath) as! AddTailoringRepairCollectionViewCell
-                cell.delegate = self
-                return cell
-            }
+        else if indexPath.section == (numberOfSections - 2)  {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddTailoringRepairCollectionViewCell", for: indexPath) as! AddTailoringRepairCollectionViewCell
+            cell.delegate = self
+            return cell
+        }
         else {
             if indexPath.item == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ShoeTaskAddedCollectionViewCell", for: indexPath) as! ShoeTaskAddedCollectionViewCell
@@ -380,9 +386,9 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
         if indexPath.section == (numberOfSections - 1)  {
             return CGSize(width: collectionView.frame.size.width, height:60)
         }
-           else if indexPath.section == (numberOfSections - 2)  {
-                       return CGSize(width: collectionView.frame.size.width, height:60)
-                   }
+        else if indexPath.section == (numberOfSections - 2)  {
+            return CGSize(width: collectionView.frame.size.width, height:60)
+        }
         else {
             if indexPath.item == 0 {
                 return CGSize(width: collectionView.frame.size.width, height:30)

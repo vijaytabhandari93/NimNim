@@ -24,6 +24,7 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         registerCells()
+        fetchServices()
         pricingCollectionView.delegate = self
         pricingCollectionView.dataSource = self
     }
@@ -36,6 +37,7 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
     var selectedTailoring  : Bool  = false
     var selectedShoeRepair  : Bool  = false
     var selectedRugCleaning  : Bool  = false
+    var serviceModel : ServiceBaseModel?
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool){
@@ -75,65 +77,73 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
                     text = "Minimum - 10 lbs"
                 }
                 if indexPath.item == 3 {
-                    text = "Clothes will be washed and folded"
+                    text = "Rush-enabled"
                 }
                 if indexPath.item == 4 {
-                    text = "Delivered Within 24 hours, Rush service Available"
+                    text = "Delivered within 24 hours"
                 }
             }else if indexPath.section == 1 {
                 if indexPath.item == 2 {
-                    text = "No Minimum, items are billed per piece"
+                    text = "No minimum order"
                 }
-                if indexPath.item == 3 {
-                    text = "Order will be delivered Within 24 hours, Rush service available"
-                }
-            }else if indexPath.section == 2 {
+               }
+            else if indexPath.section == 2 {
                 if indexPath.item == 2 {
-                    text = "Shirts are washed and pressed and returned on Wooden hangers"
+                    text = "Minimum: 1 shirt"
                 }
                 if indexPath.item == 3 {
-                    text = "Customer can select preference as Boxed Shirts vs. shirts on hanger or choose light/medium/heavy or no starch"
+                    text = "Rush-enabled"
                 }
                 if indexPath.item == 4 {
-                    text = "1 Male Laundered Shirt"
+                    text = "Delivered within 24 hours"
                 }
-                if indexPath.item == 5 {
-                    text = "Delivered within 24 hours, Rush service Available"
-                }
+                
             }else if indexPath.section == 3 {
                 if indexPath.item == 1 {
-                    text = "All Items List and Price"
+                    text = "View list for specific prices"
                 }
                 if indexPath.item == 2 {
-                    text = "Delivered within 24 hours, Rush service Available"
+                    text = "Rush-enabled"
+                }
+                if indexPath.item == 3 {
+                    text = "Delivered within 24 hours"
                 }
             }else if indexPath.section == 4 {
                 if indexPath.item == 1 {
-                    text = "All Items List and Price"
+                    text = "View list for specific prices"
                 }
                 if indexPath.item == 2 {
-                    text = "Delivered within 24 hours, Rush service Available"
+                    text = "Rush-enabled"
+                }
+                if indexPath.item == 3 {
+                    text = "Delivered within 24 hours"
                 }
             }else if indexPath.section == 5 {
                 if indexPath.item == 1 {
-                    text = "All Items List and Price"
+                    text = "View list for specific prices"
                 }
                 if indexPath.item == 2 {
-                    text = "Delivered within 24 hours, Rush service Available"
+                    text = "Rush-enabled"
+                }
+                if indexPath.item == 3 {
+                    text = "Delivered within 24 hours"
                 }
             }else if indexPath.section == 6 {
                 if indexPath.item == 1 {
-                    text = "All Items List and Price"
+                    text = "View list for specific prices"
                 }
                 if indexPath.item == 2 {
-                    text = "Delivered within 24 hours, Rush service Available"
+                    text = "Rush-enabled"
+                }
+                if indexPath.item == 3 {
+                    text = "Delivered within 24 hours"
                 }
             } else if indexPath.section == 7 {
                 if indexPath.item == 2 {
-                    text = "Billing is done by taking HEIGHT X LENGTH X  $4 per square foot"
+                    text = "Rush service not available"
                 }
                 if indexPath.item == 3 {
-                    text = "The delivery time minimum would be 7 days and NimNim team will pick up and drop off from the customer door "
+                    text = "Delivered within 7 days"
                 }
             }
             let label =  UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.frame.size.width - 40, height: CGFloat.greatestFiniteMagnitude))
@@ -162,7 +172,7 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         else if section == 1 {
             if selectedWashAndAirDry == true{
-                return 4
+                return 3
             }
             else{
                 return 1
@@ -170,7 +180,7 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         else if section == 2 {
             if selectedLaunderedShirts == true{
-                return 6
+                return 5
             }
             else{
                 return 1
@@ -178,7 +188,7 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         else if section == 3 {
             if selectedHouseholdItems == true{
-                return 3
+                return 4
             }
             else{
                 return 1
@@ -186,21 +196,21 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         else if section == 4 {
             if selectedDryCleaning == true{
-                return 3
+                return 4
             }
             else{
                 return 1
             }
         }else if section == 5 {
             if selectedTailoring == true{
-                return 3
+                return 4
             }
             else{
                 return 1
             }
         }else if section == 6 {
             if selectedShoeRepair == true{
-                return 3
+                return 4
             }
             else{
                 return 1
@@ -215,6 +225,8 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         
     }
+    
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.section == 0 {
             if indexPath.item == 0 {
@@ -229,8 +241,17 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else if indexPath.item == 1 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceCollectionViewCell", for: indexPath) as! PriceCollectionViewCell
-                cell.priceLabel.text  = "$1.75/lb"
+                if let arrayOfService =  serviceModel?.data
+                               {
+                                   if arrayOfService[indexPath.section + 2 ].alias == "wash-and-fold" {
+                                       if let price = arrayOfService[indexPath.section + 2].price  {
+                                                               cell.priceLabel.text = "$\(price)/lbs"
+                                           }
+                                                   
+                                   }
+                                
                 return cell
+            }
             }
             else if indexPath.item == 2
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
@@ -239,14 +260,15 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else if indexPath.item == 3
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text = "Clothes will be washed and folded"
+                cell.label.text = "Rush-enabled"
                 return cell
             }
             else  if indexPath.item == 4
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text = "Delivered Within 24 hours, Rush service Available"
+                cell.label.text = "Delivered within 24 hours"
                 return cell
             }
+        
         }
         else if indexPath.section == 1 {
             if indexPath.item == 0 {
@@ -261,19 +283,24 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else if indexPath.item == 1 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceCollectionViewCell", for: indexPath) as! PriceCollectionViewCell
-                cell.priceLabel.text = "$3/lb"
+             if let arrayOfService =  serviceModel?.data
+                {
+                    if arrayOfService[indexPath.section + 2].alias == "wash-and-air-dry" {
+                        if let price = arrayOfService[indexPath.section  + 2].price  {
+                                                cell.priceLabel.text = "$\(price)/lbs"
+                            }
+                                    
+                    }
+                  
+                }
                 return cell
             }
-            else if indexPath.item == 2
+            else
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text  = "No Minimum, items are billed per piece"
+                cell.label.text  = "No Minimum order."
                 return cell
             }
-            else if indexPath.item == 2
-            { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text  = "Order will be delivered Within 24 hours, Rush service available"
-                return cell
-            }
+           
             
         }else if indexPath.section == 2 {
             if indexPath.item == 0  {
@@ -288,30 +315,35 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else if indexPath.item == 1  {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceCollectionViewCell", for: indexPath) as! PriceCollectionViewCell
-                cell.priceLabel.text = "$2.69/shirt"
+       if let arrayOfService =  serviceModel?.data
+       {
+           if arrayOfService[indexPath.section - 1].alias == "laundered-shirts" {
+               if let price = arrayOfService[indexPath.section  - 1].costPerPiece  {
+                                       cell.priceLabel.text = "$\(price)/lbs"
+                   }
+                           
+           }
+         
+       }
                 return cell
             }
             else if indexPath.item == 2 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text = "Shirts are washed and pressed and returned on Wooden hangers"
+                cell.label.text = "Minimum: 1 shirt"
                 return cell
             }
                 
             else if indexPath.item == 3
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text  = "Customer can select preference as Boxed Shirts vs. shirts on hanger or choose light/medium/heavy or no starch"
+                cell.label.text  = "Rush-enabled"
                 return cell
             }
             else if indexPath.item == 4
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text  = "1 Male Laundered Shirt"
+                cell.label.text  = "Delivered within 24 hours"
                 return cell
             }
-            else if indexPath.item == 5
-            { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text  = "Delivered within 24 hours, Rush service Available"
-                return cell
-            }
+            
         }else if indexPath.section == 3 {
             if indexPath.item == 0  {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PricingHeaderCollectionViewCell", for: indexPath) as! PricingHeaderCollectionViewCell
@@ -325,13 +357,17 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else if indexPath.item == 1  {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceViewListCollectionViewCell", for: indexPath) as! PriceViewListCollectionViewCell
-                cell.label.text = "All Items List and Price"
                 cell.screenType  = "Household Items"
+                return cell
+            }
+            else if indexPath.item == 2
+            { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
+                cell.label.text = "Rush service not available"
                 return cell
             }
             else
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text = "Delivered within 24 hours, Rush service Available"
+                cell.label.text = "Delivered within 24 hours"
                 return cell
             }
         }
@@ -348,13 +384,17 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else if indexPath.item == 1  {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceViewListCollectionViewCell", for: indexPath) as! PriceViewListCollectionViewCell
-                cell.label.text = "All Items List and Price"
                 cell.screenType  = "Dry Cleaning"
+                return cell
+            }
+            else if indexPath.item == 2
+            { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
+                cell.label.text = "Rush-enabled"
                 return cell
             }
             else
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text = "Delivered within 24 hours, Rush service Available "
+                cell.label.text = "Delivered within 24 hours"
                 return cell
             }
             
@@ -371,16 +411,19 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else if indexPath.item == 1  {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceViewListCollectionViewCell", for: indexPath) as! PriceViewListCollectionViewCell
-                cell.label.text = "All Items List and Price"
                 cell.screenType  = "Tailoring"
+                return cell
+            }
+           else if indexPath.item == 2
+            { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
+                cell.label.text = "Rush service not available"
                 return cell
             }
             else
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text = "Delivered within 24 hours, Rush service Available "
+                cell.label.text = "Delivered within 4 days"
                 return cell
             }
-            
         }else if indexPath.section == 6 {
             if indexPath.item == 0  {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PricingHeaderCollectionViewCell", for: indexPath) as! PricingHeaderCollectionViewCell
@@ -394,15 +437,19 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else if indexPath.item == 1  {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceViewListCollectionViewCell", for: indexPath) as! PriceViewListCollectionViewCell
-                cell.label.text = "All Items List and Price"
                 cell.screenType  = "Shoe Repair"
                 return cell
             }
-            else
-            { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text = "Delivered within 24 hours, Rush service Available "
-                return cell
-            }
+             else if indexPath.item == 2
+                       { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
+                           cell.label.text = "Rush service not available"
+                           return cell
+                       }
+                       else
+                       { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
+                           cell.label.text = "Delivered within 7 days"
+                           return cell
+                       }
             
         } else {
             if indexPath.item == 0  {
@@ -417,25 +464,36 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
             else if indexPath.item == 1  {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PriceCollectionViewCell", for: indexPath) as! PriceCollectionViewCell
-                cell.priceLabel.text = "$4/square foot"
+         if let arrayOfService =  serviceModel?.data
+                {
+                    if arrayOfService[indexPath.section].alias == "carpet-cleaning" {
+                        if let price = arrayOfService[indexPath.section].price  {
+                                                cell.priceLabel.text = "$\(price)/sq ft"
+                            }
+                                    
+                    }
+                  
+                }
+                    
                 return cell
             }
             else if indexPath.item == 2 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text = "Billing is done by taking LENGTH X BREADTH $4 per square foot"
+                cell.label.text = "Rush service not available"
                 return cell
             }
                 
             else
             { let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-                cell.label.text  = "The delivery time minimum would be 7 days and NimNim team will pick up and drop off from the customer door"
+                cell.label.text  = "Delivered within 7 days"
                 return cell
             }
             
         }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
-        cell.label.text = "Delivered within 24 hours, Rush service Available "
-        return cell
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DescriptionCollectionViewCell", for: indexPath) as! DescriptionCollectionViewCell
+              cell.label.text  = "Delivered within 7 days"
+              return cell
+        
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if indexPath.section == 0 && indexPath.item == 0 {
@@ -461,6 +519,28 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
         }
         pricingCollectionView.reloadData()
         
+    }
+    
+    func fetchServices() {
+        //activityIndicator.startAnimating()
+        NetworkingManager.shared.get(withEndpoint: Endpoints.services, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
+            if let responseDict = response as? [String:Any] {
+                let serviceModel = Mapper<ServiceBaseModel>().map(JSON: responseDict)
+                //print(JSON(responseDict))
+                self?.serviceModel = serviceModel //? is put after self as it is weak self.
+               self?.pricingCollectionView.reloadData()
+            }
+           // self?.activityIndicator.stopAnimating()
+            
+            }) //definition of success closure
+        { (error) in
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            }
+            //self.activityIndicator.stopAnimating()
+        } // definition of error closure
     }
     
     

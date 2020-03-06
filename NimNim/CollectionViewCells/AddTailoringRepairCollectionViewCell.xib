@@ -32,7 +32,7 @@
                                     <color key="titleColor" red="0.36862745099999999" green="0.76862745099999996" blue="0.69019607839999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="addShoeRepairTaskTapped:" destination="xtk-Ll-XwQ" eventType="touchUpInside" id="Q4G-Ow-NoY"/>
+                                    <action selector="addShoeRepairTaskTapped:" destination="xtk-Ll-XwQ" eventType="touchUpInside" id="SYz-v9-uoc"/>
                                 </connections>
                             </button>
                         </subviews>

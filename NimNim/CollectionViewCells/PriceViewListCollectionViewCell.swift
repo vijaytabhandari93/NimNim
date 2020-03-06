@@ -22,13 +22,13 @@ class PriceViewListCollectionViewCell: UICollectionViewCell {
            
             } else if screenType == "Tailoring"{
                        let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
-                       let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "TailoringViewController") as! TailoringViewController
+                       let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "TailoringPricingViewController") as! TailoringPricingViewController
                            NavigationManager.shared.push(viewController: allServices)
                       
                        }
             else if screenType == "Shoe Repair"{
              let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
-             let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "TailoringViewController") as! TailoringViewController
+             let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairPricingViewController") as! ShoeRepairPricingViewController
                  NavigationManager.shared.push(viewController: allServices)
             
              }

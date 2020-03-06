@@ -64,17 +64,16 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
                 "Pick up and drop off at concierge",
                 "Pick up and Drop off in person"
             ]
-            titleLable.text = "Please specify your pick up & drop off preferences"
+            titleLable.text = "Choose your pick up and drop off preference:"
         }
         else{
             titleArray = [
-                "Students",
+                "Student",
                 "Working Professional",
-                "On a short visit",
-                "Hotel Guests",
-                "Business(Spa/Salon/Gym)"
+                "Hotel Guest",
+                "Business(Salon/Spa/Gym)"
                 ]
-             titleLable.text = "Tell us which describes you the best?"
+             titleLable.text = "You are a:"
             
         }
     }
@@ -147,7 +146,7 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
  
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if screenTypeValue == .pickUpDropOff { return 3}
-        else {return 5}
+        else {return 4}
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

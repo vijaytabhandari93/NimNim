@@ -31,6 +31,20 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
             serviceName.text = serviceModel.name
             let qty = serviceModel.productQuantity()
             if serviceModel.alias == "shoe-repair" {
+                var price = 0
+                if let items =  serviceModel.tasks {
+                    for item in items  {
+                        price = item.taskPrice  + price
+                    }
+                }
+                if price == 0 {
+                    amount.text = "@Pricelist"
+                }
+                else {
+                    amount.text = "$\(price)"
+                }
+                
+                
                 if qty == 1 {
                     productQty.text = "\(String(describing: qty)) Shoe Repair Task"
                 }else if qty == 0 {
@@ -40,6 +54,18 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
                 }
             }
             else if serviceModel.alias == "tailoring" {
+                var price = 0
+                if let items =  serviceModel.tasks {
+                    for item in items  {
+                        price = item.taskPrice  + price
+                    }
+                }
+                if price == 0 {
+                          amount.text = "@Pricelist"
+                }
+                else {
+                    amount.text = "$\(price)"
+                }
                 if qty == 1 {
                     productQty.text = "\(String(describing: qty)) Tailoring Task"
                 }else if qty == 0 {
@@ -49,6 +75,12 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
                 }
             }
             else if serviceModel.alias == "carpet-cleaning" {
+                if serviceModel.servicePrice == "$0" {
+                           amount.text = "@Pricelist"
+                }  else  {
+                    amount.text = serviceModel.servicePrice
+                }
+                
                 if qty == 1 {
                     productQty.text = "\(String(describing: qty)) Carpet"
                 }else if qty == 0 {
@@ -59,6 +91,11 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
                 }
             }
             else if serviceModel.alias == "laundered-shirts" {
+                if serviceModel.servicePrice == "$0" {
+                            amount.text = "@Pricelist"
+                }  else  {
+                    amount.text = serviceModel.servicePrice
+                }
                 if qty == 1 {
                     productQty.text = "\(String(describing: qty)) Shirt"
                 } else if qty == 0 {
@@ -70,12 +107,27 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
             }
                 
             else if serviceModel.alias == "wash-and-fold" {
+                if serviceModel.servicePrice == "$0" {
+                    amount.text = "@Pricelist"
+                }  else  {
+                    amount.text = serviceModel.servicePrice
+                }
                 productQty.text = "Clothes to be weighed"
             }
             else if serviceModel.alias == "wash-and-air-dry" {
+                if serviceModel.servicePrice == "$0" {
+                           amount.text = "@Pricelist"
+                }  else  {
+                    amount.text = serviceModel.servicePrice
+                }
                 productQty.text = "Clothes to be weighed"
             }
             else {
+                if serviceModel.servicePrice == "$0" {
+                    amount.text = "@Pricelist"
+                }  else  {
+                    amount.text = serviceModel.servicePrice
+                }
                 if qty == 1 {
                     productQty.text = "\(String(describing: qty)) Cloth"
                     
@@ -86,10 +138,14 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
                     productQty.text = "\(String(describing: qty)) Clothes"
                 }
             }
-            amount.text = serviceModel.servicePrice
+            
+            
+            
             
         }
     }
+    
+    
     
     @IBAction func changeDidTapped(_ sender: Any) {
         //same as below .....only scrolll to time should be added

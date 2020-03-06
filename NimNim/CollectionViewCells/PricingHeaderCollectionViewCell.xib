@@ -36,7 +36,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTa-eJ-t31">
-                        <rect key="frame" x="28" y="54" width="300" height="1"/>
+                        <rect key="frame" x="28" y="59" width="300" height="1"/>
                         <color key="backgroundColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="LnH-vM-KSM"/>
@@ -49,7 +49,7 @@
                 <constraint firstAttribute="trailing" secondItem="nTa-eJ-t31" secondAttribute="trailing" constant="28" id="APZ-QD-6K0"/>
                 <constraint firstItem="nTa-eJ-t31" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="BgF-vE-1xN"/>
                 <constraint firstAttribute="trailing" secondItem="sJe-cM-SRa" secondAttribute="trailing" constant="40" id="LP7-fI-kFn"/>
-                <constraint firstAttribute="bottom" secondItem="nTa-eJ-t31" secondAttribute="bottom" constant="5" id="O4i-eq-fFr"/>
+                <constraint firstAttribute="bottom" secondItem="nTa-eJ-t31" secondAttribute="bottom" id="O4i-eq-fFr"/>
                 <constraint firstItem="Sg4-id-2lJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="nKa-He-NnK"/>
                 <constraint firstItem="Sg4-id-2lJ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="wgS-VR-uB2"/>
             </constraints>
@@ -58,6 +58,7 @@
             <connections>
                 <outlet property="arrow" destination="sJe-cM-SRa" id="hSI-NO-UaK"/>
                 <outlet property="bottomSeparator" destination="nTa-eJ-t31" id="PEq-3z-29m"/>
+                <outlet property="heightConstraintOfBottomSeparator" destination="O4i-eq-fFr" id="Cts-uo-e2j"/>
                 <outlet property="servicelabel" destination="Sg4-id-2lJ" id="Y8b-LI-m0C"/>
             </connections>
             <point key="canvasLocation" x="-59" y="-102"/>
