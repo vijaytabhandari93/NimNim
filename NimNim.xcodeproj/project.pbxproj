@@ -83,6 +83,7 @@
 		AC56671F24102BB700813DE8 /* OnboardingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56671E24102BB700813DE8 /* OnboardingEvents.swift */; };
 		AC56672124102C3F00813DE8 /* AnalyticsEventNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56672024102C3F00813DE8 /* AnalyticsEventNames.swift */; };
 		AC56672324102D5C00813DE8 /* AnalyticsEventProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56672224102D5C00813DE8 /* AnalyticsEventProperties.swift */; };
+		AC5938CA2418984B004DAB05 /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5938C92418984B004DAB05 /* AppNotifications.swift */; };
 		AC5A5169240A5B5900E3BD54 /* JustNimNimInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */; };
 		AC5ADD8D2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADD8B2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift */; };
 		AC5ADD8E2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5ADD8C2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib */; };
@@ -333,6 +334,7 @@
 		AC56671E24102BB700813DE8 /* OnboardingEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEvents.swift; sourceTree = "<group>"; };
 		AC56672024102C3F00813DE8 /* AnalyticsEventNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventNames.swift; sourceTree = "<group>"; };
 		AC56672224102D5C00813DE8 /* AnalyticsEventProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventProperties.swift; sourceTree = "<group>"; };
+		AC5938C92418984B004DAB05 /* AppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
 		AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustNimNimInfoViewController.swift; sourceTree = "<group>"; };
 		AC5ADD8B2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoYouHaveACouponCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC5ADD8C2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DoYouHaveACouponCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -834,6 +836,7 @@
 				AC1789132376A19A00B20D32 /* UserDefaultKeys.swift */,
 				AC3151FC23A65ACB0078E68E /* Utils.swift */,
 				AC1789152377D03D00B20D32 /* Params.swift */,
+				AC5938C92418984B004DAB05 /* AppNotifications.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1260,6 +1263,7 @@
 				AC1789142376A19B00B20D32 /* UserDefaultKeys.swift in Sources */,
 				ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */,
 				ACBC96F82361AEE7006AC5B6 /* OrderStatusViewController.swift in Sources */,
+				AC5938CA2418984B004DAB05 /* AppNotifications.swift in Sources */,
 				ACFD92BD235ACF060009FB03 /* SavedAddressCollectionViewCell.swift in Sources */,
 				AC52270223C7539E002F111F /* OrderModel.swift in Sources */,
 				AC8CDE3C23264F4500CDFB93 /* SignUpTableViewCell.swift in Sources */,

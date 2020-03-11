@@ -45,7 +45,6 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
                 if let indexPath = indexPath {
                     delegate?.editShoeRepairTask(withTask: taskModel, withindex : indexPath)
                 }
-                
             } else
             {
                 delegate?.addShoeRepairTask(withTask: taskModel)
@@ -111,10 +110,14 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
+        if notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            isHeightAdded = false
+            addedHeight = 0
+        }
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if !isHeightAdded {
                 addedHeight = keyboardSize.height
-                shoeRepairCollectionView.contentInset = UIEdgeInsets(top: shoeRepairCollectionView.contentInset.top, left: shoeRepairCollectionView.contentInset.left, bottom: shoeRepairCollectionView.contentInset.bottom + addedHeight, right: shoeRepairCollectionView.contentInset.right)
+                shoeRepairCollectionView.contentInset = UIEdgeInsets(top: shoeRepairCollectionView.contentInset.top, left: shoeRepairCollectionView.contentInset.left, bottom: addedHeight, right: shoeRepairCollectionView.contentInset.right)
                 isHeightAdded = true
             }
         }
@@ -122,7 +125,7 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if isHeightAdded {
-            shoeRepairCollectionView.contentInset = UIEdgeInsets(top: shoeRepairCollectionView.contentInset.top, left: shoeRepairCollectionView.contentInset.left, bottom: shoeRepairCollectionView.contentInset.bottom - addedHeight, right: shoeRepairCollectionView.contentInset.right)
+            shoeRepairCollectionView.contentInset = UIEdgeInsets(top: shoeRepairCollectionView.contentInset.top, left: shoeRepairCollectionView.contentInset.left, bottom: 0, right: shoeRepairCollectionView.contentInset.right)
             isHeightAdded = false
         }
     }
@@ -223,7 +226,7 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
         
         let type1PreferencesNib = UINib(nibName: "ShoeRepairCollectionViewCell", bundle: nil)
         shoeRepairCollectionView.register(type1PreferencesNib, forCellWithReuseIdentifier: "ShoeRepairCollectionViewCell")
-
+        
         let headerNib = UINib(nibName: "PreferencesCollectionReusableView", bundle: nil)
         shoeRepairCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "PreferencesCollectionReusableView")
     }
@@ -294,12 +297,39 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
     }
     
     //MARK: SpecialNotesTableViewCellDelegate
-    func sendImage(){// To tell the VC to send image post call
+    func sendImage() {
+        let alert = UIAlertController(title: "Upload Image", message: nil, preferredStyle: .actionSheet)
+        let libraryAction = UIAlertAction(title: "Choose from Photo Library", style: .default) {[weak self] (action) in
+            self?.choosePhotoFromLibrary()
+        }
+        
+        let cameraAction = UIAlertAction(title: "Click with Camera", style: .default) {[weak self] (action) in
+            self?.clickPhotoWithCamera()
+        }
+        
+        let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(libraryAction)
+        alert.addAction(cameraAction)
+        alert.addAction(noAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func choosePhotoFromLibrary() {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
         pickerController.allowsEditing = true
         pickerController.mediaTypes = ["public.image"]
         pickerController.sourceType = .photoLibrary
+        self.present(pickerController, animated: true, completion: nil)
+    }
+    
+    func clickPhotoWithCamera() {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.mediaTypes = ["public.image"]
+        pickerController.sourceType = .camera
         self.present(pickerController, animated: true, completion: nil)
     }
     func textViewStartedEditingInCell(withTextField textView

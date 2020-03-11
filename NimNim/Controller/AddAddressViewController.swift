@@ -85,10 +85,14 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
+        if notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            isHeightAdded = false
+            addedHeight = 0
+        }
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if !isHeightAdded {
                 addedHeight = keyboardSize.height
-                addAddressCollectionView.contentInset = UIEdgeInsets(top: addAddressCollectionView.contentInset.top, left: addAddressCollectionView.contentInset.left, bottom: addAddressCollectionView.contentInset.bottom + addedHeight, right: addAddressCollectionView.contentInset.right)
+                addAddressCollectionView.contentInset = UIEdgeInsets(top: addAddressCollectionView.contentInset.top, left: addAddressCollectionView.contentInset.left, bottom: addedHeight, right: addAddressCollectionView.contentInset.right)
                 isHeightAdded = true
             }
         }
@@ -96,7 +100,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if isHeightAdded {
-            addAddressCollectionView.contentInset = UIEdgeInsets(top: addAddressCollectionView.contentInset.top, left: addAddressCollectionView.contentInset.left, bottom: addAddressCollectionView.contentInset.bottom - addedHeight, right: addAddressCollectionView.contentInset.right)
+            addAddressCollectionView.contentInset = UIEdgeInsets(top: addAddressCollectionView.contentInset.top, left: addAddressCollectionView.contentInset.left, bottom: 0, right: addAddressCollectionView.contentInset.right)
             isHeightAdded = false
         }
     }

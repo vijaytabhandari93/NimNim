@@ -75,10 +75,14 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
+        if notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            isHeightAdded = false
+            addedHeight = 0
+        }
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if !isHeightAdded {
                 addedHeight = keyboardSize.height
-                cardCollectionView.contentInset = UIEdgeInsets(top: cardCollectionView.contentInset.top, left: cardCollectionView.contentInset.left, bottom: cardCollectionView.contentInset.bottom + addedHeight, right: cardCollectionView.contentInset.right)
+                cardCollectionView.contentInset = UIEdgeInsets(top: cardCollectionView.contentInset.top, left: cardCollectionView.contentInset.left, bottom: addedHeight, right: cardCollectionView.contentInset.right)
                 isHeightAdded = true
             }
         }
@@ -86,7 +90,7 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if isHeightAdded {
-            cardCollectionView.contentInset = UIEdgeInsets(top: cardCollectionView.contentInset.top, left: cardCollectionView.contentInset.left, bottom: cardCollectionView.contentInset.bottom - addedHeight, right: cardCollectionView.contentInset.right)
+            cardCollectionView.contentInset = UIEdgeInsets(top: cardCollectionView.contentInset.top, left: cardCollectionView.contentInset.left, bottom: 0, right: cardCollectionView.contentInset.right)
             isHeightAdded = false
         }
     }

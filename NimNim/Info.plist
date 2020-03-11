@@ -75,6 +75,8 @@
 	<string>please allow location access</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app wants to use photos to upload it alongside the service that you are adding to cart or to setup your profile.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app wants to use camera to allow you to upload it alongside the service that you are adding to cart or to setup your profile.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Black.ttf</string>

@@ -19,7 +19,8 @@ class ServiceableLocationModel:NSObject, Mappable {
         get {
             if let currentText = currentText, currentText.count > 0 {
                 let filteredArray = data?.filter({ (model) -> Bool in
-                    let titleMatches = model.title?.contains(currentText)
+                    let uppercasedTitle = model.title?.uppercased()
+                    let titleMatches = uppercasedTitle?.contains(currentText.uppercased())
                     let zipcodeMatches = model.pincode?.contains(currentText)
                     if titleMatches == true || zipcodeMatches == true {
                         return true

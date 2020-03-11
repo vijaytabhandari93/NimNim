@@ -134,20 +134,24 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
+        if notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            isHeightAdded = false
+            addedHeight = 0
+        }
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if !isHeightAdded {
-                let currentHeight = loginSignUpTableView.contentSize.height
-                addedHeight = keyboardSize.height
-                loginSignUpTableView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: currentHeight + addedHeight)
-                isHeightAdded = true
+                if !isHeightAdded {
+                    addedHeight = keyboardSize.height
+                    loginSignUpTableView.contentInset = UIEdgeInsets(top: loginSignUpTableView.contentInset.top, left: loginSignUpTableView.contentInset.left, bottom: addedHeight, right: loginSignUpTableView.contentInset.right)
+                    isHeightAdded = true
+                }
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if isHeightAdded {
-            let currentHeight = loginSignUpTableView.contentSize.height
-            loginSignUpTableView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: currentHeight - addedHeight)
+            loginSignUpTableView.contentInset = UIEdgeInsets(top: loginSignUpTableView.contentInset.top, left: loginSignUpTableView.contentInset.left, bottom: 0, right: loginSignUpTableView.contentInset.right)
             isHeightAdded = false
         }
     }

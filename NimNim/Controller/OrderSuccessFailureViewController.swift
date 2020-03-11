@@ -77,9 +77,13 @@ class OrderSuccessFailureViewController: UIViewController {
             trackOrderButton.setTitle("Try Again", for: .normal)
             
         }
-        
+        refreshHome()
 
         // Do any additional setup after loading the view.
+    }
+    
+    func refreshHome() {
+        NotificationCenter.default.post(name: AppNotifications.refreshHome, object: nil)
     }
     
 

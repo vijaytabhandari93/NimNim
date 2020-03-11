@@ -35,10 +35,10 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         homeCollectionView.dataSource = self
         let UserObject = UserModel.fetchFromUserDefaults()
         if let abc = UserObject?.firstName {
-        userName.text = "Hello \(abc.capitalized)"
+            userName.text = "Hello \(abc.capitalized)"
         }
         setupCartCountLabel()
- 
+        addObservers()
         
     }
     
@@ -67,6 +67,10 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         homeCollectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "ServicesHeaderCollectionReusableView")
     }
     
+    func addObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshHomeScreen), name: AppNotifications.refreshHome, object: nil)
+    }
+    
     //MARK: Networking Methods
     func fetchBanners() {
         activityIndicator.startAnimating()
@@ -76,7 +80,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
                 self?.bannerModel = bannerModel //? is put after self as it is weak self.
                 self?.homeCollectionView.reloadData()
             }
-    self?.activityIndicator.stopAnimating()
+            self?.activityIndicator.stopAnimating()
             }) //definition of success closure
         { (error) in
             if let error = error as? String {
@@ -86,6 +90,16 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             }
             self.activityIndicator.stopAnimating()
         } // definition of error closure
+    }
+    
+    func reset() {
+        serviceModel = nil
+        homeCollectionView.reloadData()
+    }
+    
+    @objc func refreshHomeScreen() {
+        reset()
+        fetchServices()
     }
     
     func fetchServices() {
@@ -143,8 +157,8 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
             }
         }
     }
-
-
+    
+    
     //MARK: IBActions
     @IBAction func basketTapped(_UI sender: Any) {
         let cartCount = fetchNoOfServicesInCart()
@@ -177,7 +191,7 @@ class HomeViewController: UIViewController,UICollectionViewDelegate,UICollection
         }
         else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ServicesBaseCollectionViewCell", for: indexPath) as! ServicesBaseCollectionViewCell //This line ensures that  if cell is not  initialized...then firstly initialize  it...which means that awakeFromNib of that cell will get called...in the awakeFromNib since we made the cell  object as the delegate  and  datasource  of the collectionview...so the corresponding functions of the delegate and datasource protocols start getting called... i.e number of items and cellForRow...etc.
-             cell.configureCell(withModel: serviceModel) //To pass the banneer model to the cell.
+            cell.configureCell(withModel: serviceModel) //To pass the banneer model to the cell.
             return cell
         }
     }

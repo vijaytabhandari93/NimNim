@@ -83,10 +83,14 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
+        if notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            isHeightAdded = false
+            addedHeight = 0
+        }
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if !isHeightAdded {
                 addedHeight = keyboardSize.height
-                houseHoldCollectionView.contentInset = UIEdgeInsets(top: houseHoldCollectionView.contentInset.top, left: houseHoldCollectionView.contentInset.left, bottom: houseHoldCollectionView.contentInset.bottom + addedHeight, right: houseHoldCollectionView.contentInset.right)
+                houseHoldCollectionView.contentInset = UIEdgeInsets(top: houseHoldCollectionView.contentInset.top, left: houseHoldCollectionView.contentInset.left, bottom: addedHeight, right: houseHoldCollectionView.contentInset.right)
                 isHeightAdded = true
             }
         }
@@ -94,7 +98,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if isHeightAdded {
-            houseHoldCollectionView.contentInset = UIEdgeInsets(top: houseHoldCollectionView.contentInset.top, left: houseHoldCollectionView.contentInset.left, bottom: houseHoldCollectionView.contentInset.bottom - addedHeight, right: houseHoldCollectionView.contentInset.right)
+            houseHoldCollectionView.contentInset = UIEdgeInsets(top: houseHoldCollectionView.contentInset.top, left: houseHoldCollectionView.contentInset.left, bottom: 0, right: houseHoldCollectionView.contentInset.right)
             isHeightAdded = false
         }
     }
@@ -537,11 +541,38 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
             }
         }
         func sendImage() {
+            let alert = UIAlertController(title: "Upload Image", message: nil, preferredStyle: .actionSheet)
+            let libraryAction = UIAlertAction(title: "Choose from Photo Library", style: .default) {[weak self] (action) in
+                self?.choosePhotoFromLibrary()
+            }
+            
+            let cameraAction = UIAlertAction(title: "Click with Camera", style: .default) {[weak self] (action) in
+                self?.clickPhotoWithCamera()
+            }
+            
+            let noAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alert.addAction(libraryAction)
+            alert.addAction(cameraAction)
+            alert.addAction(noAction)
+            self.present(alert, animated: true, completion: nil)
+        }
+        
+        func choosePhotoFromLibrary() {
             let pickerController = UIImagePickerController()
             pickerController.delegate = self
             pickerController.allowsEditing = true
             pickerController.mediaTypes = ["public.image"]
             pickerController.sourceType = .photoLibrary
+            self.present(pickerController, animated: true, completion: nil)
+        }
+        
+        func clickPhotoWithCamera() {
+            let pickerController = UIImagePickerController()
+            pickerController.delegate = self
+            pickerController.allowsEditing = true
+            pickerController.mediaTypes = ["public.image"]
+            pickerController.sourceType = .camera
             self.present(pickerController, animated: true, completion: nil)
         }
         

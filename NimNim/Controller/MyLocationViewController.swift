@@ -74,20 +74,24 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     @objc func keyboardWillShow(notification: NSNotification) {
+        if notification.name == UIResponder.keyboardWillChangeFrameNotification {
+            isHeightAdded = false
+            addedHeight = 0
+        }
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             if !isHeightAdded {
-                let currentHeight = locationTableView.contentSize.height
-                addedHeight = keyboardSize.height
-                locationTableView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: currentHeight + addedHeight)
-                isHeightAdded = true
+                if !isHeightAdded {
+                    addedHeight = keyboardSize.height
+                    locationTableView.contentInset = UIEdgeInsets(top: locationTableView.contentInset.top, left: locationTableView.contentInset.left, bottom: addedHeight + 132, right: locationTableView.contentInset.right)
+                    isHeightAdded = true
+                }
             }
         }
     }
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if isHeightAdded {
-            let currentHeight = locationTableView.contentSize.height
-            locationTableView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: currentHeight - addedHeight)
+            locationTableView.contentInset = UIEdgeInsets(top: locationTableView.contentInset.top, left: locationTableView.contentInset.left, bottom: 132, right: locationTableView.contentInset.right)
             isHeightAdded = false
         }
     }
