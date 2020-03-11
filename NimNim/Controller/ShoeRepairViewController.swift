@@ -25,6 +25,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         NavigationManager.shared.push(viewController: secondViewController)
         secondViewController?.delegate = self
     }
+    
     // we have created the push function and also created first controller as the delegate of the  first.
     
     override func viewDidLayoutSubviews() {
@@ -59,6 +60,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
             basketLabel.isHidden = true
         }
     }
+    
     func editShoeRepairTask(withTask taskModel: TaskModel?, withindex indexPath: IndexPath) {
         if let taskModel = taskModel  {
             serviceModel?.tasks?[indexPath.section] = taskModel

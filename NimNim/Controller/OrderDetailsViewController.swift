@@ -203,10 +203,11 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             if let service = service , rushStatus > 0 {
             return service.count + 1
             }
-            }
             else if let service = service{
                 return service.count
             }
+            }
+            
         }
         else if section == 1 {
             if orderModel?.couponCode?.discount != nil
@@ -251,34 +252,8 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                 
             }
             if let serviceItem = service?.first {
-                if var pickUpTime = serviceItem.pickUpTime, let pickUpDate = serviceItem.pickupDate {
-                    if pickUpTime == "07:00" {
-                        pickUpTime = "7AM - 9AM"
-                    }else if pickUpTime == "09:00" {
-                        pickUpTime = "9AM - 11AM"
-                    }else if pickUpTime == "11:00" {
-                        pickUpTime = "11AM - 1PM"
-                    }else if pickUpTime == "04:00" {
-                        pickUpTime = "4PM - 6PM"
-                    }else if pickUpTime == "06:00" {
-                        pickUpTime = "6PM - 8PM"
-                    }else if pickUpTime == "08:00" {
-                        pickUpTime =  "8PM - 10PM"
-                    }
-                    
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-                    if let finalDate = dateFormatter.date(from:pickUpDate) {
-                        let calendar = Calendar.current
-                        let components = calendar.dateComponents([.year, .month,.day], from: finalDate)
-                        if let DateTobeShown = calendar.date(from:components){
-                            let formatter = DateFormatter()
-                            formatter.dateFormat = "dd MMM, YYYY"
-                            headerView.pickUpDateAndTime.text = "\(pickUpTime)   \(formatter.string(from: DateTobeShown))"
-                        }
-                        
-                    }
+                if let pickUpTime = serviceItem.pickUpTime, let pickUpDate = serviceItem.pickupDate {
+                    headerView.pickUpDateAndTime.text = "\(pickUpTime) \(pickUpDate)"
                 }
             }
             headerView.orderCreatedDate.text = date
@@ -312,35 +287,8 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OrderDetailsCollectionViewCell", for: indexPath) as! OrderDetailsCollectionViewCell
             if let serviceItem = service?[indexPath.item] {
                 cell.serviceName.text = serviceItem.name
-                if var dropOffTime = serviceItem.dropOffTime, let dropOffDate = serviceItem.dropOffDate {
-                    if dropOffTime == "07:00" {
-                        dropOffTime = "7AM - 9AM"
-                    }else if dropOffTime == "09:00" {
-                        dropOffTime = "9AM - 11AM"
-                    }else if dropOffTime == "11:00" {
-                        dropOffTime = "11AM - 1PM"
-                    }else if dropOffTime == "04:00" {
-                        dropOffTime = "4PM - 6PM"
-                    }else if dropOffTime == "06:00" {
-                        dropOffTime = "6PM - 8PM"
-                    }else if dropOffTime == "08:00" {
-                        dropOffTime =  "8PM - 10PM"
-                    }
-                    
-                    let dateFormatter = DateFormatter()
-                    dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-                    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-                    if let finalDate = dateFormatter.date(from:dropOffDate) {
-                        let calendar = Calendar.current
-                        let components = calendar.dateComponents([.year, .month,.day], from: finalDate)
-                        if let DateTobeShown = calendar.date(from:components){
-                            let formatter = DateFormatter()
-                            formatter.dateFormat = "dd MMM, YYYY"
-                            cell.dropOffGTimeSlotDate.text =  "\(dropOffTime)  \(formatter.string(from: DateTobeShown))"
-                        }
-                        
-                    }
-                    
+                if let dropOffTime = serviceItem.dropOffTime, let dropOffDate = serviceItem.dropOffDate {
+                    cell.dropOffGTimeSlotDate.text =  "\(dropOffTime)  \(dropOffDate)"
                 }
                 if let serviceCost = serviceItem.totalCost {
                     cell.amountPayable.text = "$\(serviceCost)"

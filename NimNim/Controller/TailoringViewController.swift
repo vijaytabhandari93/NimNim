@@ -65,6 +65,8 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
         }
         return "$\(price)"
         
+    
+        
     }
     // the task which is created in the second view controller is added in the first view controller.
     
@@ -99,9 +101,9 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
         shoeRepairCollectionView.dataSource = self
         setupCartCountLabel()
         setupScreen()
-        totalPrice.text = serviceModel?.servicePrice
         
     }
+    
     func setupScreen(){
         if justNimNimItSelected{
             addToCart.backgroundColor = Colors.nimnimGreen
@@ -115,6 +117,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
                 priceTotalbackgroundView.constant = 48
                 justNimNimIt.isHidden = true
                 totalPrice.isHidden = false
+                priceValue.text = getPriceOfService()
                 priceValue.isHidden = false
                 addNewService.isHidden = false
                 
@@ -137,7 +140,6 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
-        priceTotalBackgroundView.addTopShadowToView()
         setupScreen()
         setupCartCountLabel()
     }

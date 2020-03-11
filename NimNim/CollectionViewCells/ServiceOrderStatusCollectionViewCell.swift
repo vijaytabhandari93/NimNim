@@ -39,6 +39,7 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
                 }
                 if price == 0 {
                     amount.text = "@Pricelist"
+                    
                 }
                 else {
                     amount.text = "$\(price)"

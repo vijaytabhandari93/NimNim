@@ -29,6 +29,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
             let price = "@Pricelist"
             priceLabel.text = price
             serviceModel?.servicePrice = price
+   
  }
         else {
             if let price = serviceModel?.calculatePriceForService() {

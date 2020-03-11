@@ -151,8 +151,8 @@ class ServiceModel:NSObject, Mappable, Codable {
         needHangers <- map["needHangers"]
         pickupDate <- map["pickupDate"]
         dropOffDate <- map["dropOffDate"]
-        pickUpTime <- map["pickUpTime"]
-        dropOffTime <- map["dropOffTime"]
+        pickUpTime <- map["pickupSlot"]
+        dropOffTime <- map["dropOffSlot"]
         turnAroundTime <- map["turn_around_time"]
         servicePrice <- map["servicePrice"]
         tasks <- map["tasks"]
@@ -253,6 +253,7 @@ class ServiceModel:NSObject, Mappable, Codable {
     }
     
     func productQuantity() -> Int {
+        
         if let alias = alias {
             if let value = Alias(rawValue: alias) {
                 switch value {

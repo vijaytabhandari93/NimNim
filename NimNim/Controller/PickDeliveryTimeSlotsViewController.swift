@@ -90,6 +90,18 @@ UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollecti
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell{
         let turnAroundTimeOfSection = sortedDropKeys[indexPath.section]
+        var x =  (Int(turnAroundTimeOfSection) ?? 24)/24
+        var y = ""
+        if x  == 0 {
+        y = "12 hours."
+        }
+        else if x == 1 {
+        y  = "1 day."
+        }
+        else {
+        y = "\(x) days."
+            
+        }
         let arrayOfServiceModelOfSection = dropOffDictionary[turnAroundTimeOfSection]
         
         if indexPath.item == 0 {
@@ -99,7 +111,7 @@ UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollecti
                 if let arrayOfServiceNamesInThisSection = arrayOfServiceModelOfSection.map ({$0.name}) as? [String] {
                     print(arrayOfServiceNamesInThisSection)
                     let servicesString = arrayOfServiceNamesInThisSection.joined(separator: ", ")
-                    cell.label.text = "Select dropoff date and time slot for \(servicesString) .Available after \(turnAroundTimeOfSection) hours."
+                    cell.label.text = "Select dropoff date and time slot for \(servicesString) .Available after \(y)"
                 }
             }
             return cell

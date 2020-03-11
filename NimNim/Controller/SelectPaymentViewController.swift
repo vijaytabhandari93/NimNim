@@ -34,10 +34,14 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        dateFormatterForDate.dateFormat = "dd MMM YYYY"
-        dateFormatterForTime.dateFormat = "hh:mm"
+        dateFormatterForDate.dateFormat = "yyyy-MM-dd"
+        dateFormatterForDate.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatterForDate.timeZone = .current
+        dateFormatterForTime.dateFormat = "ha"
+        dateFormatterForTime.timeZone = .current
+        dateFormatterForTime.locale = Locale(identifier: "en_US_POSIX")
         dateFormatterForPUDODates.locale = Locale(identifier: "en_US_POSIX")
-        dateFormatterForPUDODates.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"//ashish
+        dateFormatterForPUDODates.dateFormat = "yyyy-MM-dd"//ashish
         fetchSavedCards()
         registerCells()
         selectPaymentCollectionView.delegate = self
@@ -107,21 +111,17 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
     
     func setupPickupDateTimeInServices() {
         if let pickupDate = selectedPickupSlot {
-            let startPickupDate = dateFormatterForPUDODates.string(from: pickupDate)
-            var endPickupDate:String?
-            if let finalEndPUDate = dateValue(byaddingHours: 2, toDate: pickupDate) {
-                endPickupDate = dateFormatterForPUDODates.string(from: finalEndPUDate)
-            }
             let date = dateFormatterForDate.string(from: pickupDate)
             let time = dateFormatterForTime.string(from: pickupDate)
+            var pickupEndTime = ""
+            if let finalEndPUDate = dateValue(byaddingHours: 2, toDate: pickupDate) {
+                pickupEndTime = dateFormatterForTime.string(from: finalEndPUDate)
+            }
+            let finalTimeString = time + " - " + pickupEndTime
             if let services = cartModel?.services {
                 for service in services {
                     service.pickupDate = date
-                    service.pickUpTime = time
-                    service.pickupStartDate = startPickupDate
-                    if let endDate = endPickupDate{
-                        service.pickupEndDate = endDate
-                    }
+                    service.pickUpTime = finalTimeString
                 }
             }
         }
@@ -139,23 +139,20 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                     let selectedSlot = slots[selectedSlotIndexPaths[i].item]
                     let date = dateFormatterForDate.string(from: selectedSlot)
                     let time = dateFormatterForTime.string(from: selectedSlot)
-                    let startDateForDropOff = dateFormatterForPUDODates.string(from: selectedSlot)
                     
-                    var endDropOffDate:String?
-                    if let finalEndPUDate = dateValue(byaddingHours: 2, toDate: selectedSlot) {
-                        endDropOffDate = dateFormatterForPUDODates.string(from: finalEndPUDate)
+                    var dropOffEndTime = ""
+                    if let finalEndDODate = dateValue(byaddingHours: 2, toDate: selectedSlot) {
+                        dropOffEndTime = dateFormatterForTime.string(from: finalEndDODate)
                     }
+                    let finalTimeString = time + " - " + dropOffEndTime
+
                     if let services = arrayOfServices {
                         for service in services  {
                             if let cartServices = cartModel?.services {
                                 for cartService in cartServices {
                                     if service.alias == cartService.alias {
                                         cartService.dropOffDate = date
-                                        cartService.dropOffTime = time
-                                        cartService.dropOffStartDate = startDateForDropOff
-                                        if let endDate = endDropOffDate {
-                                            cartService.dropOffEndDate = endDate
-                                        }
+                                        cartService.dropOffTime = finalTimeString
                                     }
                                 }
                             }

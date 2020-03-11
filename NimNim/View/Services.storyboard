@@ -2861,10 +2861,10 @@
                         <outlet property="justNimNimIt" destination="MsU-iN-VYs" id="bpZ-mv-BeF"/>
                         <outlet property="priceTotalBackgroundView" destination="0mP-ef-zK3" id="OaK-px-zle"/>
                         <outlet property="priceTotalbackgroundView" destination="vqP-fm-vF5" id="kT3-hM-ixB"/>
-                        <outlet property="priceValue" destination="3xh-BK-iE0" id="IDW-ux-j9E"/>
+                        <outlet property="priceValue" destination="3xh-BK-iE0" id="jKX-C1-U8k"/>
                         <outlet property="shoeRepairCollectionView" destination="JMy-cv-yWc" id="VCP-ph-MJi"/>
                         <outlet property="shoeRepairLabel" destination="cpL-gs-2nr" id="lyG-Qg-6ZT"/>
-                        <outlet property="totalPrice" destination="YxM-7q-uoI" id="7fA-sn-FEF"/>
+                        <outlet property="totalPrice" destination="YxM-7q-uoI" id="QdV-bA-x4i"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Dv-vt-6Q6" userLabel="First Responder" sceneMemberID="firstResponder"/>

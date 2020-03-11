@@ -125,7 +125,7 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
     
     @objc func keyboardWillHide(notification: NSNotification) {
         if isHeightAdded {
-            shoeRepairCollectionView.contentInset = UIEdgeInsets(top: shoeRepairCollectionView.contentInset.top, left: shoeRepairCollectionView.contentInset.left, bottom: 0, right: shoeRepairCollectionView.contentInset.right)
+            shoeRepairCollectionView.contentInset = UIEdgeInsets(top: shoeRepairCollectionView.contentInset.top, left: shoeRepairCollectionView.contentInset.left, bottom: shoeRepairCollectionView.contentInset.bottom - addedHeight, right: shoeRepairCollectionView.contentInset.right)
             isHeightAdded = false
         }
     }
