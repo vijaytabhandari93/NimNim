@@ -118,7 +118,15 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     }
     func setupAddToCartButton(){
       
-            addToCart.setTitle("Add to Cart", for: .normal)
+            if let alias = serviceModel?.alias {
+                if checkIfInCart(withAlias: alias) {
+                    addToCart.setTitle("Done", for: .normal)
+                }else {
+                    addToCart.setTitle("Add to Cart", for: .normal)
+                }
+            }else {
+                addToCart.setTitle("Add to Cart", for: .normal)
+            }
         
     }
     
@@ -195,7 +203,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     }
     
     @IBAction func addToCartTapped(_ sender: Any) {
-        if addToCart.titleLabel?.text == "CheckOut" {
+        if addToCart.titleLabel?.text == "Check Out" {
             //print("abcd")
             let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
             let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
@@ -301,7 +309,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
             if serviceModel.validateAddToCartForService() {
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
-                self?.addToCart.setTitle("CheckOut", for: .normal)
+                self?.addToCart.setTitle("Check Out", for: .normal)
                 self?.IsAddToCartTapped = true
                 self?.houseHoldCollectionView.reloadData()
                 if let response = response as? [String:Any] {
@@ -347,7 +355,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
                            params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
                            print(JSON(params))
                            NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-                               self?.addToCart.setTitle("CheckOut", for: .normal)//alamofire is conveerting dictionary to JSON
+                               self?.addToCart.setTitle("Check Out", for: .normal)//alamofire is conveerting dictionary to JSON
                                self?.IsAddToCartTapped = true
                                self?.houseHoldCollectionView.reloadData()
                                if let response = response as? [String:Any] {

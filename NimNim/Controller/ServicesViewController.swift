@@ -92,8 +92,15 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func setupAddToCartButton(){
-       addToCart.setTitle("Add to Cart", for: .normal)
-
+        if let alias = serviceModel?.alias {
+            if checkIfInCart(withAlias: alias) {
+                addToCart.setTitle("Done", for: .normal)
+            }else {
+                addToCart.setTitle("Add to Cart", for: .normal)
+            }
+        }else {
+            addToCart.setTitle("Add to Cart", for: .normal)
+        }
     }
     
     //MARK:Gradient Setting
@@ -149,7 +156,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     @IBAction func addToCart(_ sender: Any) {
-        if addToCart.titleLabel?.text == "CheckOut" {
+        if addToCart.titleLabel?.text == "Check Out" {
             let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
             let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
             NavigationManager.shared.push(viewController: cartVC)
@@ -172,7 +179,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             if serviceModel.validateAddToCartForService() {
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
-                self?.addToCart.setTitle("CheckOut", for: .normal)
+                self?.addToCart.setTitle("Check Out", for: .normal)
                 self?.IsAddToCartTapped = true
                 self?.prefernces.reloadData()
                 if let response = response as? [String:Any] {
@@ -218,7 +225,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                            params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
                            print(JSON(params))
                            NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-                               self?.addToCart.setTitle("CheckOut", for: .normal)//alamofire is conveerting dictionary to JSON
+                               self?.addToCart.setTitle("Check Out", for: .normal)//alamofire is conveerting dictionary to JSON
                                self?.IsAddToCartTapped = true
                                self?.prefernces.reloadData()
                                if let response = response as? [String:Any] {

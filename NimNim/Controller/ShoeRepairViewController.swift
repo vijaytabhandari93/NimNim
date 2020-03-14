@@ -157,7 +157,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     @IBAction func addToCartTapped(_ sender: Any) {
         let params = serviceModel?.toJSON()
         print(JSON(params))
-        if addToCart.titleLabel?.text == "CheckOut" {
+        if addToCart.titleLabel?.text == "Check Out" {
             let orderStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
             let cartVC = orderStoryboard.instantiateViewController(withIdentifier: "OrderReviewViewController") as? OrderReviewViewController
             NavigationManager.shared.push(viewController: cartVC)
@@ -176,7 +176,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
             print(JSON(modelToDictionary))
             activityIndicator.startAnimating()
             NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
-                self?.addToCart.setTitle("CheckOut", for: .normal)
+                self?.addToCart.setTitle("Check Out", for: .normal)
                 self?.IsAddToCartTapped = true
                 self?.shoeRepairCollectionView.reloadData()
                 if let response = response as? [String:Any] {
@@ -211,7 +211,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
             params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
             print(JSON(params))
             NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-                self?.addToCart.setTitle("CheckOut", for: .normal)//alamofire is conveerting dictionary to JSON
+                self?.addToCart.setTitle("Check Out", for: .normal)//alamofire is conveerting dictionary to JSON
                 self?.IsAddToCartTapped = true
                 self?.shoeRepairCollectionView.reloadData()
                 if let response = response as? [String:Any] {
