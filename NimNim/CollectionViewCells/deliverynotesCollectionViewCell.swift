@@ -19,6 +19,9 @@ protocol DeliverynotesCollectionViewCellDelegate:class{
 
 class deliverynotesCollectionViewCell: UICollectionViewCell,UITextViewDelegate {
     
+    @IBOutlet weak var image3: UIImageView!
+    @IBOutlet weak var image2: UIImageView!
+    @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var notes: UITextView!
     @IBOutlet weak var preferenceSelected: UILabel!
     @IBOutlet weak var uploadImage: UIImageView!
@@ -42,13 +45,43 @@ class deliverynotesCollectionViewCell: UICollectionViewCell,UITextViewDelegate {
         notes.textContainerInset = UIEdgeInsets(top: 18, left: 20, bottom: 18, right: 20)
     }
     
-    func configureCell() {
+    func configureCell(withUploadedImages uploadedImages:[String]?) {
+        image1.alpha = 0
+        image2.alpha = 0
+        image3.alpha = 0
         if let pref = UserDefaults.standard.object(forKey: UserDefaultKeys.pickUpDropOfPreferences) as? String  {
             preferenceSelected.text = pref
             preferenceSelected.textColor = Colors.nimnimGreen
         }else {
             preferenceSelected.text = "Please select your preference"
             preferenceSelected.textColor = Colors.nimnimGrey
+        }
+        
+        if let uploadedImages = uploadedImages {
+            if uploadedImages.count > 0 {
+                let image = uploadedImages[0]
+                if let urlValue = URL(string: image)
+                {
+                    image1.alpha = 1
+                    image1.kf.setImage(with: urlValue)
+                }
+            }
+            if uploadedImages.count > 1 {
+                let image = uploadedImages[1]
+                if let urlValue = URL(string: image)
+                {
+                    image2.alpha = 1
+                    image2.kf.setImage(with: urlValue)
+                }
+            }
+            if uploadedImages.count > 2 {
+                let image = uploadedImages[2]
+                if let urlValue = URL(string: image)
+                {
+                    image3.alpha = 1
+                    image3.kf.setImage(with: urlValue)
+                }
+            }
         }
     }
 

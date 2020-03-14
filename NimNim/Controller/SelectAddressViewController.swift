@@ -49,6 +49,7 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
                     self?.cartModel?.deliveryRelatedUploadedImages.append(imagePath)
                     }
             }
+            self?.selectAddressCollectionView.reloadData()
             self?.activityIndicator.stopAnimating()
             
         }, withProgress: { (progress) in
@@ -287,7 +288,7 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
         else if(indexPath.item == (numberOfItems  - 1)) {
             let savedAddressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "deliverynotesCollectionViewCell", for: indexPath) as! deliverynotesCollectionViewCell
             savedAddressCell.delegate = self
-            savedAddressCell.configureCell()
+            savedAddressCell.configureCell(withUploadedImages: cartModel?.deliveryRelatedUploadedImages)
             return savedAddressCell
         }
         else {
@@ -371,9 +372,9 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
         else if(indexPath.item == (numberOfItems  - 2)) {
             return CGSize(width: collectionView.frame.size.width, height:70)
         }
-            else if(indexPath.item == (numberOfItems  - 1)) {
-                return CGSize(width: collectionView.frame.size.width, height:175)
-            }
+        else if(indexPath.item == (numberOfItems  - 1)) {
+            return CGSize(width: collectionView.frame.size.width, height:248)
+        }
         else
             
         {
@@ -434,13 +435,13 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
             
             let label =  UILabel(frame: CGRect(x: 0, y: 0, width: collectionView.frame.size.width - 40, height: CGFloat.greatestFiniteMagnitude))
             
-                      label.text = finalAddressString
-                      label.numberOfLines = 0
-                      label.font = Fonts.medium14
-                      label.sizeToFit()
-                      let h: CGFloat = label.frame.size.height
-                      print(h)
-                      return CGSize.init(width:collectionView.frame.size.width, height : h+96)
+            label.text = finalAddressString
+            label.numberOfLines = 0
+            label.font = Fonts.medium14
+            label.sizeToFit()
+            let h: CGFloat = label.frame.size.height
+            print(h)
+            return CGSize.init(width:collectionView.frame.size.width, height : h+96)
         }
     }
     

@@ -54,10 +54,9 @@ class WalletViewController:UIViewController,UICollectionViewDelegate,UICollectio
     }
     
     
-    
-    
     //MARK:Gradient Setting
-    override func viewWillAppear(_ animated: Bool){
+    override func viewWillAppear(_ animated: Bool)
+    {
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
         fetchWalletHistory()
@@ -76,14 +75,17 @@ class WalletViewController:UIViewController,UICollectionViewDelegate,UICollectio
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
-    { if indexPath.item == 0  {
+    { if indexPath.item == 0
+    {
         return CGSize(width: collectionView.frame.size.width, height:70)
     }
-    else   {
-        return CGSize(width: collectionView.frame.size.width, height:64)
-        }
+    else
+    {
+    return CGSize(width: collectionView.frame.size.width, height:64)
+    }
         
     }
+    
     func fetchWalletHistory(){
         activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.wallet, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
@@ -148,6 +150,12 @@ class WalletViewController:UIViewController,UICollectionViewDelegate,UICollectio
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "WalletTransactionCollectionViewCell", for: indexPath) as! WalletTransactionCollectionViewCell
             if let amount  =  walletModel?.data?[indexPath.item - 1].amount {
                 cell.amount.text =  "$\(amount)"
+                if amount > 0  {
+                    cell.amount.textColor  =  .green
+                    }
+                else {
+                    cell.amount.textColor  =  .red
+                }
             }
             var dateRecieved = walletModel?.data?[indexPath.item - 1].created_at
             if let date = dateRecieved
