@@ -18,7 +18,6 @@ class NavigationManager {
         let loginSignupStoryboard = UIStoryboard(name: "LoginSignup", bundle: nil)
         baseNavigationController = loginSignupStoryboard.instantiateViewController(withIdentifier: "NavigationController") as! UINavigationController
         baseNavigationController?.isNavigationBarHidden = true
-        
         //This will be the conditional part in future...
         if let vc = fetchInitialVC(){
             baseNavigationController?.viewControllers = [vc] // This is to setup the root view controller of baseNavigationController
