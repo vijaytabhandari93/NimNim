@@ -74,7 +74,15 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         }
         setupAddToCartButton()
         setupCartCountLabel()
+        if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
+            defaultStateJustNimNimIt = isNimNimItSelected
+            setupNimNimItButton()
+        }else {
+            defaultStateJustNimNimIt = false
+            setupNimNimItButton()
+        }
         addObservers()
+        setupPrice()
     }
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
@@ -175,22 +183,26 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         }
         
     }
-    @IBAction func justNimNimIt(_ sender: Any) {
-        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
+    
+    func setupNimNimItButton() {
         if defaultStateJustNimNimIt {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
-  
+            serviceModel?.isSelectedForNimNimIt = true
         }
         else
         {
             justNimNimIt.backgroundColor = .white
             justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.regularFont14
-            
-            
+            serviceModel?.isSelectedForNimNimIt = false
         }
+    }
+    
+    @IBAction func justNimNimIt(_ sender: Any) {
+        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
+        setupNimNimItButton()
         setupPrice()
         houseHoldCollectionView.reloadData()
     }

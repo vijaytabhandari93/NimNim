@@ -51,6 +51,13 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         }
         setupAddToCartButton()
         setupCartCountLabel()
+        if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
+            justNimNimItSelected = isNimNimItSelected
+            setupNimNimItButton()
+        }else {
+            justNimNimItSelected = false
+            setupNimNimItButton()
+        }
     }
     
     func addObservers() {
@@ -136,13 +143,13 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         
     }
     
-    @IBAction func justNimNimIt(_ sender: Any) {
-        justNimNimItSelected = !justNimNimItSelected
+    func setupNimNimItButton() {
         if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
             serviceModel?.setupNimNimItForWashAndFold()
+            serviceModel?.isSelectedForNimNimIt = true
         }
         else
         {
@@ -150,8 +157,13 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.regularFont14
             serviceModel?.undosetupNimNimItForWashAndFold()
-            
+            serviceModel?.isSelectedForNimNimIt = false
         }
+    }
+    
+    @IBAction func justNimNimIt(_ sender: Any) {
+        justNimNimItSelected = !justNimNimItSelected
+        setupNimNimItButton()
         prefernces.reloadData()
     }
     

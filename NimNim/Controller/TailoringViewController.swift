@@ -100,6 +100,13 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
         shoeRepairCollectionView.delegate = self
         shoeRepairCollectionView.dataSource = self
         setupCartCountLabel()
+        if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
+            justNimNimItSelected = isNimNimItSelected
+            setupNimNimItButton()
+        }else {
+            justNimNimItSelected = false
+            setupNimNimItButton()
+        }
         setupScreen()
         if let description = serviceModel?.descrip {
             descriptionLabel.text = "\(description)"
@@ -240,25 +247,26 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
         }
     }
     
-    
-    
-    @IBAction func justNimNimIt(_ sender: Any) {
-        
-        justNimNimItSelected = !justNimNimItSelected
+    func setupNimNimItButton() {
         if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
-            
+            serviceModel?.isSelectedForNimNimIt = true
         }
         else
         {
             justNimNimIt.backgroundColor = .white
             justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.regularFont14
-            
-            
+            serviceModel?.isSelectedForNimNimIt = false
         }
+    }
+    
+    @IBAction func justNimNimIt(_ sender: Any) {
+        
+        justNimNimItSelected = !justNimNimItSelected
+        setupNimNimItButton()
         setupScreen()
         shoeRepairCollectionView.reloadData()
     }

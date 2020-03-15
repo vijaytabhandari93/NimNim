@@ -162,10 +162,9 @@ class ServiceModel:NSObject, Mappable, Codable {
         dropOffEndDate <- map["dropOffEndDate"]
         totalCost <- map["total_cost"]
         weight <- map["weight"]
+        isSelectedForNimNimIt <- map["isSelectedForNimNimIt"]
     }
-    
-    
-    
+
     func getMaleItems() -> [ItemModel] {
         var maleItems:[ItemModel] = []  
         if let items = items, items.count > 0 {

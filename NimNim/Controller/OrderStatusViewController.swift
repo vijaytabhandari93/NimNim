@@ -26,13 +26,13 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
         trackOrderCollectionViiew.dataSource = self
         trackOrderCollectionViiew.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 100, right: 0)
         registerCells()
-        fetchOrderHistory()
         
         // Do any additional setup after loading the view.
     }
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        fetchOrderHistory()
         applyHorizontalNimNimGradient()
     }
     

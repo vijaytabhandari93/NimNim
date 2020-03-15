@@ -176,6 +176,13 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         setupAddToCartButton()
         setupCartCountLabel()
         addObservers()
+        if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
+            defaultStateJustNimNimIt = isNimNimItSelected
+            setupNimNimItButton()
+        }else {
+            defaultStateJustNimNimIt = false
+            setupNimNimItButton()
+        }
         setupPrice()
     }
     func addObservers() {
@@ -337,20 +344,26 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     @IBAction func previousTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
     }
-    @IBAction func justNimNimIt(_ sender: Any) {
-        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
+    
+    func setupNimNimItButton() {
         if defaultStateJustNimNimIt {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
-            
+            serviceModel?.isSelectedForNimNimIt = true
         }
         else
         {
             justNimNimIt.backgroundColor = .white
             justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.isSelectedForNimNimIt = false
         }
+    }
+    
+    @IBAction func justNimNimIt(_ sender: Any) {
+        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
+        setupNimNimItButton()
         setupPrice()
         dryCleaningCollectionView.reloadData()
     }

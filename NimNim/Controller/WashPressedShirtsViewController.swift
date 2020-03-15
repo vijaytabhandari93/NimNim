@@ -80,15 +80,14 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         }
         
     }
-    @IBAction func justNimNimIt(_ sender: Any) {
-        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
+    
+    func setupNimNimItButton() {
         if defaultStateJustNimNimIt {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
             serviceModel?.setupNimNimItForWashPressedShirts()
-            serviceModel?.numberOfClothes = 0
-
+            serviceModel?.isSelectedForNimNimIt = true
         }
         else
         {
@@ -96,8 +95,13 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
             justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.regularFont14
             serviceModel?.undoSetupNimNimItForWashPressedShirts()
-            
+            serviceModel?.isSelectedForNimNimIt = false
         }
+    }
+    
+    @IBAction func justNimNimIt(_ sender: Any) {
+        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
+        setupNimNimItButton()
         setupPrice()
         WashPressedShirtCollectionView.reloadData()
     }
@@ -402,6 +406,13 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         setupAddToCartButton()
         setupCartCountLabel()
         addObservers()
+        if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
+            defaultStateJustNimNimIt = isNimNimItSelected
+            setupNimNimItButton()
+        }else {
+            defaultStateJustNimNimIt = false
+            setupNimNimItButton()
+        }
         setupPrice()
     }
     func addObservers() {
