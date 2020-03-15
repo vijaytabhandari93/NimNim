@@ -101,7 +101,9 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
         shoeRepairCollectionView.dataSource = self
         setupCartCountLabel()
         setupScreen()
-        
+        if let description = serviceModel?.descrip {
+            descriptionLabel.text = "\(description)"
+        }
     }
     
     func setupScreen(){

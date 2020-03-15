@@ -106,7 +106,9 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         shoeRepairCollectionView.dataSource = self
         setupCartCountLabel()
         setupScreen()
-        
+        if let description = serviceModel?.descrip {
+            descriptionLabel.text = "\(description)"
+        }
     }
     func setupScreen(){
         if justNimNimItSelected{
@@ -122,6 +124,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                 justNimNimIt.isHidden = true
                 totalPrice.isHidden = false
                 priceValue.isHidden = false
+                priceValue.text = getPriceOfService()
                 justNimNimItHeightConstraint.constant = 0
                 addMoreService.isHidden = false
             } else {
