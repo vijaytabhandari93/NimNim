@@ -54,7 +54,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payable Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyA-m7-5UQ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payable Amount" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyA-m7-5UQ">
                         <rect key="frame" x="246.5" y="30.5" width="100.5" height="15"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                         <color key="textColor" red="0.039215686270000001" green="0.023529411760000001" blue="0.18039215689999999" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
@@ -73,36 +73,26 @@
                             <constraint firstAttribute="height" constant="1" id="RGC-dh-30f"/>
                         </constraints>
                     </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="3TZ-GU-eJu">
-                        <rect key="frame" x="57" y="65" width="183" height="69"/>
-                        <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="nwZ-b0-7rq">
-                                <rect key="frame" x="0.0" y="0.0" width="183" height="69"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items Drop Off time and date :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sd-nO-3eW">
-                                        <rect key="frame" x="0.0" y="0.0" width="183" height="15"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.44" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFw-9n-slW">
-                                        <rect key="frame" x="0.0" y="19" width="183" height="50"/>
-                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
-                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.87" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
-                        </subviews>
-                    </stackView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKX-pP-YdH">
-                        <rect key="frame" x="305.5" y="64.5" width="41.5" height="16"/>
-                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items Drop Off time and date :" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5sd-nO-3eW">
+                        <rect key="frame" x="57" y="80" width="183" height="15"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.44" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFw-9n-slW">
+                        <rect key="frame" x="57" y="97" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.87" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKX-pP-YdH">
+                        <rect key="frame" x="308.5" y="80" width="38.5" height="15"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                         <color key="textColor" red="0.039215686274509803" green="0.023529411764705882" blue="0.1803921568627451" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4l-dG-ooV">
-                        <rect key="frame" x="347" y="109" width="0.0" height="0.0"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4l-dG-ooV">
+                        <rect key="frame" x="62" y="97" width="285" height="0.0"/>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.85999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -111,25 +101,29 @@
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="5sd-nO-3eW" firstAttribute="top" secondItem="QOz-Ok-ttb" secondAttribute="bottom" constant="30" id="0GA-Ww-TRj"/>
+                <constraint firstItem="W4l-dG-ooV" firstAttribute="top" secondItem="mKX-pP-YdH" secondAttribute="bottom" constant="2" id="38x-b8-cNx"/>
                 <constraint firstItem="QOz-Ok-ttb" firstAttribute="top" secondItem="kaT-WP-cCO" secondAttribute="bottom" constant="2" id="4t8-xd-wFk"/>
                 <constraint firstItem="aca-Ak-chc" firstAttribute="centerY" secondItem="QOz-Ok-ttb" secondAttribute="centerY" id="B8X-u5-0KT"/>
                 <constraint firstItem="W4l-dG-ooV" firstAttribute="trailing" secondItem="mKX-pP-YdH" secondAttribute="trailing" id="EYk-bg-4c7"/>
+                <constraint firstItem="zFw-9n-slW" firstAttribute="leading" secondItem="5sd-nO-3eW" secondAttribute="leading" id="J5H-sK-o9L"/>
                 <constraint firstItem="kaT-WP-cCO" firstAttribute="leading" secondItem="Itx-8C-e3B" secondAttribute="trailing" constant="20" id="Jfg-ty-shs"/>
-                <constraint firstItem="W4l-dG-ooV" firstAttribute="centerY" secondItem="zFw-9n-slW" secondAttribute="centerY" id="Nk0-S3-wW3"/>
                 <constraint firstAttribute="trailing" secondItem="xyA-m7-5UQ" secondAttribute="trailing" constant="28" id="PjF-gd-94r"/>
                 <constraint firstAttribute="bottom" secondItem="gae-9q-AQn" secondAttribute="bottom" id="RQ8-PK-Xwl"/>
+                <constraint firstItem="zFw-9n-slW" firstAttribute="top" secondItem="5sd-nO-3eW" secondAttribute="bottom" constant="2" id="TUL-YN-jXB"/>
                 <constraint firstItem="kaT-WP-cCO" firstAttribute="top" secondItem="wSo-h0-owV" secondAttribute="top" constant="28" id="VLD-jU-X1l"/>
                 <constraint firstItem="QOz-Ok-ttb" firstAttribute="leading" secondItem="kaT-WP-cCO" secondAttribute="leading" id="XD8-vn-RUh"/>
+                <constraint firstItem="W4l-dG-ooV" firstAttribute="leading" secondItem="zFw-9n-slW" secondAttribute="trailing" constant="5" id="Yp8-cI-x9c"/>
                 <constraint firstItem="aca-Ak-chc" firstAttribute="trailing" secondItem="xyA-m7-5UQ" secondAttribute="trailing" id="ZAr-MZ-7eR"/>
                 <constraint firstItem="gae-9q-AQn" firstAttribute="leading" secondItem="wSo-h0-owV" secondAttribute="leading" constant="28" id="aue-Me-dRo"/>
-                <constraint firstItem="3TZ-GU-eJu" firstAttribute="leading" secondItem="kaT-WP-cCO" secondAttribute="leading" id="c4s-tj-VYg"/>
+                <constraint firstItem="5sd-nO-3eW" firstAttribute="leading" secondItem="QOz-Ok-ttb" secondAttribute="leading" id="fPC-kF-RtY"/>
+                <constraint firstItem="mKX-pP-YdH" firstAttribute="centerY" secondItem="5sd-nO-3eW" secondAttribute="centerY" id="fje-EI-WYi"/>
                 <constraint firstItem="xyA-m7-5UQ" firstAttribute="centerY" secondItem="kaT-WP-cCO" secondAttribute="centerY" id="k6H-xT-Wz1"/>
                 <constraint firstItem="kaT-WP-cCO" firstAttribute="leading" secondItem="wSo-h0-owV" secondAttribute="leading" constant="57" id="m2m-Nc-mL6"/>
-                <constraint firstItem="mKX-pP-YdH" firstAttribute="centerY" secondItem="5sd-nO-3eW" secondAttribute="centerY" id="m4J-Bz-d8o"/>
                 <constraint firstAttribute="trailing" secondItem="gae-9q-AQn" secondAttribute="trailing" constant="28" id="myV-Ba-RfO"/>
                 <constraint firstItem="Itx-8C-e3B" firstAttribute="centerY" secondItem="kaT-WP-cCO" secondAttribute="centerY" id="sD3-XM-0nl"/>
+                <constraint firstItem="mKX-pP-YdH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5sd-nO-3eW" secondAttribute="trailing" constant="10" id="uS1-VT-ONb"/>
                 <constraint firstItem="mKX-pP-YdH" firstAttribute="trailing" secondItem="xyA-m7-5UQ" secondAttribute="trailing" id="uWe-UI-S81"/>
-                <constraint firstItem="3TZ-GU-eJu" firstAttribute="firstBaseline" secondItem="QOz-Ok-ttb" secondAttribute="baseline" constant="30" id="wLr-3p-7LZ"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="m0o-Ld-ZPR"/>
             <size key="customSize" width="238" height="22"/>
@@ -140,7 +134,7 @@
                 <outlet property="serviceName" destination="kaT-WP-cCO" id="aYE-Gc-Oaz"/>
                 <outlet property="serviceStatus" destination="W4l-dG-ooV" id="Rhn-MC-da3"/>
             </connections>
-            <point key="canvasLocation" x="-588" y="-511"/>
+            <point key="canvasLocation" x="-589.13043478260875" y="-511.27232142857139"/>
         </collectionViewCell>
     </objects>
 </document>

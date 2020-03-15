@@ -216,7 +216,9 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             { return 0}
         }else if section == 2 {
             //Wallet
-            return 1
+            if let _ = orderModel?.paidViaWallet {
+                return 1
+            }
         }else if section == 3 {
             //Address
             return 1
