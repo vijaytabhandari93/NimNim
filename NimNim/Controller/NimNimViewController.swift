@@ -190,6 +190,8 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
                 service.isRushDeliverySelected = isRushDeliverySelected
                 service.specialNotes = specialNotes
                 service.uploadedImages = uploadedImages
+                let priceOfService = service.calculatePriceForService()
+                service.servicePrice = priceOfService
                 let jsonDict = service.toJSON()
                 finalArray.append(jsonDict)
             }

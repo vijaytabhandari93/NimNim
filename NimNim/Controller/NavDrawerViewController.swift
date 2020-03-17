@@ -58,6 +58,9 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
         if indexPath.row == 3 {
         pricing()
         }
+        if indexPath.row == 2 {
+        FAQ()
+        }
         if indexPath.row == 0 {
             OrderHistory()
         }
@@ -82,6 +85,13 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
             NavigationManager.shared.push(viewController: pricing)
         
     }
+    func  FAQ(){
+           
+           let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
+           let pricing = servicesStoryboard.instantiateViewController(withIdentifier: "FAQViewController") as? FAQViewController
+               NavigationManager.shared.push(viewController: pricing)
+           
+       }
     func  OrderHistory() {
         
               let servicesStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
@@ -98,5 +108,6 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
               
         
     }
+    
     
 }

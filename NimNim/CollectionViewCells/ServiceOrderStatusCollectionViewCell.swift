@@ -92,7 +92,7 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
                 }
             }
             else if serviceModel.alias == "laundered-shirts" {
-                if serviceModel.servicePrice == "$0" {
+                if serviceModel.servicePrice == "$0.0" {
                             amount.text = "@Pricelist"
                 }  else  {
                     amount.text = serviceModel.servicePrice

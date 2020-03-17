@@ -293,8 +293,12 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                     cell.dropOffGTimeSlotDate.text =  "\(dropOffTime)  \(dropOffDate)"
                 }
                 if let serviceCost = serviceItem.totalCost {
+                    if serviceCost == 0.0 {
+                    cell.amountPayable.text = "@PriceList"
+                    } else{
                     cell.amountPayable.text = "$\(serviceCost)"
-                }else {
+                    }
+              }else {
                     cell.amountPayable.text = nil
                 }
                 cell.configureCell(withModel: serviceItem)

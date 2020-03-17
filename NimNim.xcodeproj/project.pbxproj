@@ -83,6 +83,9 @@
 		AC56671F24102BB700813DE8 /* OnboardingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56671E24102BB700813DE8 /* OnboardingEvents.swift */; };
 		AC56672124102C3F00813DE8 /* AnalyticsEventNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56672024102C3F00813DE8 /* AnalyticsEventNames.swift */; };
 		AC56672324102D5C00813DE8 /* AnalyticsEventProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56672224102D5C00813DE8 /* AnalyticsEventProperties.swift */; };
+		AC57D0D7241F835F007B3037 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC57D0D6241F835F007B3037 /* FAQViewController.swift */; };
+		AC57D0DA241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC57D0D8241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.swift */; };
+		AC57D0DB241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC57D0D9241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.xib */; };
 		AC5938CA2418984B004DAB05 /* AppNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5938C92418984B004DAB05 /* AppNotifications.swift */; };
 		AC5A5169240A5B5900E3BD54 /* JustNimNimInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */; };
 		AC5ADD8D2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5ADD8B2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift */; };
@@ -334,6 +337,9 @@
 		AC56671E24102BB700813DE8 /* OnboardingEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEvents.swift; sourceTree = "<group>"; };
 		AC56672024102C3F00813DE8 /* AnalyticsEventNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventNames.swift; sourceTree = "<group>"; };
 		AC56672224102D5C00813DE8 /* AnalyticsEventProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventProperties.swift; sourceTree = "<group>"; };
+		AC57D0D6241F835F007B3037 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
+		AC57D0D8241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerDescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC57D0D9241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerDescriptionCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5938C92418984B004DAB05 /* AppNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNotifications.swift; sourceTree = "<group>"; };
 		AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JustNimNimInfoViewController.swift; sourceTree = "<group>"; };
 		AC5ADD8B2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoYouHaveACouponCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -672,6 +678,8 @@
 				AC556807240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib */,
 				AC77F95F2410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.swift */,
 				AC77F9602410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.xib */,
+				AC57D0D8241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.swift */,
+				AC57D0D9241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -755,6 +763,7 @@
 				AC5226FB23C71B14002F111F /* OrderDetailsViewController.swift */,
 				AC51847323C85B4E00A45E69 /* NimNimViewController.swift */,
 				AC5E697223CC72BD000DF84E /* PricingViewController.swift */,
+				AC57D0D6241F835F007B3037 /* FAQViewController.swift */,
 				AC5199C823D997B400961C48 /* PriceListViewController.swift */,
 				AC5199CA23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift */,
 				AC12C20723DF11B9002E2A91 /* EmptyCartViewController.swift */,
@@ -961,6 +970,7 @@
 				ACBC96EE2360429B006AC5B6 /* OrderStoryboard.storyboard in Resources */,
 				AC1FFDB22346F1D100930496 /* Proxima Nova Extrabold.otf in Resources */,
 				ACB37264234631C900046FB3 /* ServiceCollectionViewCell.xib in Resources */,
+				AC57D0DB241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.xib in Resources */,
 				AC556809240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.xib in Resources */,
 				AC41CE76235C822F001AC676 /* AddCardCollectionViewCell.xib in Resources */,
 				ACBB819A232E3FAC003DCF77 /* Montserrat-BlackItalic.ttf in Resources */,
@@ -1178,6 +1188,7 @@
 				AC5CA87F23F1985C000D0E39 /* WalletViewController.swift in Sources */,
 				ACF9CD2A235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift in Sources */,
 				AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */,
+				AC57D0D7241F835F007B3037 /* FAQViewController.swift in Sources */,
 				ACF9CD3D2351EB9C00039E6C /* WashPressedShirtsViewController.swift in Sources */,
 				ACB89B4A235DA5E900B74109 /* AllItemsViewController.swift in Sources */,
 				ACFD929C23560C0D0009FB03 /* AllServicesViewController.swift in Sources */,
@@ -1267,6 +1278,7 @@
 				ACFD92BD235ACF060009FB03 /* SavedAddressCollectionViewCell.swift in Sources */,
 				AC52270223C7539E002F111F /* OrderModel.swift in Sources */,
 				AC8CDE3C23264F4500CDFB93 /* SignUpTableViewCell.swift in Sources */,
+				AC57D0DA241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.swift in Sources */,
 				AC202CDD2366A8C200C87CA1 /* SavedCardExpandedStateTwoCollectionViewCell.swift in Sources */,
 				AC16B9B0238FC7A300BC7CD8 /* Card.swift in Sources */,
 				ACFD929E23582D900009FB03 /* ProfileViewController.swift in Sources */,

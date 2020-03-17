@@ -29,28 +29,41 @@ class OrderDetailsCollectionViewCell: UICollectionViewCell {
             serviceName.text = serviceModel.name
             let qty = serviceModel.productQuantity()
             if serviceModel.alias == "shoe-repair" {
-                if qty == 1 {
+                if qty == 0{
+            noOfProducts.text = "Tasks to be counted"
+                               }
+               else if qty == 1 {
                     noOfProducts.text = "\(String(describing: qty)) Shoe Repair Task"
                 }else {
                     noOfProducts.text = "\(String(describing: qty)) Shoe Repair Tasks"
                 }
             }
             else if serviceModel.alias == "tailoring" {
-                if qty == 1 {
+                if qty == 0{
+                noOfProducts.text = "Tasks to be counted"
+                }
+                else if qty == 1 {
                     noOfProducts.text = "\(String(describing: qty)) Tailoring Task"
                 }else {
                     noOfProducts.text = "\(String(describing: qty)) Tailoring Tasks"
                 }
             }
             else if serviceModel.alias == "carpet-cleaning" {
-                    if qty == 1 {
+                if qty == 0{
+                        noOfProducts.text = "Rugs to be counted"
+                    
+                }
+                    else if qty == 1 {
                         noOfProducts.text = "\(String(describing: qty)) Carpet"
                     }else {
                         noOfProducts.text = "\(String(describing: qty)) Carpets"
             }
                 }
                 else if serviceModel.alias == "laundered-shirts" {
-                        if qty == 1 {
+                if qty == 0 {
+                        noOfProducts.text = "Shirts to be counted"
+                }
+                       else if qty == 1 {
                             noOfProducts.text = "\(String(describing: qty)) Shirt"
                         }else {
                             noOfProducts.text = "\(String(describing: qty)) Shirts"
@@ -68,7 +81,10 @@ class OrderDetailsCollectionViewCell: UICollectionViewCell {
                 }
 
             else {
-                if qty == 1 {
+                if qty == 0 {
+                          noOfProducts.text = "To be counted"
+                }
+                else if qty == 1 {
                     noOfProducts.text = "\(String(describing: qty)) Clothes"
                 }else  {
                     noOfProducts.text = "\(String(describing: qty)) Clothes"

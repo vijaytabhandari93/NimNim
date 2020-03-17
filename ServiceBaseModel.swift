@@ -532,7 +532,7 @@ class ServiceModel:NSObject, Mappable, Codable {
                 }
             }
         }
-        return ""
+        return "$0"
     }
     func calculateGenderSpecificPriceForService() -> String {
         if let alias = alias {

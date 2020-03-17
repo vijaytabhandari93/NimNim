@@ -51,7 +51,7 @@
             <connections>
                 <outlet property="label" destination="280-09-BH7" id="QmF-vQ-yY2"/>
             </connections>
-            <point key="canvasLocation" x="-62" y="136"/>
+            <point key="canvasLocation" x="-63" y="14"/>
         </collectionViewCell>
     </objects>
 </document>
