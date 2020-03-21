@@ -47,7 +47,10 @@ class OrderModel : NSObject, Mappable, Codable  {
     var subTotal:Double? // price of services
     var walletPointsApplicable:Double?
     //When submit ticket is tapped on submit ticket screen... you will create an Issue Model and store the concerned type and description in it...and pass this model to Order Details Screen...
-    
+    var deliverycost : Double? //(Number, normal delivery cost)
+    var delivery_charges_waived: Bool? //(Boolean)
+    var delivery_note : String? //(String, This note will be a message to be shown to the user if the admin has waived off his delivery charges)
+    var rush_delivery_note: String?// Additional $20 will be charged
     func mapping(map: Map) {
         updated_at <- map["updated_at"]
         orderStatus <- map["order_status"]
@@ -70,6 +73,10 @@ class OrderModel : NSObject, Mappable, Codable  {
         rushDeliveryCost <- map["rushdeliverycost"]
         subTotal <- map["sub_total"]
         grandTotal <- map["grand_total"]
+        deliverycost <- map["deliverycost"]
+        delivery_charges_waived <- map["delivery_charges_waived"]
+        delivery_note <- map["delivery_note"]
+        rush_delivery_note <- map["rush_delivery_note"]
     }
     func confirmRushRequiredOrNot() ->Int {
         if let services = services {

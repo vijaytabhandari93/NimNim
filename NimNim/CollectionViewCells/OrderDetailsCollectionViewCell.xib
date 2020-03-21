@@ -92,7 +92,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4l-dG-ooV">
-                        <rect key="frame" x="62" y="97" width="285" height="0.0"/>
+                        <rect key="frame" x="347" y="97" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.85999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -113,7 +113,6 @@
                 <constraint firstItem="zFw-9n-slW" firstAttribute="top" secondItem="5sd-nO-3eW" secondAttribute="bottom" constant="2" id="TUL-YN-jXB"/>
                 <constraint firstItem="kaT-WP-cCO" firstAttribute="top" secondItem="wSo-h0-owV" secondAttribute="top" constant="28" id="VLD-jU-X1l"/>
                 <constraint firstItem="QOz-Ok-ttb" firstAttribute="leading" secondItem="kaT-WP-cCO" secondAttribute="leading" id="XD8-vn-RUh"/>
-                <constraint firstItem="W4l-dG-ooV" firstAttribute="leading" secondItem="zFw-9n-slW" secondAttribute="trailing" constant="5" id="Yp8-cI-x9c"/>
                 <constraint firstItem="aca-Ak-chc" firstAttribute="trailing" secondItem="xyA-m7-5UQ" secondAttribute="trailing" id="ZAr-MZ-7eR"/>
                 <constraint firstItem="gae-9q-AQn" firstAttribute="leading" secondItem="wSo-h0-owV" secondAttribute="leading" constant="28" id="aue-Me-dRo"/>
                 <constraint firstItem="5sd-nO-3eW" firstAttribute="leading" secondItem="QOz-Ok-ttb" secondAttribute="leading" id="fPC-kF-RtY"/>

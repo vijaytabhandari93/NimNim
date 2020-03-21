@@ -258,8 +258,8 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
             }
         }
         else if section == 1 {
-            if GetRushStatus() {
-                return 1
+            if let services = cartModel?.services, services.count > 0 {
+                return 1//  for rush status/  delivery-notes
             }
         }
         else {
@@ -282,8 +282,15 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
             return cell
         }else if indexPath.section == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DoYouHaveACouponCollectionViewCell", for: indexPath) as! DoYouHaveACouponCollectionViewCell
+        
+            if GetRushStatus() {
                 cell.doYouHaveACoupon.text = "Rush Delivery is Applicable"
-                cell.chooseCoupon.text  = "Additional $20 will be charged"
+                cell.chooseCoupon.text  = cartModel?.rush_delivery_note?.capitalized
+            } else {
+                cell.doYouHaveACoupon.text = "Delivery Charges"
+                cell.chooseCoupon.text  = cartModel?.delivery_note?.capitalized
+                
+            }
             return cell
         }else {
             if indexPath.item == 0 {
@@ -319,12 +326,10 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         if indexPath.section == 0 {
             return CGSize(width: collectionView.frame.size.width, height:144.5)
         }else if indexPath.section == 1 {
-            if GetRushStatus() {
+        
 
                 return CGSize(width: collectionView.frame.size.width, height:110.5)
-            } else {
-                return CGSize(width: collectionView.frame.size.width, height:0)
-            }
+            
         }
         else {
             if indexPath.item == 0 {

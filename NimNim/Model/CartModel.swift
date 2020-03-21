@@ -24,6 +24,8 @@ class CartModel : NSObject, Mappable, Codable  {
     var deliveryRelatedUploadedImages : [String] =  []
     var deliveryNotes : String?
     var deliveryPreference : String?
+    var delivery_note :  String?  //$4 delivery fee applied on orders below $35,
+    var rush_delivery_note:  String? //Additional $20 will be charged
     
     func mapping(map: Map) {
         orderStatus <- map["order_status"]
@@ -39,5 +41,7 @@ class CartModel : NSObject, Mappable, Codable  {
         deliveryNotes <- map["deliveryNotes"]
         deliveryPreference  <- map["deliveryPreference"]
         deliveryRelatedUploadedImages <- map["deliveryRelatedUploadedImages"]
+        delivery_note <- map["delivery_note"]
+        rush_delivery_note <- map["rush_delivery_note"]
     }
 }
