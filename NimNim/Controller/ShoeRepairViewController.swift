@@ -199,6 +199,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                 }
                 
                 print("success")
+                Events.fireAddedToCart(withType: serviceModel.alias)
                 DispatchQueue.main.async {[weak self] in
                     if let numberOfSections = self?.shoeRepairCollectionView.numberOfSections {
                         let lastSection = numberOfSections - 1
@@ -233,6 +234,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                     self?.setupCartCountLabel()
                 }
                 print("success")
+                Events.fireAddedToCart(withType: serviceModel.alias)
                 DispatchQueue.main.async {[weak self] in
                     if let numberOfSections = self?.shoeRepairCollectionView.numberOfSections {
                         let lastSection = numberOfSections - 1

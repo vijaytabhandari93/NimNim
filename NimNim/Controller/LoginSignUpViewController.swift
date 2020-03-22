@@ -490,6 +490,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 self.setupCartIdInUserDefaults(fromResponse: responseDict)
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
+            OnboardingEvents.fireLoginSuccess(withType: "otp")
             let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
             secondViewController?.screenTypeValue = .pickUpDropOff
@@ -502,6 +503,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+            OnboardingEvents.fireLoginFailure(withType: "otp")
         }
         
     }
@@ -524,6 +526,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 self.setupCartIdInUserDefaults(fromResponse: responseDict)
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
+            OnboardingEvents.fireLoginSuccess(withType: "password")
             let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
             secondViewController?.screenTypeValue = .pickUpDropOff
@@ -536,6 +539,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+            OnboardingEvents.fireLoginFailure(withType: "password")
         }
     }
     
@@ -740,6 +744,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                         //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
                         self.setupCartIdInUserDefaults(fromResponse: responseDict)
                     }
+                    OnboardingEvents.fireSignupSuccess(withType: "form")
                     //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
                     let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
                     let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
@@ -753,6 +758,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                         alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
+                    OnboardingEvents.fireSignupFailure(withType: "form")
                 }
             }
         }
@@ -801,6 +807,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 self.setupCartIdInUserDefaults(fromResponse: responseDict)
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
+            OnboardingEvents.fireLoginSuccess(withType: type)
             let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
             secondViewController?.screenTypeValue = .pickUpDropOff
@@ -813,6 +820,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+            OnboardingEvents.fireLoginFailure(withType: type)
         }
     }
     
@@ -855,6 +863,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 //Read Vijayta - Saving cart id in user defaults so that if the user has a cart then we can straightaway show it's status on the home screen...
                 self.setupCartIdInUserDefaults(fromResponse: responseDict)
             }
+            OnboardingEvents.fireSignupSuccess(withType: type)
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
             let preferencesSB = UIStoryboard(name: "Preferences", bundle: nil)
             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"PickUpDropOffPreferencesViewController") as? PickUpDropOffPreferencesViewController
@@ -868,6 +877,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+            OnboardingEvents.fireSignupFailure(withType: type)
         }
     }
     

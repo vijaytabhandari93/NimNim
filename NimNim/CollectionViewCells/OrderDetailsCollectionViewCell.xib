@@ -91,7 +91,7 @@
                         <color key="textColor" red="0.039215686274509803" green="0.023529411764705882" blue="0.1803921568627451" alpha="0.54000000000000004" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4l-dG-ooV">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4l-dG-ooV">
                         <rect key="frame" x="347" y="97" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.85999999999999999" colorSpace="custom" customColorSpace="calibratedRGB"/>

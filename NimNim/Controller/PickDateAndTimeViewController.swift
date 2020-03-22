@@ -29,7 +29,7 @@ class PickDateAndTimeViewController: UIViewController,UICollectionViewDelegate,U
         let currentSlot = validSlots[selectedSlotIndexPath.item]
         dropVC.selectedPickupSlot = currentSlot// this line is sending  the selected date and time slot to the drop off screen.
         NavigationManager.shared.push(viewController: dropVC)
-        
+        Events.selectedPickup()
     }
     
     @IBAction func previousTapped(_ sender: Any) {

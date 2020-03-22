@@ -132,10 +132,13 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
                 print(responseDict)
                 print("hello")
             }
+            Events.fireAddedAddressSuccess()
             
             self.navigationController?.popViewController(animated: true)
              self.activityIndicator.stopAnimating()
         }) { (error) in
+            
+            Events.fireAddedAddressFailure()
             
             if let error = error as? String {
                 let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)

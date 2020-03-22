@@ -333,6 +333,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
                 }
                 
                 print("success")
+                Events.fireAddedToCart(withType: serviceModel.alias)
                 DispatchQueue.main.async {[weak self] in
                     if let numberOfSections = self?.houseHoldCollectionView.numberOfSections {
                         let lastSection = numberOfSections - 1
@@ -378,6 +379,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
                                    self?.setupCartCountLabel()
                                }
                                print("success")
+                            Events.fireAddedToCart(withType: serviceModel.alias)
                                DispatchQueue.main.async {[weak self] in
                                    if let numberOfSections = self?.houseHoldCollectionView.numberOfSections {
                                        let lastSection = numberOfSections - 1

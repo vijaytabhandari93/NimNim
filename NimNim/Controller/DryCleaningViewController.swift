@@ -499,6 +499,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
                 }
                 
                 print("success")
+                Events.fireAddedToCart(withType: serviceModel.alias)
                 DispatchQueue.main.async {[weak self] in
                     if let numberOfSections = self?.dryCleaningCollectionView.numberOfSections {
                         let lastSection = numberOfSections - 1
@@ -544,6 +545,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
                                    self?.setupCartCountLabel()
                                }
                                print("success")
+                            Events.fireAddedToCart(withType: serviceModel.alias)
                                DispatchQueue.main.async {[weak self] in
                                    if let numberOfSections = self?.dryCleaningCollectionView.numberOfSections {
                                        let lastSection = numberOfSections - 1

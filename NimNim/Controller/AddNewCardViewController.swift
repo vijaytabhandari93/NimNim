@@ -174,7 +174,10 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
             self.navigationController?.popViewController(animated: true)
              self.activityIndicator.stopAnimating()
+            Events.fireAddedCardSuccess()
         }) { (error) in
+            
+            Events.fireAddedCardFailure()
             
             if let error = error as? String {
                 let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
@@ -182,7 +185,7 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
                 print("wrong")
                 self.present(alert, animated: true, completion: nil)
             }
-                   self.activityIndicator.stopAnimating()
+            self.activityIndicator.stopAnimating()
         }
   
     }

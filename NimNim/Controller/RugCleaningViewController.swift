@@ -268,6 +268,7 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
                 }
                 
                 print("success")
+                Events.fireAddedToCart(withType: serviceModel.alias)
                 DispatchQueue.main.async {[weak self] in
                     if let numberOfSections = self?.rugCleaningCollectionView.numberOfSections {
                         let lastSection = numberOfSections - 1
@@ -313,6 +314,7 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
                                    self?.setupCartCountLabel()
                                }
                                print("success")
+                            Events.fireAddedToCart(withType: serviceModel.alias)
                                DispatchQueue.main.async {[weak self] in
                                    if let numberOfSections = self?.rugCleaningCollectionView.numberOfSections {
                                        let lastSection = numberOfSections - 1

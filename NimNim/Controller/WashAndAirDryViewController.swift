@@ -362,7 +362,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
                         self?.setupCartCountLabel()
                     }
                 }
-                
+                Events.fireAddedToCart(withType: serviceModel.alias)
                 print("success")
                 DispatchQueue.main.async {[weak self] in
                     if let numberOfSections = self?.washAndAirDryCollectionView.numberOfSections {
@@ -408,6 +408,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
                                    addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
                                    self?.setupCartCountLabel()
                                }
+                            Events.fireAddedToCart(withType: serviceModel.alias)
                                print("success")
                                DispatchQueue.main.async {[weak self] in
                                    if let numberOfSections = self?.washAndAirDryCollectionView.numberOfSections {

@@ -201,7 +201,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                         self?.setupCartCountLabel()
                     }
                 }
-                
+                Events.fireAddedToCart(withType: serviceModel.alias)
                 print("success")
                 DispatchQueue.main.async {[weak self] in
                     if let numberOfSections = self?.prefernces.numberOfSections {
@@ -247,6 +247,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                                    addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
                                    self?.setupCartCountLabel()
                                }
+                            Events.fireAddedToCart(withType: serviceModel.alias)
                                print("success")
                                DispatchQueue.main.async {[weak self] in
                                    if let numberOfSections = self?.prefernces.numberOfSections {

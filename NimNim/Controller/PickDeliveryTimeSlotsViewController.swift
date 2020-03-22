@@ -55,6 +55,7 @@ UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollecti
         DropVC.sortedDropKeys = sortedDropKeys
         DropVC.dropOffDictionary = dropOffDictionary
         NavigationManager.shared.push(viewController: DropVC)
+        Events.selectedDropOff()
     }
     
     

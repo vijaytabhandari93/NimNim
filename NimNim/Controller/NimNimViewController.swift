@@ -242,6 +242,7 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
                         }
                     }
                 }
+                Events.fireAddedToCart(withType: "NimNimIt")
                 dispatchGroup?.leave()
                 self?.activityIndicator.stopAnimating()
             }) {[weak self] (error) in
@@ -273,6 +274,8 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
                         let selectedServicesBarringFirst = Array(selectedServices.dropFirst()) //  to eliminate first
                         
                         self?.addToCart(withServiceModels: selectedServicesBarringFirst)
+                        
+                        Events.fireAddedToCart(withType: "NimNimIt")
                     }
                 }
                 

@@ -199,6 +199,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
                 }
                 
                 print("success")
+                Events.fireAddedToCart(withType: serviceModel.alias)
                 DispatchQueue.main.async {[weak self] in
                     if let numberOfSections = self?.shoeRepairCollectionView.numberOfSections {
                         let lastSection = numberOfSections - 1
@@ -232,6 +233,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
                     addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
                     self?.setupCartCountLabel()
                 }
+                Events.fireAddedToCart(withType: serviceModel.alias)
                 print("success")
                 DispatchQueue.main.async {[weak self] in
                     if let numberOfSections = self?.shoeRepairCollectionView.numberOfSections {

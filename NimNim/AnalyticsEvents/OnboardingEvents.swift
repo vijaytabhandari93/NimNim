@@ -9,7 +9,7 @@
 import Foundation
 
 class OnboardingEvents {
-    func fireLoginSuccess(withType loginType:String?) {
+    static func fireLoginSuccess(withType loginType:String?) {
         guard let loginType = loginType else {
             return
         }
@@ -20,7 +20,7 @@ class OnboardingEvents {
         FirebaseManager.shared.fireEvent(withName: AnalyticsEventNames.loginSuccess, withProperties: props)
     }
     
-    func fireLoginFailure(withType loginType:String?) {
+    static func fireLoginFailure(withType loginType:String?) {
         guard let loginType = loginType else {
             return
         }
@@ -31,7 +31,7 @@ class OnboardingEvents {
         FirebaseManager.shared.fireEvent(withName: AnalyticsEventNames.loginFailure, withProperties: props)
     }
     
-    func fireSignupSuccess(withType signupType:String?) {
+    static func fireSignupSuccess(withType signupType:String?) {
         guard let signupType = signupType else {
             return
         }
@@ -42,7 +42,7 @@ class OnboardingEvents {
         FirebaseManager.shared.fireEvent(withName: AnalyticsEventNames.signupSuccess, withProperties: props)
     }
     
-    func fireSignupFailure(withType signupType:String?) {
+    static func fireSignupFailure(withType signupType:String?) {
         guard let signupType = signupType else {
             return
         }

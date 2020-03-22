@@ -68,6 +68,9 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
         orderDetailsCollectionView.reloadData()
         fetchSavedCards()
         fetchSavedAddress()
+        if let orderNumber = orderModel?.orderNumber {
+            Events.orderDetailsViewed(withOrderNumber: "\(orderNumber)")
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -195,17 +198,13 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section ==  0 {
             //Services
-//            if let service = service , let rushCharges = orderModel?.rushDeliveryCost, rushCharges > 0 {
-//                return service.count + 1
-//            }
+            //            if let service = service , let rushCharges = orderModel?.rushDeliveryCost, rushCharges > 0 {
+            //                return service.count + 1
+            //            }
             if let orderModel  = orderModel {
-                var rushStatus = orderModel.confirmRushRequiredOrNot()
-            if let service = service , rushStatus > 0 {
-            return service.count + 1
-            }
-            else if let service = service{
-                return service.count
-            }
+                if let service = service{
+                    return service.count + 1
+                }
             }
             
         }
@@ -307,9 +306,28 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             return cell
         }  else if indexPath.section == 0 && indexPath.item == service?.count {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DoYouHaveACouponCollectionViewCell", for: indexPath) as! DoYouHaveACouponCollectionViewCell
-                          cell.doYouHaveACoupon.text = "Rush Delivery is Applicable"
-                          cell.chooseCoupon.text  = "Additional $20 will be charged"
-                      return cell
+            if let orderModel = orderModel {
+                let rushStatus = orderModel.confirmRushRequiredOrNot()
+                if rushStatus == 1 {
+                    cell.doYouHaveACoupon.text = "Rush Delivery is Applicable"
+                    if let rushDeliveryNote = orderModel.rush_delivery_note {
+                        cell.chooseCoupon.text = rushDeliveryNote.capitalized
+                    }
+                }else {
+                    cell.doYouHaveACoupon.text = "Delivery Charges"
+                    if orderModel.delivery_charges_waived == true {
+                        cell.chooseCoupon.text = "We have waived off your delivery charges"
+                    }else {
+                        if let deliveryCost = orderModel.deliverycost {
+                            cell.chooseCoupon.text = "$\(deliveryCost)"
+                        }
+                    }
+                }
+            }
+            
+            cell.chooseCoupon.font = Fonts.semiBold14
+            
+            return cell
         } else if indexPath.section == 1 {
             //Promo
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DoYouHaveACouponCollectionViewCell", for: indexPath) as! DoYouHaveACouponCollectionViewCell

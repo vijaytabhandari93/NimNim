@@ -82,7 +82,7 @@ class OrderModel : NSObject, Mappable, Codable  {
         if let services = services {
             for service in services {
                 if service.isRushDeliverySelected == true {
-                    return 20
+                    return 1
                     break
                 }
             }

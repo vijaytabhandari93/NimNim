@@ -120,6 +120,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         addressMethod.isHidden = true
         fetchCart()
         fetchWalletPoints()
+        Events.cartViewed()
     }
     
     
@@ -291,6 +292,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                 cell.chooseCoupon.text  = cartModel?.delivery_note?.capitalized
                 
             }
+            cell.chooseCoupon.font = Fonts.semiBold14
             return cell
         }else {
             if indexPath.item == 0 {

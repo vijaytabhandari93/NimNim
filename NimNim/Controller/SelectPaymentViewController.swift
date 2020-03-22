@@ -69,6 +69,8 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                 var modelToDictionary = cartModel.toJSON()
                 print(JSON(modelToDictionary))
                 activityIndicator.startAnimating()
+                Events.selectedPayment()
+                Events.placedOrder()
                 NetworkingManager.shared.post(withEndpoint: Endpoints.order, withParams: modelToDictionary, withSuccess: { (response) in
                     if let responseDict = response as? [String:Any] {
                         print("success")
@@ -81,6 +83,7 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                         defaults.removeObject(forKey: UserDefaultKeys.cartAlias)
                         
                     }
+                    Events.orderSuccess()
                     self.activityIndicator.stopAnimating()
                     
                 }) { (error) in
@@ -98,6 +101,7 @@ class SelectPaymentViewController: UIViewController,UICollectionViewDelegate,UIC
                         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                         self.present(alert, animated: true, completion: nil)
                     }
+                    Events.orderFailure()
                 }
             }
         }

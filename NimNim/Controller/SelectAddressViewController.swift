@@ -92,7 +92,7 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
                           alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                           self.present(alert, animated: true, completion: nil)
         }
-
+        Events.selectedAddress()
     }
     
     override func viewDidLoad() {
