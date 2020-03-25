@@ -426,16 +426,23 @@ class ServiceModel:NSObject, Mappable, Codable {
                     }
                     return true
                 case .householdItems:
-                    if servicePrice == "$0"
-                    {
-                        return false
+                    if let items = items {
+                        for item in items {
+                            if item.IfDrycleaned || item.IfLaundered {
+                                if let qty = item.qty, qty > 0 {
+                                    
+                                }else {
+                                    return false
+                                }
+                            }
+                        }
                     }
                     return true
                 case .dryCleaning:
                    if servicePrice == "$0"
-                                 {
-                                     return false
-                                 }
+                    {
+                        return false
+                    }
                    return true
                 case .carpetCleaning:
                     if numberOfClothes == nil {

@@ -112,7 +112,7 @@ UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollecti
                 if let arrayOfServiceNamesInThisSection = arrayOfServiceModelOfSection.map ({$0.name}) as? [String] {
                     print(arrayOfServiceNamesInThisSection)
                     let servicesString = arrayOfServiceNamesInThisSection.joined(separator: ", ")
-                    cell.label.text = "Select dropoff date and time slot for \(servicesString) .Available after \(y)"
+                    cell.label.text = "Select dropoff date and time slot for \(servicesString). Available after \(y)"
                 }
             }
             return cell

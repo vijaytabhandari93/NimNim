@@ -200,6 +200,7 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
                     cell.thirdImage.kf.setImage(with: urlValue)
                 }
             }
+            cell.notesTextBox.text = taskModel?.specialNotes
             return cell
         }
         else {

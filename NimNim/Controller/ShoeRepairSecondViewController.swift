@@ -198,6 +198,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
                     cell.thirdImage.kf.setImage(with: urlValue)
                 }
             }
+            cell.notesTextBox.text = taskModel?.specialNotes
             return cell
         }
         else {

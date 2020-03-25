@@ -101,6 +101,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         }
     }
     
+    var isFirstLoad: Bool = true
     var cartModel : CartModel?
     
     //IBOutlets
@@ -128,8 +129,11 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
-        fetchCart()
+        if !isFirstLoad {
+            fetchCart()
+        }
         orderStatusCollectionView.reloadData()
+        isFirstLoad = false
     }
     //IBActions
     @IBAction func previousTapped(_ sender: Any) {

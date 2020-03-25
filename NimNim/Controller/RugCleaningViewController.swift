@@ -437,6 +437,7 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
                                cell.thirdImage.kf.setImage(with: urlValue)
                            }
                        }
+            cell.notesTextBox.text = serviceModel?.specialNotes
             return cell
         }
         else if section == 2 {

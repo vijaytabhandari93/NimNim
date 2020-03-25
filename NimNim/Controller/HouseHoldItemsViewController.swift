@@ -76,10 +76,10 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         setupCartCountLabel()
         if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
             defaultStateJustNimNimIt = isNimNimItSelected
-            setupNimNimItButton()
+            setupUIForNimNimIt()
         }else {
             defaultStateJustNimNimIt = false
-            setupNimNimItButton()
+            setupUIForNimNimIt()
         }
         addObservers()
         setupPrice()
@@ -184,6 +184,22 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         
     }
     
+    func setupUIForNimNimIt() {
+        if justNimNimItSelected {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            serviceModel?.isSelectedForNimNimIt = true
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.isSelectedForNimNimIt = false
+        }
+    }
+    
     func setupNimNimItButton() {
         if defaultStateJustNimNimIt {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
@@ -210,7 +226,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     @IBAction func infoTapped(_ sender: Any) {
         let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
         jnnvc.titleValue = "Just Nim Nim It For \n HouseHoldItems"
-        jnnvc.descriptionValue = "Press the NimNim button and we will treat your sheets with the best care method!"
+        jnnvc.descriptionValue = "Press the NimNim button and we will treat your household item with the best care method!"
         present(jnnvc, animated: true, completion: nil)
     }
     
@@ -509,6 +525,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
                                    cell.thirdImage.kf.setImage(with: urlValue)
                                }
                            }
+                cell.notesTextBox.text = serviceModel?.specialNotes
                 return cell
             }
             else if section == 3 {

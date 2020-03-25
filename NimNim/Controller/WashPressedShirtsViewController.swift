@@ -81,6 +81,22 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         
     }
     
+    func setupUIForNimNimIt() {
+        if defaultStateJustNimNimIt {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            serviceModel?.isSelectedForNimNimIt = true
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.isSelectedForNimNimIt = false
+        }
+    }
+    
     func setupNimNimItButton() {
         if defaultStateJustNimNimIt {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
@@ -410,10 +426,10 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         addObservers()
         if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
             defaultStateJustNimNimIt = isNimNimItSelected
-            setupNimNimItButton()
+            setupUIForNimNimIt()
         }else {
             defaultStateJustNimNimIt = false
-            setupNimNimItButton()
+            setupUIForNimNimIt()
         }
         setupPrice()
     }
@@ -598,6 +614,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
                     cell.thirdImage.kf.setImage(with: urlValue)
                 }
             }
+            cell.notesTextBox.text = serviceModel?.specialNotes
             return cell
         }
         if section == 3 {

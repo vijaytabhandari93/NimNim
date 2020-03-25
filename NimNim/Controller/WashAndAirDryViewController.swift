@@ -94,9 +94,50 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
             priceLabel.text = priceOfService
             serviceModel?.servicePrice = priceOfService
         }
+        if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
+            justNimNimItSelected = isNimNimItSelected
+            setupUIForNimNimIt()
+        }else {
+            justNimNimItSelected = false
+            setupUIForNimNimIt()
+        }
         setupAddToCartButton()
         setupCartCountLabel()
         addObservers()
+    }
+    
+    func setupUIForNimNimIt() {
+        if justNimNimItSelected {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            serviceModel?.isSelectedForNimNimIt = true
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.isSelectedForNimNimIt = false
+        }
+    }
+    
+    func setupNimNimItButton() {
+        if justNimNimItSelected {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            serviceModel?.setupNimNimItForWashAndFold()
+            serviceModel?.isSelectedForNimNimIt = true
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.undosetupNimNimItForWashAndFold()
+            serviceModel?.isSelectedForNimNimIt = false
+        }
     }
     func addObservers() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)//when keyboard will come , this notification will be called.
@@ -219,21 +260,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     @IBAction func justNimNimItTapped(_ sender: Any) {
         justNimNimItSelected = !justNimNimItSelected
-        if justNimNimItSelected {
-            justNimNimIt.backgroundColor = Colors.nimnimGreen
-            justNimNimIt.setTitleColor(.white, for: .normal)
-            justNimNimIt.titleLabel?.font = Fonts.extraBold16
-            serviceModel?.setupNimNimItForWashAndAirDry()
-
-        }
-        else
-        {
-            justNimNimIt.backgroundColor = .white
-            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
-            justNimNimIt.titleLabel?.font = Fonts.regularFont14
-            serviceModel?.undosetupNimNimItForWashAndAirDry()
-            
-        }
+        setupNimNimItButton()
         washAndAirDryCollectionView.reloadData()
     }
     
@@ -564,6 +591,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
                     cell.thirdImage.kf.setImage(with: urlValue)
                 }
             }
+            cell.notesTextBox.text = serviceModel?.specialNotes
             return cell
         }
         else if section == 2 {

@@ -431,6 +431,7 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
                     cell.thirdImage.kf.setImage(with: urlValue)
                 }
             }
+            cell.notesTextBox.text = specialNotes
             return cell
         }
     }

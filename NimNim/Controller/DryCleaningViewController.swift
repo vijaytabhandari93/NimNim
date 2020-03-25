@@ -131,6 +131,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
                     cell.thirdImage.kf.setImage(with: urlValue)
                 }
             }
+            cell.notesTextBox.text = serviceModel?.specialNotes
             return cell
             
         }
@@ -178,10 +179,10 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         addObservers()
         if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
             defaultStateJustNimNimIt = isNimNimItSelected
-            setupNimNimItButton()
+            setupUIForNimNimIt()
         }else {
             defaultStateJustNimNimIt = false
-            setupNimNimItButton()
+            setupUIForNimNimIt()
         }
         setupPrice()
     }
@@ -343,6 +344,22 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     @IBAction func previousTapped(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    func setupUIForNimNimIt() {
+        if justNimNimItSelected {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            serviceModel?.isSelectedForNimNimIt = true
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.isSelectedForNimNimIt = false
+        }
     }
     
     func setupNimNimItButton() {

@@ -151,7 +151,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     
     func putAddress(streetAddress : String?, houseBlockNumber : String?,city : String?,state : String?,zipcode : String?,enterLandmark : String?,label:String?,id:String?){
-        guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let enterLandmark = enterLandmark, let label = label, let id = id else {
+        guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let label = label, let id = id else {
             return
         }
         
@@ -161,7 +161,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             AddAddress.city:city,
             AddAddress.state:state,
             AddAddress.zipcode:zipcode,
-            AddAddress.enterLandmark:enterLandmark,
+            AddAddress.enterLandmark:enterLandmark ?? "",
             AddAddress.label:label,
             AddAddress.id:id
         ]

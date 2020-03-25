@@ -53,10 +53,10 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         setupCartCountLabel()
         if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
             justNimNimItSelected = isNimNimItSelected
-            setupNimNimItButton()
+            setupUIForNimNimIt()
         }else {
             justNimNimItSelected = false
-            setupNimNimItButton()
+            setupUIForNimNimIt()
         }
     }
     
@@ -141,6 +141,22 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             NavigationManager.shared.push(viewController: orderReviewVC)
         }
         
+    }
+    
+    func setupUIForNimNimIt() {
+        if justNimNimItSelected {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            serviceModel?.isSelectedForNimNimIt = true
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.isSelectedForNimNimIt = false
+        }
     }
     
     func setupNimNimItButton() {
@@ -434,6 +450,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                                cell.thirdImage.kf.setImage(with: urlValue)
                            }
                        }
+            cell.notesTextBox.text = serviceModel?.specialNotes
             return cell
         }else if section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell

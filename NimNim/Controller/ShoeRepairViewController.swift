@@ -107,10 +107,10 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         setupCartCountLabel()
         if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
             justNimNimItSelected = isNimNimItSelected
-            setupNimNimItButton()
+            setupUIForNimNimIt()
         }else {
             justNimNimItSelected = false
-            setupNimNimItButton()
+            setupUIForNimNimIt()
         }
         setupScreen()
         if let description = serviceModel?.descrip {
@@ -246,6 +246,22 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                 print("error")
                 self?.activityIndicator.stopAnimating()
             }
+        }
+    }
+    
+    func setupUIForNimNimIt() {
+        if justNimNimItSelected {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            serviceModel?.isSelectedForNimNimIt = true
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.isSelectedForNimNimIt = false
         }
     }
     
