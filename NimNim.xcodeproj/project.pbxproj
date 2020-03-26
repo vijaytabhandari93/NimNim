@@ -63,6 +63,10 @@
 		AC41CE76235C822F001AC676 /* AddCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC41CE74235C822F001AC676 /* AddCardCollectionViewCell.xib */; };
 		AC496133235C68C100AA7196 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC496131235C68C100AA7196 /* AddressCollectionViewCell.swift */; };
 		AC496134235C68C100AA7196 /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC496132235C68C100AA7196 /* AddressCollectionViewCell.xib */; };
+		AC4EE2B0242C9DEA008CE2FD /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4EE2AF242C9DEA008CE2FD /* OnboardingViewController.swift */; };
+		AC4EE2B2242C9E03008CE2FD /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4EE2B1242C9E03008CE2FD /* Onboarding.storyboard */; };
+		AC4EE2B5242CA186008CE2FD /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4EE2B3242CA186008CE2FD /* OnboardingCollectionViewCell.swift */; };
+		AC4EE2B6242CA186008CE2FD /* OnboardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4EE2B4242CA186008CE2FD /* OnboardingCollectionViewCell.xib */; };
 		AC4FD7F224094A98003D85D7 /* TailoringPricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FD7F124094A98003D85D7 /* TailoringPricingViewController.swift */; };
 		AC4FD7F4240957DA003D85D7 /* ShoeRepairPricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FD7F3240957DA003D85D7 /* ShoeRepairPricingViewController.swift */; };
 		AC51847423C85B4F00A45E69 /* NimNimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC51847323C85B4E00A45E69 /* NimNimViewController.swift */; };
@@ -317,6 +321,10 @@
 		AC41CE74235C822F001AC676 /* AddCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC496131235C68C100AA7196 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC496132235C68C100AA7196 /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC4EE2AF242C9DEA008CE2FD /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		AC4EE2B1242C9E03008CE2FD /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		AC4EE2B3242CA186008CE2FD /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC4EE2B4242CA186008CE2FD /* OnboardingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC4FD7F124094A98003D85D7 /* TailoringPricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailoringPricingViewController.swift; sourceTree = "<group>"; };
 		AC4FD7F3240957DA003D85D7 /* ShoeRepairPricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeRepairPricingViewController.swift; sourceTree = "<group>"; };
 		AC51847323C85B4E00A45E69 /* NimNimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimNimViewController.swift; sourceTree = "<group>"; };
@@ -680,6 +688,8 @@
 				AC77F9602410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.xib */,
 				AC57D0D8241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.swift */,
 				AC57D0D9241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.xib */,
+				AC4EE2B3242CA186008CE2FD /* OnboardingCollectionViewCell.swift */,
+				AC4EE2B4242CA186008CE2FD /* OnboardingCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -726,6 +736,7 @@
 				ACFD92C3235B17AF0009FB03 /* Profile.storyboard */,
 				ACBC96ED2360429B006AC5B6 /* OrderStoryboard.storyboard */,
 				AC5E697423CC7319000DF84E /* Pricing.storyboard */,
+				AC4EE2B1242C9E03008CE2FD /* Onboarding.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -775,6 +786,7 @@
 				AC4FD7F124094A98003D85D7 /* TailoringPricingViewController.swift */,
 				AC4FD7F3240957DA003D85D7 /* ShoeRepairPricingViewController.swift */,
 				AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */,
+				AC4EE2AF242C9DEA008CE2FD /* OnboardingViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1024,6 +1036,7 @@
 				AC20418723B7523A001F86B4 /* TimeCollectionViewCell.xib in Resources */,
 				ACFD92A2235830AC0009FB03 /* ProfileCollectionViewCell.xib in Resources */,
 				AC8CDE2F232537FF00CDFB93 /* LoginWithPasswordTableViewCell.xib in Resources */,
+				AC4EE2B6242CA186008CE2FD /* OnboardingCollectionViewCell.xib in Resources */,
 				ACFD929A2355F3540009FB03 /* HouseHoldDescriptionCollectionViewCell.xib in Resources */,
 				AC5CA88923F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.xib in Resources */,
 				AC5CDC3F23FD726B0047940F /* HelpRequiredCollectionViewCell.xib in Resources */,
@@ -1061,6 +1074,7 @@
 				ACF9CD1B234F573900039E6C /* NeedRushDeliveryCollectionViewCell.xib in Resources */,
 				ACBE06C923E0503B00451006 /* AddShoeRepairCollectionViewCell.xib in Resources */,
 				ACBB818D232E3FAB003DCF77 /* Montserrat-ExtraLightItalic.ttf in Resources */,
+				AC4EE2B2242C9E03008CE2FD /* Onboarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1190,6 +1204,7 @@
 				AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */,
 				AC57D0D7241F835F007B3037 /* FAQViewController.swift in Sources */,
 				ACF9CD3D2351EB9C00039E6C /* WashPressedShirtsViewController.swift in Sources */,
+				AC4EE2B5242CA186008CE2FD /* OnboardingCollectionViewCell.swift in Sources */,
 				ACB89B4A235DA5E900B74109 /* AllItemsViewController.swift in Sources */,
 				ACFD929C23560C0D0009FB03 /* AllServicesViewController.swift in Sources */,
 				AC5ADDA0236309BC00204E9E /* PickDeliveryTimeSlotsViewController.swift in Sources */,
@@ -1232,6 +1247,7 @@
 				AC5CA88123F19E33000D0E39 /* WalletModel.swift in Sources */,
 				AC25BFB32371EF2D00C79692 /* ServiceableLocationModel.swift in Sources */,
 				AC5CA88823F1A2E7000D0E39 /* WalletTransactionCollectionViewCell.swift in Sources */,
+				AC4EE2B0242C9DEA008CE2FD /* OnboardingViewController.swift in Sources */,
 				AC5F786424025E4700E6E7C3 /* FirebaseManager.swift in Sources */,
 				AC41CE71235C81EF001AC676 /* CardTypeCollectionViewCell.swift in Sources */,
 				ACF9CD1A234F573900039E6C /* NeedRushDeliveryCollectionViewCell.swift in Sources */,

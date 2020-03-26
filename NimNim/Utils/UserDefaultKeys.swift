@@ -14,6 +14,7 @@ struct UserDefaultKeys {
     static let authToken = "kAuthToken"
     static let pickUpDropOfPreferences = "kPickUpDropOfPreferences"
     static let descriptionPreferences = "kDescriptionPreferences"
+    static let hasSeenOnboarding = "kHasSeenOnboarding"
     static let services = "kservices"
     static let cartId = "kCartId"
     static let cartAlias = "kcartAlias" // Through this key , we will be saving the array of strings

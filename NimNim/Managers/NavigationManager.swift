@@ -66,8 +66,12 @@ class NavigationManager {
 
             return secondViewController
         }
-    
-            else{
+        
+        if UserDefaults.standard.bool(forKey: UserDefaultKeys.hasSeenOnboarding) == false{
+            let onboardingStory = UIStoryboard(name: "Onboarding", bundle: nil)
+            let onboardingVC = onboardingStory.instantiateViewController(withIdentifier:"OnboardingViewController") as? OnboardingViewController
+            return onboardingVC
+        }else{
             let preferencesSB = UIStoryboard(name: "MyLocation", bundle: nil)
             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"MyLocationViewController") as? MyLocationViewController
             return secondViewController
