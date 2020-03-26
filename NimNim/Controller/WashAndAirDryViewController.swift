@@ -14,7 +14,6 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     
 
     var activeTextField : UITextField?
-    var defaultStateJustNimNimIt : Bool = false
     //NoOfClothes Delegate Methods
     func textFieldStartedEditingInCell(withTextField textField: UITextField) {
         activeTextField = textField

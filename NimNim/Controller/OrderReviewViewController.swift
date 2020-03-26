@@ -54,43 +54,39 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
             let servicesStoryboard = UIStoryboard(name: "Services", bundle: nil)
             if model.alias == "wash-and-fold" {
                 let washAndFoldVC = servicesStoryboard.instantiateViewController(withIdentifier: "ServicesViewController") as! ServicesViewController
-                washAndFoldVC.serviceModel = model //passing of the service model to the vc.
+                washAndFoldVC.serviceModel = model.copy() as? ServiceModel //passing of the service model to the vc.
                 NavigationManager.shared.push(viewController: washAndFoldVC)
                 
             }else if model.alias == "wash-and-air-dry" {
                 let washAndAirDryVC = servicesStoryboard.instantiateViewController(withIdentifier: "WashAndAirDryViewController") as! WashAndAirDryViewController
                 
-                washAndAirDryVC.serviceModel = model
+                washAndAirDryVC.serviceModel = model.copy() as? ServiceModel
                 NavigationManager.shared.push(viewController: washAndAirDryVC)
             }else if model.alias == "laundered-shirts" {
                 let washPressedVC = servicesStoryboard.instantiateViewController(withIdentifier: "WashPressedShirtsViewController") as!WashPressedShirtsViewController
                 
-                washPressedVC.serviceModel = model
+                washPressedVC.serviceModel = model.copy() as? ServiceModel
                 NavigationManager.shared.push(viewController: washPressedVC)
             }else if model.alias == "household-items" {
                 let houseHoldVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController") as! HouseHoldItemsViewController
-                houseHoldVC.serviceModel = model
+                houseHoldVC.serviceModel = model.copy() as? ServiceModel
                 NavigationManager.shared.push(viewController: houseHoldVC)
             }else if model.alias == "dry-cleaning" {
                 let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "DryCleaningViewController") as! DryCleaningViewController
-                dryCleaningVC.serviceModel = model  //refers to 4th element
+                dryCleaningVC.serviceModel = model.copy() as? ServiceModel  //refers to 4th element
                 NavigationManager.shared.push(viewController: dryCleaningVC)
             }else if model.alias == "tailoring" {
                 let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "TailoringViewController") as!TailoringViewController
-                dryCleaningVC.serviceModel = model  //refers to 4th element
+                dryCleaningVC.serviceModel = model.copy() as? ServiceModel  //refers to 4th element
                 NavigationManager.shared.push(viewController: dryCleaningVC)
             }else if model.alias == "shoe-repair" {
                 let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController") as! ShoeRepairViewController
-                dryCleaningVC.serviceModel = model  //refers to 4th element
+                dryCleaningVC.serviceModel = model.copy() as? ServiceModel  //refers to 4th element
                 NavigationManager.shared.push(viewController: dryCleaningVC)
             }else if model.alias == "carpet-cleaning" {
                 let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController") as! RugCleaningViewController
-                dryCleaningVC.serviceModel = model  //refers to 4th element
+                dryCleaningVC.serviceModel = model.copy() as? ServiceModel  //refers to 4th element
                 NavigationManager.shared.push(viewController: dryCleaningVC)
-            }
-            else {
-                let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
-                NavigationManager.shared.push(viewController: householdVC)
             }
         }
     }

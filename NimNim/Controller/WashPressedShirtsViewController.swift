@@ -13,7 +13,7 @@ import Kingfisher
 
 class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate,BoxedCollectionViewCellDelegate{
  
-    var defaultStateJustNimNimIt : Bool = false
+    var justNimNimItSelected : Bool = false
     var activeTextField : UITextField?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
@@ -82,7 +82,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     
     func setupUIForNimNimIt() {
-        if defaultStateJustNimNimIt {
+        if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
@@ -98,7 +98,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     
     func setupNimNimItButton() {
-        if defaultStateJustNimNimIt {
+        if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
@@ -116,7 +116,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     
     @IBAction func justNimNimIt(_ sender: Any) {
-        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
+        justNimNimItSelected = !justNimNimItSelected
         setupNimNimItButton()
         setupPrice()
         WashPressedShirtCollectionView.reloadData()
@@ -154,7 +154,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     
     func setupPrice() {
-        if defaultStateJustNimNimIt {
+        if justNimNimItSelected {
             let price = "@Pricelist"
             priceLabel.text = price
             serviceModel?.servicePrice = price
@@ -425,10 +425,10 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         setupCartCountLabel()
         addObservers()
         if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
-            defaultStateJustNimNimIt = isNimNimItSelected
+            justNimNimItSelected = isNimNimItSelected
             setupUIForNimNimIt()
         }else {
-            defaultStateJustNimNimIt = false
+            justNimNimItSelected = false
             setupUIForNimNimIt()
         }
         setupPrice()
@@ -511,7 +511,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            if defaultStateJustNimNimIt {
+            if justNimNimItSelected {
                 return 0
                 
             } else

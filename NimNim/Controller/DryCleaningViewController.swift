@@ -25,7 +25,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     
     
     func setupPrice() {
-        if defaultStateJustNimNimIt {
+        if justNimNimItSelected {
             let price = "@Pricelist"
             priceLabel.text = price
             serviceModel?.servicePrice = price
@@ -46,7 +46,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     var activeTextView : UITextView?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
-    var defaultStateJustNimNimIt : Bool = false
+    var justNimNimItSelected : Bool = false
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var priceTotalBackgroundView: UIView!
     @IBOutlet weak var dryCleaningCollectionView: UICollectionView!
@@ -56,7 +56,6 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     
     
     @IBOutlet weak var justNimNimIt: UIButton!
-    var justNimNimItSelected : Bool = false
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if IsAddToCartTapped{
@@ -69,7 +68,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            if defaultStateJustNimNimIt {
+            if justNimNimItSelected {
                 return 0
                 
             } else
@@ -178,10 +177,10 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         setupCartCountLabel()
         addObservers()
         if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
-            defaultStateJustNimNimIt = isNimNimItSelected
+            justNimNimItSelected = isNimNimItSelected
             setupUIForNimNimIt()
         }else {
-            defaultStateJustNimNimIt = false
+            justNimNimItSelected = false
             setupUIForNimNimIt()
         }
         setupPrice()
@@ -363,7 +362,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
     func setupNimNimItButton() {
-        if defaultStateJustNimNimIt {
+        if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
@@ -379,7 +378,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
     @IBAction func justNimNimIt(_ sender: Any) {
-        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
+        justNimNimItSelected = !justNimNimItSelected
         setupNimNimItButton()
         setupPrice()
         dryCleaningCollectionView.reloadData()

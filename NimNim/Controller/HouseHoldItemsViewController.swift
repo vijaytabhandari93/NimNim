@@ -14,7 +14,7 @@ import Kingfisher
 class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,HouseHoldItemCollectionViewCellDelegate {
 
     var activeTextField : UITextField?
-    var defaultStateJustNimNimIt : Bool = false
+    var justNimNimItSelected : Bool = false
     //NoOfClothes Delegate Methods
     
     func addTapGestureToView() {
@@ -49,7 +49,6 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     @IBOutlet weak var basketLabel: UILabel!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
         @IBOutlet weak var justNimNimIt: UIButton!
-    var justNimNimItSelected : Bool = false
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -75,10 +74,10 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
         setupAddToCartButton()
         setupCartCountLabel()
         if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
-            defaultStateJustNimNimIt = isNimNimItSelected
+            justNimNimItSelected = isNimNimItSelected
             setupUIForNimNimIt()
         }else {
-            defaultStateJustNimNimIt = false
+            justNimNimItSelected = false
             setupUIForNimNimIt()
         }
         addObservers()
@@ -112,7 +111,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     }
     
     func setupPrice() {
-        if defaultStateJustNimNimIt {
+        if justNimNimItSelected {
             let price = "@Pricelist"
             priceLabel.text = price
             serviceModel?.servicePrice = price
@@ -201,7 +200,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     }
     
     func setupNimNimItButton() {
-        if defaultStateJustNimNimIt {
+        if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
@@ -217,7 +216,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     }
     
     @IBAction func justNimNimIt(_ sender: Any) {
-        defaultStateJustNimNimIt = !defaultStateJustNimNimIt
+        justNimNimItSelected = !justNimNimItSelected
         setupNimNimItButton()
         setupPrice()
         houseHoldCollectionView.reloadData()
@@ -455,7 +454,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     }
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
-            if defaultStateJustNimNimIt {
+            if justNimNimItSelected {
                 return 0
                 }
             else
@@ -463,7 +462,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
                 return 1
             }
         }else if section == 1 {
-            if defaultStateJustNimNimIt {
+            if justNimNimItSelected {
                 return 0
                 }
             else

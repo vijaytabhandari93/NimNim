@@ -94,50 +94,42 @@ class ServicesBaseCollectionViewCell : UICollectionViewCell,UICollectionViewDele
         let servicesStoryboard = UIStoryboard(name: "Services", bundle: nil)
         if services[indexPath.item].alias == "wash-and-fold" {
             let washAndFoldVC = servicesStoryboard.instantiateViewController(withIdentifier: "ServicesViewController") as! ServicesViewController
-            washAndFoldVC.serviceModel = services[indexPath.item] //passing of the service model to the vc.
+            washAndFoldVC.serviceModel = (services[indexPath.item]).copy() as? ServiceModel //passing of the service model to the vc.
             NavigationManager.shared.push(viewController: washAndFoldVC)
             
         }else if services[indexPath.item].alias == "wash-and-air-dry" {
             let washAndAirDryVC = servicesStoryboard.instantiateViewController(withIdentifier: "WashAndAirDryViewController") as! WashAndAirDryViewController
             
-            washAndAirDryVC.serviceModel = services[indexPath.item]
+            washAndAirDryVC.serviceModel = (services[indexPath.item]).copy() as? ServiceModel
             NavigationManager.shared.push(viewController: washAndAirDryVC)
         }else if services[indexPath.item].alias == "laundered-shirts" {
             let washPressedVC = servicesStoryboard.instantiateViewController(withIdentifier: "WashPressedShirtsViewController") as!WashPressedShirtsViewController
             
-            washPressedVC.serviceModel = services[indexPath.item]
+            washPressedVC.serviceModel = (services[indexPath.item]).copy() as? ServiceModel
             NavigationManager.shared.push(viewController: washPressedVC)
         }else if services[indexPath.item].alias == "household-items" {
             let houseHoldVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController") as! HouseHoldItemsViewController
-            houseHoldVC.serviceModel = services[indexPath.item]
+            houseHoldVC.serviceModel = (services[indexPath.item]).copy() as? ServiceModel
             NavigationManager.shared.push(viewController: houseHoldVC)
         }else if services[indexPath.item].alias == "dry-cleaning" {
             
             let dryCleaningVC = servicesStoryboard.instantiateViewController(withIdentifier: "DryCleaningViewController") as! DryCleaningViewController
             
-            dryCleaningVC.serviceModel = services[indexPath.item]  //refers to 4th element
+            dryCleaningVC.serviceModel = (services[indexPath.item]).copy() as? ServiceModel  //refers to 4th element
             NavigationManager.shared.push(viewController: dryCleaningVC)
             
             
         }else if services[indexPath.item].alias == "shoe-repair" {
             let shoeRepairVC = servicesStoryboard.instantiateViewController(withIdentifier: "ShoeRepairViewController") as! ShoeRepairViewController
-            shoeRepairVC.serviceModel = services[indexPath.item]
+            shoeRepairVC.serviceModel = (services[indexPath.item]).copy() as? ServiceModel
             NavigationManager.shared.push(viewController: shoeRepairVC)
-        }else if services[indexPath.item].alias == "tailoring" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")
-            NavigationManager.shared.push(viewController: householdVC)
+        }else if services[indexPath.item].alias == "tailoring" {
+            
+            let rugVC = servicesStoryboard.instantiateViewController(withIdentifier: "TailoringViewController") as! TailoringViewController
+            rugVC.serviceModel = (services[indexPath.item]).copy() as? ServiceModel
+            NavigationManager.shared.push(viewController: rugVC)
         }else if services[indexPath.item].alias == "carpet-cleaning" {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "RugCleaningViewController")
             NavigationManager.shared.push(viewController: householdVC)
-        }
-        else if services[indexPath.item].alias == "leather-and-special-care-items" {
-            let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
-            NavigationManager.shared.push(viewController: householdVC)
-            
-        }
-        else {let householdVC = servicesStoryboard.instantiateViewController(withIdentifier: "HouseHoldItemsViewController")
-            NavigationManager.shared.push(viewController: householdVC)
-            
-            
-            
         }
     }
     

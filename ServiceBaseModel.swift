@@ -42,7 +42,7 @@ class ServiceBaseModel:NSObject, Mappable, Codable {
     
     
 }
-class ServiceModel:NSObject, Mappable, Codable {
+class ServiceModel:NSObject, Mappable, Codable, NSCopying {
     var id:String?
     var name:String?
     var alias:String?
@@ -163,6 +163,11 @@ class ServiceModel:NSObject, Mappable, Codable {
         totalCost <- map["total_cost"]
         weight <- map["weight"]
         isSelectedForNimNimIt <- map["isSelectedForNimNimIt"]
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = ServiceModel(JSON: self.toJSON())
+        return copy!
     }
 
     func getMaleItems() -> [ItemModel] {
@@ -401,8 +406,10 @@ class ServiceModel:NSObject, Mappable, Codable {
 
                     return true
                 case .launderedShirts:
-                    if numberOfClothes == nil {
-                        return false
+                    if isSelectedForNimNimIt == false {
+                        if numberOfClothes == nil {
+                            return false
+                        }
                     }
                     let selectedStarch = starch?.first(where: { (prefModel) -> Bool in
                         if prefModel.isSelected == true {
@@ -445,8 +452,10 @@ class ServiceModel:NSObject, Mappable, Codable {
                     }
                    return true
                 case .carpetCleaning:
-                    if numberOfClothes == nil {
-                        return false
+                    if !isSelectedForNimNimIt {
+                        if numberOfClothes == nil  {
+                            return false
+                        }
                     }
                     return true
                 case .shoeRepair:
@@ -615,7 +624,7 @@ class ServiceModel:NSObject, Mappable, Codable {
         return ""
     }
 }
-class PreferenceModel:NSObject, Mappable, Codable {
+class PreferenceModel:NSObject, Mappable, Codable, NSCopying {
     var id:String?
     var title:String?
     var icon: String?
@@ -628,6 +637,11 @@ class PreferenceModel:NSObject, Mappable, Codable {
         icon <- map["icon"]
         isNimNimItValue <- map["nimnimitvalue"]
         isSelected <- map["is_selected"]
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = PreferenceModel(JSON: self.toJSON())
+        return copy!
     }
 }
 
@@ -680,7 +694,7 @@ class ItemModel:NSObject, Mappable, Codable, NSCopying {
     }
 }
 
-class RushDeliveryOptionsModel:NSObject, Mappable, Codable {
+class RushDeliveryOptionsModel:NSObject, Mappable, Codable, NSCopying {
     var id:String?
     var turnAroundTime :String?
     var price :Int?
@@ -690,9 +704,14 @@ class RushDeliveryOptionsModel:NSObject, Mappable, Codable {
         turnAroundTime <- map["turn_around_time"]
         price <- map["price"]
     }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = RushDeliveryOptionsModel(JSON: self.toJSON())
+        return copy!
+    }
 }
 
-class TaskModel: NSObject, Mappable, Codable {
+class TaskModel: NSObject, Mappable, Codable, NSCopying {
     var specialNotes:String?
     var uploadedImages:[String]=[]
     var items:[ItemModel] = []
@@ -883,6 +902,11 @@ class TaskModel: NSObject, Mappable, Codable {
                 item.isSelectedTailoringRepairPreference = false
             }
         }
+    }
+    
+    func copy(with zone: NSZone? = nil) -> Any {
+        let copy = RushDeliveryOptionsModel(JSON: self.toJSON())
+        return copy!
     }
 }
 

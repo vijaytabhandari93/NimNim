@@ -14,7 +14,7 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     
 
     var activeTextField : UITextField?
-    var defaultStateJustNimNimIt : Bool = false
+    var justNimNimItSelected : Bool = false
     
     //NoOfClothes Delegate Methods
     func textFieldStartedEditingInCell(withTextField textField: UITextField) {
@@ -57,7 +57,6 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     
     @IBOutlet weak var justNimNimIt: UIButton!
-    var justNimNimItSelected : Bool = false
     
     //MARK:UI Methods
     func registerCells() {
@@ -92,6 +91,13 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         if let priceOfService = serviceModel?.calculatePriceForService() {
             priceLabel.text = priceOfService
             serviceModel?.servicePrice = priceOfService
+        }
+        if let isNimNimItSelected = serviceModel?.isSelectedForNimNimIt {
+            justNimNimItSelected = isNimNimItSelected
+            setupUIForNimNimIt()
+        }else {
+            justNimNimItSelected = false
+            setupUIForNimNimIt()
         }
         setupAddToCartButton()
         setupCartCountLabel()
@@ -206,13 +212,29 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         
     }
     
+    func setupUIForNimNimIt() {
+        if justNimNimItSelected {
+            justNimNimIt.backgroundColor = Colors.nimnimGreen
+            justNimNimIt.setTitleColor(.white, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.extraBold16
+            serviceModel?.isSelectedForNimNimIt = true
+        }
+        else
+        {
+            justNimNimIt.backgroundColor = .white
+            justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
+            justNimNimIt.titleLabel?.font = Fonts.regularFont14
+            serviceModel?.isSelectedForNimNimIt = false
+        }
+    }
+    
     @IBAction func justNimNimItTapped(_ sender: Any) {
         justNimNimItSelected = !justNimNimItSelected
         if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.extraBold16
-            serviceModel?.setupNimNimItForWashAndAirDry()
+            serviceModel?.isSelectedForNimNimIt = true
             serviceModel?.numberOfClothes = 0
         }
         else
@@ -220,8 +242,7 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
             justNimNimIt.backgroundColor = .white
             justNimNimIt.setTitleColor(Colors.nimnimGreen, for: .normal)
             justNimNimIt.titleLabel?.font = Fonts.regularFont14
-            serviceModel?.undosetupNimNimItForWashAndAirDry()
-            
+            serviceModel?.isSelectedForNimNimIt = false
         }
         rugCleaningCollectionView.reloadData()
     }
