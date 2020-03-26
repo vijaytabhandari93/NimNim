@@ -40,10 +40,14 @@ class TimeSlotsCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate
     
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let validDates = dates // an array of dates
-        let date = validDates[selectedDateIndexPath.item] // pcking each date item
-        let validSlots = fetchSlots(forDate: date)
-        return validSlots.count //  valid slot is the array containing the possible time slots of that date
+        if dates.count > selectedDateIndexPath.item {
+            let validDates = dates // an array of dates
+            let date = validDates[selectedDateIndexPath.item] // pcking each date item
+            let validSlots = fetchSlots(forDate: date)
+            return validSlots.count //  valid slot is the array containing the possible time slots of that date
+        }else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
