@@ -433,9 +433,11 @@ class ServiceModel:NSObject, Mappable, Codable, NSCopying {
                     }
                     return true
                 case .householdItems:
+                    var selectedCount = 0
                     if let items = items {
                         for item in items {
                             if item.IfDrycleaned || item.IfLaundered {
+                                selectedCount = selectedCount + 1
                                 if let qty = item.qty, qty > 0 {
                                     
                                 }else {
@@ -444,7 +446,11 @@ class ServiceModel:NSObject, Mappable, Codable, NSCopying {
                             }
                         }
                     }
-                    return true
+                    if selectedCount == 0 && isSelectedForNimNimIt == false{
+                        return false
+                    }else {
+                        return true
+                    }
                 case .dryCleaning:
                    if servicePrice == "$0"
                     {
