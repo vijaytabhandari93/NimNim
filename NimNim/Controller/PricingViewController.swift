@@ -171,7 +171,7 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
             }
         }
         else if section == 1 {
-            if selectedWashAndAirDry == true{
+            if   == true{
                 return 3
             }
             else{
