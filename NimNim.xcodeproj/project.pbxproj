@@ -72,6 +72,10 @@
 		AC4EE2B6242CA186008CE2FD /* OnboardingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4EE2B4242CA186008CE2FD /* OnboardingCollectionViewCell.xib */; };
 		AC4FD7F224094A98003D85D7 /* TailoringPricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FD7F124094A98003D85D7 /* TailoringPricingViewController.swift */; };
 		AC4FD7F4240957DA003D85D7 /* ShoeRepairPricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FD7F3240957DA003D85D7 /* ShoeRepairPricingViewController.swift */; };
+		AC4FF785242F7EEB0009751D /* FAQHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FF783242F7EEB0009751D /* FAQHeaderCollectionReusableView.swift */; };
+		AC4FF786242F7EEB0009751D /* FAQHeaderCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4FF784242F7EEB0009751D /* FAQHeaderCollectionReusableView.xib */; };
+		AC4FF789242F7F160009751D /* FAQFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4FF787242F7F160009751D /* FAQFooterCollectionReusableView.swift */; };
+		AC4FF78A242F7F160009751D /* FAQFooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4FF788242F7F160009751D /* FAQFooterCollectionReusableView.xib */; };
 		AC51847423C85B4F00A45E69 /* NimNimViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC51847323C85B4E00A45E69 /* NimNimViewController.swift */; };
 		AC5199C923D997B400961C48 /* PriceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5199C823D997B400961C48 /* PriceListViewController.swift */; };
 		AC5199CB23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5199CA23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift */; };
@@ -333,6 +337,10 @@
 		AC4EE2B4242CA186008CE2FD /* OnboardingCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC4FD7F124094A98003D85D7 /* TailoringPricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailoringPricingViewController.swift; sourceTree = "<group>"; };
 		AC4FD7F3240957DA003D85D7 /* ShoeRepairPricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeRepairPricingViewController.swift; sourceTree = "<group>"; };
+		AC4FF783242F7EEB0009751D /* FAQHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		AC4FF784242F7EEB0009751D /* FAQHeaderCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQHeaderCollectionReusableView.xib; sourceTree = "<group>"; };
+		AC4FF787242F7F160009751D /* FAQFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQFooterCollectionReusableView.swift; sourceTree = "<group>"; };
+		AC4FF788242F7F160009751D /* FAQFooterCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FAQFooterCollectionReusableView.xib; sourceTree = "<group>"; };
 		AC51847323C85B4E00A45E69 /* NimNimViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NimNimViewController.swift; sourceTree = "<group>"; };
 		AC5199C823D997B400961C48 /* PriceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceListViewController.swift; sourceTree = "<group>"; };
 		AC5199CA23D9BB2800961C48 /* HouseHoldItemsPriceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseHoldItemsPriceViewController.swift; sourceTree = "<group>"; };
@@ -555,6 +563,10 @@
 				AC1FFDC12347773200930496 /* PreferencesCollectionReusableView.xib */,
 				ACBC96FB2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.swift */,
 				ACBC96FC2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.xib */,
+				AC4FF783242F7EEB0009751D /* FAQHeaderCollectionReusableView.swift */,
+				AC4FF784242F7EEB0009751D /* FAQHeaderCollectionReusableView.xib */,
+				AC4FF787242F7F160009751D /* FAQFooterCollectionReusableView.swift */,
+				AC4FF788242F7F160009751D /* FAQFooterCollectionReusableView.xib */,
 			);
 			path = CollectionReusableView;
 			sourceTree = "<group>";
@@ -978,6 +990,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC1FFDA323465DEF00930496 /* ServicesHeaderCollectionReusableView.xib in Resources */,
+				AC4FF78A242F7F160009751D /* FAQFooterCollectionReusableView.xib in Resources */,
 				AC1FFDAC2346F1D100930496 /* ProximaNova-Regular.otf in Resources */,
 				ACBB8193232E3FAC003DCF77 /* Montserrat-Light.ttf in Resources */,
 				AC9B9A3723E71CED00FB0A17 /* DropDownCollectionViewCell.xib in Resources */,
@@ -1009,6 +1022,7 @@
 				AC5BC1A923ED505E00FAF8C1 /* AddTailoringRepairCollectionViewCell.xib in Resources */,
 				ACF9CD3323504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.xib in Resources */,
 				ACEF0804240593A500B61513 /* GoogleService-Info.plist in Resources */,
+				AC4FF786242F7EEB0009751D /* FAQHeaderCollectionReusableView.xib in Resources */,
 				ACBB8191232E3FAC003DCF77 /* Montserrat-SemiBold.ttf in Resources */,
 				ACE0E4ED2353164500A75D82 /* ShoeRepairCollectionViewCell.xib in Resources */,
 				AC1FFDAD2346F1D100930496 /* Proxima Nova Black.otf in Resources */,
@@ -1178,6 +1192,7 @@
 				AC773999240E2C2C00DCFE75 /* PushNotificationsManager.swift in Sources */,
 				AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */,
 				ACA65EFC23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.swift in Sources */,
+				AC4FF785242F7EEB0009751D /* FAQHeaderCollectionReusableView.swift in Sources */,
 				AC49C6A5242DD6900065EDFB /* BannerInsideCollectionViewCell.swift in Sources */,
 				AC5226FF23C738D4002F111F /* OrderDetailsCollectionViewCell.swift in Sources */,
 				ACF9CD3223504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.swift in Sources */,
@@ -1237,6 +1252,7 @@
 				ACBBE49A233A0FE0003C67F7 /* LocationcCell.swift in Sources */,
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
 				AC1FFDB723474FC700930496 /* ServicesViewController.swift in Sources */,
+				AC4FF789242F7F160009751D /* FAQFooterCollectionReusableView.swift in Sources */,
 				ACF9CD3623504EFD00039E6C /* NoofClothesCollectionViewCell.swift in Sources */,
 				ACAD665123E0499400072607 /* ShoeRepairSecondViewController.swift in Sources */,
 				ACD8BA432351AB41005C1EAA /* HomeBaseViewController.swift in Sources */,

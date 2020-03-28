@@ -10,7 +10,8 @@ import UIKit
 
 class DescriptionCollectionViewCell: UICollectionViewCell {
     
-   
+    @IBOutlet weak var bulletView: UIView!
+    
     @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {

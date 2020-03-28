@@ -22,33 +22,38 @@
                 <rect key="frame" x="0.0" y="0.0" width="377" height="34"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum - 10 lbs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="280-09-BH7">
-                        <rect key="frame" x="28" y="5" width="337" height="24"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Minimum - 10 lbs" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="280-09-BH7">
+                        <rect key="frame" x="28" y="9.5" width="321" height="15"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwi-AO-zuZ">
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwi-AO-zuZ">
                         <rect key="frame" x="14" y="15" width="4" height="4"/>
                         <color key="backgroundColor" red="0.38039215686274508" green="0.77647058823529413" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="4" id="pDG-dF-EpI"/>
                             <constraint firstAttribute="height" constant="4" id="qD2-r2-HCz"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="280-09-BH7" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="0ud-1N-LTM"/>
-                <constraint firstItem="280-09-BH7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="Cvb-CR-fIR"/>
-                <constraint firstAttribute="trailing" secondItem="280-09-BH7" secondAttribute="trailing" constant="12" id="bcU-Zl-sAB"/>
+                <constraint firstAttribute="trailing" secondItem="280-09-BH7" secondAttribute="trailing" constant="28" id="bcU-Zl-sAB"/>
                 <constraint firstItem="cwi-AO-zuZ" firstAttribute="centerY" secondItem="280-09-BH7" secondAttribute="centerY" id="bhy-s7-PJe"/>
-                <constraint firstItem="280-09-BH7" firstAttribute="leading" secondItem="cwi-AO-zuZ" secondAttribute="trailing" constant="10" id="dri-aN-QOA"/>
+                <constraint firstItem="cwi-AO-zuZ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="14" id="hx3-AZ-vQZ"/>
                 <constraint firstItem="280-09-BH7" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="uQd-3E-aWr"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="377" height="63"/>
             <connections>
+                <outlet property="bulletView" destination="cwi-AO-zuZ" id="FEl-BC-sRS"/>
                 <outlet property="label" destination="280-09-BH7" id="QmF-vQ-yY2"/>
             </connections>
             <point key="canvasLocation" x="-63" y="14"/>
