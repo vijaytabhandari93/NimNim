@@ -278,7 +278,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
-            cell.label.text = "ENTER HOUSE/BLOCK NUMBER"
+            cell.label.text = "Enter APARTMENT NUMBER"
             if editTapped == true {
                 cell.addressText.text = model?.house
                 
