@@ -55,7 +55,12 @@ class BannersBaseCollectionViewCell: UICollectionViewCell,UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        if let deeplink = banners[indexPath.item].deeplinking {
+            let storyboard = UIStoryboard(name: "Onboarding", bundle: nil)
+            let bannerVC = storyboard.instantiateViewController(withIdentifier: "InsideBannerViewController") as? InsideBannerViewController
+            bannerVC?.deepLink = deeplink
+            NavigationManager.shared.push(viewController: bannerVC)
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

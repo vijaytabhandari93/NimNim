@@ -94,7 +94,7 @@ UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollecti
         var x =  (Int(turnAroundTimeOfSection) ?? 24)/24
         var y = ""
         if x  == 0 {
-        y = "12 hours."
+            y = "12 hours."
         }
         else if x == 1 {
         y  = "1 day."

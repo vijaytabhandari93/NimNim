@@ -63,6 +63,9 @@
 		AC41CE76235C822F001AC676 /* AddCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC41CE74235C822F001AC676 /* AddCardCollectionViewCell.xib */; };
 		AC496133235C68C100AA7196 /* AddressCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC496131235C68C100AA7196 /* AddressCollectionViewCell.swift */; };
 		AC496134235C68C100AA7196 /* AddressCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC496132235C68C100AA7196 /* AddressCollectionViewCell.xib */; };
+		AC49C6A5242DD6900065EDFB /* BannerInsideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49C6A3242DD6900065EDFB /* BannerInsideCollectionViewCell.swift */; };
+		AC49C6A6242DD6900065EDFB /* BannerInsideCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC49C6A4242DD6900065EDFB /* BannerInsideCollectionViewCell.xib */; };
+		AC49C6A8242DDC290065EDFB /* InsideBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49C6A7242DDC290065EDFB /* InsideBannerViewController.swift */; };
 		AC4EE2B0242C9DEA008CE2FD /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4EE2AF242C9DEA008CE2FD /* OnboardingViewController.swift */; };
 		AC4EE2B2242C9E03008CE2FD /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4EE2B1242C9E03008CE2FD /* Onboarding.storyboard */; };
 		AC4EE2B5242CA186008CE2FD /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4EE2B3242CA186008CE2FD /* OnboardingCollectionViewCell.swift */; };
@@ -321,6 +324,9 @@
 		AC41CE74235C822F001AC676 /* AddCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddCardCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC496131235C68C100AA7196 /* AddressCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC496132235C68C100AA7196 /* AddressCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC49C6A3242DD6900065EDFB /* BannerInsideCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerInsideCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC49C6A4242DD6900065EDFB /* BannerInsideCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerInsideCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC49C6A7242DDC290065EDFB /* InsideBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideBannerViewController.swift; sourceTree = "<group>"; };
 		AC4EE2AF242C9DEA008CE2FD /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		AC4EE2B1242C9E03008CE2FD /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		AC4EE2B3242CA186008CE2FD /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -690,6 +696,8 @@
 				AC57D0D9241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.xib */,
 				AC4EE2B3242CA186008CE2FD /* OnboardingCollectionViewCell.swift */,
 				AC4EE2B4242CA186008CE2FD /* OnboardingCollectionViewCell.xib */,
+				AC49C6A3242DD6900065EDFB /* BannerInsideCollectionViewCell.swift */,
+				AC49C6A4242DD6900065EDFB /* BannerInsideCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -787,6 +795,7 @@
 				AC4FD7F3240957DA003D85D7 /* ShoeRepairPricingViewController.swift */,
 				AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */,
 				AC4EE2AF242C9DEA008CE2FD /* OnboardingViewController.swift */,
+				AC49C6A7242DDC290065EDFB /* InsideBannerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1044,6 +1053,7 @@
 				ACBB819E232E3FAC003DCF77 /* Montserrat-Black.ttf in Resources */,
 				AC1AED60233F058C00638403 /* BannersBaseCollectionViewCell.xib in Resources */,
 				AC5ADD982362DEE400204E9E /* showSavedUserInfoCollectionViewCell.xib in Resources */,
+				AC49C6A6242DD6900065EDFB /* BannerInsideCollectionViewCell.xib in Resources */,
 				AC1FFDB02346F1D100930496 /* Proxima Nova Alt Light.otf in Resources */,
 				AC5F80DB23CD9DED0093B864 /* PriceCollectionViewCell.xib in Resources */,
 				AC9BCACD2324DF90009818C3 /* Assets.xcassets in Resources */,
@@ -1168,6 +1178,7 @@
 				AC773999240E2C2C00DCFE75 /* PushNotificationsManager.swift in Sources */,
 				AC1AED5F233F058C00638403 /* BannersBaseCollectionViewCell.swift in Sources */,
 				ACA65EFC23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.swift in Sources */,
+				AC49C6A5242DD6900065EDFB /* BannerInsideCollectionViewCell.swift in Sources */,
 				AC5226FF23C738D4002F111F /* OrderDetailsCollectionViewCell.swift in Sources */,
 				ACF9CD3223504E2C00039E6C /* RushDeliveryNotAvailableCollectionViewCell.swift in Sources */,
 				AC5B6C5123F955750000F2D1 /* DeeplinkManager.swift in Sources */,
@@ -1216,6 +1227,7 @@
 				ACA65F0423DEFE990095EC20 /* CollectionReusableView.swift in Sources */,
 				AC496133235C68C100AA7196 /* AddressCollectionViewCell.swift in Sources */,
 				AC5E697323CC72BD000DF84E /* PricingViewController.swift in Sources */,
+				AC49C6A8242DDC290065EDFB /* InsideBannerViewController.swift in Sources */,
 				ACB4314E2382A007001E6302 /* ServiceBaseModel.swift in Sources */,
 				AC556808240812E600FA953F /* HouseHoldItemPriceCollectionViewCell.swift in Sources */,
 				AC77F9612410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.swift in Sources */,

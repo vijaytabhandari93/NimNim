@@ -23,6 +23,7 @@ struct Fonts {
     static let semiBoldFont24 = UIFont(name: FontNames.montserratSemiBold, size: 24)!
     static let regularFont18 = UIFont(name: FontNames.montserratRegular, size: 18)!
     static let extraBold36 = UIFont(name: FontNames.montserratExtraBold, size: 36)!
+    static let semiBold18 = UIFont(name: FontNames.montserratSemiBold, size: 18)
     static let semiBold16 = UIFont(name: FontNames.montserratSemiBold, size: 16)
     static let semiBold14 = UIFont(name: FontNames.montserratSemiBold, size: 14)
     static let medium20 = UIFont(name: FontNames.montserratMedium, size: 20)!
