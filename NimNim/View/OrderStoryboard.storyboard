@@ -951,7 +951,7 @@ place an order.</string>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Q5-1e-LiZ">
-                                <rect key="frame" x="0.0" y="93" width="414" height="721"/>
+                                <rect key="frame" x="0.0" y="93" width="414" height="671"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="pVa-Us-1EU">
                                     <size key="itemSize" width="50" height="50"/>
@@ -971,6 +971,25 @@ place an order.</string>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4B3-SA-goM">
+                                <rect key="frame" x="0.0" y="764" width="414" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note - Sunday Pickups are not dropped off before Monday Evening." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRA-c1-yXX">
+                                        <rect key="frame" x="20" y="0.0" width="374" height="50"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="FRA-c1-yXX" secondAttribute="trailing" constant="20" id="9Rx-u8-hvu"/>
+                                    <constraint firstAttribute="height" constant="50" id="IEI-HM-wMn"/>
+                                    <constraint firstItem="FRA-c1-yXX" firstAttribute="top" secondItem="4B3-SA-goM" secondAttribute="top" id="QlT-cH-jDU"/>
+                                    <constraint firstAttribute="bottom" secondItem="FRA-c1-yXX" secondAttribute="bottom" id="fL6-uS-g0k"/>
+                                    <constraint firstItem="FRA-c1-yXX" firstAttribute="leading" secondItem="4B3-SA-goM" secondAttribute="leading" constant="20" id="scW-eJ-WWa"/>
+                                </constraints>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="44B-br-FsT" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
                                 <rect key="frame" x="182" y="423" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -992,14 +1011,17 @@ place an order.</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="mDg-ZU-eHD" firstAttribute="top" secondItem="9Q5-1e-LiZ" secondAttribute="bottom" id="9mD-Ne-98z"/>
+                            <constraint firstItem="mDg-ZU-eHD" firstAttribute="top" secondItem="4B3-SA-goM" secondAttribute="bottom" id="A2g-xM-XWN"/>
+                            <constraint firstItem="99a-QK-PUT" firstAttribute="trailing" secondItem="4B3-SA-goM" secondAttribute="trailing" id="Chk-xS-u5Z"/>
                             <constraint firstItem="1Q9-Og-qG7" firstAttribute="leading" secondItem="99a-QK-PUT" secondAttribute="leading" id="CrD-nc-N07"/>
                             <constraint firstItem="44B-br-FsT" firstAttribute="centerX" secondItem="AGX-uO-fW9" secondAttribute="centerX" id="Gui-Ur-Roh"/>
                             <constraint firstItem="9Q5-1e-LiZ" firstAttribute="top" secondItem="1Q9-Og-qG7" secondAttribute="bottom" id="HRJ-xb-rdV"/>
                             <constraint firstAttribute="trailing" secondItem="mDg-ZU-eHD" secondAttribute="trailing" id="OtX-oM-Qdh"/>
+                            <constraint firstItem="4B3-SA-goM" firstAttribute="top" secondItem="9Q5-1e-LiZ" secondAttribute="bottom" id="aAj-wZ-yY8"/>
                             <constraint firstItem="44B-br-FsT" firstAttribute="centerY" secondItem="AGX-uO-fW9" secondAttribute="centerY" id="dQ3-LW-CFB"/>
                             <constraint firstItem="99a-QK-PUT" firstAttribute="trailing" secondItem="9Q5-1e-LiZ" secondAttribute="trailing" id="dd1-Hr-DXL"/>
                             <constraint firstItem="99a-QK-PUT" firstAttribute="trailing" secondItem="1Q9-Og-qG7" secondAttribute="trailing" id="gby-OZ-HdD"/>
+                            <constraint firstItem="4B3-SA-goM" firstAttribute="leading" secondItem="99a-QK-PUT" secondAttribute="leading" id="gmC-kd-5K6"/>
                             <constraint firstItem="1Q9-Og-qG7" firstAttribute="top" secondItem="99a-QK-PUT" secondAttribute="top" id="lZF-pu-Tmf"/>
                             <constraint firstItem="mDg-ZU-eHD" firstAttribute="leading" secondItem="99a-QK-PUT" secondAttribute="leading" id="rPc-wR-Bjb"/>
                             <constraint firstItem="9Q5-1e-LiZ" firstAttribute="leading" secondItem="99a-QK-PUT" secondAttribute="leading" id="uZI-hK-lZ1"/>

@@ -272,21 +272,75 @@ func fetchValidPickupDates() -> [Date] {
 
 func fetchValidDropOffDates(withInitialDate initialDate:Date, withTurnaroundTimeInHr turnaroudTime:Int) -> [Date] {
     var dates:[Date] = []
-    
-    let firstDate = fetchFirstValidDropOffDate(withInitialDate: initialDate, withTurnaroundTime: turnaroudTime)
-    let calendar = Calendar.current
-    for i in 0..<10 {
-        if let nextDate = calendar.date(byAdding: .day, value: i, to: firstDate) {
-            if i == 0 {
-               dates.append(nextDate)
-            }else {
-               let newDate = fetchDateSlot(forHour: 7, ofDate: nextDate)
-               dates.append(newDate)
+    let finalTurnaroundTime = turnaroudTime
+    var firstDate:Date? = fetchFirstValidDropOffDate(withInitialDate: initialDate, withTurnaroundTime: finalTurnaroundTime)
+    if isItSunday(withDate: initialDate) {
+        if isItMorningSlot(withDate: initialDate) {
+            if turnaroudTime < 36 {
+                if let monday = dateValue(byaddingHours: 24, toDate: initialDate) {
+                    let firstSlotOfMonday = fetchDateSlot(forHour: 16, ofDate: monday)
+                    firstDate = firstSlotOfMonday
+                }
             }
-            
+        }else {
+            if turnaroudTime < 24 {
+                if let monday = dateValue(byaddingHours: 24, toDate: initialDate) {
+                    let firstSlotOfMonday = fetchDateSlot(forHour: 16, ofDate: monday)
+                    firstDate = firstSlotOfMonday
+                }
+            }
+        }
+    }
+    if let firstDate = firstDate  {
+        let calendar = Calendar.current
+        for i in 0..<10 {
+            if let nextDate = calendar.date(byAdding: .day, value: i, to: firstDate) {
+                if i == 0 {
+                   dates.append(nextDate)
+                }else {
+                   let newDate = fetchDateSlot(forHour: 7, ofDate: nextDate)
+                   dates.append(newDate)
+                }
+                
+            }
         }
     }
     return dates
+}
+
+func isItMorningSlot(withDate date:Date) -> Bool {
+    let firstDateForMorningSlotOfToday = fetchDateSlot(forHour: 7, ofDate: date) // This will give date value for 7am of today....
+    let lastDateForMorningSlotOfToday = fetchDateSlot(forHour: 13, ofDate: date) // This will give date value for 7am of today....
+    if isDate(concernedDate: date, betweenDatesDate1: firstDateForMorningSlotOfToday, andDate2: lastDateForMorningSlotOfToday) {
+        return true
+    }else {
+        return false
+    }
+}
+
+func isItEveningSlot(withDate date:Date) -> Bool {
+    let firstDateForEveningSlotOfToday = fetchDateSlot(forHour: 7, ofDate: date) // This will give date value for 7am of today....
+    let lastDateForEveningSlotOfToday = fetchDateSlot(forHour: 13, ofDate: date) // This will give date value for 7am of today....
+    if isDate(concernedDate: date, betweenDatesDate1: firstDateForEveningSlotOfToday, andDate2: lastDateForEveningSlotOfToday) {
+        return true
+    }else {
+        return false
+    }
+}
+
+func isItSunday(withDate date:Date) -> Bool {
+    var calendar = Calendar.current
+    let timeZone = TimeZone.current
+    calendar.timeZone = timeZone
+    let dateComponents = calendar.dateComponents([.year,.month,.day,.weekday,.hour,.minute], from: date)
+    if let day = dateComponents.weekday {
+        if day == 1 {
+            return true
+        }else {
+            return false
+        }
+    }
+    return false
 }
 
 func isDate(concernedDate date:Date, betweenDatesDate1 date1:Date, andDate2 date2:Date) -> Bool
