@@ -111,9 +111,13 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         else if section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
             cell.delegate = self
+            cell.firstImage.alpha = 0
+            cell.secondImage.alpha = 0
+            cell.thirdImage.alpha = 0
             if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 0 {
                 if let urlValue = URL(string: ImageNames[0])
                 {
+                    cell.firstImage.alpha = 1
                     cell.firstImage.kf.setImage(with: urlValue)
                 }
                 
@@ -121,18 +125,19 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
             if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 1 {
                 if let urlValue = URL(string: ImageNames[1])
                 {
+                    cell.secondImage.alpha = 1
                     cell.secondImage.kf.setImage(with: urlValue)
                 }
             }
             if let ImageNames =  serviceModel?.uploadedImages, ImageNames.count > 2 {
                 if let urlValue = URL(string: ImageNames[2])
                 {
+                    cell.thirdImage.alpha = 1
                     cell.thirdImage.kf.setImage(with: urlValue)
                 }
             }
             cell.notesTextBox.text = serviceModel?.specialNotes
             return cell
-            
         }
             
         else if section == 3  {

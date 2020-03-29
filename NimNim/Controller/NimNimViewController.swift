@@ -415,20 +415,26 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SpecialNotesCollectionViewCell", for: indexPath) as! SpecialNotesCollectionViewCell
             cell.delegate = self
+            cell.firstImage.alpha = 0
+            cell.secondImage.alpha = 0
+            cell.thirdImage.alpha = 0
             if uploadedImages.count > 0 {
                 if let urlValue = URL(string: uploadedImages[0])
                 {
                     cell.firstImage.kf.setImage(with: urlValue)
+                    cell.firstImage.alpha = 1
                 }}
                 if uploadedImages.count > 1 {
                 if let urlValue = URL(string: uploadedImages[1])
                 {
                     cell.secondImage.kf.setImage(with: urlValue)
+                    cell.secondImage.alpha = 1
                     }}
                if uploadedImages.count > 2 {
                  if let urlValue = URL(string: uploadedImages[2])
                 {
                     cell.thirdImage.kf.setImage(with: urlValue)
+                    cell.thirdImage.alpha = 1
                 }
             }
             cell.notesTextBox.text = specialNotes
