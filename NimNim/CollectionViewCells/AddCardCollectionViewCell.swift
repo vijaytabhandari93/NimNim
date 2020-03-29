@@ -36,9 +36,12 @@ class AddCardCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
     @IBOutlet weak var cvvTextField: UITextField!
     @IBOutlet weak var nameOnCardTextField: UITextField!
     
-    //MARK: Constants and Variables
+    @IBOutlet weak var cardNumberTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var expiryTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var cvvTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var nameOnCardTopConstraint: NSLayoutConstraint!
     
-
+    //MARK: Constants and Variables
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -51,6 +54,20 @@ class AddCardCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
         datePickerView.addTarget(self, action: #selector(datePickerFromValueChanged), for: .valueChanged)
     }
     
+    func animateToTop(withConstraint constraint:NSLayoutConstraint) {
+        constraint.constant = 5
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [.allowUserInteraction], animations: {[weak self] in
+            self?.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    func animateToBottom(withConstraint constraint:NSLayoutConstraint) {
+        constraint.constant = 25
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [.allowUserInteraction], animations: {[weak self] in
+            self?.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
     //MARK: TextField Delegates
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true) //To shut the keyboard// this function is called when the user is pressing the return button
@@ -59,6 +76,17 @@ class AddCardCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         delegate?.textFieldStartedEditingInAddCardCollectionViewCell(withTextField: textField)
+        if textField == cardNumberTextField{
+            animateToTop(withConstraint: cardNumberTopConstraint)
+        }else if textField == expiryTextField {
+            animateToTop(withConstraint: expiryTopConstraint
+            )
+        }else if textField == cvvTextField {
+            animateToTop(withConstraint: cvvTopConstraint)
+        }else if textField == nameOnCardTextField {
+            animateToTop(withConstraint: nameOnCardTopConstraint)
+        }
+        
         return true
     } // built in delegate function of textfield
     
@@ -66,12 +94,32 @@ class AddCardCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
         delegate?.textFieldEndedEditingInAddCardCollectionViewCell(withTextField: textField)
         if textField == cardNumberTextField{
             delegate?.cardNumberEntered(withText: textField.text)
+            if let text = textField.text, text.count == 0 {
+                animateToBottom(withConstraint: cardNumberTopConstraint)
+            }else if textField.text == nil {
+                animateToBottom(withConstraint: cardNumberTopConstraint)
+            }
         }else if textField == expiryTextField {
             delegate?.expiryEntered(withText: textField.text)
+            if let text = textField.text, text.count == 0 {
+                animateToBottom(withConstraint: expiryTopConstraint)
+            }else if textField.text == nil {
+                animateToBottom(withConstraint: expiryTopConstraint)
+            }
         }else if textField == cvvTextField {
             delegate?.cvvEntered(withText: textField.text)
+            if let text = textField.text, text.count == 0 {
+                animateToBottom(withConstraint: cvvTopConstraint)
+            }else if textField.text == nil {
+                animateToBottom(withConstraint: cvvTopConstraint)
+            }
         }else if textField == nameOnCardTextField {
             delegate?.nameEntered(withText: textField.text)
+            if let text = textField.text, text.count == 0 {
+                animateToBottom(withConstraint: nameOnCardTopConstraint)
+            }else if textField.text == nil {
+                animateToBottom(withConstraint: nameOnCardTopConstraint)
+            }
         }
         return true///The above functions are used to send the data of textfield in the cell to the view controller.
     } // built in delegate function of textfield
