@@ -274,17 +274,27 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             
             cell.delegate = self
             cell.indexPath = indexPath // This is used to set the var property defined in the cell defination. It is later used to give the data of the text field to the right param parameter based on the indexPath.
+            if cell.addressText.text == nil || cell.addressText.text == ""  {
+                cell.animateToBottom()
+            }else {
+                cell.animateToTop()
+            }
             return cell
         }
         else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
-            cell.label.text = "Enter APARTMENT NUMBER"
+            cell.label.text = "ENTER APARTMENT NUMBER"
             if editTapped == true {
                 cell.addressText.text = model?.house
                 
             } // editing function
             cell.delegate = self
             cell.indexPath = indexPath
+            if cell.addressText.text == nil || cell.addressText.text == ""  {
+                cell.animateToBottom()
+            }else {
+                cell.animateToTop()
+            }
             return cell
         }
         else if indexPath.item == 2 {
@@ -296,6 +306,11 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             } // editing function
             cell.delegate = self
             cell.indexPath = indexPath
+            if cell.addressText.text == nil || cell.addressText.text == ""  {
+                cell.animateToBottom()
+            }else {
+                cell.animateToTop()
+            }
             return cell
             
         }
@@ -308,6 +323,11 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             } // editing function
             cell.delegate = self
             cell.indexPath = indexPath
+            if cell.addressText.text == nil || cell.addressText.text == ""  {
+                cell.animateToBottom()
+            }else {
+                cell.animateToTop()
+            }
             return cell
         }
         else if indexPath.item == 4 {
@@ -319,6 +339,11 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             } // editing function
             cell.delegate = self
             cell.indexPath = indexPath
+            if cell.addressText.text == nil || cell.addressText.text == ""  {
+                cell.animateToBottom()
+            }else {
+                cell.animateToTop()
+            }
             return cell
         }
             
@@ -331,6 +356,11 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             } // editing function
             cell.delegate = self
             cell.indexPath = indexPath
+            if cell.addressText.text == nil || cell.addressText.text == ""  {
+                cell.animateToBottom()
+            }else {
+                cell.animateToTop()
+            }
             return cell
         }
         else {
@@ -342,6 +372,11 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             } // editing function
             cell.delegate = self
             cell.indexPath = indexPath
+            if cell.addressText.text == nil || cell.addressText.text == ""  {
+                cell.animateToBottom()
+            }else {
+                cell.animateToTop()
+            }
             return cell
         }
     }

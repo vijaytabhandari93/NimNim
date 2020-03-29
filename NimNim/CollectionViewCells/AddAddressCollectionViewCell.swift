@@ -18,6 +18,7 @@ protocol AddAddressCollectionViewCellDelegate:class {
 
 class AddAddressCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
 
+    @IBOutlet weak var labelTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var addressText: UITextField!
     
@@ -44,14 +45,34 @@ class AddAddressCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
         return true
     }
     
+    func animateToTop() {
+        labelTopConstraint.constant = 20
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [.allowUserInteraction], animations: {[weak self] in
+            self?.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
+    func animateToBottom() {
+        labelTopConstraint.constant = 40
+        UIView.animate(withDuration: 0.3, delay: 0.0, options: [.allowUserInteraction], animations: {[weak self] in
+            self?.layoutIfNeeded()
+        }, completion: nil)
+    }
+    
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         delegate?.textFieldStartedEditingInAddAddressCollectionViewCell(withTextField: textField)
+        animateToTop()
         return true
-    } // built in delegate function of textfield
+    }
+
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         delegate?.textFieldEndedEditingInAddAddressCollectionViewCell(withTextField: textField)
         delegate?.textEntered(withText: textField.text, withIndexPath: indexPath)
+        if let text = textField.text, text.count == 0 {
+            animateToBottom()
+        }else if textField.text == nil {
+            animateToBottom()
+        }
         return true
-    
     }
 }

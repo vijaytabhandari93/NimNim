@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -28,7 +25,7 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER STREET ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nzh-8d-y2a">
-                        <rect key="frame" x="28" y="20" width="153.5" height="15"/>
+                        <rect key="frame" x="28" y="40" width="153.5" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="Dfx-Wl-kCU"/>
                         </constraints>
@@ -37,10 +34,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dP1-A8-YWj">
-                        <rect key="frame" x="28" y="41" width="319" height="19"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="19" id="TW5-35-CZM"/>
-                        </constraints>
+                        <rect key="frame" x="28" y="38" width="319" height="24"/>
                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.87" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
                         <textInputTraits key="textInputTraits"/>
@@ -57,18 +51,19 @@
             <constraints>
                 <constraint firstItem="76W-4E-9DE" firstAttribute="leading" secondItem="dP1-A8-YWj" secondAttribute="leading" id="0T1-vJ-qRN"/>
                 <constraint firstAttribute="trailing" secondItem="dP1-A8-YWj" secondAttribute="trailing" constant="28" id="4t9-nz-vf8"/>
+                <constraint firstAttribute="bottom" secondItem="76W-4E-9DE" secondAttribute="bottom" constant="8" id="AY0-h9-SFd"/>
+                <constraint firstItem="76W-4E-9DE" firstAttribute="top" secondItem="dP1-A8-YWj" secondAttribute="bottom" id="BLv-4H-ZgX"/>
                 <constraint firstItem="Nzh-8d-y2a" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="Cap-d6-Eu9"/>
-                <constraint firstItem="76W-4E-9DE" firstAttribute="top" secondItem="Nzh-8d-y2a" secondAttribute="bottom" constant="27" id="Dne-am-aDo"/>
+                <constraint firstItem="dP1-A8-YWj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="38" id="RYJ-D3-BkF"/>
                 <constraint firstItem="dP1-A8-YWj" firstAttribute="leading" secondItem="Nzh-8d-y2a" secondAttribute="leading" id="Rud-BX-HQ0"/>
-                <constraint firstItem="Nzh-8d-y2a" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="Y9x-hH-xGN"/>
+                <constraint firstItem="Nzh-8d-y2a" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="40" id="Y9x-hH-xGN"/>
                 <constraint firstItem="76W-4E-9DE" firstAttribute="trailing" secondItem="dP1-A8-YWj" secondAttribute="trailing" id="bm5-uo-Mwp"/>
-                <constraint firstItem="dP1-A8-YWj" firstAttribute="top" secondItem="Nzh-8d-y2a" secondAttribute="bottom" constant="6" id="l49-Ck-I4Q"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="181" height="579"/>
             <connections>
                 <outlet property="addressText" destination="dP1-A8-YWj" id="Zno-cU-SU7"/>
                 <outlet property="label" destination="Nzh-8d-y2a" id="ZQi-ox-2jf"/>
+                <outlet property="labelTopConstraint" destination="Y9x-hH-xGN" id="NWy-HD-h0h"/>
             </connections>
             <point key="canvasLocation" x="-36.956521739130437" y="127.56696428571428"/>
         </collectionViewCell>
