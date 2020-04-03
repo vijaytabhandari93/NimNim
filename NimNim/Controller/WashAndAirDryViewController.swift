@@ -10,7 +10,12 @@ import SwiftyJSON
 import NVActivityIndicatorView
 import Kingfisher
 
-class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NoofClothesCollectionViewCellDelegate {
+class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,NoofClothesCollectionViewCellDelegate,WashAndFoldPreferencesCollectionViewCellDelegate{
+    
+    func preferenceTapped() {
+        checkingServiceModel()
+    }
+    
     
 
     var activeTextField : UITextField?
@@ -21,6 +26,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     
     func textFieldEndedEditingInCell(withTextField textField: UITextField) {
+        checkingServiceModel()
         removeTapGestures(forTextField: textField)
         if let text = textField.text, let intValue = Int(text) {
             serviceModel?.numberOfClothes = intValue
@@ -37,7 +43,11 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         }
     }
     
-    
+    func checkingServiceModel() {
+         if  addToCart.titleLabel?.text == "Check Out" {
+             addToCart.setTitle("Done", for: .normal)
+         }
+     }
     
     
     //IBOutlets
@@ -122,6 +132,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     
     func setupNimNimItButton() {
+        checkingServiceModel()
         if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
@@ -165,17 +176,16 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
         }
     }
     
-    func setupAddToCartButton(){
-        
-            if let alias = serviceModel?.alias {
-                if checkIfInCart(withAlias: alias) {
-                    addToCart.setTitle("Done", for: .normal)
-                }else {
-                    addToCart.setTitle("Add to Cart", for: .normal)
-                }
+    func setupAddToCartButton() {
+        if let alias = serviceModel?.alias {
+            if checkIfInCart(withAlias: alias) {
+                addToCart.setTitle("Done", for: .normal)
             }else {
                 addToCart.setTitle("Add to Cart", for: .normal)
             }
+        }else {
+            addToCart.setTitle("Add to Cart", for: .normal)
+        }
     }
     
     func setupCartCountLabel() {
@@ -193,6 +203,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
+        checkingServiceModel()
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
         priceTotalBackgroundView.addTopShadowToView()
@@ -258,6 +269,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
                present(jnnvc, animated: true, completion: nil)
     }
     @IBAction func justNimNimItTapped(_ sender: Any) {
+        checkingServiceModel()
         justNimNimItSelected = !justNimNimItSelected
         setupNimNimItButton()
         washAndAirDryCollectionView.reloadData()
@@ -534,6 +546,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
                     cell.leftLabel.text = firstPreference.title
                     cell.rightLabel.text = secondPreference.title
                     cell.configureCell(withPreferenceModelArray: washes)
+                    cell.delegate = self
                 }
                 return cell
                 
@@ -545,6 +558,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
                     cell.leftLabel.text = firstPreference.title
                     cell.rightLabel.text = secondPreference.title
                     cell.configureCell(withPreferenceModelArray: bleach)
+                    cell.delegate = self
                 }
                 return cell
             case 2 :
@@ -555,6 +569,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
                     cell.leftLabel.text = firstPreference.title
                     cell.rightLabel.text = secondPreference.title
                     cell.configureCell(withPreferenceModelArray: softner)
+                    cell.delegate = self
                 }
                 return cell
                 
@@ -628,6 +643,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     //Delegate Function of TextView
     func sendImage() {
+                checkingServiceModel()
         let alert = UIAlertController(title: "Upload Image", message: nil, preferredStyle: .actionSheet)
         let libraryAction = UIAlertAction(title: "Choose from Photo Library", style: .default) {[weak self] (action) in
             self?.choosePhotoFromLibrary()
@@ -669,6 +685,7 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     }
     
     func textViewEndedEditingInCell(withTextField textView: UITextView) {
+        checkingServiceModel()
         removeTapGestures(forTextView: textView)
         if let currentText = textView.text {
             if !(currentText.caseInsensitiveCompare("Any Special Notes...") == .orderedSame) {

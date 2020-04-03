@@ -21,16 +21,18 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         priceTotalBackgroundView.addTopShadowToView()
         setupCartCountLabel() 
         setupPrice()
+        checkingServiceModel()
     }
     
     
     func setupPrice() {
+        checkingServiceModel()
         if justNimNimItSelected {
             let price = "@Pricelist"
             priceLabel.text = price
             serviceModel?.servicePrice = price
-   
- }
+            
+        }
         else {
             if let price = serviceModel?.calculatePriceForService() {
                 priceLabel.text = price
@@ -284,6 +286,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         }
     }
     func sendImage() {
+        checkingServiceModel()
         let alert = UIAlertController(title: "Upload Image", message: nil, preferredStyle: .actionSheet)
         let libraryAction = UIAlertAction(title: "Choose from Photo Library", style: .default) {[weak self] (action) in
             self?.choosePhotoFromLibrary()
@@ -383,6 +386,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
     @IBAction func justNimNimIt(_ sender: Any) {
+        checkingServiceModel()
         justNimNimItSelected = !justNimNimItSelected
         setupNimNimItButton()
         setupPrice()
@@ -500,38 +504,38 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     //        }
     //    }
     
-   func updateServiceInCart(withCartId cartId:String?) {
+    func updateServiceInCart(withCartId cartId:String?) {
         if let serviceModel = serviceModel, let cartId = cartId{
             var modelToDictionary = serviceModel.toJSON()
             modelToDictionary["cart_id"] = cartId
             print(JSON(modelToDictionary))
             if serviceModel.validateAddToCartForService() {
-            activityIndicator.startAnimating()
-            NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
-                self?.addToCart.setTitle("Check Out", for: .normal)
-                self?.IsAddToCartTapped = true
-                self?.dryCleaningCollectionView.reloadData()
-                if let response = response as? [String:Any] {
-                    if let cartId = response["cart_id"] as? String {
-                        UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
-                        addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias)
-                        self?.setupCartCountLabel()
+                activityIndicator.startAnimating()
+                NetworkingManager.shared.put(withEndpoint: Endpoints.updateCart, withParams: modelToDictionary, withSuccess: {[weak self] (response) in
+                    self?.addToCart.setTitle("Check Out", for: .normal)
+                    self?.IsAddToCartTapped = true
+                    self?.dryCleaningCollectionView.reloadData()
+                    if let response = response as? [String:Any] {
+                        if let cartId = response["cart_id"] as? String {
+                            UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                            addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias)
+                            self?.setupCartCountLabel()
+                        }
                     }
-                }
-                
-                print("success")
-                Events.fireAddedToCart(withType: serviceModel.alias)
-                DispatchQueue.main.async {[weak self] in
-                    if let numberOfSections = self?.dryCleaningCollectionView.numberOfSections {
-                        let lastSection = numberOfSections - 1
-                        self?.dryCleaningCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+                    
+                    print("success")
+                    Events.fireAddedToCart(withType: serviceModel.alias)
+                    DispatchQueue.main.async {[weak self] in
+                        if let numberOfSections = self?.dryCleaningCollectionView.numberOfSections {
+                            let lastSection = numberOfSections - 1
+                            self?.dryCleaningCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+                        }
                     }
+                    self?.activityIndicator.stopAnimating()
+                }) {[weak self] (error) in
+                    print("error")
+                    self?.activityIndicator.stopAnimating()
                 }
-                self?.activityIndicator.stopAnimating()
-            }) {[weak self] (error) in
-                print("error")
-                self?.activityIndicator.stopAnimating()
-            }
             }
             else {
                 //  Show Alertf...
@@ -545,39 +549,48 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         }
     }
     
+    func checkingServiceModel() {
+        if  addToCart.titleLabel?.text == "Check Out" {
+            
+            addToCart.setTitle("Done", for: .normal)
+        }
+        
+        
+    }
+    
     func addServiceToCart() {
         if let serviceModel = serviceModel /// this is received from serviceBase collection view cells(//passing of the service model to the vc. as written)
         {
             if serviceModel.validateAddToCartForService() {
-               let modelToDictionary = serviceModel.toJSON() // model in dictationary
-                           activityIndicator.startAnimating()
-                           var params : [String:Any] = [:]/// - dictionary
-                           params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
-                           print(JSON(params))
-                           NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
-                               self?.addToCart.setTitle("Check Out", for: .normal)//alamofire is conveerting dictionary to JSON
-                               self?.IsAddToCartTapped = true
-                               self?.dryCleaningCollectionView.reloadData()
-                               if let response = response as? [String:Any] {
-                                   if let cartId = response["cart_id"] as? String {
-                                       UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
-                                   }
-                                   addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
-                                   self?.setupCartCountLabel()
-                               }
-                               print("success")
-                            Events.fireAddedToCart(withType: serviceModel.alias)
-                               DispatchQueue.main.async {[weak self] in
-                                   if let numberOfSections = self?.dryCleaningCollectionView.numberOfSections {
-                                       let lastSection = numberOfSections - 1
-                                       self?.dryCleaningCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
-                                   }
-                               }
-                               self?.activityIndicator.stopAnimating()
-                           }) {[weak self] (error) in
-                               print("error")
-                               self?.activityIndicator.stopAnimating()
-                           }
+                let modelToDictionary = serviceModel.toJSON() // model in dictationary
+                activityIndicator.startAnimating()
+                var params : [String:Any] = [:]/// - dictionary
+                params[AddToCart.services] = [modelToDictionary]///the params of add to cart is key value pair. Key is "services" and value is an array of dictianary.
+                print(JSON(params))
+                NetworkingManager.shared.post(withEndpoint: Endpoints.addToCart, withParams: params, withSuccess: {[weak self] (response) in
+                    self?.addToCart.setTitle("Check Out", for: .normal)//alamofire is conveerting dictionary to JSON
+                    self?.IsAddToCartTapped = true
+                    self?.dryCleaningCollectionView.reloadData()
+                    if let response = response as? [String:Any] {
+                        if let cartId = response["cart_id"] as? String {
+                            UserDefaults.standard.set(cartId, forKey: UserDefaultKeys.cartId)
+                        }
+                        addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
+                        self?.setupCartCountLabel()
+                    }
+                    print("success")
+                    Events.fireAddedToCart(withType: serviceModel.alias)
+                    DispatchQueue.main.async {[weak self] in
+                        if let numberOfSections = self?.dryCleaningCollectionView.numberOfSections {
+                            let lastSection = numberOfSections - 1
+                            self?.dryCleaningCollectionView.scrollToItem(at: IndexPath(item: 0, section: lastSection), at: .centeredVertically, animated: true)
+                        }
+                    }
+                    self?.activityIndicator.stopAnimating()
+                }) {[weak self] (error) in
+                    print("error")
+                    self?.activityIndicator.stopAnimating()
+                }
             }else {
                 //  Show Alertf...
                 let alert = UIAlertController(title: "Alert", message: "Please select from the list of clothes or simply choose Just NimNim It.", preferredStyle: .alert)
@@ -586,7 +599,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
                 
                 
             }
-           
+            
         }
     }
     
@@ -598,7 +611,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         }else if section == 1 {
             return CGSize(width: collectionView.frame.size.width, height:95)
         }else if section == 2 {
-             if let count = serviceModel?.uploadedImages.count , count  > 0  {
+            if let count = serviceModel?.uploadedImages.count , count  > 0  {
                 return CGSize(width: collectionView.frame.size.width, height:191)
             }
             else
@@ -637,6 +650,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     
     func textViewEndedEditingInCell(withTextField textView: UITextView) {
+        checkingServiceModel()
         removeTapGestures(forTextView: textView)
         if let currentText = textView.text {
             if !(currentText.caseInsensitiveCompare("Any Special Notes...") == .orderedSame) {
@@ -646,6 +660,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     //MARK: NeedRushDeliveryCellDelegate
     func rushDeliveryTapped(withIndexPath indexPath: IndexPath?) {
+        checkingServiceModel()
         if indexPath?.section == 3 {
             if let rushDeliveryState = serviceModel?.isRushDeliverySelected {
                 serviceModel?.isRushDeliverySelected = !rushDeliveryState

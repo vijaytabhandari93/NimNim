@@ -44,16 +44,16 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
         if indexPath.row == 0 {
             let title = "Order from a wide range of Services"
-            cell.configureCell(withImage: nil, withTitle: title)
+            cell.configureCell(withImage: "onboarding1", withTitle: title)
         }else if indexPath.row == 1 {
             let title = "Setup from a range of Preferences or \"just NimNim it\""
-            cell.configureCell(withImage: nil, withTitle: title)
+            cell.configureCell(withImage: "onboarding2", withTitle: title)
         }else if indexPath.row == 2 {
             let title = "24 Hours Delivery. Delivered quickly to your doorstep"
-            cell.configureCell(withImage: nil, withTitle: title)
+            cell.configureCell(withImage: "onboarding3", withTitle: title)
         }else if indexPath.row == 3 {
             let title = "Why customers use NimNim Services"
-            cell.configureCell(withImage: nil, withTitle: title)
+            cell.configureCell(withImage: "BG-4-5", withTitle: title)
         }
         return cell
     }

@@ -57,6 +57,7 @@ class AddAddressCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
         UIView.animate(withDuration: 0.3, delay: 0.0, options: [.allowUserInteraction], animations: {[weak self] in
             self?.layoutIfNeeded()
         }, completion: nil)
+        
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

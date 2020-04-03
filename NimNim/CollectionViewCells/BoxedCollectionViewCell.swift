@@ -61,6 +61,7 @@ class BoxedCollectionViewCell: UICollectionViewCell {
     }
     
     func setupUI() {
+        
         if let preferences = preferences, preferences.count > 1 {
             let leftPreference = preferences[0]
             let rightPreference = preferences[1]

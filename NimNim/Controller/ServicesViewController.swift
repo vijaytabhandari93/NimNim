@@ -11,7 +11,12 @@ import SwiftyJSON
 import NVActivityIndicatorView
 import Kingfisher
 
-class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate{
+class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,SpecialNotesCollectionViewCellDelegate,NoofClothesCollectionViewCellDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate,NeedRushDeliveryCollectionViewCellDelegate,WashAndFoldPreferencesCollectionViewCellDelegate{
+    
+    func preferenceTapped() {
+        checkingServiceModel()
+    }
+    
     //IBOutlets
     @IBOutlet weak var basketLabel: UILabel!
     @IBOutlet weak var washAndFoldLabel: UILabel!
@@ -57,6 +62,12 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         }else {
             justNimNimItSelected = false
             setupUIForNimNimIt()
+        }
+    }
+    
+    func checkingServiceModel() {
+        if  addToCart.titleLabel?.text == "Check Out" {
+            addToCart.setTitle("Done", for: .normal)
         }
     }
     
@@ -112,6 +123,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
+        checkingServiceModel()
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
         priceTotalBackgroundView.addTopShadowToView()
@@ -144,6 +156,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func setupUIForNimNimIt() {
+        checkingServiceModel()
         if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
@@ -160,6 +173,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func setupNimNimItButton() {
+        checkingServiceModel()
         if justNimNimItSelected {
             justNimNimIt.backgroundColor = Colors.nimnimGreen
             justNimNimIt.setTitleColor(.white, for: .normal)
@@ -178,6 +192,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     @IBAction func justNimNimIt(_ sender: Any) {
+        checkingServiceModel()
         justNimNimItSelected = !justNimNimItSelected
         setupNimNimItButton()
         prefernces.reloadData()
@@ -363,7 +378,6 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         let section = indexPath.section
         if section == 0 {
             
@@ -377,6 +391,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                     cell.leftLabel.text = firstPreference.title
                     cell.rightLabel.text = secondPreference.title
                     cell.configureCell(withPreferenceModelArray: detergents)
+                    cell.delegate = self
                 }
                 return cell
             case 1:
@@ -387,6 +402,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                     cell.leftLabel.text = firstPreference.title
                     cell.rightLabel.text = secondPreference.title
                     cell.configureCell(withPreferenceModelArray: washes)
+                     cell.delegate = self
                 }
                 return cell
             case 2:
@@ -397,6 +413,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                     cell.leftLabel.text = firstPreference.title
                     cell.rightLabel.text = secondPreference.title
                     cell.configureCell(withPreferenceModelArray: drys)
+                     cell.delegate = self
                 }
                 return cell
             case 3:
@@ -407,6 +424,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                     cell.leftLabel.text = firstPreference.title
                     cell.rightLabel.text = secondPreference.title
                     cell.configureCell(withPreferenceModelArray: bleach)
+                     cell.delegate = self
                 }
                 return cell
             case 4:
@@ -417,6 +435,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
                     cell.leftLabel.text = firstPreference.title
                     cell.rightLabel.text = secondPreference.title
                     cell.configureCell(withPreferenceModelArray: softner)
+                     cell.delegate = self
                 }
                 return cell
                 
@@ -554,6 +573,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     ///Delegate Function of TextView
     func sendImage() {
+        checkingServiceModel()
         let alert = UIAlertController(title: "Upload Image", message: nil, preferredStyle: .actionSheet)
         let libraryAction = UIAlertAction(title: "Choose from Photo Library", style: .default) {[weak self] (action) in
             self?.choosePhotoFromLibrary()
@@ -595,6 +615,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func textViewEndedEditingInCell(withTextField textView: UITextView) {
+        checkingServiceModel()
         removeTapGestures(forTextView: textView)
         if let currentText = textView.text {
             if !(currentText.caseInsensitiveCompare("Any Special Notes...") == .orderedSame) {
@@ -609,6 +630,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     }
     
     func textFieldEndedEditingInCell(withTextField textField: UITextField) {
+        checkingServiceModel()
         removeTapGestures(forTextField: textField)
         if let text = textField.text, let intValue = Int(text) {
             serviceModel?.numberOfClothes = intValue
@@ -635,6 +657,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     //MARK: NeedRushDeliveryCellDelegate
     func rushDeliveryTapped(withIndexPath indexPath: IndexPath?) {
+        checkingServiceModel()
         if let rushDeliveryState = serviceModel?.isRushDeliverySelected {
             serviceModel?.isRushDeliverySelected = !rushDeliveryState
             prefernces.reloadData()

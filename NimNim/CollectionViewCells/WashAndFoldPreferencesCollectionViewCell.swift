@@ -8,6 +8,9 @@
 
 import UIKit
 
+protocol WashAndFoldPreferencesCollectionViewCellDelegate:class {
+    func preferenceTapped()
+}
 class WashAndFoldPreferencesCollectionViewCell: UICollectionViewCell {
 
     //IBOutlets
@@ -30,6 +33,7 @@ class WashAndFoldPreferencesCollectionViewCell: UICollectionViewCell {
             rightPreference.isSelected = false
             //Setup the ui
             setupUI()
+            delegate?.preferenceTapped()
         }
     }
     @IBAction func rightButtonTapped(_ sender: Any) {
@@ -41,6 +45,8 @@ class WashAndFoldPreferencesCollectionViewCell: UICollectionViewCell {
             rightPreference.isSelected = true
             //Setup the ui
             setupUI()
+            delegate?.preferenceTapped()
+            
         }
     }
     
@@ -50,6 +56,7 @@ class WashAndFoldPreferencesCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
+    weak var delegate:WashAndFoldPreferencesCollectionViewCellDelegate?
     func configureCell(withPreferenceModelArray model:[PreferenceModel]?) {
         if let model = model {
             preferences = model

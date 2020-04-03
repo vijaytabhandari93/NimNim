@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -80,16 +79,7 @@
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ht3-pN-zZC">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="iU9-AJ-afp">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -102,7 +92,7 @@
                             <constraint firstItem="1Lc-nY-qMK" firstAttribute="trailing" secondItem="bry-DQ-2qT" secondAttribute="trailing" id="LO0-A8-SD6"/>
                             <constraint firstItem="PP5-xS-MFo" firstAttribute="leading" secondItem="1Lc-nY-qMK" secondAttribute="leading" id="WSU-Yn-wf9"/>
                             <constraint firstItem="bry-DQ-2qT" firstAttribute="leading" secondItem="1Lc-nY-qMK" secondAttribute="leading" id="nv6-jb-Gi2"/>
-                            <constraint firstItem="bry-DQ-2qT" firstAttribute="top" secondItem="813-FQ-H82" secondAttribute="top" id="oRK-Rr-qxe"/>
+                            <constraint firstItem="bry-DQ-2qT" firstAttribute="top" secondItem="1Lc-nY-qMK" secondAttribute="top" constant="-44" id="oRK-Rr-qxe"/>
                             <constraint firstItem="FvL-vP-K16" firstAttribute="leading" secondItem="1Lc-nY-qMK" secondAttribute="leading" id="qxr-hl-rKp"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Lc-nY-qMK"/>

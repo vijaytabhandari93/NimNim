@@ -13,7 +13,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
 
     @IBOutlet weak var addAddressCollectionView: UICollectionView!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
-   var isHeightAdded = false // global variable made for keyboard height modification
+    var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     var model : AddressDetailsModel? // used for editing function
     var editTapped : Bool = false // used for editing function
@@ -150,7 +150,7 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
     }
     
-    func putAddress(streetAddress : String?, houseBlockNumber : String?,city : String?,state : String?,zipcode : String?,enterLandmark : String?,label:String?,id:String?){
+    func putAddress(streetAddress : String?, houseBlockNumber : String?,city : String?,state : String?,zipcode : String?,enterLandmark : String?,label:String?,id:String?) {
         guard let streetAddress = streetAddress , let houseBlockNumber =  houseBlockNumber ,let city = city, let state = state, let zipcode = zipcode, let label = label, let id = id else {
             return
         }
@@ -268,10 +268,8 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
             cell.label.text = "ENTER STREET ADDRESS"
             if editTapped == true {
-                cell.addressText.text = model?.street
-                
+            cell.addressText.text = model?.street
             } // editing function
-            
             cell.delegate = self
             cell.indexPath = indexPath // This is used to set the var property defined in the cell defination. It is later used to give the data of the text field to the right param parameter based on the indexPath.
             if cell.addressText.text == nil || cell.addressText.text == ""  {

@@ -17,6 +17,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     var activeTextField : UITextField?
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
+    
     //NoOfClothes Delegate Methods
     func textFieldStartedEditingInCell(withTextField textField: UITextField) {
         activeTextField = textField
@@ -24,6 +25,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     
     func textFieldEndedEditingInCell(withTextField textField: UITextField) {
+        checkingServiceModel()
         removeTapGestures(forTextField: textField)
         if let text = textField.text, let intValue = Int(text) {
             serviceModel?.numberOfClothes = intValue
@@ -48,14 +50,11 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     @IBOutlet weak var basketLabel: UILabel!
     @IBOutlet weak var WashAndPressedShirtLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
     @IBOutlet weak var WashPressedShirtCollectionView: UICollectionView!
     @IBOutlet weak var PriceTotalBackgroundView: UIView!
-    
-    
     @IBOutlet weak var addToCart: UIButton!
-    
     @IBOutlet weak var priceLabel: UILabel!
+    
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
     var activeTextView : UITextView?
@@ -116,6 +115,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     
     @IBAction func justNimNimIt(_ sender: Any) {
+        checkingServiceModel()
         justNimNimItSelected = !justNimNimItSelected
         setupNimNimItButton()
         setupPrice()
@@ -154,6 +154,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     
     func setupPrice() {
+        checkingServiceModel()
         if justNimNimItSelected {
             let price = "@Pricelist"
             priceLabel.text = price
@@ -405,9 +406,18 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         
     }
     
-    func preferenceTapped(){
-        setupPrice()
+    func checkingServiceModel() {
+            if  addToCart.titleLabel?.text == "Check Out" {
+                addToCart.setTitle("Done", for: .normal)
+            }
+        }
+    
+    
+    func preferenceTapped() {
+    checkingServiceModel()
+    setupPrice()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -462,8 +472,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     
     
     func setupAddToCartButton(){
- 
-            if let alias = serviceModel?.alias {
+               if let alias = serviceModel?.alias {
                 if checkIfInCart(withAlias: alias) {
                     addToCart.setTitle("Done", for: .normal)
                 }else {
@@ -476,6 +485,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
+        checkingServiceModel()
         super.viewWillAppear(animated)
         applyHorizontalNimNimGradient()
         PriceTotalBackgroundView.addTopShadowToView()

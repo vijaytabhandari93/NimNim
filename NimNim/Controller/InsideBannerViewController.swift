@@ -21,7 +21,7 @@ class InsideBannerViewController: UIViewController,UICollectionViewDelegate,UICo
     }
     
     struct BannerData {
-        static let newCustomerOnboardingIcons = ["10Off","justNimNimIt","questionIcon",""]
+        static let newCustomerOnboardingIcons = ["10Off","justNimNimIt","questionIcon","driver"]
         static let newCustomerOnboardingTitles = ["Thank you for joining NimNim","Just press NimNim it","Do you have a Question?","Our driver will bring the bags"]
         static let newCustomerOnboardingDescription = ["Use first time code NewNim upon check out to get $10 OFF of your order.","You can individually choose services preference by preference or just press NimNim it and allow us to sort out everything for you.","If you have a question about order then please go to help section and get service against your order","NimNim driver will bring you a bag upon arrival or you can collect one from your concierge. NimNim delivers in 24  hours on your door."]
         
