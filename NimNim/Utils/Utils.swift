@@ -345,7 +345,7 @@ func isItSunday(withDate date:Date) -> Bool {
 
 func isDate(concernedDate date:Date, betweenDatesDate1 date1:Date, andDate2 date2:Date) -> Bool
 {
-    return (date.compare(date1) == .orderedDescending || date.compare(date1) == .orderedSame) && (date.compare(date2) == .orderedAscending || date.compare(date2) == .orderedSame)
+    return (date.compare(date1) == .orderedDescending || date.compare(date1) == .orderedSame) && (date.compare(date2) == .orderedAscending)
 } // this function gives us true or false if the concerned date is between date1 and  date2.
 
 func fetchDateSlot(forHour hour:Int, ofDate date:Date) -> Date {
