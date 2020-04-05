@@ -95,6 +95,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var priceValue: UILabel!
+    @IBOutlet weak var infoButton: UIButton!
     
     //MARK:View Controller
     
@@ -119,9 +120,19 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
         
     }
     func setupScreen(){
+        infoButton.isHidden = false
         if justNimNimItSelected{
             addToCart.backgroundColor = Colors.nimnimGreen
             addToCart.isEnabled = true
+            if let alias = serviceModel?.alias {
+                if checkIfInCart(withAlias: alias) {
+                    addMoreService.isHidden = false
+                }else {
+                    addMoreService.isHidden = true
+                }
+            }else {
+                addMoreService.isHidden = true
+            }
         }
         else
         {
@@ -132,6 +143,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                 justNimNimIt.isHidden = true
                 totalPrice.isHidden = false
                 priceValue.isHidden = false
+                infoButton.isHidden = true
                 priceValue.text = getPriceOfService()
                 justNimNimItHeightConstraint.constant = 0
                 addMoreService.isHidden = false
@@ -197,7 +209,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                         self?.setupCartCountLabel()
                     }
                 }
-                
+                self?.setupScreen()
                 print("success")
                 Events.fireAddedToCart(withType: serviceModel.alias)
                 DispatchQueue.main.async {[weak self] in
@@ -233,6 +245,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
                     addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
                     self?.setupCartCountLabel()
                 }
+                self?.setupScreen()
                 print("success")
                 Events.fireAddedToCart(withType: serviceModel.alias)
                 DispatchQueue.main.async {[weak self] in

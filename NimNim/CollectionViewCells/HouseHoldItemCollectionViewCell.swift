@@ -120,6 +120,7 @@ class HouseHoldItemCollectionViewCell: UICollectionViewCell,UITextFieldDelegate 
             DryCleaningButton.backgroundColor = Colors.nimnimGrey
         }
         if let quantity = self.model?.qty, quantity > 0 {
+            qty.font = Fonts.medium20
             qty.text = "\(quantity)"
         }else {
             qty.text = nil

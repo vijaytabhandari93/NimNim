@@ -83,6 +83,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     @IBOutlet weak var totalPrice: UILabel!
     @IBOutlet weak var priceValue: UILabel!
     @IBOutlet weak var addNewService: UIButton!
+    @IBOutlet weak var infoButton: UIButton!
     @IBAction func addMoreServices(_ sender: Any) {
         let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
         let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"AllServicesViewController") as? AllServicesViewController
@@ -114,9 +115,19 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     }
     
     func setupScreen(){
+        infoButton.isHidden = false
         if justNimNimItSelected{
             addToCart.backgroundColor = Colors.nimnimGreen
             addToCart.isEnabled = true
+            if let alias = serviceModel?.alias {
+                if checkIfInCart(withAlias: alias) {
+                    addNewService.isHidden = false
+                }else {
+                    addNewService.isHidden = true
+                }
+            }else {
+                addNewService.isHidden = true
+            }
         }
         else
         {
@@ -125,6 +136,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
                 addToCart.isEnabled = true
                 priceTotalbackgroundView.constant = 48
                 justNimNimIt.isHidden = true
+                infoButton.isHidden = true
                 totalPrice.isHidden = false
                 priceValue.text = getPriceOfService()
                 priceValue.isHidden = false
@@ -137,7 +149,6 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
                 totalPrice.isHidden = true
                 priceValue.isHidden = true
                 addNewService.isHidden = true
-                
             }
             shoeRepairCollectionView.reloadData()
             
@@ -197,7 +208,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
                         self?.setupCartCountLabel()
                     }
                 }
-                
+                self?.setupScreen()
                 print("success")
                 Events.fireAddedToCart(withType: serviceModel.alias)
                 DispatchQueue.main.async {[weak self] in
@@ -233,6 +244,7 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
                     addServiceToCartAliasinUserDefaults(withAlias: serviceModel.alias) // to make alias
                     self?.setupCartCountLabel()
                 }
+                self?.setupScreen()
                 Events.fireAddedToCart(withType: serviceModel.alias)
                 print("success")
                 DispatchQueue.main.async {[weak self] in

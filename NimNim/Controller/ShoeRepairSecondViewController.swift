@@ -20,11 +20,13 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
     
     //MARK: IBOutlets
     
+    @IBOutlet weak var infoButton: UIButton!
     @IBOutlet weak var repairToaddorUpdate: UIButton!
     @IBOutlet weak var priceTotalBackgroundView: UIView!
     @IBOutlet weak var shoeRepairCollectionView: UICollectionView!
     @IBOutlet weak var shoeRepairLabel: UILabel!
     @IBOutlet weak var activityIndicator: NVActivityIndicatorView!
+    @IBOutlet weak var addMoreService: UIButton!
     
     var indexPath : IndexPath?
     var editModeOn :  Bool  = false

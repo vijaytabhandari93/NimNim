@@ -1128,8 +1128,7 @@
                                             <color key="titleColor" red="0.2784313725" green="0.74901960779999999" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="addMoreServices:" destination="NMN-kH-8iH" eventType="touchUpInside" id="lxz-dv-KtK"/>
-                                            <action selector="addMoreServices:" destination="FxO-gM-fpC" eventType="touchUpInside" id="mlW-Ox-P7R"/>
+                                            <action selector="addMoreServices:" destination="FxO-gM-fpC" eventType="touchUpInside" id="PvB-LV-94H"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1245,7 +1244,6 @@
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="info.circle" catalog="system"/>
                                         <connections>
-                                            <action selector="infoTapped:" destination="d7e-3E-JYO" eventType="touchUpInside" id="be7-4T-p0A"/>
                                             <action selector="infoTapped:" destination="FxO-gM-fpC" eventType="touchUpInside" id="yFS-BQ-kht"/>
                                         </connections>
                                     </button>
@@ -1397,6 +1395,7 @@
                         <outlet property="addToCart" destination="14o-cz-8ga" id="bdl-l8-eM8"/>
                         <outlet property="basketLabel" destination="lLX-Le-QWY" id="DaY-qR-giO"/>
                         <outlet property="descriptionLabel" destination="uhr-w7-A2B" id="4gF-1M-LJ1"/>
+                        <outlet property="infoButton" destination="dHv-kW-EpB" id="7qB-In-UdG"/>
                         <outlet property="justNimNimIt" destination="QmP-09-S6D" id="DUp-hu-sK5"/>
                         <outlet property="justNimNimItHeightConstraint" destination="6gu-Lo-YNU" id="f3O-ay-DpX"/>
                         <outlet property="priceTotalBackgroundView" destination="5X4-Yp-9C1" id="H4c-xZ-irs"/>
@@ -2441,10 +2440,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qeL-h8-ujb">
-                                <rect key="frame" x="0.0" y="114" width="414" height="652"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="604"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RNv-40-rXg">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="652"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="604"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JxR-Oj-8F0">
                                             <size key="itemSize" width="50" height="50"/>
@@ -2467,9 +2466,31 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="RNv-40-rXg" secondAttribute="trailing" id="Ech-eh-R55"/>
-                                    <constraint firstAttribute="bottom" secondItem="RNv-40-rXg" secondAttribute="bottom" id="HgI-Gg-9et"/>
                                     <constraint firstItem="RNv-40-rXg" firstAttribute="leading" secondItem="qeL-h8-ujb" secondAttribute="leading" id="RZ3-89-raQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="RNv-40-rXg" secondAttribute="bottom" id="in7-Zu-rF9"/>
                                     <constraint firstItem="RNv-40-rXg" firstAttribute="top" secondItem="qeL-h8-ujb" secondAttribute="top" id="rji-IV-vjJ"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz4-kj-7iB">
+                                <rect key="frame" x="0.0" y="718" width="414" height="48"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dJ-Xr-K8G">
+                                        <rect key="frame" x="133.5" y="9" width="147" height="30"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                                        <state key="normal" title="+ Add More Services">
+                                            <color key="titleColor" red="0.2784313725" green="0.74901960779999999" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="addMoreServices:" destination="NMN-kH-8iH" eventType="touchUpInside" id="Z3c-YI-vJL"/>
+                                            <action selector="addMoreServices:" destination="FxO-gM-fpC" eventType="touchUpInside" id="isp-e5-8zb"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="1qy-zB-usf"/>
+                                    <constraint firstItem="9dJ-Xr-K8G" firstAttribute="centerX" secondItem="hz4-kj-7iB" secondAttribute="centerX" id="IJT-1a-hXD"/>
+                                    <constraint firstItem="9dJ-Xr-K8G" firstAttribute="centerY" secondItem="hz4-kj-7iB" secondAttribute="centerY" id="lGz-zH-Fd3"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iij-i6-wzs">
@@ -2546,12 +2567,15 @@
                             <constraint firstItem="llx-2V-Ztw" firstAttribute="top" secondItem="iij-i6-wzs" secondAttribute="bottom" id="C2Z-Sj-mRp"/>
                             <constraint firstItem="qeL-h8-ujb" firstAttribute="top" secondItem="a9r-SW-Mij" secondAttribute="bottom" id="D1h-Iq-oRT"/>
                             <constraint firstItem="HPf-m9-vR9" firstAttribute="centerY" secondItem="iRF-6H-qwh" secondAttribute="centerY" id="KEA-ya-CGF"/>
-                            <constraint firstItem="iij-i6-wzs" firstAttribute="top" secondItem="qeL-h8-ujb" secondAttribute="bottom" id="MLE-Q1-mNq"/>
+                            <constraint firstItem="hz4-kj-7iB" firstAttribute="top" secondItem="qeL-h8-ujb" secondAttribute="bottom" id="Ojv-aA-2eZ"/>
                             <constraint firstItem="8GH-GR-K7q" firstAttribute="bottom" secondItem="llx-2V-Ztw" secondAttribute="bottom" id="Rg4-qH-UK7"/>
                             <constraint firstItem="llx-2V-Ztw" firstAttribute="leading" secondItem="8GH-GR-K7q" secondAttribute="leading" id="WSi-P3-TbD"/>
                             <constraint firstItem="8GH-GR-K7q" firstAttribute="trailing" secondItem="llx-2V-Ztw" secondAttribute="trailing" id="ZYX-2G-k9X"/>
+                            <constraint firstItem="hz4-kj-7iB" firstAttribute="leading" secondItem="8GH-GR-K7q" secondAttribute="leading" id="a08-zZ-QBE"/>
                             <constraint firstItem="iij-i6-wzs" firstAttribute="leading" secondItem="8GH-GR-K7q" secondAttribute="leading" id="bxB-YX-ZG2"/>
+                            <constraint firstItem="iij-i6-wzs" firstAttribute="top" secondItem="hz4-kj-7iB" secondAttribute="bottom" id="c7Y-nj-Nup"/>
                             <constraint firstItem="a9r-SW-Mij" firstAttribute="leading" secondItem="8GH-GR-K7q" secondAttribute="leading" id="ewJ-cx-Tpw"/>
+                            <constraint firstItem="hz4-kj-7iB" firstAttribute="trailing" secondItem="8GH-GR-K7q" secondAttribute="trailing" id="gHw-zZ-cWy"/>
                             <constraint firstItem="8GH-GR-K7q" firstAttribute="trailing" secondItem="a9r-SW-Mij" secondAttribute="trailing" id="oLu-Ry-ATj"/>
                             <constraint firstItem="8GH-GR-K7q" firstAttribute="trailing" secondItem="iij-i6-wzs" secondAttribute="trailing" id="tgt-sd-GnR"/>
                             <constraint firstItem="HPf-m9-vR9" firstAttribute="centerX" secondItem="iRF-6H-qwh" secondAttribute="centerX" id="yEd-Mf-ATh"/>
@@ -2561,6 +2585,8 @@
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="HPf-m9-vR9" id="aQu-KR-kjO"/>
+                        <outlet property="addMoreService" destination="9dJ-Xr-K8G" id="Oum-4T-jNl"/>
+                        <outlet property="infoButton" destination="9Q6-Lx-QqE" id="D4A-Ke-COK"/>
                         <outlet property="priceLabel" destination="PmF-lv-HJB" id="0uk-05-z0B"/>
                         <outlet property="priceTotalBackgroundView" destination="iij-i6-wzs" id="nge-BQ-6jO"/>
                         <outlet property="repairToaddorUpdate" destination="bxc-QH-Cet" id="Eer-7W-yDa"/>
@@ -2570,7 +2596,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75L-ua-Xdf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-539" y="473"/>
+            <point key="canvasLocation" x="-539.13043478260875" y="472.76785714285711"/>
         </scene>
         <!--Tailoring View Controller-->
         <scene sceneID="Wo8-WP-B5G">
@@ -2858,6 +2884,7 @@
                         <outlet property="addToCart" destination="HcB-gY-2oo" id="Kxp-oE-Pac"/>
                         <outlet property="basketLabel" destination="qWG-XM-uZM" id="ZCG-FC-abM"/>
                         <outlet property="descriptionLabel" destination="I0j-Lz-kHl" id="KfR-qd-Gwx"/>
+                        <outlet property="infoButton" destination="UWe-xa-MOW" id="0fY-2k-Uh3"/>
                         <outlet property="justNimNimIt" destination="MsU-iN-VYs" id="bpZ-mv-BeF"/>
                         <outlet property="priceTotalBackgroundView" destination="0mP-ef-zK3" id="OaK-px-zle"/>
                         <outlet property="priceTotalbackgroundView" destination="vqP-fm-vF5" id="kT3-hM-ixB"/>
