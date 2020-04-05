@@ -27,7 +27,7 @@ class deliverynotesCollectionViewCell: UICollectionViewCell,UITextViewDelegate {
     @IBOutlet weak var uploadImage: UIImageView!
     var notesWritten : String?
     weak var delegate : DeliverynotesCollectionViewCellDelegate?
-    
+    let placeholderText = "Attach photos and write any notes"
     @IBAction func editPreferenceTapped(_ sender: Any) {
         
         delegate?.preferenceTapped()
@@ -87,7 +87,7 @@ class deliverynotesCollectionViewCell: UICollectionViewCell,UITextViewDelegate {
 
   func textViewShouldBeginEditing(_ textView: UITextView) -> Bool{
         delegate?.textViewStartedEditingInCell(withTextField: textView)
-        if textView.text.caseInsensitiveCompare("Any Delivery notes...") == .orderedSame {
+        if textView.text.caseInsensitiveCompare(placeholderText) == .orderedSame {
             textView.text = ""
         }
         return true
@@ -98,11 +98,10 @@ class deliverynotesCollectionViewCell: UICollectionViewCell,UITextViewDelegate {
         if textView.text == "" {
             textView.font = Fonts.regularFont12
             textView.textColor = Colors.nimnimGrey
-            textView.text = "Any Delivery notes..."
+            textView.text = placeholderText
         }
         else {
             notesWritten = textView.text
-            print(notesWritten)
         }
         return true
     }
@@ -122,8 +121,6 @@ class deliverynotesCollectionViewCell: UICollectionViewCell,UITextViewDelegate {
                 textView.textColor = Colors.nimnimGreen
             }else {
                 textView.font = Fonts.regularFont12
-                
-                
             }
         }
         return true

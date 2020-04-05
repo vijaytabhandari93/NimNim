@@ -88,8 +88,8 @@
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cBJ-h2-bQ6">
-                                <rect key="frame" x="28" y="121.5" width="52" height="52"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cBJ-h2-bQ6">
+                                <rect key="frame" x="28" y="122.5" width="52" height="52"/>
                                 <color key="backgroundColor" red="0.76470588235294112" green="0.79607843137254897" blue="0.85098039215686272" alpha="0.16" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="4fe-ch-ENy"/>

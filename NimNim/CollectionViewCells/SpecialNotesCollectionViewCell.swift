@@ -27,6 +27,8 @@ class SpecialNotesCollectionViewCell: UICollectionViewCell, UITextViewDelegate {
     @IBOutlet weak var secondImage: UIImageView!
     @IBOutlet weak var thirdImage: UIImageView!
     
+    let placeholderText = "Attach photos and write any notes"
+    
     override func awakeFromNib() {
         //border addition to be done
         super.awakeFromNib()
@@ -49,7 +51,7 @@ class SpecialNotesCollectionViewCell: UICollectionViewCell, UITextViewDelegate {
     
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool{
         delegate?.textViewStartedEditingInCell(withTextField: textView)
-        if textView.text.caseInsensitiveCompare("Any Special notes...") == .orderedSame {
+        if textView.text.caseInsensitiveCompare(placeholderText) == .orderedSame {
             textView.text = ""
         }
         return true
@@ -60,11 +62,10 @@ class SpecialNotesCollectionViewCell: UICollectionViewCell, UITextViewDelegate {
         if textView.text == "" {
             textView.font = Fonts.regularFont12
             textView.textColor = Colors.nimnimGrey
-            textView.text = "Any Special Notes..."
+            textView.text = placeholderText
         }
         else {
             notesWritten = textView.text
-            print(notesWritten)
         }
         return true
     }

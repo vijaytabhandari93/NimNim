@@ -437,7 +437,11 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
                     cell.thirdImage.alpha = 1
                 }
             }
-            cell.notesTextBox.text = specialNotes
+            if let notes = specialNotes {
+                cell.notesTextBox.text = notes
+            }else {
+                cell.notesTextBox.text = cell.placeholderText
+            }
             return cell
         }
     }

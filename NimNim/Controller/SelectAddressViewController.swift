@@ -289,6 +289,11 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
             let savedAddressCell = collectionView.dequeueReusableCell(withReuseIdentifier: "deliverynotesCollectionViewCell", for: indexPath) as! deliverynotesCollectionViewCell
             savedAddressCell.delegate = self
             savedAddressCell.configureCell(withUploadedImages: cartModel?.deliveryRelatedUploadedImages)
+            if let notes = cartModel?.deliveryNotes {
+                savedAddressCell.notes.text = notes
+            }else {
+                savedAddressCell.notes.text = savedAddressCell.placeholderText
+            }
             return savedAddressCell
         }
         else {

@@ -206,7 +206,11 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
                     cell.thirdImage.kf.setImage(with: urlValue)
                 }
             }
-            cell.notesTextBox.text = serviceModel?.specialNotes
+            if let notes = serviceModel?.specialNotes {
+                cell.notesTextBox.text = notes
+            }else {
+                cell.notesTextBox.text = cell.placeholderText
+            }
             return cell
         }
         else {
