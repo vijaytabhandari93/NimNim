@@ -37,7 +37,7 @@ class OnboardingViewController: UIViewController {
 
 extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 7
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -53,7 +53,13 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
             cell.configureCell(withImage: "onboarding3", withTitle: title)
         }else if indexPath.row == 3 {
             let title = "Why customers use NimNim Services"
+            cell.configureCell(withImage: "BG-4-4", withTitle: title)
+        }else if indexPath.row == 4 {
+            let title = "Why customers use NimNim Services"
             cell.configureCell(withImage: "BG-4-5", withTitle: title)
+        }else if indexPath.row == 5 {
+            let title = "Why customers use NimNim Services"
+            cell.configureCell(withImage: "BG-4-6", withTitle: title)
         }
         return cell
     }
