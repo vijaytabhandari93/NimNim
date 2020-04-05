@@ -65,10 +65,10 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
     {
         if indexPath.item == 0
         {
-            return CGSize(width: collectionView.frame.size.width, height:35)
+            return CGSize(width: collectionView.frame.size.width, height:66)
         }
         else if indexPath.section == 0 && indexPath.item == 1 || indexPath.section == 1 && indexPath.item == 1 || indexPath.section == 2 && indexPath.item == 1 || indexPath.section == 7 && indexPath.item == 1 {
-        return CGSize(width: collectionView.frame.size.width, height:10)
+            return CGSize(width: collectionView.frame.size.width, height:10)
         }
         else {
             var text = ""
