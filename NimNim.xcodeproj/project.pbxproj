@@ -66,6 +66,10 @@
 		AC49C6A5242DD6900065EDFB /* BannerInsideCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49C6A3242DD6900065EDFB /* BannerInsideCollectionViewCell.swift */; };
 		AC49C6A6242DD6900065EDFB /* BannerInsideCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC49C6A4242DD6900065EDFB /* BannerInsideCollectionViewCell.xib */; };
 		AC49C6A8242DDC290065EDFB /* InsideBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC49C6A7242DDC290065EDFB /* InsideBannerViewController.swift */; };
+		AC4D31062439E46C0033E708 /* ReviewsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4D31042439E46C0033E708 /* ReviewsCollectionViewCell.swift */; };
+		AC4D31072439E46C0033E708 /* ReviewsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4D31052439E46C0033E708 /* ReviewsCollectionViewCell.xib */; };
+		AC4D310A2439E56B0033E708 /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4D31082439E56B0033E708 /* ReviewCollectionViewCell.swift */; };
+		AC4D310B2439E56B0033E708 /* ReviewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC4D31092439E56B0033E708 /* ReviewCollectionViewCell.xib */; };
 		AC4EE2B0242C9DEA008CE2FD /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4EE2AF242C9DEA008CE2FD /* OnboardingViewController.swift */; };
 		AC4EE2B2242C9E03008CE2FD /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC4EE2B1242C9E03008CE2FD /* Onboarding.storyboard */; };
 		AC4EE2B5242CA186008CE2FD /* OnboardingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4EE2B3242CA186008CE2FD /* OnboardingCollectionViewCell.swift */; };
@@ -331,6 +335,10 @@
 		AC49C6A3242DD6900065EDFB /* BannerInsideCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerInsideCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC49C6A4242DD6900065EDFB /* BannerInsideCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BannerInsideCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC49C6A7242DDC290065EDFB /* InsideBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsideBannerViewController.swift; sourceTree = "<group>"; };
+		AC4D31042439E46C0033E708 /* ReviewsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC4D31052439E46C0033E708 /* ReviewsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewsCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC4D31082439E56B0033E708 /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC4D31092439E56B0033E708 /* ReviewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC4EE2AF242C9DEA008CE2FD /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		AC4EE2B1242C9E03008CE2FD /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		AC4EE2B3242CA186008CE2FD /* OnboardingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -710,6 +718,10 @@
 				AC4EE2B4242CA186008CE2FD /* OnboardingCollectionViewCell.xib */,
 				AC49C6A3242DD6900065EDFB /* BannerInsideCollectionViewCell.swift */,
 				AC49C6A4242DD6900065EDFB /* BannerInsideCollectionViewCell.xib */,
+				AC4D31042439E46C0033E708 /* ReviewsCollectionViewCell.swift */,
+				AC4D31052439E46C0033E708 /* ReviewsCollectionViewCell.xib */,
+				AC4D31082439E56B0033E708 /* ReviewCollectionViewCell.swift */,
+				AC4D31092439E56B0033E708 /* ReviewCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -1027,6 +1039,7 @@
 				ACE0E4ED2353164500A75D82 /* ShoeRepairCollectionViewCell.xib in Resources */,
 				AC1FFDAD2346F1D100930496 /* Proxima Nova Black.otf in Resources */,
 				ACBB8198232E3FAC003DCF77 /* Montserrat-Medium.ttf in Resources */,
+				AC4D310B2439E56B0033E708 /* ReviewCollectionViewCell.xib in Resources */,
 				ACA65EFD23DED14B0095EC20 /* OrderReviewCardCollectionViewCell.xib in Resources */,
 				AC5F80E323CDCFA10093B864 /* PricingHeaderCollectionViewCell.xib in Resources */,
 				ACFD92AE235846D10009FB03 /* ReferAFriendCollectionViewCell.xib in Resources */,
@@ -1085,6 +1098,7 @@
 				AC20418323B75223001F86B4 /* DateTimeCollectionViewCell.xib in Resources */,
 				ACBB818F232E3FAB003DCF77 /* Montserrat-ExtraBold.ttf in Resources */,
 				ACBB8196232E3FAC003DCF77 /* Montserrat-Bold.ttf in Resources */,
+				AC4D31072439E46C0033E708 /* ReviewsCollectionViewCell.xib in Resources */,
 				AC1FFDB32346F1D100930496 /* Proxima Nova Alt Bold.otf in Resources */,
 				AC41CE72235C81EF001AC676 /* CardTypeCollectionViewCell.xib in Resources */,
 				ACF9CD3723504EFD00039E6C /* NoofClothesCollectionViewCell.xib in Resources */,
@@ -1227,6 +1241,7 @@
 				AC5A5169240A5B5900E3BD54 /* JustNimNimInfoViewController.swift in Sources */,
 				AC5CA87F23F1985C000D0E39 /* WalletViewController.swift in Sources */,
 				ACF9CD2A235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.swift in Sources */,
+				AC4D310A2439E56B0033E708 /* ReviewCollectionViewCell.swift in Sources */,
 				AC092FCC232F5B2500FE1B77 /* NavDrawerViewController.swift in Sources */,
 				AC57D0D7241F835F007B3037 /* FAQViewController.swift in Sources */,
 				ACF9CD3D2351EB9C00039E6C /* WashPressedShirtsViewController.swift in Sources */,
@@ -1251,6 +1266,7 @@
 				ACFD92B9235ACC460009FB03 /* CardsCollectionViewCell.swift in Sources */,
 				ACBBE49A233A0FE0003C67F7 /* LocationcCell.swift in Sources */,
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
+				AC4D31062439E46C0033E708 /* ReviewsCollectionViewCell.swift in Sources */,
 				AC1FFDB723474FC700930496 /* ServicesViewController.swift in Sources */,
 				AC4FF789242F7F160009751D /* FAQFooterCollectionReusableView.swift in Sources */,
 				ACF9CD3623504EFD00039E6C /* NoofClothesCollectionViewCell.swift in Sources */,
@@ -1473,7 +1489,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NimNim/NimNim.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
@@ -1497,7 +1513,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NimNim/NimNim.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 25;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;

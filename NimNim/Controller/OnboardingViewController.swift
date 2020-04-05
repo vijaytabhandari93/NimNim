@@ -24,6 +24,9 @@ class OnboardingViewController: UIViewController {
     func registerCells() {
         let onboardingCell = UINib(nibName: "OnboardingCollectionViewCell", bundle: nil)
         onboardingCollectionView.register(onboardingCell, forCellWithReuseIdentifier: "OnboardingCollectionViewCell")
+        
+        let reviewCell = UINib(nibName: "ReviewsCollectionViewCell", bundle: nil)
+        onboardingCollectionView.register(reviewCell, forCellWithReuseIdentifier: "ReviewsCollectionViewCell")
     }
     
     @IBAction func setDeliveryLocationTapped(_ sender: Any) {
@@ -37,31 +40,37 @@ class OnboardingViewController: UIViewController {
 
 extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return 4
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
-        if indexPath.row == 0 {
+        
+        if indexPath.item == 0 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
             let title = "Order from a wide range of Services"
             cell.configureCell(withImage: "onboarding1", withTitle: title)
-        }else if indexPath.row == 1 {
+            return cell
+        }else if indexPath.item == 1 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
             let title = "Setup from a range of Preferences or \"just NimNim it\""
             cell.configureCell(withImage: "onboarding2", withTitle: title)
-        }else if indexPath.row == 2 {
+            return cell
+        }else if indexPath.item == 2 {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
             let title = "24 Hours Delivery. Delivered quickly to your doorstep"
             cell.configureCell(withImage: "onboarding3", withTitle: title)
-        }else if indexPath.row == 3 {
-            let title = "Why customers use NimNim Services"
-            cell.configureCell(withImage: "BG-4-4", withTitle: title)
-        }else if indexPath.row == 4 {
-            let title = "Why customers use NimNim Services"
-            cell.configureCell(withImage: "BG-4-5", withTitle: title)
-        }else if indexPath.row == 5 {
-            let title = "Why customers use NimNim Services"
-            cell.configureCell(withImage: "BG-4-6", withTitle: title)
+            return cell
+        }else if indexPath.item == 3 {
+            let cell2 = collectionView.dequeueReusableCell(withReuseIdentifier: "ReviewsCollectionViewCell", for: indexPath) as! ReviewsCollectionViewCell
+            return cell2
         }
-        return cell
+        return UICollectionViewCell()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if indexPath.item == 3 {
+            (cell as? ReviewsCollectionViewCell)?.configureCell()
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
