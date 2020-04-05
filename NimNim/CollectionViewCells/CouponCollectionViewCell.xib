@@ -8,11 +8,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Montserrat-Medium.ttf">
-            <string>Montserrat-Medium</string>
-        </array>
         <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
         </array>
     </customFonts>
     <objects>
@@ -34,9 +34,9 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="For orders bove $200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19N-vv-OtX">
-                        <rect key="frame" x="48" y="57" width="126.5" height="15"/>
+                        <rect key="frame" x="48" y="53.5" width="126.5" height="15"/>
                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                        <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.54000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="nimnim50" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywt-vr-CtD">
@@ -49,8 +49,8 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$50 OFF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VN6-AN-MBH">
-                        <rect key="frame" x="48" y="28" width="59.5" height="17.5"/>
-                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
+                        <rect key="frame" x="48" y="32" width="60" height="17.5"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.0039215686274509803" green="0.039215686274509803" blue="0.14901960784313725" alpha="0.87" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -62,9 +62,9 @@
                 <constraint firstItem="ywt-vr-CtD" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Is2-NE-9cJ"/>
                 <constraint firstItem="mHx-oF-z7k" firstAttribute="trailing" secondItem="ywt-vr-CtD" secondAttribute="trailing" constant="20" id="Ja6-M5-UCA"/>
                 <constraint firstItem="19N-vv-OtX" firstAttribute="leading" secondItem="mHx-oF-z7k" secondAttribute="leading" constant="20" id="VfT-z5-pAU"/>
+                <constraint firstItem="19N-vv-OtX" firstAttribute="top" secondItem="VN6-AN-MBH" secondAttribute="bottom" constant="4" id="YYg-Rs-LSH"/>
                 <constraint firstItem="VN6-AN-MBH" firstAttribute="leading" secondItem="mHx-oF-z7k" secondAttribute="leading" constant="20" id="nhd-lD-RIT"/>
-                <constraint firstAttribute="bottom" secondItem="19N-vv-OtX" secondAttribute="bottom" constant="28" id="qfR-8h-YcU"/>
-                <constraint firstItem="VN6-AN-MBH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="28" id="t7L-nB-yzp"/>
+                <constraint firstItem="VN6-AN-MBH" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="32" id="t7L-nB-yzp"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="432" height="96"/>
