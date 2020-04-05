@@ -60,6 +60,7 @@ class PriceListViewController: UIViewController,UICollectionViewDataSource,UICol
                         if let arrayOfItem = arrayOfservices[i].items
                             {
                                 cell.label.text = arrayOfItem[indexPath.item].name
+                                cell.labelPrice.text  = nil
                                 if let price = arrayOfItem[indexPath.item].price {
                                     cell.labelPrice.text = "$\(price)"
                                 }

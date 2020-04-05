@@ -182,7 +182,7 @@
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dF9-Wr-han">
                                                 <rect key="frame" x="20" y="135" width="334" height="663"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="68a-Gj-P4b">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="68a-Gj-P4b">
                                                     <size key="itemSize" width="50" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -296,9 +296,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pTH-oZ-QB1">
-                                                <rect key="frame" x="0.0" y="140" width="374" height="661"/>
+                                                <rect key="frame" x="20" y="140" width="334" height="661"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CZ9-SY-yVi">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CZ9-SY-yVi">
                                                     <size key="itemSize" width="50" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -339,10 +339,10 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <constraints>
-                                            <constraint firstItem="pTH-oZ-QB1" firstAttribute="leading" secondItem="siN-3Z-TQJ" secondAttribute="leading" id="0Ys-e3-3Xj"/>
+                                            <constraint firstItem="pTH-oZ-QB1" firstAttribute="leading" secondItem="siN-3Z-TQJ" secondAttribute="leading" constant="20" id="0Ys-e3-3Xj"/>
                                             <constraint firstItem="eFQ-ST-DxU" firstAttribute="leading" secondItem="siN-3Z-TQJ" secondAttribute="leading" constant="28" id="4FX-ps-KBF"/>
                                             <constraint firstItem="E6n-xi-XcW" firstAttribute="centerY" secondItem="h9N-aF-J8v" secondAttribute="centerY" id="4oo-dM-UoE"/>
-                                            <constraint firstAttribute="trailing" secondItem="pTH-oZ-QB1" secondAttribute="trailing" id="5xx-yh-umj"/>
+                                            <constraint firstAttribute="trailing" secondItem="pTH-oZ-QB1" secondAttribute="trailing" constant="20" id="5xx-yh-umj"/>
                                             <constraint firstItem="57C-Hk-Ltp" firstAttribute="top" secondItem="siN-3Z-TQJ" secondAttribute="top" constant="48" id="PcW-ow-tDO"/>
                                             <constraint firstItem="eFQ-ST-DxU" firstAttribute="top" secondItem="57C-Hk-Ltp" secondAttribute="bottom" constant="31" id="a4P-9R-5us"/>
                                             <constraint firstItem="pTH-oZ-QB1" firstAttribute="top" secondItem="eFQ-ST-DxU" secondAttribute="bottom" constant="25" id="aRw-ti-ITH"/>
@@ -416,7 +416,7 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No hidden fees. No confusing tiered pricing. What you see is what you get." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTW-nb-g7r">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get recurring discounts from dollars spent and referrals right into your Wallet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rTW-nb-g7r">
                                         <rect key="frame" x="32" y="57" width="350" height="153"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -542,9 +542,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="jAN-rj-ZpK">
-                                                <rect key="frame" x="0.0" y="115" width="374" height="703"/>
+                                                <rect key="frame" x="20" y="115" width="334" height="703"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LU3-DH-1cn">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="LU3-DH-1cn">
                                                     <size key="itemSize" width="50" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -578,12 +578,12 @@
                                         <constraints>
                                             <constraint firstItem="jAN-rj-ZpK" firstAttribute="top" secondItem="97P-9L-6xc" secondAttribute="bottom" id="2FH-a7-i2J"/>
                                             <constraint firstAttribute="trailing" secondItem="Evb-C2-1SY" secondAttribute="trailing" constant="49" id="B55-A5-2Nj"/>
-                                            <constraint firstAttribute="trailing" secondItem="jAN-rj-ZpK" secondAttribute="trailing" id="Pk6-Eg-HNa"/>
+                                            <constraint firstAttribute="trailing" secondItem="jAN-rj-ZpK" secondAttribute="trailing" constant="20" id="Pk6-Eg-HNa"/>
                                             <constraint firstItem="TJa-Uv-yq6" firstAttribute="top" secondItem="ppr-bH-pMp" secondAttribute="top" constant="10" id="SZj-Le-lyf"/>
                                             <constraint firstAttribute="bottom" secondItem="jAN-rj-ZpK" secondAttribute="bottom" id="U1a-K2-EfR"/>
                                             <constraint firstItem="DB3-sP-ypm" firstAttribute="centerX" secondItem="ppr-bH-pMp" secondAttribute="centerX" id="Xop-En-vTl"/>
                                             <constraint firstItem="DB3-sP-ypm" firstAttribute="top" secondItem="ppr-bH-pMp" secondAttribute="top" constant="48" id="ZTh-fp-Hcs"/>
-                                            <constraint firstItem="jAN-rj-ZpK" firstAttribute="leading" secondItem="ppr-bH-pMp" secondAttribute="leading" id="b4d-AX-R0w"/>
+                                            <constraint firstItem="jAN-rj-ZpK" firstAttribute="leading" secondItem="ppr-bH-pMp" secondAttribute="leading" constant="20" id="b4d-AX-R0w"/>
                                             <constraint firstItem="97P-9L-6xc" firstAttribute="top" secondItem="DB3-sP-ypm" secondAttribute="bottom" constant="31" id="cdf-ei-wyN"/>
                                             <constraint firstItem="97P-9L-6xc" firstAttribute="leading" secondItem="ppr-bH-pMp" secondAttribute="leading" constant="49" id="gnt-6B-FGP"/>
                                             <constraint firstAttribute="trailing" secondItem="TJa-Uv-yq6" secondAttribute="trailing" constant="10" id="rgf-Ia-VZK"/>
@@ -652,9 +652,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="cLQ-d5-cNd">
-                                                <rect key="frame" x="0.0" y="115" width="374" height="703"/>
+                                                <rect key="frame" x="20" y="115" width="334" height="703"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cgR-Et-Kw4">
+                                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cgR-Et-Kw4">
                                                     <size key="itemSize" width="50" height="50"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -693,8 +693,8 @@
                                             <constraint firstItem="Rpc-xD-ukE" firstAttribute="top" secondItem="hTG-yH-GKT" secondAttribute="top" constant="10" id="BNo-bE-9dE"/>
                                             <constraint firstAttribute="trailing" secondItem="Rpc-xD-ukE" secondAttribute="trailing" constant="10" id="EXb-1g-izI"/>
                                             <constraint firstItem="lzI-Am-0Me" firstAttribute="centerY" secondItem="C92-OJ-ewI" secondAttribute="centerY" id="Ksu-mI-OeW"/>
-                                            <constraint firstAttribute="trailing" secondItem="cLQ-d5-cNd" secondAttribute="trailing" id="cYL-7u-J2N"/>
-                                            <constraint firstItem="cLQ-d5-cNd" firstAttribute="leading" secondItem="hTG-yH-GKT" secondAttribute="leading" id="f4b-AV-Bo5"/>
+                                            <constraint firstAttribute="trailing" secondItem="cLQ-d5-cNd" secondAttribute="trailing" constant="20" id="cYL-7u-J2N"/>
+                                            <constraint firstItem="cLQ-d5-cNd" firstAttribute="leading" secondItem="hTG-yH-GKT" secondAttribute="leading" constant="20" id="f4b-AV-Bo5"/>
                                             <constraint firstAttribute="trailing" secondItem="lzI-Am-0Me" secondAttribute="trailing" constant="49" id="k1y-1f-xXq"/>
                                             <constraint firstItem="cLQ-d5-cNd" firstAttribute="top" secondItem="C92-OJ-ewI" secondAttribute="bottom" id="x2P-0v-6jj"/>
                                             <constraint firstItem="Lfa-XS-wTQ" firstAttribute="centerX" secondItem="hTG-yH-GKT" secondAttribute="centerX" id="xnC-Bf-ejn"/>

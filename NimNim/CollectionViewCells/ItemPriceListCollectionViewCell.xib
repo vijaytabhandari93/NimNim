@@ -25,33 +25,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="304" height="20"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blouse" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWK-kb-ARd">
-                        <rect key="frame" x="49" y="1.5" width="48.5" height="17.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XWK-kb-ARd">
+                        <rect key="frame" x="10" y="10" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.69999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$7.25" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJh-tt-FW4">
-                        <rect key="frame" x="214.5" y="0.5" width="40.5" height="19.5"/>
-                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
-                        <color key="textColor" red="0.019607843137254902" green="0.44705882352941173" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87W-Ot-V5C">
-                        <rect key="frame" x="154.5" y="10" width="0.0" height="0.0"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="87W-Ot-V5C">
+                        <rect key="frame" x="20" y="10" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
                         <color key="textColor" red="0.019607843140000001" green="0.44705882349999998" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJh-tt-FW4">
+                        <rect key="frame" x="30" y="10" width="254" height="0.0"/>
+                        <fontDescription key="fontDescription" name="ProximaNova-Bold" family="Proxima Nova" pointSize="16"/>
+                        <color key="textColor" red="0.019607843137254902" green="0.44705882352941173" blue="0.65098039215686276" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="XWK-kb-ARd" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="0O4-7n-Aa9"/>
-                <constraint firstItem="87W-Ot-V5C" firstAttribute="centerY" secondItem="GJh-tt-FW4" secondAttribute="centerY" id="1wB-Bl-Urj"/>
-                <constraint firstAttribute="trailing" secondItem="GJh-tt-FW4" secondAttribute="trailing" constant="49" id="2jr-gs-nqz"/>
-                <constraint firstItem="XWK-kb-ARd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="49" id="86p-LZ-e2E"/>
-                <constraint firstItem="GJh-tt-FW4" firstAttribute="leading" secondItem="87W-Ot-V5C" secondAttribute="trailing" constant="60" id="P5b-BS-OLg"/>
-                <constraint firstItem="GJh-tt-FW4" firstAttribute="centerY" secondItem="XWK-kb-ARd" secondAttribute="centerY" id="gGd-9V-lNU"/>
+                <constraint firstAttribute="trailing" secondItem="GJh-tt-FW4" secondAttribute="trailing" constant="20" id="2jr-gs-nqz"/>
+                <constraint firstItem="87W-Ot-V5C" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Npk-wS-x54"/>
+                <constraint firstItem="XWK-kb-ARd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="W2j-C2-p6H"/>
+                <constraint firstItem="GJh-tt-FW4" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="XcG-BF-En4"/>
+                <constraint firstItem="XWK-kb-ARd" firstAttribute="trailing" secondItem="87W-Ot-V5C" secondAttribute="leading" constant="-10" id="cbw-41-nKi"/>
+                <constraint firstItem="87W-Ot-V5C" firstAttribute="trailing" secondItem="GJh-tt-FW4" secondAttribute="leading" constant="-10" id="t0y-6p-Use"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="304" height="67"/>
