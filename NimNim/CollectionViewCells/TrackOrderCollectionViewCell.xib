@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TrackOrderCollectionViewCell" customModule="NimNim" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="331" height="50"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="331" height="50"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vD1-Vd-8iQ">
+                        <rect key="frame" x="37.5" y="0.0" width="1" height="15"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="vJK-4f-34f"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1qg-YC-hwN">
+                        <rect key="frame" x="28" y="15" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="DTK-Xo-nO0"/>
+                            <constraint firstAttribute="height" constant="20" id="YtT-bZ-e2t"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bN1-8J-pa4">
+                        <rect key="frame" x="37.5" y="35" width="1" height="15"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="aYQ-pm-gJu"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In laundry" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eL-qS-gY2">
+                        <rect key="frame" x="64" y="10" width="251" height="20"/>
+                        <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="16"/>
+                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your order is getting cleaned" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yJv-PS-dAl">
+                        <rect key="frame" x="64" y="34" width="251" height="15"/>
+                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                        <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="bN1-8J-pa4" firstAttribute="top" secondItem="1qg-YC-hwN" secondAttribute="bottom" id="9FO-EH-TR2"/>
+                <constraint firstItem="1qg-YC-hwN" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="28" id="C9e-5N-uOM"/>
+                <constraint firstItem="vD1-Vd-8iQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Eqh-yl-mTR"/>
+                <constraint firstAttribute="trailing" secondItem="6eL-qS-gY2" secondAttribute="trailing" constant="16" id="OdW-81-88V"/>
+                <constraint firstItem="1qg-YC-hwN" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="Pv9-F8-sdo"/>
+                <constraint firstItem="1qg-YC-hwN" firstAttribute="top" secondItem="vD1-Vd-8iQ" secondAttribute="bottom" id="SG6-Wa-mPO"/>
+                <constraint firstAttribute="trailing" secondItem="yJv-PS-dAl" secondAttribute="trailing" constant="16" id="VBg-Mr-Mog"/>
+                <constraint firstItem="vD1-Vd-8iQ" firstAttribute="centerX" secondItem="1qg-YC-hwN" secondAttribute="centerX" id="a2t-ge-Lfg"/>
+                <constraint firstItem="6eL-qS-gY2" firstAttribute="centerY" secondItem="1qg-YC-hwN" secondAttribute="centerY" constant="-5" id="abL-Fl-6am"/>
+                <constraint firstItem="yJv-PS-dAl" firstAttribute="top" secondItem="6eL-qS-gY2" secondAttribute="bottom" constant="4" id="bWp-TO-4bm"/>
+                <constraint firstAttribute="bottom" secondItem="bN1-8J-pa4" secondAttribute="bottom" id="c43-Of-vEA"/>
+                <constraint firstItem="6eL-qS-gY2" firstAttribute="leading" secondItem="1qg-YC-hwN" secondAttribute="trailing" constant="16" id="e2K-W7-z0H"/>
+                <constraint firstItem="yJv-PS-dAl" firstAttribute="leading" secondItem="6eL-qS-gY2" secondAttribute="leading" id="vdb-p3-c4e"/>
+                <constraint firstItem="bN1-8J-pa4" firstAttribute="centerX" secondItem="1qg-YC-hwN" secondAttribute="centerX" id="zVX-ep-Idk"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="331" height="50"/>
+            <connections>
+                <outlet property="bottomview" destination="bN1-8J-pa4" id="3k0-8G-yPq"/>
+                <outlet property="statusImageView" destination="1qg-YC-hwN" id="DSg-7u-Swi"/>
+                <outlet property="subTitleLabel" destination="yJv-PS-dAl" id="4bi-3S-JvA"/>
+                <outlet property="titleLabel" destination="6eL-qS-gY2" id="VdF-vS-ZcR"/>
+                <outlet property="topview" destination="vD1-Vd-8iQ" id="7nU-J1-aUG"/>
+            </connections>
+            <point key="canvasLocation" x="126.81159420289856" y="115.84821428571428"/>
+        </collectionViewCell>
+    </objects>
+</document>

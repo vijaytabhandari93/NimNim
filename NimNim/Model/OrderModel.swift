@@ -10,13 +10,26 @@ import Foundation
 import ObjectMapper
 
 class OrderBaseModel:NSObject, Mappable, Codable {
-var data:[OrderModel]?
-required convenience init?(map: Map) { self.init() }
-
-func mapping(map: Map) {
-    data            <- map["data"]
+    var data:[OrderModel]?
+    required convenience init?(map: Map) { self.init() }
     
-}    
+    func mapping(map: Map) {
+        data            <- map["data"]
+        
+    }
+}
+
+class TimelineModel:NSObject, Mappable, Codable {
+    var date:String?
+    var service:String?
+    var value:String?
+    required convenience init?(map: Map) { self.init() }
+    
+    func mapping(map: Map) {
+        date         <- map["date"]
+        service      <- map["service"]
+        value        <- map["value"]
+    }
 }
 
 class OrderModel : NSObject, Mappable, Codable  {
@@ -46,6 +59,7 @@ class OrderModel : NSObject, Mappable, Codable  {
     var grandTotal:Double? // GrandTotal Amount - Price of  services + rush delivery - promo...
     var subTotal:Double? // price of services
     var walletPointsApplicable:Double?
+    var timelines:[TimelineModel] = []
     //When submit ticket is tapped on submit ticket screen... you will create an Issue Model and store the concerned type and description in it...and pass this model to Order Details Screen...
     var deliverycost : Double? //(Number, normal delivery cost)
     var delivery_charges_waived: Bool? //(Boolean)
@@ -60,6 +74,7 @@ class OrderModel : NSObject, Mappable, Codable  {
         orderTotal <-  map["order_total"]
         services  <- map  ["services"]
         v   <- map ["__v"]
+        timelines <- map["timelines"]
         addressId <- map["address_id"]
         CardId  <- map["card_id"]
         isWalletSelected <- map["isWalletSelected"]

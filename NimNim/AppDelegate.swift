@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseManager.shared.initializeFirebase()
         PushNotificationsManager.shared.requestForPermission()
         PushNotificationsManager.shared.checkForPushNotificationFromAppLaunch(withLaunchOptions: launchOptions)
+        BranchManager.shared.initialize(withLaunchOptions: launchOptions)
         return true
     }
 

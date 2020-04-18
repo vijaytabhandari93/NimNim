@@ -98,6 +98,8 @@
 		AC56671F24102BB700813DE8 /* OnboardingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56671E24102BB700813DE8 /* OnboardingEvents.swift */; };
 		AC56672124102C3F00813DE8 /* AnalyticsEventNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56672024102C3F00813DE8 /* AnalyticsEventNames.swift */; };
 		AC56672324102D5C00813DE8 /* AnalyticsEventProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56672224102D5C00813DE8 /* AnalyticsEventProperties.swift */; };
+		AC57A014244AF3320025F796 /* TrackOrderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC57A012244AF3320025F796 /* TrackOrderCollectionViewCell.swift */; };
+		AC57A015244AF3320025F796 /* TrackOrderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC57A013244AF3320025F796 /* TrackOrderCollectionViewCell.xib */; };
 		AC57D0D7241F835F007B3037 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC57D0D6241F835F007B3037 /* FAQViewController.swift */; };
 		AC57D0DA241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC57D0D8241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.swift */; };
 		AC57D0DB241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC57D0D9241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.xib */; };
@@ -130,6 +132,8 @@
 		AC5CDC3B23FD72480047940F /* NeedHelpCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5CDC3923FD72480047940F /* NeedHelpCollectionViewCell.xib */; };
 		AC5CDC3E23FD726B0047940F /* HelpRequiredCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5CDC3C23FD726B0047940F /* HelpRequiredCollectionViewCell.swift */; };
 		AC5CDC3F23FD726B0047940F /* HelpRequiredCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC5CDC3D23FD726B0047940F /* HelpRequiredCollectionViewCell.xib */; };
+		AC5DD0EA2442319000B19B2A /* NimNim.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = AC773997240E2BD300DCFE75 /* NimNim.entitlements */; };
+		AC5DD0EC2442334D00B19B2A /* BranchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5DD0EB2442334D00B19B2A /* BranchManager.swift */; };
 		AC5E697323CC72BD000DF84E /* PricingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5E697223CC72BD000DF84E /* PricingViewController.swift */; };
 		AC5E697523CC7319000DF84E /* Pricing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC5E697423CC7319000DF84E /* Pricing.storyboard */; };
 		AC5F786424025E4700E6E7C3 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC5F786324025E4700E6E7C3 /* FirebaseManager.swift */; };
@@ -220,6 +224,7 @@
 		ACBE06C923E0503B00451006 /* AddShoeRepairCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBE06C723E0503B00451006 /* AddShoeRepairCollectionViewCell.xib */; };
 		ACBE06CE23E0573000451006 /* ShoeTaskAddedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE06CC23E0573000451006 /* ShoeTaskAddedCollectionViewCell.swift */; };
 		ACBE06CF23E0573000451006 /* ShoeTaskAddedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBE06CD23E0573000451006 /* ShoeTaskAddedCollectionViewCell.xib */; };
+		ACD4684D244ADBDA001B4D08 /* TrackOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4684C244ADBDA001B4D08 /* TrackOrderViewController.swift */; };
 		ACD8BA432351AB41005C1EAA /* HomeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */; };
 		ACD8BA452351DF87005C1EAA /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8BA442351DF87005C1EAA /* NavigationManager.swift */; };
 		ACE0E4E9235312F100A75D82 /* ShoeRepairViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE0E4E8235312F100A75D82 /* ShoeRepairViewController.swift */; };
@@ -367,6 +372,8 @@
 		AC56671E24102BB700813DE8 /* OnboardingEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEvents.swift; sourceTree = "<group>"; };
 		AC56672024102C3F00813DE8 /* AnalyticsEventNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventNames.swift; sourceTree = "<group>"; };
 		AC56672224102D5C00813DE8 /* AnalyticsEventProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventProperties.swift; sourceTree = "<group>"; };
+		AC57A012244AF3320025F796 /* TrackOrderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackOrderCollectionViewCell.swift; sourceTree = "<group>"; };
+		AC57A013244AF3320025F796 /* TrackOrderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackOrderCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC57D0D6241F835F007B3037 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		AC57D0D8241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerDescriptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC57D0D9241F8A40007B3037 /* AnswerDescriptionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerDescriptionCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -399,6 +406,7 @@
 		AC5CDC3923FD72480047940F /* NeedHelpCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NeedHelpCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC5CDC3C23FD726B0047940F /* HelpRequiredCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpRequiredCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC5CDC3D23FD726B0047940F /* HelpRequiredCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HelpRequiredCollectionViewCell.xib; sourceTree = "<group>"; };
+		AC5DD0EB2442334D00B19B2A /* BranchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchManager.swift; sourceTree = "<group>"; };
 		AC5E697223CC72BD000DF84E /* PricingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PricingViewController.swift; sourceTree = "<group>"; };
 		AC5E697423CC7319000DF84E /* Pricing.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Pricing.storyboard; sourceTree = "<group>"; };
 		AC5F786324025E4700E6E7C3 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
@@ -492,6 +500,7 @@
 		ACBE06C723E0503B00451006 /* AddShoeRepairCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddShoeRepairCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACBE06CC23E0573000451006 /* ShoeTaskAddedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeTaskAddedCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACBE06CD23E0573000451006 /* ShoeTaskAddedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoeTaskAddedCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACD4684C244ADBDA001B4D08 /* TrackOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackOrderViewController.swift; sourceTree = "<group>"; };
 		ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseViewController.swift; sourceTree = "<group>"; };
 		ACD8BA442351DF87005C1EAA /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		ACE0E4E8235312F100A75D82 /* ShoeRepairViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeRepairViewController.swift; sourceTree = "<group>"; };
@@ -722,6 +731,8 @@
 				AC4D31052439E46C0033E708 /* ReviewsCollectionViewCell.xib */,
 				AC4D31082439E56B0033E708 /* ReviewCollectionViewCell.swift */,
 				AC4D31092439E56B0033E708 /* ReviewCollectionViewCell.xib */,
+				AC57A012244AF3320025F796 /* TrackOrderCollectionViewCell.swift */,
+				AC57A013244AF3320025F796 /* TrackOrderCollectionViewCell.xib */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -735,6 +746,7 @@
 				AC7BE99223FEF29900F77014 /* MixPanelManager.swift */,
 				AC5F786324025E4700E6E7C3 /* FirebaseManager.swift */,
 				AC773998240E2C2C00DCFE75 /* PushNotificationsManager.swift */,
+				AC5DD0EB2442334D00B19B2A /* BranchManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -820,6 +832,7 @@
 				AC5A5168240A5B5900E3BD54 /* JustNimNimInfoViewController.swift */,
 				AC4EE2AF242C9DEA008CE2FD /* OnboardingViewController.swift */,
 				AC49C6A7242DDC290065EDFB /* InsideBannerViewController.swift */,
+				ACD4684C244ADBDA001B4D08 /* TrackOrderViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1001,6 +1014,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC5DD0EA2442319000B19B2A /* NimNim.entitlements in Resources */,
 				AC1FFDA323465DEF00930496 /* ServicesHeaderCollectionReusableView.xib in Resources */,
 				AC4FF78A242F7F160009751D /* FAQFooterCollectionReusableView.xib in Resources */,
 				AC1FFDAC2346F1D100930496 /* ProximaNova-Regular.otf in Resources */,
@@ -1060,6 +1074,7 @@
 				ACF9CD2B235042D900039E6C /* SelectFromListOfClothesCollectionViewCell.xib in Resources */,
 				ACFD92C4235B17AF0009FB03 /* Profile.storyboard in Resources */,
 				AC5CA88523F1A2CB000D0E39 /* WalletBalanceCollectionViewCell.xib in Resources */,
+				AC57A015244AF3320025F796 /* TrackOrderCollectionViewCell.xib in Resources */,
 				AC5ADD8E2361D50700204E9E /* DoYouHaveACouponCollectionViewCell.xib in Resources */,
 				AC9BCAD02324DF90009818C3 /* LaunchScreen.storyboard in Resources */,
 				AC20417B23B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.xib in Resources */,
@@ -1214,6 +1229,7 @@
 				AC1BB7D623A7B23A00513947 /* CartModel.swift in Sources */,
 				AC5ADD942362DD8900204E9E /* SelectAddressViewController.swift in Sources */,
 				ACFD92AD235846D10009FB03 /* ReferAFriendCollectionViewCell.swift in Sources */,
+				ACD4684D244ADBDA001B4D08 /* TrackOrderViewController.swift in Sources */,
 				AC5F80EA23CE14A40093B864 /* ItemPriceListCollectionViewCell.swift in Sources */,
 				AC5ADD9E236306C200204E9E /* PickDateAndTimeViewController.swift in Sources */,
 				AC1FFDA223465DEF00930496 /* ServicesHeaderCollectionReusableView.swift in Sources */,
@@ -1263,6 +1279,7 @@
 				AC77F9612410D5C800AC67C8 /* PricingSubHeadingCollectionViewCell.swift in Sources */,
 				AC1789162377D03D00B20D32 /* Params.swift in Sources */,
 				AC2BEDC62381600000152C69 /* BannersBaseModel.swift in Sources */,
+				AC57A014244AF3320025F796 /* TrackOrderCollectionViewCell.swift in Sources */,
 				ACFD92B9235ACC460009FB03 /* CardsCollectionViewCell.swift in Sources */,
 				ACBBE49A233A0FE0003C67F7 /* LocationcCell.swift in Sources */,
 				ACBB8172232CDD12003DCF77 /* PickUpDropOffPreferencesViewController.swift in Sources */,
@@ -1300,6 +1317,7 @@
 				ACB89B4D235DB2F600B74109 /* SelectItemCollectionViewCell.swift in Sources */,
 				AC1FFDC22347773200930496 /* PreferencesCollectionReusableView.swift in Sources */,
 				AC5F80DA23CD9DED0093B864 /* PriceCollectionViewCell.swift in Sources */,
+				AC5DD0EC2442334D00B19B2A /* BranchManager.swift in Sources */,
 				AC5BC1A323ED304200FAF8C1 /* TailoringViewController.swift in Sources */,
 				ACFD92A1235830AC0009FB03 /* ProfileCollectionViewCell.swift in Sources */,
 				AC56671F24102BB700813DE8 /* OnboardingEvents.swift in Sources */,
@@ -1489,7 +1507,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NimNim/NimNim.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
@@ -1513,7 +1531,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NimNim/NimNim.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 27;
 				DEVELOPMENT_TEAM = 7XD5BPZZ65;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = NimNim/Info.plist;

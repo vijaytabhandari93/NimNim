@@ -171,4 +171,14 @@ extension UIView {
       toastLabel.removeFromSuperview()
         })
     }
+    
+    func addDashedBorder() {
+        let yourViewBorder = CAShapeLayer()
+        yourViewBorder.strokeColor = Colors.nimnimTrackOrderGrey.cgColor
+        yourViewBorder.lineDashPattern = [2, 3]
+        yourViewBorder.frame = self.bounds
+        yourViewBorder.fillColor = nil
+        yourViewBorder.path = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.addSublayer(yourViewBorder)
+    }
 }

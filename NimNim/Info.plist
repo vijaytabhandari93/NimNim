@@ -128,5 +128,14 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>branch_key</key>
+	<string>key_test_hbOjwFQFORxwsdXn4rDUNjphFvhfBevj</string>
+	<key>branch_universal_link_domains</key>
+	<array>
+		<string>nimnim.test-app.link</string>
+		<string>nimnim-alternate.test-app.link</string>
+		<string>nimnim.app.link</string>
+		<string>nimnim-alternate.app.link</string>
+	</array>
 </dict>
 </plist>

@@ -14,6 +14,9 @@
         <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
         </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -60,6 +63,19 @@
                     <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="0.87" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BNY-YE-a2o">
+                    <rect key="frame" x="278" y="89" width="86" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="qrX-wp-fHW"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="14"/>
+                    <state key="normal" title="Track Order">
+                        <color key="titleColor" red="0.2784313725" green="0.74901960779999999" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="trackOrderTapped:" destination="Rfh-F8-e04" eventType="touchUpInside" id="joV-3Y-gd8"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
@@ -72,8 +88,10 @@
                 <constraint firstItem="nAk-Fg-NoG" firstAttribute="leading" secondItem="5TL-ZN-ZKU" secondAttribute="leading" id="Qxv-tD-gQ4"/>
                 <constraint firstAttribute="bottom" secondItem="7Um-my-5gO" secondAttribute="bottom" id="SaY-li-DiV"/>
                 <constraint firstAttribute="trailing" secondItem="D4C-UH-biF" secondAttribute="trailing" constant="28" id="Sh6-Pn-15p"/>
+                <constraint firstItem="BNY-YE-a2o" firstAttribute="bottom" secondItem="nAk-Fg-NoG" secondAttribute="bottom" id="Yn0-vg-w6r"/>
                 <constraint firstItem="5TL-ZN-ZKU" firstAttribute="top" secondItem="pl5-DF-lsQ" secondAttribute="bottom" constant="20" id="aOc-xK-jI6"/>
                 <constraint firstItem="o7c-hf-qPr" firstAttribute="leading" secondItem="Rfh-F8-e04" secondAttribute="leading" constant="28" id="awo-6t-nC7"/>
+                <constraint firstItem="nRz-6e-EBL" firstAttribute="trailing" secondItem="BNY-YE-a2o" secondAttribute="trailing" constant="28" id="bZ9-1T-1iN"/>
                 <constraint firstItem="7Um-my-5gO" firstAttribute="leading" secondItem="Rfh-F8-e04" secondAttribute="leading" constant="28" id="wba-yv-Uc0"/>
                 <constraint firstItem="5TL-ZN-ZKU" firstAttribute="leading" secondItem="o7c-hf-qPr" secondAttribute="leading" id="zMp-Yp-X6u"/>
             </constraints>
@@ -82,6 +100,7 @@
                 <outlet property="noOfItems" destination="D4C-UH-biF" id="AiB-GY-QUd"/>
                 <outlet property="orderCreatedDate" destination="pl5-DF-lsQ" id="Nyh-Qy-1ra"/>
                 <outlet property="pickUpDateAndTime" destination="nAk-Fg-NoG" id="iC3-fu-aLd"/>
+                <outlet property="trackOrderButton" destination="BNY-YE-a2o" id="7JV-Qg-KFj"/>
             </connections>
             <point key="canvasLocation" x="76.811594202898561" y="-14.732142857142856"/>
         </collectionReusableView>

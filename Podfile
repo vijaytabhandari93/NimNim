@@ -23,4 +23,5 @@ target 'NimNim' do
   pod 'Firebase/Messaging'
   pod 'Firebase/InAppMessaging'
   pod 'Mixpanel-swift'
+  pod 'Branch'
 end

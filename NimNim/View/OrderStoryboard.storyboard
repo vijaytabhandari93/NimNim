@@ -1167,6 +1167,86 @@ place an order.</string>
             </objects>
             <point key="canvasLocation" x="5235" y="-297"/>
         </scene>
+        <!--Track Order View Controller-->
+        <scene sceneID="aFw-48-cbR">
+            <objects>
+                <viewController storyboardIdentifier="TrackOrderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BbZ-mu-9ho" customClass="TrackOrderViewController" customModule="NimNim" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ro4-4z-vNv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbg-Ex-xn1">
+                                <rect key="frame" x="0.0" y="44" width="414" height="49"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Order Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igI-GY-NkW" userLabel="Track Orders">
+                                        <rect key="frame" x="142.5" y="12.5" width="129" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CEE-iC-dhH">
+                                        <rect key="frame" x="0.0" y="0.0" width="40" height="49"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="rlj-56-6pF"/>
+                                        </constraints>
+                                        <state key="normal" image="previous"/>
+                                        <connections>
+                                            <action selector="backTapped:" destination="BbZ-mu-9ho" eventType="touchUpInside" id="Z6J-2x-cLE"/>
+                                            <action selector="previousTapped:" destination="cBV-yM-bT3" eventType="touchUpInside" id="oS6-pq-KnR"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="CEE-iC-dhH" secondAttribute="bottom" id="BnA-5b-0f0"/>
+                                    <constraint firstItem="CEE-iC-dhH" firstAttribute="leading" secondItem="gbg-Ex-xn1" secondAttribute="leading" id="Brb-HB-JYV"/>
+                                    <constraint firstAttribute="height" constant="49" id="DiT-Y8-dSn"/>
+                                    <constraint firstItem="igI-GY-NkW" firstAttribute="centerY" secondItem="gbg-Ex-xn1" secondAttribute="centerY" id="Kac-je-ogl"/>
+                                    <constraint firstItem="igI-GY-NkW" firstAttribute="centerX" secondItem="gbg-Ex-xn1" secondAttribute="centerX" id="RZL-Hh-7he"/>
+                                    <constraint firstItem="CEE-iC-dhH" firstAttribute="top" secondItem="gbg-Ex-xn1" secondAttribute="top" id="yxD-Yt-vdy"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="m6j-Pg-xfZ">
+                                <rect key="frame" x="0.0" y="101" width="414" height="761"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Cjj-BQ-IZY">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="LgU-pE-fii">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="n3B-tB-NX1">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="aQL-QH-vcS" firstAttribute="bottom" secondItem="m6j-Pg-xfZ" secondAttribute="bottom" id="IbU-8F-DWm"/>
+                            <constraint firstItem="gbg-Ex-xn1" firstAttribute="top" secondItem="aQL-QH-vcS" secondAttribute="top" id="NBh-Pm-ekN"/>
+                            <constraint firstItem="m6j-Pg-xfZ" firstAttribute="top" secondItem="gbg-Ex-xn1" secondAttribute="bottom" constant="8" symbolic="YES" id="gsa-TX-vk5"/>
+                            <constraint firstItem="m6j-Pg-xfZ" firstAttribute="leading" secondItem="aQL-QH-vcS" secondAttribute="leading" id="lK0-tG-w5E"/>
+                            <constraint firstItem="aQL-QH-vcS" firstAttribute="trailing" secondItem="m6j-Pg-xfZ" secondAttribute="trailing" id="tdT-GK-Pwr"/>
+                            <constraint firstItem="gbg-Ex-xn1" firstAttribute="trailing" secondItem="aQL-QH-vcS" secondAttribute="trailing" id="w9p-Oo-U3I"/>
+                            <constraint firstItem="gbg-Ex-xn1" firstAttribute="leading" secondItem="aQL-QH-vcS" secondAttribute="leading" id="yLt-O4-h9T"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aQL-QH-vcS"/>
+                    </view>
+                    <connections>
+                        <outlet property="trackOrderCollectionView" destination="m6j-Pg-xfZ" id="JOL-yj-s1a"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JYh-T9-23h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6361" y="-304"/>
+        </scene>
         <!--Order Details View Controller-->
         <scene sceneID="M2S-Cb-vRl">
             <objects>

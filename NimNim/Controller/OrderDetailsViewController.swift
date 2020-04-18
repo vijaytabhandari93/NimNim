@@ -41,7 +41,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     var date :String?
     var orderModel:OrderModel?
     var service : [ServiceModel]?
-    var  count : Int?
+    var count : Int?
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -257,6 +257,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                     headerView.pickUpDateAndTime.text = "\(pickUpTime) \(pickUpDate)"
                 }
             }
+            headerView.delegate = self
             headerView.orderCreatedDate.text = date
             return headerView
         default:
@@ -429,5 +430,16 @@ extension OrderDetailsViewController: MFMailComposeViewControllerDelegate, UINav
             alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
+    }
+}
+
+extension OrderDetailsViewController: CollectionReusableViewDelegate {
+    func trackOrderTapped() {
+        let servicesStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+        let trackOrder = servicesStoryboard.instantiateViewController(withIdentifier: "TrackOrderViewController") as? TrackOrderViewController
+        trackOrder?.timelineModel = orderModel?.timelines ?? []
+        trackOrder?.date  = date
+        trackOrder?.service = service
+        NavigationManager.shared.push(viewController: trackOrder)
     }
 }
