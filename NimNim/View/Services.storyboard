@@ -2440,10 +2440,10 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qeL-h8-ujb">
-                                <rect key="frame" x="0.0" y="114" width="414" height="604"/>
+                                <rect key="frame" x="0.0" y="114" width="414" height="652"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="RNv-40-rXg">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="604"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="652"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JxR-Oj-8F0">
                                             <size key="itemSize" width="50" height="50"/>
@@ -2471,7 +2471,7 @@
                                     <constraint firstItem="RNv-40-rXg" firstAttribute="top" secondItem="qeL-h8-ujb" secondAttribute="top" id="rji-IV-vjJ"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz4-kj-7iB">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hz4-kj-7iB">
                                 <rect key="frame" x="0.0" y="718" width="414" height="48"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dJ-Xr-K8G">
@@ -2567,7 +2567,6 @@
                             <constraint firstItem="llx-2V-Ztw" firstAttribute="top" secondItem="iij-i6-wzs" secondAttribute="bottom" id="C2Z-Sj-mRp"/>
                             <constraint firstItem="qeL-h8-ujb" firstAttribute="top" secondItem="a9r-SW-Mij" secondAttribute="bottom" id="D1h-Iq-oRT"/>
                             <constraint firstItem="HPf-m9-vR9" firstAttribute="centerY" secondItem="iRF-6H-qwh" secondAttribute="centerY" id="KEA-ya-CGF"/>
-                            <constraint firstItem="hz4-kj-7iB" firstAttribute="top" secondItem="qeL-h8-ujb" secondAttribute="bottom" id="Ojv-aA-2eZ"/>
                             <constraint firstItem="8GH-GR-K7q" firstAttribute="bottom" secondItem="llx-2V-Ztw" secondAttribute="bottom" id="Rg4-qH-UK7"/>
                             <constraint firstItem="llx-2V-Ztw" firstAttribute="leading" secondItem="8GH-GR-K7q" secondAttribute="leading" id="WSi-P3-TbD"/>
                             <constraint firstItem="8GH-GR-K7q" firstAttribute="trailing" secondItem="llx-2V-Ztw" secondAttribute="trailing" id="ZYX-2G-k9X"/>
@@ -2576,6 +2575,7 @@
                             <constraint firstItem="iij-i6-wzs" firstAttribute="top" secondItem="hz4-kj-7iB" secondAttribute="bottom" id="c7Y-nj-Nup"/>
                             <constraint firstItem="a9r-SW-Mij" firstAttribute="leading" secondItem="8GH-GR-K7q" secondAttribute="leading" id="ewJ-cx-Tpw"/>
                             <constraint firstItem="hz4-kj-7iB" firstAttribute="trailing" secondItem="8GH-GR-K7q" secondAttribute="trailing" id="gHw-zZ-cWy"/>
+                            <constraint firstItem="iij-i6-wzs" firstAttribute="top" secondItem="qeL-h8-ujb" secondAttribute="bottom" id="lMP-y1-1AM"/>
                             <constraint firstItem="8GH-GR-K7q" firstAttribute="trailing" secondItem="a9r-SW-Mij" secondAttribute="trailing" id="oLu-Ry-ATj"/>
                             <constraint firstItem="8GH-GR-K7q" firstAttribute="trailing" secondItem="iij-i6-wzs" secondAttribute="trailing" id="tgt-sd-GnR"/>
                             <constraint firstItem="HPf-m9-vR9" firstAttribute="centerX" secondItem="iRF-6H-qwh" secondAttribute="centerX" id="yEd-Mf-ATh"/>
