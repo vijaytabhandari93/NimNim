@@ -18,7 +18,7 @@ class ReferralViewController: UIViewController {
     
     var referralDescription:String?
     var referralPromo:String?
-    
+    var referralUrl:String?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -46,9 +46,14 @@ class ReferralViewController: UIViewController {
                 if let promo = response["promo"] as? String {
                     self?.referralPromo = promo
                 }
-                self?.activityIndicator.stopAnimating()
-                self?.collectionView.isHidden = false
-                self?.collectionView.reloadData()
+                BranchManager.shared.createBranchLink(withReferralCode: self?.referralPromo) {[weak self] (urlString) in
+                    if let urlString = urlString {
+                        self?.referralUrl = urlString
+                         self?.activityIndicator.stopAnimating()
+                        self?.collectionView.isHidden = false
+                        self?.collectionView.reloadData()
+                    }
+                }
             }
         }) {[weak self] (error) in
             if let error = error as? String {
@@ -74,7 +79,7 @@ extension ReferralViewController: UICollectionViewDelegate, UICollectionViewData
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ReferralCollectionViewCell", for: indexPath)  as! ReferralCollectionViewCell
         cell.delegate = self
-        cell.codeLabel.text = referralPromo ?? ""
+        cell.codeLabel.text = referralUrl ?? ""
         cell.subTitleLabel.text = referralDescription ?? ""
         return cell
     }
@@ -94,7 +99,7 @@ extension ReferralViewController: ReferralCollectionViewCellDelegate {
     }
     
     func inviteTapped(withCode code: String?) {
-        BranchManager.shared.createBranchLink(withReferralCode: code) {[weak self] (urlString) in
+        BranchManager.shared.createBranchLink(withReferralCode: referralPromo) {[weak self] (urlString) in
             if let urlString = urlString, let url = URL(string: urlString) {
                 if let text = self?.referralDescription {
                     let vc = UIActivityViewController(activityItems: [text,url], applicationActivities: [])
