@@ -22,6 +22,7 @@ class ReferralCollectionViewCell: UICollectionViewCell {
     weak var delegate:ReferralCollectionViewCellDelegate?
     
     @IBAction func copyTapped(_ sender: Any) {
+        delegate?.copyTapped(withCode: codeLabel.text)
     }
     
     @IBAction func inviteTapped(_ sender: Any) {
