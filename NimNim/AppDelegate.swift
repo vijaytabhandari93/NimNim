@@ -10,6 +10,7 @@ import UIKit
 import GoogleSignIn
 import FBSDKCoreKit
 import FirebaseMessaging
+import Branch
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -77,7 +78,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var handle = false
         handle = GIDSignIn.sharedInstance().handle(url)
         handle = ApplicationDelegate.shared.application(app, open: url, options: options)
+        Branch.getInstance().application(app, open: url, options: options)
         return handle
+    }
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        Branch.getInstance().continue(userActivity)
     }
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {

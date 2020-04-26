@@ -15,9 +15,9 @@ protocol NeedHelpCollectionViewCellDelegate:class {
 class NeedHelpCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     weak var delegate:NeedHelpCollectionViewCellDelegate?
-    var Issueheadings = ["Payment","Delivery","Service Issue","Offers/Discouts"]
-    var IssueDescriptionHeading = ["Payment is done  wrongly","Delivery is not as per commitment","Service Issue as the clothes  were not cleaned properly","Offers/Discouts are not being applied"]
-    
+    var Issueheadings = ["Payment","Delivery","Service Issue","Offers/Discouts","Cancellation"]
+    var IssueDescriptionHeading = ["Payment is done wrongly","Delivery is not as per commitment","Service Issue as the clothes  were not cleaned properly","Offers/Discouts are not being applied","Do you want to cancel this order?"]
+    var orderModel:OrderModel?
     @IBOutlet weak var helpCollectionView: UICollectionView!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +33,7 @@ class NeedHelpCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,
     
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 5
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

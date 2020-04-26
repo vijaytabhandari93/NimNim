@@ -40,5 +40,14 @@ struct Endpoints {
     static let wallet = "wallets?current_page=1"
     static let verifyresetpasswordotp = "verifyresetpasswordotp"
     static let resetpassword = "resetpassword"
+    static let referralCode = "admin/referralpromo"
+    
+    static func cancelOrder(withId id:Int?) -> String? {
+        if let id = id {
+            return "admin/cancelorder/\(id)"
+        }else {
+            return nil
+        }
+    }
 }
 

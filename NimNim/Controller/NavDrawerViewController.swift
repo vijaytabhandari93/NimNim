@@ -15,7 +15,7 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet weak var navDrawerTableView: UITableView!
     
     //MARK: Constants and Variables
-    let navDrawerlist = ["Track Orders","Wallet","Help","Pricing","Logout"]
+    let navDrawerlist = ["Track Orders","Refer & Earn","Wallet","Help","Pricing","Logout"]
     
     
     override func viewDidLoad() {
@@ -49,17 +49,20 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.row == 4 {
+        if indexPath.row == 5 {
             logOut()
         }
-        if indexPath.row == 1 {
-              wallet()
-               }
-        if indexPath.row == 3 {
-        pricing()
-        }
         if indexPath.row == 2 {
-        FAQ()
+            wallet()
+        }
+        if indexPath.row == 3 {
+            pricing()
+        }
+        if indexPath.row == 4 {
+            FAQ()
+        }
+        if indexPath.row == 1 {
+            referAndEarn()
         }
         if indexPath.row == 0 {
             OrderHistory()
@@ -75,38 +78,41 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
             UserDefaults.standard.synchronize()
             print(Array(UserDefaults.standard.dictionaryRepresentation().keys).count)
         }
-                NavigationManager.shared.initializeApp()
+        NavigationManager.shared.initializeApp()
     }
     
-    func  pricing(){
+    func referAndEarn() {
+        let servicesStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+        let referAndEarn = servicesStoryboard.instantiateViewController(withIdentifier: "ReferralViewController") as? ReferralViewController
+        NavigationManager.shared.push(viewController: referAndEarn)
+    }
+    
+    func pricing(){
         
         let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
         let pricing = servicesStoryboard.instantiateViewController(withIdentifier: "PricingViewController") as? PricingViewController
-            NavigationManager.shared.push(viewController: pricing)
+        NavigationManager.shared.push(viewController: pricing)
         
     }
+    
     func  FAQ(){
-           
-           let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
-           let pricing = servicesStoryboard.instantiateViewController(withIdentifier: "FAQViewController") as? FAQViewController
-               NavigationManager.shared.push(viewController: pricing)
-           
-       }
-    func  OrderHistory() {
         
-              let servicesStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
-              let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "OrderStatusViewController") as? OrderStatusViewController
-                  NavigationManager.shared.push(viewController: allServices)
-              
+        let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
+        let pricing = servicesStoryboard.instantiateViewController(withIdentifier: "FAQViewController") as? FAQViewController
+        NavigationManager.shared.push(viewController: pricing)
         
     }
+    
+    func OrderHistory() {
+        let servicesStoryboard = UIStoryboard(name: "OrderStoryboard", bundle: nil)
+        let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "OrderStatusViewController") as? OrderStatusViewController
+        NavigationManager.shared.push(viewController: allServices)
+    }
+    
     func wallet() {
-        
-              let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
-              let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "WalletViewController") as? WalletViewController
-                  NavigationManager.shared.push(viewController: allServices)
-              
-        
+        let servicesStoryboard = UIStoryboard(name: "Pricing", bundle: nil)
+        let allServices = servicesStoryboard.instantiateViewController(withIdentifier: "WalletViewController") as? WalletViewController
+        NavigationManager.shared.push(viewController: allServices)
     }
     
     

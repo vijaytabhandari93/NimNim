@@ -21,7 +21,11 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
     
     
     func helpCellTapped(withType type: String) {
-        openMailVC(withIssueTitle: type)
+        if type.caseInsensitiveCompare("Cancellation") == .orderedSame {
+            cancelOrder()
+        }else {
+            openMailVC(withIssueTitle: type)
+        }
     }
     
     
@@ -82,6 +86,27 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
         if let price = orderModel?.grandTotal  {
             totalPayableAmount.text = "$\(price)"
         }
+    }
+    
+    func cancelOrder() {
+        let alert = UIAlertController(title: "Alert", message: "Are you sure that you wish to cancel this order?", preferredStyle: .alert)
+              alert.addAction(UIAlertAction(title: "Yes", style: .default, handler:{[weak self] (_) in
+                if let endpoint = Endpoints.cancelOrder(withId: self?.orderModel?.orderNumber) {
+                     NetworkingManager.shared.put(withEndpoint: endpoint, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
+                         self?.navigationController?.popViewController(animated: true)
+                         }) //definition of success closure
+                     { (error) in
+                         if let error = error as? String {
+                             let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                             alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                             self?.present(alert, animated: true, completion: nil)
+                         }
+                     }
+                 }
+              }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+          self.present(alert, animated: true, completion: nil)
     }
     
     func fetchSavedCards(){

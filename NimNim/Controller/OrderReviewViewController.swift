@@ -145,7 +145,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
     //fetch Cart
     
     func fetchCart() {
-        guard let cartId =  UserDefaults.standard.object(forKey: UserDefaultKeys.cartId)else {
+        guard let _ =  UserDefaults.standard.object(forKey: UserDefaultKeys.cartId) else {
             return
         }
         
@@ -167,6 +167,10 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
                         let orderSB = UIStoryboard(name:"OrderStoryboard", bundle: nil)
                         let orderReviewVC = orderSB.instantiateViewController(withIdentifier: "EmptyCartViewController")
                         NavigationManager.shared.pushWithoutAnimation(viewController: orderReviewVC)
+                    }else {
+                        if let referralPromo = UserDefaults.standard.object(forKey: UserDefaultKeys.referralPromo) as? String, referralPromo.count > 0 {
+                            self?.applyCouponInCart(withCouponId: referralPromo, withCartId: cartModel?.cartId)
+                        }
                     }
                 }
                 setupAliasesFromCart(withModel: cartModel)
@@ -217,6 +221,37 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
             self.activityIndicator.stopAnimating()
         } // definition of error closure
     }
+    
+    func applyCouponInCart(withCouponId couponId:String?,withCartId cartId:String?) {
+        guard let couponId = couponId,let cartId = cartId else {
+            return
+        }
+        
+        let params:[String:Any] = [
+            AddToCart.code:couponId,
+            AddToCart.cartId:cartId,
+            "type":"referral"
+        ]
+        activityIndicator.startAnimating()
+        NetworkingManager.shared.put(withEndpoint: Endpoints.applypromocode, withParams: params, withSuccess: {[weak self] (response) in
+            if let _ = response as? [String:Any]
+            {
+                self?.fetchCart()
+                self?.activityIndicator.stopAnimating()
+            }
+            Events.promoApplied(withCoupon: couponId)
+            
+        }) {[weak self] (error) in
+            print("error")
+            self?.activityIndicator.stopAnimating()
+            if let error = error as? String {
+                let alert = UIAlertController(title: "Alert", message: error, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
+                self?.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
     //MARK:UI Methods
     func registerCells() {
         let type1PreferencesNib = UINib(nibName: "ServiceOrderStatusCollectionViewCell", bundle: nil)

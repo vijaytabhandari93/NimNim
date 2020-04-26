@@ -98,6 +98,7 @@
 		AC56671F24102BB700813DE8 /* OnboardingEvents.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56671E24102BB700813DE8 /* OnboardingEvents.swift */; };
 		AC56672124102C3F00813DE8 /* AnalyticsEventNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56672024102C3F00813DE8 /* AnalyticsEventNames.swift */; };
 		AC56672324102D5C00813DE8 /* AnalyticsEventProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56672224102D5C00813DE8 /* AnalyticsEventProperties.swift */; };
+		AC56F3CD24540CCB0064C85E /* ReferralCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC56F3CC24540CCB0064C85E /* ReferralCollectionViewCell.swift */; };
 		AC57A014244AF3320025F796 /* TrackOrderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC57A012244AF3320025F796 /* TrackOrderCollectionViewCell.swift */; };
 		AC57A015244AF3320025F796 /* TrackOrderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AC57A013244AF3320025F796 /* TrackOrderCollectionViewCell.xib */; };
 		AC57D0D7241F835F007B3037 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC57D0D6241F835F007B3037 /* FAQViewController.swift */; };
@@ -224,6 +225,7 @@
 		ACBE06C923E0503B00451006 /* AddShoeRepairCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBE06C723E0503B00451006 /* AddShoeRepairCollectionViewCell.xib */; };
 		ACBE06CE23E0573000451006 /* ShoeTaskAddedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACBE06CC23E0573000451006 /* ShoeTaskAddedCollectionViewCell.swift */; };
 		ACBE06CF23E0573000451006 /* ShoeTaskAddedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = ACBE06CD23E0573000451006 /* ShoeTaskAddedCollectionViewCell.xib */; };
+		ACC190CB2453315700A091B4 /* ReferralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC190CA2453315700A091B4 /* ReferralViewController.swift */; };
 		ACD4684D244ADBDA001B4D08 /* TrackOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD4684C244ADBDA001B4D08 /* TrackOrderViewController.swift */; };
 		ACD8BA432351AB41005C1EAA /* HomeBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */; };
 		ACD8BA452351DF87005C1EAA /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD8BA442351DF87005C1EAA /* NavigationManager.swift */; };
@@ -372,6 +374,7 @@
 		AC56671E24102BB700813DE8 /* OnboardingEvents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingEvents.swift; sourceTree = "<group>"; };
 		AC56672024102C3F00813DE8 /* AnalyticsEventNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventNames.swift; sourceTree = "<group>"; };
 		AC56672224102D5C00813DE8 /* AnalyticsEventProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsEventProperties.swift; sourceTree = "<group>"; };
+		AC56F3CC24540CCB0064C85E /* ReferralCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC57A012244AF3320025F796 /* TrackOrderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackOrderCollectionViewCell.swift; sourceTree = "<group>"; };
 		AC57A013244AF3320025F796 /* TrackOrderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrackOrderCollectionViewCell.xib; sourceTree = "<group>"; };
 		AC57D0D6241F835F007B3037 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
@@ -500,6 +503,7 @@
 		ACBE06C723E0503B00451006 /* AddShoeRepairCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddShoeRepairCollectionViewCell.xib; sourceTree = "<group>"; };
 		ACBE06CC23E0573000451006 /* ShoeTaskAddedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeTaskAddedCollectionViewCell.swift; sourceTree = "<group>"; };
 		ACBE06CD23E0573000451006 /* ShoeTaskAddedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShoeTaskAddedCollectionViewCell.xib; sourceTree = "<group>"; };
+		ACC190CA2453315700A091B4 /* ReferralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralViewController.swift; sourceTree = "<group>"; };
 		ACD4684C244ADBDA001B4D08 /* TrackOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackOrderViewController.swift; sourceTree = "<group>"; };
 		ACD8BA422351AB41005C1EAA /* HomeBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBaseViewController.swift; sourceTree = "<group>"; };
 		ACD8BA442351DF87005C1EAA /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
@@ -733,6 +737,7 @@
 				AC4D31092439E56B0033E708 /* ReviewCollectionViewCell.xib */,
 				AC57A012244AF3320025F796 /* TrackOrderCollectionViewCell.swift */,
 				AC57A013244AF3320025F796 /* TrackOrderCollectionViewCell.xib */,
+				AC56F3CC24540CCB0064C85E /* ReferralCollectionViewCell.swift */,
 			);
 			path = CollectionViewCells;
 			sourceTree = "<group>";
@@ -833,6 +838,7 @@
 				AC4EE2AF242C9DEA008CE2FD /* OnboardingViewController.swift */,
 				AC49C6A7242DDC290065EDFB /* InsideBannerViewController.swift */,
 				ACD4684C244ADBDA001B4D08 /* TrackOrderViewController.swift */,
+				ACC190CA2453315700A091B4 /* ReferralViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1251,6 +1257,7 @@
 				ACBAAF6A233D0CC800E1E4A6 /* HomeViewController.swift in Sources */,
 				ACA65EF623DECE040095EC20 /* OrderReviewAddressCollectionViewCell.swift in Sources */,
 				AC9B9A3623E71CED00FB0A17 /* DropDownCollectionViewCell.swift in Sources */,
+				AC56F3CD24540CCB0064C85E /* ReferralCollectionViewCell.swift in Sources */,
 				ACBC96FD2361BF2E006AC5B6 /* ShoppingbagSummaryCollectionReusableView.swift in Sources */,
 				AC1FFDBE234763B200930496 /* WashAndFoldPreferencesCollectionViewCell.swift in Sources */,
 				ACD8BA452351DF87005C1EAA /* NavigationManager.swift in Sources */,
@@ -1351,6 +1358,7 @@
 				AC20417A23B74FA5001F86B4 /* MonthAndDateBaseCollectionViewCell.swift in Sources */,
 				AC1789142376A19B00B20D32 /* UserDefaultKeys.swift in Sources */,
 				ACBB8174232D09AD003DCF77 /* PreferencesTableViewCell.swift in Sources */,
+				ACC190CB2453315700A091B4 /* ReferralViewController.swift in Sources */,
 				ACBC96F82361AEE7006AC5B6 /* OrderStatusViewController.swift in Sources */,
 				AC5938CA2418984B004DAB05 /* AppNotifications.swift in Sources */,
 				ACFD92BD235ACF060009FB03 /* SavedAddressCollectionViewCell.swift in Sources */,

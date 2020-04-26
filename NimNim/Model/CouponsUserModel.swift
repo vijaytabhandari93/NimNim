@@ -32,6 +32,7 @@ class CouponModel:NSObject, Mappable, Codable {
     var discount:Int?
     var code:String?
     var v:Int?
+    var type:String?
     var validfrom : String?
     var validto : String?
     var codeName : String?
@@ -48,6 +49,7 @@ class CouponModel:NSObject, Mappable, Codable {
         discount    <- map["discount"]
         code   <- map["couponCode"] // DONE  AS IN FETCH  CART  RESPONSE
         codeName <- map["code"]
-}
-
+        type    <- map["type"]
+    }
+    
 }
