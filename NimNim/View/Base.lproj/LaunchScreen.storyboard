@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,18 +18,18 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JD2-SB-m7I">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <color key="backgroundColor" red="0.32549019610000002" green="0.76862745099999996" blue="0.78823529410000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.2784313725" green="0.74901960779999999" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NIMNIM_logo_whi" translatesAutoresizingMaskIntoConstraints="NO" id="aGc-vu-nFb">
-                                <rect key="frame" x="132" y="373" width="150" height="150"/>
+                                <rect key="frame" x="83" y="324" width="248" height="248"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="blb-Up-yPO"/>
-                                    <constraint firstAttribute="height" constant="150" id="yUv-Pa-67m"/>
+                                    <constraint firstAttribute="width" secondItem="aGc-vu-nFb" secondAttribute="height" multiplier="1:1" id="bYt-ZA-VoQ"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="aGc-vu-nFb" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.6" id="0zK-lu-f62"/>
                             <constraint firstAttribute="bottom" secondItem="JD2-SB-m7I" secondAttribute="bottom" id="3Tg-Zo-Jmx"/>
                             <constraint firstItem="JD2-SB-m7I" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Dit-0w-Egf"/>
                             <constraint firstItem="aGc-vu-nFb" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="fUj-MO-aMr"/>
