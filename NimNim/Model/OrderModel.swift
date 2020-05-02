@@ -60,6 +60,7 @@ class OrderModel : NSObject, Mappable, Codable  {
     var subTotal:Double? // price of services
     var walletPointsApplicable:Double?
     var timelines:[TimelineModel] = []
+    var isCancellable:Bool? = false
     //When submit ticket is tapped on submit ticket screen... you will create an Issue Model and store the concerned type and description in it...and pass this model to Order Details Screen...
     var deliverycost : Double? //(Number, normal delivery cost)
     var delivery_charges_waived: Bool? //(Boolean)
@@ -79,6 +80,7 @@ class OrderModel : NSObject, Mappable, Codable  {
         CardId  <- map["card_id"]
         isWalletSelected <- map["isWalletSelected"]
         orderNumber <- map["orderNumber"]
+        isCancellable  <- map["is_cancellable"]
         date  <-  map["date"]
         createdAt <- map["created_at"]
         orderAmount<-map["order_amount"]///provided by  mukesh for orderAmout

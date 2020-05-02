@@ -33,7 +33,11 @@ class NeedHelpCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,
     
     //MARK:Collection View Datasource Methods
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        if let isCancellable = orderModel?.isCancellable, isCancellable == true {
+            return 5
+        }else {
+            return 4
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

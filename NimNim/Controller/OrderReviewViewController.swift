@@ -236,6 +236,8 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         NetworkingManager.shared.put(withEndpoint: Endpoints.applypromocode, withParams: params, withSuccess: {[weak self] (response) in
             if let _ = response as? [String:Any]
             {
+                UserDefaults.standard.removeObject(forKey: UserDefaultKeys.referralPromo)
+                UserDefaults.standard.synchronize()
                 self?.fetchCart()
                 self?.activityIndicator.stopAnimating()
             }

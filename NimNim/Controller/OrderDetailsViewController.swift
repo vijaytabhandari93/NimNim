@@ -376,6 +376,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
         }else if indexPath.section == 5 {
             //Wallet -- section == 2
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedHelpCollectionViewCell", for: indexPath) as! NeedHelpCollectionViewCell
+            cell.orderModel = orderModel
             cell.delegate = self
             return cell
         }
