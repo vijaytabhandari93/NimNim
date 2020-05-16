@@ -640,7 +640,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         if section == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
             cell.delegate = self
-            cell.labelAgainsCheckbox.text = "I need Rush Delivery"
+            cell.labelAgainsCheckbox.text = "I need rush delivery"
             cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
             if let arrayRushOptions = serviceModel?.rushDeliveryOptions, arrayRushOptions.count == 1 {
                 let firstPreference = arrayRushOptions[0]
@@ -666,7 +666,11 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         if section == 0 {
             return CGSize(width: collectionView.frame.size.width, height:88)
         }else if section == 1 {
-            return CGSize(width: collectionView.frame.size.width, height:104)
+            if indexPath.item == 0 {
+                return CGSize(width: collectionView.frame.size.width, height:104)
+            }else {
+                return CGSize(width: collectionView.frame.size.width, height:134)
+            }
         }else if section == 2 {
              if let count = serviceModel?.uploadedImages.count , count  > 0 {
                 return CGSize(width: collectionView.frame.size.width, height:191)

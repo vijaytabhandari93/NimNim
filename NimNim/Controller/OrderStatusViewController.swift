@@ -120,7 +120,7 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
                 }
                 
             }
-            cell.orderStatus.text = arrayItem.orderStatus
+            cell.orderStatus.text = arrayItem.orderStatus?.uppercased()
             cell.service = arrayItem.services
             return cell
         }

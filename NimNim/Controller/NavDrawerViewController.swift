@@ -15,7 +15,7 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
     @IBOutlet weak var navDrawerTableView: UITableView!
     
     //MARK: Constants and Variables
-    let navDrawerlist = ["Track Orders","Refer & Earn","Wallet","Help","Pricing","Logout"]
+    let navDrawerlist = ["Track Orders","Refer & Earn","NimNim Wallet","Help","Pricing","Logout"]
     
     
     override func viewDidLoad() {

@@ -280,11 +280,11 @@
                                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EWv-uA-Waz">
                                                 <rect key="frame" x="10.5" y="0.0" width="62" height="62"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tO7-Mv-gih">
+                                                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tO7-Mv-gih">
                                                         <rect key="frame" x="5" y="5" width="52" height="52"/>
                                                         <color key="backgroundColor" red="0.79215686269999996" green="0.81176470590000005" blue="0.85098039219999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <state key="normal" image="NIMNIM_logo_whi"/>
+                                                        <state key="normal" image="NimNimIcon"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                 <integer key="value" value="26"/>
@@ -428,7 +428,7 @@
                                             <action selector="backButtonTapped:" destination="P0s-TZ-6Co" eventType="touchUpInside" id="w2C-cZ-J8t"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Just NImNim It means that you can quickly place your order." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ln3-Ro-txZ">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your favorite service to order, NimNim pros will take care of the rest" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ln3-Ro-txZ">
                                         <rect key="frame" x="28" y="45" width="358" height="41"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -987,7 +987,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="NIMNIM_logo_whi" width="4000" height="4000"/>
+        <image name="NimNimIcon" width="60" height="60"/>
         <image name="basket" width="20" height="19"/>
         <image name="historyDeselected" width="21" height="19"/>
         <image name="home" width="19" height="18"/>

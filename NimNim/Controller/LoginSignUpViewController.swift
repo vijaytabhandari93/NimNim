@@ -49,7 +49,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    let mobileExt = "+1"
+    let mobileExt = "+91"
     var activeTextField:UITextField?
     var otpState:OTPState = .getOtp {
         didSet {
@@ -181,7 +181,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     func activateLoginButton() {
         //select login button
         loginButton.titleLabel?.font = Fonts.semiBold16
-        logInSignUpToContinueLabel.text = "Log In to Continue"
+        logInSignUpToContinueLabel.text = "Log in to continue"
         loginButton.setTitleColor(Colors.nimnimGreen, for: .normal)
     }
     

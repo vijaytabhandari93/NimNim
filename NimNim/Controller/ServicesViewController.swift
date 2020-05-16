@@ -484,14 +484,14 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
         }else if section == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
             cell.delegate = self
-            cell.labelAgainsCheckbox.text = "I need Rush Delivery"
+            cell.labelAgainsCheckbox.text = "I need rush delivery"
             cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
             if let arrayRushOptions = serviceModel?.rushDeliveryOptions, arrayRushOptions.count == 1 {
                 let firstPreference = arrayRushOptions[0]
                 if let hours  = firstPreference.turnAroundTime
                     ,let extraPrice = firstPreference.price
                 {
-                    cell.descriptionofLabel.text = "Under rush delivery your clothes will be delivered with in \(hours) Hours" //and $\(extraPrice) will be charged extra for the same"
+                    cell.descriptionofLabel.text = "Under rush delivery your clothes will be delivered within \(hours) hours" //and $\(extraPrice) will be charged extra for the same"
                 }
                 return cell
             }

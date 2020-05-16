@@ -30,14 +30,14 @@
                             <constraint firstAttribute="height" constant="1" id="q2b-hR-JS9"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Clothes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElG-Pm-efY">
-                        <rect key="frame" x="28" y="0.0" width="135" height="57"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of shirts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ElG-Pm-efY">
+                        <rect key="frame" x="28" y="0.0" width="120.5" height="57"/>
                         <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="14"/>
                         <color key="textColor" red="0.0039215686269999999" green="0.039215686270000001" blue="0.14901960780000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZcG-Oe-3Sq">
-                        <rect key="frame" x="183" y="12" width="80" height="34"/>
+                        <rect key="frame" x="168.5" y="12" width="80" height="34"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="34" id="PeO-97-xq7"/>
                             <constraint firstAttribute="width" constant="80" id="xon-VE-5MB"/>

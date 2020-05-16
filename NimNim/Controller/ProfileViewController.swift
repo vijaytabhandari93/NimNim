@@ -266,7 +266,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
                     cell.userImage.contentMode = .center/////////////////
                 }
                 if let wallet = walletBalance {
-                    cell.userPoints.text = "\(wallet)"
+                    cell.userPoints.text = "\(wallet) points"
                 }
                 return cell
             }

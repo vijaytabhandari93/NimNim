@@ -106,7 +106,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
             cell.labelAgainsCheckbox.text = "Return Hangers"
             cell.delegate = self
             cell.configureUI(forRushDeliveryState: serviceModel?.needHangers ?? false, forIndex: indexPath)
-            cell.descriptionofLabel.text = "Do you want to return the hangers? We re-cycle old hangers."
+            cell.descriptionofLabel.text = "Do you want to return the hangers? We recycle old hangers."
             return cell
         }
             
@@ -149,7 +149,7 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         else if section == 3  {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
             cell.delegate = self
-            cell.labelAgainsCheckbox.text = "I need Rush Delivery"
+            cell.labelAgainsCheckbox.text = "I need rush delivery"
             cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
             if let arrayRushOptions = serviceModel?.rushDeliveryOptions, arrayRushOptions.count == 1 {
                 let firstPreference = arrayRushOptions[0]

@@ -62,7 +62,7 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
             titleArray = [
                 "Leave unattened in Foyer",
                 "Pick up and drop off at concierge",
-                "Pick up and Drop off in person"
+                "Pick up and drop off in person"
             ]
             titleLable.text = "Choose your pick up and drop off preference:"
         }
