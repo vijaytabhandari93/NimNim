@@ -62,7 +62,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             refreshTable()
         }
     }
-    
+    var isVerifying = false
     var firstName:String?
     var lastName:String?
     var email:String?
@@ -324,7 +324,11 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             let cell = tableView.dequeueReusableCell(withIdentifier: "SignUpTableViewCell") as! SignUpTableViewCell
             cell.delegate = self //Through this statement the viewcontroller is giving its reference to the cell...
             cell.checkedStatus = checked
-            cell.configureCell(withEmail: email, withFirstName: firstName, withLastName: lastName)//To ensure that the verify button ui is updated for the value of checked variable...
+            if isVerifying {
+                cell.configureCell(withEmail: email, withFirstName: firstName, withLastName: lastName, shouldEnableVerify: false)//To ensure that the verify button ui is updated for the value of checked variable...
+            }else {
+                cell.configureCell(withEmail: email, withFirstName: firstName, withLastName: lastName, shouldEnableVerify: true)//To ensure that the verify button ui is updated for the value of checked variable...
+            }
             return cell
         }
     }
@@ -414,9 +418,11 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             LogInViaOTP.type:type
         ]
         activityIndicatorView.startAnimating()
+        isVerifying = true
+        loginSignUpTableView.reloadData()
         NetworkingManager.shared.post(withEndpoint: Endpoints.customersLoginWithOTP, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
-                if let msg = responseDict["msg"] as? String {
+                if let _ = responseDict["msg"] as? String {
                     //we can assume here that otp was sent successfully...
                     self.otpState = .verifyOtp
                     if type == "signup" {
@@ -424,6 +430,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                     }
                 }
             }
+            self.isVerifying = false
+            self.loginSignUpTableView.reloadData()
             self.activityIndicatorView.stopAnimating()
         }) { (error) in
             self.activityIndicatorView.stopAnimating()
@@ -432,6 +440,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
                 alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             }
+            self.isVerifying = false
+            self.loginSignUpTableView.reloadData()
         }
     }
     

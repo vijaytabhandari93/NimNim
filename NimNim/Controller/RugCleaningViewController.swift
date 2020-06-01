@@ -248,7 +248,7 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     @IBAction func infoTapped(_ sender: Any) {
         let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
-        jnnvc.titleValue = "Just Nim Nim It For \n Carpet Cleaning"
+        jnnvc.titleValue = "Just NimNim It For \n Carpet Cleaning"
         jnnvc.descriptionValue = "Tap on the Just NimNim button and we will get everything sorted from counting the rugs to getting it done at the best price in the market!"
         present(jnnvc, animated: true, completion: nil)
     }

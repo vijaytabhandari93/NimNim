@@ -60,7 +60,7 @@ class SignUpTableViewCell: UITableViewCell,UITextFieldDelegate {
         datePickerView.addTarget(self, action: #selector(datePickerFromValueChanged), for: .valueChanged)
     }
     
-    func configureCell(withEmail email:String?, withFirstName firstName:String?, withLastName lastName:String?) {
+    func configureCell(withEmail email:String?, withFirstName firstName:String?, withLastName lastName:String?, shouldEnableVerify shouldVerfiy:Bool = true) {
         if checkedStatus == "done" {
             verifyButton.setTitleColor(Colors.nimnimButtonBorderGreen, for: .normal)
             verifyButton.setTitle("Verified", for: .normal)
@@ -80,6 +80,13 @@ class SignUpTableViewCell: UITableViewCell,UITextFieldDelegate {
             lastNameTextField.text = lastName
             lastNameTextField.font = Fonts.medium20
         }
+        if shouldVerfiy {
+            verifyButton.isUserInteractionEnabled = true
+            verifyButton.alpha  = 1
+        }else  {
+            verifyButton.isUserInteractionEnabled = false
+            verifyButton.alpha  = 0.5
+        }
     }
 
     //MARK:IBActions
@@ -93,8 +100,11 @@ class SignUpTableViewCell: UITableViewCell,UITextFieldDelegate {
     }
     
     @IBAction func verifyTapped(_ sender: Any) {
+        verifyButton.isUserInteractionEnabled = false
+        verifyButton.alpha  = 0.5
         delegate?.verifyTappedInSignUpTableViewCell(withPhoneNumber:phoneNumberTextField.text)
     }
+    
     @IBAction func signUpTapped(_ sender: Any) {
         delegate?.signUpTappedInSignUpTableViewCell(withEmail: emailAddressTextField.text, withFirstName: firstNameTextField.text, withLastName: lastNameTextField.text, withPhoneNumber: phoneNumberTextField.text, withPassword: passwordTextField.text, withDob: dobTextField.text)
     }

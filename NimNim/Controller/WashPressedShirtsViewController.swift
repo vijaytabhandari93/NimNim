@@ -123,7 +123,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     @IBAction func infoTapped(_ sender: Any) {
         let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
-        jnnvc.titleValue = "Just Nim Nim It For \n Laundered Shirts"
+        jnnvc.titleValue = "Just NimNim It For \n Laundered Shirts"
         jnnvc.descriptionValue = "Choose Just NimNim It and we will take care of everything from counting shirts to delivering them on hangers."
         present(jnnvc, animated: true, completion: nil)
     }
