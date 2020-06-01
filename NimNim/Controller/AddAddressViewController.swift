@@ -219,6 +219,8 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         addAddressCollectionView.dataSource = self
         if editTapped == true {
             setUpUIForEditState()
+        }else {
+            model = AddressDetailsModel()
         }
         addObservers()
     }
@@ -266,10 +268,9 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
+            cell.isPincode = false
             cell.label.text = "ENTER STREET ADDRESS"
-            if editTapped == true {
-            cell.addressText.text = model?.street
-            } // editing function
+            cell.addressText.text = model?.street // editing function
             cell.delegate = self
             cell.indexPath = indexPath // This is used to set the var property defined in the cell defination. It is later used to give the data of the text field to the right param parameter based on the indexPath.
             if cell.addressText.text == nil || cell.addressText.text == ""  {
@@ -281,11 +282,9 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
+            cell.isPincode = false
             cell.label.text = "ENTER APARTMENT NUMBER"
-            if editTapped == true {
-                cell.addressText.text = model?.house
-                
-            } // editing function
+            cell.addressText.text = model?.house
             cell.delegate = self
             cell.indexPath = indexPath
             if cell.addressText.text == nil || cell.addressText.text == ""  {
@@ -297,11 +296,9 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         else if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
+            cell.isPincode = false
             cell.label.text = "CITY"
-            if editTapped == true {
-                cell.addressText.text = model?.city
-                
-            } // editing function
+            cell.addressText.text = model?.city
             cell.delegate = self
             cell.indexPath = indexPath
             if cell.addressText.text == nil || cell.addressText.text == ""  {
@@ -314,11 +311,9 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         else if indexPath.item == 3 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
+            cell.isPincode = false
             cell.label.text = "STATE"
-            if editTapped == true {
-                cell.addressText.text = model?.state
-                
-            } // editing function
+            cell.addressText.text = model?.state
             cell.delegate = self
             cell.indexPath = indexPath
             if cell.addressText.text == nil || cell.addressText.text == ""  {
@@ -330,11 +325,9 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         else if indexPath.item == 4 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
+            cell.isPincode = true
             cell.label.text = "ZIPCODE"
-            if editTapped == true {
-                cell.addressText.text = model?.pincode
-                
-            } // editing function
+            cell.addressText.text = model?.pincode
             cell.delegate = self
             cell.indexPath = indexPath
             if cell.addressText.text == nil || cell.addressText.text == ""  {
@@ -344,14 +337,11 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
             }
             return cell
         }
-            
         else if indexPath.item == 5 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
+            cell.isPincode = false
             cell.label.text = "ENTER LANDMARK (optional)"
-            if editTapped == true {
-                cell.addressText.text = model?.landmark
-                
-            } // editing function
+            cell.addressText.text = model?.landmark
             cell.delegate = self
             cell.indexPath = indexPath
             if cell.addressText.text == nil || cell.addressText.text == ""  {
@@ -363,11 +353,9 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AddAddressCollectionViewCell", for: indexPath) as! AddAddressCollectionViewCell
+            cell.isPincode = false
             cell.label.text = "PHONE NUMBER"
-            if editTapped == true {
-                cell.addressText.text = model?.phone
-                
-            } // editing function
+            cell.addressText.text = model?.phone
             cell.delegate = self
             cell.indexPath = indexPath
             if cell.addressText.text == nil || cell.addressText.text == ""  {
@@ -390,24 +378,28 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
         }
         if indexPath.item == 0 {
             streetAddress = text
+            model?.street = text
         }
         else if indexPath.item == 1 {
-        houseBlockNumber = text
+            houseBlockNumber = text
+            model?.house = text
         }
         else if indexPath.item == 2 {
-         city = text
-            
+            city = text
+            model?.city = city
         }
         else if indexPath.item == 3 {
-        state = text
+            state = text
+            model?.state =  state
         }
         else if indexPath.item == 4 {
-         zipcode = text
+            zipcode = text
         }
         else {
-          enterLandmark = text
+            enterLandmark = text
+            model?.landmark = enterLandmark
         }
-     
+        addAddressCollectionView.reloadData()
     }
     
     func textFieldStartedEditingInAddAddressCollectionViewCell(withTextField textField: UITextField) {
@@ -418,5 +410,25 @@ class AddAddressViewController: UIViewController,UICollectionViewDelegate,UIColl
     func textFieldEndedEditingInAddAddressCollectionViewCell(withTextField textField: UITextField) {
         removeTapGestures(forTextField: textField)
         
+    }
+    
+    func pincodeTapped() {
+        let preferencesSB = UIStoryboard(name: "MyLocation", bundle: nil)
+        let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"MyLocationViewController") as? MyLocationViewController
+        secondViewController?.isFromAddress = true
+        secondViewController?.delegate = self
+        view.endEditing(true)
+        NavigationManager.shared.push(viewController: secondViewController)
+    }
+}
+
+extension AddAddressViewController:MyLocationViewControllerDelegate  {
+    func selectedLocation(withModel model: LocationModel?) {
+        if let locationModel = model {
+            self.model?.pincode = locationModel.pincode
+            zipcode = locationModel.pincode
+            addAddressCollectionView.reloadData()
+            view.endEditing(true)
+        }
     }
 }

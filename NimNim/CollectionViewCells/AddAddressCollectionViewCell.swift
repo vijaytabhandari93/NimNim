@@ -12,7 +12,7 @@ protocol AddAddressCollectionViewCellDelegate:class {
     func textFieldStartedEditingInAddAddressCollectionViewCell(withTextField textField:UITextField) // To tell the loginSignUpVC to add tap geture to the view and to pass the text field selected
     func textFieldEndedEditingInAddAddressCollectionViewCell(withTextField textField:UITextField) // To tell the loginSignUpVC to remove the tap gesture from the view and to pass the textfield upon which end editing has been called
     func textEntered(withText text:String?, withIndexPath indexPath:IndexPath?)
-    
+    func pincodeTapped()
 }
 
 
@@ -32,7 +32,7 @@ class AddAddressCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
     weak var delegate :AddAddressCollectionViewCellDelegate?
     
     var indexPath:IndexPath?
-
+    var isPincode = false
     override func awakeFromNib() {
         super.awakeFromNib()
         addressText.delegate = self
@@ -61,9 +61,14 @@ class AddAddressCollectionViewCell: UICollectionViewCell,UITextFieldDelegate {
     }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        delegate?.textFieldStartedEditingInAddAddressCollectionViewCell(withTextField: textField)
-        animateToTop()
-        return true
+        if isPincode == true {
+            delegate?.pincodeTapped()
+            return false
+        }else {
+            delegate?.textFieldStartedEditingInAddAddressCollectionViewCell(withTextField: textField)
+            animateToTop()
+            return true
+        }
     }
 
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {

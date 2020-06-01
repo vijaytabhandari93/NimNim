@@ -11,6 +11,10 @@ import ObjectMapper
 import CoreLocation
 import NVActivityIndicatorView
 
+protocol MyLocationViewControllerDelegate:class {
+    func selectedLocation(withModel model:LocationModel?)
+}
+
 class MyLocationViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,CLLocationManagerDelegate {
     
     //MARK:IBOutlets
@@ -38,6 +42,8 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     }
     var serviceableLocationModel:ServiceableLocationModel?
     var locationModel:LocationModel?
+    var isFromAddress = false
+    weak var delegate:MyLocationViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -223,10 +229,15 @@ class MyLocationViewController: UIViewController,UITableViewDelegate,UITableView
     //MARK:IBActions
     @IBAction func useThisLocation(_ sender: Any) {
         if let locationModel = locationModel {
-            locationModel.saveInUserDefaults()//time of actual saving of loccation model
-            let preferencesSB = UIStoryboard(name: "LoginSignup", bundle: nil)
-            let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"LoginSignUpViewController") as? LoginSignUpViewController
-            NavigationManager.shared.push(viewController: secondViewController)
+            if isFromAddress {
+                delegate?.selectedLocation(withModel: locationModel)
+                navigationController?.popViewController(animated: true)
+            }else {
+                locationModel.saveInUserDefaults()//time of actual saving of loccation model
+                let preferencesSB = UIStoryboard(name: "LoginSignup", bundle: nil)
+                let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"LoginSignUpViewController") as? LoginSignUpViewController
+                NavigationManager.shared.push(viewController: secondViewController)
+            }
         }else {
             let preferencesSB = UIStoryboard(name: "MyLocation", bundle: nil)
             let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"NonServiceable") as? NonServiceable
