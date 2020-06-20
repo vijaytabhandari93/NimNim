@@ -303,8 +303,8 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     @IBAction func infoTapped(_ sender: Any) {
         let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
-        jnnvc.titleValue = "Just NimNim It For \n ShoeRepair"
-        jnnvc.descriptionValue = "Tap here for a VIP treatment for your special shoes"
+        jnnvc.titleValue = "Just NimNim It \n Shoe Repair"
+        jnnvc.descriptionValue = "Tap here to choose this option and get VIP treatment for your special shoes"
         present(jnnvc, animated: true, completion: nil)
     }
     

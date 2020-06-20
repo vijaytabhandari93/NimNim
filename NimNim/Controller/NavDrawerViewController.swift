@@ -56,10 +56,10 @@ class NavDrawerViewController: UIViewController,UITableViewDelegate,UITableViewD
             wallet()
         }
         if indexPath.row == 3 {
-            pricing()
+                FAQ()
         }
         if indexPath.row == 4 {
-            FAQ()
+         pricing() 
         }
         if indexPath.row == 1 {
             referAndEarn()

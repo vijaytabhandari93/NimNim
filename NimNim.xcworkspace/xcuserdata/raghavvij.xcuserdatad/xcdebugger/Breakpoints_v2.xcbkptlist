@@ -3,4 +3,54 @@
    uuid = "EAF8AAD2-3234-4D0A-AF43-BC12CE1BD565"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F482226-403A-4758-94B7-1C1126786FD3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "NimNim/Managers/NetworkingManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "get(withEndpoint:withParams:withSuccess:withFailure:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9F482226-403A-4758-94B7-1C1126786FD3 - c06ff38ab2966302"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "NimNim.NetworkingManager.get(withEndpoint: Swift.Optional&lt;Swift.String&gt;, withParams: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, withSuccess: Swift.Optional&lt;(Swift.Optional&lt;Any&gt;) -&gt; ()&gt;, withFailure: Swift.Optional&lt;(Swift.Optional&lt;Any&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "NimNim"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/raghavvij/Documents/Freelancing%20Vijayta/NimNim/NimNim/Managers/NetworkingManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "2118">
+               </Location>
+               <Location
+                  uuid = "9F482226-403A-4758-94B7-1C1126786FD3 - b07c3dedc1d5476e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Any&gt;) -&gt; () in NimNim.NetworkingManager.get(withEndpoint: Swift.Optional&lt;Swift.String&gt;, withParams: Swift.Optional&lt;Swift.Dictionary&lt;Swift.String, Any&gt;&gt;, withSuccess: Swift.Optional&lt;(Swift.Optional&lt;Any&gt;) -&gt; ()&gt;, withFailure: Swift.Optional&lt;(Swift.Optional&lt;Any&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "NimNim"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/raghavvij/Documents/Freelancing%20Vijayta/NimNim/NimNim/Managers/NetworkingManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "287">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

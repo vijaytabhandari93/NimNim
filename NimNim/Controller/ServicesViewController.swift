@@ -136,7 +136,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
     
     @IBAction func infoTapped(_ sender: Any) {
         let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
-        jnnvc.titleValue = "Just NimNim It For \n Wash & Fold"
+        jnnvc.titleValue = "Just NimNim It \n Wash & Fold"
         jnnvc.descriptionValue = "Select Just NimNim it and our laundry wizards will handle everything for you, just like your mom!"
         present(jnnvc, animated: true, completion: nil)
     }

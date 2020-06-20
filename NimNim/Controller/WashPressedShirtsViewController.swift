@@ -123,8 +123,8 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
     }
     @IBAction func infoTapped(_ sender: Any) {
         let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
-        jnnvc.titleValue = "Just NimNim It For \n Laundered Shirts"
-        jnnvc.descriptionValue = "Choose Just NimNim It and we will take care of everything from counting shirts to delivering them on hangers."
+        jnnvc.titleValue = "Just NimNim It \n Laundered Shirts"
+        jnnvc.descriptionValue = "Tap here to choose this option and we’ll count and sort your shirts for you, returning them ready-to-use on hangers"
         present(jnnvc, animated: true, completion: nil)
     }
     
@@ -546,7 +546,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
         if section == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NoofClothesCollectionViewCell", for: indexPath) as! NoofClothesCollectionViewCell
             cell.delegate = self
-            cell.titleLabel.text = "Number of Clothes"
+            cell.titleLabel.text = "Number of Shirts"
             if let noOfClothes = serviceModel?.numberOfClothes {
                 cell.noOfPieces.text = "\(noOfClothes)"
             }

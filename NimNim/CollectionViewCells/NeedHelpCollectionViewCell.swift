@@ -16,7 +16,7 @@ class NeedHelpCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,
     
     weak var delegate:NeedHelpCollectionViewCellDelegate?
     var Issueheadings = ["Payment","Delivery","Service Issue","Offers/Discouts","Cancellation"]
-    var IssueDescriptionHeading = ["Payment is done wrongly","Delivery is not as per commitment","Service Issue as the clothes  were not cleaned properly","Offers/Discouts are not being applied","Do you want to cancel this order?"]
+    var IssueDescriptionHeading = ["Payment is done wrongly","My order has not been delivered yet","I’m not happy with the service","My discount wasn’t applied","Do you want to cancel this order?"]
     var orderModel:OrderModel?
     @IBOutlet weak var helpCollectionView: UICollectionView!
     override func awakeFromNib() {

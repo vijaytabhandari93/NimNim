@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -28,7 +28,7 @@
                         </collectionViewFlowLayout>
                     </collectionView>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="fRB-Y5-QL6">
-                        <rect key="frame" x="0.0" y="255" width="246" height="2"/>
+                        <rect key="frame" x="0.0" y="150" width="246" height="2"/>
                         <subviews>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.20000000000000001" translatesAutoresizingMaskIntoConstraints="NO" id="TPg-kU-Ljg">
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="2"/>
@@ -47,16 +47,24 @@
                             </progressView>
                         </subviews>
                     </stackView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zza-bi-Pmc">
+                        <rect key="frame" x="0.0" y="152" width="246" height="110"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" red="0.0039215686269999999" green="0.36470588240000001" blue="0.56078431370000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="fRB-Y5-QL6" secondAttribute="bottom" constant="5" id="UlS-tw-opS"/>
+                <constraint firstItem="Zza-bi-Pmc" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="BVG-Gv-kOX"/>
+                <constraint firstAttribute="trailing" secondItem="Zza-bi-Pmc" secondAttribute="trailing" id="F3s-PE-RI3"/>
+                <constraint firstAttribute="bottom" secondItem="fRB-Y5-QL6" secondAttribute="bottom" constant="110" id="UlS-tw-opS"/>
                 <constraint firstItem="fRB-Y5-QL6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="a87-gf-Tk8"/>
                 <constraint firstAttribute="trailing" secondItem="Wg6-VP-E7b" secondAttribute="trailing" id="dkC-Rl-BDS"/>
                 <constraint firstAttribute="trailing" secondItem="fRB-Y5-QL6" secondAttribute="trailing" id="ejT-cD-BbL"/>
                 <constraint firstItem="Wg6-VP-E7b" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ivy-D3-z5f"/>
                 <constraint firstItem="Wg6-VP-E7b" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qdj-Xz-Wrd"/>
+                <constraint firstItem="Zza-bi-Pmc" firstAttribute="top" secondItem="fRB-Y5-QL6" secondAttribute="bottom" id="reB-DL-3Ma"/>
+                <constraint firstAttribute="bottom" secondItem="Zza-bi-Pmc" secondAttribute="bottom" id="wWy-PQ-iq8"/>
                 <constraint firstAttribute="bottom" secondItem="Wg6-VP-E7b" secondAttribute="bottom" id="xvW-2i-dry"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
@@ -67,7 +75,7 @@
                 <outlet property="progress2" destination="s4P-45-wKy" id="SiK-Nu-phg"/>
                 <outlet property="progress3" destination="h9x-Ze-ZYU" id="B03-YS-J6e"/>
             </connections>
-            <point key="canvasLocation" x="78" y="68"/>
+            <point key="canvasLocation" x="76.811594202898561" y="67.633928571428569"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -47,17 +47,17 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
         
         if indexPath.item == 0 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
-            let title = "Order from a wide range of Services"
+            let title = "Choose from a wide range of local services"
             cell.configureCell(withImage: "onboarding1", withTitle: title)
             return cell
         }else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
-            let title = "Setup from a range of Preferences or \"just NimNim it\""
+            let title = "Set your preferences or \"Just NimNim It\""
             cell.configureCell(withImage: "onboarding2", withTitle: title)
             return cell
         }else if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
-            let title = "24 Hours Delivery. Delivered quickly to your doorstep"
+            let title = "Delivering to your door 7 days a week"
             cell.configureCell(withImage: "onboarding3", withTitle: title)
             return cell
         }else if indexPath.item == 3 {
