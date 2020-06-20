@@ -61,17 +61,17 @@ class OrderSuccessFailureViewController: UIViewController {
         
         if actualOrderStatus == "success" {
             orderStatusImage.image = UIImage(named: "happy")
-            orderStatus.text = "Order Success"
-            orderStatusDescription.text = "Hello, your order has been placed successfully. Our Rider will visit your address with given time to pick up yout order. Please keep it ready"
-            label.text = "Click the button below to Track your order or to go back home."
+            orderStatus.text = "Success"
+            orderStatusDescription.text = "Your order has been placed successfully. Our driver will come to your preferred address to pick up your order. Please make sure it’s ready."
+            label.text = "Use the buttons below to Track Your Order or go to Home."
             backView.backgroundColor = Colors.nimnimGreen
             
             trackOrderButton.setTitle("Track Orders", for: .normal)
         } else {
             
                       orderStatusImage.image = UIImage(named: "sad")
-            orderStatus.text = "Order Failure"
-            orderStatusDescription.text = " We regret to inform you that your order couldn’t be placed."
+            orderStatus.text = "Failure"
+            orderStatusDescription.text = "We regret to inform you that your order couldn’t be placed."
             label.text = "Please click on the button Try Again to place the order again or “Home” icon to go back home."
             backView.backgroundColor = Colors.nimnimBlue
             trackOrderButton.setTitle("Try Again", for: .normal)

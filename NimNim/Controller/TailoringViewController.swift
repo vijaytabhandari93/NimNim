@@ -302,8 +302,8 @@ class TailoringViewController:UIViewController ,UICollectionViewDelegate,UIColle
     }
     @IBAction func infoTapped(_ sender: Any) {
         let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
-        jnnvc.titleValue = "Just NimNim It For \n Tailoring"
-        jnnvc.descriptionValue = "Get a private tailor to come visit you at home for just $25! Select the Just NimNim it option to get luxury at your doorstep."
+        jnnvc.titleValue = "Just NimNim It \n Alternations"
+        jnnvc.descriptionValue = "Tap here to choose this option and get an expert tailor to come to your home for only $25"
         present(jnnvc, animated: true, completion: nil)
     }
     

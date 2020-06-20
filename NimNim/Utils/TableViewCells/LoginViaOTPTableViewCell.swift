@@ -62,7 +62,7 @@ class LoginViaOTPTableViewCell: UITableViewCell, UITextFieldDelegate {
             otpView.isHidden = false
             otpViewTopConstraint.constant = 39
             otpViewHeightConstraint.constant = 28
-            otpButton.setTitle("Verify OTP", for: .normal)
+            otpButton.setTitle("Confirm Code", for: .normal)
             resendOtpView.isHidden = false
         }
     }

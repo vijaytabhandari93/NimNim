@@ -33,7 +33,7 @@ class FAQViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     var RefundAndCancellation  : Bool  = false
     var expandedSectionIndex:Int = -1
     struct KnowMoreSection {
-        static let title = "Know more about NimNim"
+        static let title = "Learn more about NimNim >"
         static let questions = [
             "What is the NimNim app for?",
             "How can I schedule my first pick up?",
@@ -42,16 +42,16 @@ class FAQViewController: UIViewController,UICollectionViewDelegate,UICollectionV
             "Do I need to count my items?"
         ]
         static let answers = [
-            "NimNim is a convenience driven mobile app built to meet all of your laundry, dry-cleaning, shoe repair, or tailoring needs from anywhere on the go. Our team of delivery heros and certified businesses help us ensure we are able to give you a seamless experience without any hassle 7 days a week. With NimNim it’s always a WinWin.",
-            "Use code NEWNIM to get $10 OFF during checkout after selecting your choice of service. You can get them back in 12 hours if you choose Rush service. If you have any notes, you can let us know in the notes section and our delivery heros will pick up your clothes and bring them back to you within 24 to 48 hours. Ask for bags upon pick up if you do not have one yet.",
-            "The “Just NimNim it” feature located in the center of the home screen allows you to place an order without selecting individual preferences, our pros would do that for your order as per the garment, fabric or repair needs for your clothes or shoes.",
-            "You will get a text when your order is placed and again from your NimNim Consultant when he/she is on the way!!",
-            "You can just select “NimNim it” and our team will manage your orders and update you with itemized count when verified before cleaning. You also have the options of selecting your order item by item for each service."
+            "NimNim is a service app for all your laundry, dry cleaning, shoe repair, alterations, and more. Our team of delivery drivers and professional small business service providers help you get what you need, done and with fast turnaround 7 days a week. With NimNim it’s always a WinWin.",
+            "Choose the service you want and select your preferences or “Just NimNim It” (see each service for further details). Select your pick up location and times, confirm your order and we’ll take care of the rest! It’s that easy.",
+            "This feature lets you place an order without needing to select individual preferences. Our professionals will do that for you according to the amount of laundry, types of fabric, or repair needs of your shoes and clothing.",
+            "You will get a text message confirming we have received your order and a second message when your delivery driver is on their way to pick up your items.",
+            "You can count your items yourself but there is no need to count your items when you select the “Just NimNim It” option. We’ll count (or weigh) and sort your items for you and update you with the number of items and weight for you to confirm before cleaning."
         ]
     }
     
     struct AccountManagementSection {
-        static let title = "Account Management"
+        static let title = "Manage my account"
         static let questions = [
             "How can I log into the app?",
             "How can I reset my password?",
@@ -59,15 +59,15 @@ class FAQViewController: UIViewController,UICollectionViewDelegate,UICollectionV
             "How can I update my credit card details?"
         ]
         static let answers = [
-            "You can log into the app by entering your phone number followed by entering the six digit otp. You can also log in via e-mail.",
-            "You can reset your password by clicking on forgot password and entering the otp sent to your registered mobile number.",
-            "Please update your address by editing your profile details in the ‘Profile’ section of the app located on bottom right on the home screen. ",
-            "Please update your new card by editing your saved cards details in the ‘Profile’ section of the app located on bottom right on the home screen."
+            "You can log in by entering your phone number followed by a one-time SMS code. You can also log in with your email address.",
+            "You can reset your password by clicking on “Forgot Password” and entering the one-time SMS code sent to your registered mobile number.",
+            "You can update your address by editing your details in your “Profile” section which is located at the bottom right of the home screen.",
+            "You can update your credit card details via your “Profile” section."
         ]
     }
     
     struct PricingSection {
-        static let title = "Pricing/Billing"
+        static let title = "Pricing and billing"
         static let questions = [
             "How can I pay for NimNim?",
             "Do I need to submit a minimum order?",
@@ -107,16 +107,16 @@ class FAQViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     }
     
     struct RefundSection {
-        static let title = "Refund and Cancellations"
+        static let title = "Refunds and cancellations"
         static let questions = [
             "What if I need to reschedule?",
-            "What if I need to cancel my NimNim order?",
+            "What if I need to cancel my order?",
             "What if I’m not satisfied?"
         ]
         static let answers = [
-            "Please reach out to team@getnimnim.com or 844-767-8646 ASAP, preferably 1 hour prior to your order. We understand things happen, let us know as early as possible so everyone can enjoy the NimNim service.",
-            "Reach out to support@getnimnim.com as soon as you realize that you want to cancel your order. No penalties. Phone, email, text.",
-            "If you are not satisfied then simply go into the order history section and raise a ticket against your concerning order and please describe your scenario which will be handed by Team NimNim as soon as possible."
+            "Please call our team immediately on 844-767-8464 ASAP or email us at team@getnimnim.com preferably 1 hour prior to your order pick up. We understand that these things do happen, so please let us know as early as possible.",
+            "Please call our team immediately on 844-767-8464 ASAP or email us at team@getnimnim.com as soon as you know you need to cancel. We understand these things do happen which is why there are no penalties for cancellations.",
+            "If you are not satisfied with the service you received, simply to go your order history and raise a ticket about your order, telling us in detail what happened so we can help you take care of it ASAP."
         ]
     }
     

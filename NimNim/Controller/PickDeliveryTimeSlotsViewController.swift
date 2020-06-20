@@ -148,7 +148,7 @@ UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UICollecti
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if indexPath.item == 0 {
-            return CGSize(width: self.view.frame.width, height:80)
+            return CGSize(width: self.view.frame.width, height:110)
         }
         else if indexPath.item == 1
         {

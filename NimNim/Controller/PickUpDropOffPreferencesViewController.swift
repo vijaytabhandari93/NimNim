@@ -71,7 +71,7 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
                 "Student",
                 "Working Professional",
                 "Hotel Guest",
-                "Business(Salon/Spa/Gym)"
+                "Business (Salon/Spa/Gym)"
                 ]
              titleLable.text = "You are a:"
             

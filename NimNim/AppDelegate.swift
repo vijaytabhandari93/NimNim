@@ -11,6 +11,7 @@ import GoogleSignIn
 import FBSDKCoreKit
 import FirebaseMessaging
 import Branch
+import KlaviyoSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -27,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PushNotificationsManager.shared.requestForPermission()
         PushNotificationsManager.shared.checkForPushNotificationFromAppLaunch(withLaunchOptions: launchOptions)
         BranchManager.shared.initialize(withLaunchOptions: launchOptions)
+        Klaviyo.setupWithPublicAPIKey(apiKey: "pk_9c876b007807cd169b9419772de8306832")
+        
         return true
     }
 

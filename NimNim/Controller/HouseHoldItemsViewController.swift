@@ -224,7 +224,7 @@ class HouseHoldItemsViewController: UIViewController,UICollectionViewDelegate,UI
     
     @IBAction func infoTapped(_ sender: Any) {
         let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
-        jnnvc.titleValue = "Just NimNim It For \n HouseHoldItems"
+        jnnvc.titleValue = "Just NimNim It \n HouseHoldItems"
         jnnvc.descriptionValue = "Press the NimNim button and we will treat your household item with the best care method!"
         present(jnnvc, animated: true, completion: nil)
     }

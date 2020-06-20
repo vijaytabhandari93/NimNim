@@ -174,7 +174,7 @@ class NimNimViewController: UIViewController,UICollectionViewDelegate,UICollecti
                 return serviceModel.isSelectedForNimNimIt
             }
             if selectedServices.count < 1  {
-                let alert = UIAlertController(title: "Alert", message: "Please select atleast one service", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Alert", message: "Please select at least one service", preferredStyle: .alert)
                                alert.addAction(UIAlertAction(title: "ok", style: .default, handler: nil))
                                self.present(alert, animated: true, completion: nil)
             }

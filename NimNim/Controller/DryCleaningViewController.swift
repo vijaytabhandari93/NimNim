@@ -398,8 +398,8 @@ class DryCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
     }
     @IBAction func infoTapped(_ sender: Any) {
         let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
-        jnnvc.titleValue = "Just NimNim It For \n DryCleaning"
-        jnnvc.descriptionValue = "Forget the stress of counting the items or specifying the care label details, just tap the button and our professionals will take care of the rest."
+        jnnvc.titleValue = "Just NimNim It \n DryCleaning"
+        jnnvc.descriptionValue = "Tap here to choose this option and we’ll count, sort, and dry clean everything for you"
         present(jnnvc, animated: true, completion: nil)
     }
     

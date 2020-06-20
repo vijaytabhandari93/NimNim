@@ -261,9 +261,9 @@ class WashAndAirDryViewController: UIViewController,UICollectionViewDelegate,UIC
     
     @IBAction func infoIconTapped(_ sender: Any) {
         let jnnvc = self.storyboard?.instantiateViewController(withIdentifier: "JustNimNimInfoViewController") as! JustNimNimInfoViewController
-               jnnvc.titleValue = "Just NimNim It For \n Wash & Air-Dry"
+               jnnvc.titleValue = "Just NimNim It \n Wash & Air-Dry"
         if let price = serviceModel?.price{
-                  jnnvc.descriptionValue = "Say goodbye to per-piece pricing, tap on Just NimNim it and pay only \(price)/lbs for your order!"
+                  jnnvc.descriptionValue = "Forget per piece pricing, tap here to choose this option and pay only $3 per pound of laundry for your order"
         }
   
                present(jnnvc, animated: true, completion: nil)
