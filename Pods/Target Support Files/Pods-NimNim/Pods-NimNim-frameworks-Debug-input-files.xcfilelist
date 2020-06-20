@@ -9,6 +9,7 @@ ${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework
 ${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework
 ${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
+${BUILT_PRODUCTS_DIR}/KlaviyoSwift/KlaviyoSwift.framework
 ${BUILT_PRODUCTS_DIR}/Mixpanel-swift/Mixpanel.framework
 ${BUILT_PRODUCTS_DIR}/NTMonthYearPicker/NTMonthYearPicker.framework
 ${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework

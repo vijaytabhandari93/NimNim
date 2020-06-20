@@ -9,6 +9,7 @@
 import Foundation
 import FirebaseAnalytics
 import FirebaseCore
+import KlaviyoSwift
 class FirebaseManager {
     static let shared = FirebaseManager()
     
@@ -47,6 +48,18 @@ class FirebaseManager {
         if let name = name {
             Analytics.logEvent(name, parameters: properties)
         }
+        let klaviyo = Klaviyo.sharedInstance
+        
+        if let userModel = UserModel.fetchFromUserDefaults() {
+            let customerDictionary : NSMutableDictionary = NSMutableDictionary()
+            customerDictionary[klaviyo.KLPersonEmailDictKey] = userModel.email
+            customerDictionary[klaviyo.KLPersonFirstNameDictKey] = userModel.firstName
+            customerDictionary[klaviyo.KLPersonLastNameDictKey] = userModel.lastName
+            Klaviyo.sharedInstance.trackEvent(
+                eventName: name,
+                customerProperties: customerDictionary,
+                properties: properties as NSDictionary?)
+            }
     }
-
+    
 }

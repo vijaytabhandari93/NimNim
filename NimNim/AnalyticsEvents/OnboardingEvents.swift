@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import  KlaviyoSwift
 
 class OnboardingEvents {
     static func fireLoginSuccess(withType loginType:String?) {
@@ -17,7 +18,10 @@ class OnboardingEvents {
             AnalyticsEventProperties.category:"Onboarding",
             AnalyticsEventProperties.label:loginType
         ]
-        FirebaseManager.shared.fireEvent(withName: AnalyticsEventNames.loginSuccess, withProperties: props)
+       FirebaseManager.shared.fireEvent(withName: AnalyticsEventNames.loginSuccess, withProperties: props)
+     
+   
+    
     }
     
     static func fireLoginFailure(withType loginType:String?) {

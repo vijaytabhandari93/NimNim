@@ -29,12 +29,16 @@ struct AnalyticsEventNames {
     static let orderSuccess = "orderSuccess"
     static let orderFailure = "orderFailure"
     static let orderDetailsViewed = "orderDetailsViewed"
+    static let appLaunch = "appLaunch"
 }
 
 struct Events {
     static func fireAddedCardSuccess() {
         FirebaseManager.shared.fireEvent(withName: AnalyticsEventNames.addedCardSuccess, withProperties: nil)
     }
+    static func appLaunched() {
+         FirebaseManager.shared.fireEvent(withName: AnalyticsEventNames.appLaunch, withProperties: nil)
+     }
     
     static func fireAddedCardFailure() {
         FirebaseManager.shared.fireEvent(withName: AnalyticsEventNames.addedCardFailure, withProperties: nil)

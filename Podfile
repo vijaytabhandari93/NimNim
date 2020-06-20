@@ -24,4 +24,5 @@ target 'NimNim' do
   pod 'Firebase/InAppMessaging'
   pod 'Mixpanel-swift'
   pod 'Branch'
+  pod 'KlaviyoSwift'
 end

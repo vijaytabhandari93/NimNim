@@ -163,6 +163,7 @@ PODS:
   - Kingfisher (5.12.0):
     - Kingfisher/Core (= 5.12.0)
   - Kingfisher/Core (5.12.0)
+  - KlaviyoSwift (1.5.0)
   - Mixpanel-swift (2.7.0):
     - Mixpanel-swift/Complete (= 2.7.0)
   - Mixpanel-swift/Complete (2.7.0)
@@ -194,6 +195,7 @@ DEPENDENCIES:
   - GoogleSignIn
   - iOSDropDown
   - Kingfisher
+  - KlaviyoSwift
   - Mixpanel-swift
   - NTMonthYearPicker
   - NVActivityIndicatorView
@@ -231,6 +233,7 @@ SPEC REPOS:
     - GTMSessionFetcher
     - iOSDropDown
     - Kingfisher
+    - KlaviyoSwift
     - Mixpanel-swift
     - nanopb
     - NTMonthYearPicker
@@ -270,6 +273,7 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 43b8b64263023d4f32caa0b40f4c8bfa3c5f36d8
   iOSDropDown: c10a761f9a00c3f1cc9d3bce43ae504628e2f692
   Kingfisher: dc6e0f53bb5b12c3e75bedb0e01bbd7a640eea69
+  KlaviyoSwift: 7627dd618a02c58b593f17e7be2018e545a4b33b
   Mixpanel-swift: af074beb44bdac38ab611e1d575a073bbb3d6780
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   NTMonthYearPicker: 27e1739d6e29428628c8275a7c1a9e4835c352f4
@@ -279,6 +283,6 @@ SPEC CHECKSUMS:
   Protobuf: 176220c526ad8bd09ab1fb40a978eac3fef665f7
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: e2364b14ff269d1c8614836c003afe39cfe53e47
+PODFILE CHECKSUM: 3095a36f480d76c3170434f0d7e73d67f758549b
 
 COCOAPODS: 1.8.4
