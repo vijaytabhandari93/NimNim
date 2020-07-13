@@ -21,7 +21,7 @@ class ShoeRepairPricingViewController: UIViewController,UICollectionViewDelegate
     
     //IBOutlets
     @IBOutlet weak var pricingCollectionView: UICollectionView!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class ShoeRepairPricingViewController: UIViewController,UICollectionViewDelegate
         registerCells()
         fetchServices()
     }
-
+    
     
     //MARK:Gradient Setting
     override func viewWillAppear(_ animated: Bool){
@@ -51,13 +51,13 @@ class ShoeRepairPricingViewController: UIViewController,UICollectionViewDelegate
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize{
-    if indexPath.item == 0
-    {
-    return CGSize(width: collectionView.frame.size.width, height:35)
-    } else{
-        return CGSize(width: collectionView.frame.size.width, height:20)
+        if indexPath.item == 0
+        {
+            return CGSize(width: collectionView.frame.size.width, height:35)
+        } else{
+            return CGSize(width: collectionView.frame.size.width, height:20)
+        }
     }
-}
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
@@ -65,21 +65,21 @@ class ShoeRepairPricingViewController: UIViewController,UICollectionViewDelegate
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0 {
             var count =  serviceModel?.data?.count
-                if let count = count ,count > 0 {
-                    for i in 0...count {
-                        if let arrayOfservices = serviceModel?.data
+            if let count = count ,count > 0 {
+                for i in 0...count {
+                    if let arrayOfservices = serviceModel?.data
+                    {
+                        if arrayOfservices[i].alias == "shoe-repair"
                         {
-                            if arrayOfservices[i].alias == "shoe-repair"
-                            {
-                                if let arrayOfItem = arrayOfservices[i].items
-                                { var j = 1
+                            if let arrayOfItem = arrayOfservices[i].items
+                            { var j = 1
                                 var count = arrayOfItem.count
-                                 for k in 1...count{
+                                for k in 1...count{
                                     print(count)
                                     if let type = arrayOfItem[k-1].genders {
                                         if type == "male"
                                         {
-                                        j = j + 1
+                                            j = j + 1
                                         }
                                     }
                                     
@@ -88,41 +88,41 @@ class ShoeRepairPricingViewController: UIViewController,UICollectionViewDelegate
                                 break
                             }
                         }
-                        }
+                    }
                 }
                 return 0
             }
-           }
+        }
         else {
             var count =  serviceModel?.data?.count
-                if let count = count ,count > 0 {
-                    for i in 0...count {
-                            if let arrayOfservices = serviceModel?.data
-                            {
-                                if arrayOfservices[i].alias == "tailoring"
-                                {
-                                    if let arrayOfItem = arrayOfservices[i].items
-                                    { var j = 1
-                                    var count = arrayOfItem.count
-                                     for k in 1...count{
-                                        print(count)
-                                        if let type = arrayOfItem[k-1].genders {
-                                            if type == "female"
-                                            {
+            if let count = count ,count > 0 {
+                for i in 0...count {
+                    if let arrayOfservices = serviceModel?.data
+                    {
+                        if arrayOfservices[i].alias == "shoe-repair"
+                        {
+                            if let arrayOfItem = arrayOfservices[i].items
+                            { var j = 1
+                                var count = arrayOfItem.count
+                                for k in 1...count{
+                                    print(count)
+                                    if let type = arrayOfItem[k-1].genders {
+                                        if type == "female"
+                                        {
                                             j = j + 1
-                                            }
                                         }
-                                        
                                     }
-                                    return j
-                                    break
+                                    
                                 }
+                                return j
+                                break
                             }
-                            }
+                        }
                     }
+                }
                 return 0
             }
-           
+            
         }
         
         return 0
@@ -147,13 +147,38 @@ class ShoeRepairPricingViewController: UIViewController,UICollectionViewDelegate
                     {
                         if arrayOfservices[i].alias == "shoe-repair"
                         {
-                            if let arrayOfItem = arrayOfservices[i].items
-                            {
-                            cell.label.text = arrayOfItem[indexPath.item].name
-                                if let price = arrayOfItem[indexPath.item].price {
-                            cell.labelPrice.text = "$\(price)"
-                            }
-                              return cell
+                            if let arrayOfItem = arrayOfservices[i].items{
+                                if indexPath.section == 0 {
+                                    let maleModel = arrayOfItem.filter { (itemModel) -> Bool in
+                                        if let garment = itemModel.gender, garment == "male" {
+                                            return true
+                                        }else {
+                                            return false
+                                        }
+                                    }
+                                    cell.label.text = maleModel[indexPath.item - 1].name
+                                    if let price = maleModel[indexPath.item - 1].price {
+                                        cell.labelPrice.text = "$\(price)"
+                                    }
+                                    
+                                    
+                                }
+                                else   {
+                                    let maleModel = arrayOfItem.filter { (itemModel) -> Bool in
+                                        if let garment = itemModel.gender, garment == "female" {
+                                            return true
+                                        }else {
+                                            return false
+                                        }
+                                    }
+                                    cell.label.text = maleModel[indexPath.item - 1].name
+                                    if let price = maleModel[indexPath.item - 1].price {
+                                        cell.labelPrice.text = "$\(price)"
+                                    }
+                                    
+                                    
+                                }
+                                return cell
                             }
                         }
                     }
@@ -161,9 +186,9 @@ class ShoeRepairPricingViewController: UIViewController,UICollectionViewDelegate
                 }
             }
             return cell
-            }
+        }
     }
- 
+    
     func fetchServices() {
         //activityIndicator.startAnimating()
         NetworkingManager.shared.get(withEndpoint: Endpoints.services, withParams: nil, withSuccess: {[weak self] (response) in //We should use weak self in closures in order to avoid retain cycles...
@@ -171,9 +196,9 @@ class ShoeRepairPricingViewController: UIViewController,UICollectionViewDelegate
                 let serviceModel = Mapper<ServiceBaseModel>().map(JSON: responseDict)
                 //print(JSON(responseDict))
                 self?.serviceModel = serviceModel //? is put after self as it is weak self.
-               self?.pricingCollectionView.reloadData()
+                self?.pricingCollectionView.reloadData()
             }
-           // self?.activityIndicator.stopAnimating()
+            // self?.activityIndicator.stopAnimating()
             
             }) //definition of success closure
         { (error) in
@@ -186,7 +211,7 @@ class ShoeRepairPricingViewController: UIViewController,UICollectionViewDelegate
         } // definition of error closure
     }
     
-
+    
 }
 
 

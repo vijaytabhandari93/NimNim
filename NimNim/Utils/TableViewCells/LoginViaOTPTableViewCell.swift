@@ -56,7 +56,7 @@ class LoginViaOTPTableViewCell: UITableViewCell, UITextFieldDelegate {
             otpView.isHidden = true
             otpViewTopConstraint.constant = 0
             otpViewHeightConstraint.constant = 0
-            otpButton.setTitle("Get OTP", for: .normal)
+            otpButton.setTitle("One Time Password", for: .normal)
             resendOtpView.isHidden = true
         }else {
             otpView.isHidden = false

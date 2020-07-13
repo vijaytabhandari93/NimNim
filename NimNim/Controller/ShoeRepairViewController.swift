@@ -72,7 +72,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     
     
     func  getPriceOfService() ->String {
-        var price = 0
+        var price = 0.00
         if let items =  serviceModel?.tasks {
             for item in items  {
                 price = item.taskPrice  + price

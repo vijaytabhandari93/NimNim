@@ -15,7 +15,7 @@ protocol NeedHelpCollectionViewCellDelegate:class {
 class NeedHelpCollectionViewCell: UICollectionViewCell,UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout{
     
     weak var delegate:NeedHelpCollectionViewCellDelegate?
-    var Issueheadings = ["Payment","Delivery","Service Issue","Offers/Discouts","Cancellation"]
+    var Issueheadings = ["Payment","Delivery","Service Issue","Offers/Discounts","Cancellation"]
     var IssueDescriptionHeading = ["Payment is done wrongly","My order has not been delivered yet","I’m not happy with the service","My discount wasn’t applied","Do you want to cancel this order?"]
     var orderModel:OrderModel?
     @IBOutlet weak var helpCollectionView: UICollectionView!

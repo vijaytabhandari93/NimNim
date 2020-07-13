@@ -77,7 +77,7 @@ class FAQViewController: UIViewController,UICollectionViewDelegate,UICollectionV
         static let answers = [
             "You can input your payment credentials into the app before placing your order. You will be billed after all items are verified at the admin level.",
             "We have a $20 minimum. A $3.99 delivery fee applies to orders less than $35.",
-            "Yes, NimNim will pre authorize $20 to your account upon order placement which gets returned after verifying items and billing.",
+            "Yes, NimNim will pre authorize $5 to your account upon order placement which gets returned after verifying items and billing.",
             "If you have any questions you can simply go to your order in the history section and raise a billing concern against it."
         ]
     }

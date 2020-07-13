@@ -31,8 +31,8 @@ class NetworkingManager {
     static let shared = NetworkingManager() //shared will be reference to the only object that will be created for this class...hence shared is a reference to the singleton object of this class...we have made this class as a singleton class by making the initializer of the class private...
     
     // Making the init of this class as private will ensure that no one from outside this class can initialize it...
-    let baseUrl = "http://www.getnimnim.us:3000/"
-    
+      let baseUrl = "https://api.getnimnim.tech/"
+      //let baseUrl = "getnimnim.tech/"
     
     private init() {}
     
@@ -58,11 +58,17 @@ class NetworkingManager {
             print("Request:\(String(describing: response.request ?? nil))")
             let json = JSON(response.result.value)
             print("Response:\(String(describing: json))")
-           // print("JSON Response:\(JSON(response.result.value))")
+            // print("JSON Response:\(JSON(response.result.value))")
             if statusCode >= 200 && statusCode < 400 {                success?(response.result.value) // call of closure
             }else {
                 if let responseValue = response.result.value as? [String:Any] {
                     if let error = responseValue["error"] as? String {
+                        var props = params
+                        props?["endpoint"] = endpoint
+                        props?["method"] = "get"
+                        props?["statusCode"] = statusCode
+                        Events.apiFailure(withProperties: props)
+                        print("failure")
                         failure?(error) // call of closure
                     }
                 }
@@ -113,6 +119,11 @@ class NetworkingManager {
                             }
                         }
                     }else if let errors = responseValue["errors"] as? [String], errors.count > 0 {
+                        var props = params
+                        props?["endpoint"] = endpoint
+                        props?["method"] = "post"
+                        props?["statusCode"] = statusCode
+                        Events.apiFailure(withProperties: props)
                         failure?(errors[0]) // call of closure
                     }
                 }
@@ -156,6 +167,11 @@ class NetworkingManager {
                         failure?(error) // call of closure
                     }else if let error = responseValue["error"] as? [String:Any] {
                         if let message = error["message"] as? String {
+                            var props = params
+                            props?["endpoint"] = endpoint
+                            props?["method"] = "put"
+                            props?["statusCode"] = statusCode
+                            Events.apiFailure(withProperties: props)
                             failure?(message) // call of closure
                         }
                     }
@@ -197,6 +213,11 @@ class NetworkingManager {
                         failure?(error) // call of closure
                     }else if let error = responseValue["error"] as? [String:Any] {
                         if let message = error["message"] as? String {
+                            var props = params
+                            props?["endpoint"] = endpoint
+                            props?["method"] = "delete"
+                            props?["statusCode"] = statusCode
+                            Events.apiFailure(withProperties: props)
                             failure?(message) // call of closure
                         }
                     }
@@ -221,8 +242,8 @@ class NetworkingManager {
             return
         }
         
-    
-
+        
+        
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             self.append(fileData: model, toMultipartFormData: multipartFormData)
         }, usingThreshold: UInt64.init(), to: url, method: .post, headers: headers) { (result) in
@@ -242,7 +263,13 @@ class NetworkingManager {
                 }
             case .failure(let error):
                 //print("Error in upload: \(error.localizedDescription)")
+                 var props:[String:Any]? = [:]
+                 props?["endpoint"] = endpoint
+                 props?["method"] = "delete"
+                 props?["statusCode"] = 404
+                 Events.apiFailure(withProperties: props)
                 failure?(error)
+                
             }
         }
     }

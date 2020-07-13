@@ -73,7 +73,8 @@ class TailoringPricingViewController: UIViewController,UICollectionViewDelegate,
                             if arrayOfservices[i].alias == "tailoring"
                             {
                                 if let arrayOfItem = arrayOfservices[i].items
-                                { var j = 1
+                                {
+                                    var j = 1
                                 var count = arrayOfItem.count
                                  for k in 1...count{
                                     print(count)
@@ -285,10 +286,94 @@ class TailoringPricingViewController: UIViewController,UICollectionViewDelegate,
                         {
                             if let arrayOfItem = arrayOfservices[i].items
                             {
-                            cell.label.text = arrayOfItem[indexPath.item].name
-                                if let price = arrayOfItem[indexPath.item].price {
-                            cell.labelPrice.text = "$\(price)"
-                            }
+                                
+                                if indexPath.section == 0 {
+                                    let pantsAndJeansModels = arrayOfItem.filter { (itemModel) -> Bool in
+                                        if let garment = itemModel.garment, garment == "pantsandjeans" {
+                                            return true
+                                        }else {
+                                            return false
+                                        }
+                                    }
+                                    cell.label.text = pantsAndJeansModels[indexPath.item - 1].name
+                                    if let price = pantsAndJeansModels[indexPath.item - 1].price {
+                                        cell.labelPrice.text = "$\(price)"
+                                    }
+                                
+                            
+                                } else if indexPath.section == 1 {
+                                        let pantsAndJeansModels = arrayOfItem.filter { (itemModel) -> Bool in
+                                            if let garment = itemModel.garment, garment == "blouse" {
+                                                return true
+                                            }else {
+                                                return false
+                                            }
+                                        }
+                                        cell.label.text = pantsAndJeansModels[indexPath.item - 1].name
+                                        if let price = pantsAndJeansModels[indexPath.item - 1].price {
+                                            cell.labelPrice.text = "$\(price)"
+                                        }
+                                    
+                                
+                                }  else if indexPath.section == 2 {
+                                        let pantsAndJeansModels = arrayOfItem.filter { (itemModel) -> Bool in
+                                            if let garment = itemModel.garment, garment == "dress" {
+                                                return true
+                                            }else {
+                                                return false
+                                            }
+                                        }
+                                        cell.label.text = pantsAndJeansModels[indexPath.item - 1].name
+                                        if let price = pantsAndJeansModels[indexPath.item - 1].price {
+                                            cell.labelPrice.text = "$\(price)"
+                                        }
+                                    
+                                
+                                } else if indexPath.section == 3  {
+                                        let pantsAndJeansModels = arrayOfItem.filter { (itemModel) -> Bool in
+                                            if let garment = itemModel.garment, garment == "shirt" {
+                                                return true
+                                            }else {
+                                                return false
+                                            }
+                                        }
+                                        cell.label.text = pantsAndJeansModels[indexPath.item - 1].name
+                                        if let price = pantsAndJeansModels[indexPath.item - 1].price {
+                                            cell.labelPrice.text = "$\(price)"
+                                        }
+                                    
+                                
+                                } else if indexPath.section == 4{
+                                        let pantsAndJeansModels = arrayOfItem.filter { (itemModel) -> Bool in
+                                            if let garment = itemModel.garment, garment == "shorts" {
+                                                return true
+                                            }else {
+                                                return false
+                                            }
+                                        }
+                                        cell.label.text = pantsAndJeansModels[indexPath.item - 1].name
+                                        if let price = pantsAndJeansModels[indexPath.item - 1].price {
+                                            cell.labelPrice.text = "$\(price)"
+                                        }
+                                    
+                                
+                                } else {
+                                        let pantsAndJeansModels = arrayOfItem.filter { (itemModel) -> Bool in
+                                            if let garment = itemModel.garment, garment == "jacket" {
+                                                return true
+                                            }else {
+                                                return false
+                                            }
+                                        }
+                                        cell.label.text = pantsAndJeansModels[indexPath.item - 1].name
+                                        if let price = pantsAndJeansModels[indexPath.item - 1].price {
+                                            cell.labelPrice.text = "$\(price)"
+                                        }
+                                    
+                                
+                                }
+                                    
+                                
                               return cell
                             }
                         }

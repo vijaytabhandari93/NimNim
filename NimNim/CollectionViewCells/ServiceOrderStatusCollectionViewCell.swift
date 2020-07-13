@@ -31,13 +31,13 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
             serviceName.text = serviceModel.name
             let qty = serviceModel.productQuantity()
             if serviceModel.alias == "shoe-repair" {
-                var price = 0
+                var price = 0.00
                 if let items =  serviceModel.tasks {
                     for item in items  {
                         price = item.taskPrice  + price
                     }
                 }
-                if price == 0 {
+                if price == 0.00 {
                     amount.text = "@Pricelist"
                     
                 }
@@ -55,13 +55,13 @@ class ServiceOrderStatusCollectionViewCell: UICollectionViewCell {
                 }
             }
             else if serviceModel.alias == "tailoring" {
-                var price = 0
+                var price = 0.00
                 if let items =  serviceModel.tasks {
                     for item in items  {
                         price = item.taskPrice  + price
                     }
                 }
-                if price == 0 {
+                if price == 0.00 {
                           amount.text = "@Pricelist"
                 }
                 else {

@@ -21,7 +21,7 @@ class CouponCollectionViewCell: UICollectionViewCell {
         // Initialization code
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        displayDF.dateFormat = "dd MMM YYYY"
+        displayDF.dateFormat = "MMM dd, YYYY"
     }
     
     func configure(model: CouponModel)

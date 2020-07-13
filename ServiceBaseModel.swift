@@ -452,7 +452,7 @@ class ServiceModel:NSObject, Mappable, Codable, NSCopying {
                         return true
                     }
                 case .dryCleaning:
-                   if servicePrice == "$0"
+                   if servicePrice == "$0.00"
                     {
                         return false
                     }
@@ -480,11 +480,13 @@ class ServiceModel:NSObject, Mappable, Codable, NSCopying {
                 switch value {
                 case .washAndFold:
                     if let price = price {
-                        return "@ $\(price)/lb"
+                        let finalString = String(format: "%0.2f",price)
+                        return "@ $\(finalString)/lb"
                     }
                 case .washAndAirDry:
                     if let price = price {
-                        return "@ $\(price)/lb"
+                        let finalString = String(format: "%0.2f",price)
+                        return "@ $\(finalString)/lb"
                     }
                 case .launderedShirts:
                     
@@ -496,8 +498,8 @@ class ServiceModel:NSObject, Mappable, Codable, NSCopying {
                             price = price + Double(Double(numberOfClothes)*(costPerPiece ?? 0))
                         }
                     }
-                    
-                    return "$\(price)"
+                    let finalString = String(format: "%0.2f",price)
+                    return "$\(finalString)"
                 case .householdItems:
                     var price = 0
                     if let items = items {
@@ -520,36 +522,41 @@ class ServiceModel:NSObject, Mappable, Codable, NSCopying {
                             }
                         }
                     }
-                    return "$\(price)"
+                    
+                    let finalString = String(format: "%0.2f",Double(price))
+                    return "$\(finalString)"
                 case .dryCleaning:
-                    var price = 0
+                    var price = 0.00
                     if let items = items {
                         for item in items {
                             if let qty = item.maleCount {
                                 if let ItemPrice =  item.price {
-                                    price = price + (ItemPrice * qty)
+                                    price = Double(price) + (ItemPrice * Double(qty))
                                 }
                             }
                             if let qty = item.femaleCount {
                                 if let ItemPrice =  item.price {
-                                    price = price + (ItemPrice * qty)
+                                    price = Double(price) + (ItemPrice * Double(qty))
                                 }
                             }
                         }
                     }
                     
-                    return "$\(price)"
+                    let finalString = String(format: "%0.2f",price)
+                    return "$\(finalString)"
                 case .carpetCleaning:
                     if let price = price {
                         return "$\(price) / square foot"
                     }
                 case .shoeRepair:
                     if let price = price {
-                        return "$\(price) / lb"
+                        let finalString = String(format: "%0.2f",price)
+                        return "$\(finalString) / lb"
                     }
                 case .tailoring:
                     if let price = price {
-                        return "$\(price) / lb"
+                        let finalString = String(format: "%0.2f",price)
+                        return "$\(finalString) / lb"
                     }
                 }
             }
@@ -595,18 +602,18 @@ class ServiceModel:NSObject, Mappable, Codable, NSCopying {
                     
                     return "$\(price)"
                 case .dryCleaning:
-                    var maleprice = 0
-                    var femaleprice = 0
+                    var maleprice = 0.00
+                    var femaleprice = 0.00
                     if let items = items {
                         for item in items {
                             if let qty = item.maleCount {
                                 if let ItemPrice =  item.price {
-                                    maleprice = maleprice + (ItemPrice * qty)
+                                    maleprice = maleprice + (ItemPrice * Double(qty))
                                 }
                             }
                             if let qty = item.femaleCount {
                                 if let ItemPrice =  item.price {
-                                    femaleprice = femaleprice + (ItemPrice * qty)
+                                    femaleprice = femaleprice + (ItemPrice * Double(qty))
                                 }
                             }
                         }
@@ -657,7 +664,7 @@ class ItemModel:NSObject, Mappable, Codable, NSCopying {
     
     var id:String?
     var name : String?
-    var price:Int? //dryCleaning
+    var price:Double? //dryCleaning
     var genders:String? //dryCleaning
     var icon : String?
     var laundryPrice : String? // presently made string //household
@@ -665,6 +672,7 @@ class ItemModel:NSObject, Mappable, Codable, NSCopying {
     var isSelectedShoeRepairPreference:Bool?
     var isSelectedTailoringRepairPreference:Bool?
     var garment:String? //key added in item level
+    var gender : String? //key for shoe repair
     var garmentType : String?
     
     //this is our property
@@ -691,6 +699,7 @@ class ItemModel:NSObject, Mappable, Codable, NSCopying {
         qty             <- map["qty"]
         isSelectedShoeRepairPreference <- map["is_selected_shoe_repair_pref"]
         isSelectedTailoringRepairPreference <- map["is_selected_tailoring_pref"]
+        gender <- map["gender"]
     }
     
     //Below function is used to create a copy of the ItemModel object...
@@ -722,7 +731,7 @@ class TaskModel: NSObject, Mappable, Codable, NSCopying {
     var uploadedImages:[String]=[]
     var items:[ItemModel] = []
     var gender:String? //   we have made this
-    var taskPrice : Int = 0
+    var taskPrice : Double = 0.00
     var garMentType : String?
     
     required convenience init?(map: Map) { self.init() }
@@ -784,9 +793,9 @@ class TaskModel: NSObject, Mappable, Codable, NSCopying {
         return selectedItems
     }
     
-    func getSelectedItemsPrice() -> Int {
+    func getSelectedItemsPrice() -> Double {
         let SelectedItems = getSelectedItems()
-        var price = 0
+        var price = 0.00
         for  item in SelectedItems {
             if let priceOfItem = item.price {
                 price = price + priceOfItem
@@ -795,9 +804,9 @@ class TaskModel: NSObject, Mappable, Codable, NSCopying {
         return price
     }
     
-    func getTailoringSelectedItemsPrice() -> Int {
+    func getTailoringSelectedItemsPrice() -> Double {
         let SelectedItems = getTailoringSelectedItems()
-        var price = 0
+        var price = 0.00
         for  item in SelectedItems {
             if let priceOfItem = item.price {
                 price = price + priceOfItem

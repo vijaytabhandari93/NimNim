@@ -408,7 +408,7 @@ class ShoeRepairSecondViewController: UIViewController,UICollectionViewDelegate,
     func setupPrice(){
         if let taskPrice = taskModel?.getSelectedItemsPrice()
         {
-          priceLabel.text = "$\(taskPrice)"
+          priceLabel.text = String(format:"$%0.2f", taskPrice)
           taskModel?.taskPrice = taskPrice
         }
 

@@ -319,7 +319,7 @@ class PricingViewController: UIViewController,UICollectionViewDelegate,UICollect
        {
            if arrayOfService[indexPath.section - 1].alias == "laundered-shirts" {
                if let price = arrayOfService[indexPath.section  - 1].costPerPiece  {
-                                       cell.priceLabel.text = "$\(price)/lbs"
+                                       cell.priceLabel.text = "$\(price)/shirt"
                    }
                            
            }

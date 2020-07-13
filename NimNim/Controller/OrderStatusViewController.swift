@@ -110,7 +110,7 @@ class OrderStatusViewController: UIViewController,UICollectionViewDelegate,UICol
                     let components = calendar.dateComponents([.year, .month,.day], from: finalDate)
                     if let DateTobeShown = calendar.date(from:components){
                         let formatter = DateFormatter()
-                        formatter.dateFormat = "dd MMM, YYYY"
+                        formatter.dateFormat = "MMM dd, YYYY"
                         cell.date.text = formatter.string(from: DateTobeShown)
                         print(formatter.string(from: DateTobeShown))
                         self.dateOfOrderCreation = formatter.string(from: DateTobeShown)

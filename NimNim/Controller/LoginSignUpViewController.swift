@@ -726,6 +726,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             guard let email = email, let firstName = firstName, let lastName = lastName, let phoneNumber = phoneNumber, let password = password else {
                 return
             }
+            checked = "done"
             if checked != "done"
             {
                 let alert = UIAlertController(title: "Alert", message: "please verify the phone no first", preferredStyle: .alert)

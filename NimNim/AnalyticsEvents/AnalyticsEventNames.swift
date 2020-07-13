@@ -63,6 +63,11 @@ struct Events {
         FirebaseManager.shared.fireEvent(withName: AnalyticsEventNames.addedToCart, withProperties: props)
     }
     
+    
+    static func apiFailure(withProperties properties:[String:Any]?) {
+           FirebaseManager.shared.fireEvent(withName: AnalyticsEventNames.apiFailure, withProperties: properties)
+       }
+    
     static func cartViewed() {
         let props:[String:String] = [
             AnalyticsEventProperties.category:"ecommerce"

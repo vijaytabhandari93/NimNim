@@ -30,7 +30,7 @@ class MonthAndDateBaseCollectionViewCell: UICollectionViewCell,UICollectionViewD
         registerCells()
         monthandDatecollectionView.delegate = self
         monthandDatecollectionView.dataSource = self
-        dateFormatter.dateFormat = "dd MMM YYYY" ///date related
+        dateFormatter.dateFormat = "MMM dd, YYYY" ///date related
         // Initialization code
     }
     func registerCells() {

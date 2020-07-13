@@ -284,7 +284,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                     let date = dateFormatter.date(from: pickUpDate)
                     dateFormatter.dateFormat = "MMM-DD-YYYY"
                     let goodDate = dateFormatter.string(from: date!)
-                    headerView.pickUpDateAndTime.text = "\(pickUpTime) \(goodDate)"
+                    headerView.pickUpDateAndTime.text = "\(pickUpTime),  \(goodDate)"
                 }
             }
             headerView.delegate = self
@@ -325,7 +325,7 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                     let date = dateFormatter.date(from: dropOffDate)
                     dateFormatter.dateFormat = "MMM-DD-YYYY"
                     let goodDate = dateFormatter.string(from: date!)
-                    cell.dropOffGTimeSlotDate.text =  "\(dropOffTime)  \(dropOffDate)"
+                    cell.dropOffGTimeSlotDate.text =  "\(dropOffTime),  \(goodDate)"
                 }
                 if let serviceCost = serviceItem.totalCost {
                     if serviceCost == 0.0 {

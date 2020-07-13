@@ -213,7 +213,7 @@ class SelectAddressViewController: UIViewController,UICollectionViewDelegate,UIC
         removeTapGestures(forTextView: textView)
         if let currentText = textView.text {
             if !(currentText.caseInsensitiveCompare("Any Special Notes...") == .orderedSame) {
-                cartModel?.deliveryNotes = textView.text
+                cartModel?.deliveryNotes = currentText
             }
         }
     }

@@ -53,7 +53,7 @@ extension OnboardingViewController: UICollectionViewDelegate, UICollectionViewDa
         }else if indexPath.item == 1 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell
             let title = "Set your preferences or \"Just NimNim It\""
-            cell.configureCell(withImage: "onboarding2", withTitle: title)
+            cell.configureCell(withImage: "Onboarding-2", withTitle: title)
             return cell
         }else if indexPath.item == 2 {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OnboardingCollectionViewCell", for: indexPath) as! OnboardingCollectionViewCell

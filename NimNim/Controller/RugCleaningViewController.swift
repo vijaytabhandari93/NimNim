@@ -72,8 +72,8 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         let type5PreferencesNib = UINib(nibName: "RushDeliveryNotAvailableCollectionViewCell", bundle: nil)
         rugCleaningCollectionView.register(type5PreferencesNib, forCellWithReuseIdentifier:"RushDeliveryNotAvailableCollectionViewCell")
         
-        let headerNib = UINib(nibName: "PreferencesCollectionReusableView", bundle: nil)
-        rugCleaningCollectionView.register(headerNib, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader, withReuseIdentifier:"PreferencesCollectionReusableView")
+//        let headerNib = UINib(nibName: "PreferencesCollectionReusableView", bundle: nil)
+//        rugCleaningCollectionView.register(headerNib, forSupplementaryViewOfKind:UICollectionView.elementKindSectionHeader, withReuseIdentifier:"PreferencesCollectionReusableView")
     }
     
     override func viewDidLoad() {
@@ -379,25 +379,25 @@ class RugCleaningViewController: UIViewController,UICollectionViewDelegate,UICol
         return CGSize(width: collectionView.frame.size.width, height:0)
         
     }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+//        if section == 1 {
+//            return CGSize(width: collectionView.frame.size.width, height: 92)
+//        }
+//        return CGSize(width: collectionView.frame.size.width, height: 0)
+//    }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        if section == 1 {
-            return CGSize(width: collectionView.frame.size.width, height: 92)
-        }
-        return CGSize(width: collectionView.frame.size.width, height: 0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        switch kind {
-        case UICollectionView.elementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PreferencesCollectionReusableView", for: indexPath) as! PreferencesCollectionReusableView
-            return headerView
-        default:
-            let view = UICollectionReusableView()
-            return view
-        }
-        
-    }
+//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+//        switch kind {
+//        case UICollectionView.elementKindSectionHeader:
+//            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "PreferencesCollectionReusableView", for: indexPath) as! PreferencesCollectionReusableView
+//            return headerView
+//        default:
+//            let view = UICollectionReusableView()
+//            return view
+//        }
+//
+//    }
     
     //MARK:Collection View Datasource Methods
     func numberOfSections(in collectionView: UICollectionView) -> Int {

@@ -403,7 +403,7 @@ class TailoringSecondViewController: UIViewController,UICollectionViewDelegate,U
     func setupPrice(){
         if let taskPrice = taskModel?.getTailoringSelectedItemsPrice()
         {
-            priceLabel.text = "$\(taskPrice)"
+            priceLabel.text = String(format:"$%0.2f", taskPrice)
             taskModel?.taskPrice = taskPrice
         }
     }

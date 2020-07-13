@@ -49,6 +49,7 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
     var expiry:String?
     var cvv:String?
     var nameOnCard:String?
+    var validationMessage = ""
     var isHeightAdded = false // global variable made for keyboard height modification
     var addedHeight:CGFloat = 0 // global variable made for keyboard height modification
     func resetButtons() {
@@ -61,7 +62,7 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         registerCells()
         cardCollectionView.delegate = self
@@ -165,6 +166,7 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
             AddCard.cvv:cvv,
             AddCard.cardNumber:cardNumber,
             AddCard.name:name]
+        
         activityIndicator.startAnimating()
         NetworkingManager.shared.post(withEndpoint: Endpoints.addCard, withParams: params, withSuccess: { (response) in
             if let responseDict = response as? [String:Any] {
@@ -173,7 +175,7 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
             }
             //We have to push PickupDropOffViewController with screenType as descriptionOfUser...
             self.navigationController?.popViewController(animated: true)
-             self.activityIndicator.stopAnimating()
+            self.activityIndicator.stopAnimating()
             Events.fireAddedCardSuccess()
         }) { (error) in
             
@@ -187,13 +189,22 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
             }
             self.activityIndicator.stopAnimating()
         }
-  
+        
     }
     
     @IBAction func addCardTapped(_ sender:Any?) {
-        postCardDetails(withCardNumber: cardNumber, withExpiryEntered: expiry, withcvv: cvv, withName: nameOnCard)
+        if isValidFields(){
+            postCardDetails(withCardNumber: cardNumber, withExpiryEntered: expiry, withcvv: cvv, withName: nameOnCard)
+        }
+        else
+        {
+            let alert = UIAlertController(title: "Alert", message: validationMessage, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
-  
+    
     @IBAction func creditTapped(_ sender:Any?) {
         selectedCardState = .credit
     }
@@ -218,5 +229,24 @@ class AddNewCardViewController: UIViewController,UICollectionViewDelegate,UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 486)
     }
-
+    
+    
+    func isValidFields()->Bool {
+        if cardNumber == nil || cardNumber?.isEmpty == true {
+            self.validationMessage = "Please enter the card number."
+            return false
+        }else if cvv == nil || cvv?.isEmpty == true {
+            self.validationMessage = "Please enter the cvv."
+            return false
+            
+        } else if expiry == nil || expiry?.isEmpty == true{
+            self.validationMessage = "Please enter the expiry."
+            return false
+        }
+        else if nameOnCard == nil || nameOnCard?.isEmpty == true {
+            self.validationMessage = "Please enter the name on card."
+            return false
+        }
+        return true
+    }
 }

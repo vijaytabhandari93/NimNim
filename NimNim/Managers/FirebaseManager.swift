@@ -44,7 +44,7 @@ class FirebaseManager {
         }
     }
     
-    func fireEvent(withName name:String?, withProperties properties:[String:String]?) {
+    func fireEvent(withName name:String?, withProperties properties:[String:Any]?) {
         if let name = name {
             Analytics.logEvent(name, parameters: properties)
         }
