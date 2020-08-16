@@ -280,9 +280,9 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
             if let serviceItem = service?.first {
                 if let pickUpTime = serviceItem.pickUpTime, let pickUpDate = serviceItem.pickupDate {
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "YYYY-MM-DD"
+                    dateFormatter.dateFormat = "YYYY-MM-dd"
                     let date = dateFormatter.date(from: pickUpDate)
-                    dateFormatter.dateFormat = "MMM-DD-YYYY"
+                    dateFormatter.dateFormat = "MMM-dd-YYYY"
                     let goodDate = dateFormatter.string(from: date!)
                     headerView.pickUpDateAndTime.text = "\(pickUpTime),  \(goodDate)"
                 }
@@ -321,9 +321,9 @@ class OrderDetailsViewController: UIViewController,UICollectionViewDelegate,UICo
                 cell.serviceName.text = serviceItem.name
                 if let dropOffTime = serviceItem.dropOffTime, let dropOffDate = serviceItem.dropOffDate {
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "YYYY-MM-DD"
+                    dateFormatter.dateFormat = "YYYY-MM-dd"
                     let date = dateFormatter.date(from: dropOffDate)
-                    dateFormatter.dateFormat = "MMM-DD-YYYY"
+                    dateFormatter.dateFormat = "MMM-dd-YYYY"
                     let goodDate = dateFormatter.string(from: date!)
                     cell.dropOffGTimeSlotDate.text =  "\(dropOffTime),  \(goodDate)"
                 }
