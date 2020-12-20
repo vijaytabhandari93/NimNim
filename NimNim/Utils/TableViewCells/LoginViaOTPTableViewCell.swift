@@ -40,17 +40,19 @@ class LoginViaOTPTableViewCell: UITableViewCell, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
         setupTextFieldDelegates()
     }
     
     func setupTextFieldDelegates() {
         mobileNumberTextField.delegate = self
         otpTextField.delegate = self
-        mobileNumberTextField.inputAccessoryView = nil
-        otpTextField.inputAccessoryView = nil
+       // mobileNumberTextField.inputAccessoryView = nil
+//        otpTextField.inputAccessoryView = nil
     }
     
     func configureView(withOtpState otpState:OTPState) {
+        otpTextField.textContentType = .oneTimeCode
         currentState = otpState
         if otpState == .getOtp {
             otpView.isHidden = true

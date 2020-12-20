@@ -33,7 +33,7 @@ class FAQViewController: UIViewController,UICollectionViewDelegate,UICollectionV
     var RefundAndCancellation  : Bool  = false
     var expandedSectionIndex:Int = -1
     struct KnowMoreSection {
-        static let title = "Learn more about NimNim >"
+        static let title = "Learn more about NimNim "
         static let questions = [
             "What is the NimNim app for?",
             "How can I schedule my first pick up?",

@@ -60,7 +60,7 @@ class PickUpDropOffPreferencesViewController: UIViewController,UITableViewDelega
         if screenTypeValue == .pickUpDropOff
         {
             titleArray = [
-                "Leave unattened in Foyer",
+                "Leave unattended in Foyer",
                 "Pick up and drop off at concierge",
                 "Pick up and drop off in person"
             ]

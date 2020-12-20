@@ -12,7 +12,7 @@ import NVActivityIndicatorView
 import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
-
+import AuthenticationServices
 class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginWithPasswordTableViewCellDelegate, LoginViaOTPTableViewCellDelegate, SignUpTableViewCellDelegate, GIDSignInDelegate {
 
     //MARK: IBOutlets
@@ -87,6 +87,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         setupTableView()
         addObservers()
     }
+
     
     
     //MARK: Setup UI
@@ -273,6 +274,18 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             
         }
     }
+    
+    @IBAction func appleTapped(_ sender: Any) {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+    
     
     @IBAction func instaTapped(_ sender: Any) {
     }
@@ -594,6 +607,8 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
               textField.text = ""}
               alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler:{[weak alert] (_) in
                  let otpTextField = alert?.textFields![0]
+                otpTextField?.textContentType =  .oneTimeCode
+                otpTextField?.keyboardType = .numberPad
                   if let textEntered = otpTextField?.text as? String?{
                    self.verifyOTP(withOTP: textEntered)
         
@@ -836,7 +851,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     
     func performSocialSignUp(userInfo userId : String? , withType type: String?,withFirstName firstName:String?,withLastName lastName:String?, withEmail email:String?, withPhone phone:String?, withPassword password:String?, withDob dob:String?)
     {
-        guard let userId = userId , let type = type, let firstName = firstName, let lastName = lastName, let phone = phone, let password = password, let email = email else{
+        guard let type = type, let firstName = firstName, let lastName = lastName, let phone = phone, let password = password, let email = email else{
             return
         }
         if checked != "done"
@@ -847,7 +862,6 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
             return
         }
         let params:[String:Any] = [
-            SocialSignIn.userId:userId,
             SocialSignIn.typeOfSignIn :type
         ]
         var finalParams:[String:Any] = [
@@ -896,4 +910,35 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         // Perform any operations when the user disconnects from app here.
         // ...
     }
+}
+
+extension LoginSignUpViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        switch authorization.credential {
+        case let appleIDCredential as ASAuthorizationAppleIDCredential:
+            // Create an account in your system.
+            if let email = appleIDCredential.email {
+                if currentScreenState == .loginWithPassword || currentScreenState == .loginWithOTP {
+                    performSocialLogin(withEmail: email, withType: "google")
+                }else {
+                    self.email = email
+                    self.socialLoginType = "google"
+                    self.loginSignUpTableView.reloadData()
+                }
+            }
+        default:
+            break
+        }
+        
+    }
+    
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle error.
+        print(error)
+    }
+    
 }

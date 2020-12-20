@@ -25,12 +25,33 @@ class HomeBaseViewController: UIViewController {
     @IBOutlet weak var navButtonBackView: UIView!
     @IBOutlet weak var chatButtonBackView: UIView!
     @IBOutlet weak var profileButtonBackView: UIView!
- 
+    @IBOutlet weak var OKGotIt: UIButton!
+    @IBOutlet weak var smallerView: UIView!
+    @IBOutlet weak var smallView: UIView!
+    
+    var haveVisiteed  = false
+    
+    @IBAction func Ok(_ sender: Any) {
+        smallView.isHidden = true
+        smallerView.isHidden = true
+        haveVisiteed  = true
+        UserDefaults.standard.set(haveVisiteed, forKey: "haveVisiteed")
+        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         initializeScreen()
+        OKGotIt.layer.borderWidth = 1
+        OKGotIt.layer.borderColor = Colors.nimnimGreen.cgColor
+        if let haveVisiteed = UserDefaults.standard.value(forKey: "haveVisiteed") as? Bool, haveVisiteed == true  {
+            smallView.isHidden = true
+            smallerView.isHidden = true
+        }
+        else {
+            smallView.isHidden = false
+            smallerView.isHidden = false
+        }
     }
     
     override func viewDidLayoutSubviews() {

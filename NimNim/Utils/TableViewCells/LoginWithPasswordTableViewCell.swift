@@ -75,8 +75,8 @@ class LoginWithPasswordTableViewCell: UITableViewCell, UITextFieldDelegate {
     func setupTextFieldDelegates() {
         emailTextField.delegate = self
         passwordTextField.delegate = self
-        emailTextField.inputAccessoryView = nil //keyboard corrections option are set to nil
-        passwordTextField.inputAccessoryView = nil //keyboard corrections option are set to nil
+        //emailTextField.inputAccessoryView = nil //keyboard corrections option are set to nil
+        //passwordTextField.inputAccessoryView = nil //keyboard corrections option are set to nil
     }
 
     //MARK: IBActions

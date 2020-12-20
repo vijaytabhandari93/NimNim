@@ -586,7 +586,7 @@ class WashPressedShirtsViewController: UIViewController,UICollectionViewDelegate
                   var diff =  boxPrice - piecePrice
                   var cents = diff*100
                   var roundedCents = Int(cents)
-                  cell.subLabel.text = " \(roundedCents) cents extra per shirt."
+                  cell.subLabel.text = " \(roundedCents) cents extra per boxed shirt."
                 }
              
                 

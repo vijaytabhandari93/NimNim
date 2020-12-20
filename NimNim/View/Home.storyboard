@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -14,6 +13,9 @@
         </array>
         <array key="Montserrat-Medium.ttf">
             <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
         </array>
         <array key="Montserrat-SemiBold.ttf">
             <string>Montserrat-SemiBold</string>
@@ -330,6 +332,52 @@
                                     <constraint firstAttribute="height" constant="71" id="hSn-AY-I45"/>
                                 </constraints>
                             </view>
+                            <view alpha="0.59999999999999998" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQY-8r-9bU">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Co0-u3-Nfr">
+                                <rect key="frame" x="87" y="631" width="240" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="For an express  checkout, use one touch NimNim button and allow our pros to take care of your preferences  and counting. " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHv-Rc-WID">
+                                        <rect key="frame" x="10" y="10" width="220" height="85.5"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nEW-Rm-Ie9">
+                                        <rect key="frame" x="10" y="105.5" width="220" height="34.5"/>
+                                        <state key="normal" title="Ok, Got it!">
+                                            <color key="titleColor" red="0.2784313725" green="0.74901960779999999" blue="0.65490196079999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="Ok:" destination="1mg-H2-MlS" eventType="touchUpInside" id="bYt-uJ-Jx2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="nEW-Rm-Ie9" firstAttribute="leading" secondItem="Co0-u3-Nfr" secondAttribute="leading" constant="10" id="7yl-TH-ZXM"/>
+                                    <constraint firstAttribute="bottom" secondItem="nEW-Rm-Ie9" secondAttribute="bottom" constant="10" id="M08-qn-lsd"/>
+                                    <constraint firstAttribute="trailing" secondItem="qHv-Rc-WID" secondAttribute="trailing" constant="10" id="Nx8-Gd-hVw"/>
+                                    <constraint firstAttribute="width" constant="240" id="fBB-9A-CKz"/>
+                                    <constraint firstItem="nEW-Rm-Ie9" firstAttribute="top" secondItem="qHv-Rc-WID" secondAttribute="bottom" constant="10" id="ftV-tU-pr8"/>
+                                    <constraint firstAttribute="trailing" secondItem="nEW-Rm-Ie9" secondAttribute="trailing" constant="10" id="jPj-aj-AzP"/>
+                                    <constraint firstItem="qHv-Rc-WID" firstAttribute="top" secondItem="Co0-u3-Nfr" secondAttribute="top" constant="10" id="kUr-vf-cii"/>
+                                    <constraint firstAttribute="height" constant="150" id="kp6-qQ-5aj"/>
+                                    <constraint firstItem="qHv-Rc-WID" firstAttribute="leading" secondItem="Co0-u3-Nfr" secondAttribute="leading" constant="10" id="oyw-gO-EeT"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wnf-si-UwL" customClass="NVActivityIndicatorView" customModule="NVActivityIndicatorView">
                                 <rect key="frame" x="182" y="423" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -354,16 +402,23 @@
                             <constraint firstItem="woJ-gL-5aU" firstAttribute="leading" secondItem="bcm-90-cpL" secondAttribute="leading" id="1F2-cy-lW2"/>
                             <constraint firstItem="Wnf-si-UwL" firstAttribute="centerX" secondItem="4xQ-44-rgT" secondAttribute="centerX" id="6ei-xy-ej1"/>
                             <constraint firstItem="jAL-wn-kVa" firstAttribute="leading" secondItem="bcm-90-cpL" secondAttribute="leading" id="94y-Zw-riL"/>
+                            <constraint firstAttribute="bottom" secondItem="gQY-8r-9bU" secondAttribute="bottom" id="CMe-VH-6mf"/>
                             <constraint firstItem="bcm-90-cpL" firstAttribute="trailing" secondItem="woJ-gL-5aU" secondAttribute="trailing" id="Fr5-vA-Ifl"/>
+                            <constraint firstAttribute="trailing" secondItem="gQY-8r-9bU" secondAttribute="trailing" id="MEv-N3-C4V"/>
                             <constraint firstItem="bcm-90-cpL" firstAttribute="trailing" secondItem="jAL-wn-kVa" secondAttribute="trailing" id="Rl5-ql-cYi"/>
+                            <constraint firstItem="jAL-wn-kVa" firstAttribute="top" secondItem="Co0-u3-Nfr" secondAttribute="bottom" constant="10" id="UXu-LS-LV4"/>
+                            <constraint firstItem="gQY-8r-9bU" firstAttribute="leading" secondItem="4xQ-44-rgT" secondAttribute="leading" id="UjY-Hd-X9d"/>
                             <constraint firstItem="jAL-wn-kVa" firstAttribute="bottom" secondItem="bcm-90-cpL" secondAttribute="bottom" id="YQC-AV-J3I"/>
+                            <constraint firstItem="gQY-8r-9bU" firstAttribute="top" secondItem="4xQ-44-rgT" secondAttribute="top" id="ZFG-uE-lsb"/>
                             <constraint firstItem="Wnf-si-UwL" firstAttribute="centerY" secondItem="4xQ-44-rgT" secondAttribute="centerY" id="g4A-71-y6P"/>
                             <constraint firstItem="woJ-gL-5aU" firstAttribute="top" secondItem="4xQ-44-rgT" secondAttribute="top" id="tvK-N0-hAc"/>
                             <constraint firstItem="bcm-90-cpL" firstAttribute="bottom" secondItem="woJ-gL-5aU" secondAttribute="bottom" id="wVs-S0-DLf"/>
+                            <constraint firstItem="Co0-u3-Nfr" firstAttribute="centerX" secondItem="jAL-wn-kVa" secondAttribute="centerX" id="zg9-gX-4rJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bcm-90-cpL"/>
                     </view>
                     <connections>
+                        <outlet property="OKGotIt" destination="nEW-Rm-Ie9" id="DJ2-ct-dhR"/>
                         <outlet property="chatButton" destination="CFP-zN-pQN" id="8cz-3T-HAz"/>
                         <outlet property="chatButtonBackView" destination="aKb-ZH-vvy" id="m9U-CX-RjN"/>
                         <outlet property="chatContainerView" destination="D4p-zQ-LM5" id="7Rh-b5-Y8v"/>
@@ -377,6 +432,8 @@
                         <outlet property="profileButton" destination="Ezh-2Q-kdF" id="Ba8-dm-GYn"/>
                         <outlet property="profileButtonBackView" destination="V5a-Bf-o0f" id="LhD-8L-270"/>
                         <outlet property="profileContainerView" destination="Oha-G7-Dlr" id="cFq-fh-kFC"/>
+                        <outlet property="smallView" destination="gQY-8r-9bU" id="8Ra-Qf-Hf9"/>
+                        <outlet property="smallerView" destination="Co0-u3-Nfr" id="5yx-DJ-BZX"/>
                         <outlet property="tabBarShadowView" destination="NJZ-yw-pZu" id="2nL-UF-tdg"/>
                     </connections>
                 </viewController>
@@ -790,13 +847,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zlg-lG-rWH">
-                                        <rect key="frame" x="173" y="8" width="68.5" height="24.5"/>
+                                        <rect key="frame" x="179" y="8" width="56.5" height="23.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="20"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tfK-sa-SWF">
-                                        <rect key="frame" x="382" y="12.5" width="16" height="16"/>
+                                        <rect key="frame" x="382" y="12" width="16" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="2XN-0l-cAK"/>
                                             <constraint firstAttribute="width" constant="16" id="YiL-hN-yg1"/>
