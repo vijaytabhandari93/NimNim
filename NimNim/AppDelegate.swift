@@ -84,11 +84,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //Used for GoogleSign In
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        var handle = false
-        handle = GIDSignIn.sharedInstance().handle(url)
-        handle = ApplicationDelegate.shared.application(app, open: url, options: options)
-        Branch.getInstance().application(app, open: url, options: options)
-        return handle
+        print("I have receiived a URL through a custom url scheme \(url.absoluteString)")
+        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+            // Handle the deep link. For example, show the deep-linked content or
+            self.handleIncomingDynamicLink(dynamicLink)
+            return true
+            // apply a promotional offer to the user's account.
+            // ...
+           
+        }
+        else {
+            var handle = false
+            handle = GIDSignIn.sharedInstance().handle(url)
+            handle = ApplicationDelegate.shared.application(app, open: url, options: options)
+            Branch.getInstance().application(app, open: url, options: options)
+            return handle
+        }
     }
     
     func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
@@ -149,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return handle
     }
     
-    
+ 
     
 }
 
