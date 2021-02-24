@@ -18,6 +18,7 @@ class ShoeRepairViewController: UIViewController,UICollectionViewDelegate,UIColl
     var justNimNimItSelected : Bool = false
     var serviceModel:ServiceModel?
     var IsAddToCartTapped : Bool = false
+    
     func pushSecondViewController() {
         let preferencesSB = UIStoryboard(name: "Services", bundle: nil)
         let secondViewController = preferencesSB.instantiateViewController(withIdentifier:"ShoeRepairSecondViewController") as? ShoeRepairSecondViewController

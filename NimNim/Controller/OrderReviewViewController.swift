@@ -292,7 +292,7 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         
         if section == 0 {
             if let services = cartModel?.services, services.count > 0 {
-                return  services.count
+                return  services.count  // to create the number Of services
             }
         }
         else if section == 1 {
@@ -302,10 +302,10 @@ class OrderReviewViewController: UIViewController ,UICollectionViewDelegate,UICo
         }
         else {
             if let services = cartModel?.services, services.count > 0 {
-                return 2  // this statement ensures that no cell is made when cart is empty
+                return 2 // for coupon applied and apply wallet points
             }
         }
-        return 0
+        return 0  // this statement ensures that no cell is made when cart is empty
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

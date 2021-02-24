@@ -13,6 +13,7 @@ import GoogleSignIn
 import FBSDKCoreKit
 import FBSDKLoginKit
 import AuthenticationServices
+
 class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, LoginWithPasswordTableViewCellDelegate, LoginViaOTPTableViewCellDelegate, SignUpTableViewCellDelegate, GIDSignInDelegate {
 
     //MARK: IBOutlets
@@ -21,6 +22,7 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var activityIndicatorView: NVActivityIndicatorView!
     @IBOutlet weak var logInSignUpToContinueLabel: UILabel!
+    @IBOutlet weak var signInWithAppleButton: UIView!
     
     enum LoginSignupStates {
         case loginWithPassword
@@ -81,11 +83,15 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
     //MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupUI()
         setupTableView()
         addObservers()
+        let authorizationButton = ASAuthorizationAppleIDButton()
+        authorizationButton.addTarget(self, action: #selector(appleTapped), for: .touchUpInside)
+        authorizationButton.fixInView(signInWithAppleButton)
+        
     }
 
     
@@ -275,11 +281,10 @@ class LoginSignUpViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
     
-    @IBAction func appleTapped(_ sender: Any) {
+    @objc func appleTapped(){
         let appleIDProvider = ASAuthorizationAppleIDProvider()
         let request = appleIDProvider.createRequest()
         request.requestedScopes = [.fullName, .email]
-        
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
         authorizationController.delegate = self
         authorizationController.presentationContextProvider = self
@@ -941,4 +946,17 @@ extension LoginSignUpViewController: ASAuthorizationControllerDelegate, ASAuthor
         print(error)
     }
     
+}
+
+extension UIView
+{
+    func fixInView(_ container: UIView!) -> Void{
+        self.translatesAutoresizingMaskIntoConstraints = false;
+        self.frame = container.frame;
+        container.addSubview(self);
+        NSLayoutConstraint(item: self, attribute: .leading, relatedBy: .equal, toItem: container, attribute: .leading, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: self, attribute: .trailing, relatedBy: .equal, toItem: container, attribute: .trailing, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: container, attribute: .top, multiplier: 1.0, constant: 0).isActive = true
+        NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: container, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
+    }
 }

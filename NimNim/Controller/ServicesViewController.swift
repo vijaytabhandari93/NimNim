@@ -485,7 +485,7 @@ class ServicesViewController: UIViewController,UICollectionViewDelegate,UICollec
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "NeedRushDeliveryCollectionViewCell", for: indexPath) as! NeedRushDeliveryCollectionViewCell
             cell.delegate = self
             cell.labelAgainsCheckbox.text = "I need rush delivery"
-            cell.configureUI(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
+           // cell. cvd(forRushDeliveryState: serviceModel?.isRushDeliverySelected ?? false, forIndex: indexPath)
             if let arrayRushOptions = serviceModel?.rushDeliveryOptions, arrayRushOptions.count == 1 {
                 let firstPreference = arrayRushOptions[0]
                 if let hours  = firstPreference.turnAroundTime

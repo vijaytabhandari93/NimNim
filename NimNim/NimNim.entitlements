@@ -10,6 +10,7 @@
 	</array>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
+		<string>applinks:getnimnim.page.link</string>
 		<string>applinks:nimnim.test-app.link</string>
 		<string>applinks:nimnim-alternate.test-app.link</string>
 		<string>applinks:nimnim.app.link</string>

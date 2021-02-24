@@ -25,4 +25,5 @@ target 'NimNim' do
   pod 'Mixpanel-swift'
   pod 'Branch'
   pod 'KlaviyoSwift'
+  pod 'Firebase/DynamicLinks'
 end

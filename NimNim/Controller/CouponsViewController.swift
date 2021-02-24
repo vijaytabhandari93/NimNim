@@ -24,7 +24,7 @@ class CouponsViewController: UIViewController, UICollectionViewDelegate,UICollec
         registerCells()
         couponsCollectionView.delegate = self
         couponsCollectionView.dataSource = self
-        fetchCoupons()
+       // fetchCoupons()
     }
     //MARK:UI Methods
     func registerCells() {
